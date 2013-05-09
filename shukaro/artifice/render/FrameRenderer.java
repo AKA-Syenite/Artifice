@@ -5,6 +5,7 @@ import org.lwjgl.opengl.GL11;
 import shukaro.artifice.ArtificeCore;
 import shukaro.artifice.block.BlockFrame;
 import shukaro.artifice.net.ClientProxy;
+import shukaro.artifice.util.render.RenderBlocksFrame;
 import shukaro.artifice.util.render.RenderBlocksInverted;
 import shukaro.artifice.util.render.RenderBlocksMeta;
 import net.minecraft.block.Block;
@@ -19,6 +20,7 @@ public class FrameRenderer implements ISimpleBlockRenderingHandler
 {
 	private RenderBlocksInverted invertedRenderer = new RenderBlocksInverted();
 	private RenderBlocksMeta metaRenderer = new RenderBlocksMeta();
+	private RenderBlocksFrame frameRenderer = new RenderBlocksFrame();
 	
 	@Override
 	public void renderInventoryBlock(Block block, int metadata, int modelID, RenderBlocks renderer)
@@ -123,7 +125,7 @@ public class FrameRenderer implements ISimpleBlockRenderingHandler
 		
 		renderer.setRenderBounds(0.00005F, 0.00005F, 0.00005F, 0.99995F, 0.99995F, 0.99995F);
 		
-		if (renderer.renderStandardBlock(block, x, y, z))
+		if (frameRenderer.renderStandardBlock(renderer, block, x, y, z))
 		{
 			invertedRenderer.renderStandardBlock(renderer, block, x, y, z);
 		}

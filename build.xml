@@ -61,11 +61,10 @@
         <jar destfile="${dist.dir}/Artifice-${python.out}-${build.number}.jar" basedir="${classes.dir}"/>
         <delete dir="${classes.dir}" />
         <delete dir="${mcp.dir}/reobf"/>
-        <delete dir="{$apiclasses.dir}" />
         <delete dir="${mcpsrc.dir}/shukaro/artifice" />
     </target>
     
-    <target name="build" depends="setup-forge" unless="already-compiled">
+    <target name="build" depends="setup-forge,get-version" unless="already-compiled">
         <!-- Recompile -->
         <exec dir="${mcp.dir}" executable="cmd" osfamily="windows" failonerror="true">
             <arg line="/c recompile.bat"/>

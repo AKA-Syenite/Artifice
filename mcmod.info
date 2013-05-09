@@ -1,0 +1,19 @@
+[
+    {
+        "name": "Artifice", 
+        "parent": "", 
+        "url": "", 
+        "logoFile": "", 
+        "updateUrl": "", 
+        "credits": "All the contributors", 
+        "version": "1.0", 
+        "modid": "artifice", 
+        "authors": [
+            "Shukaro"
+        ], 
+        "mcversion": "1.5.1", 
+        "screenshots": [], 
+        "dependencies": [], 
+        "description": ""
+    }
+]

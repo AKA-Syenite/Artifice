@@ -5,6 +5,8 @@ import org.lwjgl.opengl.GL11;
 import shukaro.artifice.ArtificeCore;
 import shukaro.artifice.block.BlockFrame;
 import shukaro.artifice.net.ClientProxy;
+import shukaro.artifice.util.render.RenderBlocksInverted;
+import shukaro.artifice.util.render.RenderBlocksMeta;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.RenderBlocks;
 import net.minecraft.client.renderer.Tessellator;

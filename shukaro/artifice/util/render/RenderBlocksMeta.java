@@ -1,4 +1,4 @@
-package shukaro.artifice.render;
+package shukaro.artifice.util.render;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockGrass;

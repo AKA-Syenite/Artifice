@@ -24,7 +24,7 @@ public class BlockArtifice extends Block
 	protected Icon[][] textureList = new Icon[ArtificeCore.tiers.length][256];
 	protected String textureName;
 	
-	protected ConnectedTextureBase textureRenderer;
+	public ConnectedTextureBase textureRenderer;
 	
 	public BlockArtifice(int id, Material mat)
 	{

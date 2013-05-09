@@ -1,5 +1,9 @@
-package shukaro.artifice.render;
+package shukaro.artifice.util.render;
 
+import shukaro.artifice.block.BlockFrame;
+import shukaro.artifice.render.connectedtexture.ConnectedTextureBase;
+import shukaro.artifice.render.connectedtexture.TransparentConnectedTexture;
+import shukaro.artifice.util.BlockCoord;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockGrass;
 import net.minecraft.client.Minecraft;
@@ -37,6 +41,19 @@ public class RenderBlocksInverted
 
 	public boolean func_102027_b(RenderBlocks renderer, Block par1Block, int par2, int par3, int par4, float par5, float par6, float par7)
 	{
+		BlockFrame frame = null;
+		if (par1Block instanceof BlockFrame)
+			frame = (BlockFrame) par1Block;
+		
+		ConnectedTextureBase text = new TransparentConnectedTexture(frame.textureRenderer.blockID);
+		
+		boolean connectBottom = text.canConnectOnSide(renderer.blockAccess, new BlockCoord(par2, par3, par4), 0, 0);
+		boolean connectTop = text.canConnectOnSide(renderer.blockAccess, new BlockCoord(par2, par3, par4), 1, 0);
+		boolean connectEast = text.canConnectOnSide(renderer.blockAccess, new BlockCoord(par2, par3, par4), 2, 0);
+		boolean connectWest = text.canConnectOnSide(renderer.blockAccess, new BlockCoord(par2, par3, par4), 3, 0);
+		boolean connectNorth = text.canConnectOnSide(renderer.blockAccess, new BlockCoord(par2, par3, par4), 4, 0);
+		boolean connectSouth = text.canConnectOnSide(renderer.blockAccess, new BlockCoord(par2, par3, par4), 5, 0);
+		
 		renderer.enableAO = true;
 		boolean flag = false;
 		float f3 = 0.0F;
@@ -64,7 +81,7 @@ public class RenderBlocksInverted
 		float f7;
 		int i1;
 
-		if(renderer.renderAllFaces || par1Block.shouldSideBeRendered(renderer.blockAccess, par2, par3 - 1, par4, 0))
+		if(renderer.renderAllFaces || par1Block.shouldSideBeRendered(renderer.blockAccess, par2, par3 - 1, par4, 0) && !connectBottom)
 		{
 			if(renderer.renderMinY <= 0.0D)
 			{
@@ -180,7 +197,7 @@ public class RenderBlocksInverted
 			flag = true;
 		}
 
-		if(renderer.renderAllFaces || par1Block.shouldSideBeRendered(renderer.blockAccess, par2, par3 + 1, par4, 1))
+		if(renderer.renderAllFaces || par1Block.shouldSideBeRendered(renderer.blockAccess, par2, par3 + 1, par4, 1) && !connectTop)
 		{
 			if(renderer.renderMaxY >= 1.0D)
 			{
@@ -295,7 +312,7 @@ public class RenderBlocksInverted
 		int i2;
 		Icon icon;
 
-		if(renderer.renderAllFaces || par1Block.shouldSideBeRendered(renderer.blockAccess, par2, par3, par4 - 1, 2))
+		if(renderer.renderAllFaces || par1Block.shouldSideBeRendered(renderer.blockAccess, par2, par3, par4 - 1, 2) && !connectEast)
 		{
 			if(renderer.renderMinZ <= 0.0D)
 			{
@@ -449,7 +466,7 @@ public class RenderBlocksInverted
 			flag = true;
 		}
 
-		if(renderer.renderAllFaces || par1Block.shouldSideBeRendered(renderer.blockAccess, par2, par3, par4 + 1, 3))
+		if(renderer.renderAllFaces || par1Block.shouldSideBeRendered(renderer.blockAccess, par2, par3, par4 + 1, 3) && !connectWest)
 		{
 			if(renderer.renderMaxZ >= 1.0D)
 			{
@@ -608,7 +625,7 @@ public class RenderBlocksInverted
 			flag = true;
 		}
 
-		if(renderer.renderAllFaces || par1Block.shouldSideBeRendered(renderer.blockAccess, par2 - 1, par3, par4, 4))
+		if(renderer.renderAllFaces || par1Block.shouldSideBeRendered(renderer.blockAccess, par2 - 1, par3, par4, 4) && !connectNorth)
 		{
 			if(renderer.renderMinX <= 0.0D)
 			{
@@ -766,7 +783,7 @@ public class RenderBlocksInverted
 			flag = true;
 		}
 
-		if(renderer.renderAllFaces || par1Block.shouldSideBeRendered(renderer.blockAccess, par2 + 1, par3, par4, 5))
+		if(renderer.renderAllFaces || par1Block.shouldSideBeRendered(renderer.blockAccess, par2 + 1, par3, par4, 5) && !connectSouth)
 		{
 			if(renderer.renderMaxX >= 1.0D)
 			{
@@ -931,6 +948,19 @@ public class RenderBlocksInverted
 	public boolean renderStandardBlockWithAmbientOcclusion(RenderBlocks renderer, Block par1Block, int par2, int par3, int par4, float par5, float par6,
 			float par7)
 	{
+		BlockFrame frame = null;
+		if (par1Block instanceof BlockFrame)
+			frame = (BlockFrame) par1Block;
+		
+		ConnectedTextureBase text = new TransparentConnectedTexture(frame.textureRenderer.blockID);
+		
+		boolean connectBottom = text.canConnectOnSide(renderer.blockAccess, new BlockCoord(par2, par3, par4), 0, 0);
+		boolean connectTop = text.canConnectOnSide(renderer.blockAccess, new BlockCoord(par2, par3, par4), 1, 0);
+		boolean connectEast = text.canConnectOnSide(renderer.blockAccess, new BlockCoord(par2, par3, par4), 2, 0);
+		boolean connectWest = text.canConnectOnSide(renderer.blockAccess, new BlockCoord(par2, par3, par4), 3, 0);
+		boolean connectNorth = text.canConnectOnSide(renderer.blockAccess, new BlockCoord(par2, par3, par4), 4, 0);
+		boolean connectSouth = text.canConnectOnSide(renderer.blockAccess, new BlockCoord(par2, par3, par4), 5, 0);
+		
 		renderer.enableAO = true;
 		boolean flag = false;
 		float f3 = 0.0F;
@@ -958,7 +988,7 @@ public class RenderBlocksInverted
 		float f7;
 		int i1;
 
-		if(renderer.renderAllFaces || par1Block.shouldSideBeRendered(renderer.blockAccess, par2, par3 - 1, par4, 0))
+		if(renderer.renderAllFaces || par1Block.shouldSideBeRendered(renderer.blockAccess, par2, par3 - 1, par4, 0) && !connectBottom)
 		{
 			if(renderer.renderMinY <= 0.0D)
 			{
@@ -1074,7 +1104,7 @@ public class RenderBlocksInverted
 			flag = true;
 		}
 
-		if(renderer.renderAllFaces || par1Block.shouldSideBeRendered(renderer.blockAccess, par2, par3 + 1, par4, 1))
+		if(renderer.renderAllFaces || par1Block.shouldSideBeRendered(renderer.blockAccess, par2, par3 + 1, par4, 1) && !connectTop)
 		{
 			if(renderer.renderMaxY >= 1.0D)
 			{
@@ -1181,7 +1211,7 @@ public class RenderBlocksInverted
 
 		Icon icon;
 
-		if(renderer.renderAllFaces || par1Block.shouldSideBeRendered(renderer.blockAccess, par2, par3, par4 - 1, 2))
+		if(renderer.renderAllFaces || par1Block.shouldSideBeRendered(renderer.blockAccess, par2, par3, par4 - 1, 2) && !connectEast)
 		{
 			if(renderer.renderMinZ <= 0.0D)
 			{
@@ -1315,7 +1345,7 @@ public class RenderBlocksInverted
 			flag = true;
 		}
 
-		if(renderer.renderAllFaces || par1Block.shouldSideBeRendered(renderer.blockAccess, par2, par3, par4 + 1, 3))
+		if(renderer.renderAllFaces || par1Block.shouldSideBeRendered(renderer.blockAccess, par2, par3, par4 + 1, 3) && !connectWest)
 		{
 			if(renderer.renderMaxZ >= 1.0D)
 			{
@@ -1450,7 +1480,7 @@ public class RenderBlocksInverted
 			flag = true;
 		}
 
-		if(renderer.renderAllFaces || par1Block.shouldSideBeRendered(renderer.blockAccess, par2 - 1, par3, par4, 4))
+		if(renderer.renderAllFaces || par1Block.shouldSideBeRendered(renderer.blockAccess, par2 - 1, par3, par4, 4) && !connectNorth)
 		{
 			if(renderer.renderMinX <= 0.0D)
 			{
@@ -1584,7 +1614,7 @@ public class RenderBlocksInverted
 			flag = true;
 		}
 
-		if(renderer.renderAllFaces || par1Block.shouldSideBeRendered(renderer.blockAccess, par2 + 1, par3, par4, 5))
+		if(renderer.renderAllFaces || par1Block.shouldSideBeRendered(renderer.blockAccess, par2 + 1, par3, par4, 5) && !connectSouth)
 		{
 			if(renderer.renderMaxX >= 1.0D)
 			{
@@ -1729,6 +1759,19 @@ public class RenderBlocksInverted
 	public boolean renderStandardBlockWithColorMultiplier(RenderBlocks renderer, Block par1Block, int par2, int par3, int par4, float par5, float par6,
 			float par7)
 	{
+		BlockFrame frame = null;
+		if (par1Block instanceof BlockFrame)
+			frame = (BlockFrame) par1Block;
+		
+		ConnectedTextureBase text = new TransparentConnectedTexture(frame.textureRenderer.blockID);
+		
+		boolean connectBottom = text.canConnectOnSide(renderer.blockAccess, new BlockCoord(par2, par3, par4), 0, 0);
+		boolean connectTop = text.canConnectOnSide(renderer.blockAccess, new BlockCoord(par2, par3, par4), 1, 0);
+		boolean connectEast = text.canConnectOnSide(renderer.blockAccess, new BlockCoord(par2, par3, par4), 2, 0);
+		boolean connectWest = text.canConnectOnSide(renderer.blockAccess, new BlockCoord(par2, par3, par4), 3, 0);
+		boolean connectNorth = text.canConnectOnSide(renderer.blockAccess, new BlockCoord(par2, par3, par4), 4, 0);
+		boolean connectSouth = text.canConnectOnSide(renderer.blockAccess, new BlockCoord(par2, par3, par4), 5, 0);
+		
 		renderer.enableAO = false;
 		Tessellator tessellator = Tessellator.instance;
 		boolean flag = false;
@@ -1764,7 +1807,7 @@ public class RenderBlocksInverted
 
 		int l = par1Block.getMixedBrightnessForBlock(renderer.blockAccess, par2, par3, par4);
 
-		if(renderer.renderAllFaces || par1Block.shouldSideBeRendered(renderer.blockAccess, par2, par3 - 1, par4, 0))
+		if(renderer.renderAllFaces || par1Block.shouldSideBeRendered(renderer.blockAccess, par2, par3 - 1, par4, 0) && !connectBottom)
 		{
 			tessellator.setBrightness(renderer.renderMinY > 0.0D ? l : par1Block.getMixedBrightnessForBlock(renderer.blockAccess, par2, par3 - 1, par4));
 			tessellator.setColorOpaque_F(f10, f13, f16);
@@ -1773,7 +1816,7 @@ public class RenderBlocksInverted
 			flag = true;
 		}
 
-		if(renderer.renderAllFaces || par1Block.shouldSideBeRendered(renderer.blockAccess, par2, par3 + 1, par4, 1))
+		if(renderer.renderAllFaces || par1Block.shouldSideBeRendered(renderer.blockAccess, par2, par3 + 1, par4, 1) && !connectTop)
 		{
 			tessellator.setBrightness(renderer.renderMaxY < 1.0D ? l : par1Block.getMixedBrightnessForBlock(renderer.blockAccess, par2, par3 + 1, par4));
 			tessellator.setColorOpaque_F(f7, f8, f9);
@@ -1784,7 +1827,7 @@ public class RenderBlocksInverted
 
 		Icon icon;
 
-		if(renderer.renderAllFaces || par1Block.shouldSideBeRendered(renderer.blockAccess, par2, par3, par4 - 1, 2))
+		if(renderer.renderAllFaces || par1Block.shouldSideBeRendered(renderer.blockAccess, par2, par3, par4 - 1, 2) && !connectEast)
 		{
 			tessellator.setBrightness(renderer.renderMinZ > 0.0D ? l : par1Block.getMixedBrightnessForBlock(renderer.blockAccess, par2, par3, par4 - 1));
 			tessellator.setColorOpaque_F(f11, f14, f17);
@@ -1800,7 +1843,7 @@ public class RenderBlocksInverted
 			flag = true;
 		}
 
-		if(renderer.renderAllFaces || par1Block.shouldSideBeRendered(renderer.blockAccess, par2, par3, par4 + 1, 3))
+		if(renderer.renderAllFaces || par1Block.shouldSideBeRendered(renderer.blockAccess, par2, par3, par4 + 1, 3) && !connectWest)
 		{
 			tessellator.setBrightness(renderer.renderMaxZ < 1.0D ? l : par1Block.getMixedBrightnessForBlock(renderer.blockAccess, par2, par3, par4 + 1));
 			tessellator.setColorOpaque_F(f11, f14, f17);
@@ -1816,7 +1859,7 @@ public class RenderBlocksInverted
 			flag = true;
 		}
 
-		if(renderer.renderAllFaces || par1Block.shouldSideBeRendered(renderer.blockAccess, par2 - 1, par3, par4, 4))
+		if(renderer.renderAllFaces || par1Block.shouldSideBeRendered(renderer.blockAccess, par2 - 1, par3, par4, 4) && !connectNorth)
 		{
 			tessellator.setBrightness(renderer.renderMinX > 0.0D ? l : par1Block.getMixedBrightnessForBlock(renderer.blockAccess, par2 - 1, par3, par4));
 			tessellator.setColorOpaque_F(f12, f15, f18);
@@ -1832,7 +1875,7 @@ public class RenderBlocksInverted
 			flag = true;
 		}
 
-		if(renderer.renderAllFaces || par1Block.shouldSideBeRendered(renderer.blockAccess, par2 + 1, par3, par4, 5))
+		if(renderer.renderAllFaces || par1Block.shouldSideBeRendered(renderer.blockAccess, par2 + 1, par3, par4, 5) && !connectSouth)
 		{
 			tessellator.setBrightness(renderer.renderMaxX < 1.0D ? l : par1Block.getMixedBrightnessForBlock(renderer.blockAccess, par2 + 1, par3, par4));
 			tessellator.setColorOpaque_F(f12, f15, f18);

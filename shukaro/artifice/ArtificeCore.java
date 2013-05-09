@@ -47,7 +47,7 @@ public class ArtificeCore
 	
 	public static final String modID = "artifice";
 	public static final String modName = "Artifice";
-	public static final String modVersion = "1.0";
+	public static final String modVersion = "1.5.1R1.0";
 	
 	public static BlockFrame blockFrame;
 	public static BlockFlora blockFlora;

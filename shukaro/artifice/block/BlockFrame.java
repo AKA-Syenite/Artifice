@@ -24,7 +24,6 @@ public class BlockFrame extends BlockArtifice
 	{
 		super(id, Material.iron);
 		this.textureName = "frame";
-		this.textureRenderer = new TransparentConnectedTexture(this.blockID);
 		setUnlocalizedName("artifice.frame");
 	}
 	

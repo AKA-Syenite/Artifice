@@ -12,7 +12,12 @@ public class BlockFrameRefractory extends BlockFrame
 	{
 		super(id);
 		setUnlocalizedName(super.getUnlocalizedName() + ".refractory");
-		this.innerBlock = Block.brick;
 		this.textureRenderer = new SolidConnectedTexture(this.blockID);
+	}
+	
+	@Override
+	public Block getInnerBlock(int meta)
+	{
+		return Block.brick;
 	}
 }

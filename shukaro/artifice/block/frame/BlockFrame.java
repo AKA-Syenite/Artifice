@@ -18,14 +18,21 @@ import net.minecraft.world.World;
 
 public class BlockFrame extends BlockArtifice
 {
-	public Block innerBlock;
-	public int innerMeta = 0;
-	
 	public BlockFrame(int id)
 	{
 		super(id, Material.rock);
 		this.textureName = "frame";
 		setUnlocalizedName("artifice.frame");
+	}
+	
+	public Block getInnerBlock(int meta)
+	{
+		return null;
+	}
+	
+	public int getInnerMeta(int meta)
+	{
+		return 0;
 	}
 	
 	@Override

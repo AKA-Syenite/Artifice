@@ -3,7 +3,7 @@ package shukaro.artifice.render;
 import org.lwjgl.opengl.GL11;
 
 import shukaro.artifice.ArtificeCore;
-import shukaro.artifice.block.BlockFrame;
+import shukaro.artifice.block.frame.BlockFrame;
 import shukaro.artifice.net.ClientProxy;
 import shukaro.artifice.util.render.RenderBlocksFrame;
 import shukaro.artifice.util.render.RenderBlocksInverted;
@@ -118,7 +118,7 @@ public class FrameRenderer implements ISimpleBlockRenderingHandler
 		if (block instanceof BlockFrame)
 			frame = (BlockFrame)block;
 				
-		renderer.setRenderBounds(0.005F, 0.005F, 0.005F, 0.995F, 0.995F, 0.995F);
+		renderer.setRenderBounds(0.0005F, 0.0005F, 0.0005F, 0.9995F, 0.9995F, 0.9995F);
 		
 		if (frame != null && frame.innerBlock != null)
 		{

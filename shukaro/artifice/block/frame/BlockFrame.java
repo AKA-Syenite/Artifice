@@ -1,9 +1,10 @@
-package shukaro.artifice.block;
+package shukaro.artifice.block.frame;
 
 import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import shukaro.artifice.ArtificeCore;
+import shukaro.artifice.block.BlockArtifice;
 import shukaro.artifice.net.ClientProxy;
 import shukaro.artifice.render.FrameRenderer;
 import shukaro.artifice.render.connectedtexture.SolidConnectedTexture;
@@ -22,7 +23,7 @@ public class BlockFrame extends BlockArtifice
 	
 	public BlockFrame(int id)
 	{
-		super(id, Material.iron);
+		super(id, Material.rock);
 		this.textureName = "frame";
 		setUnlocalizedName("artifice.frame");
 	}

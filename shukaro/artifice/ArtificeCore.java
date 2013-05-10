@@ -4,13 +4,12 @@ import java.util.logging.Level;
 
 import net.minecraft.block.BlockHalfSlab;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemSlab;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.Configuration;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.Property;
 import shukaro.artifice.block.BlockArtifice;
-import shukaro.artifice.block.BlockFrame;
-import shukaro.artifice.block.ItemBlockFrame;
 import shukaro.artifice.block.decorative.BlockBasalt;
 import shukaro.artifice.block.decorative.BlockBasaltSlab;
 import shukaro.artifice.block.decorative.BlockFlora;
@@ -20,7 +19,9 @@ import shukaro.artifice.block.decorative.BlockStairsArtifice;
 import shukaro.artifice.block.decorative.ItemBlockBasalt;
 import shukaro.artifice.block.decorative.ItemBlockFlora;
 import shukaro.artifice.block.decorative.ItemBlockMarble;
-import shukaro.artifice.block.decorative.ItemBlockSlab;
+import shukaro.artifice.block.frame.BlockFrame;
+import shukaro.artifice.block.frame.BlockFrameRefractory;
+import shukaro.artifice.block.frame.ItemBlockFrame;
 import shukaro.artifice.net.ClientProxy;
 import shukaro.artifice.net.CommonProxy;
 import shukaro.artifice.world.ArtificeWorldGen;
@@ -61,6 +62,7 @@ public class ArtificeCore
 	public static BlockHalfSlab blockBasaltDoubleSlab;
 	public static BlockHalfSlab blockMarbleSlab;
 	public static BlockHalfSlab blockMarbleDoubleSlab;
+	public static BlockFrame blockRefractory;
 	
 	public static Property idStart;
 	
@@ -76,6 +78,7 @@ public class ArtificeCore
 	public static Property blockBasaltDoubleSlabID;
 	public static Property blockMarbleSlabID;
 	public static Property blockMarbleDoubleSlabID;
+	public static Property blockRefractoryID;
 	
 	public static Property floraWorldGen;
 	public static Property basaltWorldGen;
@@ -130,6 +133,7 @@ public class ArtificeCore
 			blockBasaltDoubleSlabID = c.getBlock("blockBasaltDoubleSlab", s++);
 			blockMarbleSlabID = c.getBlock("blockMarbleSlab", s++);
 			blockMarbleDoubleSlabID = c.getBlock("blockMarbleDoubleSlab", s++);
+			blockRefractoryID = c.getBlock("blockRefractory", s++);
 			
 			floraWorldGen = c.get(Configuration.CATEGORY_GENERAL, "WorldGen.Flora", true);
 			floraWorldGen.comment = "Whether or not to generate flora during map generation";
@@ -182,11 +186,12 @@ public class ArtificeCore
 		blockMarbleSlab = (BlockHalfSlab) new BlockMarbleSlab(blockMarbleSlabID.getInt(), false);
 		blockMarbleDoubleSlab = (BlockHalfSlab) new BlockMarbleSlab(blockMarbleDoubleSlabID.getInt(), true);
 		blockFrame = new BlockFrame(blockFrameID.getInt());
+		blockRefractory = new BlockFrameRefractory(blockRefractoryID.getInt());
 		
-		Item.itemsList[blockBasaltSlabID.getInt()] = new ItemBlockSlab(blockBasaltSlabID.getInt() - 256, blockBasaltSlab, blockBasaltDoubleSlab, false);
-		Item.itemsList[blockBasaltDoubleSlabID.getInt()] = new ItemBlockSlab(blockBasaltDoubleSlabID.getInt() - 256, blockBasaltSlab, blockBasaltDoubleSlab, true);
-		Item.itemsList[blockMarbleSlabID.getInt()] = new ItemBlockSlab(blockMarbleSlabID.getInt() - 256, blockMarbleSlab, blockMarbleDoubleSlab, false);
-		Item.itemsList[blockMarbleDoubleSlabID.getInt()] = new ItemBlockSlab(blockMarbleDoubleSlabID.getInt() - 256, blockMarbleSlab, blockMarbleDoubleSlab, true);
+		Item.itemsList[blockBasaltSlabID.getInt()] = new ItemSlab(blockBasaltSlabID.getInt() - 256, blockBasaltSlab, blockBasaltDoubleSlab, false);
+		Item.itemsList[blockBasaltDoubleSlabID.getInt()] = new ItemSlab(blockBasaltDoubleSlabID.getInt() - 256, blockBasaltSlab, blockBasaltDoubleSlab, true);
+		Item.itemsList[blockMarbleSlabID.getInt()] = new ItemSlab(blockMarbleSlabID.getInt() - 256, blockMarbleSlab, blockMarbleDoubleSlab, false);
+		Item.itemsList[blockMarbleDoubleSlabID.getInt()] = new ItemSlab(blockMarbleDoubleSlabID.getInt() - 256, blockMarbleSlab, blockMarbleDoubleSlab, true);
 		
 		GameRegistry.registerBlock(blockFrame, ItemBlockFrame.class, blockFrame.getUnlocalizedName());
 		GameRegistry.registerBlock(blockFlora, ItemBlockFlora.class, blockFlora.getUnlocalizedName());
@@ -196,10 +201,12 @@ public class ArtificeCore
 		GameRegistry.registerBlock(blockMarbleBrickStairs, blockMarbleBrickStairs.getUnlocalizedName());
 		GameRegistry.registerBlock(blockBasaltCobbleStairs, blockBasaltCobbleStairs.getUnlocalizedName());
 		GameRegistry.registerBlock(blockMarbleCobbleStairs, blockMarbleCobbleStairs.getUnlocalizedName());
+		GameRegistry.registerBlock(blockRefractory, ItemBlockFrame.class, blockRefractory.getUnlocalizedName());
 		
 		for (int i=0; i<tiers.length; i++)
 		{
 			LanguageRegistry.addName(new ItemStack(blockFrame, 1, i), tiers[i] + " Frame");
+			LanguageRegistry.addName(new ItemStack(blockRefractory, 1, i), tiers[i] + " Refractory Lining");
 		}
 		
 		for (int i=0; i<flora.length; i++)

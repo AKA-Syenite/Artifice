@@ -40,18 +40,37 @@ public class RenderBlocksFrame
     
     public boolean func_102027_b(RenderBlocks renderer, Block par1Block, int par2, int par3, int par4, float par5, float par6, float par7)
     {
+    	boolean connectBottom = false;
+		boolean connectTop = false;
+		boolean connectEast = false;
+		boolean connectWest = false;
+		boolean connectNorth = false;
+		boolean connectSouth = false;
+    	
     	BlockFrame frame = null;
 		if (par1Block instanceof BlockFrame)
 			frame = (BlockFrame) par1Block;
 		
-		ConnectedTextureBase text = new TransparentConnectedTexture(frame.textureRenderer.blockID);
+		if (frame.textureRenderer != null)
+		{
+			ConnectedTextureBase text = new TransparentConnectedTexture(frame.textureRenderer.blockID);
+			connectBottom = text.canConnectOnSide(renderer.blockAccess, new BlockCoord(par2, par3, par4), 0, 0);
+			connectTop = text.canConnectOnSide(renderer.blockAccess, new BlockCoord(par2, par3, par4), 1, 0);
+			connectEast = text.canConnectOnSide(renderer.blockAccess, new BlockCoord(par2, par3, par4), 2, 0);
+			connectWest = text.canConnectOnSide(renderer.blockAccess, new BlockCoord(par2, par3, par4), 3, 0);
+			connectNorth = text.canConnectOnSide(renderer.blockAccess, new BlockCoord(par2, par3, par4), 4, 0);
+			connectSouth = text.canConnectOnSide(renderer.blockAccess, new BlockCoord(par2, par3, par4), 5, 0);
+		}
 		
-		boolean connectBottom = text.canConnectOnSide(renderer.blockAccess, new BlockCoord(par2, par3, par4), 0, 0);
-		boolean connectTop = text.canConnectOnSide(renderer.blockAccess, new BlockCoord(par2, par3, par4), 1, 0);
-		boolean connectEast = text.canConnectOnSide(renderer.blockAccess, new BlockCoord(par2, par3, par4), 2, 0);
-		boolean connectWest = text.canConnectOnSide(renderer.blockAccess, new BlockCoord(par2, par3, par4), 3, 0);
-		boolean connectNorth = text.canConnectOnSide(renderer.blockAccess, new BlockCoord(par2, par3, par4), 4, 0);
-		boolean connectSouth = text.canConnectOnSide(renderer.blockAccess, new BlockCoord(par2, par3, par4), 5, 0);
+		if (frame.innerBlock == null)
+		{
+			connectBottom = false;
+			connectTop = false;
+			connectEast = false;
+			connectWest = false;
+			connectNorth = false;
+			connectSouth = false;
+		}
     	
         renderer.enableAO = true;
         boolean flag = false;
@@ -883,18 +902,37 @@ public class RenderBlocksFrame
 
     public boolean renderStandardBlockWithAmbientOcclusion(RenderBlocks renderer, Block par1Block, int par2, int par3, int par4, float par5, float par6, float par7)
     {
+    	boolean connectBottom = false;
+		boolean connectTop = false;
+		boolean connectEast = false;
+		boolean connectWest = false;
+		boolean connectNorth = false;
+		boolean connectSouth = false;
+    	
     	BlockFrame frame = null;
 		if (par1Block instanceof BlockFrame)
 			frame = (BlockFrame) par1Block;
 		
-		ConnectedTextureBase text = new TransparentConnectedTexture(frame.textureRenderer.blockID);
+		if (frame.textureRenderer != null)
+		{
+			ConnectedTextureBase text = new TransparentConnectedTexture(frame.textureRenderer.blockID);
+			connectBottom = text.canConnectOnSide(renderer.blockAccess, new BlockCoord(par2, par3, par4), 0, 0);
+			connectTop = text.canConnectOnSide(renderer.blockAccess, new BlockCoord(par2, par3, par4), 1, 0);
+			connectEast = text.canConnectOnSide(renderer.blockAccess, new BlockCoord(par2, par3, par4), 2, 0);
+			connectWest = text.canConnectOnSide(renderer.blockAccess, new BlockCoord(par2, par3, par4), 3, 0);
+			connectNorth = text.canConnectOnSide(renderer.blockAccess, new BlockCoord(par2, par3, par4), 4, 0);
+			connectSouth = text.canConnectOnSide(renderer.blockAccess, new BlockCoord(par2, par3, par4), 5, 0);
+		}
 		
-		boolean connectBottom = text.canConnectOnSide(renderer.blockAccess, new BlockCoord(par2, par3, par4), 0, 0);
-		boolean connectTop = text.canConnectOnSide(renderer.blockAccess, new BlockCoord(par2, par3, par4), 1, 0);
-		boolean connectEast = text.canConnectOnSide(renderer.blockAccess, new BlockCoord(par2, par3, par4), 2, 0);
-		boolean connectWest = text.canConnectOnSide(renderer.blockAccess, new BlockCoord(par2, par3, par4), 3, 0);
-		boolean connectNorth = text.canConnectOnSide(renderer.blockAccess, new BlockCoord(par2, par3, par4), 4, 0);
-		boolean connectSouth = text.canConnectOnSide(renderer.blockAccess, new BlockCoord(par2, par3, par4), 5, 0);
+		if (frame.innerBlock == null)
+		{
+			connectBottom = false;
+			connectTop = false;
+			connectEast = false;
+			connectWest = false;
+			connectNorth = false;
+			connectSouth = false;
+		}
     	
         renderer.enableAO = true;
         boolean flag = false;
@@ -1686,18 +1724,37 @@ public class RenderBlocksFrame
 
     public boolean renderStandardBlockWithColorMultiplier(RenderBlocks renderer, Block par1Block, int par2, int par3, int par4, float par5, float par6, float par7)
     {
+    	boolean connectBottom = false;
+		boolean connectTop = false;
+		boolean connectEast = false;
+		boolean connectWest = false;
+		boolean connectNorth = false;
+		boolean connectSouth = false;
+    	
     	BlockFrame frame = null;
 		if (par1Block instanceof BlockFrame)
 			frame = (BlockFrame) par1Block;
 		
-		ConnectedTextureBase text = new TransparentConnectedTexture(frame.textureRenderer.blockID);
+		if (frame.textureRenderer != null)
+		{
+			ConnectedTextureBase text = new TransparentConnectedTexture(frame.textureRenderer.blockID);
+			connectBottom = text.canConnectOnSide(renderer.blockAccess, new BlockCoord(par2, par3, par4), 0, 0);
+			connectTop = text.canConnectOnSide(renderer.blockAccess, new BlockCoord(par2, par3, par4), 1, 0);
+			connectEast = text.canConnectOnSide(renderer.blockAccess, new BlockCoord(par2, par3, par4), 2, 0);
+			connectWest = text.canConnectOnSide(renderer.blockAccess, new BlockCoord(par2, par3, par4), 3, 0);
+			connectNorth = text.canConnectOnSide(renderer.blockAccess, new BlockCoord(par2, par3, par4), 4, 0);
+			connectSouth = text.canConnectOnSide(renderer.blockAccess, new BlockCoord(par2, par3, par4), 5, 0);
+		}
 		
-		boolean connectBottom = text.canConnectOnSide(renderer.blockAccess, new BlockCoord(par2, par3, par4), 0, 0);
-		boolean connectTop = text.canConnectOnSide(renderer.blockAccess, new BlockCoord(par2, par3, par4), 1, 0);
-		boolean connectEast = text.canConnectOnSide(renderer.blockAccess, new BlockCoord(par2, par3, par4), 2, 0);
-		boolean connectWest = text.canConnectOnSide(renderer.blockAccess, new BlockCoord(par2, par3, par4), 3, 0);
-		boolean connectNorth = text.canConnectOnSide(renderer.blockAccess, new BlockCoord(par2, par3, par4), 4, 0);
-		boolean connectSouth = text.canConnectOnSide(renderer.blockAccess, new BlockCoord(par2, par3, par4), 5, 0);
+		if (frame.innerBlock == null)
+		{
+			connectBottom = false;
+			connectTop = false;
+			connectEast = false;
+			connectWest = false;
+			connectNorth = false;
+			connectSouth = false;
+		}
     	
         renderer.enableAO = false;
         Tessellator tessellator = Tessellator.instance;

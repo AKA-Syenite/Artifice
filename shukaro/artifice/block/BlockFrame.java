@@ -7,6 +7,7 @@ import shukaro.artifice.ArtificeCore;
 import shukaro.artifice.net.ClientProxy;
 import shukaro.artifice.render.FrameRenderer;
 import shukaro.artifice.render.connectedtexture.SolidConnectedTexture;
+import shukaro.artifice.render.connectedtexture.TransparentConnectedTexture;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
@@ -24,7 +25,7 @@ public class BlockFrame extends BlockArtifice
 		super(id, Material.iron);
 		setCreativeTab(CreativeTabs.tabBlock);
 		this.textureName = "frame";
-		this.textureRenderer = new SolidConnectedTexture(this.blockID);
+		this.textureRenderer = new TransparentConnectedTexture(this.blockID);
 		setUnlocalizedName("artifice.frame");
 	}
 	

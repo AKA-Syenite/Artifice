@@ -51,6 +51,8 @@ public class RenderBlocksFrame
 		if (par1Block instanceof BlockFrame)
 			frame = (BlockFrame) par1Block;
 		
+		Block innerBlock = frame.getInnerBlock(renderer.blockAccess.getBlockMetadata(par2, par3, par4));
+		
 		if (frame.textureRenderer != null)
 		{
 			ConnectedTextureBase text = new TransparentConnectedTexture(frame.textureRenderer.blockID);
@@ -62,7 +64,7 @@ public class RenderBlocksFrame
 			connectSouth = text.canConnectOnSide(renderer.blockAccess, new BlockCoord(par2, par3, par4), 5, 0);
 		}
 		
-		if (frame.innerBlock == null)
+		if (innerBlock == null)
 		{
 			connectBottom = false;
 			connectTop = false;
@@ -913,6 +915,8 @@ public class RenderBlocksFrame
 		if (par1Block instanceof BlockFrame)
 			frame = (BlockFrame) par1Block;
 		
+		Block innerBlock = frame.getInnerBlock(renderer.blockAccess.getBlockMetadata(par2, par3, par4));
+		
 		if (frame.textureRenderer != null)
 		{
 			ConnectedTextureBase text = new TransparentConnectedTexture(frame.textureRenderer.blockID);
@@ -924,7 +928,7 @@ public class RenderBlocksFrame
 			connectSouth = text.canConnectOnSide(renderer.blockAccess, new BlockCoord(par2, par3, par4), 5, 0);
 		}
 		
-		if (frame.innerBlock == null)
+		if (innerBlock == null)
 		{
 			connectBottom = false;
 			connectTop = false;
@@ -1735,6 +1739,8 @@ public class RenderBlocksFrame
 		if (par1Block instanceof BlockFrame)
 			frame = (BlockFrame) par1Block;
 		
+		Block innerBlock = frame.getInnerBlock(renderer.blockAccess.getBlockMetadata(par2, par3, par4));
+		
 		if (frame.textureRenderer != null)
 		{
 			ConnectedTextureBase text = new TransparentConnectedTexture(frame.textureRenderer.blockID);
@@ -1746,7 +1752,7 @@ public class RenderBlocksFrame
 			connectSouth = text.canConnectOnSide(renderer.blockAccess, new BlockCoord(par2, par3, par4), 5, 0);
 		}
 		
-		if (frame.innerBlock == null)
+		if (innerBlock == null)
 		{
 			connectBottom = false;
 			connectTop = false;

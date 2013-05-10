@@ -118,14 +118,14 @@ public class FrameRenderer implements ISimpleBlockRenderingHandler
 		if (block instanceof BlockFrame)
 			frame = (BlockFrame)block;
 				
-		renderer.setRenderBounds(0.0005F, 0.0005F, 0.0005F, 0.9995F, 0.9995F, 0.9995F);
+		renderer.setRenderBounds(0.005F, 0.005F, 0.005F, 0.995F, 0.995F, 0.995F);
 		
 		if (frame != null && frame.innerBlock != null)
 		{
 			metaRenderer.renderStandardBlock(renderer, frame.innerBlock, frame.innerMeta, x, y, z);
 		}
 		
-		renderer.setRenderBounds(0.00005F, 0.00005F, 0.00005F, 0.99995F, 0.99995F, 0.99995F);
+		renderer.setRenderBounds(0.0001F, 0.0001F, 0.0001F, 0.9999F, 0.9999F, 0.9999F);
 		
 		if (frameRenderer.renderStandardBlock(renderer, block, x, y, z))
 		{

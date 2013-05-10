@@ -3,6 +3,7 @@ package shukaro.artifice.block.decorative;
 import java.util.List;
 
 import shukaro.artifice.ArtificeCore;
+import shukaro.artifice.gui.ArtificeCreativeTab;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.BlockFlower;
@@ -22,7 +23,7 @@ public class BlockFlora extends BlockFlower
 	{
 		super(id, Material.plants);
         this.setTickRandomly(true);
-		setCreativeTab(CreativeTabs.tabDecorations);
+        setCreativeTab(ArtificeCreativeTab.tab);
 		setHardness(0.0F);
 		setStepSound(soundGrassFootstep);
 		setUnlocalizedName("artifice.flora");

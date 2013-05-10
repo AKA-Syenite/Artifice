@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Random;
 
 import shukaro.artifice.ArtificeCore;
+import shukaro.artifice.gui.ArtificeCreativeTab;
 import shukaro.artifice.render.connectedtexture.ConnectedTextureBase;
 import shukaro.artifice.render.connectedtexture.SolidConnectedTexture;
 import shukaro.artifice.render.connectedtexture.TransparentConnectedTexture;
@@ -36,7 +37,7 @@ public class BlockMarbleSlab extends BlockHalfSlab
 	public BlockMarbleSlab(int id, boolean isDouble)
 	{
 		super(id, isDouble, Material.rock);
-		setCreativeTab(CreativeTabs.tabBlock);
+		setCreativeTab(ArtificeCreativeTab.tab);
 		setLightOpacity(0);
 		setHardness(1.5F);
 		this.isDouble = isDouble;

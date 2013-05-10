@@ -23,7 +23,6 @@ public class BlockFrame extends BlockArtifice
 	public BlockFrame(int id)
 	{
 		super(id, Material.iron);
-		setCreativeTab(CreativeTabs.tabBlock);
 		this.textureName = "frame";
 		this.textureRenderer = new TransparentConnectedTexture(this.blockID);
 		setUnlocalizedName("artifice.frame");

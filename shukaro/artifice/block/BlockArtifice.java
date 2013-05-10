@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import shukaro.artifice.ArtificeCore;
+import shukaro.artifice.gui.ArtificeCreativeTab;
 import shukaro.artifice.render.connectedtexture.ConnectedTextureBase;
 
 import cpw.mods.fml.relauncher.Side;
@@ -29,6 +30,7 @@ public class BlockArtifice extends Block
 	public BlockArtifice(int id, Material mat)
 	{
 		super(id, mat);
+		setCreativeTab(ArtificeCreativeTab.tab);
 	}
 	
 	@SideOnly(Side.CLIENT)

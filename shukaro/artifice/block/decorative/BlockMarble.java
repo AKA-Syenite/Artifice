@@ -4,6 +4,7 @@ import java.util.List;
 
 import shukaro.artifice.ArtificeCore;
 import shukaro.artifice.block.BlockArtifice;
+import shukaro.artifice.gui.ArtificeCreativeTab;
 import shukaro.artifice.render.connectedtexture.SolidConnectedTexture;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -25,7 +26,7 @@ public class BlockMarble extends BlockArtifice
 	{
 		super(id, Material.rock);
 		this.textureRenderer = new SolidConnectedTexture(id);
-		setCreativeTab(CreativeTabs.tabBlock);
+		setCreativeTab(ArtificeCreativeTab.tab);
 		setHardness(1.5F);
 		setUnlocalizedName("artifice.marble");
 	}

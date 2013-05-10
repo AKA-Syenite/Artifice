@@ -1,6 +1,6 @@
 package shukaro.artifice.util.render;
 
-import shukaro.artifice.block.BlockFrame;
+import shukaro.artifice.block.frame.BlockFrame;
 import shukaro.artifice.render.connectedtexture.ConnectedTextureBase;
 import shukaro.artifice.render.connectedtexture.TransparentConnectedTexture;
 import shukaro.artifice.util.BlockCoord;

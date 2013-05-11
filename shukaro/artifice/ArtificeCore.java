@@ -1,5 +1,6 @@
 package shukaro.artifice;
 
+import java.io.File;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -60,53 +61,6 @@ public class ArtificeCore
 	public static Logger logger;
 	public static EventHandler eventHandler;
 	
-	public static BlockFrame blockFrame;
-	public static BlockFlora blockFlora;
-	public static BlockBasalt blockBasalt;
-	public static BlockMarble blockMarble;
-	public static BlockStairsArtifice blockBasaltBrickStairs;
-	public static BlockStairsArtifice blockMarbleBrickStairs;
-	public static BlockStairsArtifice blockBasaltCobbleStairs;
-	public static BlockStairsArtifice blockMarbleCobbleStairs;
-	public static BlockHalfSlab blockBasaltSlab;
-	public static BlockHalfSlab blockBasaltDoubleSlab;
-	public static BlockHalfSlab blockMarbleSlab;
-	public static BlockHalfSlab blockMarbleDoubleSlab;
-	public static BlockFrame blockRefractory;
-	
-	public static Property idStart;
-	
-	public static Property blockFrameID;
-	public static Property blockFloraID;
-	public static Property blockBasaltID;
-	public static Property blockMarbleID;
-	public static Property blockBasaltBrickStairsID;
-	public static Property blockMarbleBrickStairsID;
-	public static Property blockBasaltCobbleStairsID;
-	public static Property blockMarbleCobbleStairsID;
-	public static Property blockBasaltSlabID;
-	public static Property blockBasaltDoubleSlabID;
-	public static Property blockMarbleSlabID;
-	public static Property blockMarbleDoubleSlabID;
-	public static Property blockRefractoryID;
-	
-	public static Property floraWorldGen;
-	public static Property basaltWorldGen;
-	public static Property basaltSize;
-	public static Property basaltHeight;
-	public static Property marbleWorldGen;
-	public static Property marbleSize;
-	public static Property marbleHeight;
-	public static Property floraRecipes;
-	public static Property basaltRecipes;
-	public static Property marbleRecipes;
-	public static Property floraBoneMeal;
-	public static Property regenRock;
-	public static Property regenFlora;
-	public static Property regenKey;
-	
-	public static Property dimensionBlacklist;
-	
 	public static int frameRenderID;
 	
 	public static String[] tiers = {"Basic","Reinforced","Industrial","Advanced"};
@@ -125,153 +79,34 @@ public class ArtificeCore
 	@PreInit
 	public void preInit(FMLPreInitializationEvent evt)
 	{
-		Configuration c = new Configuration(evt.getSuggestedConfigurationFile());
-		try
-		{
-			c.load();
-			idStart = c.get(Configuration.CATEGORY_BLOCK, "Block.IDStart", 3000);
-			idStart.comment = "The block ID to use as the starting point for assignment";
-			
-			int s = idStart.getInt();
-			
-			blockFrameID = c.getBlock("blockFrame", s++);
-			blockFloraID = c.getBlock("blockFlora", s++);
-			blockBasaltID = c.getBlock("blockBasalt", s++);
-			blockMarbleID = c.getBlock("blockMarble", s++);
-			blockBasaltBrickStairsID = c.getBlock("blockBasaltBrickStairs", s++);
-			blockMarbleBrickStairsID = c.getBlock("blockMarbleBrickStairs", s++);
-			blockBasaltCobbleStairsID = c.getBlock("blockBasaltCobbleStairs", s++);
-			blockMarbleCobbleStairsID = c.getBlock("blockMarbleCobbleStairs", s++);
-			blockBasaltSlabID = c.getBlock("blockBasaltSlab", s++);
-			blockBasaltDoubleSlabID = c.getBlock("blockBasaltDoubleSlab", s++);
-			blockMarbleSlabID = c.getBlock("blockMarbleSlab", s++);
-			blockMarbleDoubleSlabID = c.getBlock("blockMarbleDoubleSlab", s++);
-			blockRefractoryID = c.getBlock("blockRefractory", s++);
-			
-			floraWorldGen = c.get("World Generation", "Generate Flora", true);
-			floraWorldGen.comment = "Whether or not to generate flora during map generation";
-			basaltWorldGen = c.get("World Generation", "Generate Basalt", true);
-			basaltWorldGen.comment = "Whether or not to generate basalt during map generation";
-			basaltSize = c.get("World Generation", "Basalt Size", 20000);
-			basaltSize.comment = "Absolute maximum size of basalt deposits in the world";
-			basaltHeight = c.get("World Generation", "Basalt Height", 64);
-			basaltHeight.comment = "Max height to begin basalt generation";
-			marbleWorldGen = c.get("World Generation", "Generate Marble", true);
-			marbleWorldGen.comment = "Whether or not to generate marble during map generation";
-			marbleSize = c.get("World Generation", "Marble Size", 20000);
-			marbleSize.comment = "Absolute maximum size of marble deposits in the world";
-			marbleHeight = c.get("World Generation", "Marble Height", 64);
-			marbleHeight.comment = "Max height to begin marble generation";
-			dimensionBlacklist = c.get("World Generation", "Dimension Blacklist", "");
-			dimensionBlacklist.comment = "A comma-separated list of dimension IDs to disable worldgen in.";
-			regenRock = c.get("World Generation", "Regenerate Rock", false);
-			regenRock.comment = "Set to true to regenerate basalt and marble";
-			regenFlora = c.get("World Generation", "Regenerate Flora", false);
-			regenFlora.comment = "Set to true to regenerate flowers";
-			regenKey = c.get("World Generation", "Regen Key", "DEFAULT");
-			regenKey.comment = "This key is used to keep track of which chunk have been generated/regenerated. Changing it will cause the regeneration code to run again, so only change it if you want it to happen. Useful to regen only one world feature at a time.";
-			
-			
-			floraRecipes = c.get(Configuration.CATEGORY_GENERAL, "Recipes.Flora", true);
-			floraRecipes.comment = "Set to false to disable flower-related recipes";
-			basaltRecipes = c.get(Configuration.CATEGORY_GENERAL, "Recipes.Basalt", true);
-			basaltRecipes.comment = "Set to false to disable basalt recipes";
-			marbleRecipes = c.get(Configuration.CATEGORY_GENERAL, "Recipes.Marble", true);
-			marbleRecipes.comment = "Set to false to disable marble recipes";
-			floraBoneMeal = c.get(Configuration.CATEGORY_GENERAL, "Bonemeal.Flora", true);
-			floraBoneMeal.comment = "Set to false to disable random flower growth from bonemeal";
-			
-			logger = evt.getModLog();
-			this.eventHandler = new EventHandler();
-			MinecraftForge.EVENT_BUS.register(this.eventHandler);
-			GameRegistry.registerWorldGenerator(this.worldGen = new ArtificeWorldGen());
-			ClientProxy.init();
-			CommonProxy.init();
-		}
-		catch (Exception e)
-		{
-			logger.log(Level.SEVERE, "Artifice couldn't load the config file");
-			e.printStackTrace();
-		}
-		finally
-		{
-			c.save();
-		}
+		ArtificeConfig.setConfigFolderBase(evt.getModConfigurationDirectory());
+		
+		ArtificeConfig.initCommon(evt);
+		ArtificeConfig.initClient(evt);
+		
+		ArtificeConfig.extractLang(new String[] {"en_US"});
+		ArtificeConfig.loadLang();
+		
+		logger = evt.getModLog();
+		this.eventHandler = new EventHandler();
+		MinecraftForge.EVENT_BUS.register(this.eventHandler);
+		ClientProxy.init();
+		CommonProxy.init();
 	}
 	
 	@Init
 	public void init(FMLInitializationEvent evt)
 	{
-		blockFlora = new BlockFlora(blockFloraID.getInt());
-		blockBasalt = new BlockBasalt(blockBasaltID.getInt());
-		blockMarble = new BlockMarble(blockMarbleID.getInt());
-		blockBasaltBrickStairs = new BlockStairsArtifice(blockBasaltBrickStairsID.getInt(), blockBasalt, 2);
-		blockMarbleBrickStairs = new BlockStairsArtifice(blockMarbleBrickStairsID.getInt(), blockMarble, 2);
-		blockBasaltCobbleStairs = new BlockStairsArtifice(blockBasaltCobbleStairsID.getInt(), blockBasalt, 1);
-		blockMarbleCobbleStairs = new BlockStairsArtifice(blockMarbleCobbleStairsID.getInt(), blockMarble, 1);
-		blockBasaltSlab = (BlockHalfSlab) new BlockBasaltSlab(blockBasaltSlabID.getInt(), false);
-		blockBasaltDoubleSlab = (BlockHalfSlab) new BlockBasaltSlab(blockBasaltDoubleSlabID.getInt(), true);
-		blockMarbleSlab = (BlockHalfSlab) new BlockMarbleSlab(blockMarbleSlabID.getInt(), false);
-		blockMarbleDoubleSlab = (BlockHalfSlab) new BlockMarbleSlab(blockMarbleDoubleSlabID.getInt(), true);
-		blockFrame = new BlockFrameBase(blockFrameID.getInt());
-		blockRefractory = new BlockFrameRefractory(blockRefractoryID.getInt());
+		ArtificeBlocks.initBlocks();
 		
-		Item.itemsList[blockBasaltSlabID.getInt()] = new ItemSlab(blockBasaltSlabID.getInt() - 256, blockBasaltSlab, blockBasaltDoubleSlab, false);
-		Item.itemsList[blockBasaltDoubleSlabID.getInt()] = new ItemSlab(blockBasaltDoubleSlabID.getInt() - 256, blockBasaltSlab, blockBasaltDoubleSlab, true);
-		Item.itemsList[blockMarbleSlabID.getInt()] = new ItemSlab(blockMarbleSlabID.getInt() - 256, blockMarbleSlab, blockMarbleDoubleSlab, false);
-		Item.itemsList[blockMarbleDoubleSlabID.getInt()] = new ItemSlab(blockMarbleDoubleSlabID.getInt() - 256, blockMarbleSlab, blockMarbleDoubleSlab, true);
+		GameRegistry.registerWorldGenerator(this.worldGen = new ArtificeWorldGen());
 		
-		GameRegistry.registerBlock(blockFrame, ItemBlockFrame.class, blockFrame.getUnlocalizedName());
-		GameRegistry.registerBlock(blockRefractory, ItemBlockFrame.class, blockRefractory.getUnlocalizedName());
-		GameRegistry.registerBlock(blockFlora, ItemBlockFlora.class, blockFlora.getUnlocalizedName());
-		GameRegistry.registerBlock(blockBasalt, ItemBlockBasalt.class, blockBasalt.getUnlocalizedName());
-		GameRegistry.registerBlock(blockMarble, ItemBlockMarble.class, blockMarble.getUnlocalizedName());
-		GameRegistry.registerBlock(blockBasaltBrickStairs, blockBasaltBrickStairs.getUnlocalizedName());
-		GameRegistry.registerBlock(blockMarbleBrickStairs, blockMarbleBrickStairs.getUnlocalizedName());
-		GameRegistry.registerBlock(blockBasaltCobbleStairs, blockBasaltCobbleStairs.getUnlocalizedName());
-		GameRegistry.registerBlock(blockMarbleCobbleStairs, blockMarbleCobbleStairs.getUnlocalizedName());
-		
-		for (int i=0; i<tiers.length; i++)
+		if (ArtificeConfig.floraBoneMeal.getBoolean(true))
 		{
-			LanguageRegistry.addName(new ItemStack(blockFrame, 1, i), tiers[i] + " Frame");
-			LanguageRegistry.addName(new ItemStack(blockRefractory, 1, i), tiers[i] + " Refractory Lining");
-		}
-		
-		for (int i=0; i<flora.length; i++)
-		{
-			LanguageRegistry.addName(new ItemStack(blockFlora, 1, i), flora[i]);
-		}
-		
-		for (int i=0; i<rocks.length; i++)
-		{
-			LanguageRegistry.addName(new ItemStack(blockBasalt, 1, i), "Basalt " + rocks[i]);
-			LanguageRegistry.addName(new ItemStack(blockMarble, 1, i), "Marble " + rocks[i]);
-		}
-		
-		LanguageRegistry.addName(new ItemStack(blockBasalt, 1, 5), rocks[5] + " Basalt");
-		LanguageRegistry.addName(new ItemStack(blockMarble, 1, 5), rocks[5] + " Marble");
-		
-		LanguageRegistry.addName(new ItemStack(blockBasaltBrickStairs, 1, 0), "Basalt Brick Stairs");
-		LanguageRegistry.addName(new ItemStack(blockMarbleBrickStairs, 1, 0), "Marble Brick Stairs");
-		LanguageRegistry.addName(new ItemStack(blockBasaltCobbleStairs, 1, 0), "Basalt Cobblestone Stairs");
-		LanguageRegistry.addName(new ItemStack(blockMarbleCobbleStairs, 1, 0), "Marble Cobblestone Stairs");
-		
-		LanguageRegistry.addName(new ItemStack(blockBasaltSlab, 1, 0), "Basalt Brick Slab");
-		LanguageRegistry.addName(new ItemStack(blockBasaltSlab, 1, 1), "Basalt Cobblestone Slab");
-		LanguageRegistry.addName(new ItemStack(blockBasaltSlab, 1, 2), "Basalt Paver Slab");
-		LanguageRegistry.addName(new ItemStack(blockBasaltSlab, 1, 3), "Basalt Antipaver Slab");
-		
-		LanguageRegistry.addName(new ItemStack(blockMarbleSlab, 1, 0), "Marble Brick Slab");
-		LanguageRegistry.addName(new ItemStack(blockMarbleSlab, 1, 1), "Marble Cobblestone Slab");
-		LanguageRegistry.addName(new ItemStack(blockMarbleSlab, 1, 2), "Marble Paver Slab");
-		LanguageRegistry.addName(new ItemStack(blockMarbleSlab, 1, 3), "Marble Antipaver Slab");
-		
-		if (ArtificeCore.floraBoneMeal.getBoolean(true))
-		{
-			MinecraftForge.addGrassPlant(ArtificeCore.blockFlora, 0, 10);
-			MinecraftForge.addGrassPlant(ArtificeCore.blockFlora, 1, 10);
-			MinecraftForge.addGrassPlant(ArtificeCore.blockFlora, 2, 10);
-			MinecraftForge.addGrassPlant(ArtificeCore.blockFlora, 3, 10);
+			MinecraftForge.addGrassPlant(ArtificeBlocks.blockFlora, 0, 10);
+			MinecraftForge.addGrassPlant(ArtificeBlocks.blockFlora, 1, 10);
+			MinecraftForge.addGrassPlant(ArtificeBlocks.blockFlora, 2, 10);
+			MinecraftForge.addGrassPlant(ArtificeBlocks.blockFlora, 3, 10);
 		}
 		
 		ArtificeRecipes.registerRecipes();

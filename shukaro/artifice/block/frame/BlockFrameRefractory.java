@@ -11,7 +11,7 @@ public class BlockFrameRefractory extends BlockFrame
 	public BlockFrameRefractory(int id)
 	{
 		super(id);
-		setUnlocalizedName(super.getUnlocalizedName() + ".refractory");
+		setUnlocalizedName("artifice.refractory");
 		this.textureRenderer = new SolidConnectedTexture(this.blockID);
 	}
 

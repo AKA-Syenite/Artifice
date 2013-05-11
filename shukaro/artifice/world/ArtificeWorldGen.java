@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import shukaro.artifice.ArtificeBlocks;
+import shukaro.artifice.ArtificeConfig;
 import shukaro.artifice.ArtificeCore;
 import shukaro.artifice.compat.ArtificeRegistry;
 
@@ -39,7 +41,7 @@ public class ArtificeWorldGen implements IWorldGenerator
 		int z = chunkZ * 16 + random.nextInt(16);
 		int y = random.nextInt(world.getActualHeight());
 		
-		if ((ArtificeCore.floraWorldGen.getBoolean(true) && newGen) || (ArtificeCore.regenFlora.getBoolean(true) && ArtificeCore.regenFlora.getBoolean(false)));
+		if ((ArtificeConfig.floraWorldGen.getBoolean(true) && newGen) || (ArtificeConfig.regenFlora.getBoolean(true) && ArtificeConfig.regenFlora.getBoolean(false)));
 		{
 			BiomeGenBase b = world.getBiomeGenForCoords(x, z);
 			y = world.getHeightValue(x, z);
@@ -53,16 +55,16 @@ public class ArtificeWorldGen implements IWorldGenerator
 			}
 		}
 		
-		if ((ArtificeCore.basaltWorldGen.getBoolean(true) && newGen) || (ArtificeCore.basaltWorldGen.getBoolean(true) && ArtificeCore.regenRock.getBoolean(false)));
+		if ((ArtificeConfig.basaltWorldGen.getBoolean(true) && newGen) || (ArtificeConfig.basaltWorldGen.getBoolean(true) && ArtificeConfig.regenRock.getBoolean(false)));
 		{
-			int size = random.nextInt(ArtificeCore.basaltSize.getInt()) + random.nextInt(ArtificeCore.basaltSize.getInt() / 5);
-			new WorldGenRock(ArtificeCore.blockBasalt.blockID, 0, size, new int[] {Block.stone.blockID}, ArtificeCore.basaltHeight.getInt()).generate(world, random, x, y, z);
+			int size = random.nextInt(ArtificeConfig.basaltSize.getInt()) + random.nextInt(ArtificeConfig.basaltSize.getInt() / 5);
+			new WorldGenRock(ArtificeBlocks.blockBasalt.blockID, 0, size, new int[] {Block.stone.blockID}, ArtificeConfig.basaltHeight.getInt()).generate(world, random, x, y, z);
 		}
 		
-		if ((ArtificeCore.marbleWorldGen.getBoolean(true) && newGen) || (ArtificeCore.marbleWorldGen.getBoolean(true) && ArtificeCore.regenRock.getBoolean(false)));
+		if ((ArtificeConfig.marbleWorldGen.getBoolean(true) && newGen) || (ArtificeConfig.marbleWorldGen.getBoolean(true) && ArtificeConfig.regenRock.getBoolean(false)));
 		{
-			int size = random.nextInt(ArtificeCore.marbleSize.getInt()) + random.nextInt(ArtificeCore.marbleSize.getInt() / 5);
-			new WorldGenRock(ArtificeCore.blockMarble.blockID, 0, size, new int[] {Block.stone.blockID}, ArtificeCore.marbleHeight.getInt()).generate(world, random, x, y, z);
+			int size = random.nextInt(ArtificeConfig.marbleSize.getInt()) + random.nextInt(ArtificeConfig.marbleSize.getInt() / 5);
+			new WorldGenRock(ArtificeBlocks.blockMarble.blockID, 0, size, new int[] {Block.stone.blockID}, ArtificeConfig.marbleHeight.getInt()).generate(world, random, x, y, z);
 		}
 		
 		if (!newGen)
@@ -71,7 +73,7 @@ public class ArtificeWorldGen implements IWorldGenerator
 	
 	private List<Integer> buildBlacklistedDimensions()
 	{
-		String blacklist = ArtificeCore.dimensionBlacklist.getString();
+		String blacklist = ArtificeConfig.dimensionBlacklist.getString();
 		List<Integer> dims = new ArrayList<Integer>();
 		
 		if (blacklist == null)

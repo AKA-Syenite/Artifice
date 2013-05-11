@@ -16,8 +16,8 @@ public class EventHandler
 	public void chunkSave(ChunkDataEvent.Save e)
 	{
 		NBTTagCompound tag = new NBTTagCompound();
-		e.getData().setTag("Artifice", tag);
 		tag.setBoolean(ArtificeCore.regenKey.getString(), true);
+		e.getData().setTag("Artifice", tag);
 	}
 	
 	@ForgeSubscribe
@@ -26,9 +26,12 @@ public class EventHandler
 		int dim = e.world.provider.dimensionId;
 		Chunk c = e.getChunk();
 		
+		if (e.getData().getTag("Artifice") == null)
+			return;
+		
 		if ((!e.getData().getTag("Artifice").equals(ArtificeCore.regenKey)) && (ArtificeCore.regenFlora.getBoolean(false) || (ArtificeCore.regenRock.getBoolean(false))))
 		{
-			ArtificeCore.logger.log(Level.WARNING, "[Artifice] World gen was never run for chunk at " + e.getChunk().toString() + ". Adding to queue for regeneration.");
+			ArtificeCore.logger.log(Level.WARNING, "World gen was never run for chunk at " + new ChunkCoord(c.xPosition, c.zPosition).toString() + ". Adding to queue for regeneration.");
 			ArrayList chunks = (ArrayList)WorldTicker.chunksToGen.get(Integer.valueOf(dim));
 			if (chunks == null)
 			{

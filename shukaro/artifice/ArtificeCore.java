@@ -24,6 +24,8 @@ import shukaro.artifice.block.frame.BlockFrame;
 import shukaro.artifice.block.frame.BlockFrameBase;
 import shukaro.artifice.block.frame.BlockFrameRefractory;
 import shukaro.artifice.block.frame.ItemBlockFrame;
+import shukaro.artifice.event.EventHandler;
+import shukaro.artifice.event.WorldTicker;
 import shukaro.artifice.net.ClientProxy;
 import shukaro.artifice.net.CommonProxy;
 import shukaro.artifice.world.ArtificeWorldGen;
@@ -41,6 +43,8 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.event.FMLServerStartingEvent;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
+import cpw.mods.fml.common.registry.TickRegistry;
+import cpw.mods.fml.relauncher.Side;
 
 @Mod(modid = ArtificeCore.modID, name = ArtificeCore.modName, version = ArtificeCore.modVersion)
 public class ArtificeCore
@@ -54,6 +58,7 @@ public class ArtificeCore
 	
 	public static ArtificeWorldGen worldGen;
 	public static Logger logger;
+	public static EventHandler eventHandler;
 	
 	public static BlockFrame blockFrame;
 	public static BlockFlora blockFlora;
@@ -125,7 +130,7 @@ public class ArtificeCore
 		{
 			c.load();
 			idStart = c.get(Configuration.CATEGORY_BLOCK, "Block.IDStart", 3000);
-			idStart.comment = "The block ID to use as the starting point for assignment, there are currently 12 IDs needed";
+			idStart.comment = "The block ID to use as the starting point for assignment";
 			
 			int s = idStart.getInt();
 			
@@ -143,27 +148,27 @@ public class ArtificeCore
 			blockMarbleDoubleSlabID = c.getBlock("blockMarbleDoubleSlab", s++);
 			blockRefractoryID = c.getBlock("blockRefractory", s++);
 			
-			floraWorldGen = c.get(Configuration.CATEGORY_GENERAL, "WorldGen.Flora", true);
+			floraWorldGen = c.get("World Generation", "Generate Flora", true);
 			floraWorldGen.comment = "Whether or not to generate flora during map generation";
-			basaltWorldGen = c.get(Configuration.CATEGORY_GENERAL, "WorldGen.Basalt", true);
+			basaltWorldGen = c.get("World Generation", "Generate Basalt", true);
 			basaltWorldGen.comment = "Whether or not to generate basalt during map generation";
-			basaltSize = c.get(Configuration.CATEGORY_GENERAL, "WorldGen.BasaltSize", 20000);
+			basaltSize = c.get("World Generation", "Basalt Size", 20000);
 			basaltSize.comment = "Absolute maximum size of basalt deposits in the world";
-			basaltHeight = c.get(Configuration.CATEGORY_GENERAL, "WorldGen.BasaltHeight", 64);
+			basaltHeight = c.get("World Generation", "Basalt Height", 64);
 			basaltHeight.comment = "Max height to begin basalt generation";
-			marbleWorldGen = c.get(Configuration.CATEGORY_GENERAL, "WorldGen.Marble", true);
+			marbleWorldGen = c.get("World Generation", "Generate Marble", true);
 			marbleWorldGen.comment = "Whether or not to generate marble during map generation";
-			marbleSize = c.get(Configuration.CATEGORY_GENERAL, "WorldGen.MarbleSize", 20000);
+			marbleSize = c.get("World Generation", "Marble Size", 20000);
 			marbleSize.comment = "Absolute maximum size of marble deposits in the world";
-			marbleHeight = c.get(Configuration.CATEGORY_GENERAL, "WorldGen.MarbleHeight", 64);
+			marbleHeight = c.get("World Generation", "Marble Height", 64);
 			marbleHeight.comment = "Max height to begin marble generation";
-			dimensionBlacklist = c.get(Configuration.CATEGORY_GENERAL, "WorldGen.DimensionBlacklist", "");
+			dimensionBlacklist = c.get("World Generation", "Dimension Blacklist", "");
 			dimensionBlacklist.comment = "A comma-separated list of dimension IDs to disable worldgen in.";
-			regenRock = c.get(Configuration.CATEGORY_GENERAL, "WorldGen.ReRock", false);
+			regenRock = c.get("World Generation", "Regenerate Rock", false);
 			regenRock.comment = "Set to true to regenerate basalt and marble";
-			regenFlora = c.get(Configuration.CATEGORY_GENERAL, "WorldGen.ReFlora", false);
+			regenFlora = c.get("World Generation", "Regenerate Flora", false);
 			regenFlora.comment = "Set to true to regenerate flowers";
-			regenKey = c.get(Configuration.CATEGORY_GENERAL, "WorldGen.Key", "DEFAULT");
+			regenKey = c.get("World Generation", "Regen Key", "DEFAULT");
 			regenKey.comment = "This key is used to keep track of which chunk have been generated/regenerated. Changing it will cause the regeneration code to run again, so only change it if you want it to happen. Useful to regen only one world feature at a time.";
 			
 			
@@ -177,6 +182,11 @@ public class ArtificeCore
 			floraBoneMeal.comment = "Set to false to disable random flower growth from bonemeal";
 			
 			logger = evt.getModLog();
+			this.eventHandler = new EventHandler();
+			MinecraftForge.EVENT_BUS.register(this.eventHandler);
+			GameRegistry.registerWorldGenerator(this.worldGen = new ArtificeWorldGen());
+			ClientProxy.init();
+			CommonProxy.init();
 		}
 		catch (Exception e)
 		{
@@ -265,8 +275,6 @@ public class ArtificeCore
 		}
 		
 		ArtificeRecipes.registerRecipes();
-		GameRegistry.registerWorldGenerator(this.worldGen = new ArtificeWorldGen());
-		ClientProxy.init();
 	}
 	
 	@PostInit

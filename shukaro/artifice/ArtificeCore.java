@@ -1,6 +1,7 @@
 package shukaro.artifice;
 
 import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import net.minecraft.block.BlockHalfSlab;
 import net.minecraft.item.Item;
@@ -51,6 +52,9 @@ public class ArtificeCore
 	public static final String modName = "Artifice";
 	public static final String modVersion = "1.5.1R1.0";
 	
+	public static ArtificeWorldGen worldGen;
+	public static Logger logger;
+	
 	public static BlockFrame blockFrame;
 	public static BlockFlora blockFlora;
 	public static BlockBasalt blockBasalt;
@@ -92,6 +96,8 @@ public class ArtificeCore
 	public static Property basaltRecipes;
 	public static Property marbleRecipes;
 	public static Property floraBoneMeal;
+	public static Property regenRock;
+	public static Property regenFlora;
 	
 	public static Property dimensionBlacklist;
 	
@@ -152,6 +158,10 @@ public class ArtificeCore
 			marbleHeight.comment = "Max height to begin marble generation";
 			dimensionBlacklist = c.get(Configuration.CATEGORY_GENERAL, "WorldGen.DimensionBlacklist", "");
 			dimensionBlacklist.comment = "A comma-separated list of dimension IDs to disable worldgen in.";
+			regenRock = c.get(Configuration.CATEGORY_GENERAL, "WorldGen.ReRock", false);
+			regenRock.comment = "Set to true to regenerate basalt and marble";
+			regenFlora = c.get(Configuration.CATEGORY_GENERAL, "WorldGen.ReFlora", false);
+			regenFlora.comment = "Set to true to regenerate flowers";
 			
 			floraRecipes = c.get(Configuration.CATEGORY_GENERAL, "Recipes.Flora", true);
 			floraRecipes.comment = "Set to false to disable flower-related recipes";
@@ -161,10 +171,13 @@ public class ArtificeCore
 			marbleRecipes.comment = "Set to false to disable marble recipes";
 			floraBoneMeal = c.get(Configuration.CATEGORY_GENERAL, "Bonemeal.Flora", true);
 			floraBoneMeal.comment = "Set to false to disable random flower growth from bonemeal";
+			
+			logger = evt.getModLog();
 		}
 		catch (Exception e)
 		{
-			FMLLog.log(Level.SEVERE, e, "Artifice couldn't load the config file");
+			logger.log(Level.SEVERE, "Artifice couldn't load the config file");
+			e.printStackTrace();
 		}
 		finally
 		{
@@ -248,7 +261,7 @@ public class ArtificeCore
 		}
 		
 		ArtificeRecipes.registerRecipes();
-		GameRegistry.registerWorldGenerator(new ArtificeWorldGen());
+		GameRegistry.registerWorldGenerator(this.worldGen = new ArtificeWorldGen());
 		ClientProxy.init();
 	}
 	

@@ -23,7 +23,6 @@ public abstract class BlockFrame extends BlockArtifice
 	{
 		super(id, Material.rock);
 		this.textureName = "frame";
-		setUnlocalizedName("artifice.frame");
 	}
 	
 	public abstract Block getInnerBlock(int meta);

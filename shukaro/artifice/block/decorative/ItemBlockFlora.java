@@ -2,6 +2,7 @@ package shukaro.artifice.block.decorative;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Icon;
 import shukaro.artifice.ArtificeCore;
@@ -24,6 +25,6 @@ public class ItemBlockFlora extends ItemBlockArtifice
 	@Override
 	public String getUnlocalizedName(ItemStack stack)
 	{
-		return "artifice.flora." + ArtificeCore.flora[stack.getItemDamage()].toLowerCase();
+		return Block.blocksList[stack.itemID].getUnlocalizedName() + "." + ArtificeCore.flora[stack.getItemDamage()].toLowerCase();
 	}
 }

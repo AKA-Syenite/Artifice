@@ -17,6 +17,7 @@ public class BlockFrameBase extends BlockFrame
 	public BlockFrameBase(int id)
 	{
 		super(id);
+		setUnlocalizedName("artifice.frame");
 	}
 
 	@Override

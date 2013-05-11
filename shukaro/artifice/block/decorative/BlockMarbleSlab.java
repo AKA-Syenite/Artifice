@@ -3,7 +3,7 @@ package shukaro.artifice.block.decorative;
 import java.util.List;
 import java.util.Random;
 
-import shukaro.artifice.ArtificeCore;
+import shukaro.artifice.ArtificeBlocks;
 import shukaro.artifice.gui.ArtificeCreativeTab;
 import shukaro.artifice.render.connectedtexture.ConnectedTextureBase;
 import shukaro.artifice.render.connectedtexture.SolidConnectedTexture;
@@ -27,7 +27,7 @@ public class BlockMarbleSlab extends BlockHalfSlab
 	private Icon paverSide;
 	
 	@SideOnly(Side.CLIENT)
-	private Icon[][] textureList = ArtificeCore.blockMarble.getTextureList();
+	private Icon[][] textureList = ArtificeBlocks.blockMarble.getTextureList();
 	
 	private ConnectedTextureBase slabRenderer;
 	private ConnectedTextureBase doubleRenderer;
@@ -54,14 +54,14 @@ public class BlockMarbleSlab extends BlockHalfSlab
 		meta = meta & 7;
 		
 		if (meta == 0)
-			return ArtificeCore.blockMarble.getIcon(side, 2);
+			return ArtificeBlocks.blockMarble.getIcon(side, 2);
 		if (meta == 1)
-			return ArtificeCore.blockMarble.getIcon(side, 1);
+			return ArtificeBlocks.blockMarble.getIcon(side, 1);
 		if (meta == 2 || meta == 3)
 		{
 			if (side != 0 && side != 1)
 				return paverSide;
-			return ArtificeCore.blockMarble.getIcon(side, 3);
+			return ArtificeBlocks.blockMarble.getIcon(side, 3);
 		}
 		return null;
 	}
@@ -73,9 +73,9 @@ public class BlockMarbleSlab extends BlockHalfSlab
 		int meta = block.getBlockMetadata(x, y, z) & 7;
 		
 		if (meta == 0)
-			return ArtificeCore.blockMarble.getIcon(side, 2);
+			return ArtificeBlocks.blockMarble.getIcon(side, 2);
 		if (meta == 1)
-			return ArtificeCore.blockMarble.getIcon(side, 1);
+			return ArtificeBlocks.blockMarble.getIcon(side, 1);
 		if (meta == 2 || meta == 3)
 		{
 			if (side != 0 && side != 1)
@@ -101,20 +101,20 @@ public class BlockMarbleSlab extends BlockHalfSlab
 	@Override
 	public int idDropped(int id, Random rand, int meta)
 	{
-		return ArtificeCore.blockMarbleSlab.blockID;
+		return ArtificeBlocks.blockMarbleSlab.blockID;
 	}
 	
 	@SideOnly(Side.CLIENT)
 	private static boolean isBlockSingleSlab(int id)
 	{
-		return id == ArtificeCore.blockMarbleSlab.blockID;
+		return id == ArtificeBlocks.blockMarbleSlab.blockID;
 	}
 	
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void getSubBlocks(int id, CreativeTabs tab, List list)
 	{
-		if (id != ArtificeCore.blockMarbleDoubleSlab.blockID)
+		if (id != ArtificeBlocks.blockMarbleDoubleSlab.blockID)
 		{
 			for (int i=0; i<types.length; i++)
 				list.add(new ItemStack(id, 1, i));
@@ -124,7 +124,7 @@ public class BlockMarbleSlab extends BlockHalfSlab
 	@Override
 	public String getFullSlabName(int i)
 	{
-		return super.getUnlocalizedName() + "." + types[i];
+		return "tile.artifice.slab." + types[i].toLowerCase();
 	}
 
 }

@@ -1,5 +1,6 @@
 package shukaro.artifice.gui;
 
+import shukaro.artifice.ArtificeBlocks;
 import shukaro.artifice.ArtificeCore;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
@@ -16,7 +17,7 @@ public class ArtificeCreativeTab extends CreativeTabs
 	@Override
 	public ItemStack getIconItemStack()
 	{
-		return new ItemStack(ArtificeCore.blockFrame, 1, 0);
+		return new ItemStack(ArtificeBlocks.blockFrame, 1, 0);
 	}
 	
 	@Override

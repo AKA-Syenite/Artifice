@@ -1,0 +1,44 @@
+tile.artifice.basalt.name = Basalt
+tile.artifice.basalt.cobblestone.name = Basalt Cobblestone
+tile.artifice.basalt.brick.name = Basalt Brick
+tile.artifice.basalt.paver.name = Basalt Paver
+tile.artifice.basalt.antipaver.name = Basalt Antipaver
+tile.artifice.basalt.chiseled.name = Chiseled Basalt
+
+tile.artifice.marble.name = Marble
+tile.artifice.marble.cobblestone.name = Marble Cobblestone
+tile.artifice.marble.brick.name = Marble Brick
+tile.artifice.marble.paver.name = Marble Paver
+tile.artifice.marble.antipaver.name = Marble Antipaver
+tile.artifice.marble.chiseled.name = Chiseled Marble
+
+tile.artifice.flora.bluebell.name = Bluebell
+tile.artifice.flora.orchid.name = Orchid
+tile.artifice.flora.iris.name = Iris
+tile.artifice.flora.lotus.name = Lotus
+
+tile.artifice.slab.marblebrick.name = Marble Brick Slab
+tile.artifice.slab.marblecobble.name = Marble Cobblestone Slab
+tile.artifice.slab.marblepaver.name = Marble Paver Slab
+tile.artifice.slab.marbleantipaver.name = Marble Antipaver Slab
+
+tile.artifice.slab.basaltbrick.name = Basalt Brick Slab
+tile.artifice.slab.basaltcobble.name = Basalt Cobblestone Slab
+tile.artifice.slab.basaltpaver.name = Basalt Paver Slab
+tile.artifice.slab.basaltantipaver.name = Basalt Antipaver Slab
+
+tile.artifice.basalt.stairs.brick.name = Basalt Brick Stairs
+tile.artifice.basalt.stairs.cobblestone.name = Basalt Cobblestone Stairs
+
+tile.artifice.marble.stairs.brick.name = Marble Brick Stairs
+tile.artifice.marble.stairs.cobblestone.name = Marble Cobblestone Stairs
+
+tile.artifice.frame.basic.name = Basic Frame
+tile.artifice.frame.reinforced.name = Reinforced Frame
+tile.artifice.frame.industrial.name = Industrial Frame
+tile.artifice.frame.advanced.name = Advanced Frame
+
+tile.artifice.refractory.basic.name = Basic Refractory Lining
+tile.artifice.refractory.reinforced.name = Reinforced Refractory Lining
+tile.artifice.refractory.industrial.name = Industrial Refractory Lining
+tile.artifice.refractory.advanced.name = Advanced Refractory Lining

@@ -15,10 +15,15 @@ import cpw.mods.fml.common.IWorldGenerator;
 
 public class ArtificeWorldGen implements IWorldGenerator
 {
-	private static List<Integer> blacklistedDimensions;
+	public static List<Integer> blacklistedDimensions;
 	
 	@Override
 	public void generate(Random random, int chunkX, int chunkZ, World world, IChunkProvider chunkGenerator, IChunkProvider chunkProvider)
+	{
+		generateWorld(random, chunkX, chunkZ, world, true);
+	}
+	
+	public void generateWorld(Random random, int chunkX, int chunkZ, World world, boolean newGen)
 	{
 		if (blacklistedDimensions == null)
 		{
@@ -34,7 +39,7 @@ public class ArtificeWorldGen implements IWorldGenerator
 		int z = chunkZ * 16 + random.nextInt(16);
 		int y = random.nextInt(world.getActualHeight());
 		
-		if (ArtificeCore.floraWorldGen.getBoolean(true))
+		if ((ArtificeCore.floraWorldGen.getBoolean(true) && newGen) || (ArtificeCore.regenFlora.getBoolean(true) && ArtificeCore.regenFlora.getBoolean(false)));
 		{
 			BiomeGenBase b = world.getBiomeGenForCoords(x, z);
 			y = world.getHeightValue(x, z);
@@ -48,17 +53,20 @@ public class ArtificeWorldGen implements IWorldGenerator
 			}
 		}
 		
-		if (ArtificeCore.basaltWorldGen.getBoolean(true))
+		if ((ArtificeCore.basaltWorldGen.getBoolean(true) && newGen) || (ArtificeCore.basaltWorldGen.getBoolean(true) && ArtificeCore.regenRock.getBoolean(false)));
 		{
 			int size = random.nextInt(ArtificeCore.basaltSize.getInt()) + random.nextInt(ArtificeCore.basaltSize.getInt() / 5);
 			new WorldGenRock(ArtificeCore.blockBasalt.blockID, 0, size, new int[] {Block.stone.blockID}, ArtificeCore.basaltHeight.getInt()).generate(world, random, x, y, z);
 		}
 		
-		if (ArtificeCore.marbleWorldGen.getBoolean(true))
+		if ((ArtificeCore.marbleWorldGen.getBoolean(true) && newGen) || (ArtificeCore.marbleWorldGen.getBoolean(true) && ArtificeCore.regenRock.getBoolean(false)));
 		{
 			int size = random.nextInt(ArtificeCore.marbleSize.getInt()) + random.nextInt(ArtificeCore.marbleSize.getInt() / 5);
 			new WorldGenRock(ArtificeCore.blockMarble.blockID, 0, size, new int[] {Block.stone.blockID}, ArtificeCore.marbleHeight.getInt()).generate(world, random, x, y, z);
 		}
+		
+		if (!newGen)
+			world.getChunkFromChunkCoords(chunkX, chunkZ).setChunkModified();
 	}
 	
 	private List<Integer> buildBlacklistedDimensions()

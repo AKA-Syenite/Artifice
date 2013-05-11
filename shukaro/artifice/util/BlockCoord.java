@@ -214,4 +214,9 @@ public class BlockCoord implements Comparable
 	{
 		return set(t.x, t.y, t.z);
 	}
+	
+	public String toString()
+	{
+		return "[" + this.x + ", " + this.y + ", " + this.z + "]";
+	}
 }

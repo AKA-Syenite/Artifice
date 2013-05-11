@@ -8,8 +8,12 @@ import java.io.FilenameFilter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
 import java.util.logging.Level;
+
+import shukaro.artifice.compat.ArtificeRegistry;
 
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.registry.LanguageRegistry;
@@ -121,11 +125,33 @@ public class ArtificeConfig
 		{
 			c.save();
 		}
+		
+		setDimBlacklist();
+		
+		ArtificeRegistry.registerDimensionBlacklist(1);
+		ArtificeRegistry.registerDimensionBlacklist(-1);
 	}
 	
 	public static void initClient(FMLPreInitializationEvent evt)
 	{
 		
+	}
+	
+	private static void setDimBlacklist()
+	{
+		String blacklist = dimensionBlacklist.getString().trim();
+		
+		for (String dim : blacklist.split(","))
+		{
+			try
+			{
+				Integer dimID = Integer.parseInt(dim);
+				ArtificeRegistry.registerDimensionBlacklist(dimID);
+			}
+			catch (Exception e)
+			{
+			}
+		}
 	}
 	
 	public static void setConfigFolderBase(File folder)

@@ -20,6 +20,7 @@ import shukaro.artifice.block.decorative.ItemBlockBasalt;
 import shukaro.artifice.block.decorative.ItemBlockFlora;
 import shukaro.artifice.block.decorative.ItemBlockMarble;
 import shukaro.artifice.block.frame.BlockFrame;
+import shukaro.artifice.block.frame.BlockFrameBase;
 import shukaro.artifice.block.frame.BlockFrameRefractory;
 import shukaro.artifice.block.frame.ItemBlockFrame;
 import shukaro.artifice.net.ClientProxy;
@@ -185,7 +186,7 @@ public class ArtificeCore
 		blockBasaltDoubleSlab = (BlockHalfSlab) new BlockBasaltSlab(blockBasaltDoubleSlabID.getInt(), true);
 		blockMarbleSlab = (BlockHalfSlab) new BlockMarbleSlab(blockMarbleSlabID.getInt(), false);
 		blockMarbleDoubleSlab = (BlockHalfSlab) new BlockMarbleSlab(blockMarbleDoubleSlabID.getInt(), true);
-		blockFrame = new BlockFrame(blockFrameID.getInt());
+		blockFrame = new BlockFrameBase(blockFrameID.getInt());
 		blockRefractory = new BlockFrameRefractory(blockRefractoryID.getInt());
 		
 		Item.itemsList[blockBasaltSlabID.getInt()] = new ItemSlab(blockBasaltSlabID.getInt() - 256, blockBasaltSlab, blockBasaltDoubleSlab, false);
@@ -194,6 +195,7 @@ public class ArtificeCore
 		Item.itemsList[blockMarbleDoubleSlabID.getInt()] = new ItemSlab(blockMarbleDoubleSlabID.getInt() - 256, blockMarbleSlab, blockMarbleDoubleSlab, true);
 		
 		GameRegistry.registerBlock(blockFrame, ItemBlockFrame.class, blockFrame.getUnlocalizedName());
+		GameRegistry.registerBlock(blockRefractory, ItemBlockFrame.class, blockRefractory.getUnlocalizedName());
 		GameRegistry.registerBlock(blockFlora, ItemBlockFlora.class, blockFlora.getUnlocalizedName());
 		GameRegistry.registerBlock(blockBasalt, ItemBlockBasalt.class, blockBasalt.getUnlocalizedName());
 		GameRegistry.registerBlock(blockMarble, ItemBlockMarble.class, blockMarble.getUnlocalizedName());
@@ -201,7 +203,6 @@ public class ArtificeCore
 		GameRegistry.registerBlock(blockMarbleBrickStairs, blockMarbleBrickStairs.getUnlocalizedName());
 		GameRegistry.registerBlock(blockBasaltCobbleStairs, blockBasaltCobbleStairs.getUnlocalizedName());
 		GameRegistry.registerBlock(blockMarbleCobbleStairs, blockMarbleCobbleStairs.getUnlocalizedName());
-		GameRegistry.registerBlock(blockRefractory, ItemBlockFrame.class, blockRefractory.getUnlocalizedName());
 		
 		for (int i=0; i<tiers.length; i++)
 		{

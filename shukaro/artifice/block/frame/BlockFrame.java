@@ -11,12 +11,13 @@ import shukaro.artifice.render.connectedtexture.SolidConnectedTexture;
 import shukaro.artifice.render.connectedtexture.TransparentConnectedTexture;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.util.Icon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
-public class BlockFrame extends BlockArtifice
+public abstract class BlockFrame extends BlockArtifice
 {
 	public BlockFrame(int id)
 	{
@@ -25,27 +26,18 @@ public class BlockFrame extends BlockArtifice
 		setUnlocalizedName("artifice.frame");
 	}
 	
-	public Block getInnerBlock(int meta)
-	{
-		return null;
-	}
+	public abstract Block getInnerBlock(int meta);
 	
-	public int getInnerMeta(int meta)
-	{
-		return 0;
-	}
+	public abstract int getInnerMeta(int meta);
+	
+	@Override
+	public abstract boolean isOpaqueCube();
 	
 	@Override
 	public float getBlockHardness(World world, int x, int y, int z)
 	{
 		int meta = world.getBlockMetadata(x, y, z);
 		return (float) meta + 5;
-	}
-	
-	@Override
-	public boolean isOpaqueCube()
-	{
-		return false;
 	}
 	
 	@Override

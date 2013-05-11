@@ -14,10 +14,22 @@ public class BlockFrameRefractory extends BlockFrame
 		setUnlocalizedName(super.getUnlocalizedName() + ".refractory");
 		this.textureRenderer = new SolidConnectedTexture(this.blockID);
 	}
-	
+
 	@Override
 	public Block getInnerBlock(int meta)
 	{
 		return Block.brick;
+	}
+
+	@Override
+	public int getInnerMeta(int meta)
+	{
+		return 0;
+	}
+
+	@Override
+	public boolean isOpaqueCube()
+	{
+		return true;
 	}
 }

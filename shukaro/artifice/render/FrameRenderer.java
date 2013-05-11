@@ -124,7 +124,7 @@ public class FrameRenderer implements ISimpleBlockRenderingHandler
 		Block innerBlock = frame.getInnerBlock(world.getBlockMetadata(x, y, z));
 		int innerMeta = frame.getInnerMeta(world.getBlockMetadata(x, y, z));
 				
-		renderer.setRenderBounds(0.0005F, 0.0005F, 0.0005F, 0.9995F, 0.9995F, 0.9995F);
+		renderer.setRenderBounds(0.0002F, 0.0002F, 0.0002F, 0.9998F, 0.9998F, 0.9998F);
 		
 		if (frame != null && innerBlock != null)
 		{

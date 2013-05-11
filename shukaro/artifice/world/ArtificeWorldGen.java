@@ -17,7 +17,7 @@ import cpw.mods.fml.common.IWorldGenerator;
 
 public class ArtificeWorldGen implements IWorldGenerator
 {
-	public static List<Integer> blacklistedDimensions;
+	private static List<Integer> blacklistedDimensions;
 	
 	@Override
 	public void generate(Random random, int chunkX, int chunkZ, World world, IChunkProvider chunkGenerator, IChunkProvider chunkProvider)
@@ -28,9 +28,7 @@ public class ArtificeWorldGen implements IWorldGenerator
 	public void generateWorld(Random random, int chunkX, int chunkZ, World world, boolean newGen)
 	{
 		if (blacklistedDimensions == null)
-		{
-			blacklistedDimensions = buildBlacklistedDimensions();
-		}
+			blacklistedDimensions = ArtificeRegistry.getDimensionBlacklist();
 		
 		if (blacklistedDimensions.contains(world.provider.dimensionId))
 		{
@@ -41,7 +39,7 @@ public class ArtificeWorldGen implements IWorldGenerator
 		int z = chunkZ * 16 + random.nextInt(16);
 		int y = random.nextInt(world.getActualHeight());
 		
-		if ((ArtificeConfig.floraWorldGen.getBoolean(true) && newGen) || (ArtificeConfig.regenFlora.getBoolean(true) && ArtificeConfig.regenFlora.getBoolean(false)));
+		if ((ArtificeConfig.floraWorldGen.getBoolean(true) && newGen) || (ArtificeConfig.floraWorldGen.getBoolean(true) && ArtificeConfig.regenFlora.getBoolean(false)));
 		{
 			BiomeGenBase b = world.getBiomeGenForCoords(x, z);
 			y = world.getHeightValue(x, z);
@@ -69,31 +67,5 @@ public class ArtificeWorldGen implements IWorldGenerator
 		
 		if (!newGen)
 			world.getChunkFromChunkCoords(chunkX, chunkZ).setChunkModified();
-	}
-	
-	private List<Integer> buildBlacklistedDimensions()
-	{
-		String blacklist = ArtificeConfig.dimensionBlacklist.getString();
-		List<Integer> dims = new ArrayList<Integer>();
-		
-		if (blacklist == null)
-		{
-			return dims;
-		}
-		blacklist = blacklist.trim();
-		
-		for (String dim : blacklist.split(","))
-		{
-			try
-			{
-				Integer dimID = Integer.parseInt(dim);
-				dims.add(dimID);
-			}
-			catch (Exception e)
-			{
-			}
-		}
-		
-		return dims;
 	}
 }

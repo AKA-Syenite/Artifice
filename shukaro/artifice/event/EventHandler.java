@@ -1,10 +1,12 @@
 package shukaro.artifice.event;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 
 import shukaro.artifice.ArtificeConfig;
 import shukaro.artifice.ArtificeCore;
+import shukaro.artifice.compat.ArtificeRegistry;
 import shukaro.artifice.util.ChunkCoord;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.chunk.Chunk;
@@ -13,6 +15,8 @@ import net.minecraftforge.event.world.ChunkDataEvent;
 
 public class EventHandler
 {
+	private List<Integer> dimBlacklist;
+	
 	@ForgeSubscribe
 	public void chunkSave(ChunkDataEvent.Save e)
 	{
@@ -26,6 +30,12 @@ public class EventHandler
 	{
 		int dim = e.world.provider.dimensionId;
 		Chunk c = e.getChunk();
+		
+		if (dimBlacklist == null)
+			dimBlacklist = ArtificeRegistry.getDimensionBlacklist();
+		
+		if (dimBlacklist.contains(dim))
+			return;
 		
 		if ((e.getData().getTag("Artifice") == null || !e.getData().getTag("Artifice").equals(ArtificeConfig.regenKey)) && (ArtificeConfig.regenFlora.getBoolean(false) || (ArtificeConfig.regenRock.getBoolean(false))))
 		{

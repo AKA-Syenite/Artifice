@@ -1,4 +1,4 @@
-package shukaro.artifice.world;
+package shukaro.artifice.event;
 
 import java.util.ArrayList;
 import java.util.EnumSet;

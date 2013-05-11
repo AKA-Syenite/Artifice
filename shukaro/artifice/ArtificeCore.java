@@ -98,6 +98,7 @@ public class ArtificeCore
 	public static Property floraBoneMeal;
 	public static Property regenRock;
 	public static Property regenFlora;
+	public static Property regenKey;
 	
 	public static Property dimensionBlacklist;
 	
@@ -162,6 +163,9 @@ public class ArtificeCore
 			regenRock.comment = "Set to true to regenerate basalt and marble";
 			regenFlora = c.get(Configuration.CATEGORY_GENERAL, "WorldGen.ReFlora", false);
 			regenFlora.comment = "Set to true to regenerate flowers";
+			regenKey = c.get(Configuration.CATEGORY_GENERAL, "WorldGen.Key", "DEFAULT");
+			regenKey.comment = "This key is used to keep track of which chunk have been generated/regenerated. Changing it will cause the regeneration code to run again, so only change it if you want it to happen. Useful to regen only one world feature at a time.";
+			
 			
 			floraRecipes = c.get(Configuration.CATEGORY_GENERAL, "Recipes.Flora", true);
 			floraRecipes.comment = "Set to false to disable flower-related recipes";

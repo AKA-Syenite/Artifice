@@ -91,6 +91,10 @@
         <copy todir="${classes.dir}/mods/artifice/textures/blocks/">
             <fileset dir="mods/artifice/textures/blocks/" />
         </copy>
+    	
+    	<copy todir="${classes.dir}/shukaro/artifice/lang/">
+    	   <fileset dir="shukaro/artifice/lang/" />
+    	</copy>
     </target>
     
     <target name="build-number-there" if="env.BUILD_NUMBER" >

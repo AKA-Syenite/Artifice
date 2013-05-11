@@ -50,14 +50,14 @@ public class WorldTicker implements ITickHandler
 		
 		if (count > 0)
 		{
-			ArtificeCore.logger.log(Level.INFO, "[Artifice] Regenerated " + count + " chunks. " + Math.max(0, chunks.size()) + " chunks left");
+			ArtificeCore.logger.log(Level.INFO, "Regenerated " + count + " chunks. " + Math.max(0, chunks.size()) + " chunks left");
 		}
 	}
 
 	@Override
 	public EnumSet<TickType> ticks()
 	{
-		return null;
+		return EnumSet.of(TickType.WORLD);
 	}
 
 	@Override

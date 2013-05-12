@@ -54,7 +54,11 @@ public class FrameRenderer implements ISimpleBlockRenderingHandler
 	        
 	        tessellator.startDrawingQuads();
 	        tessellator.setNormal(0.0F, 0.0F, 1.0F);
+<<<<<<< HEAD
 	        renderer.renderFaceYNeg(block, 0.0D, 0.0D, 0.0D, renderer.getBlockIconFromSideAndMetadata(innerBlock, 3, innerMeta));
+=======
+	        renderer.renderFaceXNeg(block, 0.0D, 0.0D, 0.0D, renderer.getBlockIconFromSideAndMetadata(innerBlock, 3, innerMeta));
+>>>>>>> origin/master
 	        tessellator.draw();
 	        
 	        tessellator.startDrawingQuads();
@@ -91,7 +95,11 @@ public class FrameRenderer implements ISimpleBlockRenderingHandler
         
         tessellator.startDrawingQuads();
         tessellator.setNormal(0.0F, 0.0F, 1.0F);
+<<<<<<< HEAD
         renderer.renderFaceYNeg(block, 0.0D, 0.0D, 0.0D, renderer.getBlockIconFromSideAndMetadata(block, 3, metadata));
+=======
+        renderer.renderFaceXNeg(block, 0.0D, 0.0D, 0.0D, renderer.getBlockIconFromSideAndMetadata(block, 3, metadata));
+>>>>>>> origin/master
         tessellator.draw();
         
         tessellator.startDrawingQuads();

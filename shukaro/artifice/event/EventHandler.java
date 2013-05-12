@@ -9,6 +9,8 @@ import shukaro.artifice.ArtificeCore;
 import shukaro.artifice.compat.ArtificeRegistry;
 import shukaro.artifice.util.ChunkCoord;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.NBTTagString;
+import net.minecraft.world.ChunkCoordIntPair;
 import net.minecraft.world.chunk.Chunk;
 import net.minecraftforge.event.ForgeSubscribe;
 import net.minecraftforge.event.world.ChunkDataEvent;
@@ -20,16 +22,14 @@ public class EventHandler
 	@ForgeSubscribe
 	public void chunkSave(ChunkDataEvent.Save e)
 	{
-		NBTTagCompound tag = new NBTTagCompound();
-		tag.setBoolean(ArtificeConfig.regenKey.getString(), true);
-		e.getData().setTag("Artifice", tag);
+		e.getData().setString("Artifice", ArtificeConfig.regenKey.getString());
 	}
 	
 	@ForgeSubscribe
 	public void chunkLoad(ChunkDataEvent.Load e)
 	{
 		int dim = e.world.provider.dimensionId;
-		Chunk c = e.getChunk();
+		ChunkCoordIntPair c = e.getChunk().getChunkCoordIntPair();
 		
 		if (dimBlacklist == null)
 			dimBlacklist = ArtificeRegistry.getDimensionBlacklist();
@@ -37,9 +37,9 @@ public class EventHandler
 		if (dimBlacklist.contains(dim))
 			return;
 		
-		if ((e.getData().getTag("Artifice") == null || !e.getData().getTag("Artifice").equals(ArtificeConfig.regenKey)) && (ArtificeConfig.regenFlora.getBoolean(false) || (ArtificeConfig.regenRock.getBoolean(false))))
+		if ((!e.getData().getString("Artifice").equals(ArtificeConfig.regenKey.getString())) && (ArtificeConfig.regenFlora.getBoolean(false) || (ArtificeConfig.regenRock.getBoolean(false))))
 		{
-			ArtificeCore.logger.log(Level.WARNING, "World gen was never run for chunk at " + new ChunkCoord(c.xPosition, c.zPosition).toString() + ". Adding to queue for regeneration.");
+			ArtificeCore.logger.log(Level.WARNING, "World gen was never run for chunk at " + e.getChunk().getChunkCoordIntPair() + ". Adding to queue for regeneration.");
 			ArrayList chunks = (ArrayList)WorldTicker.chunksToGen.get(Integer.valueOf(dim));
 			if (chunks == null)
 			{
@@ -48,7 +48,7 @@ public class EventHandler
 			}
 			if (chunks != null)
 			{
-				chunks.add(new ChunkCoord(c.xPosition, c.zPosition));
+				chunks.add(new ChunkCoord(c.chunkXPos, c.chunkZPos));
 				WorldTicker.chunksToGen.put(Integer.valueOf(dim), chunks);
 			}
 		}

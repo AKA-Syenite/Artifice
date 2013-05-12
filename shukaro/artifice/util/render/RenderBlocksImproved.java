@@ -236,7 +236,7 @@ public class RenderBlocksImproved
 			renderer.colorRedTopRight *= f6;
 			renderer.colorGreenTopRight *= f6;
 			renderer.colorBlueTopRight *= f6;
-			RenderFacing.renderFace(renderer, block, x, y, z, renderer.getBlockIconFromSideAndMetadata(block, 0, meta), 0, inverted, tessellator);
+			RenderFacing.renderFace(renderer, block, (double)x, (double)y, (double)z, block.getBlockTexture(renderer.blockAccess, x, y, z, 0), 0, inverted, tessellator);
 			flag = true;
 		}
 		
@@ -340,7 +340,7 @@ public class RenderBlocksImproved
 			renderer.colorRedTopRight *= f6;
 			renderer.colorGreenTopRight *= f6;
 			renderer.colorBlueTopRight *= f6;
-			RenderFacing.renderFace(renderer, block, x, y, z, renderer.getBlockIconFromSideAndMetadata(block, 1, meta), 1, inverted, tessellator);
+			RenderFacing.renderFace(renderer, block, (double)x, (double)y, (double)z, block.getBlockTexture(renderer.blockAccess, x, y, z, 1), 1, inverted, tessellator);
 			flag = true;
 		}
 		
@@ -485,7 +485,7 @@ public class RenderBlocksImproved
 			renderer.colorRedTopRight *= f6;
 			renderer.colorGreenTopRight *= f6;
 			renderer.colorBlueTopRight *= f6;
-			RenderFacing.renderFace(renderer, block, x, y, z, renderer.getBlockIconFromSideAndMetadata(block, 2, meta), 2, inverted, tessellator);
+			RenderFacing.renderFace(renderer, block, (double)x, (double)y, (double)z, block.getBlockTexture(renderer.blockAccess, x, y, z, 2), 2, inverted, tessellator);
 			
 			flag = true;
 		}
@@ -625,7 +625,7 @@ public class RenderBlocksImproved
 			renderer.colorRedTopRight *= f6;
 			renderer.colorGreenTopRight *= f6;
 			renderer.colorBlueTopRight *= f6;
-			RenderFacing.renderFace(renderer, block, x, y, z, renderer.getBlockIconFromSideAndMetadata(block, 3, meta), 3, inverted, tessellator);
+			RenderFacing.renderFace(renderer, block, (double)x, (double)y, (double)z, block.getBlockTexture(renderer.blockAccess, x, y, z, 3), 3, inverted, tessellator);
 			
 			flag = true;
 		}
@@ -765,7 +765,7 @@ public class RenderBlocksImproved
 			renderer.colorRedTopRight *= f6;
 			renderer.colorGreenTopRight *= f6;
 			renderer.colorBlueTopRight *= f6;
-			RenderFacing.renderFace(renderer, block, x, y, z, renderer.getBlockIconFromSideAndMetadata(block, 4, meta), 4, inverted, tessellator);
+			RenderFacing.renderFace(renderer, block, (double)x, (double)y, (double)z, block.getBlockTexture(renderer.blockAccess, x, y, z, 4), 4, inverted, tessellator);
 			
 			flag = true;
 		}
@@ -905,7 +905,7 @@ public class RenderBlocksImproved
 			renderer.colorRedTopRight *= f6;
 			renderer.colorGreenTopRight *= f6;
 			renderer.colorBlueTopRight *= f6;
-			RenderFacing.renderFace(renderer, block, x, y, z, renderer.getBlockIconFromSideAndMetadata(block, 5, meta), 5, inverted, tessellator);
+			RenderFacing.renderFace(renderer, block, (double)x, (double)y, (double)z, block.getBlockTexture(renderer.blockAccess, x, y, z, 5), 5, inverted, tessellator);
 			
 			flag = true;
 		}
@@ -1092,7 +1092,7 @@ public class RenderBlocksImproved
 			renderer.colorRedTopRight *= f6;
 			renderer.colorGreenTopRight *= f6;
 			renderer.colorBlueTopRight *= f6;
-			RenderFacing.renderFace(renderer, block, x, y, z, renderer.getBlockIconFromSideAndMetadata(block, 0, meta), 0, inverted, tessellator);
+			RenderFacing.renderFace(renderer, block, (double)x, (double)y, (double)z, block.getBlockTexture(renderer.blockAccess, x, y, z, 0), 0, inverted, tessellator);
 			flag = true;
 		}
 		
@@ -1196,7 +1196,7 @@ public class RenderBlocksImproved
 			renderer.colorRedTopRight *= f6;
 			renderer.colorGreenTopRight *= f6;
 			renderer.colorBlueTopRight *= f6;
-			RenderFacing.renderFace(renderer, block, x, y, z, renderer.getBlockIconFromSideAndMetadata(block, 1, meta), 1, inverted, tessellator);
+			RenderFacing.renderFace(renderer, block, (double)x, (double)y, (double)z, block.getBlockTexture(renderer.blockAccess, x, y, z, 1), 1, inverted, tessellator);
 			flag = true;
 		}
 		
@@ -1313,7 +1313,7 @@ public class RenderBlocksImproved
 			renderer.colorRedTopRight *= f6;
 			renderer.colorGreenTopRight *= f6;
 			renderer.colorBlueTopRight *= f6;
-			RenderFacing.renderFace(renderer, block, x, y, z, renderer.getBlockIconFromSideAndMetadata(block, 2, meta), 2, inverted, tessellator);
+			RenderFacing.renderFace(renderer, block, (double)x, (double)y, (double)z, block.getBlockTexture(renderer.blockAccess, x, y, z, 2), 2, inverted, tessellator);
 			
 			flag = true;
 		}
@@ -1429,7 +1429,7 @@ public class RenderBlocksImproved
 			renderer.colorRedTopRight *= f6;
 			renderer.colorGreenTopRight *= f6;
 			renderer.colorBlueTopRight *= f6;
-			RenderFacing.renderFace(renderer, block, x, y, z, renderer.getBlockIconFromSideAndMetadata(block, 3, meta), 3, inverted, tessellator);
+			RenderFacing.renderFace(renderer, block, (double)x, (double)y, (double)z, block.getBlockTexture(renderer.blockAccess, x, y, z, 3), 3, inverted, tessellator);
 			
 			flag = true;
 		}
@@ -1545,7 +1545,7 @@ public class RenderBlocksImproved
 			renderer.colorRedTopRight *= f6;
 			renderer.colorGreenTopRight *= f6;
 			renderer.colorBlueTopRight *= f6;
-			RenderFacing.renderFace(renderer, block, x, y, z, renderer.getBlockIconFromSideAndMetadata(block, 4, meta), 4, inverted, tessellator);
+			RenderFacing.renderFace(renderer, block, (double)x, (double)y, (double)z, block.getBlockTexture(renderer.blockAccess, x, y, z, 4), 4, inverted, tessellator);
 			
 			flag = true;
 		}
@@ -1661,7 +1661,7 @@ public class RenderBlocksImproved
 			renderer.colorRedTopRight *= f6;
 			renderer.colorGreenTopRight *= f6;
 			renderer.colorBlueTopRight *= f6;
-			RenderFacing.renderFace(renderer, block, x, y, z, renderer.getBlockIconFromSideAndMetadata(block, 5, meta), 5, inverted, tessellator);
+			RenderFacing.renderFace(renderer, block, (double)x, (double)y, (double)z, block.getBlockTexture(renderer.blockAccess, x, y, z, 5), 5, inverted, tessellator);
 			
 			flag = true;
 		}
@@ -1749,7 +1749,7 @@ public class RenderBlocksImproved
 		{
 			tessellator.setBrightness(renderer.renderMinY > 0.0D ? l : block.getMixedBrightnessForBlock(renderer.blockAccess, x, y - 1, z));
 			tessellator.setColorOpaque_F(f10, f13, f16);
-			RenderFacing.renderFace(renderer, block, x, y, z, renderer.getBlockIconFromSideAndMetadata(block, 0, meta), 0, inverted, tessellator);
+			RenderFacing.renderFace(renderer, block, (double)x, (double)y, (double)z, block.getBlockTexture(renderer.blockAccess, x, y, z, 0), 0, inverted, tessellator);
 			flag = true;
 		}
 		
@@ -1757,7 +1757,7 @@ public class RenderBlocksImproved
 		{
 			tessellator.setBrightness(renderer.renderMaxY < 1.0D ? l : block.getMixedBrightnessForBlock(renderer.blockAccess, x, y + 1, z));
 			tessellator.setColorOpaque_F(f7, f8, f9);
-			RenderFacing.renderFace(renderer, block, x, y, z, renderer.getBlockIconFromSideAndMetadata(block, 1, meta), 1, inverted, tessellator);
+			RenderFacing.renderFace(renderer, block, (double)x, (double)y, (double)z, block.getBlockTexture(renderer.blockAccess, x, y, z, 1), 1, inverted, tessellator);
 			flag = true;
 		}
 		
@@ -1767,8 +1767,7 @@ public class RenderBlocksImproved
 		{
 			tessellator.setBrightness(renderer.renderMinZ > 0.0D ? l : block.getMixedBrightnessForBlock(renderer.blockAccess, x, y, z - 1));
 			tessellator.setColorOpaque_F(f11, f14, f17);
-			icon = renderer.getBlockIcon(block, renderer.blockAccess, x, y, z, 2);
-			RenderFacing.renderFace(renderer, block, x, y, z, renderer.getBlockIconFromSideAndMetadata(block, 2, meta), 2, inverted, tessellator);
+			RenderFacing.renderFace(renderer, block, (double)x, (double)y, (double)z, block.getBlockTexture(renderer.blockAccess, x, y, z, 2), 2, inverted, tessellator);
 			
 			flag = true;
 		}
@@ -1777,8 +1776,7 @@ public class RenderBlocksImproved
 		{
 			tessellator.setBrightness(renderer.renderMaxZ < 1.0D ? l : block.getMixedBrightnessForBlock(renderer.blockAccess, x, y, z + 1));
 			tessellator.setColorOpaque_F(f11, f14, f17);
-			icon = renderer.getBlockIcon(block, renderer.blockAccess, x, y, z, 3);
-			RenderFacing.renderFace(renderer, block, x, y, z, renderer.getBlockIconFromSideAndMetadata(block, 3, meta), 3, inverted, tessellator);
+			RenderFacing.renderFace(renderer, block, (double)x, (double)y, (double)z, block.getBlockTexture(renderer.blockAccess, x, y, z, 3), 3, inverted, tessellator);
 			
 			flag = true;
 		}
@@ -1787,8 +1785,7 @@ public class RenderBlocksImproved
 		{
 			tessellator.setBrightness(renderer.renderMinX > 0.0D ? l : block.getMixedBrightnessForBlock(renderer.blockAccess, x - 1, y, z));
 			tessellator.setColorOpaque_F(f12, f15, f18);
-			icon = renderer.getBlockIcon(block, renderer.blockAccess, x, y, z, 4);
-			RenderFacing.renderFace(renderer, block, x, y, z, renderer.getBlockIconFromSideAndMetadata(block, 4, meta), 4, inverted, tessellator);
+			RenderFacing.renderFace(renderer, block, (double)x, (double)y, (double)z, block.getBlockTexture(renderer.blockAccess, x, y, z, 4), 4, inverted, tessellator);
 			
 			flag = true;
 		}
@@ -1797,8 +1794,7 @@ public class RenderBlocksImproved
 		{
 			tessellator.setBrightness(renderer.renderMaxX < 1.0D ? l : block.getMixedBrightnessForBlock(renderer.blockAccess, x + 1, y, z));
 			tessellator.setColorOpaque_F(f12, f15, f18);
-			icon = renderer.getBlockIcon(block, renderer.blockAccess, x, y, z, 5);
-			RenderFacing.renderFace(renderer, block, x, y, z, renderer.getBlockIconFromSideAndMetadata(block, 5, meta), 5, inverted, tessellator);
+			RenderFacing.renderFace(renderer, block, (double)x, (double)y, (double)z, block.getBlockTexture(renderer.blockAccess, x, y, z, 5), 5, inverted, tessellator);
 			
 			flag = true;
 		}

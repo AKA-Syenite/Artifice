@@ -1,6 +1,5 @@
 package shukaro.artifice;
 
-import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.block.BlockHalfSlab;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemSlab;
@@ -17,6 +16,7 @@ import shukaro.artifice.block.frame.BlockFrame;
 import shukaro.artifice.block.frame.BlockFrameBase;
 import shukaro.artifice.block.frame.BlockFrameRefractory;
 import shukaro.artifice.block.frame.ItemBlockFrame;
+import cpw.mods.fml.common.registry.GameRegistry;
 
 public class ArtificeBlocks
 {

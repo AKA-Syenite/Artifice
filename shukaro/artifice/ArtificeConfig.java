@@ -8,18 +8,14 @@ import java.io.FilenameFilter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Properties;
 import java.util.logging.Level;
 
-import shukaro.artifice.compat.ArtificeRegistry;
-
-import cpw.mods.fml.common.event.FMLPreInitializationEvent;
-import cpw.mods.fml.common.registry.LanguageRegistry;
-
 import net.minecraftforge.common.Configuration;
 import net.minecraftforge.common.Property;
+import shukaro.artifice.compat.ArtificeRegistry;
+import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.common.registry.LanguageRegistry;
 
 public class ArtificeConfig
 {

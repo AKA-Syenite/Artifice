@@ -1,36 +1,12 @@
 package shukaro.artifice;
 
-import java.io.File;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import net.minecraft.block.BlockHalfSlab;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemSlab;
-import net.minecraft.item.ItemStack;
-import net.minecraftforge.common.Configuration;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.common.Property;
-import shukaro.artifice.block.BlockArtifice;
-import shukaro.artifice.block.decorative.BlockBasalt;
-import shukaro.artifice.block.decorative.BlockBasaltSlab;
-import shukaro.artifice.block.decorative.BlockFlora;
-import shukaro.artifice.block.decorative.BlockMarble;
-import shukaro.artifice.block.decorative.BlockMarbleSlab;
-import shukaro.artifice.block.decorative.BlockStairsArtifice;
-import shukaro.artifice.block.decorative.ItemBlockBasalt;
-import shukaro.artifice.block.decorative.ItemBlockFlora;
-import shukaro.artifice.block.decorative.ItemBlockMarble;
-import shukaro.artifice.block.frame.BlockFrame;
-import shukaro.artifice.block.frame.BlockFrameBase;
-import shukaro.artifice.block.frame.BlockFrameRefractory;
-import shukaro.artifice.block.frame.ItemBlockFrame;
 import shukaro.artifice.event.EventHandler;
-import shukaro.artifice.event.WorldTicker;
 import shukaro.artifice.net.ClientProxy;
 import shukaro.artifice.net.CommonProxy;
 import shukaro.artifice.world.ArtificeWorldGen;
-import cpw.mods.fml.common.FMLLog;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.Init;
 import cpw.mods.fml.common.Mod.Instance;
@@ -43,9 +19,6 @@ import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.event.FMLServerStartingEvent;
 import cpw.mods.fml.common.registry.GameRegistry;
-import cpw.mods.fml.common.registry.LanguageRegistry;
-import cpw.mods.fml.common.registry.TickRegistry;
-import cpw.mods.fml.relauncher.Side;
 
 @Mod(modid = ArtificeCore.modID, name = ArtificeCore.modName, version = ArtificeCore.modVersion)
 public class ArtificeCore
@@ -88,8 +61,8 @@ public class ArtificeCore
 		ArtificeConfig.loadLang();
 		
 		logger = evt.getModLog();
-		this.eventHandler = new EventHandler();
-		MinecraftForge.EVENT_BUS.register(this.eventHandler);
+		ArtificeCore.eventHandler = new EventHandler();
+		MinecraftForge.EVENT_BUS.register(ArtificeCore.eventHandler);
 		ClientProxy.init();
 		CommonProxy.init();
 	}
@@ -99,7 +72,7 @@ public class ArtificeCore
 	{
 		ArtificeBlocks.initBlocks();
 		
-		GameRegistry.registerWorldGenerator(this.worldGen = new ArtificeWorldGen());
+		GameRegistry.registerWorldGenerator(ArtificeCore.worldGen = new ArtificeWorldGen());
 		
 		if (ArtificeConfig.floraBoneMeal.getBoolean(true))
 		{

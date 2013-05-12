@@ -249,23 +249,23 @@ public class RenderFacing
 	        {
 	            tessellator.setColorOpaque_F(renderer.colorRedTopRight, renderer.colorGreenTopRight, renderer.colorBlueTopRight);
 	            tessellator.setBrightness(renderer.brightnessTopRight);
-	            tessellator.addVertexWithUV(d12, d13, d15, d4, d6);
+	            tessellator.addVertexWithUV(d11, d13, d15, d8, d10);
 	            tessellator.setColorOpaque_F(renderer.colorRedBottomRight, renderer.colorGreenBottomRight, renderer.colorBlueBottomRight);
 	            tessellator.setBrightness(renderer.brightnessBottomRight);
-	            tessellator.addVertexWithUV(d12, d13, d14, d7, d9);
+	            tessellator.addVertexWithUV(d11, d13, d14, d3, d5);
 	            tessellator.setColorOpaque_F(renderer.colorRedBottomLeft, renderer.colorGreenBottomLeft, renderer.colorBlueBottomLeft);
 	            tessellator.setBrightness(renderer.brightnessBottomLeft);
-	            tessellator.addVertexWithUV(d11, d13, d14, d3, d5);
+	            tessellator.addVertexWithUV(d12, d13, d14, d7, d9);
 	            tessellator.setColorOpaque_F(renderer.colorRedTopLeft, renderer.colorGreenTopLeft, renderer.colorBlueTopLeft);
 	            tessellator.setBrightness(renderer.brightnessTopLeft);
-	            tessellator.addVertexWithUV(d11, d13, d15, d8, d10);
+	            tessellator.addVertexWithUV(d12, d13, d15, d4, d6);
 	        }
 	        else
 	        {
-	        	tessellator.addVertexWithUV(d12, d13, d15, d4, d6);
-	        	tessellator.addVertexWithUV(d12, d13, d14, d7, d9);
-	        	tessellator.addVertexWithUV(d11, d13, d14, d3, d5);
 	            tessellator.addVertexWithUV(d11, d13, d15, d8, d10);
+	            tessellator.addVertexWithUV(d11, d13, d14, d3, d5);
+	            tessellator.addVertexWithUV(d12, d13, d14, d7, d9);
+	            tessellator.addVertexWithUV(d12, d13, d15, d4, d6);
 	        }
         }
         else
@@ -274,23 +274,23 @@ public class RenderFacing
 	        {
 	            tessellator.setColorOpaque_F(renderer.colorRedTopLeft, renderer.colorGreenTopLeft, renderer.colorBlueTopLeft);
 	            tessellator.setBrightness(renderer.brightnessTopLeft);
-	            tessellator.addVertexWithUV(d11, d13, d15, d8, d10);
+	            tessellator.addVertexWithUV(d12, d13, d15, d4, d6);
 	            tessellator.setColorOpaque_F(renderer.colorRedBottomLeft, renderer.colorGreenBottomLeft, renderer.colorBlueBottomLeft);
 	            tessellator.setBrightness(renderer.brightnessBottomLeft);
-	            tessellator.addVertexWithUV(d11, d13, d14, d3, d5);
+	            tessellator.addVertexWithUV(d12, d13, d14, d7, d9);
 	            tessellator.setColorOpaque_F(renderer.colorRedBottomRight, renderer.colorGreenBottomRight, renderer.colorBlueBottomRight);
 	            tessellator.setBrightness(renderer.brightnessBottomRight);
-	            tessellator.addVertexWithUV(d12, d13, d14, d7, d9);
+	            tessellator.addVertexWithUV(d11, d13, d14, d3, d5);
 	            tessellator.setColorOpaque_F(renderer.colorRedTopRight, renderer.colorGreenTopRight, renderer.colorBlueTopRight);
 	            tessellator.setBrightness(renderer.brightnessTopRight);
-	            tessellator.addVertexWithUV(d12, d13, d15, d4, d6);
+	            tessellator.addVertexWithUV(d11, d13, d15, d8, d10);
 	        }
 	        else
 	        {
-	            tessellator.addVertexWithUV(d11, d13, d15, d8, d10);
-	            tessellator.addVertexWithUV(d11, d13, d14, d3, d5);
-	            tessellator.addVertexWithUV(d12, d13, d14, d7, d9);
 	            tessellator.addVertexWithUV(d12, d13, d15, d4, d6);
+	            tessellator.addVertexWithUV(d12, d13, d14, d7, d9);
+	            tessellator.addVertexWithUV(d11, d13, d14, d3, d5);
+	            tessellator.addVertexWithUV(d11, d13, d15, d8, d10);
 	        }
         }
     }
@@ -386,23 +386,23 @@ public class RenderFacing
 	        {
 	            tessellator.setColorOpaque_F(renderer.colorRedTopRight, renderer.colorGreenTopRight, renderer.colorBlueTopRight);
 	            tessellator.setBrightness(renderer.brightnessTopRight);
-	            tessellator.addVertexWithUV(d12, d13, d15, d4, d6);
+	            tessellator.addVertexWithUV(d11, d13, d15, d4, d6);
 	            tessellator.setColorOpaque_F(renderer.colorRedBottomRight, renderer.colorGreenBottomRight, renderer.colorBlueBottomRight);
 	            tessellator.setBrightness(renderer.brightnessBottomRight);
-	            tessellator.addVertexWithUV(d12, d13, d14, d7, d9);
+	            tessellator.addVertexWithUV(d12, d13, d15, d8, d10);
 	            tessellator.setColorOpaque_F(renderer.colorRedBottomLeft, renderer.colorGreenBottomLeft, renderer.colorBlueBottomLeft);
 	            tessellator.setBrightness(renderer.brightnessBottomLeft);
-	            tessellator.addVertexWithUV(d11, d13, d14, d3, d5);
+	            tessellator.addVertexWithUV(d12, d14, d15, d3, d5);
 	            tessellator.setColorOpaque_F(renderer.colorRedTopLeft, renderer.colorGreenTopLeft, renderer.colorBlueTopLeft);
 	            tessellator.setBrightness(renderer.brightnessTopLeft);
-	            tessellator.addVertexWithUV(d11, d13, d15, d8, d10);
+	            tessellator.addVertexWithUV(d11, d14, d15, d7, d9);
 	        }
 	        else
 	        {
-	        	tessellator.addVertexWithUV(d12, d13, d15, d4, d6);
-	        	tessellator.addVertexWithUV(d12, d13, d14, d7, d9);
-	        	tessellator.addVertexWithUV(d11, d13, d14, d3, d5);
-	            tessellator.addVertexWithUV(d11, d13, d15, d8, d10);
+	            tessellator.addVertexWithUV(d11, d13, d15, d4, d6);
+	            tessellator.addVertexWithUV(d12, d13, d15, d8, d10);
+	            tessellator.addVertexWithUV(d12, d14, d15, d3, d5);
+	            tessellator.addVertexWithUV(d11, d14, d15, d7, d9);
 	        }
         }
         else
@@ -411,23 +411,23 @@ public class RenderFacing
 	        {
 	            tessellator.setColorOpaque_F(renderer.colorRedTopLeft, renderer.colorGreenTopLeft, renderer.colorBlueTopLeft);
 	            tessellator.setBrightness(renderer.brightnessTopLeft);
-	            tessellator.addVertexWithUV(d11, d13, d15, d8, d10);
+	            tessellator.addVertexWithUV(d11, d14, d15, d7, d9);
 	            tessellator.setColorOpaque_F(renderer.colorRedBottomLeft, renderer.colorGreenBottomLeft, renderer.colorBlueBottomLeft);
 	            tessellator.setBrightness(renderer.brightnessBottomLeft);
-	            tessellator.addVertexWithUV(d11, d13, d14, d3, d5);
+	            tessellator.addVertexWithUV(d12, d14, d15, d3, d5);
 	            tessellator.setColorOpaque_F(renderer.colorRedBottomRight, renderer.colorGreenBottomRight, renderer.colorBlueBottomRight);
 	            tessellator.setBrightness(renderer.brightnessBottomRight);
-	            tessellator.addVertexWithUV(d12, d13, d14, d7, d9);
+	            tessellator.addVertexWithUV(d12, d13, d15, d8, d10);
 	            tessellator.setColorOpaque_F(renderer.colorRedTopRight, renderer.colorGreenTopRight, renderer.colorBlueTopRight);
 	            tessellator.setBrightness(renderer.brightnessTopRight);
-	            tessellator.addVertexWithUV(d12, d13, d15, d4, d6);
+	            tessellator.addVertexWithUV(d11, d13, d15, d4, d6);
 	        }
 	        else
 	        {
-	            tessellator.addVertexWithUV(d11, d13, d15, d8, d10);
-	            tessellator.addVertexWithUV(d11, d13, d14, d3, d5);
-	            tessellator.addVertexWithUV(d12, d13, d14, d7, d9);
-	            tessellator.addVertexWithUV(d12, d13, d15, d4, d6);
+	            tessellator.addVertexWithUV(d11, d14, d15, d7, d9);
+	            tessellator.addVertexWithUV(d12, d14, d15, d3, d5);
+	            tessellator.addVertexWithUV(d12, d13, d15, d8, d10);
+	            tessellator.addVertexWithUV(d11, d13, d15, d4, d6);
 	        }
         }
     }
@@ -523,23 +523,23 @@ public class RenderFacing
 	        {
 	            tessellator.setColorOpaque_F(renderer.colorRedTopRight, renderer.colorGreenTopRight, renderer.colorBlueTopRight);
 	            tessellator.setBrightness(renderer.brightnessTopRight);
-	            tessellator.addVertexWithUV(d12, d13, d15, d4, d6);
+	            tessellator.addVertexWithUV(d12, d14, d15, d7, d9);
 	            tessellator.setColorOpaque_F(renderer.colorRedBottomRight, renderer.colorGreenBottomRight, renderer.colorBlueBottomRight);
 	            tessellator.setBrightness(renderer.brightnessBottomRight);
-	            tessellator.addVertexWithUV(d12, d13, d14, d7, d9);
+	            tessellator.addVertexWithUV(d12, d13, d15, d4, d6);
 	            tessellator.setColorOpaque_F(renderer.colorRedBottomLeft, renderer.colorGreenBottomLeft, renderer.colorBlueBottomLeft);
 	            tessellator.setBrightness(renderer.brightnessBottomLeft);
-	            tessellator.addVertexWithUV(d11, d13, d14, d3, d5);
+	            tessellator.addVertexWithUV(d11, d13, d15, d8, d10);
 	            tessellator.setColorOpaque_F(renderer.colorRedTopLeft, renderer.colorGreenTopLeft, renderer.colorBlueTopLeft);
 	            tessellator.setBrightness(renderer.brightnessTopLeft);
-	            tessellator.addVertexWithUV(d11, d13, d15, d8, d10);
+	            tessellator.addVertexWithUV(d11, d14, d15, d3, d5);
 	        }
 	        else
 	        {
-	        	tessellator.addVertexWithUV(d12, d13, d15, d4, d6);
-	        	tessellator.addVertexWithUV(d12, d13, d14, d7, d9);
-	        	tessellator.addVertexWithUV(d11, d13, d14, d3, d5);
+	            tessellator.addVertexWithUV(d12, d14, d15, d7, d9);
+	            tessellator.addVertexWithUV(d12, d13, d15, d4, d6);
 	            tessellator.addVertexWithUV(d11, d13, d15, d8, d10);
+	            tessellator.addVertexWithUV(d11, d14, d15, d3, d5);
 	        }
         }
         else
@@ -548,23 +548,23 @@ public class RenderFacing
 	        {
 	            tessellator.setColorOpaque_F(renderer.colorRedTopLeft, renderer.colorGreenTopLeft, renderer.colorBlueTopLeft);
 	            tessellator.setBrightness(renderer.brightnessTopLeft);
-	            tessellator.addVertexWithUV(d11, d13, d15, d8, d10);
+	            tessellator.addVertexWithUV(d11, d14, d15, d3, d5);
 	            tessellator.setColorOpaque_F(renderer.colorRedBottomLeft, renderer.colorGreenBottomLeft, renderer.colorBlueBottomLeft);
 	            tessellator.setBrightness(renderer.brightnessBottomLeft);
-	            tessellator.addVertexWithUV(d11, d13, d14, d3, d5);
+	            tessellator.addVertexWithUV(d11, d13, d15, d8, d10);
 	            tessellator.setColorOpaque_F(renderer.colorRedBottomRight, renderer.colorGreenBottomRight, renderer.colorBlueBottomRight);
 	            tessellator.setBrightness(renderer.brightnessBottomRight);
-	            tessellator.addVertexWithUV(d12, d13, d14, d7, d9);
+	            tessellator.addVertexWithUV(d12, d13, d15, d4, d6);
 	            tessellator.setColorOpaque_F(renderer.colorRedTopRight, renderer.colorGreenTopRight, renderer.colorBlueTopRight);
 	            tessellator.setBrightness(renderer.brightnessTopRight);
-	            tessellator.addVertexWithUV(d12, d13, d15, d4, d6);
+	            tessellator.addVertexWithUV(d12, d14, d15, d7, d9);
 	        }
 	        else
 	        {
+	            tessellator.addVertexWithUV(d11, d14, d15, d3, d5);
 	            tessellator.addVertexWithUV(d11, d13, d15, d8, d10);
-	            tessellator.addVertexWithUV(d11, d13, d14, d3, d5);
-	            tessellator.addVertexWithUV(d12, d13, d14, d7, d9);
 	            tessellator.addVertexWithUV(d12, d13, d15, d4, d6);
+	            tessellator.addVertexWithUV(d12, d14, d15, d7, d9);
 	        }
         }
     }
@@ -660,23 +660,23 @@ public class RenderFacing
 	        {
 	            tessellator.setColorOpaque_F(renderer.colorRedTopRight, renderer.colorGreenTopRight, renderer.colorBlueTopRight);
 	            tessellator.setBrightness(renderer.brightnessTopRight);
-	            tessellator.addVertexWithUV(d12, d13, d15, d4, d6);
+	            tessellator.addVertexWithUV(d11, d12, d15, d4, d6);
 	            tessellator.setColorOpaque_F(renderer.colorRedBottomRight, renderer.colorGreenBottomRight, renderer.colorBlueBottomRight);
 	            tessellator.setBrightness(renderer.brightnessBottomRight);
-	            tessellator.addVertexWithUV(d12, d13, d14, d7, d9);
+	            tessellator.addVertexWithUV(d11, d12, d14, d8, d10);
 	            tessellator.setColorOpaque_F(renderer.colorRedBottomLeft, renderer.colorGreenBottomLeft, renderer.colorBlueBottomLeft);
 	            tessellator.setBrightness(renderer.brightnessBottomLeft);
 	            tessellator.addVertexWithUV(d11, d13, d14, d3, d5);
 	            tessellator.setColorOpaque_F(renderer.colorRedTopLeft, renderer.colorGreenTopLeft, renderer.colorBlueTopLeft);
 	            tessellator.setBrightness(renderer.brightnessTopLeft);
-	            tessellator.addVertexWithUV(d11, d13, d15, d8, d10);
+	            tessellator.addVertexWithUV(d11, d13, d15, d7, d9);
 	        }
 	        else
 	        {
-	        	tessellator.addVertexWithUV(d12, d13, d15, d4, d6);
-	        	tessellator.addVertexWithUV(d12, d13, d14, d7, d9);
-	        	tessellator.addVertexWithUV(d11, d13, d14, d3, d5);
-	            tessellator.addVertexWithUV(d11, d13, d15, d8, d10);
+	            tessellator.addVertexWithUV(d11, d12, d15, d4, d6);
+	            tessellator.addVertexWithUV(d11, d12, d14, d8, d10);
+	            tessellator.addVertexWithUV(d11, d13, d14, d3, d5);
+	            tessellator.addVertexWithUV(d11, d13, d15, d7, d9);
 	        }
         }
         else
@@ -685,23 +685,23 @@ public class RenderFacing
 	        {
 	            tessellator.setColorOpaque_F(renderer.colorRedTopLeft, renderer.colorGreenTopLeft, renderer.colorBlueTopLeft);
 	            tessellator.setBrightness(renderer.brightnessTopLeft);
-	            tessellator.addVertexWithUV(d11, d13, d15, d8, d10);
+	            tessellator.addVertexWithUV(d11, d13, d15, d7, d9);
 	            tessellator.setColorOpaque_F(renderer.colorRedBottomLeft, renderer.colorGreenBottomLeft, renderer.colorBlueBottomLeft);
 	            tessellator.setBrightness(renderer.brightnessBottomLeft);
 	            tessellator.addVertexWithUV(d11, d13, d14, d3, d5);
 	            tessellator.setColorOpaque_F(renderer.colorRedBottomRight, renderer.colorGreenBottomRight, renderer.colorBlueBottomRight);
 	            tessellator.setBrightness(renderer.brightnessBottomRight);
-	            tessellator.addVertexWithUV(d12, d13, d14, d7, d9);
+	            tessellator.addVertexWithUV(d11, d12, d14, d8, d10);
 	            tessellator.setColorOpaque_F(renderer.colorRedTopRight, renderer.colorGreenTopRight, renderer.colorBlueTopRight);
 	            tessellator.setBrightness(renderer.brightnessTopRight);
-	            tessellator.addVertexWithUV(d12, d13, d15, d4, d6);
+	            tessellator.addVertexWithUV(d11, d12, d15, d4, d6);
 	        }
 	        else
 	        {
-	            tessellator.addVertexWithUV(d11, d13, d15, d8, d10);
+	            tessellator.addVertexWithUV(d11, d13, d15, d7, d9);
 	            tessellator.addVertexWithUV(d11, d13, d14, d3, d5);
-	            tessellator.addVertexWithUV(d12, d13, d14, d7, d9);
-	            tessellator.addVertexWithUV(d12, d13, d15, d4, d6);
+	            tessellator.addVertexWithUV(d11, d12, d14, d8, d10);
+	            tessellator.addVertexWithUV(d11, d12, d15, d4, d6);
 	        }
         }
     }
@@ -797,23 +797,23 @@ public class RenderFacing
 	        {
 	            tessellator.setColorOpaque_F(renderer.colorRedTopRight, renderer.colorGreenTopRight, renderer.colorBlueTopRight);
 	            tessellator.setBrightness(renderer.brightnessTopRight);
-	            tessellator.addVertexWithUV(d12, d13, d15, d4, d6);
+	            tessellator.addVertexWithUV(d11, d13, d15, d3, d5);
 	            tessellator.setColorOpaque_F(renderer.colorRedBottomRight, renderer.colorGreenBottomRight, renderer.colorBlueBottomRight);
 	            tessellator.setBrightness(renderer.brightnessBottomRight);
-	            tessellator.addVertexWithUV(d12, d13, d14, d7, d9);
+	            tessellator.addVertexWithUV(d11, d13, d14, d7, d9);
 	            tessellator.setColorOpaque_F(renderer.colorRedBottomLeft, renderer.colorGreenBottomLeft, renderer.colorBlueBottomLeft);
 	            tessellator.setBrightness(renderer.brightnessBottomLeft);
-	            tessellator.addVertexWithUV(d11, d13, d14, d3, d5);
+	            tessellator.addVertexWithUV(d11, d12, d14, d4, d6);
 	            tessellator.setColorOpaque_F(renderer.colorRedTopLeft, renderer.colorGreenTopLeft, renderer.colorBlueTopLeft);
 	            tessellator.setBrightness(renderer.brightnessTopLeft);
-	            tessellator.addVertexWithUV(d11, d13, d15, d8, d10);
+	            tessellator.addVertexWithUV(d11, d12, d15, d8, d10);
 	        }
 	        else
 	        {
-	        	tessellator.addVertexWithUV(d12, d13, d15, d4, d6);
-	        	tessellator.addVertexWithUV(d12, d13, d14, d7, d9);
-	        	tessellator.addVertexWithUV(d11, d13, d14, d3, d5);
-	            tessellator.addVertexWithUV(d11, d13, d15, d8, d10);
+	            tessellator.addVertexWithUV(d11, d13, d15, d3, d5);
+	            tessellator.addVertexWithUV(d11, d13, d14, d7, d9);
+	            tessellator.addVertexWithUV(d11, d12, d14, d4, d6);
+	            tessellator.addVertexWithUV(d11, d12, d15, d8, d10);
 	        }
         }
         else
@@ -822,23 +822,23 @@ public class RenderFacing
 	        {
 	            tessellator.setColorOpaque_F(renderer.colorRedTopLeft, renderer.colorGreenTopLeft, renderer.colorBlueTopLeft);
 	            tessellator.setBrightness(renderer.brightnessTopLeft);
-	            tessellator.addVertexWithUV(d11, d13, d15, d8, d10);
+	            tessellator.addVertexWithUV(d11, d12, d15, d8, d10);
 	            tessellator.setColorOpaque_F(renderer.colorRedBottomLeft, renderer.colorGreenBottomLeft, renderer.colorBlueBottomLeft);
 	            tessellator.setBrightness(renderer.brightnessBottomLeft);
-	            tessellator.addVertexWithUV(d11, d13, d14, d3, d5);
+	            tessellator.addVertexWithUV(d11, d12, d14, d4, d6);
 	            tessellator.setColorOpaque_F(renderer.colorRedBottomRight, renderer.colorGreenBottomRight, renderer.colorBlueBottomRight);
 	            tessellator.setBrightness(renderer.brightnessBottomRight);
-	            tessellator.addVertexWithUV(d12, d13, d14, d7, d9);
+	            tessellator.addVertexWithUV(d11, d13, d14, d7, d9);
 	            tessellator.setColorOpaque_F(renderer.colorRedTopRight, renderer.colorGreenTopRight, renderer.colorBlueTopRight);
 	            tessellator.setBrightness(renderer.brightnessTopRight);
-	            tessellator.addVertexWithUV(d12, d13, d15, d4, d6);
+	            tessellator.addVertexWithUV(d11, d13, d15, d3, d5);
 	        }
 	        else
 	        {
-	            tessellator.addVertexWithUV(d11, d13, d15, d8, d10);
-	            tessellator.addVertexWithUV(d11, d13, d14, d3, d5);
-	            tessellator.addVertexWithUV(d12, d13, d14, d7, d9);
-	            tessellator.addVertexWithUV(d12, d13, d15, d4, d6);
+	            tessellator.addVertexWithUV(d11, d12, d15, d8, d10);
+	            tessellator.addVertexWithUV(d11, d12, d14, d4, d6);
+	            tessellator.addVertexWithUV(d11, d13, d14, d7, d9);
+	            tessellator.addVertexWithUV(d11, d13, d15, d3, d5);
 	        }
         }
     }

@@ -42,8 +42,7 @@ public class BlockFlora extends BlockFlower
     {
         for (int i = 0; i < ArtificeCore.flora.length; i++)
         {
-            String name = "artifice:" + "flora_"
-                    + ArtificeCore.flora[i].toLowerCase();
+            String name = "artifice:" + "flora_" + ArtificeCore.flora[i].toLowerCase();
             BlockFlora.textureList[i] = reg.registerIcon(name);
         }
     }

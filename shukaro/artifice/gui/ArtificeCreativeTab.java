@@ -6,8 +6,7 @@ import shukaro.artifice.ArtificeBlocks;
 
 public class ArtificeCreativeTab extends CreativeTabs
 {
-    public static final ArtificeCreativeTab tab = new ArtificeCreativeTab(
-            "Artifice");
+    public static final ArtificeCreativeTab tab = new ArtificeCreativeTab("Artifice");
     
     public ArtificeCreativeTab(String label)
     {

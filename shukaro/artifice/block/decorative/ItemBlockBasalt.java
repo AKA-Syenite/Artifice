@@ -17,7 +17,6 @@ public class ItemBlockBasalt extends ItemBlockArtifice
     {
         if (stack.getItemDamage() == 0)
             return Block.blocksList[stack.itemID].getUnlocalizedName();
-        return Block.blocksList[stack.itemID].getUnlocalizedName() + "."
-                + ArtificeCore.rocks[stack.getItemDamage()].toLowerCase();
+        return Block.blocksList[stack.itemID].getUnlocalizedName() + "." + ArtificeCore.rocks[stack.getItemDamage()].toLowerCase();
     }
 }

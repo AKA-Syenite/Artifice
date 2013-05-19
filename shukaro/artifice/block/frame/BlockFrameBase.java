@@ -49,8 +49,7 @@ public class BlockFrameBase extends BlockFrame
         super.registerIcons(reg);
         for (int i = 0; i < ArtificeCore.tiers.length; i++)
         {
-            singleTextureList[i] = reg.registerIcon("artifice:frame_"
-                    + ArtificeCore.tiers[i].toLowerCase() + "_base");
+            singleTextureList[i] = reg.registerIcon("artifice:frame_" + ArtificeCore.tiers[i].toLowerCase() + "_base");
         }
     }
 }

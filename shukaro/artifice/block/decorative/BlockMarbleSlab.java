@@ -20,15 +20,13 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockMarbleSlab extends BlockHalfSlab
 {
-    private final String[] types =
-        { "marbleBrick", "marbleCobble", "marblePaver", "marbleAntipaver" };
+    private final String[] types = { "marbleBrick", "marbleCobble", "marblePaver", "marbleAntipaver" };
     
     @SideOnly(Side.CLIENT)
     private Icon paverSide;
     
     @SideOnly(Side.CLIENT)
-    private final Icon[][] textureList = ArtificeBlocks.blockMarble
-            .getTextureList();
+    private final Icon[][] textureList = ArtificeBlocks.blockMarble.getTextureList();
     
     private ConnectedTextureBase slabRenderer;
     private ConnectedTextureBase doubleRenderer;
@@ -69,8 +67,7 @@ public class BlockMarbleSlab extends BlockHalfSlab
     
     @Override
     @SideOnly(Side.CLIENT)
-    public Icon getBlockTexture(IBlockAccess block, int x, int y, int z,
-            int side)
+    public Icon getBlockTexture(IBlockAccess block, int x, int y, int z, int side)
     {
         int meta = block.getBlockMetadata(x, y, z) & 7;
         
@@ -85,11 +82,9 @@ public class BlockMarbleSlab extends BlockHalfSlab
             else
             {
                 if (this.isDouble)
-                    return textureList[3][doubleRenderer.getBlockTexture(block,
-                            x, y, z, side)];
+                    return textureList[3][doubleRenderer.getBlockTexture(block, x, y, z, side)];
                 else
-                    return textureList[3][slabRenderer.getBlockTexture(block,
-                            x, y, z, side)];
+                    return textureList[3][slabRenderer.getBlockTexture(block, x, y, z, side)];
             }
         }
         return null;

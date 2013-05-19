@@ -57,7 +57,7 @@ public class ArtificeWorldGen implements IWorldGenerator
             }
         }
         
-        if ((ArtificeConfig.basaltWorldGen.getBoolean(true) && newGen) || (ArtificeConfig.basaltWorldGen.getBoolean(true) && ArtificeConfig.regenRock.getBoolean(false)))
+        if ((ArtificeConfig.basaltWorldGen.getBoolean(true) && newGen) || (ArtificeConfig.basaltWorldGen.getBoolean(true) && ArtificeConfig.regenBasalt.getBoolean(false)))
         {
             for (int i=0; i <ArtificeConfig.basaltFrequency.getInt(); i++)
             {
@@ -69,7 +69,7 @@ public class ArtificeWorldGen implements IWorldGenerator
             }
         }
         
-        if ((ArtificeConfig.marbleWorldGen.getBoolean(true) && newGen) || (ArtificeConfig.marbleWorldGen.getBoolean(true) && ArtificeConfig.regenRock.getBoolean(false)))
+        if ((ArtificeConfig.marbleWorldGen.getBoolean(true) && newGen) || (ArtificeConfig.marbleWorldGen.getBoolean(true) && ArtificeConfig.regenMarble.getBoolean(false)))
         {
             for (int i=0; i <ArtificeConfig.marbleFrequency.getInt(); i++)
             {

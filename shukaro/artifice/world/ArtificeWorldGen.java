@@ -59,7 +59,7 @@ public class ArtificeWorldGen implements IWorldGenerator
         
         if ((ArtificeConfig.basaltWorldGen.getBoolean(true) && newGen) || (ArtificeConfig.basaltWorldGen.getBoolean(true) && ArtificeConfig.regenBasalt.getBoolean(false)))
         {
-            for (int i=0; i <ArtificeConfig.basaltFrequency.getInt(); i++)
+            for (int i=0; i < ArtificeConfig.basaltFrequency.getInt(); i++)
             {
                 int x = chunkX * 16 + random.nextInt(16);
                 int z = chunkZ * 16 + random.nextInt(16);
@@ -71,7 +71,7 @@ public class ArtificeWorldGen implements IWorldGenerator
         
         if ((ArtificeConfig.marbleWorldGen.getBoolean(true) && newGen) || (ArtificeConfig.marbleWorldGen.getBoolean(true) && ArtificeConfig.regenMarble.getBoolean(false)))
         {
-            for (int i=0; i <ArtificeConfig.marbleFrequency.getInt(); i++)
+            for (int i=0; i < ArtificeConfig.marbleFrequency.getInt(); i++)
             {
                 int x = chunkX * 16 + random.nextInt(16);
                 int z = chunkZ * 16 + random.nextInt(16);

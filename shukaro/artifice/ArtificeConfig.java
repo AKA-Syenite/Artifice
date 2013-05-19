@@ -60,9 +60,8 @@ public class ArtificeConfig
         try
         {
             c.load();
-            idStart = c
-                    .get(Configuration.CATEGORY_BLOCK, "Block.IDStart", 3000);
-            idStart.comment = "The block ID to use as the starting point for assignment";
+            idStart = c.get(Configuration.CATEGORY_BLOCK, "Block.IDStart", 3000);
+            idStart.comment = "The block ID to use as the starting point for assignment, delete other IDs to reassign";
             
             int s = idStart.getInt();
             
@@ -70,14 +69,10 @@ public class ArtificeConfig
             blockFloraID = c.getBlock("blockFlora", s++);
             blockBasaltID = c.getBlock("blockBasalt", s++);
             blockMarbleID = c.getBlock("blockMarble", s++);
-            blockBasaltBrickStairsID = c
-                    .getBlock("blockBasaltBrickStairs", s++);
-            blockMarbleBrickStairsID = c
-                    .getBlock("blockMarbleBrickStairs", s++);
-            blockBasaltCobbleStairsID = c.getBlock("blockBasaltCobbleStairs",
-                    s++);
-            blockMarbleCobbleStairsID = c.getBlock("blockMarbleCobbleStairs",
-                    s++);
+            blockBasaltBrickStairsID = c.getBlock("blockBasaltBrickStairs", s++);
+            blockMarbleBrickStairsID = c.getBlock("blockMarbleBrickStairs", s++);
+            blockBasaltCobbleStairsID = c.getBlock("blockBasaltCobbleStairs", s++);
+            blockMarbleCobbleStairsID = c.getBlock("blockMarbleCobbleStairs", s++);
             blockBasaltSlabID = c.getBlock("blockBasaltSlab", s++);
             blockBasaltDoubleSlabID = c.getBlock("blockBasaltDoubleSlab", s++);
             blockMarbleSlabID = c.getBlock("blockMarbleSlab", s++);
@@ -98,8 +93,7 @@ public class ArtificeConfig
             marbleSize.comment = "Absolute maximum size of marble deposits in the world";
             marbleHeight = c.get("World Generation", "Marble Height", 64);
             marbleHeight.comment = "Max height to begin marble generation";
-            dimensionBlacklist = c.get("World Generation",
-                    "Dimension Blacklist", "");
+            dimensionBlacklist = c.get("World Generation", "Dimension Blacklist", "");
             dimensionBlacklist.comment = "A comma-separated list of dimension IDs to disable worldgen in.";
             regenRock = c.get("World Generation", "Regenerate Rock", false);
             regenRock.comment = "Set to true to regenerate basalt and marble";
@@ -108,23 +102,18 @@ public class ArtificeConfig
             regenKey = c.get("World Generation", "Regen Key", "DEFAULT");
             regenKey.comment = "This key is used to keep track of which chunk have been generated/regenerated. Changing it will cause the regeneration code to run again, so only change it if you want it to happen. Useful to regen only one world feature at a time.";
             
-            floraRecipes = c.get(Configuration.CATEGORY_GENERAL,
-                    "Recipes.Flora", true);
+            floraRecipes = c.get(Configuration.CATEGORY_GENERAL, "Recipes.Flora", true);
             floraRecipes.comment = "Set to false to disable flower-related recipes";
-            basaltRecipes = c.get(Configuration.CATEGORY_GENERAL,
-                    "Recipes.Basalt", true);
+            basaltRecipes = c.get(Configuration.CATEGORY_GENERAL, "Recipes.Basalt", true);
             basaltRecipes.comment = "Set to false to disable basalt recipes";
-            marbleRecipes = c.get(Configuration.CATEGORY_GENERAL,
-                    "Recipes.Marble", true);
+            marbleRecipes = c.get(Configuration.CATEGORY_GENERAL, "Recipes.Marble", true);
             marbleRecipes.comment = "Set to false to disable marble recipes";
-            floraBoneMeal = c.get(Configuration.CATEGORY_GENERAL,
-                    "Bonemeal.Flora", true);
+            floraBoneMeal = c.get(Configuration.CATEGORY_GENERAL, "Bonemeal.Flora", true);
             floraBoneMeal.comment = "Set to false to disable random flower growth from bonemeal";
         }
         catch (Exception e)
         {
-            ArtificeCore.logger.log(Level.SEVERE,
-                    "Artifice couldn't load the config file");
+            ArtificeCore.logger.log(Level.SEVERE, "Artifice couldn't load the config file");
             e.printStackTrace();
         }
         finally
@@ -133,9 +122,6 @@ public class ArtificeConfig
         }
         
         setDimBlacklist();
-        
-        ArtificeRegistry.registerDimensionBlacklist(1);
-        ArtificeRegistry.registerDimensionBlacklist(-1);
     }
     
     public static void initClient(FMLPreInitializationEvent evt)
@@ -162,8 +148,7 @@ public class ArtificeConfig
     
     public static void setConfigFolderBase(File folder)
     {
-        configFolder = new File(folder.getAbsolutePath() + "/shukaro/"
-                + ArtificeCore.modID + "/");
+        configFolder = new File(folder.getAbsolutePath() + "/shukaro/" + ArtificeCore.modID + "/");
     }
     
     public static void extractLang(String[] languages)
@@ -171,12 +156,10 @@ public class ArtificeConfig
         String langResourceBase = "/shukaro/" + ArtificeCore.modID + "/lang/";
         for (String lang : languages)
         {
-            InputStream is = ArtificeCore.instance.getClass()
-                    .getResourceAsStream(langResourceBase + lang + ".lang");
+            InputStream is = ArtificeCore.instance.getClass().getResourceAsStream(langResourceBase + lang + ".lang");
             try
             {
-                File f = new File(configFolder.getAbsolutePath() + "/lang/"
-                        + lang + ".lang");
+                File f = new File(configFolder.getAbsolutePath() + "/lang/" + lang + ".lang");
                 if (!f.exists())
                     f.getParentFile().mkdirs();
                 OutputStream os = new FileOutputStream(f);
@@ -214,8 +197,7 @@ public class ArtificeConfig
                 Properties langPack = new Properties();
                 langPack.load(new FileInputStream(langFile));
                 String lang = langFile.getName().replace(".lang", "");
-                LanguageRegistry.instance().addStringLocalization(langPack,
-                        lang);
+                LanguageRegistry.instance().addStringLocalization(langPack, lang);
             }
             catch (FileNotFoundException x)
             {

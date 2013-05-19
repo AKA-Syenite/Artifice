@@ -16,6 +16,7 @@ public class WorldTicker implements ITickHandler
 {
     public static HashMap chunksToGen = new HashMap();
     long tickTime = 0L;
+    int count = 0;
     
     @Override
     public void tickStart(EnumSet<TickType> type, Object... tickData)
@@ -29,7 +30,6 @@ public class WorldTicker implements ITickHandler
         int dim = world.provider.dimensionId;
         this.tickTime = System.currentTimeMillis();
         
-        int count = 0;
         ArrayList chunks = (ArrayList) chunksToGen.get(Integer.valueOf(dim));
         
         if ((chunks != null) && (chunks.size() > 0))
@@ -41,17 +41,14 @@ public class WorldTicker implements ITickHandler
             long xSeed = rand.nextLong() >> 3;
             long zSeed = rand.nextLong() >> 3;
             rand.setSeed(xSeed * c.chunkX + zSeed * c.chunkZ ^ worldSeed);
-            ArtificeCore.worldGen.generateWorld(rand, c.chunkX, c.chunkZ,
-                    world, false);
+            ArtificeCore.worldGen.generateWorld(rand, c.chunkX, c.chunkZ, world, false);
             chunks.remove(0);
             chunksToGen.put(Integer.valueOf(dim), chunks);
         }
         
         if (count > 0)
         {
-            ArtificeCore.logger
-                    .log(Level.INFO, "Regenerated " + count + " chunks. "
-                            + Math.max(0, chunks.size()) + " chunks left");
+            ArtificeCore.logger.log(Level.INFO, "Regenerated " + count + " chunks. " + Math.max(0, chunks.size()) + " chunks left");
         }
     }
     
@@ -64,7 +61,7 @@ public class WorldTicker implements ITickHandler
     @Override
     public String getLabel()
     {
-        return null;
+        return "Artifice";
     }
     
 }

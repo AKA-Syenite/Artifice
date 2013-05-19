@@ -148,12 +148,12 @@ public class ArtificeConfig
     
     public static void setConfigFolderBase(File folder)
     {
-        configFolder = new File(folder.getAbsolutePath() + "/shukaro/" + ArtificeCore.modID + "/");
+        configFolder = new File(folder.getAbsolutePath() + "/shukaro/artifice/");
     }
     
     public static void extractLang(String[] languages)
     {
-        String langResourceBase = "/shukaro/" + ArtificeCore.modID + "/lang/";
+        String langResourceBase = "/shukaro/artifice/lang/";
         for (String lang : languages)
         {
             InputStream is = ArtificeCore.instance.getClass().getResourceAsStream(langResourceBase + lang + ".lang");

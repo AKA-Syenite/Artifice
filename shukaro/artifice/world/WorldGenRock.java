@@ -17,6 +17,12 @@ public class WorldGenRock extends WorldGenerator
     private final int size;
     private final List<Integer> replacedIDs;
     private final int maxHeight;
+    private int x1;
+    private int y1;
+    private int z1;
+    private BlockCoord coord = new BlockCoord();
+    private List<BlockCoord> primary = new ArrayList<BlockCoord>();
+    private List<BlockCoord> secondary = new ArrayList<BlockCoord>();
     
     public WorldGenRock(int id, int size)
     {
@@ -40,15 +46,15 @@ public class WorldGenRock extends WorldGenerator
     @Override
     public boolean generate(World world, Random rand, int x, int y, int z)
     {
-        List<BlockCoord> primary = new ArrayList<BlockCoord>();
-        List<BlockCoord> secondary = new ArrayList<BlockCoord>();
+        primary.clear();
+        secondary.clear();
         
         for (int i = 0; i < 64; i++)
         {
-            int x1 = x + rand.nextInt(8) - rand.nextInt(8);
-            int y1 = y + rand.nextInt(4) - rand.nextInt(4);
-            int z1 = z + rand.nextInt(8) - rand.nextInt(8);
-            BlockCoord coord = new BlockCoord(x1, y1, z1);
+            x1 = x + rand.nextInt(8) - rand.nextInt(8);
+            y1 = y + rand.nextInt(4) - rand.nextInt(4);
+            z1 = z + rand.nextInt(8) - rand.nextInt(8);
+            coord.set(x1, y1, z1);
             
             if (canGenHere(world, coord, false) && coord.y < maxHeight)
             {

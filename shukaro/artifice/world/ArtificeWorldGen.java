@@ -7,6 +7,7 @@ import net.minecraft.block.Block;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.chunk.IChunkProvider;
+import net.minecraft.world.gen.ChunkProviderFlat;
 import shukaro.artifice.ArtificeBlocks;
 import shukaro.artifice.ArtificeConfig;
 import shukaro.artifice.compat.ArtificeRegistry;
@@ -15,6 +16,7 @@ import cpw.mods.fml.common.IWorldGenerator;
 public class ArtificeWorldGen implements IWorldGenerator
 {
     private static List<Integer> blacklistedDimensions;
+    private static List<String> blacklistedWorldTypes;
     
     @Override
     public void generate(Random random, int chunkX, int chunkZ, World world, IChunkProvider chunkGenerator, IChunkProvider chunkProvider)
@@ -27,7 +29,13 @@ public class ArtificeWorldGen implements IWorldGenerator
         if (blacklistedDimensions == null)
             blacklistedDimensions = ArtificeRegistry.getDimensionBlacklist();
         
+        if (blacklistedWorldTypes == null)
+            blacklistedWorldTypes = ArtificeRegistry.getWorldTypeBlacklist();
+        
         if (blacklistedDimensions.contains(world.provider.dimensionId))
+            return;
+        
+        if (blacklistedWorldTypes.contains(world.getWorldInfo().getTerrainType().getWorldTypeName()))
             return;
         
         int x = chunkX * 16 + random.nextInt(16);

@@ -49,8 +49,7 @@ public class BlockArtifice extends Block
             int side)
     {
         if (textureRenderer != null)
-            return textureList[block.getBlockMetadata(x, y, z)][textureRenderer
-                    .getBlockTexture(block, x, y, z, side)];
+            return textureList[block.getBlockMetadata(x, y, z)][textureRenderer.getBlockTexture(block, x, y, z, side)];
         return this.getIcon(side, block.getBlockMetadata(x, y, z));
     }
     
@@ -62,9 +61,7 @@ public class BlockArtifice extends Block
         {
             for (int j = 0; j < 47; j++)
             {
-                String name = "artifice:" + this.textureName + "/"
-                        + this.textureName + "_"
-                        + ArtificeCore.tiers[i].toLowerCase() + "_" + j;
+                String name = "artifice:" + this.textureName + "/" + this.textureName + "_" + ArtificeCore.tiers[i].toLowerCase() + "_" + j;
                 this.textureList[i][j] = reg.registerIcon(name);
             }
         }

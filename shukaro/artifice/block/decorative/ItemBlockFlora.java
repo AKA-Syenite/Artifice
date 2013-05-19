@@ -25,7 +25,6 @@ public class ItemBlockFlora extends ItemBlockArtifice
     @Override
     public String getUnlocalizedName(ItemStack stack)
     {
-        return Block.blocksList[stack.itemID].getUnlocalizedName() + "."
-                + ArtificeCore.flora[stack.getItemDamage()].toLowerCase();
+        return Block.blocksList[stack.itemID].getUnlocalizedName() + "." + ArtificeCore.flora[stack.getItemDamage()].toLowerCase();
     }
 }

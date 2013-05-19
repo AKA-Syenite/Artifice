@@ -20,15 +20,13 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockBasaltSlab extends BlockHalfSlab
 {
-    private final String[] types =
-        { "basaltBrick", "basaltCobble", "basaltPaver", "basaltAntipaver" };
+    private final String[] types = { "basaltBrick", "basaltCobble", "basaltPaver", "basaltAntipaver" };
     
     @SideOnly(Side.CLIENT)
     private Icon paverSide;
     
     @SideOnly(Side.CLIENT)
-    private final Icon[][] textureList = ArtificeBlocks.blockBasalt
-            .getTextureList();
+    private final Icon[][] textureList = ArtificeBlocks.blockBasalt.getTextureList();
     
     private ConnectedTextureBase slabRenderer;
     private ConnectedTextureBase doubleRenderer;
@@ -85,11 +83,9 @@ public class BlockBasaltSlab extends BlockHalfSlab
             else
             {
                 if (this.isDouble)
-                    return textureList[3][doubleRenderer.getBlockTexture(block,
-                            x, y, z, side)];
+                    return textureList[3][doubleRenderer.getBlockTexture(block, x, y, z, side)];
                 else
-                    return textureList[3][slabRenderer.getBlockTexture(block,
-                            x, y, z, side)];
+                    return textureList[3][slabRenderer.getBlockTexture(block, x, y, z, side)];
             }
         }
         return null;

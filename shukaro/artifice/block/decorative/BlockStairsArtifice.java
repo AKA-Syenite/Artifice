@@ -12,7 +12,6 @@ public class BlockStairsArtifice extends BlockStairs
         super(id, block, meta);
         setLightOpacity(0);
         setCreativeTab(ArtificeCreativeTab.tab);
-        setUnlocalizedName(block.getUnlocalizedName2() + ".stairs."
-                + ArtificeCore.rocks[meta].toLowerCase());
+        setUnlocalizedName(block.getUnlocalizedName2() + ".stairs." + ArtificeCore.rocks[meta].toLowerCase());
     }
 }

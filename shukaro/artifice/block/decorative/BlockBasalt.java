@@ -41,13 +41,11 @@ public class BlockBasalt extends BlockArtifice
     
     @Override
     @SideOnly(Side.CLIENT)
-    public Icon getBlockTexture(IBlockAccess block, int x, int y, int z,
-            int side)
+    public Icon getBlockTexture(IBlockAccess block, int x, int y, int z, int side)
     {
         int meta = block.getBlockMetadata(x, y, z);
         if (meta == 3 || meta == 4)
-            return textureList[3][textureRenderer.getBlockTexture(block, x, y,
-                    z, side)];
+            return textureList[3][textureRenderer.getBlockTexture(block, x, y, z, side)];
         else
             return singleTextureList[meta];
     }
@@ -61,8 +59,7 @@ public class BlockBasalt extends BlockArtifice
         {
             if (i != 3 && i != 4)
             {
-                String name = "artifice:basalt_"
-                        + ArtificeCore.rocks[i].toLowerCase();
+                String name = "artifice:basalt_" + ArtificeCore.rocks[i].toLowerCase();
                 this.singleTextureList[i] = reg.registerIcon(name);
             }
         }

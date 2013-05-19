@@ -42,8 +42,7 @@ public abstract class BlockFrame extends BlockArtifice
     
     @Override
     @SideOnly(Side.CLIENT)
-    public boolean shouldSideBeRendered(IBlockAccess world, int x, int y,
-            int z, int side)
+    public boolean shouldSideBeRendered(IBlockAccess world, int x, int y, int z, int side)
     {
         return true;
     }

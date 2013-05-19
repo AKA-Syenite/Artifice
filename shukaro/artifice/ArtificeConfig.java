@@ -36,12 +36,15 @@ public class ArtificeConfig
     public static Property blockRefractoryID;
     
     public static Property floraWorldGen;
+    public static Property floraFrequency;
     public static Property basaltWorldGen;
     public static Property basaltSize;
     public static Property basaltHeight;
+    public static Property basaltFrequency;
     public static Property marbleWorldGen;
     public static Property marbleSize;
     public static Property marbleHeight;
+    public static Property marbleFrequency;
     public static Property floraRecipes;
     public static Property basaltRecipes;
     public static Property marbleRecipes;
@@ -81,18 +84,24 @@ public class ArtificeConfig
             
             floraWorldGen = c.get("World Generation", "Generate Flora", true);
             floraWorldGen.comment = "Whether or not to generate flora during map generation";
+            floraFrequency = c.get("World Generation", "Flora Frequency", 1);
+            floraFrequency.comment = "Number of times to attempt to place flora in each chunk";
             basaltWorldGen = c.get("World Generation", "Generate Basalt", true);
             basaltWorldGen.comment = "Whether or not to generate basalt during map generation";
             basaltSize = c.get("World Generation", "Basalt Size", 20000);
             basaltSize.comment = "Absolute maximum size of basalt deposits in the world";
             basaltHeight = c.get("World Generation", "Basalt Height", 64);
             basaltHeight.comment = "Max height to begin basalt generation";
+            basaltFrequency = c.get("World Generation", "Basalt Frequency", 1);
+            basaltFrequency.comment = "Number of times to attempt to place basalt in each chunk";
             marbleWorldGen = c.get("World Generation", "Generate Marble", true);
             marbleWorldGen.comment = "Whether or not to generate marble during map generation";
             marbleSize = c.get("World Generation", "Marble Size", 20000);
             marbleSize.comment = "Absolute maximum size of marble deposits in the world";
             marbleHeight = c.get("World Generation", "Marble Height", 64);
             marbleHeight.comment = "Max height to begin marble generation";
+            marbleFrequency = c.get("World Generation", "Marble Frequency", 1);
+            marbleFrequency.comment = "Number of times to attempt to place marble in each chunk";
             dimensionBlacklist = c.get("World Generation", "Dimension Blacklist", "");
             dimensionBlacklist.comment = "A comma-separated list of dimension IDs to disable worldgen in.";
             regenRock = c.get("World Generation", "Regenerate Rock", false);

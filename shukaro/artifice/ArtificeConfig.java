@@ -49,7 +49,8 @@ public class ArtificeConfig
     public static Property basaltRecipes;
     public static Property marbleRecipes;
     public static Property floraBoneMeal;
-    public static Property regenRock;
+    public static Property regenBasalt;
+    public static Property regenMarble;
     public static Property regenFlora;
     public static Property regenKey;
     
@@ -104,8 +105,10 @@ public class ArtificeConfig
             marbleFrequency.comment = "Number of times to attempt to place marble in each chunk";
             dimensionBlacklist = c.get("World Generation", "Dimension Blacklist", "");
             dimensionBlacklist.comment = "A comma-separated list of dimension IDs to disable worldgen in.";
-            regenRock = c.get("World Generation", "Regenerate Rock", false);
-            regenRock.comment = "Set to true to regenerate basalt and marble";
+            regenBasalt = c.get("World Generation", "Regenerate Basalt", false);
+            regenBasalt.comment = "Set to true to regenerate basalt";
+            regenMarble = c.get("World Generation", "Regenerate Marble", false);
+            regenMarble.comment = "Set to true to regenerate marble";
             regenFlora = c.get("World Generation", "Regenerate Flora", false);
             regenFlora.comment = "Set to true to regenerate flowers";
             regenKey = c.get("World Generation", "Regen Key", "DEFAULT");

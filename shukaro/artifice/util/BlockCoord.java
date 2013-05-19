@@ -138,8 +138,7 @@ public class BlockCoord implements Comparable
         }
     }
     
-    public ForgeDirection getOppositeDirectionFromSourceCoords(int x, int y,
-            int z)
+    public ForgeDirection getOppositeDirectionFromSourceCoords(int x, int y, int z)
     {
         if (this.x < x)
         {
@@ -268,8 +267,7 @@ public class BlockCoord implements Comparable
     
     public int[] intArray()
     {
-        return new int[]
-            { this.x, this.y, this.z };
+        return new int[] { this.x, this.y, this.z };
     }
     
     public BlockCoord copy()

@@ -8,9 +8,7 @@ public class ClientProxy extends CommonProxy
 {
     public static void init()
     {
-        ArtificeCore.frameRenderID = RenderingRegistry
-                .getNextAvailableRenderId();
-        RenderingRegistry.registerBlockHandler(ArtificeCore.frameRenderID,
-                new FrameRenderer());
+        ArtificeCore.frameRenderID = RenderingRegistry.getNextAvailableRenderId();
+        RenderingRegistry.registerBlockHandler(ArtificeCore.frameRenderID, new FrameRenderer());
     }
 }

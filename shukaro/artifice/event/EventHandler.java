@@ -34,23 +34,14 @@ public class EventHandler
         if (dimBlacklist.contains(dim))
             return;
         
-        if ((!e.getData().getString("Artifice")
-                .equals(ArtificeConfig.regenKey.getString()))
-                && (ArtificeConfig.regenFlora.getBoolean(false) || (ArtificeConfig.regenRock
-                        .getBoolean(false))))
+        if ((!e.getData().getString("Artifice").equals(ArtificeConfig.regenKey.getString())) && (ArtificeConfig.regenFlora.getBoolean(false) || (ArtificeConfig.regenRock.getBoolean(false))))
         {
-            ArtificeCore.logger.log(Level.WARNING,
-                    "World gen was never run for chunk at "
-                            + e.getChunk().getChunkCoordIntPair()
-                            + ". Adding to queue for regeneration.");
-            ArrayList chunks = (ArrayList) WorldTicker.chunksToGen.get(Integer
-                    .valueOf(dim));
+            ArtificeCore.logger.log(Level.WARNING, "World gen was never run for chunk at " + e.getChunk().getChunkCoordIntPair() + ". Adding to queue for regeneration.");
+            ArrayList chunks = (ArrayList) WorldTicker.chunksToGen.get(Integer.valueOf(dim));
             if (chunks == null)
             {
-                WorldTicker.chunksToGen.put(Integer.valueOf(dim),
-                        new ArrayList());
-                chunks = (ArrayList) WorldTicker.chunksToGen.get(Integer
-                        .valueOf(dim));
+                WorldTicker.chunksToGen.put(Integer.valueOf(dim), new ArrayList());
+                chunks = (ArrayList) WorldTicker.chunksToGen.get(Integer.valueOf(dim));
             }
             if (chunks != null)
             {

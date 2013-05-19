@@ -2,10 +2,13 @@ package shukaro.artifice.block.frame;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import shukaro.artifice.ArtificeCore;
 import shukaro.artifice.block.BlockArtifice;
+import shukaro.artifice.multiblock.TileEntityMultiblock;
+import shukaro.artifice.multiblock.erogenousbeef.IMultiblockPart;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -49,5 +52,21 @@ public abstract class BlockFrame extends BlockArtifice
     public int getRenderType()
     {
         return ArtificeCore.frameRenderID;
+    }
+    
+    @Override
+    public void onBlockAdded(World world, int x, int y, int z)
+    {
+        TileEntity te = world.getBlockTileEntity(x, y, z);
+        if (te != null && te instanceof IMultiblockPart)
+        {
+            ((IMultiblockPart)te).onBlockAdded(world, x, y, z);
+        }
+    }
+    
+    @Override
+    public TileEntity createTileEntity(World world, int meta)
+    {
+        return new TileEntityMultiblock();
     }
 }

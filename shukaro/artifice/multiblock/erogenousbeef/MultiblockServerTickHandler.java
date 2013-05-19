@@ -41,6 +41,6 @@ public class MultiblockServerTickHandler implements ITickHandler
     @Override
     public String getLabel()
     {
-        return "BigReactors:MultiblockServerTickHandler";
+        return "Artifice:MultiblockServerTickHandler";
     }
 }

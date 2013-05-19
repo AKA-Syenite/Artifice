@@ -4,6 +4,7 @@ import java.util.logging.Logger;
 
 import net.minecraftforge.common.MinecraftForge;
 import shukaro.artifice.event.EventHandler;
+import shukaro.artifice.multiblock.TileEntityMultiblock;
 import shukaro.artifice.net.ClientProxy;
 import shukaro.artifice.net.CommonProxy;
 import shukaro.artifice.world.ArtificeWorldGen;
@@ -26,7 +27,7 @@ public class ArtificeCore
     @SidedProxy(clientSide = "shukaro.artifice.net.ClientProxy", serverSide = "shukaro.artifice.net.CommonProxy")
     public static CommonProxy proxy;
     
-    public static final String modID = "artifice";
+    public static final String modID = "Artifice";
     public static final String modName = "Artifice";
     public static final String modVersion = "1.5.2R1.0";
     
@@ -36,12 +37,9 @@ public class ArtificeCore
     
     public static int frameRenderID;
     
-    public static String[] tiers =
-        { "Basic", "Reinforced", "Industrial", "Advanced" };
-    public static String[] flora =
-        { "Bluebell", "Orchid", "Iris", "Lotus" };
-    public static String[] rocks =
-        { "", "Cobblestone", "Brick", "Paver", "Antipaver", "Chiseled" };
+    public static String[] tiers = { "Basic", "Reinforced", "Industrial", "Advanced" };
+    public static String[] flora = { "Bluebell", "Orchid", "Iris", "Lotus" };
+    public static String[] rocks = { "", "Cobblestone", "Brick", "Paver", "Antipaver", "Chiseled" };
     
     @Instance(modID)
     public static ArtificeCore instance;
@@ -60,8 +58,7 @@ public class ArtificeCore
         ArtificeConfig.initCommon(evt);
         ArtificeConfig.initClient(evt);
         
-        ArtificeConfig.extractLang(new String[]
-            { "en_US" });
+        ArtificeConfig.extractLang(new String[] { "en_US" });
         ArtificeConfig.loadLang();
         
         logger = evt.getModLog();
@@ -76,8 +73,7 @@ public class ArtificeCore
     {
         ArtificeBlocks.initBlocks();
         
-        GameRegistry
-                .registerWorldGenerator(ArtificeCore.worldGen = new ArtificeWorldGen());
+        GameRegistry.registerWorldGenerator(ArtificeCore.worldGen = new ArtificeWorldGen());
         
         if (ArtificeConfig.floraBoneMeal.getBoolean(true))
         {
@@ -88,6 +84,8 @@ public class ArtificeCore
         }
         
         ArtificeRecipes.registerRecipes();
+        
+        GameRegistry.registerTileEntity(TileEntityMultiblock.class, "ArtificeMultiblock");
     }
     
     @PostInit

@@ -7,6 +7,7 @@ import java.util.Random;
 import net.minecraft.block.Block;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenerator;
+import shukaro.artifice.compat.ArtificeRegistry;
 import shukaro.artifice.util.BlockCoord;
 
 public class WorldGenRock extends WorldGenerator
@@ -14,17 +15,20 @@ public class WorldGenRock extends WorldGenerator
     private final int blockID;
     private final int blockMeta;
     private final int size;
-    private final int[] replacedIDs;
+    private final List<Integer> replacedIDs;
     private final int maxHeight;
     
     public WorldGenRock(int id, int size)
     {
-        this(id, 0, size, new int[]
-            { Block.stone.blockID }, 255);
+        this(id, 0, size, ArtificeRegistry.getStoneTypes(), 255);
     }
     
-    public WorldGenRock(int id, int meta, int size, int[] replaced,
-            int maxHeight)
+    public WorldGenRock(int id, int size, int maxHeight)
+    {
+        this(id, 0, size, ArtificeRegistry.getStoneTypes(), maxHeight);
+    }
+    
+    public WorldGenRock(int id, int meta, int size, List<Integer> replaced, int maxHeight)
     {
         this.blockID = id;
         this.blockMeta = meta;
@@ -69,11 +73,9 @@ public class WorldGenRock extends WorldGenerator
                         if (rand.nextInt(100) < 60)
                             coord.set(primary.get(rand.nextInt(primary.size())));
                         else
-                            coord.set(secondary.get(rand.nextInt(secondary
-                                    .size())));
+                            coord.set(secondary.get(rand.nextInt(secondary.size())));
                     }
-                    world.setBlock(coord.x, coord.y, coord.z, blockID,
-                            blockMeta, 2);
+                    world.setBlock(coord.x, coord.y, coord.z, blockID, blockMeta, 2);
                 }
                 return true;
             }
@@ -90,13 +92,9 @@ public class WorldGenRock extends WorldGenerator
             {
                 for (BlockCoord near : c.getNearby())
                 {
-                    if (Block.blocksList[world.getBlockId(near.x, near.y,
-                            near.z)] == null
-                            || !Block.blocksList[world.getBlockId(near.x,
-                                    near.y, near.z)].isOpaqueCube())
+                    if (Block.blocksList[world.getBlockId(near.x, near.y, near.z)] == null || !Block.blocksList[world.getBlockId(near.x, near.y, near.z)].isOpaqueCube())
                         return true;
-                    if (includeSelf
-                            && world.getBlockId(near.x, near.y, near.z) == this.blockID)
+                    if (includeSelf && world.getBlockId(near.x, near.y, near.z) == this.blockID)
                         return true;
                 }
             }

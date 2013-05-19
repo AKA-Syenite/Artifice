@@ -64,8 +64,7 @@ public class RenderBlocksImproved
                         x, y, z, f, f1, f2, meta, inverted);
     }
     
-    private boolean func_102027_b(RenderBlocks renderer, Block block, int x,
-            int y, int z, float r, float g, float b, int meta, boolean inverted)
+    private boolean func_102027_b(RenderBlocks renderer, Block block, int x,int y, int z, float r, float g, float b, int meta, boolean inverted)
     {
         connectBottom = false;
         connectTop = false;

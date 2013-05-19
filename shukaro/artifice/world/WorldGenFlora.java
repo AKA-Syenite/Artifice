@@ -2,6 +2,7 @@ package shukaro.artifice.world;
 
 import java.util.Random;
 
+import net.minecraft.block.Block;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenerator;
 import shukaro.artifice.ArtificeBlocks;
@@ -35,7 +36,7 @@ public class WorldGenFlora extends WorldGenerator
             y1 = y + rand.nextInt(4) - rand.nextInt(4);
             z1 = z + rand.nextInt(8) - rand.nextInt(8);
             
-            if (world.isAirBlock(x1, y1, z1) && (!world.provider.hasNoSky || y1 < 127) && ArtificeBlocks.blockFlora.canBlockStay(world, x1, y1, z1))
+            if ((world.isAirBlock(x1, y1, z1) || (world.getBlockId(x1, y1, z1) == Block.snow.blockID)) && (!world.provider.hasNoSky || y1 < 127) && ArtificeBlocks.blockFlora.canBlockStay(world, x1, y1, z1))
             {
                 world.setBlock(x1, y1, z1, ArtificeBlocks.blockFlora.blockID, type, 2);
             }

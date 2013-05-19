@@ -86,8 +86,7 @@ public class TransparentConnectedTexture extends ConnectedTextureBase
     }
     
     @Override
-    public boolean canConnectOnSide(IBlockAccess blockAccess, BlockCoord coord,
-            int side, int face)
+    public boolean canConnectOnSide(IBlockAccess blockAccess, BlockCoord coord, int side, int face)
     {
         BlockCoord copy = coord.copy();
         

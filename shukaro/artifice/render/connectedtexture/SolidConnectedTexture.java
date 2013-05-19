@@ -86,8 +86,7 @@ public class SolidConnectedTexture extends ConnectedTextureBase
     }
     
     @Override
-    public boolean canConnectOnSide(IBlockAccess blockAccess, BlockCoord coord,
-            int side, int face)
+    public boolean canConnectOnSide(IBlockAccess blockAccess, BlockCoord coord, int side, int face)
     {
         BlockCoord copy = coord.copy();
         
@@ -99,10 +98,7 @@ public class SolidConnectedTexture extends ConnectedTextureBase
         int blockAboveMeta = getBlockMeta(blockAccess, copy.offset(face));
         
         if (Block.blocksList[blockAbove] != null)
-            return (block == this.blockID)
-                    && (blockMeta == thisMeta)
-                    && ((blockAbove != this.blockID) || (blockAboveMeta != thisMeta))
-                    && (!Block.blocksList[blockAbove].isOpaqueCube());
+            return (block == this.blockID) && (blockMeta == thisMeta) && ((blockAbove != this.blockID) || (blockAboveMeta != thisMeta)) && (!Block.blocksList[blockAbove].isOpaqueCube());
         
         return (block == this.blockID) && (blockMeta == thisMeta);
     }

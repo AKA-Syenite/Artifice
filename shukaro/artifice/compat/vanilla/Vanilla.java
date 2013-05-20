@@ -17,7 +17,13 @@ public class Vanilla
     {
         ArtificeRegistry.registerDimensionBlacklist(1);
         ArtificeRegistry.registerDimensionBlacklist(-1);
+        
         ArtificeRegistry.registerStoneType(Block.stone.blockID);
+        
         ArtificeRegistry.registerWorldTypeBlacklist("flat");
+        
+        ArtificeRegistry.registerFloraBlacklist("Swampland");
+        ArtificeRegistry.registerFloraBlacklist("MushroomIsland");
+        ArtificeRegistry.registerFloraBlacklist("MushroomIslandShore");
     }
 }

@@ -45,8 +45,7 @@ public class BlockArtifice extends Block
     
     @Override
     @SideOnly(Side.CLIENT)
-    public Icon getBlockTexture(IBlockAccess block, int x, int y, int z,
-            int side)
+    public Icon getBlockTexture(IBlockAccess block, int x, int y, int z, int side)
     {
         if (textureRenderer != null)
             return textureList[block.getBlockMetadata(x, y, z)][textureRenderer.getBlockTexture(block, x, y, z, side)];

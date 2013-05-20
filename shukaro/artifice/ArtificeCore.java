@@ -38,7 +38,7 @@ public class ArtificeCore
     public static int frameRenderID;
     
     public static String[] tiers = { "Basic", "Reinforced", "Industrial", "Advanced" };
-    public static String[] flora = { "Bluebell", "Orchid", "Iris", "Lotus" };
+    public static String[] flora = { "Bluebell", "Orchid", "Iris", "Lotus", "LotusClosed"};
     public static String[] rocks = { "", "Cobblestone", "Brick", "Paver", "Antipaver", "Chiseled" };
     
     @Instance(modID)

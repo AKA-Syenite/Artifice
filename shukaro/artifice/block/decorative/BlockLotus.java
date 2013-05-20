@@ -35,9 +35,9 @@ public class BlockLotus extends BlockLilyPad
     {
         int meta = world.getBlockMetadata(x, y, z);
         
-        if (meta == 0 && (world.getWorldTime() > 12000))
+        if (meta == 0 && (world.getBlockLightValue(x, y, z) < 8))
             world.setBlockMetadataWithNotify(x, y, z, 1, 2);
-        if (meta == 1 && (world.getWorldTime() <= 12000))
+        if (meta == 1 && (world.getBlockLightValue(x, y, z) >= 8))
             world.setBlockMetadataWithNotify(x, y, z, 0, 2);
     }
     

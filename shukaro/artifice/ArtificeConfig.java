@@ -23,6 +23,7 @@ public class ArtificeConfig
     
     public static Property blockFrameID;
     public static Property blockFloraID;
+    public static Property blockLotusID;
     public static Property blockBasaltID;
     public static Property blockMarbleID;
     public static Property blockBasaltBrickStairsID;
@@ -37,6 +38,8 @@ public class ArtificeConfig
     
     public static Property floraWorldGen;
     public static Property floraFrequency;
+    public static Property lotusWorldGen;
+    public static Property lotusFrequency;
     public static Property basaltWorldGen;
     public static Property basaltSize;
     public static Property basaltHeight;
@@ -52,6 +55,7 @@ public class ArtificeConfig
     public static Property regenBasalt;
     public static Property regenMarble;
     public static Property regenFlora;
+    public static Property regenLotus;
     public static Property regenKey;
     
     public static Property dimensionBlacklist;
@@ -65,7 +69,7 @@ public class ArtificeConfig
         {
             c.load();
             idStart = c.get(Configuration.CATEGORY_BLOCK, "Block.IDStart", 3000);
-            idStart.comment = "The block ID to use as the starting point for assignment, delete other IDs to reassign";
+            idStart.comment = "The block ID to use as the starting point for assignment, delete the other IDs to reassign";
             
             int s = idStart.getInt();
             
@@ -82,13 +86,18 @@ public class ArtificeConfig
             blockMarbleSlabID = c.getBlock("blockMarbleSlab", s++);
             blockMarbleDoubleSlabID = c.getBlock("blockMarbleDoubleSlab", s++);
             blockRefractoryID = c.getBlock("blockRefractory", s++);
+            blockLotusID = c.getBlock("blockLotus", s++);
             
-            floraWorldGen = c.get("World Generation", "Generate Flora", true);
-            floraWorldGen.comment = "Whether or not to generate flora during map generation";
-            floraFrequency = c.get("World Generation", "Flora Frequency", 1);
-            floraFrequency.comment = "Number of times to attempt to place flora in each chunk";
+            floraWorldGen = c.get("World Generation", "Generate Flowers", true);
+            floraWorldGen.comment = "Whether or not to generate flowers";
+            floraFrequency = c.get("World Generation", "Flower Frequency", 1);
+            floraFrequency.comment = "Number of times to attempt to place flowers in each chunk";
+            lotusWorldGen = c.get("World Generation", "Generate Lotus Lilies", true);
+            lotusWorldGen.comment = "Whether or not to generate lotus lilies";
+            lotusFrequency = c.get("World Generation", "Lotus Liy Frequency", 1);
+            lotusFrequency.comment = "Number of times to attempt to place lotus lilies in each chunk";
             basaltWorldGen = c.get("World Generation", "Generate Basalt", true);
-            basaltWorldGen.comment = "Whether or not to generate basalt during map generation";
+            basaltWorldGen.comment = "Whether or not to generate basalt";
             basaltSize = c.get("World Generation", "Basalt Size", 20000);
             basaltSize.comment = "Absolute maximum size of basalt deposits in the world";
             basaltHeight = c.get("World Generation", "Basalt Height", 64);
@@ -96,7 +105,7 @@ public class ArtificeConfig
             basaltFrequency = c.get("World Generation", "Basalt Frequency", 1);
             basaltFrequency.comment = "Number of times to attempt to place basalt in each chunk";
             marbleWorldGen = c.get("World Generation", "Generate Marble", true);
-            marbleWorldGen.comment = "Whether or not to generate marble during map generation";
+            marbleWorldGen.comment = "Whether or not to generate marble";
             marbleSize = c.get("World Generation", "Marble Size", 20000);
             marbleSize.comment = "Absolute maximum size of marble deposits in the world";
             marbleHeight = c.get("World Generation", "Marble Height", 64);
@@ -111,16 +120,18 @@ public class ArtificeConfig
             regenMarble.comment = "Set to true to regenerate marble";
             regenFlora = c.get("World Generation", "Regenerate Flora", false);
             regenFlora.comment = "Set to true to regenerate flowers";
+            regenLotus = c.get("World Generation", "Regenerate Lotus Lilies", false);
+            regenLotus.comment = "Set to true to regenerate lotus lilies";
             regenKey = c.get("World Generation", "Regen Key", "DEFAULT");
             regenKey.comment = "This key is used to keep track of which chunk have been generated/regenerated. Changing it will cause the regeneration code to run again, so only change it if you want it to happen. Useful to regen only one world feature at a time.";
             
-            floraRecipes = c.get(Configuration.CATEGORY_GENERAL, "Recipes.Flora", true);
+            floraRecipes = c.get(Configuration.CATEGORY_GENERAL, "Flower Recipes", true);
             floraRecipes.comment = "Set to false to disable flower-related recipes";
-            basaltRecipes = c.get(Configuration.CATEGORY_GENERAL, "Recipes.Basalt", true);
+            basaltRecipes = c.get(Configuration.CATEGORY_GENERAL, "Basalt Recipes", true);
             basaltRecipes.comment = "Set to false to disable basalt recipes";
-            marbleRecipes = c.get(Configuration.CATEGORY_GENERAL, "Recipes.Marble", true);
+            marbleRecipes = c.get(Configuration.CATEGORY_GENERAL, "Marble Recipes", true);
             marbleRecipes.comment = "Set to false to disable marble recipes";
-            floraBoneMeal = c.get(Configuration.CATEGORY_GENERAL, "Bonemeal.Flora", true);
+            floraBoneMeal = c.get(Configuration.CATEGORY_GENERAL, "Bonemeal Flowers", true);
             floraBoneMeal.comment = "Set to false to disable random flower growth from bonemeal";
         }
         catch (Exception e)

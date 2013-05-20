@@ -9,6 +9,7 @@ public abstract class ArtificeRegistry
     private static List<Integer> dimensionBlacklist = new ArrayList<Integer>();
     private static List<Integer> stoneTypes = new ArrayList<Integer>();
     private static List<String> worldTypeBlacklist = new ArrayList<String>();
+    private static List<String> lotusWhitelist = new ArrayList<String>();
     
     public static void registerFloraBlacklist(String biome)
     {
@@ -52,5 +53,16 @@ public abstract class ArtificeRegistry
     public static List<String> getWorldTypeBlacklist()
     {
         return worldTypeBlacklist;
+    }
+    
+    public static void registerLotusWhitelist(String biome)
+    {
+        if (!lotusWhitelist.contains(biome))
+            lotusWhitelist.add(biome);
+    }
+    
+    public static List<String> getLotusWhitelist()
+    {
+        return lotusWhitelist;
     }
 }

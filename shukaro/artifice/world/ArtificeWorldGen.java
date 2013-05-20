@@ -61,6 +61,22 @@ public class ArtificeWorldGen implements IWorldGenerator
             }
         }
         
+        if ((ArtificeConfig.lotusWorldGen.getBoolean(true) && newGen) || (ArtificeConfig.lotusWorldGen.getBoolean(true) && ArtificeConfig.regenLotus.getBoolean(false)))
+        {
+            for (int i=0; i < ArtificeConfig.lotusFrequency.getInt(); i++)
+            {
+                x = chunkX * 16 + random.nextInt(16);
+                z = chunkZ * 16 + random.nextInt(16);
+                y = random.nextInt(world.getActualHeight());
+                BiomeGenBase b = world.getBiomeGenForCoords(x, z);
+                y = world.getHeightValue(x, z);
+                if (ArtificeRegistry.getLotusWhitelist().contains(b.biomeName))
+                {
+                    new WorldGenLotus().generate(world, random, x, y, z);
+                }
+            }
+        }
+        
         if ((ArtificeConfig.basaltWorldGen.getBoolean(true) && newGen) || (ArtificeConfig.basaltWorldGen.getBoolean(true) && ArtificeConfig.regenBasalt.getBoolean(false)))
         {
             for (int i=0; i < ArtificeConfig.basaltFrequency.getInt(); i++)

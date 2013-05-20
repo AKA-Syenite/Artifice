@@ -36,6 +36,7 @@ public class ArtificeCore
     public static EventHandler eventHandler;
     
     public static int frameRenderID;
+    public static int lotusRenderID;
     
     public static String[] tiers = { "Basic", "Reinforced", "Industrial", "Advanced" };
     public static String[] flora = { "Bluebell", "Orchid", "Iris", "Lotus", "LotusClosed"};

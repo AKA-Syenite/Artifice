@@ -6,11 +6,13 @@ import net.minecraft.item.ItemSlab;
 import shukaro.artifice.block.decorative.BlockBasalt;
 import shukaro.artifice.block.decorative.BlockBasaltSlab;
 import shukaro.artifice.block.decorative.BlockFlora;
+import shukaro.artifice.block.decorative.BlockLotus;
 import shukaro.artifice.block.decorative.BlockMarble;
 import shukaro.artifice.block.decorative.BlockMarbleSlab;
 import shukaro.artifice.block.decorative.BlockStairsArtifice;
 import shukaro.artifice.block.decorative.ItemBlockBasalt;
 import shukaro.artifice.block.decorative.ItemBlockFlora;
+import shukaro.artifice.block.decorative.ItemBlockLotus;
 import shukaro.artifice.block.decorative.ItemBlockMarble;
 import shukaro.artifice.block.frame.BlockFrame;
 import shukaro.artifice.block.frame.BlockFrameBase;
@@ -22,6 +24,7 @@ public class ArtificeBlocks
 {
     public static BlockFrame blockFrame;
     public static BlockFlora blockFlora;
+    public static BlockLotus blockLotus;
     public static BlockBasalt blockBasalt;
     public static BlockMarble blockMarble;
     public static BlockStairsArtifice blockBasaltBrickStairs;
@@ -37,6 +40,7 @@ public class ArtificeBlocks
     public static void initBlocks()
     {
         blockFlora = new BlockFlora(ArtificeConfig.blockFloraID.getInt());
+        blockLotus = new BlockLotus(ArtificeConfig.blockLotusID.getInt());
         blockBasalt = new BlockBasalt(ArtificeConfig.blockBasaltID.getInt());
         blockMarble = new BlockMarble(ArtificeConfig.blockMarbleID.getInt());
         blockBasaltBrickStairs = new BlockStairsArtifice(ArtificeConfig.blockBasaltBrickStairsID.getInt(), blockBasalt, 2);
@@ -58,6 +62,7 @@ public class ArtificeBlocks
         GameRegistry.registerBlock(blockFrame, ItemBlockFrame.class, blockFrame.getUnlocalizedName());
         GameRegistry.registerBlock(blockRefractory, ItemBlockFrame.class, blockRefractory.getUnlocalizedName());
         GameRegistry.registerBlock(blockFlora, ItemBlockFlora.class, blockFlora.getUnlocalizedName());
+        GameRegistry.registerBlock(blockLotus, ItemBlockLotus.class, blockLotus.getUnlocalizedName());
         GameRegistry.registerBlock(blockBasalt, ItemBlockBasalt.class, blockBasalt.getUnlocalizedName());
         GameRegistry.registerBlock(blockMarble, ItemBlockMarble.class, blockMarble.getUnlocalizedName());
         GameRegistry.registerBlock(blockBasaltBrickStairs, blockBasaltBrickStairs.getUnlocalizedName());

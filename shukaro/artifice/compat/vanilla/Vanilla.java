@@ -25,5 +25,7 @@ public class Vanilla
         ArtificeRegistry.registerFloraBlacklist("Swampland");
         ArtificeRegistry.registerFloraBlacklist("MushroomIsland");
         ArtificeRegistry.registerFloraBlacklist("MushroomIslandShore");
+        
+        ArtificeRegistry.registerLotusWhitelist("Swampland");
     }
 }

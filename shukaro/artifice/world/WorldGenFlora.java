@@ -28,7 +28,7 @@ public class WorldGenFlora extends WorldGenerator
     @Override
     public boolean generate(World world, Random rand, int x, int y, int z)
     {
-        type = rand.nextInt(ArtificeCore.flora.length);
+        type = rand.nextInt(ArtificeCore.flora.length - 1);
         
         for (int l = 0; l < 64; ++l)
         {
@@ -38,7 +38,15 @@ public class WorldGenFlora extends WorldGenerator
             
             if ((world.isAirBlock(x1, y1, z1) || (world.getBlockId(x1, y1, z1) == Block.snow.blockID)) && (!world.provider.hasNoSky || y1 < 127) && ArtificeBlocks.blockFlora.canBlockStay(world, x1, y1, z1))
             {
-                world.setBlock(x1, y1, z1, ArtificeBlocks.blockFlora.blockID, type, 2);
+                if (type == 3)
+                {
+                    if (world.getWorldTime() > 12000)
+                        world.setBlock(x1, y1, z1, ArtificeBlocks.blockFlora.blockID, 4, 2);
+                    else
+                        world.setBlock(x1, y1, z1, ArtificeBlocks.blockFlora.blockID, 3, 2);
+                }
+                else
+                    world.setBlock(x1, y1, z1, ArtificeBlocks.blockFlora.blockID, type, 2);
             }
         }
         

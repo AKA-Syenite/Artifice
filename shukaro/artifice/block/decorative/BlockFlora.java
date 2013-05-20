@@ -54,10 +54,10 @@ public class BlockFlora extends BlockFlower
     {
         int meta = world.getBlockMetadata(x, y, z);
         
-        if (meta == 4 && (world.getWorldTime() > 14000))
-            world.setBlockMetadataWithNotify(x, y, z, 3, 2);
-        if (meta == 3 && (world.getWorldTime() <= 14000))
+        if (meta == 3 && (world.getWorldTime() > 12000))
             world.setBlockMetadataWithNotify(x, y, z, 4, 2);
+        if (meta == 4 && (world.getWorldTime() <= 12000))
+            world.setBlockMetadataWithNotify(x, y, z, 3, 2);
     }
     
     @Override

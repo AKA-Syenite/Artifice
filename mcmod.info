@@ -1,16 +1,21 @@
 [
-    {
-        "modid": "Artifice",
-        "name": "Artifice",
-        "description": "",
-        "version": "1.0",
-        "mcversion": "1.5.2",
-        "logoFile": "",
-        "url": "",
-        "authors": ["Shukaro"],
-        "credits": "All the contributors, including SMP and SCT for their fantastic texture work",
-        "parent": "",
-        "screenshots": [],
-        "dependencies": [""]
-    }
+{
+  "modid": "Artifice",
+  "name": "Artifice",
+  "description": "",
+  "version": "1.0",
+  "mcversion": "1.5.2",
+  "url": "",
+  "updateUrl": "",
+  "authors": [
+    "Shukaro"
+  ],
+  "credits": "All the contributors",
+  "logoFile": "",
+  "screenshots": [
+  ],
+  "parent":"",
+  "dependencies": [
+  ]
+}
 ]

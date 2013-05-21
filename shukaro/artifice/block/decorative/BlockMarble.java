@@ -17,7 +17,6 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockMarble extends BlockArtifice
 {
-    @SideOnly(Side.CLIENT)
     private final Icon[] singleTextureList = new Icon[ArtificeCore.rocks.length];
     
     public BlockMarble(int id)

@@ -18,7 +18,6 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockFlora extends BlockFlower
 {
-    @SideOnly(Side.CLIENT)
     public static Icon[] textureList = new Icon[ArtificeCore.flora.length];
     
     public BlockFlora(int id)
@@ -76,7 +75,6 @@ public class BlockFlora extends BlockFlower
         return meta == 4 ? 3 : meta;
     }
     
-    @SideOnly(Side.CLIENT)
     @Override
     public int getDamageValue(World world, int x, int y, int z)
     {

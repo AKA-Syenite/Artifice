@@ -21,8 +21,8 @@ public class ItemBlockLotus extends ItemBlockArtifice
         super(id);
     }
     
-    @SideOnly(Side.CLIENT)
     @Override
+    @SideOnly(Side.CLIENT)
     public Icon getIconFromDamage(int meta)
     {
         return BlockLotus.lotus;

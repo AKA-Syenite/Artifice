@@ -18,7 +18,6 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockArtifice extends Block
 {
-    @SideOnly(Side.CLIENT)
     protected Icon[][] textureList = new Icon[ArtificeCore.tiers.length][256];
     protected String textureName;
     
@@ -30,7 +29,6 @@ public class BlockArtifice extends Block
         setCreativeTab(ArtificeCreativeTab.tab);
     }
     
-    @SideOnly(Side.CLIENT)
     public Icon[][] getTextureList()
     {
         return this.textureList;
@@ -82,7 +80,6 @@ public class BlockArtifice extends Block
         return meta;
     }
     
-    @SideOnly(Side.CLIENT)
     @Override
     public int getDamageValue(World world, int x, int y, int z)
     {

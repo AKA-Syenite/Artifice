@@ -22,10 +22,8 @@ public class BlockBasaltSlab extends BlockHalfSlab
 {
     private final String[] types = { "basaltBrick", "basaltCobble", "basaltPaver", "basaltAntipaver" };
     
-    @SideOnly(Side.CLIENT)
     private Icon paverSide;
     
-    @SideOnly(Side.CLIENT)
     private final Icon[][] textureList = ArtificeBlocks.blockBasalt.getTextureList();
     
     private ConnectedTextureBase slabRenderer;
@@ -67,8 +65,7 @@ public class BlockBasaltSlab extends BlockHalfSlab
     
     @Override
     @SideOnly(Side.CLIENT)
-    public Icon getBlockTexture(IBlockAccess block, int x, int y, int z,
-            int side)
+    public Icon getBlockTexture(IBlockAccess block, int x, int y, int z, int side)
     {
         int meta = block.getBlockMetadata(x, y, z) & 7;
         
@@ -102,12 +99,6 @@ public class BlockBasaltSlab extends BlockHalfSlab
     public int idDropped(int id, Random rand, int meta)
     {
         return ArtificeBlocks.blockBasaltSlab.blockID;
-    }
-    
-    @SideOnly(Side.CLIENT)
-    private static boolean isBlockSingleSlab(int id)
-    {
-        return id == ArtificeBlocks.blockBasaltSlab.blockID;
     }
     
     @Override

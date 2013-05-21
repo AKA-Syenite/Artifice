@@ -22,10 +22,8 @@ public class BlockMarbleSlab extends BlockHalfSlab
 {
     private final String[] types = { "marbleBrick", "marbleCobble", "marblePaver", "marbleAntipaver" };
     
-    @SideOnly(Side.CLIENT)
     private Icon paverSide;
     
-    @SideOnly(Side.CLIENT)
     private final Icon[][] textureList = ArtificeBlocks.blockMarble.getTextureList();
     
     private ConnectedTextureBase slabRenderer;
@@ -101,12 +99,6 @@ public class BlockMarbleSlab extends BlockHalfSlab
     public int idDropped(int id, Random rand, int meta)
     {
         return ArtificeBlocks.blockMarbleSlab.blockID;
-    }
-    
-    @SideOnly(Side.CLIENT)
-    private static boolean isBlockSingleSlab(int id)
-    {
-        return id == ArtificeBlocks.blockMarbleSlab.blockID;
     }
     
     @Override

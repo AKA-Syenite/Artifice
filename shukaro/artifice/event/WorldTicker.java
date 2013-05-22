@@ -15,8 +15,7 @@ import cpw.mods.fml.common.TickType;
 public class WorldTicker implements ITickHandler
 {
     public static HashMap chunksToGen = new HashMap();
-    long tickTime = 0L;
-    int count = 0;
+    private int count = 0;
     
     @Override
     public void tickStart(EnumSet<TickType> type, Object... tickData)

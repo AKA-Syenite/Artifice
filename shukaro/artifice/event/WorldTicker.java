@@ -42,10 +42,6 @@ public class WorldTicker implements ITickHandler
             ArtificeCore.worldGen.generateWorld(rand, c.chunkX, c.chunkZ, world, false);
             chunks.remove(0);
             chunksToGen.put(Integer.valueOf(dim), chunks);
-        }
-        
-        if (count > 0)
-        {
             ArtificeCore.logger.log(Level.INFO, "Regenerated " + count + " chunks. " + Math.max(0, chunks.size()) + " chunks left");
         }
     }

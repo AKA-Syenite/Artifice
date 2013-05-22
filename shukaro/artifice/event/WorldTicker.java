@@ -27,7 +27,6 @@ public class WorldTicker implements ITickHandler
     {
         World world = (World) tickData[0];
         int dim = world.provider.dimensionId;
-        this.tickTime = System.currentTimeMillis();
         
         ArrayList chunks = (ArrayList) chunksToGen.get(Integer.valueOf(dim));
         

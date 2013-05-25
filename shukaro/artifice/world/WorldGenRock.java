@@ -7,6 +7,7 @@ import java.util.Random;
 import java.util.Set;
 
 import net.minecraft.block.Block;
+import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenerator;
 import shukaro.artifice.compat.ArtificeRegistry;
@@ -23,7 +24,6 @@ public class WorldGenRock
     private int meta;
     private int size;
     private List<Integer> replaced;
-    private int maxHeight;
     
     private int maxX;
     private int minX;
@@ -36,12 +36,12 @@ public class WorldGenRock
     private BlockCoord coord = new BlockCoord();
     private Set<BlockCoord> list = new HashSet<BlockCoord>();
     
-    public WorldGenRock(World world, Random rand, int x, int y, int z, int id, int size, int maxHeight)
+    public WorldGenRock(World world, Random rand, int x, int y, int z, int id, int size)
     {
-        this(world, rand, x, y, z, id, 0, size, ArtificeRegistry.getStoneTypes(), maxHeight);
+        this(world, rand, x, y, z, id, 0, size, ArtificeRegistry.getStoneTypes());
     }
     
-    public WorldGenRock(World world, Random rand, int x, int y, int z, int id, int meta, int size, List<Integer> replaced, int maxHeight)
+    public WorldGenRock(World world, Random rand, int x, int y, int z, int id, int meta, int size, List<Integer> replaced)
     {
         this.world = world;
         this.rand = rand;
@@ -52,77 +52,60 @@ public class WorldGenRock
         this.meta = meta;
         this.size = size;
         this.replaced = replaced;
-        this.maxHeight = maxHeight;
     }
     
     public boolean generate()
     {
-        list.clear();
+        float f = rand.nextFloat() * (float) Math.PI;
+        double d0 = startX + 8 + MathHelper.sin(f) * size / 8.0F;
+        double d1 = startX + 8 - MathHelper.sin(f) * size / 8.0F;
+        double d2 = startZ + 8 + MathHelper.cos(f) * size / 8.0F;
+        double d3 = startZ + 8 - MathHelper.cos(f) * size / 8.0F;
+        double d4 = startY + rand.nextInt(3) - 2;
+        double d5 = startY + rand.nextInt(3) - 2;
         
-        int tries = rand.nextInt(6) + 4;
-        
-        for (int i=0; i<tries; i++)
+        for (int l = 0; l <= size; ++l)
         {
-            coord.x = startX + rand.nextInt(8) - rand.nextInt(8);
-            coord.y = startY + rand.nextInt(4) - rand.nextInt(4);
-            coord.z = startZ + rand.nextInt(8) - rand.nextInt(8);
-            
-            this.maxX = coord.x + 16;
-            this.minX = coord.x - 16;
-            this.maxZ = coord.z + 16;
-            this.minZ = coord.z - 16;
-            
-            this.maxY = coord.y + rand.nextInt(32);
-            this.minY = coord.y - rand.nextInt(32);
-            
-            if (canGenHere(coord) && coord.y < maxHeight)
-            {
-                int numGenned = 0;
-                list.add(coord);
-                
-                while (!list.isEmpty() && numGenned < size)
-                {
-                    Iterator<BlockCoord> it = list.iterator();
-                    coord.set(it.next());
-                    list.remove(coord);
-                    world.setBlock(coord.x, coord.y, coord.z, id, meta, 2);
-                    
-                    for (BlockCoord c : coord.getAdjacent())
-                    {
-                        if (canGenHere(c))
-                            list.add(c);
-                    }
+            double d6 = d0 + (d1 - d0) * l / size;
+            double d7 = d4 + (d5 - d4) * l / size;
+            double d8 = d2 + (d3 - d2) * l / size;
+            double d9 = rand.nextDouble() * size / 16.0D;
+            double d10 = (MathHelper.sin(l * (float) Math.PI / size) + 1.0F) * d9 + 1.0D;
+            double d11 = (MathHelper.sin(l * (float) Math.PI / size) + 1.0F) * d9 + 1.0D;
+            int i1 = (int)(d6 - d10 / 2.0D);
+            int j1 = (int)(d7 - d11 / 2.0D);
+            int k1 = (int)(d8 - d10 / 2.0D);
+            int l1 = (int)(d6 + d10 / 2.0D);
+            int i2 = (int)(d7 + d11 / 2.0D);
+            int j2 = (int)(d8 + d10 / 2.0D);
 
-                    numGenned++;
+            for (int k2 = i1; k2 <= l1; ++k2)
+            {
+                double d12 = (k2 + 0.5D - d6) / (d10 / 2.0D);
+                if (d12 * d12 < 1.0D)
+                {
+                    for (int l2 = j1; l2 <= i2; ++l2)
+                    {
+                        double d13 = (l2 + 0.5D - d7) / (d11 / 2.0D);
+                        if (d12 * d12 + d13 * d13 < 1.0D)
+                        {
+                            for (int i3 = k1; i3 <= j2; ++i3)
+                            {
+                                double d14 = (i3 + 0.5D - d8) / (d10 / 2.0D);
+                                Block block = Block.blocksList[world.getBlockId(k2, l2, i3)];
+                                if (block != null)
+                                {
+                                    if (d12 * d12 + d13 * d13 + d14 * d14 < 1.0D && replaced.contains(block.blockID))
+                                    {
+                                        world.setBlock(k2, l2, i3, id, meta, 1);
+                                    }
+                                }
+                            }
+                        }
+                    }
                 }
-                
-                return true;
             }
         }
-        
         return true;
-    }
-    
-    private boolean canGenHere(BlockCoord c)
-    {
-        if (c.x > this.maxX || c.x < this.minX)
-            return false;
-        
-        if (c.y > this.maxY || c.y < this.minY)
-            return false;
-        
-        if (c.z > this.maxZ || c.z < this.minZ)
-            return false;
-        
-        if (Block.blocksList[world.getBlockId(c.x, c.y, c.z)] == null)
-            return false;
-        
-        for (int i : replaced)
-        {
-            if (i == world.getBlockId(c.x, c.y, c.z))
-                return true;
-        }
-        
-        return false;
     }
 }

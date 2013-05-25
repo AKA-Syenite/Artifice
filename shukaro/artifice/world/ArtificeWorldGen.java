@@ -89,7 +89,8 @@ public class ArtificeWorldGen implements IWorldGenerator
                 z = chunkZ * 16 + random.nextInt(16);
                 y = random.nextInt(ArtificeConfig.basaltHeight.getInt());
                 size = random.nextInt(ArtificeConfig.basaltSize.getInt()) + (random.nextInt(ArtificeConfig.basaltSize.getInt()) / 2);
-                new WorldGenRock(world, random, x, y, z, ArtificeBlocks.blockBasalt.blockID, size).generate();
+                WorldGenRock gen = new WorldGenRock(world, random, x, y, z, ArtificeBlocks.blockBasalt.blockID, size);
+                gen.generate();
             }
         }
         
@@ -102,7 +103,8 @@ public class ArtificeWorldGen implements IWorldGenerator
                 z = chunkZ * 16 + random.nextInt(16);
                 y = random.nextInt(ArtificeConfig.marbleHeight.getInt());
                 size = random.nextInt(ArtificeConfig.marbleSize.getInt()) + (random.nextInt(ArtificeConfig.marbleSize.getInt()) / 2);
-                new WorldGenRock(world, random, x, y, z, ArtificeBlocks.blockMarble.blockID, size).generate();
+                WorldGenRock gen = new WorldGenRock(world, random, x, y, z, ArtificeBlocks.blockMarble.blockID, size);
+                gen.generate();
             }
         }
         

@@ -102,7 +102,7 @@ public class ArtificeConfig
             basaltSize.comment = "Average size of basalt deposits in the world";
             basaltHeight = c.get("World Generation", "Basalt Height", 64);
             basaltHeight.comment = "Max height to begin basalt generation";
-            basaltFrequency = c.get("World Generation", "Basalt Frequency", 4);
+            basaltFrequency = c.get("World Generation", "Basalt Frequency", 8);
             basaltFrequency.comment = "Number of times to attempt to place basalt in each chunk";
             marbleWorldGen = c.get("World Generation", "Generate Marble", true);
             marbleWorldGen.comment = "Whether or not to generate marble";
@@ -110,7 +110,7 @@ public class ArtificeConfig
             marbleSize.comment = "Average size of marble deposits in the world";
             marbleHeight = c.get("World Generation", "Marble Height", 128);
             marbleHeight.comment = "Max height to begin marble generation";
-            marbleFrequency = c.get("World Generation", "Marble Frequency", 4);
+            marbleFrequency = c.get("World Generation", "Marble Frequency", 8);
             marbleFrequency.comment = "Number of times to attempt to place marble in each chunk";
             dimensionBlacklist = c.get("World Generation", "Dimension Blacklist", "");
             dimensionBlacklist.comment = "A comma-separated list of dimension IDs to disable worldgen in.";

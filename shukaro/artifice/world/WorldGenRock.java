@@ -1,8 +1,10 @@
 package shukaro.artifice.world;
 
-import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
+import java.util.Set;
 
 import net.minecraft.block.Block;
 import net.minecraft.world.World;
@@ -12,27 +14,27 @@ import shukaro.artifice.util.BlockCoord;
 
 public class WorldGenRock
 {
-    private static World world;
-    private static Random rand;
-    private static int startX;
-    private static int startY;
-    private static int startZ;
-    private static int id;
-    private static int meta;
-    private static int size;
-    private static List<Integer> replaced;
-    private static int maxHeight;
+    private World world;
+    private Random rand;
+    private int startX;
+    private int startY;
+    private int startZ;
+    private int id;
+    private int meta;
+    private int size;
+    private List<Integer> replaced;
+    private int maxHeight;
     
-    private static int maxX;
-    private static int minX;
-    private static int maxZ;
-    private static int minZ;
+    private int maxX;
+    private int minX;
+    private int maxZ;
+    private int minZ;
     
-    private static int maxY;
-    private static int minY;
+    private int maxY;
+    private int minY;
     
-    private static BlockCoord coord = new BlockCoord();
-    private static List<BlockCoord> list = new ArrayList<BlockCoord>();
+    private BlockCoord coord = new BlockCoord();
+    private Set<BlockCoord> list = new HashSet<BlockCoord>();
     
     public WorldGenRock(World world, Random rand, int x, int y, int z, int id, int size, int maxHeight)
     {
@@ -57,7 +59,9 @@ public class WorldGenRock
     {
         list.clear();
         
-        for (int i = 0; i < rand.nextInt(6) + 4; i++)
+        int tries = rand.nextInt(6) + 4;
+        
+        for (int i=0; i<tries; i++)
         {
             coord.x = startX + rand.nextInt(8) - rand.nextInt(8);
             coord.y = startY + rand.nextInt(4) - rand.nextInt(4);
@@ -73,22 +77,25 @@ public class WorldGenRock
             
             if (canGenHere(coord) && coord.y < maxHeight)
             {
-                world.setBlock(coord.x, coord.y, coord.z, id, meta, 2);
-                for (int j = 0; j < size; j++)
+                int numGenned = 0;
+                list.add(coord);
+                
+                while (!list.isEmpty() && numGenned < size)
                 {
+                    Iterator<BlockCoord> it = list.iterator();
+                    coord.set(it.next());
+                    list.remove(coord);
+                    world.setBlock(coord.x, coord.y, coord.z, id, meta, 2);
+                    
                     for (BlockCoord c : coord.getAdjacent())
                     {
                         if (canGenHere(c))
                             list.add(c);
                     }
-                    
-                    if (list.size() == 0)
-                        return true;
-                    
-                    coord.set(list.get(rand.nextInt(list.size())));
-                    list.remove(coord);
-                    world.setBlock(coord.x, coord.y, coord.z, id, meta, 2);
+
+                    numGenned++;
                 }
+                
                 return true;
             }
         }

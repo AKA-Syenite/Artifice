@@ -58,7 +58,7 @@ public class ArtificeWorldGen implements IWorldGenerator
                 {
                     if (random.nextInt(100) < 50)
                     {
-                        WorldGenFlora.generate(world, random, x, y, z);
+                        new WorldGenFlora(world, random, x, y, z).generate();
                     }
                 }
             }
@@ -75,7 +75,7 @@ public class ArtificeWorldGen implements IWorldGenerator
                 y = world.getHeightValue(x, z);
                 if (ArtificeRegistry.getLotusWhitelist().contains(b.biomeName))
                 {
-                    WorldGenLotus.generate(world, random, x, y, z);
+                    new WorldGenLotus(world, random, x, y, z).generate();
                 }
             }
         }

@@ -10,32 +10,47 @@ import shukaro.artifice.ArtificeCore;
 
 public class WorldGenFlora
 {
-    private static int x1;
-    private static int y1;
-    private static int z1;
-    private static int type;
+    private World world;
+    private Random rand;
+    private int startX;
+    private int startY;
+    private int startZ;
     
-    public static boolean generate(World world, Random rand, int x, int y, int z)
+    private int x;
+    private int y;
+    private int z;
+    private int type;
+    
+    public WorldGenFlora(World world, Random rand, int x, int y, int z)
+    {
+        this.world = world;
+        this.rand = rand;
+        this.startX = x;
+        this.startY = y;
+        this.startZ = z;
+    }
+    
+    public boolean generate()
     {
         type = rand.nextInt(ArtificeCore.flora.length - 1);
         
         for (int l = 0; l < rand.nextInt(48) + 8; ++l)
         {
-            x1 = x + rand.nextInt(8) - rand.nextInt(8);
-            y1 = y + rand.nextInt(4) - rand.nextInt(4);
-            z1 = z + rand.nextInt(8) - rand.nextInt(8);
+            x = startX + rand.nextInt(8) - rand.nextInt(8);
+            y = startY + rand.nextInt(4) - rand.nextInt(4);
+            z = startZ + rand.nextInt(8) - rand.nextInt(8);
             
-            if ((world.isAirBlock(x1, y1, z1) || (world.getBlockId(x1, y1, z1) == Block.snow.blockID)) && (!world.provider.hasNoSky || y1 < 127) && ArtificeBlocks.blockFlora.canBlockStay(world, x1, y1, z1))
+            if ((world.isAirBlock(x, y, z) || (world.getBlockId(x, y, z) == Block.snow.blockID)) && (!world.provider.hasNoSky || y < 127) && ArtificeBlocks.blockFlora.canBlockStay(world, x, y, z))
             {
                 if (type == 3)
                 {
                     if (world.getWorldTime() > 12000)
-                        world.setBlock(x1, y1, z1, ArtificeBlocks.blockFlora.blockID, 4, 2);
+                        world.setBlock(x, y, z, ArtificeBlocks.blockFlora.blockID, 4, 2);
                     else
-                        world.setBlock(x1, y1, z1, ArtificeBlocks.blockFlora.blockID, 3, 2);
+                        world.setBlock(x, y, z, ArtificeBlocks.blockFlora.blockID, 3, 2);
                 }
                 else
-                    world.setBlock(x1, y1, z1, ArtificeBlocks.blockFlora.blockID, type, 2);
+                    world.setBlock(x, y, z, ArtificeBlocks.blockFlora.blockID, type, 2);
             }
         }
         

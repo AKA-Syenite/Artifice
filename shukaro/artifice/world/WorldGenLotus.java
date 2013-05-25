@@ -16,7 +16,7 @@ public class WorldGenLotus
     
     public static boolean generate(World world, Random random, int x, int y, int z)
     {
-        for (int l = 0; l < 10; ++l)
+        for (int l = 0; l < random.nextInt(6) + 4; ++l)
         {
             i1 = x + random.nextInt(8) - random.nextInt(8);
             j1 = y + random.nextInt(4) - random.nextInt(4);

@@ -24,7 +24,7 @@ public class WorldGenRock
         primary.clear();
         secondary.clear();
         
-        for (int i = 0; i < rand.nextInt(32); i++)
+        for (int i = 0; i < rand.nextInt(6) + 4; i++)
         {
             x1 = x + rand.nextInt(8) - rand.nextInt(8);
             y1 = y + rand.nextInt(4) - rand.nextInt(4);

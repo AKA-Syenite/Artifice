@@ -21,6 +21,7 @@ public class ArtificeWorldGen implements IWorldGenerator
     private int y;
     private int z;
     private int size;
+    private BiomeGenBase b;
     
     @Override
     public void generate(Random random, int chunkX, int chunkZ, World world, IChunkProvider chunkGenerator, IChunkProvider chunkProvider)
@@ -49,7 +50,7 @@ public class ArtificeWorldGen implements IWorldGenerator
                 x = chunkX * 16 + random.nextInt(16);
                 z = chunkZ * 16 + random.nextInt(16);
                 y = random.nextInt(world.getActualHeight());
-                BiomeGenBase b = world.getBiomeGenForCoords(x, z);
+                b = world.getBiomeGenForCoords(x, z);
                 y = world.getHeightValue(x, z);
                 if (!ArtificeRegistry.getFloraBlacklist().contains(b.biomeName))
                 {
@@ -68,7 +69,7 @@ public class ArtificeWorldGen implements IWorldGenerator
                 x = chunkX * 16 + random.nextInt(16);
                 z = chunkZ * 16 + random.nextInt(16);
                 y = random.nextInt(world.getActualHeight());
-                BiomeGenBase b = world.getBiomeGenForCoords(x, z);
+                b = world.getBiomeGenForCoords(x, z);
                 y = world.getHeightValue(x, z);
                 if (ArtificeRegistry.getLotusWhitelist().contains(b.biomeName))
                 {

@@ -16,6 +16,14 @@ public class WorldTicker implements ITickHandler
 {
     public static HashMap chunksToGen = new HashMap();
     private int count = 0;
+    private int dim;
+    private long worldSeed;
+    private long xSeed;
+    private long zSeed;
+    private ChunkCoord c;
+    private Random rand;
+    private ArrayList chunks;
+    private World world;
     
     @Override
     public void tickStart(EnumSet<TickType> type, Object... tickData)
@@ -25,19 +33,19 @@ public class WorldTicker implements ITickHandler
     @Override
     public void tickEnd(EnumSet<TickType> type, Object... tickData)
     {
-        World world = (World) tickData[0];
-        int dim = world.provider.dimensionId;
+        world = (World) tickData[0];
+        dim = world.provider.dimensionId;
         
-        ArrayList chunks = (ArrayList) chunksToGen.get(Integer.valueOf(dim));
+        chunks = (ArrayList) chunksToGen.get(Integer.valueOf(dim));
         
         if ((chunks != null) && (chunks.size() > 0))
         {
             count++;
-            ChunkCoord c = (ChunkCoord) chunks.get(0);
-            long worldSeed = world.getSeed();
-            Random rand = new Random(worldSeed);
-            long xSeed = rand.nextLong() >> 3;
-            long zSeed = rand.nextLong() >> 3;
+            c = (ChunkCoord) chunks.get(0);
+            worldSeed = world.getSeed();
+            rand = new Random(worldSeed);
+            xSeed = rand.nextLong() >> 3;
+            zSeed = rand.nextLong() >> 3;
             rand.setSeed(xSeed * c.chunkX + zSeed * c.chunkZ ^ worldSeed);
             ArtificeCore.worldGen.generateWorld(rand, c.chunkX, c.chunkZ, world, false);
             chunks.remove(0);

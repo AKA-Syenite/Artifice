@@ -10,41 +10,16 @@ import net.minecraft.world.gen.feature.WorldGenerator;
 import shukaro.artifice.compat.ArtificeRegistry;
 import shukaro.artifice.util.BlockCoord;
 
-public class WorldGenRock extends WorldGenerator
+public class WorldGenRock
 {
-    private final int blockID;
-    private final int blockMeta;
-    private final int size;
-    private final List<Integer> replacedIDs;
-    private final int maxHeight;
-    private int x1;
-    private int y1;
-    private int z1;
-    private BlockCoord coord = new BlockCoord();
-    private List<BlockCoord> primary = new ArrayList<BlockCoord>();
-    private List<BlockCoord> secondary = new ArrayList<BlockCoord>();
+    private static int x1;
+    private static int y1;
+    private static int z1;
+    private static BlockCoord coord = new BlockCoord();
+    private static List<BlockCoord> primary = new ArrayList<BlockCoord>();
+    private static List<BlockCoord> secondary = new ArrayList<BlockCoord>();
     
-    public WorldGenRock(int id, int size)
-    {
-        this(id, 0, size, ArtificeRegistry.getStoneTypes(), 255);
-    }
-    
-    public WorldGenRock(int id, int size, int maxHeight)
-    {
-        this(id, 0, size, ArtificeRegistry.getStoneTypes(), maxHeight);
-    }
-    
-    public WorldGenRock(int id, int meta, int size, List<Integer> replaced, int maxHeight)
-    {
-        this.blockID = id;
-        this.blockMeta = meta;
-        this.size = size;
-        this.replacedIDs = replaced;
-        this.maxHeight = maxHeight;
-    }
-    
-    @Override
-    public boolean generate(World world, Random rand, int x, int y, int z)
+    public static boolean generate(World world, Random rand, int x, int y, int z, int id, int meta, int size, List<Integer> replaced, int maxHeight)
     {
         primary.clear();
         secondary.clear();
@@ -56,16 +31,16 @@ public class WorldGenRock extends WorldGenerator
             z1 = z + rand.nextInt(8) - rand.nextInt(8);
             coord.set(x1, y1, z1);
             
-            if (canGenHere(world, coord, false) && coord.y < maxHeight)
+            if (canGenHere(world, coord, false, replaced, id) && coord.y < maxHeight)
             {
-                world.setBlock(coord.x, coord.y, coord.z, blockID, blockMeta, 2);
+                world.setBlock(coord.x, coord.y, coord.z, id, meta, 2);
                 for (int j = 0; j < size; j++)
                 {
                     for (BlockCoord c : coord.getAdjacent())
                     {
-                        if (canGenHere(world, c, false))
+                        if (canGenHere(world, c, false, replaced, id))
                             primary.add(c);
-                        if (canGenHere(world, c, true))
+                        if (canGenHere(world, c, true, replaced, id))
                             secondary.add(c);
                     }
                     if (primary.isEmpty() && secondary.isEmpty())
@@ -81,7 +56,7 @@ public class WorldGenRock extends WorldGenerator
                         else
                             coord.set(secondary.get(rand.nextInt(secondary.size())));
                     }
-                    world.setBlock(coord.x, coord.y, coord.z, blockID, blockMeta, 2);
+                    world.setBlock(coord.x, coord.y, coord.z, id, meta, 2);
                 }
                 return true;
             }
@@ -90,17 +65,17 @@ public class WorldGenRock extends WorldGenerator
         return true;
     }
     
-    private boolean canGenHere(World world, BlockCoord c, boolean includeSelf)
+    private static boolean canGenHere(World world, BlockCoord c, boolean includeSelf, List<Integer> replaced, int id)
     {
-        for (int id : replacedIDs)
+        for (int i : replaced)
         {
-            if (id == world.getBlockId(c.x, c.y, c.z))
+            if (i == world.getBlockId(c.x, c.y, c.z))
             {
                 for (BlockCoord near : c.getNearby())
                 {
                     if (Block.blocksList[world.getBlockId(near.x, near.y, near.z)] == null || !Block.blocksList[world.getBlockId(near.x, near.y, near.z)].isOpaqueCube())
                         return true;
-                    if (includeSelf && world.getBlockId(near.x, near.y, near.z) == this.blockID)
+                    if (includeSelf && world.getBlockId(near.x, near.y, near.z) == id)
                         return true;
                 }
             }

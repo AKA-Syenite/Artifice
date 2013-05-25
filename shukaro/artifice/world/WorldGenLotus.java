@@ -8,14 +8,13 @@ import net.minecraft.block.Block;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenerator;
 
-public class WorldGenLotus extends WorldGenerator
+public class WorldGenLotus
 {
-    private int i1;
-    private int j1;
-    private int k1;
+    private static int i1;
+    private static int j1;
+    private static int k1;
     
-    @Override
-    public boolean generate(World world, Random random, int x, int y, int z)
+    public static boolean generate(World world, Random random, int x, int y, int z)
     {
         for (int l = 0; l < 10; ++l)
         {

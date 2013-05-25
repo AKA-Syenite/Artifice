@@ -8,25 +8,14 @@ import net.minecraft.world.gen.feature.WorldGenerator;
 import shukaro.artifice.ArtificeBlocks;
 import shukaro.artifice.ArtificeCore;
 
-public class WorldGenFlora extends WorldGenerator
+public class WorldGenFlora
 {
-    private int x1;
-    private int y1;
-    private int z1;
-    private int type;
+    private static int x1;
+    private static int y1;
+    private static int z1;
+    private static int type;
     
-    public WorldGenFlora()
-    {
-        super();
-    }
-    
-    public WorldGenFlora(boolean notify)
-    {
-        super(notify);
-    }
-    
-    @Override
-    public boolean generate(World world, Random rand, int x, int y, int z)
+    public static boolean generate(World world, Random rand, int x, int y, int z)
     {
         type = rand.nextInt(ArtificeCore.flora.length - 1);
         

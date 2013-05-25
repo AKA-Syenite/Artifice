@@ -10,14 +10,18 @@ import net.minecraft.world.gen.feature.WorldGenerator;
 
 public class WorldGenLotus extends WorldGenerator
 {
+    private int i1;
+    private int j1;
+    private int k1;
+    
     @Override
     public boolean generate(World world, Random random, int x, int y, int z)
     {
         for (int l = 0; l < 10; ++l)
         {
-            int i1 = x + random.nextInt(8) - random.nextInt(8);
-            int j1 = y + random.nextInt(4) - random.nextInt(4);
-            int k1 = z + random.nextInt(8) - random.nextInt(8);
+            i1 = x + random.nextInt(8) - random.nextInt(8);
+            j1 = y + random.nextInt(4) - random.nextInt(4);
+            k1 = z + random.nextInt(8) - random.nextInt(8);
 
             if (world.isAirBlock(i1, j1, k1) && ArtificeBlocks.blockLotus.canPlaceBlockAt(world, i1, j1, k1))
             {

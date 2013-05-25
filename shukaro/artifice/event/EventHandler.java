@@ -15,6 +15,9 @@ import shukaro.artifice.util.ChunkCoord;
 public class EventHandler
 {
     private List<Integer> dimBlacklist;
+    private int dim;
+    private ChunkCoordIntPair c;
+    private ArrayList chunks;
     
     @ForgeSubscribe
     public void chunkSave(ChunkDataEvent.Save e)
@@ -25,8 +28,8 @@ public class EventHandler
     @ForgeSubscribe
     public void chunkLoad(ChunkDataEvent.Load e)
     {
-        int dim = e.world.provider.dimensionId;
-        ChunkCoordIntPair c = e.getChunk().getChunkCoordIntPair();
+        dim = e.world.provider.dimensionId;
+        c = e.getChunk().getChunkCoordIntPair();
         
         if (dimBlacklist == null)
             dimBlacklist = ArtificeRegistry.getDimensionBlacklist();
@@ -37,7 +40,7 @@ public class EventHandler
         if ((!e.getData().getString("Artifice").equals(ArtificeConfig.regenKey.getString())) && (ArtificeConfig.regenFlora.getBoolean(false) || ArtificeConfig.regenBasalt.getBoolean(false) || ArtificeConfig.regenMarble.getBoolean(false)))
         {
             ArtificeCore.logger.log(Level.WARNING, "World gen was never run for chunk at " + e.getChunk().getChunkCoordIntPair() + ". Adding to queue for regeneration.");
-            ArrayList chunks = (ArrayList) WorldTicker.chunksToGen.get(Integer.valueOf(dim));
+            chunks = (ArrayList) WorldTicker.chunksToGen.get(Integer.valueOf(dim));
             if (chunks == null)
             {
                 WorldTicker.chunksToGen.put(Integer.valueOf(dim), new ArrayList());

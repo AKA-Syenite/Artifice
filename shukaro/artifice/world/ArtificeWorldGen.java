@@ -17,13 +17,13 @@ public class ArtificeWorldGen implements IWorldGenerator
 {
     private static List<Integer> blacklistedDimensions;
     private static List<String> blacklistedWorldTypes;
-    private int x;
-    private int y;
-    private int z;
-    private int size;
-    private BiomeGenBase b;
-    private List<Integer> stoneTypes;
-    private int maxHeight;
+    private static int x;
+    private static int y;
+    private static int z;
+    private static int size;
+    private static BiomeGenBase b;
+    private static List<Integer> stoneTypes;
+    private static int maxHeight;
     
     @Override
     public void generate(Random random, int chunkX, int chunkZ, World world, IChunkProvider chunkGenerator, IChunkProvider chunkProvider)
@@ -82,7 +82,6 @@ public class ArtificeWorldGen implements IWorldGenerator
         
         if ((ArtificeConfig.basaltWorldGen.getBoolean(true) && newGen) || (ArtificeConfig.basaltWorldGen.getBoolean(true) && ArtificeConfig.regenBasalt.getBoolean(false)))
         {
-            stoneTypes = ArtificeRegistry.getStoneTypes();
             maxHeight = ArtificeConfig.basaltHeight.getInt();
             for (int i=0; i < ArtificeConfig.basaltFrequency.getInt(); i++)
             {
@@ -90,13 +89,12 @@ public class ArtificeWorldGen implements IWorldGenerator
                 z = chunkZ * 16 + random.nextInt(16);
                 y = random.nextInt(world.getActualHeight());
                 size = random.nextInt(ArtificeConfig.basaltSize.getInt()) + random.nextInt(ArtificeConfig.basaltSize.getInt() / 5);
-                WorldGenRock.generate(world, random, x, y, z, ArtificeBlocks.blockBasalt.blockID, 0, size, stoneTypes, maxHeight);
+                new WorldGenRock(world, random, x, y, z, ArtificeBlocks.blockBasalt.blockID, size, maxHeight).generate();
             }
         }
         
         if ((ArtificeConfig.marbleWorldGen.getBoolean(true) && newGen) || (ArtificeConfig.marbleWorldGen.getBoolean(true) && ArtificeConfig.regenMarble.getBoolean(false)))
         {
-            stoneTypes = ArtificeRegistry.getStoneTypes();
             maxHeight = ArtificeConfig.marbleHeight.getInt();
             for (int i=0; i < ArtificeConfig.marbleFrequency.getInt(); i++)
             {
@@ -104,7 +102,7 @@ public class ArtificeWorldGen implements IWorldGenerator
                 z = chunkZ * 16 + random.nextInt(16);
                 y = random.nextInt(world.getActualHeight());
                 size = random.nextInt(ArtificeConfig.marbleSize.getInt()) + random.nextInt(ArtificeConfig.marbleSize.getInt() / 5);
-                WorldGenRock.generate(world, random, x, y, z, ArtificeBlocks.blockMarble.blockID, 0, size, stoneTypes, maxHeight);
+                new WorldGenRock(world, random, x, y, z, ArtificeBlocks.blockMarble.blockID, size, maxHeight).generate();
             }
         }
         

@@ -19,7 +19,7 @@ public class WorldGenFlora
     {
         type = rand.nextInt(ArtificeCore.flora.length - 1);
         
-        for (int l = 0; l < rand.nextInt(6) + 4; ++l)
+        for (int l = 0; l < rand.nextInt(48) + 8; ++l)
         {
             x1 = x + rand.nextInt(8) - rand.nextInt(8);
             y1 = y + rand.nextInt(4) - rand.nextInt(4);

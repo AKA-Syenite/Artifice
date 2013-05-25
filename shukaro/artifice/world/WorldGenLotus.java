@@ -10,24 +10,39 @@ import net.minecraft.world.gen.feature.WorldGenerator;
 
 public class WorldGenLotus
 {
-    private static int i1;
-    private static int j1;
-    private static int k1;
+    private World world;
+    private Random rand;
+    private int startX;
+    private int startY;
+    private int startZ;
     
-    public static boolean generate(World world, Random random, int x, int y, int z)
+    private int x;
+    private int y;
+    private int z;
+    
+    public WorldGenLotus(World world, Random rand, int x, int y, int z)
     {
-        for (int l = 0; l < random.nextInt(8) + 4; ++l)
+        this.world = world;
+        this.rand = rand;
+        this.startX = x;
+        this.startY = y;
+        this.startZ = z;
+    }
+    
+    public boolean generate()
+    {
+        for (int l = 0; l < rand.nextInt(8) + 4; ++l)
         {
-            i1 = x + random.nextInt(8) - random.nextInt(8);
-            j1 = y + random.nextInt(4) - random.nextInt(4);
-            k1 = z + random.nextInt(8) - random.nextInt(8);
+            x = startX + rand.nextInt(8) - rand.nextInt(8);
+            y = startY + rand.nextInt(4) - rand.nextInt(4);
+            z = startZ + rand.nextInt(8) - rand.nextInt(8);
 
-            if (world.isAirBlock(i1, j1, k1) && ArtificeBlocks.blockLotus.canPlaceBlockAt(world, i1, j1, k1))
+            if (world.isAirBlock(x, y, z) && ArtificeBlocks.blockLotus.canPlaceBlockAt(world, x, y, z))
             {
                 if (world.getWorldTime() > 12000)
-                    world.setBlock(i1, j1, k1, ArtificeBlocks.blockLotus.blockID, 1, 2);
+                    world.setBlock(x, y, z, ArtificeBlocks.blockLotus.blockID, 1, 2);
                 else
-                    world.setBlock(i1, j1, k1, ArtificeBlocks.blockLotus.blockID, 0, 2);
+                    world.setBlock(x, y, z, ArtificeBlocks.blockLotus.blockID, 0, 2);
             }
         }
         return true;

@@ -4,6 +4,7 @@ import java.lang.reflect.Method;
 import java.util.List;
 import java.util.logging.Level;
 
+import powercrystals.minefactoryreloaded.api.FarmingRegistry;
 import powercrystals.minefactoryreloaded.api.IFactoryHarvestable;
 
 import net.minecraft.block.Block;
@@ -31,14 +32,7 @@ public class MFR
 		}
 		try
 		{
-			Class<?> registry = Class.forName("powercrystals.minefactoryreloaded.MFRRegistry");
-			
-			if (registry != null)
-			{
-				Method reg = registry.getMethod("registerHarvestable", IFactoryHarvestable.class);
-				reg.invoke(registry, FactoryFlora.class);
-			}
-			
+			FarmingRegistry.registerHarvestable(new FactoryFlora());
 			ArtificeCore.logger.log(Level.INFO, "MFR Compat Initialized");
 		}
 		catch (Exception ex)

@@ -1,4 +1,4 @@
-package shukaro.artifice.compat.mfr;
+package powercrystals.minefactoryreloaded.api;
 
 import java.util.List;
 import java.util.Map;

@@ -1,4 +1,4 @@
-package shukaro.artifice.compat.mfr;
+package powercrystals.minefactoryreloaded.api;
 
 /**
  * @author PowerCrystals

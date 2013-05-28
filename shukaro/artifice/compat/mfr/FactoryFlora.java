@@ -12,7 +12,6 @@ import shukaro.artifice.ArtificeBlocks;
 
 public class FactoryFlora implements IFactoryHarvestable
 {
-
 	@Override
 	public int getPlantId()
 	{

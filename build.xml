@@ -31,14 +31,14 @@
     
     <target name="get-dependencies" depends="get-version" unless="${have-apis}">
         <echo message="Downloading MFR API... " />
-        <get src="http://build.technicpack.net/job/MineFactoryReloaded/lastSuccessfulBuild/artifact/build/dist/MFR-API-2.6.1B1-882.zip" dest="${download.dir}/MFRAPI.zip" />
+        <get src="http://build.technicpack.net/job/MineFactoryReloaded/882/artifact/build/dist/MFR-API-2.6.1B1-882.zip" dest="${download.dir}/MFRAPI.zip" />
     </target>
     
     <target name="extract-dependencies" depends="setup-forge,get-dependencies">
         <echo message="Extracting MFR API... " />
         <unzip src="${download.dir}/MFRAPI.zip" dest="${download.dir}"/>
         <mkdir dir="${mcpsrc.dir}/powercrystals/" />
-        <move file="${download.dir}/powercrystals/minefactoryreloaded/api" todir="${mcpsrc.dir}/powercrystals"/>
+        <move file="${download.dir}/powercrystals" todir="${mcpsrc.dir}/powercrystals"/>
     </target>
     
     <mkdir dir="${download.dir}"/>

@@ -2,6 +2,7 @@ package shukaro.artifice.compat.mfr;
 
 import java.lang.reflect.Method;
 import java.util.List;
+import java.util.logging.Level;
 
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
@@ -34,6 +35,8 @@ public class MFR
 				Method reg = registry.getMethod("registerHarvestable", IFactoryHarvestable.class);
 				reg.invoke(registry, ArtificeBlocks.blockFlora);
 			}
+			
+			ArtificeCore.logger.log(Level.INFO, "MFR Compat Initialized");
 		}
 		catch (Exception ex)
 		{

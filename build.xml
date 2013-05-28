@@ -38,7 +38,7 @@
         <echo message="Extracting MFR API... " />
         <unzip src="${download.dir}/MFRAPI.zip" dest="${download.dir}"/>
         <mkdir dir="${mcpsrc.dir}/powercrystals/" />
-        <move file="${download.dir}/powercrystals" todir="${mcpsrc.dir}/powercrystals"/>
+        <move file="${download.dir}/powercrystals" todir="${mcpsrc.dir}"/>
     </target>
     
     <mkdir dir="${download.dir}"/>

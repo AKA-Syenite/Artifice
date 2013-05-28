@@ -1,6 +1,7 @@
 package shukaro.artifice.block.decorative;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 
 import net.minecraft.block.BlockFlower;
@@ -11,12 +12,15 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.Icon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import shukaro.artifice.ArtificeBlocks;
 import shukaro.artifice.ArtificeCore;
+import shukaro.artifice.compat.mfr.HarvestType;
+import shukaro.artifice.compat.mfr.IFactoryHarvestable;
 import shukaro.artifice.gui.ArtificeCreativeTab;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockFlora extends BlockFlower
+public class BlockFlora extends BlockFlower implements IFactoryHarvestable
 {
     public static Icon[] textureList = new Icon[ArtificeCore.flora.length];
     
@@ -80,4 +84,46 @@ public class BlockFlora extends BlockFlower
     {
         return world.getBlockMetadata(x, y, z) == 4 ? 3 : world.getBlockMetadata(x, y, z);
     }
+    
+    // MFR compat stuff
+
+	@Override
+	public int getPlantId()
+	{
+		return ArtificeBlocks.blockFlora.blockID;
+	}
+
+	@Override
+	public HarvestType getHarvestType()
+	{
+		return HarvestType.Normal;
+	}
+
+	@Override
+	public boolean breakBlock()
+	{
+		return true;
+	}
+
+	@Override
+	public boolean canBeHarvested(World world, Map<String, Boolean> harvesterSettings, int x, int y, int z)
+	{
+		return true;
+	}
+
+	@Override
+	public List<ItemStack> getDrops(World world, Random rand, Map<String, Boolean> harvesterSettings, int x, int y, int z)
+	{
+		return this.getBlockDropped(world, x, y, z, world.getBlockMetadata(x, y, z), 0);
+	}
+
+	@Override
+	public void preHarvest(World world, int x, int y, int z)
+	{
+	}
+
+	@Override
+	public void postHarvest(World world, int x, int y, int z)
+	{
+	}
 }

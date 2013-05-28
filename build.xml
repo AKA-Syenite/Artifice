@@ -29,6 +29,17 @@
 		</and>
 	</condition>
 	
+	<path id="mcp.classpath">
+	        <pathelement location="${mcp.dir}/bin/minecraft"/>
+	        <pathelement location="${mcp.dir}/lib/argo-3.2.jar"/>
+	        <pathelement location="${mcp.dir}/lib/asm-debug-all-4.1.jar"/>
+	        <pathelement location="${mcp.dir}/lib/bcprov-debug-jdk15on-148.jar"/>
+	        <pathelement location="${mcp.dir}/lib/guava-14.0-rc3.jar"/>
+	        <pathelement location="${mcp.dir}/jars/bin/jinput.jar"/>
+	        <pathelement location="${mcp.dir}/jars/bin/lwjgl.jar"/>
+	        <pathelement location="${mcp.dir}/jars/bin/lwjgl_util.jar"/>
+	    </path>
+	
 	<target name="get-dependencies" depends="get-version" unless="${have-apis}">
 		<echo message="Downloading MFR API... " />
 		<get src="http://build.technicpack.net/job/MineFactoryReloaded/lastSuccessfulBuild/artifact/build/dist/MFR-API-2.6.1B1-882.zip" dest="${download.dir}/MFRAPI.zip" />

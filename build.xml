@@ -25,7 +25,7 @@
 	
 	<condition property="have-apis">
 		<and>
-			<available files="${mcpsrc.dir}/powercrystals/minefactoryreloaded" type="dir"/>
+			<available file="${mcpsrc.dir}/powercrystals/minefactoryreloaded" type="dir"/>
 		</and>
 	</condition>
 	

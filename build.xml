@@ -21,10 +21,28 @@
     </condition>
 
     <property name="verclass.dir" value="${mcpsrc.dir}/shukaro/artifice" />
-        <property name="verclass.name" value="ArtificeCore.java"/>
-    
-    <mkdir dir="${download.dir}"/>
-    <mkdir dir="${build.dir}" />
+    <property name="verclass.name" value="ArtificeCore.java"/>
+	
+	<condition property="have-apis">
+		<and>
+			<available files="${mcpsrc.dir}/powercrystals/minefactoryreloaded" type="dir"/>
+		</and>
+	</condition>
+	
+	<target name="get-dependencies" depends="get-version" unless="${have-apis}">
+		<echo message="Downloading MFR API... " />
+		<get src="http://build.technicpack.net/job/MineFactoryReloaded/lastSuccessfulBuild/artifact/build/dist/MFR-API-2.6.1B1-882.zip" dest="${download.dir}/MFRAPI.zip" />
+	</target>
+	
+	<target name="extract-dependencies" depends="setup-forge,get-dependencies">
+		<echo message="Extracting MFR API... " />
+		<unzip src="${download.dir}/MFRAPI.zip" dest="${download.dir}"/>
+		<mkdir dir="${mcpsrc.dir}/powercrystals/" />
+		<move file="${download.dir}/powercrystals/minefactoryreloaded/api" todir="${mcpsrc.dir}/powercrystals"/>
+	</target>
+	
+	<mkdir dir="${download.dir}"/>
+	<mkdir dir="${build.dir}" />
 
     <target name="get-version" depends="setup-forge">
         <!-- Copy source -->
@@ -62,15 +80,15 @@
         <delete dir="${mcpsrc.dir}/shukaro/artifice" />
     </target>
     
-    <target name="build" depends="setup-forge,get-version" unless="already-compiled">
+    <target name="build" depends="extract-dependencies" unless="already-compiled">
         <!-- Recompile -->
-        <exec dir="${mcp.dir}" executable="cmd" osfamily="windows" failonerror="true">
-            <arg line="/c recompile.bat"/>
-        </exec>
-
-        <exec dir="${mcp.dir}" executable="sh" osfamily="unix" failonerror="true">
-            <arg value="recompile.sh" />
-        </exec>
+    	<depend srcdir="${mcpsrc.dir}" destdir="${mcp.dir}/bin/minecraft">
+    	            <include name="shukaro/artifice/**/*.java"/>
+    	        </depend>
+    	        <javac srcdir="${mcpsrc.dir}" destdir="${mcp.dir}/bin/minecraft" target="1.6" source="1.6"
+    	               classpathref="mcp.classpath" debug="true" debuglevel="lines,source" includeAntRuntime="false">
+    	            <include name="shukaro/artifice/**/*.java"/>
+    	        </javac>
 
         <!-- Reobf -->
         <exec dir="${mcp.dir}" executable="cmd" osfamily="windows">
@@ -81,6 +99,8 @@
             <arg value="reobfuscate.sh" />
             <arg value="--srgnames" />
         </exec>
+    	
+    	<delete dir="${mcp.dir}/reobf/minecraft/powercrystals"/>
 
         <copy todir="${classes.dir}">
             <fileset dir="${mcp.dir}/reobf/minecraft"/>

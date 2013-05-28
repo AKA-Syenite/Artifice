@@ -22,38 +22,27 @@
 
     <property name="verclass.dir" value="${mcpsrc.dir}/shukaro/artifice" />
     <property name="verclass.name" value="ArtificeCore.java"/>
-	
-	<condition property="have-apis">
-		<and>
-			<available file="${mcpsrc.dir}/powercrystals/minefactoryreloaded" type="dir"/>
-		</and>
-	</condition>
-	
-	<path id="mcp.classpath">
-	        <pathelement location="${mcp.dir}/bin/minecraft"/>
-	        <pathelement location="${mcp.dir}/lib/argo-3.2.jar"/>
-	        <pathelement location="${mcp.dir}/lib/asm-debug-all-4.1.jar"/>
-	        <pathelement location="${mcp.dir}/lib/bcprov-debug-jdk15on-148.jar"/>
-	        <pathelement location="${mcp.dir}/lib/guava-14.0-rc3.jar"/>
-	        <pathelement location="${mcp.dir}/jars/bin/jinput.jar"/>
-	        <pathelement location="${mcp.dir}/jars/bin/lwjgl.jar"/>
-	        <pathelement location="${mcp.dir}/jars/bin/lwjgl_util.jar"/>
-	    </path>
-	
-	<target name="get-dependencies" depends="get-version" unless="${have-apis}">
-		<echo message="Downloading MFR API... " />
-		<get src="http://build.technicpack.net/job/MineFactoryReloaded/lastSuccessfulBuild/artifact/build/dist/MFR-API-2.6.1B1-882.zip" dest="${download.dir}/MFRAPI.zip" />
-	</target>
-	
-	<target name="extract-dependencies" depends="setup-forge,get-dependencies">
-		<echo message="Extracting MFR API... " />
-		<unzip src="${download.dir}/MFRAPI.zip" dest="${download.dir}"/>
-		<mkdir dir="${mcpsrc.dir}/powercrystals/" />
-		<move file="${download.dir}/powercrystals/minefactoryreloaded/api" todir="${mcpsrc.dir}/powercrystals"/>
-	</target>
-	
-	<mkdir dir="${download.dir}"/>
-	<mkdir dir="${build.dir}" />
+    
+    <condition property="have-apis">
+        <and>
+            <available file="${mcpsrc.dir}/powercrystals/minefactoryreloaded" type="dir"/>
+        </and>
+    </condition>
+    
+    <target name="get-dependencies" depends="get-version" unless="${have-apis}">
+        <echo message="Downloading MFR API... " />
+        <get src="http://build.technicpack.net/job/MineFactoryReloaded/lastSuccessfulBuild/artifact/build/dist/MFR-API-2.6.1B1-882.zip" dest="${download.dir}/MFRAPI.zip" />
+    </target>
+    
+    <target name="extract-dependencies" depends="setup-forge,get-dependencies">
+        <echo message="Extracting MFR API... " />
+        <unzip src="${download.dir}/MFRAPI.zip" dest="${download.dir}"/>
+        <mkdir dir="${mcpsrc.dir}/powercrystals/" />
+        <move file="${download.dir}/powercrystals/minefactoryreloaded/api" todir="${mcpsrc.dir}/powercrystals"/>
+    </target>
+    
+    <mkdir dir="${download.dir}"/>
+    <mkdir dir="${build.dir}" />
 
     <target name="get-version" depends="setup-forge">
         <!-- Copy source -->
@@ -93,13 +82,13 @@
     
     <target name="build" depends="extract-dependencies" unless="already-compiled">
         <!-- Recompile -->
-    	<depend srcdir="${mcpsrc.dir}" destdir="${mcp.dir}/bin/minecraft">
-    	            <include name="shukaro/artifice/**/*.java"/>
-    	        </depend>
-    	        <javac srcdir="${mcpsrc.dir}" destdir="${mcp.dir}/bin/minecraft" target="1.6" source="1.6"
-    	               classpathref="mcp.classpath" debug="true" debuglevel="lines,source" includeAntRuntime="false">
-    	            <include name="shukaro/artifice/**/*.java"/>
-    	        </javac>
+        <exec dir="${mcp.dir}" executable="cmd" osfamily="windows" failonerror="true">
+            <arg line="/c recompile.bat"/>
+        </exec>
+
+        <exec dir="${mcp.dir}" executable="sh" osfamily="unix" failonerror="true">
+            <arg value="recompile.sh" />
+        </exec>
 
         <!-- Reobf -->
         <exec dir="${mcp.dir}" executable="cmd" osfamily="windows">
@@ -110,8 +99,8 @@
             <arg value="reobfuscate.sh" />
             <arg value="--srgnames" />
         </exec>
-    	
-    	<delete dir="${mcp.dir}/reobf/minecraft/powercrystals"/>
+        
+        <delete dir="${mcp.dir}/reobf/minecraft/powercrystals"/>
 
         <copy todir="${classes.dir}">
             <fileset dir="${mcp.dir}/reobf/minecraft"/>
@@ -122,10 +111,10 @@
         <copy todir="${classes.dir}/mods/artifice/textures/blocks/">
             <fileset dir="mods/artifice/textures/blocks/" />
         </copy>
-    	
-    	<copy todir="${classes.dir}/shukaro/artifice/lang/">
-    	   <fileset dir="shukaro/artifice/lang/" />
-    	</copy>
+        
+        <copy todir="${classes.dir}/shukaro/artifice/lang/">
+           <fileset dir="shukaro/artifice/lang/" />
+        </copy>
     </target>
     
     <target name="build-number-there" if="env.BUILD_NUMBER" >

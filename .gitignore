@@ -7,3 +7,22 @@ paulscode/
 *.png
 Start.java
 mcpmod.info
+
+# Eclipse
+*.pydevproject
+.project
+.metadata
+bin/
+tmp/
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.classpath
+.settings/
+.loadpath
+
+# Stuff created by the buildfile
+build/
+downloads/

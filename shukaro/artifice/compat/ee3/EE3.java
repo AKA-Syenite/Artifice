@@ -1,6 +1,7 @@
 package shukaro.artifice.compat.ee3;
 
 import java.util.List;
+import java.util.logging.Level;
 
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
@@ -33,10 +34,12 @@ public class EE3
 			
 			for (ItemStack stone : stoneList)
 			{
-				GameRegistry.addShapelessRecipe(new ItemStack(ArtificeBlocks.blockBasalt.blockID, 2, 1), stone, new ItemStack(Block.stone.blockID, 1, 1), new ItemStack(Block.stone.blockID, 1, 1));
+				GameRegistry.addShapelessRecipe(new ItemStack(ArtificeBlocks.blockBasalt.blockID, 2, 1), stone, new ItemStack(Block.cobblestone.blockID, 1, 0), new ItemStack(Block.cobblestone.blockID, 1, 0));
 				GameRegistry.addShapelessRecipe(new ItemStack(ArtificeBlocks.blockBasalt.blockID, 1, 1), stone, new ItemStack(ArtificeBlocks.blockMarble.blockID, 1, 1));
 				GameRegistry.addShapelessRecipe(new ItemStack(ArtificeBlocks.blockMarble.blockID, 1, 1), stone, new ItemStack(ArtificeBlocks.blockBasalt.blockID, 1, 1));
 			}
+			
+			ArtificeCore.logger.log(Level.INFO, "EE3 Compat Initialized");
 		}
 		catch (Exception ex)
 		{

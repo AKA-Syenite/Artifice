@@ -36,6 +36,14 @@ public class ArtificeConfig
     public static Property blockMarbleDoubleSlabID;
     public static Property blockRefractoryID;
     
+    public static Property idStartItem;
+    
+    public static Property itemSledgeWoodID;
+    public static Property itemSledgeStoneID;
+    public static Property itemSledgeIronID;
+    public static Property itemSledgeGoldID;
+    public static Property itemSledgeDiamondID;
+    
     public static Property floraWorldGen;
     public static Property floraFrequency;
     public static Property lotusWorldGen;
@@ -68,7 +76,7 @@ public class ArtificeConfig
         try
         {
             c.load();
-            idStart = c.get(Configuration.CATEGORY_BLOCK, "Block.IDStart", 3000);
+            idStart = c.get(Configuration.CATEGORY_BLOCK, "Block Starting ID", 3000);
             idStart.comment = "The block ID to use as the starting point for assignment, delete the other IDs to reassign";
             
             int s = idStart.getInt();
@@ -88,32 +96,43 @@ public class ArtificeConfig
             blockRefractoryID = c.getBlock("blockRefractory", s++);
             blockLotusID = c.getBlock("blockLotus", s++);
             
+            idStartItem = c.get(Configuration.CATEGORY_ITEM, "Item Starting ID", 5000);
+            idStartItem.comment = "The item ID to use as the starting point for assignment, delete the other IDs to reassign";
+            
+            int i = idStartItem.getInt();
+            
+            itemSledgeWoodID = c.getItem("itemSledgeWood", i++);
+            itemSledgeStoneID = c.getItem("itemSledgeStone", i++);
+            itemSledgeIronID = c.getItem("itemSledgeIron", i++);
+            itemSledgeGoldID = c.getItem("itemSledgeGold", i++);
+            itemSledgeDiamondID = c.getItem("itemSledgeDiamond", i++);
+            
             floraWorldGen = c.get("World Generation", "Generate Flowers", true);
             floraWorldGen.comment = "Whether or not to generate flowers";
             floraFrequency = c.get("World Generation", "Flower Frequency", 1);
-            floraFrequency.comment = "Number of times to attempt to place flowers in each chunk";
+            floraFrequency.comment = "Number of times to attempt to place flowers in each chunk (Default 1)";
             lotusWorldGen = c.get("World Generation", "Generate Lotus Lilies", true);
             lotusWorldGen.comment = "Whether or not to generate lotus lilies";
             lotusFrequency = c.get("World Generation", "Lotus Liy Frequency", 1);
-            lotusFrequency.comment = "Number of times to attempt to place lotus lilies in each chunk";
+            lotusFrequency.comment = "Number of times to attempt to place lotus lilies in each chunk (Default 1)";
             basaltWorldGen = c.get("World Generation", "Generate Basalt", true);
             basaltWorldGen.comment = "Whether or not to generate basalt";
             basaltSize = c.get("World Generation", "Basalt Size", 50);
-            basaltSize.comment = "Average size of basalt deposits in the world";
+            basaltSize.comment = "Average size of basalt deposits in the world (Default 50)";
             basaltHeight = c.get("World Generation", "Basalt Height", 64);
-            basaltHeight.comment = "Max height to begin basalt generation";
+            basaltHeight.comment = "Max height to begin basalt generation (Default 64)";
             basaltFrequency = c.get("World Generation", "Basalt Frequency", 8);
-            basaltFrequency.comment = "Number of times to attempt to place basalt in each chunk";
+            basaltFrequency.comment = "Number of times to attempt to place basalt in each chunk (Default 8)";
             marbleWorldGen = c.get("World Generation", "Generate Marble", true);
             marbleWorldGen.comment = "Whether or not to generate marble";
             marbleSize = c.get("World Generation", "Marble Size", 50);
-            marbleSize.comment = "Average size of marble deposits in the world";
+            marbleSize.comment = "Average size of marble deposits in the world (Default 50)";
             marbleHeight = c.get("World Generation", "Marble Height", 128);
-            marbleHeight.comment = "Max height to begin marble generation";
+            marbleHeight.comment = "Max height to begin marble generation (Default 128)";
             marbleFrequency = c.get("World Generation", "Marble Frequency", 8);
-            marbleFrequency.comment = "Number of times to attempt to place marble in each chunk";
+            marbleFrequency.comment = "Number of times to attempt to place marble in each chunk (Default 8)";
             dimensionBlacklist = c.get("World Generation", "Dimension Blacklist", "");
-            dimensionBlacklist.comment = "A comma-separated list of dimension IDs to disable worldgen in.";
+            dimensionBlacklist.comment = "A comma-separated list of dimension IDs to disable worldgen in. (No spaces)";
             regenBasalt = c.get("World Generation", "Regenerate Basalt", false);
             regenBasalt.comment = "Set to true to regenerate basalt";
             regenMarble = c.get("World Generation", "Regenerate Marble", false);

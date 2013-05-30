@@ -43,3 +43,9 @@ tile.artifice.refractory.basic.name = Basic Refractory Lining
 tile.artifice.refractory.reinforced.name = Reinforced Refractory Lining
 tile.artifice.refractory.industrial.name = Industrial Refractory Lining
 tile.artifice.refractory.advanced.name = Advanced Refractory Lining
+
+item.artifice.sledge.wood.name = Wooden Sledge
+item.artifice.sledge.stone.name = Stone Sledge
+item.artifice.sledge.iron.name = Iron Sledge
+item.artifice.sledge.gold.name = Gold Sledge
+item.artifice.sledge.emerald.name = Diamond Sledge

@@ -73,6 +73,7 @@ public class ArtificeCore
     public void init(FMLInitializationEvent evt)
     {
         ArtificeBlocks.initBlocks();
+        ArtificeItems.initItems();
         
         GameRegistry.registerWorldGenerator(ArtificeCore.worldGen = new ArtificeWorldGen());
         

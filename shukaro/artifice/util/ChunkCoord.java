@@ -4,8 +4,8 @@ import java.io.Serializable;
 
 public class ChunkCoord implements Serializable
 {
-    public final int chunkX;
-    public final int chunkZ;
+    public int chunkX;
+    public int chunkZ;
     
     public ChunkCoord(BlockCoord c)
     {

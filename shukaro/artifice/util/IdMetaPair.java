@@ -25,17 +25,13 @@ public class IdMetaPair
 		if (!(o instanceof IdMetaPair))
 			return false;
 		IdMetaPair pair = (IdMetaPair) o;
-		if (this.meta == -1 || pair.meta == -1)
-			return (this.id == pair.id);
 		return (this.id == pair.id) && (this.meta == pair.meta);
 	}
 	
 	@Override
 	public int hashCode()
 	{
-		if (this.meta == -1)
-			return this.id;
-		return this.id | this.meta << 16;
+		return this.meta | this.id << 16;
 	}
 	
 	public Block getBlock()
@@ -68,7 +64,7 @@ public class IdMetaPair
 	
 	public boolean hasValidBlockMeta()
 	{
-		return (this.meta >= 0) && (this.meta < 16);
+		return (this.meta >= -1) && (this.meta < 16);
 	}
 	
 	public boolean isValidBlock()

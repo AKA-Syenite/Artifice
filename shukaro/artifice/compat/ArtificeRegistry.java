@@ -20,6 +20,7 @@ public abstract class ArtificeRegistry
     private static List<String> worldTypeBlacklist = new ArrayList<String>();
     private static List<String> lotusWhitelist = new ArrayList<String>();
     private static Map<IdMetaPair, ArrayList<ItemStack>> sledgeBlocks = new HashMap<IdMetaPair, ArrayList<ItemStack>>();
+    private static Map<Integer, ArrayList<ItemStack>> wildSledgeBlocks = new HashMap<Integer, ArrayList<ItemStack>>();
     
     public static void registerSledgeBlock(int id, int meta, ArrayList<ItemStack> drops)
     {
@@ -28,6 +29,17 @@ public abstract class ArtificeRegistry
     		ArtificeCore.logger.log(Level.WARNING, "Tried to register non-block id-meta pair in the sledgeBlock map: " + pair.toString());
     	else if (!(sledgeBlocks.get(pair) != null))
     		sledgeBlocks.put(pair, drops);
+    }
+    
+    public static void registerWildSledgeBlock(int id, ArrayList<ItemStack> drops)
+    {
+    	if (wildSledgeBlocks.get(id) == null)
+    		wildSledgeBlocks.put(id, drops);
+    }
+    
+    public static Map<Integer, ArrayList<ItemStack>> getWildSledgeBlocks()
+    {
+    	return wildSledgeBlocks;
     }
     
     public static Map<IdMetaPair, ArrayList<ItemStack>> getSledgeBlocks()

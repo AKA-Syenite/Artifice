@@ -4,7 +4,8 @@ net/
 paulscode/
 *.cfg
 *.properties
-*.png
+forge_logo.png
+mcp.png
 Start.java
 mcpmod.info
 

@@ -10,35 +10,27 @@ public class RenderFacing
     /**
      * Calls the function to render the appropriate side
      */
-    public static boolean renderFace(RenderBlocks renderer, Block block,
-            double x, double y, double z, Icon icon, int side,
-            boolean inverted, Tessellator tessellator)
+    public static boolean renderFace(RenderBlocks renderer, Block block, double x, double y, double z, Icon icon, int side, boolean inverted, Tessellator tessellator)
     {
         switch (side)
         {
             case 0:
-                renderFaceYNeg(renderer, block, x, y, z, icon, inverted,
-                        tessellator);
+                renderFaceYNeg(renderer, block, x, y, z, icon, inverted, tessellator);
                 return true;
             case 1:
-                renderFaceYPos(renderer, block, x, y, z, icon, inverted,
-                        tessellator);
+                renderFaceYPos(renderer, block, x, y, z, icon, inverted, tessellator);
                 return true;
             case 2:
-                renderFaceZNeg(renderer, block, x, y, z, icon, inverted,
-                        tessellator);
+                renderFaceZNeg(renderer, block, x, y, z, icon, inverted, tessellator);
                 return true;
             case 3:
-                renderFaceZPos(renderer, block, x, y, z, icon, inverted,
-                        tessellator);
+                renderFaceZPos(renderer, block, x, y, z, icon, inverted, tessellator);
                 return true;
             case 4:
-                renderFaceXNeg(renderer, block, x, y, z, icon, inverted,
-                        tessellator);
+                renderFaceXNeg(renderer, block, x, y, z, icon, inverted, tessellator);
                 return true;
             case 5:
-                renderFaceXPos(renderer, block, x, y, z, icon, inverted,
-                        tessellator);
+                renderFaceXPos(renderer, block, x, y, z, icon, inverted, tessellator);
                 return true;
             default:
                 return false;
@@ -51,9 +43,7 @@ public class RenderFacing
      * 
      * @param inverted
      */
-    private static void renderFaceYNeg(RenderBlocks renderer, Block block,
-            double x, double y, double z, Icon icon, boolean inverted,
-            Tessellator tessellator)
+    private static void renderFaceYNeg(RenderBlocks renderer, Block block, double x, double y, double z, Icon icon, boolean inverted, Tessellator tessellator)
     {
         if (renderer.hasOverrideBlockTexture())
         {
@@ -130,24 +120,16 @@ public class RenderFacing
         {
             if (renderer.enableAO)
             {
-                tessellator
-                        .setColorOpaque_F(renderer.colorRedTopRight,
-                                renderer.colorGreenTopRight,
-                                renderer.colorBlueTopRight);
+                tessellator.setColorOpaque_F(renderer.colorRedTopRight, renderer.colorGreenTopRight, renderer.colorBlueTopRight);
                 tessellator.setBrightness(renderer.brightnessTopRight);
                 tessellator.addVertexWithUV(d12, d13, d15, d4, d6);
-                tessellator.setColorOpaque_F(renderer.colorRedBottomRight,
-                        renderer.colorGreenBottomRight,
-                        renderer.colorBlueBottomRight);
+                tessellator.setColorOpaque_F(renderer.colorRedBottomRight, renderer.colorGreenBottomRight, renderer.colorBlueBottomRight);
                 tessellator.setBrightness(renderer.brightnessBottomRight);
                 tessellator.addVertexWithUV(d12, d13, d14, d7, d9);
-                tessellator.setColorOpaque_F(renderer.colorRedBottomLeft,
-                        renderer.colorGreenBottomLeft,
-                        renderer.colorBlueBottomLeft);
+                tessellator.setColorOpaque_F(renderer.colorRedBottomLeft, renderer.colorGreenBottomLeft, renderer.colorBlueBottomLeft);
                 tessellator.setBrightness(renderer.brightnessBottomLeft);
                 tessellator.addVertexWithUV(d11, d13, d14, d3, d5);
-                tessellator.setColorOpaque_F(renderer.colorRedTopLeft,
-                        renderer.colorGreenTopLeft, renderer.colorBlueTopLeft);
+                tessellator.setColorOpaque_F(renderer.colorRedTopLeft, renderer.colorGreenTopLeft, renderer.colorBlueTopLeft);
                 tessellator.setBrightness(renderer.brightnessTopLeft);
                 tessellator.addVertexWithUV(d11, d13, d15, d8, d10);
             }
@@ -163,24 +145,16 @@ public class RenderFacing
         {
             if (renderer.enableAO)
             {
-                tessellator.setColorOpaque_F(renderer.colorRedTopLeft,
-                        renderer.colorGreenTopLeft, renderer.colorBlueTopLeft);
+                tessellator.setColorOpaque_F(renderer.colorRedTopLeft, renderer.colorGreenTopLeft, renderer.colorBlueTopLeft);
                 tessellator.setBrightness(renderer.brightnessTopLeft);
                 tessellator.addVertexWithUV(d11, d13, d15, d8, d10);
-                tessellator.setColorOpaque_F(renderer.colorRedBottomLeft,
-                        renderer.colorGreenBottomLeft,
-                        renderer.colorBlueBottomLeft);
+                tessellator.setColorOpaque_F(renderer.colorRedBottomLeft, renderer.colorGreenBottomLeft, renderer.colorBlueBottomLeft);
                 tessellator.setBrightness(renderer.brightnessBottomLeft);
                 tessellator.addVertexWithUV(d11, d13, d14, d3, d5);
-                tessellator.setColorOpaque_F(renderer.colorRedBottomRight,
-                        renderer.colorGreenBottomRight,
-                        renderer.colorBlueBottomRight);
+                tessellator.setColorOpaque_F(renderer.colorRedBottomRight, renderer.colorGreenBottomRight, renderer.colorBlueBottomRight);
                 tessellator.setBrightness(renderer.brightnessBottomRight);
                 tessellator.addVertexWithUV(d12, d13, d14, d7, d9);
-                tessellator
-                        .setColorOpaque_F(renderer.colorRedTopRight,
-                                renderer.colorGreenTopRight,
-                                renderer.colorBlueTopRight);
+                tessellator.setColorOpaque_F(renderer.colorRedTopRight, renderer.colorGreenTopRight, renderer.colorBlueTopRight);
                 tessellator.setBrightness(renderer.brightnessTopRight);
                 tessellator.addVertexWithUV(d12, d13, d15, d4, d6);
             }
@@ -200,9 +174,7 @@ public class RenderFacing
      * 
      * @param inverted
      */
-    private static void renderFaceYPos(RenderBlocks renderer, Block block,
-            double x, double y, double z, Icon icon, boolean inverted,
-            Tessellator tessellator)
+    private static void renderFaceYPos(RenderBlocks renderer, Block block, double x, double y, double z, Icon icon, boolean inverted, Tessellator tessellator)
     {
         if (renderer.hasOverrideBlockTexture())
         {
@@ -279,24 +251,16 @@ public class RenderFacing
         {
             if (renderer.enableAO)
             {
-                tessellator
-                        .setColorOpaque_F(renderer.colorRedTopRight,
-                                renderer.colorGreenTopRight,
-                                renderer.colorBlueTopRight);
+                tessellator.setColorOpaque_F(renderer.colorRedTopRight, renderer.colorGreenTopRight, renderer.colorBlueTopRight);
                 tessellator.setBrightness(renderer.brightnessTopRight);
                 tessellator.addVertexWithUV(d11, d13, d15, d8, d10);
-                tessellator.setColorOpaque_F(renderer.colorRedBottomRight,
-                        renderer.colorGreenBottomRight,
-                        renderer.colorBlueBottomRight);
+                tessellator.setColorOpaque_F(renderer.colorRedBottomRight, renderer.colorGreenBottomRight, renderer.colorBlueBottomRight);
                 tessellator.setBrightness(renderer.brightnessBottomRight);
                 tessellator.addVertexWithUV(d11, d13, d14, d3, d5);
-                tessellator.setColorOpaque_F(renderer.colorRedBottomLeft,
-                        renderer.colorGreenBottomLeft,
-                        renderer.colorBlueBottomLeft);
+                tessellator.setColorOpaque_F(renderer.colorRedBottomLeft, renderer.colorGreenBottomLeft, renderer.colorBlueBottomLeft);
                 tessellator.setBrightness(renderer.brightnessBottomLeft);
                 tessellator.addVertexWithUV(d12, d13, d14, d7, d9);
-                tessellator.setColorOpaque_F(renderer.colorRedTopLeft,
-                        renderer.colorGreenTopLeft, renderer.colorBlueTopLeft);
+                tessellator.setColorOpaque_F(renderer.colorRedTopLeft, renderer.colorGreenTopLeft, renderer.colorBlueTopLeft);
                 tessellator.setBrightness(renderer.brightnessTopLeft);
                 tessellator.addVertexWithUV(d12, d13, d15, d4, d6);
             }
@@ -312,24 +276,16 @@ public class RenderFacing
         {
             if (renderer.enableAO)
             {
-                tessellator.setColorOpaque_F(renderer.colorRedTopLeft,
-                        renderer.colorGreenTopLeft, renderer.colorBlueTopLeft);
+                tessellator.setColorOpaque_F(renderer.colorRedTopLeft, renderer.colorGreenTopLeft, renderer.colorBlueTopLeft);
                 tessellator.setBrightness(renderer.brightnessTopLeft);
                 tessellator.addVertexWithUV(d12, d13, d15, d4, d6);
-                tessellator.setColorOpaque_F(renderer.colorRedBottomLeft,
-                        renderer.colorGreenBottomLeft,
-                        renderer.colorBlueBottomLeft);
+                tessellator.setColorOpaque_F(renderer.colorRedBottomLeft, renderer.colorGreenBottomLeft, renderer.colorBlueBottomLeft);
                 tessellator.setBrightness(renderer.brightnessBottomLeft);
                 tessellator.addVertexWithUV(d12, d13, d14, d7, d9);
-                tessellator.setColorOpaque_F(renderer.colorRedBottomRight,
-                        renderer.colorGreenBottomRight,
-                        renderer.colorBlueBottomRight);
+                tessellator.setColorOpaque_F(renderer.colorRedBottomRight, renderer.colorGreenBottomRight, renderer.colorBlueBottomRight);
                 tessellator.setBrightness(renderer.brightnessBottomRight);
                 tessellator.addVertexWithUV(d11, d13, d14, d3, d5);
-                tessellator
-                        .setColorOpaque_F(renderer.colorRedTopRight,
-                                renderer.colorGreenTopRight,
-                                renderer.colorBlueTopRight);
+                tessellator.setColorOpaque_F(renderer.colorRedTopRight, renderer.colorGreenTopRight, renderer.colorBlueTopRight);
                 tessellator.setBrightness(renderer.brightnessTopRight);
                 tessellator.addVertexWithUV(d11, d13, d15, d8, d10);
             }
@@ -349,9 +305,7 @@ public class RenderFacing
      * 
      * @param inverted
      */
-    private static void renderFaceZNeg(RenderBlocks renderer, Block block,
-            double x, double y, double z, Icon icon, boolean inverted,
-            Tessellator tessellator)
+    private static void renderFaceZNeg(RenderBlocks renderer, Block block, double x, double y, double z, Icon icon, boolean inverted, Tessellator tessellator)
     {
         if (renderer.hasOverrideBlockTexture())
         {
@@ -436,24 +390,16 @@ public class RenderFacing
         {
             if (renderer.enableAO)
             {
-                tessellator
-                        .setColorOpaque_F(renderer.colorRedTopRight,
-                                renderer.colorGreenTopRight,
-                                renderer.colorBlueTopRight);
+                tessellator.setColorOpaque_F(renderer.colorRedTopRight, renderer.colorGreenTopRight, renderer.colorBlueTopRight);
                 tessellator.setBrightness(renderer.brightnessTopRight);
                 tessellator.addVertexWithUV(d11, d13, d15, d4, d6);
-                tessellator.setColorOpaque_F(renderer.colorRedBottomRight,
-                        renderer.colorGreenBottomRight,
-                        renderer.colorBlueBottomRight);
+                tessellator.setColorOpaque_F(renderer.colorRedBottomRight, renderer.colorGreenBottomRight, renderer.colorBlueBottomRight);
                 tessellator.setBrightness(renderer.brightnessBottomRight);
                 tessellator.addVertexWithUV(d12, d13, d15, d8, d10);
-                tessellator.setColorOpaque_F(renderer.colorRedBottomLeft,
-                        renderer.colorGreenBottomLeft,
-                        renderer.colorBlueBottomLeft);
+                tessellator.setColorOpaque_F(renderer.colorRedBottomLeft, renderer.colorGreenBottomLeft, renderer.colorBlueBottomLeft);
                 tessellator.setBrightness(renderer.brightnessBottomLeft);
                 tessellator.addVertexWithUV(d12, d14, d15, d3, d5);
-                tessellator.setColorOpaque_F(renderer.colorRedTopLeft,
-                        renderer.colorGreenTopLeft, renderer.colorBlueTopLeft);
+                tessellator.setColorOpaque_F(renderer.colorRedTopLeft, renderer.colorGreenTopLeft, renderer.colorBlueTopLeft);
                 tessellator.setBrightness(renderer.brightnessTopLeft);
                 tessellator.addVertexWithUV(d11, d14, d15, d7, d9);
             }
@@ -469,24 +415,16 @@ public class RenderFacing
         {
             if (renderer.enableAO)
             {
-                tessellator.setColorOpaque_F(renderer.colorRedTopLeft,
-                        renderer.colorGreenTopLeft, renderer.colorBlueTopLeft);
+                tessellator.setColorOpaque_F(renderer.colorRedTopLeft, renderer.colorGreenTopLeft, renderer.colorBlueTopLeft);
                 tessellator.setBrightness(renderer.brightnessTopLeft);
                 tessellator.addVertexWithUV(d11, d14, d15, d7, d9);
-                tessellator.setColorOpaque_F(renderer.colorRedBottomLeft,
-                        renderer.colorGreenBottomLeft,
-                        renderer.colorBlueBottomLeft);
+                tessellator.setColorOpaque_F(renderer.colorRedBottomLeft, renderer.colorGreenBottomLeft, renderer.colorBlueBottomLeft);
                 tessellator.setBrightness(renderer.brightnessBottomLeft);
                 tessellator.addVertexWithUV(d12, d14, d15, d3, d5);
-                tessellator.setColorOpaque_F(renderer.colorRedBottomRight,
-                        renderer.colorGreenBottomRight,
-                        renderer.colorBlueBottomRight);
+                tessellator.setColorOpaque_F(renderer.colorRedBottomRight, renderer.colorGreenBottomRight, renderer.colorBlueBottomRight);
                 tessellator.setBrightness(renderer.brightnessBottomRight);
                 tessellator.addVertexWithUV(d12, d13, d15, d8, d10);
-                tessellator
-                        .setColorOpaque_F(renderer.colorRedTopRight,
-                                renderer.colorGreenTopRight,
-                                renderer.colorBlueTopRight);
+                tessellator.setColorOpaque_F(renderer.colorRedTopRight, renderer.colorGreenTopRight, renderer.colorBlueTopRight);
                 tessellator.setBrightness(renderer.brightnessTopRight);
                 tessellator.addVertexWithUV(d11, d13, d15, d4, d6);
             }
@@ -506,9 +444,7 @@ public class RenderFacing
      * 
      * @param inverted
      */
-    private static void renderFaceZPos(RenderBlocks renderer, Block block,
-            double x, double y, double z, Icon icon, boolean inverted,
-            Tessellator tessellator)
+    private static void renderFaceZPos(RenderBlocks renderer, Block block, double x, double y, double z, Icon icon, boolean inverted, Tessellator tessellator)
     {
         if (renderer.hasOverrideBlockTexture())
         {
@@ -593,24 +529,16 @@ public class RenderFacing
         {
             if (renderer.enableAO)
             {
-                tessellator
-                        .setColorOpaque_F(renderer.colorRedTopRight,
-                                renderer.colorGreenTopRight,
-                                renderer.colorBlueTopRight);
+                tessellator.setColorOpaque_F(renderer.colorRedTopRight, renderer.colorGreenTopRight, renderer.colorBlueTopRight);
                 tessellator.setBrightness(renderer.brightnessTopRight);
                 tessellator.addVertexWithUV(d12, d14, d15, d7, d9);
-                tessellator.setColorOpaque_F(renderer.colorRedBottomRight,
-                        renderer.colorGreenBottomRight,
-                        renderer.colorBlueBottomRight);
+                tessellator.setColorOpaque_F(renderer.colorRedBottomRight, renderer.colorGreenBottomRight, renderer.colorBlueBottomRight);
                 tessellator.setBrightness(renderer.brightnessBottomRight);
                 tessellator.addVertexWithUV(d12, d13, d15, d4, d6);
-                tessellator.setColorOpaque_F(renderer.colorRedBottomLeft,
-                        renderer.colorGreenBottomLeft,
-                        renderer.colorBlueBottomLeft);
+                tessellator.setColorOpaque_F(renderer.colorRedBottomLeft, renderer.colorGreenBottomLeft, renderer.colorBlueBottomLeft);
                 tessellator.setBrightness(renderer.brightnessBottomLeft);
                 tessellator.addVertexWithUV(d11, d13, d15, d8, d10);
-                tessellator.setColorOpaque_F(renderer.colorRedTopLeft,
-                        renderer.colorGreenTopLeft, renderer.colorBlueTopLeft);
+                tessellator.setColorOpaque_F(renderer.colorRedTopLeft, renderer.colorGreenTopLeft, renderer.colorBlueTopLeft);
                 tessellator.setBrightness(renderer.brightnessTopLeft);
                 tessellator.addVertexWithUV(d11, d14, d15, d3, d5);
             }
@@ -626,24 +554,16 @@ public class RenderFacing
         {
             if (renderer.enableAO)
             {
-                tessellator.setColorOpaque_F(renderer.colorRedTopLeft,
-                        renderer.colorGreenTopLeft, renderer.colorBlueTopLeft);
+                tessellator.setColorOpaque_F(renderer.colorRedTopLeft, renderer.colorGreenTopLeft, renderer.colorBlueTopLeft);
                 tessellator.setBrightness(renderer.brightnessTopLeft);
                 tessellator.addVertexWithUV(d11, d14, d15, d3, d5);
-                tessellator.setColorOpaque_F(renderer.colorRedBottomLeft,
-                        renderer.colorGreenBottomLeft,
-                        renderer.colorBlueBottomLeft);
+                tessellator.setColorOpaque_F(renderer.colorRedBottomLeft, renderer.colorGreenBottomLeft, renderer.colorBlueBottomLeft);
                 tessellator.setBrightness(renderer.brightnessBottomLeft);
                 tessellator.addVertexWithUV(d11, d13, d15, d8, d10);
-                tessellator.setColorOpaque_F(renderer.colorRedBottomRight,
-                        renderer.colorGreenBottomRight,
-                        renderer.colorBlueBottomRight);
+                tessellator.setColorOpaque_F(renderer.colorRedBottomRight, renderer.colorGreenBottomRight, renderer.colorBlueBottomRight);
                 tessellator.setBrightness(renderer.brightnessBottomRight);
                 tessellator.addVertexWithUV(d12, d13, d15, d4, d6);
-                tessellator
-                        .setColorOpaque_F(renderer.colorRedTopRight,
-                                renderer.colorGreenTopRight,
-                                renderer.colorBlueTopRight);
+                tessellator.setColorOpaque_F(renderer.colorRedTopRight, renderer.colorGreenTopRight, renderer.colorBlueTopRight);
                 tessellator.setBrightness(renderer.brightnessTopRight);
                 tessellator.addVertexWithUV(d12, d14, d15, d7, d9);
             }
@@ -663,9 +583,7 @@ public class RenderFacing
      * 
      * @param inverted
      */
-    private static void renderFaceXNeg(RenderBlocks renderer, Block block,
-            double x, double y, double z, Icon icon, boolean inverted,
-            Tessellator tessellator)
+    private static void renderFaceXNeg(RenderBlocks renderer, Block block, double x, double y, double z, Icon icon, boolean inverted, Tessellator tessellator)
     {
         if (renderer.hasOverrideBlockTexture())
         {
@@ -750,24 +668,16 @@ public class RenderFacing
         {
             if (renderer.enableAO)
             {
-                tessellator
-                        .setColorOpaque_F(renderer.colorRedTopRight,
-                                renderer.colorGreenTopRight,
-                                renderer.colorBlueTopRight);
+                tessellator.setColorOpaque_F(renderer.colorRedTopRight, renderer.colorGreenTopRight, renderer.colorBlueTopRight);
                 tessellator.setBrightness(renderer.brightnessTopRight);
                 tessellator.addVertexWithUV(d11, d12, d15, d4, d6);
-                tessellator.setColorOpaque_F(renderer.colorRedBottomRight,
-                        renderer.colorGreenBottomRight,
-                        renderer.colorBlueBottomRight);
+                tessellator.setColorOpaque_F(renderer.colorRedBottomRight, renderer.colorGreenBottomRight, renderer.colorBlueBottomRight);
                 tessellator.setBrightness(renderer.brightnessBottomRight);
                 tessellator.addVertexWithUV(d11, d12, d14, d8, d10);
-                tessellator.setColorOpaque_F(renderer.colorRedBottomLeft,
-                        renderer.colorGreenBottomLeft,
-                        renderer.colorBlueBottomLeft);
+                tessellator.setColorOpaque_F(renderer.colorRedBottomLeft, renderer.colorGreenBottomLeft, renderer.colorBlueBottomLeft);
                 tessellator.setBrightness(renderer.brightnessBottomLeft);
                 tessellator.addVertexWithUV(d11, d13, d14, d3, d5);
-                tessellator.setColorOpaque_F(renderer.colorRedTopLeft,
-                        renderer.colorGreenTopLeft, renderer.colorBlueTopLeft);
+                tessellator.setColorOpaque_F(renderer.colorRedTopLeft, renderer.colorGreenTopLeft, renderer.colorBlueTopLeft);
                 tessellator.setBrightness(renderer.brightnessTopLeft);
                 tessellator.addVertexWithUV(d11, d13, d15, d7, d9);
             }
@@ -783,24 +693,16 @@ public class RenderFacing
         {
             if (renderer.enableAO)
             {
-                tessellator.setColorOpaque_F(renderer.colorRedTopLeft,
-                        renderer.colorGreenTopLeft, renderer.colorBlueTopLeft);
+                tessellator.setColorOpaque_F(renderer.colorRedTopLeft, renderer.colorGreenTopLeft, renderer.colorBlueTopLeft);
                 tessellator.setBrightness(renderer.brightnessTopLeft);
                 tessellator.addVertexWithUV(d11, d13, d15, d7, d9);
-                tessellator.setColorOpaque_F(renderer.colorRedBottomLeft,
-                        renderer.colorGreenBottomLeft,
-                        renderer.colorBlueBottomLeft);
+                tessellator.setColorOpaque_F(renderer.colorRedBottomLeft, renderer.colorGreenBottomLeft, renderer.colorBlueBottomLeft);
                 tessellator.setBrightness(renderer.brightnessBottomLeft);
                 tessellator.addVertexWithUV(d11, d13, d14, d3, d5);
-                tessellator.setColorOpaque_F(renderer.colorRedBottomRight,
-                        renderer.colorGreenBottomRight,
-                        renderer.colorBlueBottomRight);
+                tessellator.setColorOpaque_F(renderer.colorRedBottomRight, renderer.colorGreenBottomRight, renderer.colorBlueBottomRight);
                 tessellator.setBrightness(renderer.brightnessBottomRight);
                 tessellator.addVertexWithUV(d11, d12, d14, d8, d10);
-                tessellator
-                        .setColorOpaque_F(renderer.colorRedTopRight,
-                                renderer.colorGreenTopRight,
-                                renderer.colorBlueTopRight);
+                tessellator.setColorOpaque_F(renderer.colorRedTopRight, renderer.colorGreenTopRight, renderer.colorBlueTopRight);
                 tessellator.setBrightness(renderer.brightnessTopRight);
                 tessellator.addVertexWithUV(d11, d12, d15, d4, d6);
             }
@@ -820,9 +722,7 @@ public class RenderFacing
      * 
      * @param inverted
      */
-    private static void renderFaceXPos(RenderBlocks renderer, Block block,
-            double x, double y, double z, Icon icon, boolean inverted,
-            Tessellator tessellator)
+    private static void renderFaceXPos(RenderBlocks renderer, Block block, double x, double y, double z, Icon icon, boolean inverted, Tessellator tessellator)
     {
         if (renderer.hasOverrideBlockTexture())
         {
@@ -907,24 +807,16 @@ public class RenderFacing
         {
             if (renderer.enableAO)
             {
-                tessellator
-                        .setColorOpaque_F(renderer.colorRedTopRight,
-                                renderer.colorGreenTopRight,
-                                renderer.colorBlueTopRight);
+                tessellator.setColorOpaque_F(renderer.colorRedTopRight, renderer.colorGreenTopRight, renderer.colorBlueTopRight);
                 tessellator.setBrightness(renderer.brightnessTopRight);
                 tessellator.addVertexWithUV(d11, d13, d15, d3, d5);
-                tessellator.setColorOpaque_F(renderer.colorRedBottomRight,
-                        renderer.colorGreenBottomRight,
-                        renderer.colorBlueBottomRight);
+                tessellator.setColorOpaque_F(renderer.colorRedBottomRight, renderer.colorGreenBottomRight, renderer.colorBlueBottomRight);
                 tessellator.setBrightness(renderer.brightnessBottomRight);
                 tessellator.addVertexWithUV(d11, d13, d14, d7, d9);
-                tessellator.setColorOpaque_F(renderer.colorRedBottomLeft,
-                        renderer.colorGreenBottomLeft,
-                        renderer.colorBlueBottomLeft);
+                tessellator.setColorOpaque_F(renderer.colorRedBottomLeft, renderer.colorGreenBottomLeft, renderer.colorBlueBottomLeft);
                 tessellator.setBrightness(renderer.brightnessBottomLeft);
                 tessellator.addVertexWithUV(d11, d12, d14, d4, d6);
-                tessellator.setColorOpaque_F(renderer.colorRedTopLeft,
-                        renderer.colorGreenTopLeft, renderer.colorBlueTopLeft);
+                tessellator.setColorOpaque_F(renderer.colorRedTopLeft, renderer.colorGreenTopLeft, renderer.colorBlueTopLeft);
                 tessellator.setBrightness(renderer.brightnessTopLeft);
                 tessellator.addVertexWithUV(d11, d12, d15, d8, d10);
             }
@@ -940,24 +832,16 @@ public class RenderFacing
         {
             if (renderer.enableAO)
             {
-                tessellator.setColorOpaque_F(renderer.colorRedTopLeft,
-                        renderer.colorGreenTopLeft, renderer.colorBlueTopLeft);
+                tessellator.setColorOpaque_F(renderer.colorRedTopLeft, renderer.colorGreenTopLeft, renderer.colorBlueTopLeft);
                 tessellator.setBrightness(renderer.brightnessTopLeft);
                 tessellator.addVertexWithUV(d11, d12, d15, d8, d10);
-                tessellator.setColorOpaque_F(renderer.colorRedBottomLeft,
-                        renderer.colorGreenBottomLeft,
-                        renderer.colorBlueBottomLeft);
+                tessellator.setColorOpaque_F(renderer.colorRedBottomLeft, renderer.colorGreenBottomLeft, renderer.colorBlueBottomLeft);
                 tessellator.setBrightness(renderer.brightnessBottomLeft);
                 tessellator.addVertexWithUV(d11, d12, d14, d4, d6);
-                tessellator.setColorOpaque_F(renderer.colorRedBottomRight,
-                        renderer.colorGreenBottomRight,
-                        renderer.colorBlueBottomRight);
+                tessellator.setColorOpaque_F(renderer.colorRedBottomRight, renderer.colorGreenBottomRight, renderer.colorBlueBottomRight);
                 tessellator.setBrightness(renderer.brightnessBottomRight);
                 tessellator.addVertexWithUV(d11, d13, d14, d7, d9);
-                tessellator
-                        .setColorOpaque_F(renderer.colorRedTopRight,
-                                renderer.colorGreenTopRight,
-                                renderer.colorBlueTopRight);
+                tessellator.setColorOpaque_F(renderer.colorRedTopRight, renderer.colorGreenTopRight, renderer.colorBlueTopRight);
                 tessellator.setBrightness(renderer.brightnessTopRight);
                 tessellator.addVertexWithUV(d11, d13, d15, d3, d5);
             }

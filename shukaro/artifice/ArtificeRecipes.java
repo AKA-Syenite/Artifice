@@ -1,5 +1,6 @@
 package shukaro.artifice;
 
+import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipes;
@@ -17,9 +18,75 @@ public class ArtificeRecipes
             registerMarbleRecipes();
         if (ArtificeConfig.floraRecipes.getBoolean(true))
             registerDyeRecipes();
+        if (ArtificeConfig.sledgeRecipes.getBoolean(true))
+        	registerSledgeRecipes();
+        if (ArtificeConfig.frameRecipes.getBoolean(true))
+        	registerFrameRecipes();
     }
     
-    private static void registerDyeRecipes()
+    private static void registerFrameRecipes()
+    {
+    	GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeBlocks.blockFrame, 4, 0), new Object[] {
+    		"XYX",
+    		"Y Y",
+    		"XYX",
+    		'X', Block.planks,
+    		'Y', new ItemStack(Item.stick.itemID, 1, 0) }));
+    	
+    	GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeBlocks.blockFrame, 4, 1), new Object[] {
+    		"XYX",
+    		"Y Y",
+    		"XYX",
+    		'X', Block.planks,
+    		'Y', new ItemStack(Item.ingotIron.itemID, 1, 0) }));
+    	
+    	GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeBlocks.blockFrame, 8, 2), new Object[] {
+    		"X X",
+    		" Y ",
+    		"X X",
+    		'X', new ItemStack(Item.ingotIron.itemID, 1, 0),
+    		'Y', new ItemStack(Block.blockIron.blockID, 1, 0) }));
+	}
+
+	private static void registerSledgeRecipes()
+	{
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeItems.itemSledgeWood.itemID, 1, 0), new Object[] {
+			" YX",
+			" XY",
+			"X  ",
+			'X', new ItemStack(Item.stick.itemID, 1, 0),
+			'Y', Block.planks }));
+		
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeItems.itemSledgeStone.itemID, 1, 0), new Object[] {
+			" YX",
+			" XY",
+			"X  ",
+			'X', new ItemStack(Item.stick.itemID, 1, 0),
+			'Y', new ItemStack(Block.cobblestone.blockID, 1, 0) }));
+		
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeItems.itemSledgeIron.itemID, 1, 0), new Object[] {
+			" YX",
+			" XY",
+			"X  ",
+			'X', new ItemStack(Item.stick.itemID, 1, 0),
+			'Y', new ItemStack(Item.ingotIron.itemID, 1, 0) }));
+		
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeItems.itemSledgeGold.itemID, 1, 0), new Object[] {
+			" YX",
+			" XY",
+			"X  ",
+			'X', new ItemStack(Item.stick.itemID, 1, 0),
+			'Y', new ItemStack(Item.ingotGold.itemID, 1, 0) }));
+		
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeItems.itemSledgeDiamond.itemID, 1, 0), new Object[] {
+			" YX",
+			" XY",
+			"X  ",
+			'X', new ItemStack(Item.stick.itemID, 1, 0),
+			'Y', new ItemStack(Item.diamond.itemID, 1, 0) }));
+	}
+
+	private static void registerDyeRecipes()
     {
         // Black flower
         GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(Item.dyePowder.itemID, 2, 0), new ItemStack(ArtificeBlocks.blockFlora.blockID, 1, 1)));

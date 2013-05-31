@@ -44,6 +44,9 @@ public class ArtificeConfig
     public static Property itemSledgeGoldID;
     public static Property itemSledgeDiamondID;
     
+    public static Property sledgeRecipes;
+    public static Property frameRecipes;
+    
     public static Property floraWorldGen;
     public static Property floraFrequency;
     public static Property lotusWorldGen;
@@ -144,13 +147,18 @@ public class ArtificeConfig
             regenKey = c.get("World Generation", "Regen Key", "DEFAULT");
             regenKey.comment = "This key is used to keep track of which chunk have been generated/regenerated. Changing it will cause the regeneration code to run again, so only change it if you want it to happen. Useful to regen only one world feature at a time.";
             
-            floraRecipes = c.get(Configuration.CATEGORY_GENERAL, "Flower Recipes", true);
+            floraRecipes = c.get("Recipes", "Flower Recipes", true);
             floraRecipes.comment = "Set to false to disable flower-related recipes";
-            basaltRecipes = c.get(Configuration.CATEGORY_GENERAL, "Basalt Recipes", true);
+            basaltRecipes = c.get("Recipes", "Basalt Recipes", true);
             basaltRecipes.comment = "Set to false to disable basalt recipes";
-            marbleRecipes = c.get(Configuration.CATEGORY_GENERAL, "Marble Recipes", true);
+            marbleRecipes = c.get("Recipes", "Marble Recipes", true);
             marbleRecipes.comment = "Set to false to disable marble recipes";
-            floraBoneMeal = c.get(Configuration.CATEGORY_GENERAL, "Bonemeal Flowers", true);
+            sledgeRecipes = c.get("Recipes", "Sledge Recipes", true);
+            sledgeRecipes.comment = "Set to false to prevent crafting of sledges";
+            frameRecipes = c.get("Recipes", "Frame Recipes", true);
+            frameRecipes.comment = "Set to false to prevent crafting of frames";
+            
+            floraBoneMeal = c.get("General", "Bonemeal Flowers", true);
             floraBoneMeal.comment = "Set to false to disable random flower growth from bonemeal";
         }
         catch (Exception e)

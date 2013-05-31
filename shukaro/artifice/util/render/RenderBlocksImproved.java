@@ -34,8 +34,7 @@ public class RenderBlocksImproved
      *            True if rendering backfaces
      * @return
      */
-    public boolean renderStandardBlock(RenderBlocks renderer, Block block,
-            int x, int y, int z, int meta, boolean inverted)
+    public boolean renderStandardBlock(RenderBlocks renderer, Block block, int x, int y, int z, int meta, boolean inverted)
     {
         int l = block.colorMultiplier(renderer.blockAccess, x, y, z);
         float f = (l >> 16 & 255) / 255.0F;
@@ -123,11 +122,7 @@ public class RenderBlocksImproved
         Tessellator tessellator = Tessellator.instance;
         tessellator.setBrightness(983055);
         
-        if (renderer.getBlockIcon(block).getIconName().equals("grass_top"))
-        {
-            flag1 = false;
-        }
-        else if (renderer.hasOverrideBlockTexture())
+        if (renderer.hasOverrideBlockTexture())
         {
             flag1 = false;
         }
@@ -1357,11 +1352,7 @@ public class RenderBlocksImproved
         Tessellator tessellator = Tessellator.instance;
         tessellator.setBrightness(983055);
         
-        if (renderer.getBlockIcon(block).getIconName().equals("grass_top"))
-        {
-            flag1 = false;
-        }
-        else if (renderer.hasOverrideBlockTexture())
+        if (renderer.hasOverrideBlockTexture())
         {
             flag1 = false;
         }

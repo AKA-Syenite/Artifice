@@ -3,6 +3,7 @@ package shukaro.artifice.render;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.RenderBlocks;
 import net.minecraft.client.renderer.Tessellator;
+import net.minecraft.util.Icon;
 import net.minecraft.world.IBlockAccess;
 
 import org.lwjgl.opengl.GL11;
@@ -103,7 +104,6 @@ public class FrameRenderer implements ISimpleBlockRenderingHandler
         tessellator.draw();
         
         GL11.glTranslatef(0.5F, 0.5F, 0.5F);
-        
     }
     
     @Override
@@ -116,12 +116,15 @@ public class FrameRenderer implements ISimpleBlockRenderingHandler
         
         Block innerBlock = frame.getInnerBlock(world.getBlockMetadata(x, y, z));
         int innerMeta = frame.getInnerMeta(world.getBlockMetadata(x, y, z));
-        
+        		
         renderer.setRenderBounds(0.0002F, 0.0002F, 0.0002F, 0.9998F, 0.9998F, 0.9998F);
         
         if (frame != null && innerBlock != null)
         {
-            renderImproved.renderStandardBlock(renderer, innerBlock, x, y, z, innerMeta, false);
+        	if (renderImproved.renderStandardBlock(renderer, innerBlock, x, y, z, innerMeta, false))
+            {
+            	renderImproved.renderStandardBlock(renderer, innerBlock, x, y, z, innerMeta, true);
+            }
         }
         
         renderer.setRenderBounds(0.0001F, 0.0001F, 0.0001F, 0.9999F, 0.9999F, 0.9999F);

@@ -40,15 +40,15 @@ public class ItemSledge extends ItemTool
 		switch (mat)
 		{
 			case EMERALD:
-				return 10;
-			case GOLD:
-				return 15;
-			case IRON:
 				return 20;
-			case STONE:
+			case GOLD:
+				return 25;
+			case IRON:
 				return 30;
-			case WOOD:
+			case STONE:
 				return 40;
+			case WOOD:
+				return 50;
 			default:
 				return 0;
 		}
@@ -57,8 +57,13 @@ public class ItemSledge extends ItemTool
 	@Override
 	public boolean canHarvestBlock(Block block)
 	{
-		if (ArtificeRegistry.getSledgeBlocks().get(new IdMetaPair(block.blockID, 0)) != null || ArtificeRegistry.getWildSledgeBlocks().get(block.blockID) != null)
+		if (ArtificeRegistry.getWildSledgeBlocks().get(block.blockID) != null)
 			return true;
+		for (int i=0; i<16; i++)
+		{
+			if (ArtificeRegistry.getSledgeBlocks().get(new IdMetaPair(block.blockID, i)) != null)
+				return true;
+		}
 		return false;
 	}
 	

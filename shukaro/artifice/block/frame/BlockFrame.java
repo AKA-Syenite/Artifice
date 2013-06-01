@@ -22,16 +22,15 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public abstract class BlockFrame extends BlockArtifice
 {
-	protected List<Integer> validTiers = new ArrayList<Integer>();
+	protected List<String> validTiers = new ArrayList<String>();
 	
     public BlockFrame(int id)
     {
         super(id, Material.rock);
-        this.textureName = "frame";
-        this.validTiers.add(0);
-        this.validTiers.add(1);
-        this.validTiers.add(2);
-        this.validTiers.add(3);
+        this.validTiers.add(ArtificeCore.tiers[0]);
+        this.validTiers.add(ArtificeCore.tiers[1]);
+        this.validTiers.add(ArtificeCore.tiers[2]);
+        this.validTiers.add(ArtificeCore.tiers[3]);
     }
     
     public abstract Block getInnerBlock(int meta);
@@ -103,7 +102,7 @@ public abstract class BlockFrame extends BlockArtifice
     {
         for (int j = 0; j < ArtificeCore.tiers.length; j++)
         {
-        	if (this.validTiers.contains(j))
+        	if (this.validTiers.contains(ArtificeCore.tiers[j]))
         		list.add(new ItemStack(i, 1, j));
         }
     }

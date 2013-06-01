@@ -12,6 +12,7 @@ public class BlockFrameBase extends BlockFrame
     public BlockFrameBase(int id)
     {
         super(id);
+        this.textureName = "frame";
         setUnlocalizedName("artifice.frame");
         this.single = true;
     }

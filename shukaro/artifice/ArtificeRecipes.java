@@ -22,6 +22,16 @@ public class ArtificeRecipes
         	registerSledgeRecipes();
         if (ArtificeConfig.frameRecipes.getBoolean(true))
         	registerFrameRecipes();
+        if (ArtificeConfig.detectorRecipe.getBoolean(true))
+        {
+        	GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeBlocks.blockDetector, 1, 0), new Object[] {
+        		" Y ",
+        		"YXY",
+        		" Y ",
+        		'Y', new ItemStack(Item.silk.itemID, 1, 0),
+        		'X', new ItemStack(ArtificeBlocks.blockFrame.blockID, 1, 0)
+        	}));
+        }
     }
     
     private static void registerFrameRecipes()

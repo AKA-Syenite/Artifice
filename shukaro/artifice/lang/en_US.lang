@@ -39,10 +39,7 @@ tile.artifice.frame.reinforced.name = Reinforced Frame
 tile.artifice.frame.industrial.name = Industrial Frame
 tile.artifice.frame.advanced.name = Advanced Frame
 
-tile.artifice.refractory.basic.name = Basic Refractory Lining
-tile.artifice.refractory.reinforced.name = Reinforced Refractory Lining
-tile.artifice.refractory.industrial.name = Industrial Refractory Lining
-tile.artifice.refractory.advanced.name = Advanced Refractory Lining
+tile.artifice.detector.name = Detector
 
 item.artifice.sledge.wood.name = Wooden Sledge
 item.artifice.sledge.stone.name = Stone Sledge

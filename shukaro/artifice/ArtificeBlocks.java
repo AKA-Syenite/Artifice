@@ -16,6 +16,7 @@ import shukaro.artifice.block.decorative.ItemBlockLotus;
 import shukaro.artifice.block.decorative.ItemBlockMarble;
 import shukaro.artifice.block.frame.BlockFrame;
 import shukaro.artifice.block.frame.BlockFrameBase;
+import shukaro.artifice.block.frame.BlockFrameDetector;
 import shukaro.artifice.block.frame.ItemBlockFrame;
 import cpw.mods.fml.common.registry.GameRegistry;
 
@@ -34,6 +35,7 @@ public class ArtificeBlocks
     public static BlockHalfSlab blockBasaltDoubleSlab;
     public static BlockHalfSlab blockMarbleSlab;
     public static BlockHalfSlab blockMarbleDoubleSlab;
+    public static BlockFrame blockDetector;
     
     public static void initBlocks()
     {
@@ -50,6 +52,7 @@ public class ArtificeBlocks
         blockMarbleSlab = new BlockMarbleSlab(ArtificeConfig.blockMarbleSlabID.getInt(), false);
         blockMarbleDoubleSlab = new BlockMarbleSlab(ArtificeConfig.blockMarbleDoubleSlabID.getInt(), true);
         blockFrame = new BlockFrameBase(ArtificeConfig.blockFrameID.getInt());
+        blockDetector = new BlockFrameDetector(ArtificeConfig.blockDetectorID.getInt());
         
         Item.itemsList[ArtificeConfig.blockBasaltSlabID.getInt()] = new ItemSlab(ArtificeConfig.blockBasaltSlabID.getInt() - 256, blockBasaltSlab, blockBasaltDoubleSlab, false);
         Item.itemsList[ArtificeConfig.blockBasaltDoubleSlabID.getInt()] = new ItemSlab(ArtificeConfig.blockBasaltDoubleSlabID.getInt() - 256, blockBasaltSlab, blockBasaltDoubleSlab, true);
@@ -57,6 +60,7 @@ public class ArtificeBlocks
         Item.itemsList[ArtificeConfig.blockMarbleDoubleSlabID.getInt()] = new ItemSlab(ArtificeConfig.blockMarbleDoubleSlabID.getInt() - 256, blockMarbleSlab, blockMarbleDoubleSlab, true);
         
         GameRegistry.registerBlock(blockFrame, ItemBlockFrame.class, blockFrame.getUnlocalizedName());
+        GameRegistry.registerBlock(blockDetector, blockDetector.getUnlocalizedName());
         GameRegistry.registerBlock(blockFlora, ItemBlockFlora.class, blockFlora.getUnlocalizedName());
         GameRegistry.registerBlock(blockLotus, ItemBlockLotus.class, blockLotus.getUnlocalizedName());
         GameRegistry.registerBlock(blockBasalt, ItemBlockBasalt.class, blockBasalt.getUnlocalizedName());

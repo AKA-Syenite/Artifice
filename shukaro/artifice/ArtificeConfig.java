@@ -22,6 +22,7 @@ public class ArtificeConfig
     public static Property idStart;
     
     public static Property blockFrameID;
+    public static Property blockDetectorID;
     public static Property blockFloraID;
     public static Property blockLotusID;
     public static Property blockBasaltID;
@@ -34,7 +35,6 @@ public class ArtificeConfig
     public static Property blockBasaltDoubleSlabID;
     public static Property blockMarbleSlabID;
     public static Property blockMarbleDoubleSlabID;
-    public static Property blockRefractoryID;
     
     public static Property idStartItem;
     
@@ -46,6 +46,7 @@ public class ArtificeConfig
     
     public static Property sledgeRecipes;
     public static Property frameRecipes;
+    public static Property detectorRecipe;
     
     public static Property floraWorldGen;
     public static Property floraFrequency;
@@ -85,6 +86,7 @@ public class ArtificeConfig
             int s = idStart.getInt();
             
             blockFrameID = c.getBlock("blockFrame", s++);
+            blockDetectorID = c.getBlock("blockDetector", s++);
             blockFloraID = c.getBlock("blockFlora", s++);
             blockBasaltID = c.getBlock("blockBasalt", s++);
             blockMarbleID = c.getBlock("blockMarble", s++);
@@ -96,7 +98,6 @@ public class ArtificeConfig
             blockBasaltDoubleSlabID = c.getBlock("blockBasaltDoubleSlab", s++);
             blockMarbleSlabID = c.getBlock("blockMarbleSlab", s++);
             blockMarbleDoubleSlabID = c.getBlock("blockMarbleDoubleSlab", s++);
-            blockRefractoryID = c.getBlock("blockRefractory", s++);
             blockLotusID = c.getBlock("blockLotus", s++);
             
             idStartItem = c.get(Configuration.CATEGORY_ITEM, "Item Starting ID", 5000);
@@ -157,6 +158,8 @@ public class ArtificeConfig
             sledgeRecipes.comment = "Set to false to prevent crafting of sledges";
             frameRecipes = c.get("Recipes", "Frame Recipes", true);
             frameRecipes.comment = "Set to false to prevent crafting of frames";
+            detectorRecipe = c.get("Recipes", "Detector Recipe", true);
+            detectorRecipe.comment = "Set to false to prevent crafting of detectors";
             
             floraBoneMeal = c.get("General", "Bonemeal Flowers", true);
             floraBoneMeal.comment = "Set to false to disable random flower growth from bonemeal";

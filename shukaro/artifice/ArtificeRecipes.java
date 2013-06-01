@@ -25,12 +25,12 @@ public class ArtificeRecipes
         if (ArtificeConfig.detectorRecipe.getBoolean(true))
         {
         	GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeBlocks.blockDetector, 1, 0), new Object[] {
-        		" Y ",
+        		" Q ",
         		"YXY",
         		" Y ",
         		'Y', new ItemStack(Item.silk.itemID, 1, 0),
-        		'X', new ItemStack(ArtificeBlocks.blockFrame.blockID, 1, 0)
-        	}));
+        		'X', new ItemStack(ArtificeBlocks.blockFrame.blockID, 1, 0),
+        		'Q', new ItemStack(Item.redstone.itemID, 1, 0) }));
         }
     }
     
@@ -56,6 +56,13 @@ public class ArtificeRecipes
     		"X X",
     		'X', new ItemStack(Item.ingotIron.itemID, 1, 0),
     		'Y', new ItemStack(Block.blockIron.blockID, 1, 0) }));
+    	
+    	GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeBlocks.blockFrame, 8, 3), new Object[] {
+    		"X X",
+    		" Y ",
+    		"X X",
+    		'X', "ingotSteel",
+    		'Y', "blockSteel" }));
 	}
 
 	private static void registerSledgeRecipes()

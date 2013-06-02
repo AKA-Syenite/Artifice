@@ -41,8 +41,12 @@ tile.artifice.frame.advanced.name = Advanced Frame
 
 tile.artifice.detector.name = Detector
 
+tile.artifice.steel.name = Block of Steel
+
 item.artifice.sledge.wood.name = Wooden Sledge
 item.artifice.sledge.stone.name = Stone Sledge
 item.artifice.sledge.iron.name = Iron Sledge
 item.artifice.sledge.gold.name = Gold Sledge
 item.artifice.sledge.emerald.name = Diamond Sledge
+
+item.artifice.ingot.steel.name = Steel Ingot

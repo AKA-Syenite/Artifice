@@ -32,6 +32,21 @@ public class ArtificeRecipes
         		'X', new ItemStack(ArtificeBlocks.blockFrame.blockID, 1, 0),
         		'Q', new ItemStack(Item.redstone.itemID, 1, 0) }));
         }
+        if (ArtificeConfig.steelSmelting.getBoolean(true));
+        	registerSteelRecipes();
+    }
+    
+    private static void registerSteelRecipes()
+    {
+    	GameRegistry.addSmelting(Item.ingotIron.itemID, new ItemStack(ArtificeItems.itemSteelIngot, 1, 0), 1.0F);
+    	
+    	GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeBlocks.blockSteel, 1, 0), new Object[] {
+    		"XXX",
+    		"XXX",
+    		"XXX",
+    		'X', "ingotSteel" }));
+    	
+    	GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ArtificeItems.itemSteelIngot, 9, 0), new ItemStack(ArtificeBlocks.blockSteel, 1, 0)));
     }
     
     private static void registerFrameRecipes()

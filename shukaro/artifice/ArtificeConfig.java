@@ -35,6 +35,7 @@ public class ArtificeConfig
     public static Property blockBasaltDoubleSlabID;
     public static Property blockMarbleSlabID;
     public static Property blockMarbleDoubleSlabID;
+    public static Property blockSteelID;
     
     public static Property idStartItem;
     
@@ -43,10 +44,12 @@ public class ArtificeConfig
     public static Property itemSledgeIronID;
     public static Property itemSledgeGoldID;
     public static Property itemSledgeDiamondID;
+    public static Property itemSteelIngotID;
     
     public static Property sledgeRecipes;
     public static Property frameRecipes;
     public static Property detectorRecipe;
+    public static Property steelSmelting;
     
     public static Property floraWorldGen;
     public static Property floraFrequency;
@@ -99,6 +102,7 @@ public class ArtificeConfig
             blockMarbleSlabID = c.getBlock("blockMarbleSlab", s++);
             blockMarbleDoubleSlabID = c.getBlock("blockMarbleDoubleSlab", s++);
             blockLotusID = c.getBlock("blockLotus", s++);
+            blockSteelID = c.getBlock("blockSteel", s++);
             
             idStartItem = c.get(Configuration.CATEGORY_ITEM, "Item Starting ID", 5000);
             idStartItem.comment = "The item ID to use as the starting point for assignment, delete the other IDs to reassign";
@@ -110,6 +114,7 @@ public class ArtificeConfig
             itemSledgeIronID = c.getItem("itemSledgeIron", i++);
             itemSledgeGoldID = c.getItem("itemSledgeGold", i++);
             itemSledgeDiamondID = c.getItem("itemSledgeDiamond", i++);
+            itemSteelIngotID = c.getItem("itemSteelIngot", i++);
             
             floraWorldGen = c.get("World Generation", "Generate Flowers", true);
             floraWorldGen.comment = "Whether or not to generate flowers";
@@ -160,6 +165,8 @@ public class ArtificeConfig
             frameRecipes.comment = "Set to false to prevent crafting of frames";
             detectorRecipe = c.get("Recipes", "Detector Recipe", true);
             detectorRecipe.comment = "Set to false to prevent crafting of detectors";
+            steelSmelting = c.get("Recipes", "Steel Smelting", true);
+            steelSmelting.comment = "Set to false to prevent the smelting of steel";
             
             floraBoneMeal = c.get("General", "Bonemeal Flowers", true);
             floraBoneMeal.comment = "Set to false to disable random flower growth from bonemeal";

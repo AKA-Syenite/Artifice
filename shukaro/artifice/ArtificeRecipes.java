@@ -55,14 +55,14 @@ public class ArtificeRecipes
     		"XYX",
     		"Y Y",
     		"XYX",
-    		'X', Block.planks,
-    		'Y', new ItemStack(Item.stick.itemID, 1, 0) }));
+    		'X', "plankWood",
+    		'Y', "stickWood" }));
     	
     	GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeBlocks.blockFrame, 4, 1), new Object[] {
     		"XYX",
     		"Y Y",
     		"XYX",
-    		'X', Block.planks,
+    		'X', "plankWood",
     		'Y', new ItemStack(Item.ingotIron.itemID, 1, 0) }));
     	
     	GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeBlocks.blockFrame, 8, 2), new Object[] {
@@ -86,35 +86,35 @@ public class ArtificeRecipes
 			" YX",
 			" XY",
 			"X  ",
-			'X', new ItemStack(Item.stick.itemID, 1, 0),
-			'Y', Block.planks }));
+			'X', "stickWood",
+			'Y', "plankWood" }));
 		
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeItems.itemSledgeStone.itemID, 1, 0), new Object[] {
 			" YX",
 			" XY",
 			"X  ",
-			'X', new ItemStack(Item.stick.itemID, 1, 0),
+			'X', "stickWood",
 			'Y', new ItemStack(Block.cobblestone.blockID, 1, 0) }));
 		
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeItems.itemSledgeIron.itemID, 1, 0), new Object[] {
 			" YX",
 			" XY",
 			"X  ",
-			'X', new ItemStack(Item.stick.itemID, 1, 0),
+			'X', "stickWood",
 			'Y', new ItemStack(Item.ingotIron.itemID, 1, 0) }));
 		
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeItems.itemSledgeGold.itemID, 1, 0), new Object[] {
 			" YX",
 			" XY",
 			"X  ",
-			'X', new ItemStack(Item.stick.itemID, 1, 0),
+			'X', "stickWood",
 			'Y', new ItemStack(Item.ingotGold.itemID, 1, 0) }));
 		
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeItems.itemSledgeDiamond.itemID, 1, 0), new Object[] {
 			" YX",
 			" XY",
 			"X  ",
-			'X', new ItemStack(Item.stick.itemID, 1, 0),
+			'X', "stickWood",
 			'Y', new ItemStack(Item.diamond.itemID, 1, 0) }));
 	}
 
@@ -124,7 +124,7 @@ public class ArtificeRecipes
         GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(Item.dyePowder.itemID, 2, 0), new ItemStack(ArtificeBlocks.blockFlora.blockID, 1, 1)));
         
         // Yellow + blue = green
-        GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(Item.dyePowder.itemID, 2, 2), new ItemStack(Item.dyePowder.itemID, 1, 4), new ItemStack(Item.dyePowder.itemID, 1, 11)));
+        GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(Item.dyePowder.itemID, 2, 2), "dyeBlue", "dyeYellow"));
         
         // Brown flower
         GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(Item.dyePowder.itemID, 2, 3), new ItemStack(ArtificeBlocks.blockFlora.blockID, 1, 2)));

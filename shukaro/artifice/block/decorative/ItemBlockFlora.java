@@ -16,15 +16,27 @@ public class ItemBlockFlora extends ItemBlockArtifice
     }
     
     @Override
+    public int getMetadata(int meta)
+    {
+    	if (meta > ArtificeCore.flora.length)
+    		return 0;
+        return meta;
+    }
+    
+    @Override
     @SideOnly(Side.CLIENT)
     public Icon getIconFromDamage(int meta)
     {
+    	if (meta > ArtificeCore.flora.length)
+    		return BlockFlora.textureList[0];
         return BlockFlora.textureList[meta];
     }
     
     @Override
     public String getUnlocalizedName(ItemStack stack)
     {
+    	if (stack.getItemDamage() > ArtificeCore.flora.length)
+    		return Block.blocksList[stack.itemID].getUnlocalizedName() + "." + ArtificeCore.flora[0].toLowerCase();
         return Block.blocksList[stack.itemID].getUnlocalizedName() + "." + ArtificeCore.flora[stack.getItemDamage()].toLowerCase();
     }
 }

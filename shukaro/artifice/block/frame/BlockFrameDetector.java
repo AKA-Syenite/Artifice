@@ -2,6 +2,9 @@ package shukaro.artifice.block.frame;
 
 import java.util.Random;
 
+import powercrystals.minefactoryreloaded.api.rednet.IConnectableRedNet;
+import powercrystals.minefactoryreloaded.api.rednet.RedNetConnectionType;
+
 import shukaro.artifice.ArtificeCore;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.texture.IconRegister;
@@ -10,7 +13,7 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ForgeDirection;
 
-public class BlockFrameDetector extends BlockFrame
+public class BlockFrameDetector extends BlockFrame implements IConnectableRedNet
 {
 	public Icon icon;
 	
@@ -128,5 +131,33 @@ public class BlockFrameDetector extends BlockFrame
 	public boolean isOpaqueCube()
 	{
 		return true;
+	}
+
+	@Override
+	public RedNetConnectionType getConnectionType(World world, int x, int y, int z, ForgeDirection side)
+	{
+		return RedNetConnectionType.PlateSingle;
+	}
+
+	@Override
+	public int[] getOutputValues(World world, int x, int y, int z, ForgeDirection side)
+	{
+		return null;
+	}
+
+	@Override
+	public int getOutputValue(World world, int x, int y, int z, ForgeDirection side, int subnet)
+	{
+		return world.getBlockMetadata(x, y, z) == 1 ? 15 : 0;
+	}
+
+	@Override
+	public void onInputsChanged(World world, int x, int y, int z, ForgeDirection side, int[] inputValues)
+	{
+	}
+
+	@Override
+	public void onInputChanged(World world, int x, int y, int z, ForgeDirection side, int inputValue)
+	{
 	}
 }

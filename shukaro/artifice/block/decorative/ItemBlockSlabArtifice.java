@@ -1,33 +1,24 @@
-package shukaro.artifice.block;
+package shukaro.artifice.block.decorative;
 
 import java.util.List;
 
-import shukaro.artifice.ArtificeBlocks;
 import shukaro.artifice.compat.ArtificeRegistry;
 import shukaro.artifice.util.IdMetaPair;
-
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraft.block.BlockHalfSlab;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.ItemBlock;
+import net.minecraft.item.ItemSlab;
 import net.minecraft.item.ItemStack;
 
-public class ItemBlockArtifice extends ItemBlock
+public class ItemBlockSlabArtifice extends ItemSlab
 {
-    public ItemBlockArtifice(int id)
-    {
-        super(id);
-        setMaxDamage(0);
-        setHasSubtypes(true);
-    }
-    
-    @Override
-    public int getMetadata(int meta)
-    {
-        return meta;
-    }
-    
-    @Override
+	public ItemBlockSlabArtifice(int par1, BlockHalfSlab par2BlockHalfSlab, BlockHalfSlab par3BlockHalfSlab, boolean par4)
+	{
+		super(par1, par2BlockHalfSlab, par3BlockHalfSlab, par4);
+	}
+
+	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List infoList, boolean advancedTooltips)
     {

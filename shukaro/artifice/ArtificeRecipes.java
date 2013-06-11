@@ -34,6 +34,42 @@ public class ArtificeRecipes
         }
         if (ArtificeConfig.steelSmelting.getBoolean(true));
         	registerSteelRecipes();
+    	if (ArtificeConfig.blastWallRecipes.getBoolean(true));
+    		registerBlastWallRecipes();
+    }
+    
+    private static void registerBlastWallRecipes()
+    {
+    	GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeBlocks.blockReinforced, 2, 0), new Object[] {
+    		"   ",
+    		"YXY",
+    		" Z ",
+    		'X', new ItemStack(ArtificeBlocks.blockFrame, 1, 0),
+    		'Y', Block.stoneBrick,
+    		'Z', Item.clay }));
+    	
+    	GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeBlocks.blockReinforced, 2, 1), new Object[] {
+    		"   ",
+    		"YXY",
+    		"YZY",
+    		'X', new ItemStack(ArtificeBlocks.blockFrame, 1, 1),
+    		'Y', Item.brick,
+    		'Z', Item.clay }));
+    	
+    	GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeBlocks.blockReinforced, 2, 2), new Object[] {
+    		"   ",
+    		"YXY",
+    		" Z ",
+    		'X', new ItemStack(ArtificeBlocks.blockFrame, 1, 2),
+    		'Y', Block.obsidian,
+    		'Z', Item.clay }));
+    	
+    	GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeBlocks.blockReinforced, 2, 3), new Object[] {
+    		"   ",
+    		"YXY",
+    		"YYY",
+    		'X', new ItemStack(ArtificeBlocks.blockFrame, 1, 3),
+    		'Y', "ingotSteel" }));
     }
     
     private static void registerSteelRecipes()

@@ -6,6 +6,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemSlab;
 import net.minecraftforge.oredict.OreDictionary;
 import shukaro.artifice.block.BlockSteel;
+import shukaro.artifice.block.ItemBlockArtifice;
 import shukaro.artifice.block.decorative.BlockBasalt;
 import shukaro.artifice.block.decorative.BlockBasaltSlab;
 import shukaro.artifice.block.decorative.BlockFlora;
@@ -17,9 +18,11 @@ import shukaro.artifice.block.decorative.ItemBlockBasalt;
 import shukaro.artifice.block.decorative.ItemBlockFlora;
 import shukaro.artifice.block.decorative.ItemBlockLotus;
 import shukaro.artifice.block.decorative.ItemBlockMarble;
+import shukaro.artifice.block.decorative.ItemBlockSlabArtifice;
 import shukaro.artifice.block.frame.BlockFrame;
 import shukaro.artifice.block.frame.BlockFrameBase;
 import shukaro.artifice.block.frame.BlockFrameDetector;
+import shukaro.artifice.block.frame.BlockReinforced;
 import shukaro.artifice.block.frame.ItemBlockFrame;
 import cpw.mods.fml.common.registry.GameRegistry;
 
@@ -40,6 +43,7 @@ public class ArtificeBlocks
     public static BlockHalfSlab blockMarbleDoubleSlab;
     public static BlockFrame blockDetector;
     public static BlockSteel blockSteel;
+    public static BlockReinforced blockReinforced;
     
     public static void initBlocks()
     {
@@ -58,14 +62,15 @@ public class ArtificeBlocks
         blockFrame = new BlockFrameBase(ArtificeConfig.blockFrameID.getInt());
         blockDetector = new BlockFrameDetector(ArtificeConfig.blockDetectorID.getInt());
         blockSteel = new BlockSteel(ArtificeConfig.blockSteelID.getInt());
+        blockReinforced = new BlockReinforced(ArtificeConfig.blockReinforcedID.getInt());
         
-        Item.itemsList[ArtificeConfig.blockBasaltSlabID.getInt()] = new ItemSlab(ArtificeConfig.blockBasaltSlabID.getInt() - 256, blockBasaltSlab, blockBasaltDoubleSlab, false);
-        Item.itemsList[ArtificeConfig.blockBasaltDoubleSlabID.getInt()] = new ItemSlab(ArtificeConfig.blockBasaltDoubleSlabID.getInt() - 256, blockBasaltSlab, blockBasaltDoubleSlab, true);
-        Item.itemsList[ArtificeConfig.blockMarbleSlabID.getInt()] = new ItemSlab(ArtificeConfig.blockMarbleSlabID.getInt() - 256, blockMarbleSlab, blockMarbleDoubleSlab, false);
-        Item.itemsList[ArtificeConfig.blockMarbleDoubleSlabID.getInt()] = new ItemSlab(ArtificeConfig.blockMarbleDoubleSlabID.getInt() - 256, blockMarbleSlab, blockMarbleDoubleSlab, true);
+        Item.itemsList[ArtificeConfig.blockBasaltSlabID.getInt()] = new ItemBlockSlabArtifice(ArtificeConfig.blockBasaltSlabID.getInt() - 256, blockBasaltSlab, blockBasaltDoubleSlab, false);
+        Item.itemsList[ArtificeConfig.blockBasaltDoubleSlabID.getInt()] = new ItemBlockSlabArtifice(ArtificeConfig.blockBasaltDoubleSlabID.getInt() - 256, blockBasaltSlab, blockBasaltDoubleSlab, true);
+        Item.itemsList[ArtificeConfig.blockMarbleSlabID.getInt()] = new ItemBlockSlabArtifice(ArtificeConfig.blockMarbleSlabID.getInt() - 256, blockMarbleSlab, blockMarbleDoubleSlab, false);
+        Item.itemsList[ArtificeConfig.blockMarbleDoubleSlabID.getInt()] = new ItemBlockSlabArtifice(ArtificeConfig.blockMarbleDoubleSlabID.getInt() - 256, blockMarbleSlab, blockMarbleDoubleSlab, true);
         
         GameRegistry.registerBlock(blockFrame, ItemBlockFrame.class, blockFrame.getUnlocalizedName());
-        GameRegistry.registerBlock(blockDetector, blockDetector.getUnlocalizedName());
+        GameRegistry.registerBlock(blockDetector, ItemBlockArtifice.class, blockDetector.getUnlocalizedName());
         GameRegistry.registerBlock(blockSteel, blockSteel.getUnlocalizedName());
         GameRegistry.registerBlock(blockFlora, ItemBlockFlora.class, blockFlora.getUnlocalizedName());
         GameRegistry.registerBlock(blockLotus, ItemBlockLotus.class, blockLotus.getUnlocalizedName());
@@ -75,6 +80,7 @@ public class ArtificeBlocks
         GameRegistry.registerBlock(blockMarbleBrickStairs, blockMarbleBrickStairs.getUnlocalizedName());
         GameRegistry.registerBlock(blockBasaltCobbleStairs, blockBasaltCobbleStairs.getUnlocalizedName());
         GameRegistry.registerBlock(blockMarbleCobbleStairs, blockMarbleCobbleStairs.getUnlocalizedName());
+        GameRegistry.registerBlock(blockReinforced, ItemBlockFrame.class, blockReinforced.getUnlocalizedName());
         
         OreDictionary.registerOre("blockSteel", blockSteel);
     }

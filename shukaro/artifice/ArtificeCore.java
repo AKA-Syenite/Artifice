@@ -75,6 +75,8 @@ public class ArtificeCore
         ArtificeBlocks.initBlocks();
         ArtificeItems.initItems();
         
+        ArtificeTooltips.initTooltips();
+        
         GameRegistry.registerWorldGenerator(ArtificeCore.worldGen = new ArtificeWorldGen());
         
         if (ArtificeConfig.floraBoneMeal.getBoolean(true))

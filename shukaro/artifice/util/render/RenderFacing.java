@@ -48,6 +48,7 @@ public class RenderFacing
         if (renderer.hasOverrideBlockTexture())
         {
             icon = renderer.overrideBlockTexture;
+            System.out.println(icon.getIconName());
         }
         
         double d3 = icon.getInterpolatedU(renderer.renderMinX * 16.0D);

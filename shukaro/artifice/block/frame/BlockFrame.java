@@ -23,6 +23,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 public abstract class BlockFrame extends BlockArtifice
 {
 	protected List<String> validTiers = new ArrayList<String>();
+	private Icon renderIcon;
 	
     public BlockFrame(int id)
     {
@@ -36,6 +37,8 @@ public abstract class BlockFrame extends BlockArtifice
     public abstract Block getInnerBlock(int meta);
     
     public abstract int getInnerMeta(int meta);
+    
+    public abstract Icon getRenderIcon(int meta);
     
     @Override
     public abstract boolean isOpaqueCube();

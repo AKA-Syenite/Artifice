@@ -32,6 +32,9 @@ public class FrameRenderer implements ISimpleBlockRenderingHandler
         
         if (innerBlock != null)
         {
+        	if (frame.getRenderIcon(metadata) != null)
+            	renderer.setOverrideBlockTexture(frame.getRenderIcon(metadata));
+        	
             renderer.setRenderBounds(0.0005F, 0.0005F, 0.0005F, 0.9995F, 0.9995F, 0.9995F);
             GL11.glRotatef(90.0F, 0.0F, 1.0F, 0.0F);
             GL11.glTranslatef(-0.5F, -0.5F, -0.5F);
@@ -68,6 +71,8 @@ public class FrameRenderer implements ISimpleBlockRenderingHandler
             
             GL11.glTranslatef(0.5F, 0.5F, 0.5F);
         }
+        
+        renderer.clearOverrideBlockTexture();
         
         renderer.setRenderBounds(0.00005F, 0.00005F, 0.00005F, 0.99995F, 0.99995F, 0.99995F);
         GL11.glRotatef(90.0F, 0.0F, 1.0F, 0.0F);
@@ -110,22 +115,28 @@ public class FrameRenderer implements ISimpleBlockRenderingHandler
     public boolean renderWorldBlock(IBlockAccess world, int x, int y, int z, Block block, int modelId, RenderBlocks renderer)
     {
         BlockFrame frame = null;
+        int meta = world.getBlockMetadata(x, y, z);
         
         if (block instanceof BlockFrame)
             frame = (BlockFrame) block;
         
-        Block innerBlock = frame.getInnerBlock(world.getBlockMetadata(x, y, z));
-        int innerMeta = frame.getInnerMeta(world.getBlockMetadata(x, y, z));
+        Block innerBlock = frame.getInnerBlock(meta);
+        int innerMeta = frame.getInnerMeta(meta);
         		
         renderer.setRenderBounds(0.0002F, 0.0002F, 0.0002F, 0.9998F, 0.9998F, 0.9998F);
         
         if (frame != null && innerBlock != null)
         {
+        	if (frame.getRenderIcon(meta) != null)
+            	renderer.setOverrideBlockTexture(frame.getRenderIcon(meta));
+        	
         	if (renderImproved.renderStandardBlock(renderer, innerBlock, x, y, z, innerMeta, false))
             {
             	renderImproved.renderStandardBlock(renderer, innerBlock, x, y, z, innerMeta, true);
             }
         }
+        
+        renderer.clearOverrideBlockTexture();
         
         renderer.setRenderBounds(0.0001F, 0.0001F, 0.0001F, 0.9999F, 0.9999F, 0.9999F);
         

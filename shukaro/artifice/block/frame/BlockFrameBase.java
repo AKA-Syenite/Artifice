@@ -34,4 +34,10 @@ public class BlockFrameBase extends BlockFrame
     {
         return false;
     }
+    
+    @Override
+    public Icon getRenderIcon(int meta)
+    {
+    	return null;
+    }
 }

@@ -136,7 +136,7 @@ public class BlockFrameDetector extends BlockFrame implements IConnectableRedNet
 	@Override
 	public RedNetConnectionType getConnectionType(World world, int x, int y, int z, ForgeDirection side)
 	{
-		return RedNetConnectionType.PlateSingle;
+		return RedNetConnectionType.CableSingle;
 	}
 
 	@Override
@@ -159,5 +159,11 @@ public class BlockFrameDetector extends BlockFrame implements IConnectableRedNet
 	@Override
 	public void onInputChanged(World world, int x, int y, int z, ForgeDirection side, int inputValue)
 	{
+	}
+
+	@Override
+	public Icon getRenderIcon(int meta)
+	{
+		return null;
 	}
 }

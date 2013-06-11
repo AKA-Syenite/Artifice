@@ -36,6 +36,7 @@ public class ArtificeConfig
     public static Property blockMarbleSlabID;
     public static Property blockMarbleDoubleSlabID;
     public static Property blockSteelID;
+    public static Property blockReinforcedID;
     
     public static Property idStartItem;
     
@@ -50,6 +51,7 @@ public class ArtificeConfig
     public static Property frameRecipes;
     public static Property detectorRecipe;
     public static Property steelSmelting;
+    public static Property blastWallRecipes;
     
     public static Property floraWorldGen;
     public static Property floraFrequency;
@@ -103,6 +105,7 @@ public class ArtificeConfig
             blockMarbleDoubleSlabID = c.getBlock("blockMarbleDoubleSlab", s++);
             blockLotusID = c.getBlock("blockLotus", s++);
             blockSteelID = c.getBlock("blockSteel", s++);
+            blockReinforcedID = c.getBlock("blockReinforced", s++);
             
             idStartItem = c.get(Configuration.CATEGORY_ITEM, "Item Starting ID", 5000);
             idStartItem.comment = "The item ID to use as the starting point for assignment, delete the other IDs to reassign";
@@ -167,6 +170,8 @@ public class ArtificeConfig
             detectorRecipe.comment = "Set to false to prevent crafting of detectors";
             steelSmelting = c.get("Recipes", "Steel Smelting", true);
             steelSmelting.comment = "Set to false to prevent the smelting of steel";
+            blastWallRecipes = c.get("Recipes", "Blast Wall Recipes", true);
+            blastWallRecipes.comment = "Set to false to prevent crafting of blast walls";
             
             floraBoneMeal = c.get("General", "Bonemeal Flowers", true);
             floraBoneMeal.comment = "Set to false to disable random flower growth from bonemeal";

@@ -47,11 +47,13 @@ public abstract class BlockFrame extends BlockArtifice
     @SideOnly(Side.CLIENT)
     public Icon getIcon(int side, int meta)
     {
+    	if (textureRenderer != null)
+        	return textureList[meta][0];
     	if (single)
     		return singleTextureList[meta];
     	if (normal)
     		return normalTextureList[meta][side];
-    	return textureList[meta][0];
+    	return null;
     }
     
     @Override
@@ -73,7 +75,7 @@ public abstract class BlockFrame extends BlockArtifice
 	        {
 	            for (int j = 0; j < 47; j++)
 	            {
-	                String name = "artifice:" + this.textureName + "/" + this.textureName + "_" + ArtificeCore.tiers[i].toLowerCase() + "_" + j;
+	                String name = "artifice:" + "frame/frame_" + ArtificeCore.tiers[i].toLowerCase() + "_" + j;
 	                this.textureList[i][j] = reg.registerIcon(name);
 	            }
 	        }

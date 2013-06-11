@@ -21,6 +21,27 @@ public abstract class ArtificeRegistry
     private static List<String> lotusWhitelist = new ArrayList<String>();
     private static Map<IdMetaPair, ArrayList<ItemStack>> sledgeBlocks = new HashMap<IdMetaPair, ArrayList<ItemStack>>();
     private static Map<Integer, ArrayList<ItemStack>> wildSledgeBlocks = new HashMap<Integer, ArrayList<ItemStack>>();
+    private static Map<IdMetaPair, List<String>> tooltipMap = new HashMap<IdMetaPair, List<String>>();
+    
+    public static void registerTooltip(int id, int meta, String line)
+    {
+    	IdMetaPair pair = new IdMetaPair(id, meta);
+    	if (tooltipMap.get(pair) == null)
+    	{
+    		List<String> temp = new ArrayList<String>();
+    		temp.add(line);
+    		tooltipMap.put(pair, temp);
+    	}
+    	else
+    	{
+    		tooltipMap.get(pair).add(line);
+    	}
+    }
+    
+    public static Map<IdMetaPair, List<String>> getTooltipMap()
+    {
+    	return tooltipMap;
+    }
     
     public static void registerSledgeBlock(int id, int meta, ArrayList<ItemStack> drops)
     {

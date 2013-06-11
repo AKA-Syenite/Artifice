@@ -1,6 +1,7 @@
 package shukaro.artifice.item;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import cpw.mods.fml.common.network.Player;
 import cpw.mods.fml.relauncher.Side;
@@ -51,6 +52,20 @@ public class ItemSledge extends ItemTool
 				return 50;
 			default:
 				return 0;
+		}
+	}
+	
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void addInformation(ItemStack stack, EntityPlayer player, List infoList, boolean advancedTooltips)
+	{
+    	IdMetaPair pair = new IdMetaPair(stack.itemID, 0);
+    	if (ArtificeRegistry.getTooltipMap().get(pair) != null)
+		{
+    		for (String s : ArtificeRegistry.getTooltipMap().get(pair))
+    		{
+    			infoList.add(s);
+    		}
 		}
 	}
 	

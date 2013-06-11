@@ -128,7 +128,7 @@ public class FrameRenderer implements ISimpleBlockRenderingHandler
         if (frame != null && innerBlock != null)
         {
         	if (frame.getRenderIcon(meta) != null)
-            	renderer.setOverrideBlockTexture(frame.getRenderIcon(meta));
+        		renderer.setOverrideBlockTexture(frame.getRenderIcon(meta));
         	
         	if (renderImproved.renderStandardBlock(renderer, innerBlock, x, y, z, innerMeta, false))
             {

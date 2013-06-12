@@ -1,10 +1,16 @@
 package shukaro.artifice.item;
 
+import java.util.List;
+
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import shukaro.artifice.compat.ArtificeRegistry;
 import shukaro.artifice.gui.ArtificeCreativeTab;
+import shukaro.artifice.util.IdMetaPair;
 import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.Icon;
 
 public class ItemSteel extends Item
@@ -30,5 +36,19 @@ public class ItemSteel extends Item
     public void registerIcons(IconRegister reg)
 	{
 		this.icon = reg.registerIcon("artifice:ingot_steel");
+	}
+	
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void addInformation(ItemStack stack, EntityPlayer player, List infoList, boolean advancedTooltips)
+	{
+    	IdMetaPair pair = new IdMetaPair(stack.itemID, 0);
+    	if (ArtificeRegistry.getTooltipMap().get(pair) != null)
+		{
+    		for (String s : ArtificeRegistry.getTooltipMap().get(pair))
+    		{
+    			infoList.add(s);
+    		}
+		}
 	}
 }

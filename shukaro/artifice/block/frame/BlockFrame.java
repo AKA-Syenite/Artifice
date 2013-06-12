@@ -17,6 +17,9 @@ import shukaro.artifice.ArtificeCore;
 import shukaro.artifice.block.BlockArtifice;
 import shukaro.artifice.multiblock.TileEntityMultiblock;
 import shukaro.artifice.multiblock.erogenousbeef.IMultiblockPart;
+import shukaro.artifice.render.connectedtexture.ConnectedTextureBase;
+import shukaro.artifice.render.connectedtexture.TransparentConnectedTexture;
+import shukaro.artifice.util.BlockCoord;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 

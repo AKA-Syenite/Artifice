@@ -44,6 +44,11 @@ tile.artifice.reinforced.reinforced.name = Reinforced Blast Wall
 tile.artifice.reinforced.industrial.name = Industrial Blast Wall
 tile.artifice.reinforced.advanced.name = Advanced Blast Wall
 
+tile.artifice.glasswall.basic.name = Basic Glass Wall
+tile.artifice.glasswall.reinforced.name = Reinforced Glass Wall
+tile.artifice.glasswall.industrial.name = Industrial Glass Wall
+tile.artifice.glasswall.advanced.name = Advanced Glass Wall
+
 tile.artifice.detector.name = Detector
 
 tile.artifice.steel.name = Block of Steel

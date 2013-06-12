@@ -1,5 +1,8 @@
 package shukaro.artifice.util.render;
 
+import shukaro.artifice.block.frame.BlockFrame;
+import shukaro.artifice.render.connectedtexture.ConnectedTextureBase;
+import shukaro.artifice.util.BlockCoord;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.RenderBlocks;
 import net.minecraft.client.renderer.Tessellator;
@@ -15,7 +18,7 @@ public class RenderFacing
         switch (side)
         {
             case 0:
-                renderFaceYNeg(renderer, block, x, y, z, icon, inverted, tessellator);
+            	renderFaceYNeg(renderer, block, x, y, z, icon, inverted, tessellator);
                 return true;
             case 1:
                 renderFaceYPos(renderer, block, x, y, z, icon, inverted, tessellator);
@@ -48,7 +51,6 @@ public class RenderFacing
         if (renderer.hasOverrideBlockTexture())
         {
             icon = renderer.overrideBlockTexture;
-            System.out.println(icon.getIconName());
         }
         
         double d3 = icon.getInterpolatedU(renderer.renderMinX * 16.0D);

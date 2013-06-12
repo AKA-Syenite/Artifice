@@ -1,24 +1,19 @@
 package shukaro.artifice.block.frame;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-import shukaro.artifice.ArtificeBlocks;
-import shukaro.artifice.ArtificeCore;
-import shukaro.artifice.render.connectedtexture.SolidConnectedTexture;
+import shukaro.artifice.render.connectedtexture.TransparentConnectedTexture;
 import net.minecraft.block.Block;
-import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.Icon;
 import net.minecraft.world.World;
 
-public class BlockReinforced extends BlockFrame
+public class BlockFrameGlassWall extends BlockFrame
 {
-	public BlockReinforced(int id)
+	public BlockFrameGlassWall(int id)
 	{
 		super(id);
-		setUnlocalizedName("artifice.reinforced");
-		this.textureName = "reinforced";
-		this.textureRenderer = new SolidConnectedTexture(id);
+		setUnlocalizedName("artifice.glasswall");
+		this.textureName = "glasswall";
+		this.textureRenderer = new TransparentConnectedTexture(id);
 		this.single = true;
 	}
 	
@@ -29,28 +24,22 @@ public class BlockReinforced extends BlockFrame
         switch (meta)
         {
         case 0:
-        	return 1000.0F;
+        	return 900.0F;
         case 1:
-        	return 2000.0F;
+        	return 1900.0F;
         case 2:
-        	return 3000.0F;
+        	return 2900.0F;
         case 3:
-        	return 4000.0F;
+        	return 3900.0F;
         default:
         	return 10.0F;
         }
     }
-	
-	@Override
-    public float getBlockHardness(World world, int x, int y, int z)
-	{
-		return super.getBlockHardness(world, x, y, z) + 5;
-	}
 
 	@Override
 	public Block getInnerBlock(int meta)
 	{
-		return Block.stone;
+		return Block.glass;
 	}
 
 	@Override
@@ -68,7 +57,6 @@ public class BlockReinforced extends BlockFrame
 	@Override
 	public boolean isOpaqueCube()
 	{
-		return true;
+		return false;
 	}
-
 }

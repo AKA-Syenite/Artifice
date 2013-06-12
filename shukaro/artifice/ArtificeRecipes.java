@@ -32,10 +32,48 @@ public class ArtificeRecipes
         		'X', new ItemStack(ArtificeBlocks.blockFrame.blockID, 1, 0),
         		'Q', new ItemStack(Item.redstone.itemID, 1, 0) }));
         }
-        if (ArtificeConfig.steelSmelting.getBoolean(true));
+        if (ArtificeConfig.steelSmelting.getBoolean(true))
         	registerSteelRecipes();
-    	if (ArtificeConfig.blastWallRecipes.getBoolean(true));
+    	if (ArtificeConfig.blastWallRecipes.getBoolean(true))
     		registerBlastWallRecipes();
+    	if (ArtificeConfig.glassWallRecipes.getBoolean(true))
+    		registerGlassWallRecipes();
+    }
+    
+    private static void registerGlassWallRecipes()
+    {
+    	GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeBlocks.blockGlassWall, 2, 0), new Object[] {
+    		"   ",
+    		"YXY",
+    		" Z ",
+    		'X', new ItemStack(ArtificeBlocks.blockFrame, 1, 0),
+    		'Y', Item.clay,
+    		'Z', Block.glass }));
+    	
+    	GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeBlocks.blockGlassWall, 2, 1), new Object[] {
+    		"   ",
+    		"YXY",
+    		"YZY",
+    		'X', new ItemStack(ArtificeBlocks.blockFrame, 1, 1),
+    		'Y', Item.clay,
+    		'Z', Block.glass }));
+    	
+    	GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeBlocks.blockGlassWall, 2, 2), new Object[] {
+    		" Q ",
+    		"YXY",
+    		" Z ",
+    		'X', new ItemStack(ArtificeBlocks.blockFrame, 1, 2),
+    		'Q', Block.glass,
+    		'Y', Block.obsidian,
+    		'Z', Item.clay }));
+    	
+    	GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeBlocks.blockGlassWall, 2, 3), new Object[] {
+    		" Q ",
+    		"YXY",
+    		"YYY",
+    		'X', new ItemStack(ArtificeBlocks.blockFrame, 1, 3),
+    		'Q', Block.glass,
+    		'Y', "ingotSteel" }));
     }
     
     private static void registerBlastWallRecipes()

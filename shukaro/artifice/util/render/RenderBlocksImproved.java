@@ -72,32 +72,35 @@ public class RenderBlocksImproved
         connectNorth = false;
         connectSouth = false;
         
+        Block temp = Block.blocksList[renderer.blockAccess.getBlockId(x, y, z)];
+        
         BlockFrame frame = null;
-        if (block instanceof BlockFrame)
-            frame = (BlockFrame) block;
+        if (temp instanceof BlockFrame)
+            frame = (BlockFrame) temp;
         
         Block innerBlock = null;
         if (frame != null)
         {
-            innerBlock = frame.getInnerBlock(renderer.blockAccess
-                    .getBlockMetadata(x, y, z));
+            innerBlock = frame.getInnerBlock(renderer.blockAccess.getBlockMetadata(x, y, z));
             
             if (frame.textureRenderer != null)
             {
-                ConnectedTextureBase text = new TransparentConnectedTexture(
-                        frame.textureRenderer.blockID);
-                connectBottom = text.canConnectOnSide(renderer.blockAccess,
-                        new BlockCoord(x, y, z), 0, 0);
-                connectTop = text.canConnectOnSide(renderer.blockAccess,
-                        new BlockCoord(x, y, z), 1, 0);
-                connectNorth = text.canConnectOnSide(renderer.blockAccess,
-                        new BlockCoord(x, y, z), 2, 0);
-                connectSouth = text.canConnectOnSide(renderer.blockAccess,
-                        new BlockCoord(x, y, z), 3, 0);
-                connectWest = text.canConnectOnSide(renderer.blockAccess,
-                        new BlockCoord(x, y, z), 4, 0);
-                connectEast = text.canConnectOnSide(renderer.blockAccess,
-                        new BlockCoord(x, y, z), 5, 0);
+                ConnectedTextureBase text = new TransparentConnectedTexture(frame.textureRenderer.blockID);
+                for (int i=0; i<6; i++)
+                {
+                	if (text.canConnectOnSide(renderer.blockAccess, new BlockCoord(x, y, z), 0, i))
+                		connectBottom = true;
+                	if (text.canConnectOnSide(renderer.blockAccess, new BlockCoord(x, y, z), 1, i))
+                		connectTop = true;
+                	if (text.canConnectOnSide(renderer.blockAccess, new BlockCoord(x, y, z), 2, i))
+                		connectNorth = true;
+                	if (text.canConnectOnSide(renderer.blockAccess, new BlockCoord(x, y, z), 3, i))
+                		connectSouth = true;
+                	if (text.canConnectOnSide(renderer.blockAccess, new BlockCoord(x, y, z), 4, i))
+                		connectWest = true;
+                	if (text.canConnectOnSide(renderer.blockAccess, new BlockCoord(x, y, z), 5, i))
+                		connectEast = true;
+                }
             }
         }
         
@@ -134,9 +137,7 @@ public class RenderBlocksImproved
         float f7;
         int i1;
         
-        if (renderer.renderAllFaces
-                || block.shouldSideBeRendered(renderer.blockAccess, x, y - 1,
-                        z, 0) && !connectBottom)
+        if (!connectBottom && (renderer.renderAllFaces || block.shouldSideBeRendered(renderer.blockAccess, x, y - 1, z, 0)))
         {
             if (renderer.renderMinY <= 0.0D)
             {
@@ -297,9 +298,7 @@ public class RenderBlocksImproved
             flag = true;
         }
         
-        if (renderer.renderAllFaces
-                || block.shouldSideBeRendered(renderer.blockAccess, x, y + 1,
-                        z, 1) && !connectTop)
+        if (!connectTop && (renderer.renderAllFaces || block.shouldSideBeRendered(renderer.blockAccess, x, y + 1, z, 1)))
         {
             if (renderer.renderMaxY >= 1.0D)
             {
@@ -459,9 +458,7 @@ public class RenderBlocksImproved
         int i2;
         Icon icon;
         
-        if (renderer.renderAllFaces
-                || block.shouldSideBeRendered(renderer.blockAccess, x, y,
-                        z - 1, 2) && !connectNorth)
+        if (!connectNorth && (renderer.renderAllFaces || block.shouldSideBeRendered(renderer.blockAccess, x, y, z - 1, 2)))
         {
             if (renderer.renderMinZ <= 0.0D)
             {
@@ -663,9 +660,7 @@ public class RenderBlocksImproved
             flag = true;
         }
         
-        if (renderer.renderAllFaces
-                || block.shouldSideBeRendered(renderer.blockAccess, x, y,
-                        z + 1, 3) && !connectSouth)
+        if (!connectSouth && (renderer.renderAllFaces || block.shouldSideBeRendered(renderer.blockAccess, x, y, z + 1, 3)))
         {
             if (renderer.renderMaxZ >= 1.0D)
             {
@@ -871,9 +866,7 @@ public class RenderBlocksImproved
             flag = true;
         }
         
-        if (renderer.renderAllFaces
-                || block.shouldSideBeRendered(renderer.blockAccess, x - 1, y,
-                        z, 4) && !connectWest)
+        if (!connectWest && (renderer.renderAllFaces || block.shouldSideBeRendered(renderer.blockAccess, x - 1, y, z, 4)))
         {
             if (renderer.renderMinX <= 0.0D)
             {
@@ -1079,9 +1072,7 @@ public class RenderBlocksImproved
             flag = true;
         }
         
-        if (renderer.renderAllFaces
-                || block.shouldSideBeRendered(renderer.blockAccess, x + 1, y,
-                        z, 5) && !connectEast)
+        if (!connectEast && (renderer.renderAllFaces || block.shouldSideBeRendered(renderer.blockAccess, x + 1, y, z, 5)))
         {
             if (renderer.renderMaxX >= 1.0D)
             {
@@ -1302,9 +1293,11 @@ public class RenderBlocksImproved
         connectNorth = false;
         connectSouth = false;
         
+        Block temp = Block.blocksList[renderer.blockAccess.getBlockId(x, y, z)];
+        
         BlockFrame frame = null;
-        if (block instanceof BlockFrame)
-            frame = (BlockFrame) block;
+        if (temp instanceof BlockFrame)
+            frame = (BlockFrame) temp;
         
         Block innerBlock = null;
         if (frame != null)
@@ -1314,20 +1307,22 @@ public class RenderBlocksImproved
             
             if (frame.textureRenderer != null)
             {
-                ConnectedTextureBase text = new TransparentConnectedTexture(
-                        frame.textureRenderer.blockID);
-                connectBottom = text.canConnectOnSide(renderer.blockAccess,
-                        new BlockCoord(x, y, z), 0, 0);
-                connectTop = text.canConnectOnSide(renderer.blockAccess,
-                        new BlockCoord(x, y, z), 1, 0);
-                connectNorth = text.canConnectOnSide(renderer.blockAccess,
-                        new BlockCoord(x, y, z), 2, 0);
-                connectSouth = text.canConnectOnSide(renderer.blockAccess,
-                        new BlockCoord(x, y, z), 3, 0);
-                connectWest = text.canConnectOnSide(renderer.blockAccess,
-                        new BlockCoord(x, y, z), 4, 0);
-                connectEast = text.canConnectOnSide(renderer.blockAccess,
-                        new BlockCoord(x, y, z), 5, 0);
+                ConnectedTextureBase text = new TransparentConnectedTexture(frame.textureRenderer.blockID);
+                for (int i=0; i<6; i++)
+                {
+                	if (text.canConnectOnSide(renderer.blockAccess, new BlockCoord(x, y, z), 0, i))
+                		connectBottom = true;
+                	if (text.canConnectOnSide(renderer.blockAccess, new BlockCoord(x, y, z), 1, i))
+                		connectTop = true;
+                	if (text.canConnectOnSide(renderer.blockAccess, new BlockCoord(x, y, z), 2, i))
+                		connectNorth = true;
+                	if (text.canConnectOnSide(renderer.blockAccess, new BlockCoord(x, y, z), 3, i))
+                		connectSouth = true;
+                	if (text.canConnectOnSide(renderer.blockAccess, new BlockCoord(x, y, z), 4, i))
+                		connectWest = true;
+                	if (text.canConnectOnSide(renderer.blockAccess, new BlockCoord(x, y, z), 5, i))
+                		connectEast = true;
+                }
             }
         }
         
@@ -1364,9 +1359,7 @@ public class RenderBlocksImproved
         float f7;
         int i1;
         
-        if (renderer.renderAllFaces
-                || block.shouldSideBeRendered(renderer.blockAccess, x, y - 1,
-                        z, 0) && !connectBottom)
+        if (!connectBottom && (renderer.renderAllFaces || block.shouldSideBeRendered(renderer.blockAccess, x, y - 1, z, 0)))
         {
             if (renderer.renderMinY <= 0.0D)
             {
@@ -1527,9 +1520,7 @@ public class RenderBlocksImproved
             flag = true;
         }
         
-        if (renderer.renderAllFaces
-                || block.shouldSideBeRendered(renderer.blockAccess, x, y + 1,
-                        z, 1) && !connectTop)
+        if (!connectTop && (renderer.renderAllFaces || block.shouldSideBeRendered(renderer.blockAccess, x, y + 1, z, 1)))
         {
             if (renderer.renderMaxY >= 1.0D)
             {
@@ -1681,9 +1672,7 @@ public class RenderBlocksImproved
         
         Icon icon;
         
-        if (renderer.renderAllFaces
-                || block.shouldSideBeRendered(renderer.blockAccess, x, y,
-                        z - 1, 2) && !connectNorth)
+        if (!connectNorth && (renderer.renderAllFaces || block.shouldSideBeRendered(renderer.blockAccess, x, y, z - 1, 2)))
         {
             if (renderer.renderMinZ <= 0.0D)
             {
@@ -1845,9 +1834,7 @@ public class RenderBlocksImproved
             flag = true;
         }
         
-        if (renderer.renderAllFaces
-                || block.shouldSideBeRendered(renderer.blockAccess, x, y,
-                        z + 1, 3) && !connectSouth)
+        if (!connectSouth && (renderer.renderAllFaces || block.shouldSideBeRendered(renderer.blockAccess, x, y, z + 1, 3)))
         {
             if (renderer.renderMaxZ >= 1.0D)
             {
@@ -2009,9 +1996,7 @@ public class RenderBlocksImproved
             flag = true;
         }
         
-        if (renderer.renderAllFaces
-                || block.shouldSideBeRendered(renderer.blockAccess, x - 1, y,
-                        z, 4) && !connectWest)
+        if (!connectWest && (renderer.renderAllFaces || block.shouldSideBeRendered(renderer.blockAccess, x - 1, y, z, 4)))
         {
             if (renderer.renderMinX <= 0.0D)
             {
@@ -2173,9 +2158,7 @@ public class RenderBlocksImproved
             flag = true;
         }
         
-        if (renderer.renderAllFaces
-                || block.shouldSideBeRendered(renderer.blockAccess, x + 1, y,
-                        z, 5) && !connectEast)
+        if (!connectEast && (renderer.renderAllFaces || block.shouldSideBeRendered(renderer.blockAccess, x + 1, y, z, 5)))
         {
             if (renderer.renderMaxX >= 1.0D)
             {
@@ -2352,9 +2335,11 @@ public class RenderBlocksImproved
         connectNorth = false;
         connectSouth = false;
         
+        Block temp = Block.blocksList[renderer.blockAccess.getBlockId(x, y, z)];
+        
         BlockFrame frame = null;
-        if (block instanceof BlockFrame)
-            frame = (BlockFrame) block;
+        if (temp instanceof BlockFrame)
+            frame = (BlockFrame) temp;
         
         Block innerBlock = null;
         if (frame != null)
@@ -2364,20 +2349,22 @@ public class RenderBlocksImproved
             
             if (frame.textureRenderer != null)
             {
-                ConnectedTextureBase text = new TransparentConnectedTexture(
-                        frame.textureRenderer.blockID);
-                connectBottom = text.canConnectOnSide(renderer.blockAccess,
-                        new BlockCoord(x, y, z), 0, 0);
-                connectTop = text.canConnectOnSide(renderer.blockAccess,
-                        new BlockCoord(x, y, z), 1, 0);
-                connectNorth = text.canConnectOnSide(renderer.blockAccess,
-                        new BlockCoord(x, y, z), 2, 0);
-                connectSouth = text.canConnectOnSide(renderer.blockAccess,
-                        new BlockCoord(x, y, z), 3, 0);
-                connectWest = text.canConnectOnSide(renderer.blockAccess,
-                        new BlockCoord(x, y, z), 4, 0);
-                connectEast = text.canConnectOnSide(renderer.blockAccess,
-                        new BlockCoord(x, y, z), 5, 0);
+                ConnectedTextureBase text = new TransparentConnectedTexture(frame.textureRenderer.blockID);
+                for (int i=0; i<6; i++)
+                {
+                	if (text.canConnectOnSide(renderer.blockAccess, new BlockCoord(x, y, z), 0, i))
+                		connectBottom = true;
+                	if (text.canConnectOnSide(renderer.blockAccess, new BlockCoord(x, y, z), 1, i))
+                		connectTop = true;
+                	if (text.canConnectOnSide(renderer.blockAccess, new BlockCoord(x, y, z), 2, i))
+                		connectNorth = true;
+                	if (text.canConnectOnSide(renderer.blockAccess, new BlockCoord(x, y, z), 3, i))
+                		connectSouth = true;
+                	if (text.canConnectOnSide(renderer.blockAccess, new BlockCoord(x, y, z), 4, i))
+                		connectWest = true;
+                	if (text.canConnectOnSide(renderer.blockAccess, new BlockCoord(x, y, z), 5, i))
+                		connectEast = true;
+                }
             }
         }
         
@@ -2426,9 +2413,7 @@ public class RenderBlocksImproved
         
         int l = block.getMixedBrightnessForBlock(renderer.blockAccess, x, y, z);
         
-        if (renderer.renderAllFaces
-                || block.shouldSideBeRendered(renderer.blockAccess, x, y - 1,
-                        z, 0) && !connectBottom)
+        if (!connectBottom && (renderer.renderAllFaces || block.shouldSideBeRendered(renderer.blockAccess, x, y - 1, z, 0)))
         {
             tessellator.setBrightness(renderer.renderMinY > 0.0D ? l : block
                     .getMixedBrightnessForBlock(renderer.blockAccess, x, y - 1,
@@ -2440,9 +2425,7 @@ public class RenderBlocksImproved
             flag = true;
         }
         
-        if (renderer.renderAllFaces
-                || block.shouldSideBeRendered(renderer.blockAccess, x, y + 1,
-                        z, 1) && !connectTop)
+        if (!connectTop && (renderer.renderAllFaces || block.shouldSideBeRendered(renderer.blockAccess, x, y + 1, z, 1)))
         {
             tessellator.setBrightness(renderer.renderMaxY < 1.0D ? l : block
                     .getMixedBrightnessForBlock(renderer.blockAccess, x, y + 1,
@@ -2456,9 +2439,7 @@ public class RenderBlocksImproved
         
         Icon icon;
         
-        if (renderer.renderAllFaces
-                || block.shouldSideBeRendered(renderer.blockAccess, x, y,
-                        z - 1, 2) && !connectNorth)
+        if (!connectNorth && (renderer.renderAllFaces || block.shouldSideBeRendered(renderer.blockAccess, x, y, z - 1, 2)))
         {
             tessellator.setBrightness(renderer.renderMinZ > 0.0D ? l : block
                     .getMixedBrightnessForBlock(renderer.blockAccess, x, y,
@@ -2471,9 +2452,7 @@ public class RenderBlocksImproved
             flag = true;
         }
         
-        if (renderer.renderAllFaces
-                || block.shouldSideBeRendered(renderer.blockAccess, x, y,
-                        z + 1, 3) && !connectSouth)
+        if (!connectSouth && (renderer.renderAllFaces || block.shouldSideBeRendered(renderer.blockAccess, x, y, z + 1, 3)))
         {
             tessellator.setBrightness(renderer.renderMaxZ < 1.0D ? l : block
                     .getMixedBrightnessForBlock(renderer.blockAccess, x, y,
@@ -2486,9 +2465,7 @@ public class RenderBlocksImproved
             flag = true;
         }
         
-        if (renderer.renderAllFaces
-                || block.shouldSideBeRendered(renderer.blockAccess, x - 1, y,
-                        z, 4) && !connectWest)
+        if (!connectWest && (renderer.renderAllFaces || block.shouldSideBeRendered(renderer.blockAccess, x - 1, y, z, 4)))
         {
             tessellator.setBrightness(renderer.renderMinX > 0.0D ? l : block
                     .getMixedBrightnessForBlock(renderer.blockAccess, x - 1, y,
@@ -2501,9 +2478,7 @@ public class RenderBlocksImproved
             flag = true;
         }
         
-        if (renderer.renderAllFaces
-                || block.shouldSideBeRendered(renderer.blockAccess, x + 1, y,
-                        z, 5) && !connectEast)
+        if (!connectEast && (renderer.renderAllFaces || block.shouldSideBeRendered(renderer.blockAccess, x + 1, y, z, 5)))
         {
             tessellator.setBrightness(renderer.renderMaxX < 1.0D ? l : block
                     .getMixedBrightnessForBlock(renderer.blockAccess, x + 1, y,

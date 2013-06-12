@@ -71,15 +71,15 @@ public class ArtificeBlocks
         
         GameRegistry.registerBlock(blockFrame, ItemBlockFrame.class, blockFrame.getUnlocalizedName());
         GameRegistry.registerBlock(blockDetector, ItemBlockArtifice.class, blockDetector.getUnlocalizedName());
-        GameRegistry.registerBlock(blockSteel, blockSteel.getUnlocalizedName());
+        GameRegistry.registerBlock(blockSteel, ItemBlockArtifice.class, blockSteel.getUnlocalizedName());
         GameRegistry.registerBlock(blockFlora, ItemBlockFlora.class, blockFlora.getUnlocalizedName());
         GameRegistry.registerBlock(blockLotus, ItemBlockLotus.class, blockLotus.getUnlocalizedName());
         GameRegistry.registerBlock(blockBasalt, ItemBlockBasalt.class, blockBasalt.getUnlocalizedName());
         GameRegistry.registerBlock(blockMarble, ItemBlockMarble.class, blockMarble.getUnlocalizedName());
-        GameRegistry.registerBlock(blockBasaltBrickStairs, blockBasaltBrickStairs.getUnlocalizedName());
-        GameRegistry.registerBlock(blockMarbleBrickStairs, blockMarbleBrickStairs.getUnlocalizedName());
-        GameRegistry.registerBlock(blockBasaltCobbleStairs, blockBasaltCobbleStairs.getUnlocalizedName());
-        GameRegistry.registerBlock(blockMarbleCobbleStairs, blockMarbleCobbleStairs.getUnlocalizedName());
+        GameRegistry.registerBlock(blockBasaltBrickStairs, ItemBlockArtifice.class, blockBasaltBrickStairs.getUnlocalizedName());
+        GameRegistry.registerBlock(blockMarbleBrickStairs, ItemBlockArtifice.class, blockMarbleBrickStairs.getUnlocalizedName());
+        GameRegistry.registerBlock(blockBasaltCobbleStairs, ItemBlockArtifice.class, blockBasaltCobbleStairs.getUnlocalizedName());
+        GameRegistry.registerBlock(blockMarbleCobbleStairs, ItemBlockArtifice.class, blockMarbleCobbleStairs.getUnlocalizedName());
         GameRegistry.registerBlock(blockReinforced, ItemBlockFrame.class, blockReinforced.getUnlocalizedName());
         
         OreDictionary.registerOre("blockSteel", blockSteel);

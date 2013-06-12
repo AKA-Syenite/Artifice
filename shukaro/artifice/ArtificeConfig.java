@@ -37,6 +37,7 @@ public class ArtificeConfig
     public static Property blockMarbleDoubleSlabID;
     public static Property blockSteelID;
     public static Property blockReinforcedID;
+    public static Property blockGlassWallID;
     
     public static Property idStartItem;
     
@@ -52,6 +53,7 @@ public class ArtificeConfig
     public static Property detectorRecipe;
     public static Property steelSmelting;
     public static Property blastWallRecipes;
+    public static Property glassWallRecipes;
     
     public static Property floraWorldGen;
     public static Property floraFrequency;
@@ -74,6 +76,9 @@ public class ArtificeConfig
     public static Property regenFlora;
     public static Property regenLotus;
     public static Property regenKey;
+    
+    public static Property flavorText;
+    public static Property tooltips;
     
     public static Property dimensionBlacklist;
     
@@ -106,6 +111,7 @@ public class ArtificeConfig
             blockLotusID = c.getBlock("blockLotus", s++);
             blockSteelID = c.getBlock("blockSteel", s++);
             blockReinforcedID = c.getBlock("blockReinforced", s++);
+            blockGlassWallID = c.getBlock("blockGlassWall", s++);
             
             idStartItem = c.get(Configuration.CATEGORY_ITEM, "Item Starting ID", 5000);
             idStartItem.comment = "The item ID to use as the starting point for assignment, delete the other IDs to reassign";
@@ -172,6 +178,8 @@ public class ArtificeConfig
             steelSmelting.comment = "Set to false to prevent the smelting of steel";
             blastWallRecipes = c.get("Recipes", "Blast Wall Recipes", true);
             blastWallRecipes.comment = "Set to false to prevent crafting of blast walls";
+            glassWallRecipes = c.get("Recipes", "Glass Wall Recipes", true);
+            glassWallRecipes.comment = "Set to false to prevent crafting of glass blast walls";
             
             floraBoneMeal = c.get("General", "Bonemeal Flowers", true);
             floraBoneMeal.comment = "Set to false to disable random flower growth from bonemeal";
@@ -191,7 +199,24 @@ public class ArtificeConfig
     
     public static void initClient(FMLPreInitializationEvent evt)
     {
-        
+    	Configuration c = new Configuration(evt.getSuggestedConfigurationFile());
+    	try
+    	{
+    		c.load();
+    		tooltips = c.get("Client", "Tooltips", true);
+    		tooltips.comment = "Set to false to turn off tooltips";
+    		flavorText = c.get("Client", "Flavor Text", true);
+    		flavorText.comment = "Set to false to turn off flavor text in tooltips";
+    	}
+        catch (Exception e)
+        {
+            ArtificeCore.logger.log(Level.SEVERE, "Artifice couldn't load the config file");
+            e.printStackTrace();
+        }
+        finally
+        {
+            c.save();
+        }
     }
     
     private static void setDimBlacklist()

@@ -3,6 +3,8 @@ package shukaro.artifice.block;
 import java.util.List;
 
 import shukaro.artifice.ArtificeBlocks;
+import shukaro.artifice.ArtificeConfig;
+import shukaro.artifice.ArtificeTooltips;
 import shukaro.artifice.compat.ArtificeRegistry;
 import shukaro.artifice.util.IdMetaPair;
 
@@ -31,11 +33,15 @@ public class ItemBlockArtifice extends ItemBlock
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List infoList, boolean advancedTooltips)
     {
+    	if (!ArtificeConfig.tooltips.getBoolean(true))
+    		return;
     	IdMetaPair pair = new IdMetaPair(stack.itemID, stack.getItemDamage());
     	if (ArtificeRegistry.getTooltipMap().get(pair) != null)
 		{
     		for (String s : ArtificeRegistry.getTooltipMap().get(pair))
     		{
+    			if (!ArtificeConfig.flavorText.getBoolean(true) && s.startsWith(ArtificeTooltips.commentCode))
+    				continue;
     			infoList.add(s);
     		}
 		}

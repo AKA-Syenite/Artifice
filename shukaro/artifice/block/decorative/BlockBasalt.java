@@ -43,6 +43,8 @@ public class BlockBasalt extends BlockArtifice
     public Icon getBlockTexture(IBlockAccess block, int x, int y, int z, int side)
     {
         int meta = block.getBlockMetadata(x, y, z);
+        if (meta > ArtificeCore.rocks.length)
+        	return singleTextureList[0];
         if (meta == 3 || meta == 4)
             return textureList[3][textureRenderer.getBlockTexture(block, x, y, z, side)];
         else

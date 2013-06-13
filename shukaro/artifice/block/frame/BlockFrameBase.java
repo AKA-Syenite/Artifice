@@ -2,7 +2,9 @@ package shukaro.artifice.block.frame;
 
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Icon;
+import net.minecraft.world.World;
 import shukaro.artifice.ArtificeCore;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -40,4 +42,10 @@ public class BlockFrameBase extends BlockFrame
     {
     	return null;
     }
+
+	@Override
+	public TileEntity createNewTileEntity(World world)
+	{
+		return null;
+	}
 }

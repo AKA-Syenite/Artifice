@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
@@ -23,7 +24,7 @@ import shukaro.artifice.util.BlockCoord;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public abstract class BlockFrame extends BlockArtifice
+public abstract class BlockFrame extends BlockArtifice implements ITileEntityProvider
 {
 	protected List<String> validTiers = new ArrayList<String>();
 	private Icon renderIcon;
@@ -139,21 +140,5 @@ public abstract class BlockFrame extends BlockArtifice
     public int getRenderType()
     {
         return ArtificeCore.frameRenderID;
-    }
-    
-    @Override
-    public void onBlockAdded(World world, int x, int y, int z)
-    {
-        TileEntity te = world.getBlockTileEntity(x, y, z);
-        if (te != null && te instanceof IMultiblockPart)
-        {
-            ((IMultiblockPart)te).onBlockAdded(world, x, y, z);
-        }
-    }
-    
-    @Override
-    public TileEntity createTileEntity(World world, int meta)
-    {
-        return new TileEntityMultiblock();
     }
 }

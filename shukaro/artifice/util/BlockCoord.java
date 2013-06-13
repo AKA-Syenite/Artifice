@@ -3,7 +3,9 @@ package shukaro.artifice.util;
 import java.util.ArrayList;
 import java.util.List;
 
+import net.minecraft.block.Block;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.world.World;
 import net.minecraftforge.common.ForgeDirection;
 
 public class BlockCoord implements Comparable
@@ -286,6 +288,26 @@ public class BlockCoord implements Comparable
     public BlockCoord set(BlockCoord t)
     {
         return set(t.x, t.y, t.z);
+    }
+    
+    public int getMeta(World world)
+    {
+    	return world.getBlockMetadata(this.x, this.y, this.z);
+    }
+    
+    public Block getBlock(World world)
+    {
+    	return Block.blocksList[world.getBlockId(this.x, this.y, this.z)];
+    }
+    
+    public int getBlockID(World world)
+    {
+    	return world.getBlockId(this.x, this.y, this.z);
+    }
+    
+    public TileEntity getTileEntity(World world)
+    {
+    	return world.getBlockTileEntity(this.x, this.y, this.z);
     }
     
     @Override

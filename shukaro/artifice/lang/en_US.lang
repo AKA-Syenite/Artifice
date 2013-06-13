@@ -49,6 +49,11 @@ tile.artifice.glasswall.reinforced.name = Reinforced Glass Wall
 tile.artifice.glasswall.industrial.name = Industrial Glass Wall
 tile.artifice.glasswall.advanced.name = Advanced Glass Wall
 
+tile.artifice.scaffold.basic.name = Basic Scaffolding
+tile.artifice.scaffold.reinforced.name = Reinforced Scaffolding
+tile.artifice.scaffold.industrial.name = Industrial Scaffolding
+tile.artifice.scaffold.advanced.name = Advanced Scaffolding
+
 tile.artifice.detector.name = Detector
 
 tile.artifice.steel.name = Block of Steel

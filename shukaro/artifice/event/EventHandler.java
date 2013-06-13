@@ -4,12 +4,21 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 
+import net.minecraft.block.Block;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.world.ChunkCoordIntPair;
+import net.minecraft.world.World;
 import net.minecraftforge.event.ForgeSubscribe;
+import net.minecraftforge.event.entity.player.PlayerInteractEvent;
+import net.minecraftforge.event.entity.player.PlayerInteractEvent.Action;
 import net.minecraftforge.event.world.ChunkDataEvent;
+import shukaro.artifice.ArtificeBlocks;
 import shukaro.artifice.ArtificeConfig;
 import shukaro.artifice.ArtificeCore;
 import shukaro.artifice.compat.ArtificeRegistry;
+import shukaro.artifice.util.BlockCoord;
 import shukaro.artifice.util.ChunkCoord;
 
 public class EventHandler
@@ -52,5 +61,64 @@ public class EventHandler
                 WorldTicker.chunksToGen.put(Integer.valueOf(dim), chunks);
             }
         }
+    }
+    
+    //@ForgeSubscribe
+    public void onPlayerInteract(PlayerInteractEvent e)
+    {
+    	EntityPlayer player = e.entityPlayer;
+    	World world = player.worldObj;
+    	
+    	if (e.action != Action.RIGHT_CLICK_BLOCK || world.isRemote)
+    		return;
+    	
+    	int x = e.x;
+    	int y = e.y;
+    	int z = e.z;
+    	ItemStack held = player.inventory.mainInventory[player.inventory.currentItem];
+    	int blockID = ArtificeBlocks.blockScaffold.blockID;
+    	Block block = Block.blocksList[blockID];
+    	
+    	if (held == null || held.itemID != blockID || held.getItemDamage() != world.getBlockMetadata(x, y, z))
+    		return;
+    	
+		if (player.isSneaking())
+		{
+			if (world.getBlockId(x, y, z) == blockID)
+			{
+				for (int i = y; i < 256; i++)
+				{
+					if (world.isAirBlock(x, i, z))
+					{
+						world.setBlock(x, i, z, blockID, held.getItemDamage(), 3);
+						if (!player.capabilities.isCreativeMode)
+						{
+							held.stackSize--;
+							if(held.stackSize == 0)
+							{
+								held = null;
+							}
+						}
+						break;
+					}
+				}
+			}
+		}
+		else
+		{
+			BlockCoord face = new BlockCoord(x, y, z).offset(e.face);
+			if (block.canPlaceBlockAt(world, face.x, face.y, face.z))
+			{
+				world.setBlock(face.x, face.y, face.z, blockID, held.getItemDamage(), 3);
+				if (!player.capabilities.isCreativeMode)
+				{
+					held.stackSize--;
+					if(held.stackSize == 0)
+					{
+						held = null;
+					}
+				}
+			}
+		}
     }
 }

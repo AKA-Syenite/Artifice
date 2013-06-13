@@ -36,6 +36,8 @@ public class BlockFlora extends BlockFlower
     @SideOnly(Side.CLIENT)
     public Icon getIcon(int side, int meta)
     {
+    	if (meta > ArtificeCore.flora.length)
+        	return textureList[0];
         return textureList[meta];
     }
     

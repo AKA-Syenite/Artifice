@@ -8,6 +8,7 @@ import shukaro.artifice.render.connectedtexture.SolidConnectedTexture;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.Entity;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Icon;
 import net.minecraft.world.World;
 
@@ -29,13 +30,13 @@ public class BlockFrameBlastWall extends BlockFrame
         switch (meta)
         {
         case 0:
-        	return 1000.0F;
+        	return 20.0F;
         case 1:
-        	return 2000.0F;
+        	return 30.0F;
         case 2:
-        	return 3000.0F;
+        	return 50.0F;
         case 3:
-        	return 4000.0F;
+        	return 80.0F;
         default:
         	return 10.0F;
         }
@@ -69,6 +70,12 @@ public class BlockFrameBlastWall extends BlockFrame
 	public boolean isOpaqueCube()
 	{
 		return true;
+	}
+
+	@Override
+	public TileEntity createNewTileEntity(World world)
+	{
+		return null;
 	}
 
 }

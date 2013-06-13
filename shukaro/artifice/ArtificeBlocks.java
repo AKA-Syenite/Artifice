@@ -24,6 +24,7 @@ import shukaro.artifice.block.frame.BlockFrameBase;
 import shukaro.artifice.block.frame.BlockFrameDetector;
 import shukaro.artifice.block.frame.BlockFrameBlastWall;
 import shukaro.artifice.block.frame.BlockFrameGlassWall;
+import shukaro.artifice.block.frame.BlockFrameScaffold;
 import shukaro.artifice.block.frame.ItemBlockFrame;
 import cpw.mods.fml.common.registry.GameRegistry;
 
@@ -46,6 +47,7 @@ public class ArtificeBlocks
     public static BlockSteel blockSteel;
     public static BlockFrameBlastWall blockReinforced;
     public static BlockFrameGlassWall blockGlassWall;
+    public static BlockFrameScaffold blockScaffold;
     
     public static void initBlocks()
     {
@@ -66,6 +68,7 @@ public class ArtificeBlocks
         blockSteel = new BlockSteel(ArtificeConfig.blockSteelID.getInt());
         blockReinforced = new BlockFrameBlastWall(ArtificeConfig.blockReinforcedID.getInt());
         blockGlassWall = new BlockFrameGlassWall(ArtificeConfig.blockGlassWallID.getInt());
+        //blockScaffold = new BlockFrameScaffold(ArtificeConfig.blockScaffoldID.getInt());
         
         Item.itemsList[ArtificeConfig.blockBasaltSlabID.getInt()] = new ItemBlockSlabArtifice(ArtificeConfig.blockBasaltSlabID.getInt() - 256, blockBasaltSlab, blockBasaltDoubleSlab, false);
         Item.itemsList[ArtificeConfig.blockBasaltDoubleSlabID.getInt()] = new ItemBlockSlabArtifice(ArtificeConfig.blockBasaltDoubleSlabID.getInt() - 256, blockBasaltSlab, blockBasaltDoubleSlab, true);
@@ -85,6 +88,7 @@ public class ArtificeBlocks
         GameRegistry.registerBlock(blockMarbleCobbleStairs, ItemBlockArtifice.class, blockMarbleCobbleStairs.getUnlocalizedName());
         GameRegistry.registerBlock(blockReinforced, ItemBlockFrame.class, blockReinforced.getUnlocalizedName());
         GameRegistry.registerBlock(blockGlassWall, ItemBlockFrame.class, blockGlassWall.getUnlocalizedName());
+        //GameRegistry.registerBlock(blockScaffold, ItemBlockFrame.class, blockScaffold.getUnlocalizedName());
         
         OreDictionary.registerOre("blockSteel", blockSteel);
     }

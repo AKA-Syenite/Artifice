@@ -1,7 +1,10 @@
 package shukaro.artifice.util;
 
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Set;
 
 import net.minecraft.block.Block;
 import net.minecraft.tileentity.TileEntity;
@@ -255,6 +258,20 @@ public class BlockCoord implements Comparable
         return adjacent;
     }
     
+    public BlockCoord[] getSides()
+    {
+    	BlockCoord[] sides = new BlockCoord[4];
+    	int j = 0;
+
+    	for (int i=2; i<=5; i++)
+    	{
+    		sides[j] = this.copy().offset(i);
+    		j++;
+    	}
+    	
+    	return sides;
+    }
+    
     public List<BlockCoord> getNearby()
     {
         List<BlockCoord> nearby = new ArrayList<BlockCoord>();
@@ -288,6 +305,92 @@ public class BlockCoord implements Comparable
     public BlockCoord set(BlockCoord t)
     {
         return set(t.x, t.y, t.z);
+    }
+    
+    public List<BlockCoord> getRadiusMatches(World world, int radius, int blockID, int meta)
+    {
+    	List<BlockCoord> matches = new ArrayList<BlockCoord>();
+    	BlockCoord c = this.copy();
+    	
+    	int minX = c.x - radius;
+    	int maxX = c.x + radius + 1;
+    	int minY = c.y - radius;
+    	int maxY = c.y + radius + 1;
+    	int minZ = c.z - radius;
+    	int maxZ = c.z + radius + 1;
+    	
+    	for (int x = minX; x < maxX; x++)
+    	{
+    		for (int y = minY; y < maxY; y++)
+    		{
+				for (int z = minZ; z < maxZ; z++)
+				{
+					BlockCoord t = new BlockCoord(x, y, z);
+					if (t.blockEquals(world, blockID, meta))
+						matches.add(t);
+				}
+    		}
+    	}
+    	
+    	return matches;
+    }
+    
+    public boolean blockEquals(World world, BlockCoord c)
+    {
+    	if (c.getBlock(world) == null && this.getBlock(world) == null)
+    		return true;
+    	if (c.getBlock(world) == null ^ this.getBlock(world) == null)
+    		return false;
+    	return (c.getBlockID(world) == this.getBlockID(world) && c.getMeta(world) == this.getMeta(world));
+    }
+    
+    public boolean blockEquals(World world, int blockID, int meta)
+    {
+    	if (this.getBlock(world) == null)
+    		return false;
+    	return (this.getBlockID(world) == blockID && this.getMeta(world) == meta);
+    }
+    
+    public boolean isConnected(World world, BlockCoord c)
+    {
+    	return this.isConnected(world, c, this.getBlockID(world), this.getMeta(world));
+    }
+    
+    public boolean isConnected(World world, BlockCoord c, int blockID, int meta)
+    {
+    	List<BlockCoord> traversed = new LinkedList<BlockCoord>();
+    	List<BlockCoord> toTraverse = new LinkedList<BlockCoord>();
+    	
+    	toTraverse.add(this);
+    	
+    	while (!toTraverse.isEmpty())
+    	{
+    		BlockCoord t = toTraverse.get(0);
+    		traversed.add(toTraverse.remove(0));
+    		
+    		for (BlockCoord j : t.getAdjacent())
+    		{
+    			if (j.blockEquals(world, blockID, meta))
+    			{
+    				if (j.equals(c))
+    					return true;
+    				if (!traversed.contains(j) && !toTraverse.contains(j))
+    					toTraverse.add(j);
+    			}
+    		}
+    	}
+    	
+    	return false;
+    }
+    
+    public float getDistance(BlockCoord c)
+    {
+    	return this.getDistance(c.x, c.y, c.z);
+    }
+    
+    public float getDistance(int x, int y, int z)
+    {
+    	return (float) Math.sqrt(Math.pow(this.x - x, 2) + Math.pow(this.y - y, 2) + Math.pow(this.z - z, 2));
     }
     
     public int getMeta(World world)

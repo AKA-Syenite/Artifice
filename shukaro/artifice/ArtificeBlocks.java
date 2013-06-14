@@ -68,7 +68,7 @@ public class ArtificeBlocks
         blockSteel = new BlockSteel(ArtificeConfig.blockSteelID.getInt());
         blockReinforced = new BlockFrameBlastWall(ArtificeConfig.blockReinforcedID.getInt());
         blockGlassWall = new BlockFrameGlassWall(ArtificeConfig.blockGlassWallID.getInt());
-        //blockScaffold = new BlockFrameScaffold(ArtificeConfig.blockScaffoldID.getInt());
+        blockScaffold = new BlockFrameScaffold(ArtificeConfig.blockScaffoldID.getInt());
         
         Item.itemsList[ArtificeConfig.blockBasaltSlabID.getInt()] = new ItemBlockSlabArtifice(ArtificeConfig.blockBasaltSlabID.getInt() - 256, blockBasaltSlab, blockBasaltDoubleSlab, false);
         Item.itemsList[ArtificeConfig.blockBasaltDoubleSlabID.getInt()] = new ItemBlockSlabArtifice(ArtificeConfig.blockBasaltDoubleSlabID.getInt() - 256, blockBasaltSlab, blockBasaltDoubleSlab, true);
@@ -88,7 +88,7 @@ public class ArtificeBlocks
         GameRegistry.registerBlock(blockMarbleCobbleStairs, ItemBlockArtifice.class, blockMarbleCobbleStairs.getUnlocalizedName());
         GameRegistry.registerBlock(blockReinforced, ItemBlockFrame.class, blockReinforced.getUnlocalizedName());
         GameRegistry.registerBlock(blockGlassWall, ItemBlockFrame.class, blockGlassWall.getUnlocalizedName());
-        //GameRegistry.registerBlock(blockScaffold, ItemBlockFrame.class, blockScaffold.getUnlocalizedName());
+        GameRegistry.registerBlock(blockScaffold, ItemBlockFrame.class, blockScaffold.getUnlocalizedName());
         
         OreDictionary.registerOre("blockSteel", blockSteel);
     }

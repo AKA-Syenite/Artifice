@@ -63,7 +63,7 @@ public class EventHandler
         }
     }
     
-    //@ForgeSubscribe
+    @ForgeSubscribe
     public void onPlayerInteract(PlayerInteractEvent e)
     {
     	EntityPlayer player = e.entityPlayer;

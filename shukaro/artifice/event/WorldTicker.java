@@ -63,7 +63,7 @@ public class WorldTicker implements ITickHandler
     @Override
     public String getLabel()
     {
-        return "Artifice";
+        return "Artifice.World";
     }
     
 }

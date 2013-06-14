@@ -127,23 +127,23 @@ public class ArtificeTooltips
 		ArtificeRegistry.registerTooltip(ArtificeBlocks.blockReinforced.blockID, 3, "Steel Plating");
 		ArtificeRegistry.registerTooltip(ArtificeBlocks.blockReinforced.blockID, 3, "Resistance: " + FormatCodes.Aqua.format + "80");
 		ArtificeRegistry.registerTooltip(ArtificeBlocks.blockReinforced.blockID, 3, commentCode + "...and progress always provides");
-		/*
+		
 		ArtificeRegistry.registerTooltip(ArtificeBlocks.blockScaffold.blockID, 0, "Simple scaffold");
-		ArtificeRegistry.registerTooltip(ArtificeBlocks.blockScaffold.blockID, 0, "Max Overhang: " + FormatCodes.Aqua.format + "4");
+		ArtificeRegistry.registerTooltip(ArtificeBlocks.blockScaffold.blockID, 0, "Max Overhang: " + FormatCodes.Aqua.format + ArtificeBlocks.blockScaffold.getOverhang(0));
 		ArtificeRegistry.registerTooltip(ArtificeBlocks.blockScaffold.blockID, 0, commentCode + "Handy to have");
 		
 		ArtificeRegistry.registerTooltip(ArtificeBlocks.blockScaffold.blockID, 1, "Composite scaffold");
-		ArtificeRegistry.registerTooltip(ArtificeBlocks.blockScaffold.blockID, 1, "Max Overhang: " + FormatCodes.Aqua.format + "8");
+		ArtificeRegistry.registerTooltip(ArtificeBlocks.blockScaffold.blockID, 1, "Max Overhang: " + FormatCodes.Aqua.format + ArtificeBlocks.blockScaffold.getOverhang(1));
 		ArtificeRegistry.registerTooltip(ArtificeBlocks.blockScaffold.blockID, 1, commentCode + "A bit less rickety");
 		
 		ArtificeRegistry.registerTooltip(ArtificeBlocks.blockScaffold.blockID, 2, "Construction scaffold");
-		ArtificeRegistry.registerTooltip(ArtificeBlocks.blockScaffold.blockID, 2, "Max Overhang: " + FormatCodes.Aqua.format + "16");
+		ArtificeRegistry.registerTooltip(ArtificeBlocks.blockScaffold.blockID, 2, "Max Overhang: " + FormatCodes.Aqua.format + ArtificeBlocks.blockScaffold.getOverhang(2));
 		ArtificeRegistry.registerTooltip(ArtificeBlocks.blockScaffold.blockID, 2, commentCode + "100% safe");
 		
 		ArtificeRegistry.registerTooltip(ArtificeBlocks.blockScaffold.blockID, 3, "Rugged scaffold");
-		ArtificeRegistry.registerTooltip(ArtificeBlocks.blockScaffold.blockID, 3, "Max Overhang: " + FormatCodes.Aqua.format + "32");
+		ArtificeRegistry.registerTooltip(ArtificeBlocks.blockScaffold.blockID, 3, "Max Overhang: " + FormatCodes.Aqua.format + ArtificeBlocks.blockScaffold.getOverhang(3));
 		ArtificeRegistry.registerTooltip(ArtificeBlocks.blockScaffold.blockID, 3, commentCode + "Precisely machined");
-		*/
+		
 		ArtificeRegistry.registerTooltip(ArtificeBlocks.blockSteel.blockID, 0, "A strong iron alloy");
 		ArtificeRegistry.registerTooltip(ArtificeBlocks.blockSteel.blockID, 0, commentCode + "Steel is progress");
 		

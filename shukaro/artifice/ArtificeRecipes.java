@@ -44,28 +44,28 @@ public class ArtificeRecipes
     
     private static void registerScaffoldRecipes()
     {
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeBlocks.blockScaffold, 4, 0), new Object[] {
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeBlocks.blockScaffold, 8, 0), new Object[] {
 			" Y ",
 			" X ",
 			" Y ",
 			'X', new ItemStack(ArtificeBlocks.blockFrame, 1, 0),
 			'Y', "plankWood" }));
 		
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeBlocks.blockScaffold, 4, 1), new Object[] {
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeBlocks.blockScaffold, 8, 1), new Object[] {
 			" Y ",
 			" X ",
 			" Y ",
 			'X', new ItemStack(ArtificeBlocks.blockFrame, 1, 1),
 			'Y', "plankWood" }));
 		
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeBlocks.blockScaffold, 4, 2), new Object[] {
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeBlocks.blockScaffold, 8, 2), new Object[] {
 			" Y ",
 			" X ",
 			" Y ",
 			'X', new ItemStack(ArtificeBlocks.blockFrame, 1, 2),
 			'Y', new ItemStack(Item.ingotIron.itemID, 1, 0) }));
 		
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeBlocks.blockScaffold, 4, 3), new Object[] {
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeBlocks.blockScaffold, 8, 3), new Object[] {
 			" Y ",
 			" X ",
 			" Y ",

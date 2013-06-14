@@ -38,9 +38,42 @@ public class ArtificeRecipes
     		registerBlastWallRecipes();
     	if (ArtificeConfig.glassWallRecipes.getBoolean(true))
     		registerGlassWallRecipes();
+    	if (ArtificeConfig.scaffoldRecipes.getBoolean(true))
+    		registerScaffoldRecipes();
     }
     
-    private static void registerGlassWallRecipes()
+    private static void registerScaffoldRecipes()
+    {
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeBlocks.blockScaffold, 4, 0), new Object[] {
+			" Y ",
+			" X ",
+			" Y ",
+			'X', new ItemStack(ArtificeBlocks.blockFrame, 1, 0),
+			'Y', "plankWood" }));
+		
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeBlocks.blockScaffold, 4, 1), new Object[] {
+			" Y ",
+			" X ",
+			" Y ",
+			'X', new ItemStack(ArtificeBlocks.blockFrame, 1, 1),
+			'Y', "plankWood" }));
+		
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeBlocks.blockScaffold, 4, 2), new Object[] {
+			" Y ",
+			" X ",
+			" Y ",
+			'X', new ItemStack(ArtificeBlocks.blockFrame, 1, 2),
+			'Y', new ItemStack(Item.ingotIron.itemID, 1, 0) }));
+		
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeBlocks.blockScaffold, 4, 3), new Object[] {
+			" Y ",
+			" X ",
+			" Y ",
+			'X', new ItemStack(ArtificeBlocks.blockFrame, 1, 3),
+			'Y', "ingotSteel" }));
+	}
+
+	private static void registerGlassWallRecipes()
     {
     	GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeBlocks.blockGlassWall, 2, 0), new Object[] {
     		"   ",

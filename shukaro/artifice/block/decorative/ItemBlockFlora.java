@@ -28,8 +28,8 @@ public class ItemBlockFlora extends ItemBlockArtifice
     public Icon getIconFromDamage(int meta)
     {
     	if (meta > ArtificeCore.flora.length)
-    		return BlockFlora.textureList[0];
-        return BlockFlora.textureList[meta];
+    		return BlockFlora.icons[0];
+        return BlockFlora.icons[meta];
     }
     
     @Override

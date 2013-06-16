@@ -18,29 +18,29 @@ import shukaro.artifice.render.connectedtexture.ConnectedTextureBase;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockArtifice extends Block
+public abstract class BlockArtifice extends Block
 {
-	protected String textureName;
-	
-	public ConnectedTextureBase textureRenderer;
-    protected Icon[][] textureList = new Icon[ArtificeCore.tiers.length][256];
-    
-    protected boolean single;
-    protected Icon[] singleTextureList = new Icon[ArtificeCore.tiers.length];
-    
-    protected boolean normal;
-    protected Icon[][] normalTextureList = new Icon[ArtificeCore.tiers.length][6];
-    
     public BlockArtifice(int id, Material mat)
     {
         super(id, mat);
         setCreativeTab(ArtificeCreativeTab.tab);
     }
     
-    public Icon[][] getTextureList()
-    {
-        return this.textureList;
-    }
+    @Override
+    @SideOnly(Side.CLIENT)
+    public abstract void registerIcons(IconRegister reg);
+    
+    @Override
+    @SideOnly(Side.CLIENT)
+    public abstract Icon getIcon(int side, int meta);
+    
+    @Override
+    @SideOnly(Side.CLIENT)
+    public abstract Icon getBlockTexture(IBlockAccess block, int x, int y, int z, int side);
+    
+    @Override
+    @SideOnly(Side.CLIENT)
+    public abstract void getSubBlocks(int i, CreativeTabs tabs, List list);
     
     @Override
     public int damageDropped(int meta)

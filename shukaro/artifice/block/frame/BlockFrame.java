@@ -27,7 +27,6 @@ import cpw.mods.fml.relauncher.SideOnly;
 public abstract class BlockFrame extends BlockArtifice implements ITileEntityProvider
 {
 	protected List<String> validTiers = new ArrayList<String>();
-	private Icon renderIcon;
 	
     public BlockFrame(int id)
     {
@@ -38,72 +37,8 @@ public abstract class BlockFrame extends BlockArtifice implements ITileEntityPro
         this.validTiers.add(ArtificeCore.tiers[3]);
     }
     
-    public abstract Block getInnerBlock(int meta);
-    
-    public abstract int getInnerMeta(int meta);
-    
-    public abstract Icon getRenderIcon(int meta);
-    
     @Override
     public abstract boolean isOpaqueCube();
-    
-    @Override
-    @SideOnly(Side.CLIENT)
-    public Icon getIcon(int side, int meta)
-    {
-    	if (textureRenderer != null)
-        	return textureList[meta][0];
-    	if (single)
-    		return singleTextureList[meta];
-    	if (normal)
-    		return normalTextureList[meta][side];
-    	return null;
-    }
-    
-    @Override
-    @SideOnly(Side.CLIENT)
-    public Icon getBlockTexture(IBlockAccess block, int x, int y, int z, int side)
-    {
-        if (textureRenderer != null)
-            return textureList[block.getBlockMetadata(x, y, z)][textureRenderer.getBlockTexture(block, x, y, z, side)];
-        return this.getIcon(side, block.getBlockMetadata(x, y, z));
-    }
-    
-    @Override
-    @SideOnly(Side.CLIENT)
-    public void registerIcons(IconRegister reg)
-    {
-    	if (textureRenderer != null)
-    	{
-	        for (int i = 0; i < ArtificeCore.tiers.length; i++)
-	        {
-	            for (int j = 0; j < 47; j++)
-	            {
-	                String name = "artifice:" + "frame/frame_" + ArtificeCore.tiers[i].toLowerCase() + "_" + j;
-	                this.textureList[i][j] = reg.registerIcon(name);
-	            }
-	        }
-    	}
-    	if (single)
-    	{
-    		for (int i=0; i<ArtificeCore.tiers.length; i++)
-    		{
-    			String name = "artifice:" + this.textureName + "/" + this.textureName + "_" + ArtificeCore.tiers[i].toLowerCase();
-    			this.singleTextureList[i] = reg.registerIcon(name);
-    		}
-    	}
-    	if (normal)
-    	{
-    		for (int i=0; i<ArtificeCore.tiers.length; i++)
-    		{
-    			for (int j=0; j<6; j++)
-    			{
-    				String name = "artifice:" + this.textureName + "/" + this.textureName + "_" + ArtificeCore.tiers[i].toLowerCase() + "_" + ForgeDirection.VALID_DIRECTIONS[j].toString().toLowerCase();
-    				this.normalTextureList[i][j] = reg.registerIcon(name);
-    			}
-    		}
-    	}
-    }
     
     @Override
     @SideOnly(Side.CLIENT)

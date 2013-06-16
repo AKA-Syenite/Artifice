@@ -8,6 +8,7 @@ import java.util.Set;
 
 import net.minecraft.block.Block;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ForgeDirection;
 
@@ -398,14 +399,29 @@ public class BlockCoord implements Comparable
     	return world.getBlockMetadata(this.x, this.y, this.z);
     }
     
+    public int getMeta(IBlockAccess access)
+    {
+    	return access.getBlockMetadata(this.x, this.y, this.z);
+    }
+    
     public Block getBlock(World world)
     {
-    	return Block.blocksList[world.getBlockId(this.x, this.y, this.z)];
+    	return Block.blocksList[this.getBlockID(world)];
+    }
+    
+    public Block getBlock(IBlockAccess access)
+    {
+    	return Block.blocksList[this.getBlockID(access)];
     }
     
     public int getBlockID(World world)
     {
     	return world.getBlockId(this.x, this.y, this.z);
+    }
+    
+    public int getBlockID(IBlockAccess access)
+    {
+    	return access.getBlockId(this.x, this.y, this.z);
     }
     
     public TileEntity getTileEntity(World world)

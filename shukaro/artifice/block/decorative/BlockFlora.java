@@ -15,12 +15,13 @@ import net.minecraft.world.World;
 import shukaro.artifice.ArtificeBlocks;
 import shukaro.artifice.ArtificeCore;
 import shukaro.artifice.gui.ArtificeCreativeTab;
+import shukaro.artifice.render.IconHandler;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockFlora extends BlockFlower
 {
-    public static Icon[] textureList = new Icon[ArtificeCore.flora.length];
+    public static Icon[] icons = new Icon[ArtificeCore.flora.length];
     
     public BlockFlora(int id)
     {
@@ -37,19 +38,16 @@ public class BlockFlora extends BlockFlower
     public Icon getIcon(int side, int meta)
     {
     	if (meta > ArtificeCore.flora.length)
-        	return textureList[0];
-        return textureList[meta];
+        	return icons[0];
+        return icons[meta];
     }
     
     @Override
     @SideOnly(Side.CLIENT)
     public void registerIcons(IconRegister reg)
     {
-        for (int i = 0; i < ArtificeCore.flora.length; i++)
-        {
-            String name = "artifice:" + "flora_" + ArtificeCore.flora[i].toLowerCase();
-            BlockFlora.textureList[i] = reg.registerIcon(name);
-        }
+    	for (int i=0; i<ArtificeCore.flora.length; i++)
+    		icons[i] = IconHandler.registerSingle(reg, ArtificeCore.flora[i].toLowerCase(), "flora");
     }
     
     @Override

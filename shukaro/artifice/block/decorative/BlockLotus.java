@@ -6,6 +6,7 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import shukaro.artifice.ArtificeCore;
 import shukaro.artifice.gui.ArtificeCreativeTab;
+import shukaro.artifice.render.IconHandler;
 import net.minecraft.block.BlockLilyPad;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.util.Icon;
@@ -52,8 +53,8 @@ public class BlockLotus extends BlockLilyPad
     @SideOnly(Side.CLIENT)
     public void registerIcons(IconRegister reg)
     {
-        lotus = reg.registerIcon("artifice:flora_waterlotus");
-        lotusClosed = reg.registerIcon("artifice:flora_waterlotusclosed");
+        lotus = IconHandler.registerSingle(reg, "waterlotus", "flora");
+        lotusClosed = IconHandler.registerSingle(reg, "waterlotusclosed", "flora");
     }
     
     @Override

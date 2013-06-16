@@ -2,10 +2,14 @@ package shukaro.artifice.block.frame;
 
 import java.util.Random;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+
 import powercrystals.minefactoryreloaded.api.rednet.IConnectableRedNet;
 import powercrystals.minefactoryreloaded.api.rednet.RedNetConnectionType;
 
 import shukaro.artifice.ArtificeCore;
+import shukaro.artifice.render.IconHandler;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.tileentity.TileEntity;
@@ -22,8 +26,6 @@ public class BlockFrameDetector extends BlockFrame implements IConnectableRedNet
 	{
 		super(id);
 		setUnlocalizedName("artifice.detector");
-		this.textureName = "detector";
-		this.single = true;
 		for (int i=1; i<=3; i++)
 			this.validTiers.remove(ArtificeCore.tiers[i]);
 	}
@@ -69,7 +71,7 @@ public class BlockFrameDetector extends BlockFrame implements IConnectableRedNet
 		}
 	}
 	
-	public void updateRedstone(World par1World, int par2, int par3, int par4)
+	private void updateRedstone(World par1World, int par2, int par3, int par4)
 	{
 		par1World.notifyBlocksOfNeighborChange(par2, par3 - 1, par4, this.blockID);
 		par1World.notifyBlocksOfNeighborChange(par2, par3 + 1, par4, this.blockID);
@@ -97,35 +99,18 @@ public class BlockFrameDetector extends BlockFrame implements IConnectableRedNet
 	    }
 
 	    updateRedstone(par1World, par2, par3, par4);
-	  }
-	
-	public boolean isBlockSolidOnSide(World world, int x, int y, int z, ForgeDirection side)
-	{
-		return true;
 	}
 	
 	@Override
 	public void registerIcons(IconRegister reg)
 	{
-		this.icon = reg.registerIcon("artifice:detector");
+		this.icon = IconHandler.registerSingle(reg, "detector", "misc");
 	}
 	
 	@Override
 	public Icon getIcon(int side, int meta)
 	{
 		return this.icon;
-	}
-
-	@Override
-	public Block getInnerBlock(int meta)
-	{
-		return null;
-	}
-
-	@Override
-	public int getInnerMeta(int meta)
-	{
-		return 0;
 	}
 
 	@Override
@@ -163,14 +148,15 @@ public class BlockFrameDetector extends BlockFrame implements IConnectableRedNet
 	}
 
 	@Override
-	public Icon getRenderIcon(int meta)
+	public TileEntity createNewTileEntity(World world)
 	{
 		return null;
 	}
 
 	@Override
-	public TileEntity createNewTileEntity(World world)
+	@SideOnly(Side.CLIENT)
+	public Icon getBlockTexture(IBlockAccess block, int x, int y, int z, int side)
 	{
-		return null;
+		return this.icon;
 	}
 }

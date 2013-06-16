@@ -4,31 +4,21 @@ import net.minecraft.block.Block;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Icon;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import shukaro.artifice.ArtificeCore;
+import shukaro.artifice.render.IconHandler;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockFrameBase extends BlockFrame
 {
+	private Icon[] icons = new Icon[ArtificeCore.tiers.length];
+	
     public BlockFrameBase(int id)
     {
         super(id);
-        this.textureName = "frame";
         setUnlocalizedName("artifice.frame");
-        this.single = true;
-    }
-    
-    @Override
-    public Block getInnerBlock(int meta)
-    {
-        return null;
-    }
-    
-    @Override
-    public int getInnerMeta(int meta)
-    {
-        return 0;
     }
     
     @Override
@@ -36,12 +26,28 @@ public class BlockFrameBase extends BlockFrame
     {
         return false;
     }
-    
-    @Override
-    public Icon getRenderIcon(int meta)
-    {
-    	return null;
-    }
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void registerIcons(IconRegister reg)
+	{
+		for (int i=0; i<ArtificeCore.tiers.length; i++)
+			icons[i] = IconHandler.registerSingle(reg, ArtificeCore.tiers[i].toLowerCase(), "frame");
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public Icon getIcon(int side, int meta)
+	{
+		return icons[meta];
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public Icon getBlockTexture(IBlockAccess block, int x, int y, int z, int side)
+	{
+		return icons[block.getBlockMetadata(x, y, z)];
+	}
 
 	@Override
 	public TileEntity createNewTileEntity(World world)

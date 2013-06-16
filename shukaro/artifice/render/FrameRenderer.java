@@ -10,7 +10,7 @@ import org.lwjgl.opengl.GL11;
 
 import shukaro.artifice.ArtificeCore;
 import shukaro.artifice.block.frame.BlockFrame;
-import shukaro.artifice.util.render.RenderBlocksImproved;
+import shukaro.artifice.render.connectedtexture.ILayeredRender;
 import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
 
 public class FrameRenderer implements ISimpleBlockRenderingHandler
@@ -18,61 +18,68 @@ public class FrameRenderer implements ISimpleBlockRenderingHandler
     private final RenderBlocksImproved renderImproved = new RenderBlocksImproved();
     
     @Override
-    public void renderInventoryBlock(Block block, int metadata, int modelID, RenderBlocks renderer)
+    public void renderInventoryBlock(Block block, int meta, int modelID, RenderBlocks renderer)
     {
         Tessellator tessellator = Tessellator.instance;
         
-        BlockFrame frame = null;
-        
-        if (block instanceof BlockFrame)
-            frame = (BlockFrame) block;
-        
-        Block innerBlock = frame.getInnerBlock(metadata);
-        int innerMeta = frame.getInnerMeta(metadata);
-        
-        if (innerBlock != null)
+        if (block instanceof ILayeredRender)
         {
-        	if (frame.getRenderIcon(metadata) != null)
-            	renderer.setOverrideBlockTexture(frame.getRenderIcon(metadata));
+        	ILayeredRender inner = (ILayeredRender) block;
         	
             renderer.setRenderBounds(0.0005F, 0.0005F, 0.0005F, 0.9995F, 0.9995F, 0.9995F);
             GL11.glRotatef(90.0F, 0.0F, 1.0F, 0.0F);
             GL11.glTranslatef(-0.5F, -0.5F, -0.5F);
             
-            tessellator.startDrawingQuads();
-            tessellator.setNormal(0.0F, -1.0F, 0.0F);
-            renderer.renderFaceYNeg(block, 0.0D, 0.0D, 0.0D, renderer.getBlockIconFromSideAndMetadata(innerBlock, 0, innerMeta));
-            tessellator.draw();
+            if (inner.getRenderIcon(0, meta) != null)
+            {
+	            tessellator.startDrawingQuads();
+	            tessellator.setNormal(0.0F, -1.0F, 0.0F);
+	            renderer.renderFaceYNeg(block, 0.0D, 0.0D, 0.0D, inner.getRenderIcon(0, meta));
+	            tessellator.draw();
+            }
             
-            tessellator.startDrawingQuads();
-            tessellator.setNormal(0.0F, 1.0F, 0.0F);
-            renderer.renderFaceYPos(block, 0.0D, 0.0D, 0.0D, renderer.getBlockIconFromSideAndMetadata(innerBlock, 1, innerMeta));
-            tessellator.draw();
+            if (inner.getRenderIcon(1, meta) != null)
+            {
+	            tessellator.startDrawingQuads();
+	            tessellator.setNormal(0.0F, 1.0F, 0.0F);
+	            renderer.renderFaceYPos(block, 0.0D, 0.0D, 0.0D, inner.getRenderIcon(1, meta));
+	            tessellator.draw();
+            }
             
-            tessellator.startDrawingQuads();
-            tessellator.setNormal(0.0F, 0.0F, -1.0F);
-            renderer.renderFaceXPos(block, 0.0D, 0.0D, 0.0D, renderer.getBlockIconFromSideAndMetadata(innerBlock, 2, innerMeta));
-            tessellator.draw();
+            if (inner.getRenderIcon(2, meta) != null)
+            {
+	            tessellator.startDrawingQuads();
+	            tessellator.setNormal(0.0F, 0.0F, -1.0F);
+	            renderer.renderFaceXPos(block, 0.0D, 0.0D, 0.0D, inner.getRenderIcon(2, meta));
+	            tessellator.draw();
+            }
             
-            tessellator.startDrawingQuads();
-            tessellator.setNormal(0.0F, 0.0F, 1.0F);
-            renderer.renderFaceXNeg(block, 0.0D, 0.0D, 0.0D, renderer.getBlockIconFromSideAndMetadata(innerBlock, 3, innerMeta));
-            tessellator.draw();
+            if (inner.getRenderIcon(3, meta) != null)
+            {
+	            tessellator.startDrawingQuads();
+	            tessellator.setNormal(0.0F, 0.0F, 1.0F);
+	            renderer.renderFaceXNeg(block, 0.0D, 0.0D, 0.0D, inner.getRenderIcon(3, meta));
+	            tessellator.draw();
+            }
             
-            tessellator.startDrawingQuads();
-            tessellator.setNormal(-1.0F, 0.0F, 0.0F);
-            renderer.renderFaceZNeg(block, 0.0D, 0.0D, 0.0D, renderer.getBlockIconFromSideAndMetadata(innerBlock, 4, innerMeta));
-            tessellator.draw();
+            if (inner.getRenderIcon(4, meta) != null)
+            {
+	            tessellator.startDrawingQuads();
+	            tessellator.setNormal(-1.0F, 0.0F, 0.0F);
+	            renderer.renderFaceZNeg(block, 0.0D, 0.0D, 0.0D, inner.getRenderIcon(4, meta));
+	            tessellator.draw();
+            }
             
-            tessellator.startDrawingQuads();
-            tessellator.setNormal(1.0F, 0.0F, 0.0F);
-            renderer.renderFaceZPos(block, 0.0D, 0.0D, 0.0D, renderer.getBlockIconFromSideAndMetadata(innerBlock, 5, innerMeta));
-            tessellator.draw();
+            if (inner.getRenderIcon(5, meta) != null)
+            {
+	            tessellator.startDrawingQuads();
+	            tessellator.setNormal(1.0F, 0.0F, 0.0F);
+	            renderer.renderFaceZPos(block, 0.0D, 0.0D, 0.0D, inner.getRenderIcon(5, meta));
+	            tessellator.draw();
+            }
             
             GL11.glTranslatef(0.5F, 0.5F, 0.5F);
         }
-        
-        renderer.clearOverrideBlockTexture();
         
         renderer.setRenderBounds(0.00005F, 0.00005F, 0.00005F, 0.99995F, 0.99995F, 0.99995F);
         GL11.glRotatef(90.0F, 0.0F, 1.0F, 0.0F);
@@ -80,32 +87,32 @@ public class FrameRenderer implements ISimpleBlockRenderingHandler
         
         tessellator.startDrawingQuads();
         tessellator.setNormal(0.0F, -1.0F, 0.0F);
-        renderer.renderFaceYNeg(block, 0.0D, 0.0D, 0.0D, renderer.getBlockIconFromSideAndMetadata(block, 0, metadata));
+        renderer.renderFaceYNeg(block, 0.0D, 0.0D, 0.0D, renderer.getBlockIconFromSideAndMetadata(block, 0, meta));
         tessellator.draw();
         
         tessellator.startDrawingQuads();
         tessellator.setNormal(0.0F, 1.0F, 0.0F);
-        renderer.renderFaceYPos(block, 0.0D, 0.0D, 0.0D, renderer.getBlockIconFromSideAndMetadata(block, 1, metadata));
+        renderer.renderFaceYPos(block, 0.0D, 0.0D, 0.0D, renderer.getBlockIconFromSideAndMetadata(block, 1, meta));
         tessellator.draw();
         
         tessellator.startDrawingQuads();
         tessellator.setNormal(0.0F, 0.0F, -1.0F);
-        renderer.renderFaceXPos(block, 0.0D, 0.0D, 0.0D, renderer.getBlockIconFromSideAndMetadata(block, 2, metadata));
+        renderer.renderFaceXPos(block, 0.0D, 0.0D, 0.0D, renderer.getBlockIconFromSideAndMetadata(block, 2, meta));
         tessellator.draw();
         
         tessellator.startDrawingQuads();
         tessellator.setNormal(0.0F, 0.0F, 1.0F);
-        renderer.renderFaceXNeg(block, 0.0D, 0.0D, 0.0D, renderer.getBlockIconFromSideAndMetadata(block, 3, metadata));
+        renderer.renderFaceXNeg(block, 0.0D, 0.0D, 0.0D, renderer.getBlockIconFromSideAndMetadata(block, 3, meta));
         tessellator.draw();
         
         tessellator.startDrawingQuads();
         tessellator.setNormal(-1.0F, 0.0F, 0.0F);
-        renderer.renderFaceZNeg(block, 0.0D, 0.0D, 0.0D, renderer.getBlockIconFromSideAndMetadata(block, 4, metadata));
+        renderer.renderFaceZNeg(block, 0.0D, 0.0D, 0.0D, renderer.getBlockIconFromSideAndMetadata(block, 4, meta));
         tessellator.draw();
         
         tessellator.startDrawingQuads();
         tessellator.setNormal(1.0F, 0.0F, 0.0F);
-        renderer.renderFaceZPos(block, 0.0D, 0.0D, 0.0D, renderer.getBlockIconFromSideAndMetadata(block, 5, metadata));
+        renderer.renderFaceZPos(block, 0.0D, 0.0D, 0.0D, renderer.getBlockIconFromSideAndMetadata(block, 5, meta));
         tessellator.draw();
         
         GL11.glTranslatef(0.5F, 0.5F, 0.5F);
@@ -113,36 +120,22 @@ public class FrameRenderer implements ISimpleBlockRenderingHandler
     
     @Override
     public boolean renderWorldBlock(IBlockAccess world, int x, int y, int z, Block block, int modelId, RenderBlocks renderer)
-    {
-        BlockFrame frame = null;
-        int meta = world.getBlockMetadata(x, y, z);
-        
-        if (block instanceof BlockFrame)
-            frame = (BlockFrame) block;
-        
-        Block innerBlock = frame.getInnerBlock(meta);
-        int innerMeta = frame.getInnerMeta(meta);
-        		
+    {	
         renderer.setRenderBounds(0.0002F, 0.0002F, 0.0002F, 0.9998F, 0.9998F, 0.9998F);
         
-        if (frame != null && innerBlock != null)
+        if (block instanceof ILayeredRender)
         {
-        	if (frame.getRenderIcon(meta) != null)
-        		renderer.setOverrideBlockTexture(frame.getRenderIcon(meta));
-        	
-        	if (renderImproved.renderStandardBlock(renderer, innerBlock, x, y, z, innerMeta, false))
+        	if (renderImproved.renderStandardBlock(renderer, block, x, y, z, world.getBlockMetadata(x, y, z), false, true))
             {
-            	renderImproved.renderStandardBlock(renderer, innerBlock, x, y, z, innerMeta, true);
+            	renderImproved.renderStandardBlock(renderer, block, x, y, z, world.getBlockMetadata(x, y, z), true, true);
             }
         }
         
-        renderer.clearOverrideBlockTexture();
-        
         renderer.setRenderBounds(0.0001F, 0.0001F, 0.0001F, 0.9999F, 0.9999F, 0.9999F);
         
-        if (renderImproved.renderStandardBlock(renderer, block, x, y, z, world.getBlockMetadata(x, y, z), false))
+        if (renderImproved.renderStandardBlock(renderer, block, x, y, z, world.getBlockMetadata(x, y, z), false, false))
         {
-            renderImproved.renderStandardBlock(renderer, block, x, y, z, world.getBlockMetadata(x, y, z), true);
+            renderImproved.renderStandardBlock(renderer, block, x, y, z, world.getBlockMetadata(x, y, z), true, false);
         }
         
         return true;
@@ -159,5 +152,4 @@ public class FrameRenderer implements ISimpleBlockRenderingHandler
     {
         return ArtificeCore.frameRenderID;
     }
-    
 }

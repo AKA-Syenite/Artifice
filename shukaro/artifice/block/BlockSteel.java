@@ -3,6 +3,7 @@ package shukaro.artifice.block;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import shukaro.artifice.gui.ArtificeCreativeTab;
+import shukaro.artifice.render.IconHandler;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
@@ -24,7 +25,7 @@ public class BlockSteel extends Block
     @SideOnly(Side.CLIENT)
     public void registerIcons(IconRegister reg)
 	{
-		this.icon = reg.registerIcon("artifice:block_steel");
+		this.icon = IconHandler.registerSingle(reg, "steel", "misc");
 	}
 	
 	@Override

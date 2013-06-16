@@ -1,4 +1,4 @@
-package shukaro.artifice.util.render;
+package shukaro.artifice.render;
 
 import shukaro.artifice.block.frame.BlockFrame;
 import shukaro.artifice.render.connectedtexture.ConnectedTextureBase;
@@ -18,21 +18,33 @@ public class RenderFacing
         switch (side)
         {
             case 0:
+            	if (icon == null)
+            		return false;
             	renderFaceYNeg(renderer, block, x, y, z, icon, inverted, tessellator);
                 return true;
             case 1:
+            	if (icon == null)
+            		return false;
                 renderFaceYPos(renderer, block, x, y, z, icon, inverted, tessellator);
                 return true;
             case 2:
+            	if (icon == null)
+            		return false;
                 renderFaceZNeg(renderer, block, x, y, z, icon, inverted, tessellator);
                 return true;
             case 3:
+            	if (icon == null)
+            		return false;
                 renderFaceZPos(renderer, block, x, y, z, icon, inverted, tessellator);
                 return true;
             case 4:
+            	if (icon == null)
+            		return false;
                 renderFaceXNeg(renderer, block, x, y, z, icon, inverted, tessellator);
                 return true;
             case 5:
+            	if (icon == null)
+            		return false;
                 renderFaceXPos(renderer, block, x, y, z, icon, inverted, tessellator);
                 return true;
             default:

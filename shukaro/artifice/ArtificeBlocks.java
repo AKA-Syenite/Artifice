@@ -1,9 +1,7 @@
 package shukaro.artifice;
 
-import net.minecraft.block.Block;
 import net.minecraft.block.BlockHalfSlab;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemSlab;
 import net.minecraftforge.oredict.OreDictionary;
 import shukaro.artifice.block.BlockSteel;
 import shukaro.artifice.block.ItemBlockArtifice;
@@ -21,8 +19,8 @@ import shukaro.artifice.block.decorative.ItemBlockMarble;
 import shukaro.artifice.block.decorative.ItemBlockSlabArtifice;
 import shukaro.artifice.block.frame.BlockFrame;
 import shukaro.artifice.block.frame.BlockFrameBase;
-import shukaro.artifice.block.frame.BlockFrameDetector;
 import shukaro.artifice.block.frame.BlockFrameBlastWall;
+import shukaro.artifice.block.frame.BlockFrameDetector;
 import shukaro.artifice.block.frame.BlockFrameGlassWall;
 import shukaro.artifice.block.frame.BlockFrameScaffold;
 import shukaro.artifice.block.frame.ItemBlockFrame;

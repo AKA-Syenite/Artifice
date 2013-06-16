@@ -1,18 +1,11 @@
 package shukaro.artifice;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-
-import cpw.mods.fml.common.registry.GameRegistry;
-import shukaro.artifice.compat.ArtificeRegistry;
-import shukaro.artifice.item.ItemSledge;
-import shukaro.artifice.item.ItemSteel;
-import shukaro.artifice.util.IdMetaPair;
-import net.minecraft.block.Block;
 import net.minecraft.item.EnumToolMaterial;
 import net.minecraft.item.ItemTool;
 import net.minecraftforge.oredict.OreDictionary;
+import shukaro.artifice.item.ItemSledge;
+import shukaro.artifice.item.ItemSteel;
+import cpw.mods.fml.common.registry.GameRegistry;
 
 public class ArtificeItems
 {

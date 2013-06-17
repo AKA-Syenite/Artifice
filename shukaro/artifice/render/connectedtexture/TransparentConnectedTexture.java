@@ -22,13 +22,16 @@ public class TransparentConnectedTexture extends ConnectedTextureBase
     {
     	ConnectedTexture neighbor = null;
     	int meta = coord.getMeta(blockAccess);
+    	BlockCoord self = coord.copy();
     	
         if (coord.offset(side).getBlock(blockAccess) instanceof IConnectedTexture)
         {
         	neighbor = ((IConnectedTexture) coord.getBlock(blockAccess)).getTextureType(face, meta);
         }
         
-        return neighbor != null && neighbor.name == this.texture.name;
+        BlockCoord other = coord.copy();
+        
+        return neighbor != null && neighbor.name == this.texture.name && self.blockEquals(blockAccess, other);
     }
     
 }

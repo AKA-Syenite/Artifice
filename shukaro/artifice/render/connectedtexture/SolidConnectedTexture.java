@@ -21,7 +21,9 @@ public class SolidConnectedTexture extends ConnectedTextureBase
     public boolean canConnectOnSide(IBlockAccess blockAccess, BlockCoord coord, int side, int face)
     {
     	int meta = coord.getMeta(blockAccess);
+    	BlockCoord self = coord.copy();
     	Block neighbor = coord.offset(side).getBlock(blockAccess);
+    	BlockCoord other = coord.copy();
     	Block cover = coord.offset(face).getBlock(blockAccess);
     	ConnectedTexture neighborT = null;
     	
@@ -34,9 +36,9 @@ public class SolidConnectedTexture extends ConnectedTextureBase
     	}
     	
     	if (neighborT != null && cover != null)
-    		return !cover.isOpaqueCube() && this.texture.name == neighborT.name;
+    		return !cover.isOpaqueCube() && this.texture.name == neighborT.name && self.blockEquals(blockAccess, other);
     	else if (neighborT != null)
-    		return this.texture.name == neighborT.name;
+    		return this.texture.name == neighborT.name && self.blockEquals(blockAccess, other);
     	return false;
     }
 }

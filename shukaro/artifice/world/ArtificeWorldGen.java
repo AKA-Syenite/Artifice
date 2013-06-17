@@ -2,6 +2,7 @@ package shukaro.artifice.world;
 
 import java.util.List;
 import java.util.Random;
+import java.util.Set;
 
 import net.minecraft.block.Block;
 import net.minecraft.world.World;
@@ -10,6 +11,7 @@ import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.ChunkProviderFlat;
 import shukaro.artifice.ArtificeBlocks;
 import shukaro.artifice.ArtificeConfig;
+import shukaro.artifice.ArtificeCore;
 import shukaro.artifice.compat.ArtificeRegistry;
 import cpw.mods.fml.common.IWorldGenerator;
 
@@ -22,7 +24,6 @@ public class ArtificeWorldGen implements IWorldGenerator
     private static int z;
     private static int size;
     private static BiomeGenBase b;
-    private static List<Integer> stoneTypes;
     private static int maxHeight;
     
     @Override
@@ -49,18 +50,7 @@ public class ArtificeWorldGen implements IWorldGenerator
         {
             for (int i=0; i < ArtificeConfig.floraFrequency.getInt(); i++)
             {
-                x = chunkX * 16 + random.nextInt(16);
-                z = chunkZ * 16 + random.nextInt(16);
-                y = random.nextInt(world.getActualHeight());
-                b = world.getBiomeGenForCoords(x, z);
-                y = world.getHeightValue(x, z);
-                if (!ArtificeRegistry.getFloraBlacklist().contains(b.biomeName))
-                {
-                    if (random.nextInt(100) < 50)
-                    {
-                        new WorldGenFlora(world, random, x, y, z).generate();
-                    }
-                }
+                new WorldGenFlora(world, random).generate(chunkX, chunkZ);
             }
         }
         
@@ -68,44 +58,22 @@ public class ArtificeWorldGen implements IWorldGenerator
         {
             for (int i=0; i < ArtificeConfig.lotusFrequency.getInt(); i++)
             {
-                x = chunkX * 16 + random.nextInt(16);
-                z = chunkZ * 16 + random.nextInt(16);
-                y = random.nextInt(world.getActualHeight());
-                b = world.getBiomeGenForCoords(x, z);
-                y = world.getHeightValue(x, z);
-                if (ArtificeRegistry.getLotusWhitelist().contains(b.biomeName))
-                {
-                    new WorldGenLotus(world, random, x, y, z).generate();
-                }
+                new WorldGenLotus(world, random).generate(chunkX, chunkZ);
             }
         }
         
         if ((ArtificeConfig.basaltWorldGen.getBoolean(true) && newGen) || (ArtificeConfig.basaltWorldGen.getBoolean(true) && ArtificeConfig.regenBasalt.getBoolean(false)))
         {
-            maxHeight = ArtificeConfig.basaltHeight.getInt();
-            for (int i=0; i < ArtificeConfig.basaltFrequency.getInt(); i++)
-            {
-                x = chunkX * 16 + random.nextInt(16);
-                z = chunkZ * 16 + random.nextInt(16);
-                y = random.nextInt(ArtificeConfig.basaltHeight.getInt());
-                size = random.nextInt(ArtificeConfig.basaltSize.getInt()) + (random.nextInt(ArtificeConfig.basaltSize.getInt()) / 2);
-                WorldGenRock gen = new WorldGenRock(world, random, x, y, z, ArtificeBlocks.blockBasalt.blockID, size);
-                gen.generate();
-            }
+            new WorldGenBasalt(world, ArtificeBlocks.blockBasalt.blockID).generate(chunkX, chunkZ);
         }
         
         if ((ArtificeConfig.marbleWorldGen.getBoolean(true) && newGen) || (ArtificeConfig.marbleWorldGen.getBoolean(true) && ArtificeConfig.regenMarble.getBoolean(false)))
         {
-            maxHeight = ArtificeConfig.marbleHeight.getInt();
-            for (int i=0; i < ArtificeConfig.marbleFrequency.getInt(); i++)
-            {
-                x = chunkX * 16 + random.nextInt(16);
-                z = chunkZ * 16 + random.nextInt(16);
-                y = random.nextInt(ArtificeConfig.marbleHeight.getInt());
-                size = random.nextInt(ArtificeConfig.marbleSize.getInt()) + (random.nextInt(ArtificeConfig.marbleSize.getInt()) / 2);
-                WorldGenRock gen = new WorldGenRock(world, random, x, y, z, ArtificeBlocks.blockMarble.blockID, size);
-                gen.generate();
-            }
+        	for (int i=0; i < ArtificeConfig.marbleFrequency.getInt(); i++)
+        	{
+	        	int size = ArtificeConfig.marbleSize.getInt() + ((random.nextInt(ArtificeConfig.marbleSize.getInt()) - random.nextInt(ArtificeConfig.marbleSize.getInt())) / 2);
+	            new WorldGenMarble(world, random, ArtificeBlocks.blockMarble.blockID).generate(size, chunkX, chunkZ);
+        	}
         }
         
         if (!newGen)

@@ -45,7 +45,7 @@ public class Noise {
 	 *         GradientNoise3D() function.
 	 */
 	public static double GradientCoherentNoise3D(double x, double y, double z, int seed, NoiseQuality quality) {
-
+		
 		// Create a unit-length cube aligned along an integer boundary.  This cube
 		// surrounds the input point.
 

@@ -138,13 +138,13 @@ public class Perlin extends Module {
         double curPersistence = 1.0;
         double nx, ny, nz;
         int seed;
-
+        
         x1 *= frequency;
         y1 *= frequency;
         z1 *= frequency;
 
         for (int curOctave = 0; curOctave < octaveCount; curOctave++) {
-
+        	
             // Make sure that these floating-point values have the same range as a 32-
             // bit integer so that we can pass them to the coherent-noise functions.
             nx = Utils.MakeInt32Range(x1);
@@ -156,7 +156,7 @@ public class Perlin extends Module {
             seed = (this.seed + curOctave);
             signal = Noise.GradientCoherentNoise3D(nx, ny, nz, seed, noiseQuality);
             value += signal * curPersistence;
-
+            
             // Prepare the next octave.
             x1 *= lacunarity;
             y1 *= lacunarity;

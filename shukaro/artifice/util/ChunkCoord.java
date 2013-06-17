@@ -23,6 +23,16 @@ public class ChunkCoord implements Serializable
         return (chunk.chunkX == this.chunkX) && (chunk.chunkZ == this.chunkZ);
     }
     
+    public boolean contains(BlockCoord c)
+    {
+    	return this.contains(c.x, c.z);
+    }
+    
+    public boolean contains(int x, int z)
+    {
+    	return this.chunkX == (x >> 4) && this.chunkZ == (z >> 4);
+    }
+    
     public int getCenterX()
     {
         return (this.chunkX << 4) + 8;

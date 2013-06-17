@@ -2,8 +2,10 @@ package shukaro.artifice.compat;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.logging.Level;
 
 import shukaro.artifice.ArtificeCore;
@@ -16,7 +18,7 @@ public abstract class ArtificeRegistry
 {
     private static List<String> floraBlacklist = new ArrayList<String>();
     private static List<Integer> dimensionBlacklist = new ArrayList<Integer>();
-    private static List<Integer> stoneTypes = new ArrayList<Integer>();
+    private static Set<Integer> stoneTypes = new HashSet<Integer>();
     private static List<String> worldTypeBlacklist = new ArrayList<String>();
     private static List<String> lotusWhitelist = new ArrayList<String>();
     private static Map<IdMetaPair, ArrayList<ItemStack>> sledgeBlocks = new HashMap<IdMetaPair, ArrayList<ItemStack>>();
@@ -96,7 +98,7 @@ public abstract class ArtificeRegistry
             stoneTypes.add(stoneID);
     }
     
-    public static List<Integer> getStoneTypes()
+    public static Set<Integer> getStoneTypes()
     {
         return stoneTypes;
     }

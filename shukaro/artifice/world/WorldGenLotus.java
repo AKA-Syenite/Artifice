@@ -42,10 +42,10 @@ public class WorldGenLotus
     	this.startX = xMin + rand.nextInt(16);
     	this.startZ = zMin + rand.nextInt(16);
     	
-    	if (rand.nextInt(10) > 6)
+    	if (!ArtificeRegistry.getLotusWhitelist().contains(world.getBiomeGenForCoords(startX, startZ).biomeName))
     		return false;
     	
-    	if (!ArtificeRegistry.getLotusWhitelist().contains(world.getBiomeGenForCoords(startX, startZ).biomeName))
+    	if (rand.nextInt(10) > 6)
     		return false;
         
     	int tries = rand.nextInt(16) + 8;

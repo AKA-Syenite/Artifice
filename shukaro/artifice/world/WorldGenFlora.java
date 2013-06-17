@@ -7,6 +7,7 @@ import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenerator;
 import shukaro.artifice.ArtificeBlocks;
 import shukaro.artifice.ArtificeCore;
+import shukaro.artifice.compat.ArtificeRegistry;
 import shukaro.artifice.util.ChunkCoord;
 import shukaro.artifice.util.XSRandom;
 
@@ -41,6 +42,9 @@ public class WorldGenFlora
     	
     	this.startX = xMin + rand.nextInt(16);
     	this.startZ = zMin + rand.nextInt(16);
+    	
+    	if (!ArtificeRegistry.getFloraBlacklist().contains(world.getBiomeGenForCoords(startX, startZ).biomeName))
+    		return false;
     	
     	if (rand.nextInt(10) > 6)
     		return false;

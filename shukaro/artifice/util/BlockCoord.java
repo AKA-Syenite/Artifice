@@ -352,6 +352,22 @@ public class BlockCoord implements Comparable
     	return (this.getBlockID(world) == blockID && this.getMeta(world) == meta);
     }
     
+    public boolean blockEquals(IBlockAccess world, BlockCoord c)
+    {
+    	if (c.getBlock(world) == null && this.getBlock(world) == null)
+    		return true;
+    	if (c.getBlock(world) == null ^ this.getBlock(world) == null)
+    		return false;
+    	return (c.getBlockID(world) == this.getBlockID(world) && c.getMeta(world) == this.getMeta(world));
+    }
+    
+    public boolean blockEquals(IBlockAccess world, int blockID, int meta)
+    {
+    	if (this.getBlock(world) == null)
+    		return false;
+    	return (this.getBlockID(world) == blockID && this.getMeta(world) == meta);
+    }
+    
     public boolean isConnected(World world, BlockCoord c)
     {
     	return this.isConnected(world, c, this.getBlockID(world), this.getMeta(world));

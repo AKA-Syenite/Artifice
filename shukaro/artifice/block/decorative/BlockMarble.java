@@ -59,14 +59,14 @@ public class BlockMarble extends BlockArtifice implements IConnectedTexture
 		icons[0] = IconHandler.registerSingle(reg, "marble", "marble");
 		icons[1] = IconHandler.registerSingle(reg, "cobblestone", "marble");
 		icons[2] = IconHandler.registerSingle(reg, "bricks", "marble");
-		icons[3] = IconHandler.registerSingle(reg, "chiseled", "marble");
+		icons[5] = IconHandler.registerSingle(reg, "chiseled", "marble");
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
 	public Icon getIcon(int side, int meta)
 	{
-		if (meta > ArtificeCore.tiers.length)
+		if (meta > ArtificeCore.rocks.length)
 			meta = 0;
 		if (meta == 3 || meta == 4)
 			return this.getTextureType(side, meta).textureList[0];
@@ -79,7 +79,7 @@ public class BlockMarble extends BlockArtifice implements IConnectedTexture
 	public Icon getBlockTexture(IBlockAccess block, int x, int y, int z, int side)
 	{
 		int meta = block.getBlockMetadata(x, y, z);
-		if (meta > ArtificeCore.tiers.length)
+		if (meta > ArtificeCore.rocks.length)
 			meta = 0;
 		if (meta == 3 || meta == 4)
 			return this.getTextureType(side, meta).textureList[this.getTextureRenderer(side, meta).getTextureIndex(block, x, y, z, side)];

@@ -233,7 +233,7 @@ public class BlockFrameScaffold extends BlockFrame implements IConnectedTexture,
 	@Override
 	public boolean isOpaqueCube()
 	{
-		return true;
+		return false;
 	}
 
 	@Override

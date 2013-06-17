@@ -45,7 +45,7 @@ public class WorldGenLotus
     	if (!ArtificeRegistry.getLotusWhitelist().contains(world.getBiomeGenForCoords(startX, startZ).biomeName))
     		return false;
     	
-    	if (rand.nextInt(10) > 6)
+    	if (rand.nextInt(10) > 4)
     		return false;
         
     	int tries = rand.nextInt(16) + 8;

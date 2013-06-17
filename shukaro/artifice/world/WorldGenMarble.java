@@ -41,6 +41,7 @@ public class WorldGenMarble
 	{
 		ChunkCoord chunk = new ChunkCoord(chunkX, chunkZ);
 		boolean doGen = false;
+		int threshold = size / 8;
 		
 		int tries = rand.nextInt(16) + 4;
 		for (int i=0; i<tries; i++)
@@ -73,7 +74,7 @@ public class WorldGenMarble
 			blocks.remove(c);
 			world.setBlock(c.x, c.y, c.z, id, 0, 0);
 			genned++;
-			while (blocks.size() > (size - genned))
+			while (blocks.size() > threshold)
 			{
 				if (blocks.size() == 0)
 					break;

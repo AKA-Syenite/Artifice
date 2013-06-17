@@ -74,7 +74,7 @@ public class WorldGenMarble
 			blocks.remove(c);
 			world.setBlock(c.x, c.y, c.z, id, 0, 0);
 			genned++;
-			while (blocks.size() > threshold)
+			while (blocks.size() > threshold && genned < size)
 			{
 				if (blocks.size() == 0)
 					break;

@@ -67,6 +67,8 @@ public class WorldGenMarble
 				if (canGenHere(world, chunk, t))
 					blocks.add(t);
 			}
+			if (blocks.size() == 0)
+				break;
 			c.set(blocks.get(rand.nextInt(blocks.size())));
 			blocks.remove(c);
 			world.setBlock(c.x, c.y, c.z, id, 0, 0);

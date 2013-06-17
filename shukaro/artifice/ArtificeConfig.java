@@ -140,8 +140,8 @@ public class ArtificeConfig
             basaltHeight.comment = "Average height for basalt floor (Default 7)";
             marbleWorldGen = c.get("World Generation", "Generate Marble", true);
             marbleWorldGen.comment = "Whether or not to generate marble";
-            marbleSize = c.get("World Generation", "Marble Size", 50);
-            marbleSize.comment = "Average size of marble deposits in the world (Default 50)";
+            marbleSize = c.get("World Generation", "Marble Size", 200);
+            marbleSize.comment = "Average size of marble deposits in the world (Default 200)";
             marbleHeight = c.get("World Generation", "Marble Height", 128);
             marbleHeight.comment = "Max height to begin marble generation (Default 128)";
             marbleFrequency = c.get("World Generation", "Marble Frequency", 4);

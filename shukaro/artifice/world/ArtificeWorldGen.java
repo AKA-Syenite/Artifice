@@ -71,7 +71,8 @@ public class ArtificeWorldGen implements IWorldGenerator
         {
         	for (int i=0; i < ArtificeConfig.marbleFrequency.getInt(); i++)
         	{
-	        	int size = ArtificeConfig.marbleSize.getInt() + ((random.nextInt(ArtificeConfig.marbleSize.getInt()) - random.nextInt(ArtificeConfig.marbleSize.getInt())) / 2);
+        		int mSize = ArtificeConfig.marbleSize.getInt();
+	        	int size = mSize + (random.nextInt(mSize) / 2) - (random.nextInt(mSize) / 2);
 	            new WorldGenMarble(world, random, ArtificeBlocks.blockMarble.blockID).generate(size, chunkX, chunkZ);
         	}
         }

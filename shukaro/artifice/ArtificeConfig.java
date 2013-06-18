@@ -57,6 +57,11 @@ public class ArtificeConfig
     public static Property glassWallRecipes;
     public static Property scaffoldRecipes;
     
+    public static Property enableFrames;
+    public static Property enableSledges;
+    public static Property enableSteel;
+    public static Property enableWorldGen;
+    
     public static Property floraWorldGen;
     public static Property floraFrequency;
     public static Property lotusWorldGen;
@@ -182,6 +187,42 @@ public class ArtificeConfig
             
             floraBoneMeal = c.get("General", "Bonemeal Flowers", true);
             floraBoneMeal.comment = "Set to false to disable random flower growth from bonemeal";
+            
+            enableFrames = c.get("General", "Enable Frames", true);
+            enableFrames.comment = "Set to false to stop frames from initializing";
+            if (!enableFrames.getBoolean(true))
+            {
+            	frameRecipes.set(false);
+            	detectorRecipe.set(false);
+            	blastWallRecipes.set(false);
+            	glassWallRecipes.set(false);
+            	scaffoldRecipes.set(false);
+            }
+            enableSledges = c.get("General", "Enable Sledges", true);
+            enableSledges.comment = "Set to false to stop sledges from initializing";
+            if (!enableSledges.getBoolean(true))
+            {
+            	sledgeRecipes.set(false);
+            }
+            enableSteel = c.get("General", "Enable Steel", true);
+            enableSteel.comment = "Set to false to stop steel from initializing";
+            if (!enableSteel.getBoolean(true))
+            {
+            	steelSmelting.set(false);
+            }
+            enableWorldGen = c.get("General", "Enable Worldgen", true);
+            enableWorldGen.comment = "Set to false to stop worldgen blocks from initializing or generating";
+            if (!enableWorldGen.getBoolean(true))
+            {
+            	floraWorldGen.set(false);
+            	lotusWorldGen.set(false);
+            	basaltWorldGen.set(false);
+            	marbleWorldGen.set(false);
+            	floraRecipes.set(false);
+            	basaltRecipes.set(false);
+            	marbleRecipes.set(false);
+            	floraBoneMeal.set(false);
+            }
         }
         catch (Exception e)
         {

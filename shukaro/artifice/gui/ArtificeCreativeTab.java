@@ -3,6 +3,8 @@ package shukaro.artifice.gui;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
 import shukaro.artifice.ArtificeBlocks;
+import shukaro.artifice.ArtificeConfig;
+import shukaro.artifice.ArtificeItems;
 
 public class ArtificeCreativeTab extends CreativeTabs
 {
@@ -16,7 +18,15 @@ public class ArtificeCreativeTab extends CreativeTabs
     @Override
     public ItemStack getIconItemStack()
     {
-        return new ItemStack(ArtificeBlocks.blockFrame, 1, 0);
+    	if (ArtificeConfig.enableFrames.getBoolean(true))
+    		return new ItemStack(ArtificeBlocks.blockFrame, 1, 0);
+    	if (ArtificeConfig.enableWorldGen.getBoolean(true))
+    		return new ItemStack(ArtificeBlocks.blockBasalt, 1, 0);
+    	if (ArtificeConfig.enableSledges.getBoolean(true))
+    		return new ItemStack(ArtificeItems.itemSledgeDiamond, 1, 0);
+    	if (ArtificeConfig.enableSteel.getBoolean(true))
+    		return new ItemStack(ArtificeItems.itemSteelIngot, 1, 0);
+    	return null;
     }
     
     @Override

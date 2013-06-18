@@ -13,6 +13,7 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.network.NetworkMod;
 import cpw.mods.fml.common.registry.GameRegistry;
 import shukaro.artifice.ArtificeBlocks;
+import shukaro.artifice.ArtificeConfig;
 import shukaro.artifice.ArtificeCore;
 
 @Mod(modid = "ArtificeCompat|EE3", name = "Artifice Compat: EE3", version = ArtificeCore.modVersion, dependencies = "after:Artifice;after:EE3")
@@ -32,11 +33,14 @@ public class EE3
 			Class<?> recipeClass = Class.forName("com.pahimar.ee3.recipe.RecipesTransmutationStone");
 			List<ItemStack> stoneList = (List<ItemStack>) recipeClass.getField("transmutationStones").get(null);
 			
-			for (ItemStack stone : stoneList)
+			if (ArtificeConfig.enableWorldGen.getBoolean(true))
 			{
-				GameRegistry.addShapelessRecipe(new ItemStack(ArtificeBlocks.blockBasalt.blockID, 2, 1), stone, new ItemStack(Block.cobblestone.blockID, 1, 0), new ItemStack(Block.cobblestone.blockID, 1, 0));
-				GameRegistry.addShapelessRecipe(new ItemStack(ArtificeBlocks.blockBasalt.blockID, 1, 1), stone, new ItemStack(ArtificeBlocks.blockMarble.blockID, 1, 1));
-				GameRegistry.addShapelessRecipe(new ItemStack(ArtificeBlocks.blockMarble.blockID, 1, 1), stone, new ItemStack(ArtificeBlocks.blockBasalt.blockID, 1, 1));
+				for (ItemStack stone : stoneList)
+				{
+					GameRegistry.addShapelessRecipe(new ItemStack(ArtificeBlocks.blockBasalt.blockID, 2, 1), stone, new ItemStack(Block.cobblestone.blockID, 1, 0), new ItemStack(Block.cobblestone.blockID, 1, 0));
+					GameRegistry.addShapelessRecipe(new ItemStack(ArtificeBlocks.blockBasalt.blockID, 1, 1), stone, new ItemStack(ArtificeBlocks.blockMarble.blockID, 1, 1));
+					GameRegistry.addShapelessRecipe(new ItemStack(ArtificeBlocks.blockMarble.blockID, 1, 1), stone, new ItemStack(ArtificeBlocks.blockBasalt.blockID, 1, 1));
+				}
 			}
 			
 			ArtificeCore.logger.log(Level.INFO, "EE3 Compat Initialized");

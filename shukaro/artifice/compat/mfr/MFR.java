@@ -10,6 +10,7 @@ import powercrystals.minefactoryreloaded.api.IFactoryHarvestable;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
 import shukaro.artifice.ArtificeBlocks;
+import shukaro.artifice.ArtificeConfig;
 import shukaro.artifice.ArtificeCore;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.Mod;
@@ -32,7 +33,8 @@ public class MFR
 		}
 		try
 		{
-			FarmingRegistry.registerHarvestable(new FactoryFlora());
+			if (ArtificeConfig.enableWorldGen.getBoolean(true))
+				FarmingRegistry.registerHarvestable(new FactoryFlora());
 			ArtificeCore.logger.log(Level.INFO, "MFR Compat Initialized");
 		}
 		catch (Exception ex)

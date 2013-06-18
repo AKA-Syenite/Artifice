@@ -1,5 +1,6 @@
 package shukaro.artifice.net;
 
+import shukaro.artifice.ArtificeConfig;
 import shukaro.artifice.ArtificeCore;
 import shukaro.artifice.event.ScaffoldTicker;
 import shukaro.artifice.render.FrameRenderer;
@@ -17,6 +18,7 @@ public class ClientProxy extends CommonProxy
         RenderingRegistry.registerBlockHandler(ArtificeCore.frameRenderID, new FrameRenderer());
         RenderingRegistry.registerBlockHandler(ArtificeCore.lotusRenderID, new LotusRenderer());
         
-        TickRegistry.registerTickHandler(new ScaffoldTicker(), Side.CLIENT);
+        if (ArtificeConfig.enableFrames.getBoolean(true))
+        	TickRegistry.registerTickHandler(new ScaffoldTicker(), Side.CLIENT);
     }
 }

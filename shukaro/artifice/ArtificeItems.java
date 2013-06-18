@@ -18,20 +18,25 @@ public class ArtificeItems
 	
 	public static void initItems()
 	{
-		itemSledgeWood = new ItemSledge(ArtificeConfig.itemSledgeWoodID.getInt(), EnumToolMaterial.WOOD);
-		itemSledgeStone = new ItemSledge(ArtificeConfig.itemSledgeStoneID.getInt(), EnumToolMaterial.STONE);
-		itemSledgeIron = new ItemSledge(ArtificeConfig.itemSledgeIronID.getInt(), EnumToolMaterial.IRON);
-		itemSledgeGold = new ItemSledge(ArtificeConfig.itemSledgeGoldID.getInt(), EnumToolMaterial.GOLD);
-		itemSledgeDiamond = new ItemSledge(ArtificeConfig.itemSledgeDiamondID.getInt(), EnumToolMaterial.EMERALD);
-		itemSteelIngot = new ItemSteel(ArtificeConfig.itemSteelIngotID.getInt());
+		if (ArtificeConfig.enableSledges.getBoolean(true))
+		{
+			itemSledgeWood = new ItemSledge(ArtificeConfig.itemSledgeWoodID.getInt(), EnumToolMaterial.WOOD);
+			itemSledgeStone = new ItemSledge(ArtificeConfig.itemSledgeStoneID.getInt(), EnumToolMaterial.STONE);
+			itemSledgeIron = new ItemSledge(ArtificeConfig.itemSledgeIronID.getInt(), EnumToolMaterial.IRON);
+			itemSledgeGold = new ItemSledge(ArtificeConfig.itemSledgeGoldID.getInt(), EnumToolMaterial.GOLD);
+			itemSledgeDiamond = new ItemSledge(ArtificeConfig.itemSledgeDiamondID.getInt(), EnumToolMaterial.EMERALD);
+			GameRegistry.registerItem(itemSledgeWood, itemSledgeWood.getUnlocalizedName());
+			GameRegistry.registerItem(itemSledgeStone, itemSledgeStone.getUnlocalizedName());
+			GameRegistry.registerItem(itemSledgeIron, itemSledgeIron.getUnlocalizedName());
+			GameRegistry.registerItem(itemSledgeGold, itemSledgeGold.getUnlocalizedName());
+			GameRegistry.registerItem(itemSledgeDiamond, itemSledgeDiamond.getUnlocalizedName());
+		}
 		
-		GameRegistry.registerItem(itemSledgeWood, itemSledgeWood.getUnlocalizedName());
-		GameRegistry.registerItem(itemSledgeStone, itemSledgeStone.getUnlocalizedName());
-		GameRegistry.registerItem(itemSledgeIron, itemSledgeIron.getUnlocalizedName());
-		GameRegistry.registerItem(itemSledgeGold, itemSledgeGold.getUnlocalizedName());
-		GameRegistry.registerItem(itemSledgeDiamond, itemSledgeDiamond.getUnlocalizedName());
-		GameRegistry.registerItem(itemSteelIngot, itemSteelIngot.getUnlocalizedName());
-		
-		OreDictionary.registerOre("ingotSteel", itemSteelIngot);
+		if (ArtificeConfig.enableSteel.getBoolean(true))
+		{
+			itemSteelIngot = new ItemSteel(ArtificeConfig.itemSteelIngotID.getInt());
+			GameRegistry.registerItem(itemSteelIngot, itemSteelIngot.getUnlocalizedName());
+			OreDictionary.registerOre("ingotSteel", itemSteelIngot);
+		}
 	}
 }

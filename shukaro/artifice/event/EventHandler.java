@@ -37,6 +37,9 @@ public class EventHandler
     @ForgeSubscribe
     public void chunkLoad(ChunkDataEvent.Load e)
     {
+    	if (!ArtificeConfig.enableWorldGen.getBoolean(true))
+    		return;
+    	
         dim = e.world.provider.dimensionId;
         c = e.getChunk().getChunkCoordIntPair();
         

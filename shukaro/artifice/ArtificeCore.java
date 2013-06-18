@@ -77,9 +77,10 @@ public class ArtificeCore
         
         ArtificeTooltips.initTooltips();
         
-        GameRegistry.registerWorldGenerator(ArtificeCore.worldGen = new ArtificeWorldGen());
+        if (ArtificeConfig.enableWorldGen.getBoolean(true))
+        	GameRegistry.registerWorldGenerator(ArtificeCore.worldGen = new ArtificeWorldGen());
         
-        if (ArtificeConfig.floraBoneMeal.getBoolean(true))
+        if (ArtificeConfig.floraBoneMeal.getBoolean(true) && ArtificeConfig.enableWorldGen.getBoolean(true))
         {
             MinecraftForge.addGrassPlant(ArtificeBlocks.blockFlora, 0, 10);
             MinecraftForge.addGrassPlant(ArtificeBlocks.blockFlora, 1, 10);

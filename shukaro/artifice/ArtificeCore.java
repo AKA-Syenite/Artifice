@@ -7,6 +7,7 @@ import shukaro.artifice.event.EventHandler;
 import shukaro.artifice.multiblock.TileEntityMultiblock;
 import shukaro.artifice.net.ClientProxy;
 import shukaro.artifice.net.CommonProxy;
+import shukaro.artifice.recipe.ArtificeRecipes;
 import shukaro.artifice.world.ArtificeWorldGen;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.Init;

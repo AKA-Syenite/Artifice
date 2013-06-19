@@ -3,6 +3,7 @@ package shukaro.artifice;
 import net.minecraft.item.EnumToolMaterial;
 import net.minecraft.item.ItemTool;
 import net.minecraftforge.oredict.OreDictionary;
+import shukaro.artifice.item.ItemBox;
 import shukaro.artifice.item.ItemSledge;
 import shukaro.artifice.item.ItemSteel;
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -15,6 +16,7 @@ public class ArtificeItems
 	public static ItemTool itemSledgeGold;
 	public static ItemTool itemSledgeDiamond;
 	public static ItemSteel itemSteelIngot;
+	public static ItemBox itemBox;
 	
 	public static void initItems()
 	{
@@ -37,6 +39,12 @@ public class ArtificeItems
 			itemSteelIngot = new ItemSteel(ArtificeConfig.itemSteelIngotID.getInt());
 			GameRegistry.registerItem(itemSteelIngot, itemSteelIngot.getUnlocalizedName());
 			OreDictionary.registerOre("ingotSteel", itemSteelIngot);
+		}
+		
+		if (ArtificeConfig.enableBoxes.getBoolean(true))
+		{
+			itemBox = new ItemBox(ArtificeConfig.itemBoxID.getInt());
+			GameRegistry.registerItem(itemBox, itemBox.getUnlocalizedName());
 		}
 	}
 }

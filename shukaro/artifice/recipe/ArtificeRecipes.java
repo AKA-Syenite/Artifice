@@ -44,7 +44,16 @@ public class ArtificeRecipes
     	if (ArtificeConfig.scaffoldRecipes.getBoolean(true))
     		registerScaffoldRecipes();
     	if (ArtificeConfig.boxRecipes.getBoolean(true))
+    	{
+    		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeItems.itemBox, 32, 0), new Object[] {
+    			" Y ",
+    			"YXY",
+    			" Y ",
+    			'Y', "plankWood",
+    			'X', new ItemStack(ArtificeBlocks.blockFrame, 1, 0) }));
+    		
     		GameRegistry.addRecipe(new RecipeBox());
+    	}
     }
     
     private static void registerScaffoldRecipes()

@@ -48,6 +48,7 @@ public class ArtificeConfig
     public static Property itemSledgeGoldID;
     public static Property itemSledgeDiamondID;
     public static Property itemSteelIngotID;
+    public static Property itemBoxID;
     
     public static Property sledgeRecipes;
     public static Property frameRecipes;
@@ -56,11 +57,13 @@ public class ArtificeConfig
     public static Property blastWallRecipes;
     public static Property glassWallRecipes;
     public static Property scaffoldRecipes;
+    public static Property boxRecipes;
     
     public static Property enableFrames;
     public static Property enableSledges;
     public static Property enableSteel;
     public static Property enableWorldGen;
+    public static Property enableBoxes;
     
     public static Property floraWorldGen;
     public static Property floraFrequency;
@@ -130,6 +133,7 @@ public class ArtificeConfig
             itemSledgeGoldID = c.getItem("itemSledgeGold", i++);
             itemSledgeDiamondID = c.getItem("itemSledgeDiamond", i++);
             itemSteelIngotID = c.getItem("itemSteelIngot", i++);
+            itemBoxID = c.getItem("itemBox", i++);
             
             floraWorldGen = c.get("World Generation", "Generate Flowers", true);
             floraWorldGen.comment = "Whether or not to generate flowers";
@@ -184,6 +188,8 @@ public class ArtificeConfig
             glassWallRecipes.comment = "Set to false to prevent crafting of glass blast walls";
             scaffoldRecipes = c.get("Recipes", "Scaffolding Recipes", true);
             scaffoldRecipes.comment = "Set to false to prevent crafting of scaffolding";
+            boxRecipes = c.get("Recipes", "Box Recipes", true);
+            boxRecipes.comment = "Set to false to prevent crafting of boxes";
             
             floraBoneMeal = c.get("General", "Bonemeal Flowers", true);
             floraBoneMeal.comment = "Set to false to disable random flower growth from bonemeal";
@@ -222,6 +228,12 @@ public class ArtificeConfig
             	basaltRecipes.set(false);
             	marbleRecipes.set(false);
             	floraBoneMeal.set(false);
+            }
+            enableBoxes = c.get("General", "Enable Boxes", true);
+            enableBoxes.comment = "Set to false to stop boxes from initializing";
+            if (!enableBoxes.getBoolean(true))
+            {
+            	boxRecipes.set(false);
             }
         }
         catch (Exception e)

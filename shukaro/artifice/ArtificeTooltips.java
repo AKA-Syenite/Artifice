@@ -43,6 +43,12 @@ public class ArtificeTooltips
 			ArtificeRegistry.registerTooltip(ArtificeItems.itemSteelIngot.itemID, 0, "A strong iron alloy");
 			ArtificeRegistry.registerTooltip(ArtificeItems.itemSteelIngot.itemID, 0, commentCode + "Steel is progress");
 		}
+		
+		if (ArtificeConfig.enableBoxes.getBoolean(true))
+		{
+			ArtificeRegistry.registerTooltip(ArtificeItems.itemBox.itemID, 0, "A simple box");
+			ArtificeRegistry.registerTooltip(ArtificeItems.itemBox.itemID, 0, commentCode + "Watch out for splinters");
+		}
 	}
 
 	private static void initBlockTooltips()

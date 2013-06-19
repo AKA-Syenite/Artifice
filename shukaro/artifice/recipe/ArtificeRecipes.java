@@ -1,5 +1,8 @@
-package shukaro.artifice;
+package shukaro.artifice.recipe;
 
+import shukaro.artifice.ArtificeBlocks;
+import shukaro.artifice.ArtificeConfig;
+import shukaro.artifice.ArtificeItems;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -40,6 +43,8 @@ public class ArtificeRecipes
     		registerGlassWallRecipes();
     	if (ArtificeConfig.scaffoldRecipes.getBoolean(true))
     		registerScaffoldRecipes();
+    	if (ArtificeConfig.boxRecipes.getBoolean(true))
+    		GameRegistry.addRecipe(new RecipeBox());
     }
     
     private static void registerScaffoldRecipes()

@@ -66,7 +66,7 @@ public class BlockMarble extends BlockArtifice implements IConnectedTexture
 	@SideOnly(Side.CLIENT)
 	public Icon getIcon(int side, int meta)
 	{
-		if (meta > ArtificeCore.rocks.length)
+		if (meta >= ArtificeCore.rocks.length)
 			meta = 0;
 		if (meta == 3 || meta == 4)
 			return this.getTextureType(side, meta).textureList[0];

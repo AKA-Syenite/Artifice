@@ -86,7 +86,6 @@ public class BoxCraftingHandler implements ICraftingHandler
 						while (given < numCrafted)
 						{
 							ItemStack out = thing.copy();
-							System.out.println(out.getTagCompound());
 							// If the number we still need to give is greater than the max stack size, give them a full stack
 							// otherwise, give them them the total left to give
 							out.stackSize = (numCrafted - given) > thing.getMaxStackSize() ? thing.getMaxStackSize() : (numCrafted - given);

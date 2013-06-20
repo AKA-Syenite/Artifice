@@ -33,6 +33,7 @@ public class ItemBox extends Item
 		super(id);
 		this.setCreativeTab(ArtificeCreativeTab.tab);
 		this.setUnlocalizedName("artifice.box");
+		this.setHasSubtypes(true);
 	}
 	
 	@Override
@@ -154,7 +155,81 @@ public class ItemBox extends Item
 		NBTTagCompound tag = stack.getTagCompound();
 		if (tag != null)
 		{
-			// Do stuff here at a later date
+			// The thing in the boxes
+			ItemStack thing = new ItemStack(tag.getInteger("id"), stack.getItemDamage(), tag.getInteger("meta"));
+			if (!tag.getCompoundTag("nbt").hasNoTags())
+				thing.setTagCompound(tag.getCompoundTag("nbt"));
+			
+			// We're dropping everything since the player is sneaking
+			if (player.isSneaking())
+			{
+				// What's the total amount of items they should get?
+				// Total number of boxes, times the amount of things in each box
+				int numCrafted = (stack.stackSize * stack.getItemDamage());
+				// If we need to give the player more than one stack's worth of items, we need to split it up
+				if (numCrafted > thing.getMaxStackSize())
+				{
+					int given = 0;
+					// While we haven't given them enough items
+					while (given < numCrafted)
+					{
+						ItemStack out = thing.copy();
+						// If the number we still need to give is greater than the max stack size, give them a full stack
+						// otherwise, give them them the total left to give
+						out.stackSize = (numCrafted - given) > thing.getMaxStackSize() ? thing.getMaxStackSize() : (numCrafted - given);
+						// We'll give the player whatever the output's stacksize is
+						given += out.stackSize;
+						if (out != null && out.stackSize > 0 && !player.inventory.addItemStackToInventory(out) && !player.worldObj.isRemote)
+							player.worldObj.spawnEntityInWorld(new EntityItem(player.worldObj, player.posX + 0.5D, player.posY + 0.5D, player.posZ + 0.5D, out));
+					}
+				}
+				// Otherwise we just give them the extra :V
+				else
+				{
+					ItemStack out = thing.copy();
+					out.stackSize = numCrafted;
+					// If it won't fit in their inventory, drop it in the world
+					if (out != null && out.stackSize > 0 && !player.inventory.addItemStackToInventory(out) && !player.worldObj.isRemote)
+						player.worldObj.spawnEntityInWorld(new EntityItem(player.worldObj, player.posX + 0.5D, player.posY + 0.5D, player.posZ + 0.5D, out));
+				}
+				
+				// Stack is gone, we're done here folks
+				stack.stackSize = 0;
+				return stack;
+			}
+			
+			// Split the stack if stack sizes won't permit normal unboxing
+			ItemStack extra = null;
+			if (thing.stackSize > thing.getMaxStackSize() && stack.stackSize > 1)
+			{
+				extra = stack.copy();
+				extra.stackSize = stack.stackSize - 1;
+				stack.stackSize = 1;
+				thing.stackSize = stack.getItemDamage();
+			}
+			// Crack open the box
+			ItemStack drop = null;
+			if (thing.stackSize > thing.getMaxStackSize())
+			{
+				drop = thing.copy();
+				drop.stackSize = thing.getMaxStackSize();
+				stack.setItemDamage(stack.getItemDamage() - drop.stackSize);
+				if (stack.getItemDamage() < 1)
+					stack.stackSize--;
+				if (drop != null && !player.inventory.addItemStackToInventory(drop) && !world.isRemote)
+					world.spawnEntityInWorld(new EntityItem(world, player.posX + 0.5D, player.posY + 0.5D, player.posZ + 0.5D, drop));
+			}
+			else
+			{
+				drop = thing.copy();
+				stack.stackSize--;
+				if (drop != null && !player.inventory.addItemStackToInventory(drop) && !world.isRemote)
+					world.spawnEntityInWorld(new EntityItem(world, player.posX + 0.5D, player.posY + 0.5D, player.posZ + 0.5D, drop));
+			}
+			
+			// Give the player the leftover boxes
+			if (extra != null && !player.inventory.addItemStackToInventory(extra) && !world.isRemote)
+				world.spawnEntityInWorld(new EntityItem(world, player.posX + 0.5D, player.posY + 0.5D, player.posZ + 0.5D, extra));
 		}
 		return stack;
 	}

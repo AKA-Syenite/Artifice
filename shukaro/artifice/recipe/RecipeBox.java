@@ -91,7 +91,6 @@ public class RecipeBox implements IRecipe
 			
 			// Set our final output
 			this.output = new ItemStack(id, outAmount, meta);
-			System.out.println(nbt);
 			if (!nbt.hasNoTags())
 				this.output.setTagCompound(nbt);
 			

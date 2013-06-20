@@ -49,7 +49,6 @@ public class ArtificeConfig
     public static Property itemSledgeDiamondID;
     public static Property itemSteelIngotID;
     public static Property itemBoxID;
-    public static Property itemBox2ID;
     
     public static Property sledgeRecipes;
     public static Property frameRecipes;
@@ -135,7 +134,6 @@ public class ArtificeConfig
             itemSledgeDiamondID = c.getItem("itemSledgeDiamond", i++);
             itemSteelIngotID = c.getItem("itemSteelIngot", i++);
             itemBoxID = c.getItem("itemBox", i++);
-            itemBox2ID = c.getItem("itemBox2", i++);
             
             floraWorldGen = c.get("World Generation", "Generate Flowers", true);
             floraWorldGen.comment = "Whether or not to generate flowers";

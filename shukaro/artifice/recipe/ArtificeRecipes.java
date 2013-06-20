@@ -3,6 +3,7 @@ package shukaro.artifice.recipe;
 import shukaro.artifice.ArtificeBlocks;
 import shukaro.artifice.ArtificeConfig;
 import shukaro.artifice.ArtificeItems;
+import shukaro.artifice.item.BoxCraftingHandler;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -53,6 +54,7 @@ public class ArtificeRecipes
     			'X', new ItemStack(ArtificeBlocks.blockFrame, 1, 0) }));
     		
     		GameRegistry.addRecipe(new RecipeBox());
+    		GameRegistry.registerCraftingHandler(new BoxCraftingHandler());
     	}
     }
     

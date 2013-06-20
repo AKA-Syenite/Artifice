@@ -31,8 +31,8 @@ public class ItemBox extends Item
 	public ItemBox(int id)
 	{
 		super(id);
-		this.setUnlocalizedName("artifice.box");
 		this.setCreativeTab(ArtificeCreativeTab.tab);
+		this.setUnlocalizedName("artifice.box");
 	}
 	
 	@Override
@@ -69,16 +69,16 @@ public class ItemBox extends Item
 			{
 				IDeepStorageUnit unit = (IDeepStorageUnit) Block.blocksList[world.getBlockId(x, y, z)];
 				ItemStack contained = unit.getStoredItemType();
-				ItemStack boxed = new ItemStack(stack.getItemDamage(), tag.getInteger("size") * num, tag.getInteger("meta"));
+				ItemStack boxed = new ItemStack(tag.getInteger("id"), tag.getInteger("size") * num, tag.getInteger("meta"));
 				if (contained == null)
 				{
 					unit.setStoredItemType(boxed.itemID, boxed.getItemDamage(), boxed.stackSize);
 					stack.stackSize -= num;
 					return true;
 				}
-				if (tag.getCompoundTag("nbt") == null && contained.isItemEqual(boxed))
+				if (tag.getCompoundTag("nbt").hasNoTags() && contained.isItemEqual(boxed))
 				{
-					if (unit.getMaxStoredCount() < contained.stackSize + boxed.stackSize)
+					if (unit.getMaxStoredCount() < (contained.stackSize + boxed.stackSize))
 						return false;
 					else
 					{
@@ -103,12 +103,22 @@ public class ItemBox extends Item
 				ItemStack contained = unit.getStoredItemType();
 				if (contained == null)
 					return false;
+				
 				NBTTagCompound newTag = new NBTTagCompound();
+				newTag.setInteger("meta", contained.getItemDamage());
+				newTag.setInteger("id", contained.itemID);
+				
 				boolean canFill = true;
-				if (contained.stackSize > 8 * num)
+				if (contained.stackSize > (8 * num))
 				{
 					newTag.setInteger("size", 8);
-					unit.setStoredItemCount(contained.stackSize - 8 * num);
+					unit.setStoredItemCount(contained.stackSize - (8 * num));
+				}
+				else if (contained.stackSize > 8)
+				{
+					newTag.setInteger("size", 8);
+					unit.setStoredItemCount(contained.stackSize - 8);
+					canFill = false;
 				}
 				else
 				{
@@ -116,20 +126,21 @@ public class ItemBox extends Item
 					unit.setStoredItemCount(0);
 					canFill = false;
 				}
-				newTag.setInteger("meta", contained.getItemDamage());
+
 				ItemStack newStack;
 				if (!canFill)
 				{
-					newStack = new ItemStack(ArtificeItems.itemBox.itemID, 1, contained.itemID);
+					newStack = new ItemStack(ArtificeItems.itemBox.itemID, 1, newTag.getInteger("size"));
 					stack.stackSize--;
 				}
 				else
 				{
-					newStack = new ItemStack(ArtificeItems.itemBox.itemID, num, contained.itemID);
+					newStack = new ItemStack(ArtificeItems.itemBox.itemID, num, newTag.getInteger("size"));
 					stack.stackSize -= num;
 				}
 				newStack.setTagCompound(newTag);
-				if (!player.inventory.addItemStackToInventory(newStack))
+				
+				if (!player.inventory.addItemStackToInventory(newStack) && !world.isRemote)
 					world.spawnEntityInWorld(new EntityItem(world, player.posX + 0.5D, player.posY + 0.5D, player.posZ + 0.5D, newStack));
 				return true;
 			}
@@ -141,15 +152,9 @@ public class ItemBox extends Item
 	public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player)
 	{
 		NBTTagCompound tag = stack.getTagCompound();
-		int num = 1;
-		if (tag != null && !world.isRemote)
+		if (tag != null)
 		{
-			if (player.isSneaking())
-				num = stack.stackSize;
-			ItemStack drop = new ItemStack(stack.getItemDamage(), tag.getInteger("size") * num, tag.getInteger("meta"));
-			if (!player.inventory.addItemStackToInventory(drop))
-				world.spawnEntityInWorld(new EntityItem(world, player.posX + 0.5D, player.posY + 0.5D, player.posZ + 0.5D, drop));
-			stack.stackSize -= num;
+			// Do stuff here at a later date
 		}
 		return stack;
 	}
@@ -174,8 +179,8 @@ public class ItemBox extends Item
 		NBTTagCompound tag = stack.getTagCompound();
 		if (tag != null)
 		{
-			infoList.add("Contains: " + FormatCodes.Aqua.format + new ItemStack(stack.getItemDamage(), 1, tag.getInteger("meta")).getDisplayName());
-			infoList.add("Amount: " + FormatCodes.Aqua.format + tag.getInteger("size"));
+			infoList.add("Contains: " + FormatCodes.Aqua.format + new ItemStack(tag.getInteger("id"), 1, tag.getInteger("meta")).getDisplayName());
+			infoList.add("Amount: " + FormatCodes.Aqua.format + stack.getItemDamage());
 		}
 		if (ArtificeConfig.tooltips.getBoolean(true))
 		{

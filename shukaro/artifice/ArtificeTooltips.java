@@ -46,7 +46,7 @@ public class ArtificeTooltips
 		
 		if (ArtificeConfig.enableBoxes.getBoolean(true))
 		{
-			ArtificeRegistry.registerTooltip(ArtificeItems.itemBox.itemID, 0, "A simple box");
+			ArtificeRegistry.registerTooltip(ArtificeItems.itemBox.itemID, 0, "Stores items");
 			ArtificeRegistry.registerTooltip(ArtificeItems.itemBox.itemID, 0, commentCode + "Watch out for splinters");
 		}
 	}

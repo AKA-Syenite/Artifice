@@ -69,8 +69,9 @@ public class ArtificeConfig
     public static Property floraFrequency;
     public static Property lotusWorldGen;
     public static Property lotusFrequency;
-    public static Property basaltWorldGen;
-    public static Property basaltHeight;
+    public static Property basaltLayerWorldGen;
+    public static Property basaltLayerMinHeight;
+    public static Property basaltLayerMaxHeight;
     public static Property basaltClusterWorldGen;
     public static Property basaltClusterSize;
     public static Property basaltClusterHeight;
@@ -148,10 +149,12 @@ public class ArtificeConfig
             lotusWorldGen.comment = "Whether or not to generate lotus lilies";
             lotusFrequency = c.get("World Generation", "Lotus Liy Frequency", 1);
             lotusFrequency.comment = "Number of times to attempt to place lotus lilies in each chunk (Default 1)";
-            basaltWorldGen = c.get("World Generation", "Generate Basalt", true);
-            basaltWorldGen.comment = "Whether or not to generate basalt";
-            basaltHeight = c.get("World Generation", "Basalt Height", 7);
-            basaltHeight.comment = "Average height for basalt floor (Default 7)";
+            basaltLayerWorldGen = c.get("World Generation", "Generate Basalt", true);
+            basaltLayerWorldGen.comment = "Whether or not to generate basalt";
+            basaltLayerMinHeight = c.get("World Generation", "Basalt Layer Min Height", -2);
+            basaltLayerMinHeight.comment = "Average minimum height for basalt layer (Default -2)";
+            basaltLayerMaxHeight = c.get("World Generation", "Basalt Layer Max Height", 7);
+            basaltLayerMaxHeight.comment = "Average maximum height for basalt layer (Default 7)";
             basaltClusterWorldGen = c.get("World Generation", "Generate Basalt Clusters", false);
             basaltClusterWorldGen.comment = "Whether or not to generate basalt clusters (Default false)";
             basaltClusterSize = c.get("World Generation", "Basalt Cluster Size", 200);
@@ -237,7 +240,7 @@ public class ArtificeConfig
             {
             	floraWorldGen.set(false);
             	lotusWorldGen.set(false);
-            	basaltWorldGen.set(false);
+            	basaltLayerWorldGen.set(false);
             	basaltClusterWorldGen.set(false);
             	marbleWorldGen.set(false);
             	floraRecipes.set(false);

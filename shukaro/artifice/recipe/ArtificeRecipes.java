@@ -51,7 +51,7 @@ public class ArtificeRecipes
     			"YXY",
     			" Y ",
     			'Y', "plankWood",
-    			'X', new ItemStack(ArtificeBlocks.blockFrame, 1, 0) }));
+    			'X', "stickWood" }));
     		
     		GameRegistry.addRecipe(new RecipeBox());
     		GameRegistry.registerCraftingHandler(new BoxCraftingHandler());

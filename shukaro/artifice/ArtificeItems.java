@@ -1,8 +1,10 @@
 package shukaro.artifice;
 
+import net.minecraft.block.BlockDispenser;
 import net.minecraft.item.EnumToolMaterial;
 import net.minecraft.item.ItemTool;
 import net.minecraftforge.oredict.OreDictionary;
+import shukaro.artifice.item.DispenserBehaviorBox;
 import shukaro.artifice.item.ItemBox;
 import shukaro.artifice.item.ItemSledge;
 import shukaro.artifice.item.ItemSteel;
@@ -45,6 +47,7 @@ public class ArtificeItems
 		{
 			itemBox = new ItemBox(ArtificeConfig.itemBoxID.getInt());
 			GameRegistry.registerItem(itemBox, itemBox.getUnlocalizedName());
+			BlockDispenser.dispenseBehaviorRegistry.putObject(itemBox, new DispenserBehaviorBox());
 		}
 	}
 }

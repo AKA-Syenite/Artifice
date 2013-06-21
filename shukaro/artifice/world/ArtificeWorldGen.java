@@ -62,9 +62,9 @@ public class ArtificeWorldGen implements IWorldGenerator
             }
         }
         
-        if ((ArtificeConfig.basaltWorldGen.getBoolean(true) && newGen) || (ArtificeConfig.basaltWorldGen.getBoolean(true) && ArtificeConfig.regenBasalt.getBoolean(false)))
+        if ((ArtificeConfig.basaltLayerWorldGen.getBoolean(true) && newGen) || (ArtificeConfig.basaltLayerWorldGen.getBoolean(true) && ArtificeConfig.regenBasalt.getBoolean(false)))
         {
-            new WorldGenFloor(world, ArtificeBlocks.blockBasalt.blockID, ArtificeConfig.basaltHeight.getInt()).generate(chunkX, chunkZ);
+            new WorldGenLayer(world, ArtificeBlocks.blockBasalt.blockID, ArtificeConfig.basaltLayerMinHeight.getInt(), ArtificeConfig.basaltLayerMaxHeight.getInt()).generate(chunkX, chunkZ);
         }
         
         if ((ArtificeConfig.basaltClusterWorldGen.getBoolean(true) && newGen) || (ArtificeConfig.basaltClusterWorldGen.getBoolean(true) && ArtificeConfig.regenBasaltClusters.getBoolean(false)))

@@ -71,6 +71,10 @@ public class ArtificeConfig
     public static Property lotusFrequency;
     public static Property basaltWorldGen;
     public static Property basaltHeight;
+    public static Property basaltClusterWorldGen;
+    public static Property basaltClusterSize;
+    public static Property basaltClusterHeight;
+    public static Property basaltClusterFrequency;
     public static Property marbleWorldGen;
     public static Property marbleSize;
     public static Property marbleHeight;
@@ -80,6 +84,7 @@ public class ArtificeConfig
     public static Property marbleRecipes;
     public static Property floraBoneMeal;
     public static Property regenBasalt;
+    public static Property regenBasaltClusters;
     public static Property regenMarble;
     public static Property regenFlora;
     public static Property regenLotus;
@@ -147,6 +152,14 @@ public class ArtificeConfig
             basaltWorldGen.comment = "Whether or not to generate basalt";
             basaltHeight = c.get("World Generation", "Basalt Height", 7);
             basaltHeight.comment = "Average height for basalt floor (Default 7)";
+            basaltClusterWorldGen = c.get("World Generation", "Generate Basalt Clusters", false);
+            basaltClusterWorldGen.comment = "Whether or not to generate basalt clusters (Default false)";
+            basaltClusterSize = c.get("World Generation", "Basalt Cluster Size", 200);
+            basaltClusterSize.comment = "Average size of basalt clusters in the world (Default 200)";
+            basaltClusterHeight = c.get("World Generation", "Basalt Cluster Height", 64);
+            basaltClusterHeight.comment = "Max height to begin basalt cluster generation (Default 64)";
+            basaltClusterFrequency = c.get("World Generation", "Basalt Cluster Frequency", 4);
+            basaltClusterFrequency.comment = "Number of times to attempt to place basalt clusters in each chunk (Default 4)";
             marbleWorldGen = c.get("World Generation", "Generate Marble", true);
             marbleWorldGen.comment = "Whether or not to generate marble";
             marbleSize = c.get("World Generation", "Marble Size", 200);
@@ -159,6 +172,8 @@ public class ArtificeConfig
             dimensionBlacklist.comment = "A comma-separated list of dimension IDs to disable worldgen in. (No spaces)";
             regenBasalt = c.get("World Generation", "Regenerate Basalt", false);
             regenBasalt.comment = "Set to true to regenerate basalt";
+            regenBasaltClusters = c.get("World Generation", "Regenerate Basalt Clusters", false);
+            regenBasaltClusters.comment = "Set to true to regenerate basalt clusters";
             regenMarble = c.get("World Generation", "Regenerate Marble", false);
             regenMarble.comment = "Set to true to regenerate marble";
             regenFlora = c.get("World Generation", "Regenerate Flora", false);
@@ -223,6 +238,7 @@ public class ArtificeConfig
             	floraWorldGen.set(false);
             	lotusWorldGen.set(false);
             	basaltWorldGen.set(false);
+            	basaltClusterWorldGen.set(false);
             	marbleWorldGen.set(false);
             	floraRecipes.set(false);
             	basaltRecipes.set(false);

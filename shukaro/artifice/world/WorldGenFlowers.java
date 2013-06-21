@@ -11,7 +11,7 @@ import shukaro.artifice.compat.ArtificeRegistry;
 import shukaro.artifice.util.ChunkCoord;
 import shukaro.artifice.util.XSRandom;
 
-public class WorldGenFlora
+public class WorldGenFlowers
 {
     private World world;
     private Random rand;
@@ -26,7 +26,7 @@ public class WorldGenFlora
     private int zMax;
     private int type;
     
-    public WorldGenFlora(World world, Random rand)
+    public WorldGenFlowers(World world, Random rand)
     {
         this.world = world;
         this.rand = rand;

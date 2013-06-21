@@ -50,7 +50,7 @@ public class ArtificeWorldGen implements IWorldGenerator
         {
             for (int i=0; i < ArtificeConfig.floraFrequency.getInt(); i++)
             {
-                new WorldGenFlora(world, random).generate(chunkX, chunkZ);
+                new WorldGenFlowers(world, random).generate(chunkX, chunkZ);
             }
         }
         
@@ -58,13 +58,23 @@ public class ArtificeWorldGen implements IWorldGenerator
         {
             for (int i=0; i < ArtificeConfig.lotusFrequency.getInt(); i++)
             {
-                new WorldGenLotus(world, random).generate(chunkX, chunkZ);
+                new WorldGenLily(world, random).generate(chunkX, chunkZ);
             }
         }
         
         if ((ArtificeConfig.basaltWorldGen.getBoolean(true) && newGen) || (ArtificeConfig.basaltWorldGen.getBoolean(true) && ArtificeConfig.regenBasalt.getBoolean(false)))
         {
-            new WorldGenBasalt(world, ArtificeBlocks.blockBasalt.blockID).generate(chunkX, chunkZ);
+            new WorldGenFloor(world, ArtificeBlocks.blockBasalt.blockID, ArtificeConfig.basaltHeight.getInt()).generate(chunkX, chunkZ);
+        }
+        
+        if ((ArtificeConfig.basaltClusterWorldGen.getBoolean(true) && newGen) || (ArtificeConfig.basaltClusterWorldGen.getBoolean(true) && ArtificeConfig.regenBasaltClusters.getBoolean(false)))
+        {
+        	for (int i=0; i < ArtificeConfig.basaltClusterFrequency.getInt(); i++)
+        	{
+        		int bSize = ArtificeConfig.basaltClusterSize.getInt();
+        		int size = bSize + (random.nextInt(bSize) / 2) - (random.nextInt(bSize) / 2);
+        		new WorldGenCluster(world, random, ArtificeBlocks.blockBasalt.blockID, ArtificeConfig.basaltClusterHeight.getInt()).generate(size, chunkX, chunkZ);
+        	}
         }
         
         if ((ArtificeConfig.marbleWorldGen.getBoolean(true) && newGen) || (ArtificeConfig.marbleWorldGen.getBoolean(true) && ArtificeConfig.regenMarble.getBoolean(false)))
@@ -73,7 +83,7 @@ public class ArtificeWorldGen implements IWorldGenerator
         	{
         		int mSize = ArtificeConfig.marbleSize.getInt();
 	        	int size = mSize + (random.nextInt(mSize) / 2) - (random.nextInt(mSize) / 2);
-	            new WorldGenMarble(world, random, ArtificeBlocks.blockMarble.blockID).generate(size, chunkX, chunkZ);
+	            new WorldGenCluster(world, random, ArtificeBlocks.blockMarble.blockID, ArtificeConfig.marbleHeight.getInt()).generate(size, chunkX, chunkZ);
         	}
         }
         

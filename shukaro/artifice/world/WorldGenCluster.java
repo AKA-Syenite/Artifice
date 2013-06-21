@@ -12,7 +12,7 @@ import shukaro.artifice.util.ChunkCoord;
 
 import net.minecraft.world.World;
 
-public class WorldGenMarble
+public class WorldGenCluster
 {
 	private World world;
 	private Random rand;
@@ -22,12 +22,12 @@ public class WorldGenMarble
 	private BlockCoord c;
 	private List<BlockCoord> blocks;
 	
-	public WorldGenMarble(World world, Random rand, int id)
+	public WorldGenCluster(World world, Random rand, int id, int maxHeight)
 	{
-		this(world, rand, id, ArtificeConfig.marbleHeight.getInt(), ArtificeRegistry.getStoneTypes());
+		this(world, rand, id, maxHeight, ArtificeRegistry.getStoneTypes());
 	}
 	
-	public WorldGenMarble(World world, Random rand, int id, int maxHeight, Set<Integer> replaced)
+	public WorldGenCluster(World world, Random rand, int id, int maxHeight, Set<Integer> replaced)
 	{
 		this.world = world;
 		this.rand = rand;

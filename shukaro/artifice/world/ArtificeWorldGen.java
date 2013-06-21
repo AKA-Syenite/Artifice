@@ -62,9 +62,14 @@ public class ArtificeWorldGen implements IWorldGenerator
             }
         }
         
-        if ((ArtificeConfig.basaltLayerWorldGen.getBoolean(true) && newGen) || (ArtificeConfig.basaltLayerWorldGen.getBoolean(true) && ArtificeConfig.regenBasalt.getBoolean(false)))
+        if ((ArtificeConfig.basaltLayerWorldGen.getBoolean(true) && newGen) || (ArtificeConfig.basaltLayerWorldGen.getBoolean(true) && ArtificeConfig.regenBasaltLayer.getBoolean(false)))
         {
             new WorldGenLayer(world, ArtificeBlocks.blockBasalt.blockID, ArtificeConfig.basaltLayerMinHeight.getInt(), ArtificeConfig.basaltLayerMaxHeight.getInt()).generate(chunkX, chunkZ);
+        }
+        
+        if ((ArtificeConfig.marbleLayerWorldGen.getBoolean(true) && newGen) || (ArtificeConfig.marbleLayerWorldGen.getBoolean(true) && ArtificeConfig.regenMarbleLayer.getBoolean(false)))
+        {
+            new WorldGenLayer(world, ArtificeBlocks.blockMarble.blockID, ArtificeConfig.marbleLayerMinHeight.getInt(), ArtificeConfig.marbleLayerMaxHeight.getInt()).generate(chunkX, chunkZ);
         }
         
         if ((ArtificeConfig.basaltClusterWorldGen.getBoolean(true) && newGen) || (ArtificeConfig.basaltClusterWorldGen.getBoolean(true) && ArtificeConfig.regenBasaltClusters.getBoolean(false)))
@@ -77,13 +82,13 @@ public class ArtificeWorldGen implements IWorldGenerator
         	}
         }
         
-        if ((ArtificeConfig.marbleWorldGen.getBoolean(true) && newGen) || (ArtificeConfig.marbleWorldGen.getBoolean(true) && ArtificeConfig.regenMarble.getBoolean(false)))
+        if ((ArtificeConfig.marbleClusterWorldGen.getBoolean(true) && newGen) || (ArtificeConfig.marbleClusterWorldGen.getBoolean(true) && ArtificeConfig.regenMarbleClusters.getBoolean(false)))
         {
-        	for (int i=0; i < ArtificeConfig.marbleFrequency.getInt(); i++)
+        	for (int i=0; i < ArtificeConfig.marbleClusterFrequency.getInt(); i++)
         	{
-        		int mSize = ArtificeConfig.marbleSize.getInt();
+        		int mSize = ArtificeConfig.marbleClusterSize.getInt();
 	        	int size = mSize + (random.nextInt(mSize) / 2) - (random.nextInt(mSize) / 2);
-	            new WorldGenCluster(world, random, ArtificeBlocks.blockMarble.blockID, ArtificeConfig.marbleHeight.getInt()).generate(size, chunkX, chunkZ);
+	            new WorldGenCluster(world, random, ArtificeBlocks.blockMarble.blockID, ArtificeConfig.marbleClusterHeight.getInt()).generate(size, chunkX, chunkZ);
         	}
         }
         

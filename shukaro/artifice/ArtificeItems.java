@@ -5,6 +5,7 @@ import net.minecraft.item.EnumToolMaterial;
 import net.minecraft.item.ItemTool;
 import net.minecraftforge.oredict.OreDictionary;
 import shukaro.artifice.item.DispenserBehaviorBox;
+import shukaro.artifice.item.DispenserBehaviorSledge;
 import shukaro.artifice.item.ItemBox;
 import shukaro.artifice.item.ItemSledge;
 import shukaro.artifice.item.ItemSteel;
@@ -34,6 +35,11 @@ public class ArtificeItems
 			GameRegistry.registerItem(itemSledgeIron, itemSledgeIron.getUnlocalizedName());
 			GameRegistry.registerItem(itemSledgeGold, itemSledgeGold.getUnlocalizedName());
 			GameRegistry.registerItem(itemSledgeDiamond, itemSledgeDiamond.getUnlocalizedName());
+			BlockDispenser.dispenseBehaviorRegistry.putObject(itemSledgeWood, new DispenserBehaviorSledge());
+			BlockDispenser.dispenseBehaviorRegistry.putObject(itemSledgeStone, new DispenserBehaviorSledge());
+			BlockDispenser.dispenseBehaviorRegistry.putObject(itemSledgeIron, new DispenserBehaviorSledge());
+			BlockDispenser.dispenseBehaviorRegistry.putObject(itemSledgeGold, new DispenserBehaviorSledge());
+			BlockDispenser.dispenseBehaviorRegistry.putObject(itemSledgeDiamond, new DispenserBehaviorSledge());
 		}
 		
 		if (ArtificeConfig.enableSteel.getBoolean(true))

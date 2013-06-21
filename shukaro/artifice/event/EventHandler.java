@@ -49,7 +49,7 @@ public class EventHandler
         if (dimBlacklist.contains(dim))
             return;
         
-        if ((!e.getData().getString("Artifice").equals(ArtificeConfig.regenKey.getString())) && (ArtificeConfig.regenFlora.getBoolean(false) || ArtificeConfig.regenBasalt.getBoolean(false) || ArtificeConfig.regenMarble.getBoolean(false)))
+        if ((!e.getData().getString("Artifice").equals(ArtificeConfig.regenKey.getString())) && (ArtificeConfig.regenLotus.getBoolean(false) || ArtificeConfig.regenFlora.getBoolean(false) || ArtificeConfig.regenBasaltLayer.getBoolean(false) || ArtificeConfig.regenMarbleLayer.getBoolean(false) || ArtificeConfig.regenBasaltClusters.getBoolean(false) || ArtificeConfig.regenMarbleClusters.getBoolean(false)))
         {
             ArtificeCore.logger.log(Level.WARNING, "World gen was never run for chunk at " + e.getChunk().getChunkCoordIntPair() + ". Adding to queue for regeneration.");
             chunks = (ArrayList) WorldTicker.chunksToGen.get(Integer.valueOf(dim));

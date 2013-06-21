@@ -12,7 +12,7 @@ import net.minecraft.block.Block;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenerator;
 
-public class WorldGenLotus
+public class WorldGenLily
 {
 	private World world;
     private Random rand;
@@ -26,7 +26,7 @@ public class WorldGenLotus
     private int xMax;
     private int zMax;
     
-    public WorldGenLotus(World world, Random rand)
+    public WorldGenLily(World world, Random rand)
     {
         this.world = world;
         this.rand = rand;

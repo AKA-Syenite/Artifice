@@ -8,7 +8,7 @@ import shukaro.artifice.ArtificeConfig;
 import shukaro.artifice.compat.ArtificeRegistry;
 import shukaro.artifice.util.XSRandom;
 
-public class WorldGenBasalt
+public class WorldGenFloor
 {
     private World world;
     private Random rand;
@@ -20,12 +20,12 @@ public class WorldGenBasalt
     private int id;
     private Set<Integer> replaced;
     
-    public WorldGenBasalt(World world, int id)
+    public WorldGenFloor(World world, int id, int maxHeight)
     {
-    	this(world, id, ArtificeConfig.basaltHeight.getInt(), ArtificeRegistry.getStoneTypes());
+    	this(world, id, maxHeight, ArtificeRegistry.getStoneTypes());
     }
     
-    public WorldGenBasalt(World world, int id, int maxHeight, Set<Integer> replaced)
+    public WorldGenFloor(World world, int id, int maxHeight, Set<Integer> replaced)
     {
     	this.world = world;
     	this.id = id;

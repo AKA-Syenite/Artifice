@@ -13,6 +13,9 @@ import shukaro.artifice.util.IdMetaPair;
 
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.CraftingManager;
+import net.minecraft.item.crafting.IRecipe;
+import net.minecraftforge.oredict.ShapelessOreRecipe;
 
 public abstract class ArtificeRegistry
 {
@@ -24,6 +27,72 @@ public abstract class ArtificeRegistry
     private static Map<IdMetaPair, ArrayList<ItemStack>> sledgeBlocks = new HashMap<IdMetaPair, ArrayList<ItemStack>>();
     private static Map<Integer, ArrayList<ItemStack>> wildSledgeBlocks = new HashMap<Integer, ArrayList<ItemStack>>();
     private static Map<IdMetaPair, List<String>> tooltipMap = new HashMap<IdMetaPair, List<String>>();
+    private static List<ItemStack> marbleTypes = new ArrayList<ItemStack>();
+    private static List<ItemStack> basaltTypes = new ArrayList<ItemStack>();
+    
+    public static void registerMarbleType(int id, int meta)
+    {
+    	ItemStack stack = new ItemStack(id, 1, meta);
+    	if (marbleTypes.isEmpty())
+    		marbleTypes.add(stack);
+    	else if (!marbleTypes.contains(stack))
+    	{
+    		marbleTypes.add(stack);
+    		if (marbleTypes.size() < 3)
+    		{
+    			IRecipe inner = new ShapelessOreRecipe(marbleTypes.get(1), marbleTypes.get(0));
+    			IRecipe wrap = new ShapelessOreRecipe(marbleTypes.get(0), marbleTypes.get(1));
+    			CraftingManager.getInstance().getRecipeList().add(inner);
+    			CraftingManager.getInstance().getRecipeList().add(wrap);
+    		}
+    		else
+    		{
+    			IRecipe old = new ShapelessOreRecipe(marbleTypes.get(0), marbleTypes.get(marbleTypes.size() - 1));
+    			IRecipe inner = new ShapelessOreRecipe(marbleTypes.get(marbleTypes.size()), marbleTypes.get(marbleTypes.size() - 1));
+    			IRecipe wrap = new ShapelessOreRecipe(marbleTypes.get(0), marbleTypes.get(marbleTypes.size()));
+    			CraftingManager.getInstance().getRecipeList().remove(old);
+    			CraftingManager.getInstance().getRecipeList().add(inner);
+    			CraftingManager.getInstance().getRecipeList().add(wrap);
+    		}
+    	}
+    }
+    
+    public static List<ItemStack> getMarbleTypes()
+    {
+    	return marbleTypes;
+    }
+    
+    public static void registerBasaltType(int id, int meta)
+    {
+    	ItemStack stack = new ItemStack(id, 1, meta);
+    	if (basaltTypes.isEmpty())
+    		basaltTypes.add(stack);
+    	else if (!basaltTypes.contains(stack))
+    	{
+    		basaltTypes.add(stack);
+    		if (basaltTypes.size() < 3)
+    		{
+    			IRecipe inner = new ShapelessOreRecipe(basaltTypes.get(1), basaltTypes.get(0));
+    			IRecipe wrap = new ShapelessOreRecipe(basaltTypes.get(0), basaltTypes.get(1));
+    			CraftingManager.getInstance().getRecipeList().add(inner);
+    			CraftingManager.getInstance().getRecipeList().add(wrap);
+    		}
+    		else
+    		{
+    			IRecipe old = new ShapelessOreRecipe(basaltTypes.get(0), basaltTypes.get(basaltTypes.size() - 1));
+    			IRecipe inner = new ShapelessOreRecipe(basaltTypes.get(basaltTypes.size()), basaltTypes.get(basaltTypes.size() - 1));
+    			IRecipe wrap = new ShapelessOreRecipe(basaltTypes.get(0), basaltTypes.get(basaltTypes.size()));
+    			CraftingManager.getInstance().getRecipeList().remove(old);
+    			CraftingManager.getInstance().getRecipeList().add(inner);
+    			CraftingManager.getInstance().getRecipeList().add(wrap);
+    		}
+    	}
+    }
+    
+    public static List<ItemStack> getBasaltTypes()
+    {
+    	return basaltTypes;
+    }
     
     public static void registerTooltip(int id, int meta, String line)
     {

@@ -28,7 +28,6 @@ In no particular order and with no guarantees. These are just things I'd like to
 * Chutes - Item/Power/Liquid transport
 * Journals & Research Notes - In-world books
 * Ruins - Houses, compounds, labs, towers, etc
-* Ore dictionaried dyes
 * Mechanical power - Axles, gearboxes, flywheels
 * Dynamos - Electricity > mechanical power
 * Generators - Mechanical power > electricity

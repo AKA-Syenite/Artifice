@@ -33,4 +33,7 @@ In no particular order and with no guarantees. These are just things I'd like to
 * Mechanical power - Axles, gearboxes, flywheels
 * Dynamos - Electricity > mechanical power
 * Generators - Mechanical power > electricity
-* Smoker - Meat cooking, hunger, whatever 
+* Smoker - Meat cooking, hunger, whatever
+* Block extruder
+* Vanilla stone pavers
+* Means to get cracked/mossy/etc stone

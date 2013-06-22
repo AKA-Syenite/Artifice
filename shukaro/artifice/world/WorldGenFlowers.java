@@ -43,7 +43,7 @@ public class WorldGenFlowers
     	this.startX = xMin + rand.nextInt(16);
     	this.startZ = zMin + rand.nextInt(16);
     	
-    	if (!ArtificeRegistry.getFloraBlacklist().contains(world.getBiomeGenForCoords(startX, startZ).biomeName))
+    	if (ArtificeRegistry.getFloraBlacklist().contains(world.getBiomeGenForCoords(startX, startZ).biomeName))
     		return false;
     	
     	if (rand.nextInt(10) > 6)

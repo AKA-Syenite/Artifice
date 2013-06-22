@@ -35,3 +35,5 @@ In no particular order and with no guarantees. These are just things I'd like to
 * Block extruder
 * Vanilla stone pavers
 * Means to get cracked/mossy/etc stone
+* Parallel bee/tree breeding
+* More plants and trees

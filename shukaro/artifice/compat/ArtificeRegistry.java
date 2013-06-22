@@ -10,6 +10,7 @@ import java.util.logging.Level;
 
 import shukaro.artifice.ArtificeConfig;
 import shukaro.artifice.ArtificeCore;
+import shukaro.artifice.ArtificeItems;
 import shukaro.artifice.util.IdMetaPair;
 
 import net.minecraft.block.Block;

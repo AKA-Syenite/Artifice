@@ -67,3 +67,8 @@ item.artifice.sledge.emerald.name = Diamond Sledge
 item.artifice.ingot.steel.name = Steel Ingot
 
 item.artifice.box.name = Box
+
+item.artifice.dye.blue.name = Sea Blue
+item.artifice.dye.black.name = Midnight Black
+item.artifice.dye.brown.name = Oak Brown
+item.artifice.dye.white.name = Bone White

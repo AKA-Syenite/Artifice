@@ -2,7 +2,7 @@ package shukaro.artifice.util;
 
 import java.io.Serializable;
 
-public class ChunkCoord implements Serializable
+public class ChunkCoord implements Comparable<ChunkCoord>, Serializable
 {
     public int chunkX;
     public int chunkZ;
@@ -21,6 +21,14 @@ public class ChunkCoord implements Serializable
     public boolean equals(ChunkCoord chunk)
     {
         return (chunk.chunkX == this.chunkX) && (chunk.chunkZ == this.chunkZ);
+    }
+    
+    @Override
+    public int hashCode()
+    {
+        int hash = chunkX;
+        hash *= 31 + this.chunkZ;
+        return hash;
     }
     
     public boolean contains(BlockCoord c)
@@ -48,4 +56,10 @@ public class ChunkCoord implements Serializable
     {
         return "[" + this.chunkX + ", " + this.chunkZ + "]";
     }
+
+	@Override
+	public int compareTo(ChunkCoord other)
+	{
+		return this.chunkX == other.chunkX ? this.chunkZ - other.chunkZ : this.chunkX - other.chunkX;
+	}
 }

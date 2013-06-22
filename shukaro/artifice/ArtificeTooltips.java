@@ -15,6 +15,21 @@ public class ArtificeTooltips
 
 	private static void initItemTooltips()
 	{
+		if (ArtificeConfig.enableWorldGen.getBoolean(true))
+		{
+			ArtificeRegistry.registerTooltip(ArtificeItems.itemDye.itemID, 0, "Blue Dye");
+			ArtificeRegistry.registerTooltip(ArtificeItems.itemDye.itemID, 0, commentCode + "Well, some seas");
+			
+			ArtificeRegistry.registerTooltip(ArtificeItems.itemDye.itemID, 1, "Black Dye");
+			ArtificeRegistry.registerTooltip(ArtificeItems.itemDye.itemID, 1, commentCode + "Darker than soot");
+			
+			ArtificeRegistry.registerTooltip(ArtificeItems.itemDye.itemID, 2, "Brown Dye");
+			ArtificeRegistry.registerTooltip(ArtificeItems.itemDye.itemID, 2, commentCode + "Almost reddish");
+			
+			ArtificeRegistry.registerTooltip(ArtificeItems.itemDye.itemID, 3, "White Dye");
+			ArtificeRegistry.registerTooltip(ArtificeItems.itemDye.itemID, 3, commentCode + "Stark as bleached bones");
+		}
+		
 		if (ArtificeConfig.enableSledges.getBoolean(true))
 		{
 			ArtificeRegistry.registerTooltip(ArtificeItems.itemSledgeWood.itemID, 0, "Smash blocks into parts");

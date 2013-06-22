@@ -244,19 +244,19 @@ public class ArtificeRecipes
 	private static void registerDyeRecipes()
     {
         // Black flower
-        GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(Item.dyePowder.itemID, 2, 0), new ItemStack(ArtificeBlocks.blockFlora.blockID, 1, 1)));
+        GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ArtificeItems.itemDye.itemID, 2, 1), new ItemStack(ArtificeBlocks.blockFlora.blockID, 1, 1)));
         
         // Yellow + blue = green
         GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(Item.dyePowder.itemID, 2, 2), "dyeBlue", "dyeYellow"));
         
         // Brown flower
-        GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(Item.dyePowder.itemID, 2, 3), new ItemStack(ArtificeBlocks.blockFlora.blockID, 1, 2)));
+        GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ArtificeItems.itemDye.itemID, 2, 2), new ItemStack(ArtificeBlocks.blockFlora.blockID, 1, 2)));
         
         // Blue flower
-        GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(Item.dyePowder.itemID, 2, 4), new ItemStack(ArtificeBlocks.blockFlora.blockID, 1, 0)));
+        GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ArtificeItems.itemDye.itemID, 2, 0), new ItemStack(ArtificeBlocks.blockFlora.blockID, 1, 0)));
         
         // White flower
-        GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(Item.dyePowder.itemID, 2, 15), new ItemStack(ArtificeBlocks.blockFlora.blockID, 1, 3)));
+        GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ArtificeItems.itemDye.itemID, 2, 3), new ItemStack(ArtificeBlocks.blockFlora.blockID, 1, 3)));
     }
     
     private static void registerBasaltRecipes()

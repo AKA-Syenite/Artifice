@@ -2,11 +2,13 @@ package shukaro.artifice;
 
 import net.minecraft.block.BlockDispenser;
 import net.minecraft.item.EnumToolMaterial;
+import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemTool;
 import net.minecraftforge.oredict.OreDictionary;
 import shukaro.artifice.item.DispenserBehaviorBox;
 import shukaro.artifice.item.DispenserBehaviorSledge;
 import shukaro.artifice.item.ItemBox;
+import shukaro.artifice.item.ItemDye;
 import shukaro.artifice.item.ItemSledge;
 import shukaro.artifice.item.ItemSteel;
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -20,6 +22,7 @@ public class ArtificeItems
 	public static ItemTool itemSledgeDiamond;
 	public static ItemSteel itemSteelIngot;
 	public static ItemBox itemBox;
+	public static ItemDye itemDye;
 	
 	public static void initItems()
 	{
@@ -54,6 +57,16 @@ public class ArtificeItems
 			itemBox = new ItemBox(ArtificeConfig.itemBoxID.getInt());
 			GameRegistry.registerItem(itemBox, itemBox.getUnlocalizedName());
 			BlockDispenser.dispenseBehaviorRegistry.putObject(itemBox, new DispenserBehaviorBox());
+		}
+		
+		if (ArtificeConfig.enableWorldGen.getBoolean(true))
+		{
+			itemDye = new ItemDye(ArtificeConfig.itemDyeID.getInt());
+			GameRegistry.registerItem(itemDye, itemDye.getUnlocalizedName());
+			OreDictionary.registerOre("dyeBlue", new ItemStack(itemDye.itemID, 1, 0));
+			OreDictionary.registerOre("dyeBlack", new ItemStack(itemDye.itemID, 1, 1));
+			OreDictionary.registerOre("dyeBrown", new ItemStack(itemDye.itemID, 1, 2));
+			OreDictionary.registerOre("dyeWhite", new ItemStack(itemDye.itemID, 1, 3));
 		}
 	}
 }

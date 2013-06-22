@@ -58,6 +58,7 @@ public class ArtificeConfig
     public static Property glassWallRecipes;
     public static Property scaffoldRecipes;
     public static Property boxRecipes;
+    public static Property stoneCycleRecipes;
     
     public static Property enableFrames;
     public static Property enableSledges;
@@ -256,6 +257,8 @@ public class ArtificeConfig
             scaffoldRecipes.comment = "Set to false to prevent crafting of scaffolding";
             boxRecipes = c.get("Recipes", "Box Recipes", true);
             boxRecipes.comment = "Set to false to prevent crafting of boxes";
+            stoneCycleRecipes = c.get("Recipes", "Stone Cycling Recipes", true);
+            stoneCycleRecipes.comment = "Set to false to prevent cycling through types of stone";
             
             floraBoneMeal = c.get("General", "Bonemeal Flowers", true);
             floraBoneMeal.comment = "Set to false to disable random flower growth from bonemeal";

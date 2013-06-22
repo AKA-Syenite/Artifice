@@ -8,6 +8,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.logging.Level;
 
+import shukaro.artifice.ArtificeConfig;
 import shukaro.artifice.ArtificeCore;
 import shukaro.artifice.util.IdMetaPair;
 
@@ -70,6 +71,8 @@ public abstract class ArtificeRegistry
     	else if (!basaltTypes.contains(stack))
     	{
     		basaltTypes.add(stack);
+    		if (!ArtificeConfig.stoneCycleRecipes.getBoolean(true))
+    			return;
     		if (basaltTypes.size() < 3)
     		{
     			IRecipe inner = new ShapelessOreRecipe(basaltTypes.get(1), basaltTypes.get(0));

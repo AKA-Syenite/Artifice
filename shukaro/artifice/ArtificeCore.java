@@ -49,7 +49,6 @@ public class ArtificeCore
     @ServerStarting
     public void serverStarting(FMLServerStartingEvent evt)
     {
-        
     }
     
     @PreInit

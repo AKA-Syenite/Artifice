@@ -24,6 +24,7 @@ import shukaro.artifice.block.frame.BlockFrameDetector;
 import shukaro.artifice.block.frame.BlockFrameGlassWall;
 import shukaro.artifice.block.frame.BlockFrameScaffold;
 import shukaro.artifice.block.frame.ItemBlockFrame;
+import shukaro.artifice.compat.ArtificeRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 public class ArtificeBlocks
@@ -75,6 +76,8 @@ public class ArtificeBlocks
 	        GameRegistry.registerBlock(blockMarbleBrickStairs, ItemBlockArtifice.class, blockMarbleBrickStairs.getUnlocalizedName());
 	        GameRegistry.registerBlock(blockBasaltCobbleStairs, ItemBlockArtifice.class, blockBasaltCobbleStairs.getUnlocalizedName());
 	        GameRegistry.registerBlock(blockMarbleCobbleStairs, ItemBlockArtifice.class, blockMarbleCobbleStairs.getUnlocalizedName());
+	        ArtificeRegistry.registerBasaltType(ArtificeBlocks.blockBasalt.blockID, 0);
+	        ArtificeRegistry.registerMarbleType(ArtificeBlocks.blockMarble.blockID, 0);
     	}
         
     	if (ArtificeConfig.enableFrames.getBoolean(true))

@@ -7,7 +7,6 @@ In no particular order and with no guarantees. These are just things I'd like to
 * Lamps - Connected textured colored lights
 * Text Commands
 * Pyrolysis Chamber - Wood > Charcoal, Coal > Coke, Biomass > Biofuel, Charcoal > Crude Gas, etc
-* Cave Worldgen
 * Stone cycling compatibility - Crossmod marble/basalt compatibility
 * Crucible - Ores > Liquid Metal + Slag, Alloys, etc
 * Tanks - Multiblock, dynamic shape and size, temperature, state changes
@@ -34,3 +33,4 @@ In no particular order and with no guarantees. These are just things I'd like to
 * Mechanical power - Axles, gearboxes, flywheels
 * Dynamos - Electricity > mechanical power
 * Generators - Mechanical power > electricity
+* Smoker - Meat cooking, hunger, whatever 

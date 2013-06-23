@@ -163,35 +163,35 @@ public class ArtificeTooltips
 			ArtificeRegistry.registerTooltip(ArtificeBlocks.blockFrame.blockID, 3, commentCode + "...anything is possible");
 			
 			ArtificeRegistry.registerTooltip(ArtificeBlocks.blockGlassWall.blockID, 0, "Reinforced Glass");
-			ArtificeRegistry.registerTooltip(ArtificeBlocks.blockGlassWall.blockID, 0, "Resistance: " + FormatCodes.Aqua.format + "10");
+			ArtificeRegistry.registerTooltip(ArtificeBlocks.blockGlassWall.blockID, 0, "Resistance: " + FormatCodes.Aqua.format + (int) ArtificeBlocks.blockGlassWall.getResistance(0));
 			ArtificeRegistry.registerTooltip(ArtificeBlocks.blockGlassWall.blockID, 0, commentCode + "Strengthening glass is tricky");
 			
 			ArtificeRegistry.registerTooltip(ArtificeBlocks.blockGlassWall.blockID, 1, "Ceramic Glass");
-			ArtificeRegistry.registerTooltip(ArtificeBlocks.blockGlassWall.blockID, 1, "Resistance: " + FormatCodes.Aqua.format + "20");
+			ArtificeRegistry.registerTooltip(ArtificeBlocks.blockGlassWall.blockID, 1, "Resistance: " + FormatCodes.Aqua.format + (int) ArtificeBlocks.blockGlassWall.getResistance(1));
 			ArtificeRegistry.registerTooltip(ArtificeBlocks.blockGlassWall.blockID, 1, commentCode + "Ceramics make the world go round");
 			
 			ArtificeRegistry.registerTooltip(ArtificeBlocks.blockGlassWall.blockID, 2, "Rock Glass");
-			ArtificeRegistry.registerTooltip(ArtificeBlocks.blockGlassWall.blockID, 2, "Resistance: " + FormatCodes.Aqua.format + "40");
+			ArtificeRegistry.registerTooltip(ArtificeBlocks.blockGlassWall.blockID, 2, "Resistance: " + FormatCodes.Aqua.format + (int) ArtificeBlocks.blockGlassWall.getResistance(2));
 			ArtificeRegistry.registerTooltip(ArtificeBlocks.blockGlassWall.blockID, 2, commentCode + "Volcanic glass is naturally strong");
 			
 			ArtificeRegistry.registerTooltip(ArtificeBlocks.blockGlassWall.blockID, 3, "Laminated Glass");
-			ArtificeRegistry.registerTooltip(ArtificeBlocks.blockGlassWall.blockID, 3, "Resistance: " + FormatCodes.Aqua.format + "70");
+			ArtificeRegistry.registerTooltip(ArtificeBlocks.blockGlassWall.blockID, 3, "Resistance: " + FormatCodes.Aqua.format + (int) ArtificeBlocks.blockGlassWall.getResistance(3));
 			ArtificeRegistry.registerTooltip(ArtificeBlocks.blockGlassWall.blockID, 3, commentCode + "Filled with thin steel threads");
 			
 			ArtificeRegistry.registerTooltip(ArtificeBlocks.blockReinforced.blockID, 0, "Reinforced Stone Bricks");
-			ArtificeRegistry.registerTooltip(ArtificeBlocks.blockReinforced.blockID, 0, "Resistance: " + FormatCodes.Aqua.format + "20");
+			ArtificeRegistry.registerTooltip(ArtificeBlocks.blockReinforced.blockID, 0, "Resistance: " + FormatCodes.Aqua.format + (int) ArtificeBlocks.blockReinforced.getResistance(0));
 			ArtificeRegistry.registerTooltip(ArtificeBlocks.blockReinforced.blockID, 0, commentCode + "A good first attempt");
 			
 			ArtificeRegistry.registerTooltip(ArtificeBlocks.blockReinforced.blockID, 1, "Reinforced Bricks");
-			ArtificeRegistry.registerTooltip(ArtificeBlocks.blockReinforced.blockID, 1, "Resistance: " + FormatCodes.Aqua.format + "30");
+			ArtificeRegistry.registerTooltip(ArtificeBlocks.blockReinforced.blockID, 1, "Resistance: " + FormatCodes.Aqua.format + (int) ArtificeBlocks.blockReinforced.getResistance(1));
 			ArtificeRegistry.registerTooltip(ArtificeBlocks.blockReinforced.blockID, 1, commentCode + "Hardened bricks, eh?");
 			
 			ArtificeRegistry.registerTooltip(ArtificeBlocks.blockReinforced.blockID, 2, "Obsidian Bricks");
-			ArtificeRegistry.registerTooltip(ArtificeBlocks.blockReinforced.blockID, 2, "Resistance: " + FormatCodes.Aqua.format + "50");
+			ArtificeRegistry.registerTooltip(ArtificeBlocks.blockReinforced.blockID, 2, "Resistance: " + FormatCodes.Aqua.format + (int) ArtificeBlocks.blockReinforced.getResistance(2));
 			ArtificeRegistry.registerTooltip(ArtificeBlocks.blockReinforced.blockID, 2, commentCode + "There is always progress to be made...");
 			
 			ArtificeRegistry.registerTooltip(ArtificeBlocks.blockReinforced.blockID, 3, "Steel Plating");
-			ArtificeRegistry.registerTooltip(ArtificeBlocks.blockReinforced.blockID, 3, "Resistance: " + FormatCodes.Aqua.format + "80");
+			ArtificeRegistry.registerTooltip(ArtificeBlocks.blockReinforced.blockID, 3, "Resistance: " + FormatCodes.Aqua.format + (int) ArtificeBlocks.blockReinforced.getResistance(3));
 			ArtificeRegistry.registerTooltip(ArtificeBlocks.blockReinforced.blockID, 3, commentCode + "...and progress always provides");
 			
 			ArtificeRegistry.registerTooltip(ArtificeBlocks.blockScaffold.blockID, 0, "Simple scaffold");

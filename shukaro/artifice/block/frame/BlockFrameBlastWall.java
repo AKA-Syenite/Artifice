@@ -39,7 +39,7 @@ public class BlockFrameBlastWall extends BlockFrame implements IConnectedTexture
         return this.getResistance(meta);
     }
 	
-	private float getResistance(int meta)
+	public float getResistance(int meta)
 	{
 		switch (meta)
         {

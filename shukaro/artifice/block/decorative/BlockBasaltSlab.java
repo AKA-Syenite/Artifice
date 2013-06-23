@@ -64,8 +64,8 @@ public class BlockBasaltSlab extends BlockHalfSlab implements IConnectedTexture
     @Override
     public String getFullSlabName(int meta)
     {
-    	meta = meta > 8 ? meta - 8 : meta;
-    	if (meta >= ArtificeCore.rocks.length)
+    	meta = meta > 7 ? meta - 8 : meta;
+    	if (meta >= types.length)
 			meta = 0;
         return "tile.artifice.slab." + types[meta].toLowerCase();
     }
@@ -83,7 +83,7 @@ public class BlockBasaltSlab extends BlockHalfSlab implements IConnectedTexture
 	@SideOnly(Side.CLIENT)
 	public Icon getIcon(int side, int meta)
     {
-    	meta = meta > 8 ? meta - 8 : meta;
+    	meta = meta > 7 ? meta - 8 : meta;
     	if (meta == 2 || meta == 3)
     	{
 	    	if (side == 0 || side == 1)

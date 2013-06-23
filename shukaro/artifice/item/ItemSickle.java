@@ -2,24 +2,23 @@ package shukaro.artifice.item;
 
 import java.util.List;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-import shukaro.artifice.ArtificeConfig;
-import shukaro.artifice.ArtificeTooltips;
-import shukaro.artifice.compat.ArtificeRegistry;
-import shukaro.artifice.gui.ArtificeCreativeTab;
-import shukaro.artifice.util.BlockCoord;
-import shukaro.artifice.util.IdMetaPair;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockFlower;
 import net.minecraft.client.renderer.texture.IconRegister;
-import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumToolMaterial;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemTool;
 import net.minecraft.util.Icon;
 import net.minecraft.world.World;
+import shukaro.artifice.ArtificeConfig;
+import shukaro.artifice.ArtificeTooltips;
+import shukaro.artifice.compat.ArtificeRegistry;
+import shukaro.artifice.gui.ArtificeCreativeTab;
+import shukaro.artifice.util.BlockCoord;
+import shukaro.artifice.util.IdMetaPair;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemSickle extends ItemTool
 {

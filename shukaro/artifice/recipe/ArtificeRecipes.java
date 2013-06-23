@@ -46,7 +46,7 @@ public class ArtificeRecipes
     		registerScaffoldRecipes();
     	if (ArtificeConfig.boxRecipes.getBoolean(true))
     	{
-    		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeItems.itemBox, 32, 0), new Object[] {
+    		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeItems.itemBox, 16, 0), new Object[] {
     			" Y ",
     			"YXY",
     			" Y ",

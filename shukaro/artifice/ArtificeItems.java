@@ -9,6 +9,7 @@ import shukaro.artifice.item.DispenserBehaviorBox;
 import shukaro.artifice.item.DispenserBehaviorSledge;
 import shukaro.artifice.item.ItemBox;
 import shukaro.artifice.item.ItemDye;
+import shukaro.artifice.item.ItemSickle;
 import shukaro.artifice.item.ItemSledge;
 import shukaro.artifice.item.ItemSteel;
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -23,6 +24,11 @@ public class ArtificeItems
 	public static ItemSteel itemSteelIngot;
 	public static ItemBox itemBox;
 	public static ItemDye itemDye;
+	public static ItemTool itemSickleWood;
+	public static ItemTool itemSickleStone;
+	public static ItemTool itemSickleIron;
+	public static ItemTool itemSickleGold;
+	public static ItemTool itemSickleDiamond;
 	
 	public static void initItems()
 	{
@@ -67,6 +73,20 @@ public class ArtificeItems
 			OreDictionary.registerOre("dyeBlack", new ItemStack(itemDye.itemID, 1, 1));
 			OreDictionary.registerOre("dyeBrown", new ItemStack(itemDye.itemID, 1, 2));
 			OreDictionary.registerOre("dyeWhite", new ItemStack(itemDye.itemID, 1, 3));
+		}
+		
+		if (ArtificeConfig.enableSickles.getBoolean(true))
+		{
+			itemSickleWood = new ItemSickle(ArtificeConfig.itemSickleWoodID.getInt(), EnumToolMaterial.WOOD);
+			itemSickleStone = new ItemSickle(ArtificeConfig.itemSickleStoneID.getInt(), EnumToolMaterial.STONE);
+			itemSickleIron = new ItemSickle(ArtificeConfig.itemSickleIronID.getInt(), EnumToolMaterial.IRON);
+			itemSickleGold = new ItemSickle(ArtificeConfig.itemSickleGoldID.getInt(), EnumToolMaterial.GOLD);
+			itemSickleDiamond = new ItemSickle(ArtificeConfig.itemSickleDiamondID.getInt(), EnumToolMaterial.EMERALD);
+			GameRegistry.registerItem(itemSickleWood, itemSickleWood.getUnlocalizedName());
+			GameRegistry.registerItem(itemSickleStone, itemSickleStone.getUnlocalizedName());
+			GameRegistry.registerItem(itemSickleIron, itemSickleIron.getUnlocalizedName());
+			GameRegistry.registerItem(itemSickleGold, itemSickleGold.getUnlocalizedName());
+			GameRegistry.registerItem(itemSickleDiamond, itemSickleDiamond.getUnlocalizedName());
 		}
 	}
 }

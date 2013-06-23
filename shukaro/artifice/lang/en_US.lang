@@ -64,6 +64,12 @@ item.artifice.sledge.iron.name = Iron Sledge
 item.artifice.sledge.gold.name = Gold Sledge
 item.artifice.sledge.emerald.name = Diamond Sledge
 
+item.artifice.sickle.wood.name = Wooden Sickle
+item.artifice.sickle.stone.name = Stone Sickle
+item.artifice.sickle.iron.name = Iron Sickle
+item.artifice.sickle.gold.name = Gold Sickle
+item.artifice.sickle.emerald.name = Diamond Sickle
+
 item.artifice.ingot.steel.name = Steel Ingot
 
 item.artifice.box.name = Box

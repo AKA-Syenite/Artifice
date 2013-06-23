@@ -56,6 +56,46 @@ public class ArtificeRecipes
     		GameRegistry.addRecipe(new RecipeBox());
     		GameRegistry.registerCraftingHandler(new BoxCraftingHandler());
     	}
+    	if (ArtificeConfig.sickleRecipes.getBoolean(true))
+    		registerSickleRecipes();
+    }
+    
+    private static void registerSickleRecipes()
+    {
+    	GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeItems.itemSickleWood, 1, 0), new Object[] {
+    		"X ",
+    		" X",
+    		"Y ",
+    		'X', "plankWood",
+    		'Y', "stickWood" }));
+    	
+    	GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeItems.itemSickleStone, 1, 0), new Object[] {
+    		"X ",
+    		" X",
+    		"Y ",
+    		'X', Block.cobblestone,
+    		'Y', "stickWood" }));
+    	
+    	GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeItems.itemSickleIron, 1, 0), new Object[] {
+    		"X ",
+    		" X",
+    		"Y ",
+    		'X', Item.ingotIron,
+    		'Y', "stickWood" }));
+    	
+    	GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeItems.itemSickleGold, 1, 0), new Object[] {
+    		"X ",
+    		" X",
+    		"Y ",
+    		'X', Item.ingotGold,
+    		'Y', "stickWood" }));
+    	
+    	GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeItems.itemSickleDiamond, 1, 0), new Object[] {
+    		"X ",
+    		" X",
+    		"Y ",
+    		'X', Item.diamond,
+    		'Y', "stickWood" }));
     }
     
     private static void registerScaffoldRecipes()

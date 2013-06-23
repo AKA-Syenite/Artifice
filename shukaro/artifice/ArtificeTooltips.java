@@ -53,6 +53,29 @@ public class ArtificeTooltips
 			ArtificeRegistry.registerTooltip(ArtificeItems.itemSledgeDiamond.itemID, 0, commentCode + "When all you've got is a hammer...");
 		}
 		
+		if (ArtificeConfig.enableSickles.getBoolean(true))
+		{
+			ArtificeRegistry.registerTooltip(ArtificeItems.itemSickleWood.itemID, 0, "Harvest plants and leaves");
+			ArtificeRegistry.registerTooltip(ArtificeItems.itemSickleWood.itemID, 0, "Radius: " + FormatCodes.Aqua.format + "1");
+			ArtificeRegistry.registerTooltip(ArtificeItems.itemSickleWood.itemID, 0, commentCode + "Cutting branches with wood...");
+			
+			ArtificeRegistry.registerTooltip(ArtificeItems.itemSickleStone.itemID, 0, "Harvest plants and leaves");
+			ArtificeRegistry.registerTooltip(ArtificeItems.itemSickleStone.itemID, 0, "Radius: " + FormatCodes.Aqua.format + "2");
+			ArtificeRegistry.registerTooltip(ArtificeItems.itemSickleStone.itemID, 0, commentCode + "Reasonably effective");
+			
+			ArtificeRegistry.registerTooltip(ArtificeItems.itemSickleIron.itemID, 0, "Harvest plants and leaves");
+			ArtificeRegistry.registerTooltip(ArtificeItems.itemSickleIron.itemID, 0, "Radius: " + FormatCodes.Aqua.format + "3");
+			ArtificeRegistry.registerTooltip(ArtificeItems.itemSickleIron.itemID, 0, commentCode + "Durable and perfect for horticulture");
+			
+			ArtificeRegistry.registerTooltip(ArtificeItems.itemSickleGold.itemID, 0, "Harvest plants and leaves");
+			ArtificeRegistry.registerTooltip(ArtificeItems.itemSickleGold.itemID, 0, "Radius: " + FormatCodes.Aqua.format + "4");
+			ArtificeRegistry.registerTooltip(ArtificeItems.itemSickleGold.itemID, 0, commentCode + "So soft you're almost smashing them...");
+			
+			ArtificeRegistry.registerTooltip(ArtificeItems.itemSickleDiamond.itemID, 0, "Harvest plants and leaves");
+			ArtificeRegistry.registerTooltip(ArtificeItems.itemSickleDiamond.itemID, 0, "Radius: " + FormatCodes.Aqua.format + "5");
+			ArtificeRegistry.registerTooltip(ArtificeItems.itemSickleDiamond.itemID, 0, commentCode + "The ultimate in anti-plant weaponry");
+		}
+		
 		if (ArtificeConfig.enableSteel.getBoolean(true))
 		{
 			ArtificeRegistry.registerTooltip(ArtificeItems.itemSteelIngot.itemID, 0, "A strong iron alloy");

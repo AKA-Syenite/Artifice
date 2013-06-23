@@ -336,6 +336,33 @@ public class BlockCoord implements Comparable
     	return matches;
     }
     
+    public List<BlockCoord> getRadiusBlocks(World world, int radius)
+    {
+    	List<BlockCoord> matches = new ArrayList<BlockCoord>();
+    	BlockCoord c = this.copy();
+    	
+    	int minX = c.x - radius;
+    	int maxX = c.x + radius + 1;
+    	int minY = c.y - radius;
+    	int maxY = c.y + radius + 1;
+    	int minZ = c.z - radius;
+    	int maxZ = c.z + radius + 1;
+    	
+    	for (int x = minX; x < maxX; x++)
+    	{
+    		for (int y = minY; y < maxY; y++)
+    		{
+				for (int z = minZ; z < maxZ; z++)
+				{
+					BlockCoord t = new BlockCoord(x, y, z);
+					matches.add(t);
+				}
+    		}
+    	}
+    	
+    	return matches;
+    }
+    
     public boolean blockEquals(World world, BlockCoord c)
     {
     	if (c.getBlock(world) == null && this.getBlock(world) == null)

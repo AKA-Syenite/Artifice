@@ -50,6 +50,11 @@ public class ArtificeConfig
     public static Property itemSteelIngotID;
     public static Property itemBoxID;
     public static Property itemDyeID;
+    public static Property itemSickleWoodID;
+    public static Property itemSickleStoneID;
+    public static Property itemSickleIronID;
+    public static Property itemSickleGoldID;
+    public static Property itemSickleDiamondID;
     
     public static Property sledgeRecipes;
     public static Property frameRecipes;
@@ -60,12 +65,14 @@ public class ArtificeConfig
     public static Property scaffoldRecipes;
     public static Property boxRecipes;
     public static Property stoneCycleRecipes;
+    public static Property sickleRecipes;
     
     public static Property enableFrames;
     public static Property enableSledges;
     public static Property enableSteel;
     public static Property enableWorldGen;
     public static Property enableBoxes;
+    public static Property enableSickles;
     
     public static Property floraWorldGen;
     public static Property floraFrequency;
@@ -159,6 +166,11 @@ public class ArtificeConfig
             itemSteelIngotID = c.getItem("itemSteelIngot", i++);
             itemBoxID = c.getItem("itemBox", i++);
             itemDyeID = c.getItem("itemDye", i++);
+            itemSickleWoodID = c.getItem("itemSickleWood", i++);
+            itemSickleStoneID = c.getItem("itemSickleStone", i++);
+            itemSickleIronID = c.getItem("itemSickleIron", i++);
+            itemSickleGoldID = c.getItem("itemSickleGold", i++);
+            itemSickleDiamondID = c.getItem("itemSickleDiamond", i++);
             
             floraWorldGen = c.get("World Generation", "Generate Flowers", true);
             floraWorldGen.comment = "Whether or not to generate flowers";
@@ -261,6 +273,8 @@ public class ArtificeConfig
             boxRecipes.comment = "Set to false to prevent crafting of boxes";
             stoneCycleRecipes = c.get("Recipes", "Stone Cycling Recipes", true);
             stoneCycleRecipes.comment = "Set to false to prevent cycling through types of stone";
+            sickleRecipes = c.get("Recipes", "Sickle Recipes", true);
+            sickleRecipes.comment = "Set to false to prevent crafting of sickles";
             
             floraBoneMeal = c.get("General", "Bonemeal Flowers", true);
             floraBoneMeal.comment = "Set to false to disable random flower growth from bonemeal";
@@ -306,6 +320,12 @@ public class ArtificeConfig
             if (!enableBoxes.getBoolean(true))
             {
             	boxRecipes.set(false);
+            }
+            enableSickles = c.get("General", "Enable Sickles", true);
+            enableSickles.comment = "Set to false to stop sickles from initializing";
+            if (!enableSickles.getBoolean(true))
+            {
+            	sickleRecipes.set(false);
             }
         }
         catch (Exception e)

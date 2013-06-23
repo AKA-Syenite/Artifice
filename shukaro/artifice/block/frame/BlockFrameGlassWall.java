@@ -44,13 +44,13 @@ public class BlockFrameGlassWall extends BlockFrame implements IConnectedTexture
 		switch (meta)
         {
         case 0:
-        	return 20.0F;
+        	return 15.0F;
         case 1:
-        	return 30.0F;
+        	return 25.0F;
         case 2:
-        	return 50.0F;
+        	return 45.0F;
         case 3:
-        	return 80.0F;
+        	return 75.0F;
         default:
         	return 10.0F;
         }

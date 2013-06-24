@@ -123,7 +123,7 @@ public class RecipeBox implements IRecipe
 				ComparableItemStackNBT t = new ComparableItemStackNBT(stack);
 				if (stack.itemID == ArtificeItems.itemBox.itemID)
 					continue;
-				else if (t.equals(contents))
+				else if (t.isStackEqual(contents))
 					num++;
 				else
 					return false;

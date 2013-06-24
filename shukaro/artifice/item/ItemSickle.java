@@ -101,14 +101,17 @@ public class ItemSickle extends ItemTool
 		
 		if (block instanceof BlockFlower)
 		{
-			for (BlockCoord c : coord.getRadiusBlocks(world, radius))
+			for (int i=-radius; i<radius; i++)
 			{
-				Block b = Block.blocksList[world.getBlockId(c.x, c.y, c.z)];
-				int meta = world.getBlockMetadata(c.x, c.y, c.z);
-				if (b instanceof BlockFlower && coord.getDistance(c) <= radius && b.canHarvestBlock(player, meta))
+				for (int k=-radius; k<radius; k++)
 				{
-					b.harvestBlock(world, player, c.x, c.y, c.z, meta);
-					world.setBlockToAir(c.x, c.y, c.z);
+					Block b = Block.blocksList[world.getBlockId(x+i, y, z+k)];
+					int meta = world.getBlockMetadata(x+i, y, z+k);
+					if (b instanceof BlockFlower && coord.getDistance(x+i, y, z+k) <= radius && b.canHarvestBlock(player, meta))
+					{
+						b.harvestBlock(world, player, x+i, y, z+k, meta);
+						world.setBlockToAir(x+i, y, z+k);
+					}
 				}
 			}
 			if (!world.isRemote)

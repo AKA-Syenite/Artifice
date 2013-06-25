@@ -21,10 +21,10 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockMarble extends BlockArtifice implements IConnectedTexture
 {
-	private Icon[] icons = new Icon[ArtificeCore.rocks.length];
-	private ConnectedTextureBase paver = new SolidConnectedTexture(ConnectedTexture.MarblePaver);
-	private ConnectedTextureBase antipaver = new SolidConnectedTexture(ConnectedTexture.MarbleAntipaver);
-	
+    private Icon[] icons = new Icon[ArtificeCore.rocks.length];
+    private ConnectedTextureBase paver = new SolidConnectedTexture(ConnectedTexture.MarblePaver);
+    private ConnectedTextureBase antipaver = new SolidConnectedTexture(ConnectedTexture.MarbleAntipaver);
+    
     public BlockMarble(int id)
     {
         super(id, Material.rock);
@@ -50,60 +50,60 @@ public class BlockMarble extends BlockArtifice implements IConnectedTexture
         return meta == 0 ? 1 : meta;
     }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void registerIcons(IconRegister reg)
-	{
-		if (!ConnectedTexture.MarblePaver.isRegistered)
-			IconHandler.registerConnectedTexture(reg, ConnectedTexture.MarblePaver, "marble/paver");
-		icons[0] = IconHandler.registerSingle(reg, "marble", "marble");
-		icons[1] = IconHandler.registerSingle(reg, "cobblestone", "marble");
-		icons[2] = IconHandler.registerSingle(reg, "bricks", "marble");
-		icons[5] = IconHandler.registerSingle(reg, "chiseled", "marble");
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void registerIcons(IconRegister reg)
+    {
+        if (!ConnectedTexture.MarblePaver.isRegistered)
+            IconHandler.registerConnectedTexture(reg, ConnectedTexture.MarblePaver, "marble/paver");
+        icons[0] = IconHandler.registerSingle(reg, "marble", "marble");
+        icons[1] = IconHandler.registerSingle(reg, "cobblestone", "marble");
+        icons[2] = IconHandler.registerSingle(reg, "bricks", "marble");
+        icons[5] = IconHandler.registerSingle(reg, "chiseled", "marble");
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public Icon getIcon(int side, int meta)
-	{
-		if (meta >= ArtificeCore.rocks.length)
-			meta = 0;
-		if (meta == 3 || meta == 4)
-			return this.getTextureType(side, meta).textureList[0];
-		else
-			return icons[meta];
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public Icon getIcon(int side, int meta)
+    {
+        if (meta >= ArtificeCore.rocks.length)
+            meta = 0;
+        if (meta == 3 || meta == 4)
+            return this.getTextureType(side, meta).textureList[0];
+        else
+            return icons[meta];
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public Icon getBlockTexture(IBlockAccess block, int x, int y, int z, int side)
-	{
-		int meta = block.getBlockMetadata(x, y, z);
-		if (meta > ArtificeCore.rocks.length)
-			meta = 0;
-		if (meta == 3 || meta == 4)
-			return this.getTextureType(side, meta).textureList[this.getTextureRenderer(side, meta).getTextureIndex(block, x, y, z, side)];
-		else
-			return icons[meta];
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public Icon getBlockTexture(IBlockAccess block, int x, int y, int z, int side)
+    {
+        int meta = block.getBlockMetadata(x, y, z);
+        if (meta > ArtificeCore.rocks.length)
+            meta = 0;
+        if (meta == 3 || meta == 4)
+            return this.getTextureType(side, meta).textureList[this.getTextureRenderer(side, meta).getTextureIndex(block, x, y, z, side)];
+        else
+            return icons[meta];
+    }
 
-	@Override
-	public ConnectedTexture getTextureType(int side, int meta)
-	{
-		if (meta == 3)
-			return ConnectedTexture.MarblePaver;
-		if (meta == 4)
-			return ConnectedTexture.MarbleAntipaver;
-		return null;
-	}
+    @Override
+    public ConnectedTexture getTextureType(int side, int meta)
+    {
+        if (meta == 3)
+            return ConnectedTexture.MarblePaver;
+        if (meta == 4)
+            return ConnectedTexture.MarbleAntipaver;
+        return null;
+    }
 
-	@Override
-	public ConnectedTextureBase getTextureRenderer(int side, int meta)
-	{
-		if (meta == 3)
-			return this.paver;
-		if (meta == 4)
-			return this.antipaver;
-		return null;
-	}
+    @Override
+    public ConnectedTextureBase getTextureRenderer(int side, int meta)
+    {
+        if (meta == 3)
+            return this.paver;
+        if (meta == 4)
+            return this.antipaver;
+        return null;
+    }
 }

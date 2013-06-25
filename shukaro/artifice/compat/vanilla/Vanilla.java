@@ -37,7 +37,7 @@ public class Vanilla
     
     private void loadSledges()
     {
-    	ArrayList<ItemStack> workbench = new ArrayList<ItemStack>();
+        ArrayList<ItemStack> workbench = new ArrayList<ItemStack>();
         workbench.add(new ItemStack(Block.planks.blockID, 4, 0));
         ArtificeRegistry.registerSledgeBlock(Block.workbench.blockID, 0, workbench);
         

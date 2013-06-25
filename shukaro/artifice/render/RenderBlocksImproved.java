@@ -91,24 +91,24 @@ public class RenderBlocksImproved
             
             for (int i=0; i<4; i++)
             {
-            	text = tex.getTextureRenderer(0, meta);
-            	if (text != null && text.canConnectOnSide(renderer.blockAccess, new BlockCoord(x, y, z), 0, sideSideMap[0][i]) && new BlockCoord(x, y, z).offset(0).getBlock(renderer.blockAccess) != null)
-            		connectBottom = true;
-            	text = tex.getTextureRenderer(1, meta);
-            	if (text != null && text.canConnectOnSide(renderer.blockAccess, new BlockCoord(x, y, z), 1, sideSideMap[1][i]) && new BlockCoord(x, y, z).offset(1).getBlock(renderer.blockAccess) != null)
-            		connectTop = true;
-            	text = tex.getTextureRenderer(2, meta);
-            	if (text != null && text.canConnectOnSide(renderer.blockAccess, new BlockCoord(x, y, z), 2, sideSideMap[2][i]) && new BlockCoord(x, y, z).offset(2).getBlock(renderer.blockAccess) != null)
-            		connectNorth = true;
-            	text = tex.getTextureRenderer(3, meta);
-            	if (text != null && text.canConnectOnSide(renderer.blockAccess, new BlockCoord(x, y, z), 3, sideSideMap[3][i]) && new BlockCoord(x, y, z).offset(3).getBlock(renderer.blockAccess) != null)
-            		connectSouth = true;
-            	text = tex.getTextureRenderer(4, meta);
-            	if (text != null && text.canConnectOnSide(renderer.blockAccess, new BlockCoord(x, y, z), 4, sideSideMap[4][i]) && new BlockCoord(x, y, z).offset(4).getBlock(renderer.blockAccess) != null)
-            		connectWest = true;
-            	text = tex.getTextureRenderer(5, meta);
-            	if (text != null && text.canConnectOnSide(renderer.blockAccess, new BlockCoord(x, y, z), 5, sideSideMap[5][i]) && new BlockCoord(x, y, z).offset(5).getBlock(renderer.blockAccess) != null)
-            		connectEast = true;
+                text = tex.getTextureRenderer(0, meta);
+                if (text != null && text.canConnectOnSide(renderer.blockAccess, new BlockCoord(x, y, z), 0, sideSideMap[0][i]) && new BlockCoord(x, y, z).offset(0).getBlock(renderer.blockAccess) != null)
+                    connectBottom = true;
+                text = tex.getTextureRenderer(1, meta);
+                if (text != null && text.canConnectOnSide(renderer.blockAccess, new BlockCoord(x, y, z), 1, sideSideMap[1][i]) && new BlockCoord(x, y, z).offset(1).getBlock(renderer.blockAccess) != null)
+                    connectTop = true;
+                text = tex.getTextureRenderer(2, meta);
+                if (text != null && text.canConnectOnSide(renderer.blockAccess, new BlockCoord(x, y, z), 2, sideSideMap[2][i]) && new BlockCoord(x, y, z).offset(2).getBlock(renderer.blockAccess) != null)
+                    connectNorth = true;
+                text = tex.getTextureRenderer(3, meta);
+                if (text != null && text.canConnectOnSide(renderer.blockAccess, new BlockCoord(x, y, z), 3, sideSideMap[3][i]) && new BlockCoord(x, y, z).offset(3).getBlock(renderer.blockAccess) != null)
+                    connectSouth = true;
+                text = tex.getTextureRenderer(4, meta);
+                if (text != null && text.canConnectOnSide(renderer.blockAccess, new BlockCoord(x, y, z), 4, sideSideMap[4][i]) && new BlockCoord(x, y, z).offset(4).getBlock(renderer.blockAccess) != null)
+                    connectWest = true;
+                text = tex.getTextureRenderer(5, meta);
+                if (text != null && text.canConnectOnSide(renderer.blockAccess, new BlockCoord(x, y, z), 5, sideSideMap[5][i]) && new BlockCoord(x, y, z).offset(5).getBlock(renderer.blockAccess) != null)
+                    connectEast = true;
             }
         }
         
@@ -292,14 +292,14 @@ public class RenderBlocksImproved
             renderer.colorBlueTopRight *= f6;
             if (block instanceof ILayeredRender)
             {
-            	ILayeredRender inner = (ILayeredRender) block;
-	            if (renderInner)
-	            	RenderFacing.renderFace(renderer, block, x, y, z, inner.getRenderIcon(0, meta), 0, inverted, tessellator);
-	            else
-	            	RenderFacing.renderFace(renderer, block, x, y, z, block.getBlockTexture(renderer.blockAccess, x, y, z, 0), 0, inverted, tessellator);
+                ILayeredRender inner = (ILayeredRender) block;
+                if (renderInner)
+                    RenderFacing.renderFace(renderer, block, x, y, z, inner.getRenderIcon(0, meta), 0, inverted, tessellator);
+                else
+                    RenderFacing.renderFace(renderer, block, x, y, z, block.getBlockTexture(renderer.blockAccess, x, y, z, 0), 0, inverted, tessellator);
             }
             else
-            	RenderFacing.renderFace(renderer, block, x, y, z, block.getBlockTexture(renderer.blockAccess, x, y, z, 0), 0, inverted, tessellator);
+                RenderFacing.renderFace(renderer, block, x, y, z, block.getBlockTexture(renderer.blockAccess, x, y, z, 0), 0, inverted, tessellator);
             flag = true;
         }
         
@@ -449,14 +449,14 @@ public class RenderBlocksImproved
             renderer.colorBlueTopRight *= f6;
             if (block instanceof ILayeredRender)
             {
-            	ILayeredRender inner = (ILayeredRender) block;
-	            if (renderInner)
-	            	RenderFacing.renderFace(renderer, block, x, y, z, inner.getRenderIcon(1, meta), 1, inverted, tessellator);
-	            else
-	            	RenderFacing.renderFace(renderer, block, x, y, z, block.getBlockTexture(renderer.blockAccess, x, y, z, 1), 1, inverted, tessellator);
+                ILayeredRender inner = (ILayeredRender) block;
+                if (renderInner)
+                    RenderFacing.renderFace(renderer, block, x, y, z, inner.getRenderIcon(1, meta), 1, inverted, tessellator);
+                else
+                    RenderFacing.renderFace(renderer, block, x, y, z, block.getBlockTexture(renderer.blockAccess, x, y, z, 1), 1, inverted, tessellator);
             }
             else
-            	RenderFacing.renderFace(renderer, block, x, y, z, block.getBlockTexture(renderer.blockAccess, x, y, z, 1), 1, inverted, tessellator);
+                RenderFacing.renderFace(renderer, block, x, y, z, block.getBlockTexture(renderer.blockAccess, x, y, z, 1), 1, inverted, tessellator);
             flag = true;
         }
         
@@ -667,14 +667,14 @@ public class RenderBlocksImproved
             renderer.colorBlueTopRight *= f6;
             if (block instanceof ILayeredRender)
             {
-            	ILayeredRender inner = (ILayeredRender) block;
-	            if (renderInner)
-	            	RenderFacing.renderFace(renderer, block, x, y, z, inner.getRenderIcon(2, meta), 2, inverted, tessellator);
-	            else
-	            	RenderFacing.renderFace(renderer, block, x, y, z, block.getBlockTexture(renderer.blockAccess, x, y, z, 2), 2, inverted, tessellator);
+                ILayeredRender inner = (ILayeredRender) block;
+                if (renderInner)
+                    RenderFacing.renderFace(renderer, block, x, y, z, inner.getRenderIcon(2, meta), 2, inverted, tessellator);
+                else
+                    RenderFacing.renderFace(renderer, block, x, y, z, block.getBlockTexture(renderer.blockAccess, x, y, z, 2), 2, inverted, tessellator);
             }
             else
-            	RenderFacing.renderFace(renderer, block, x, y, z, block.getBlockTexture(renderer.blockAccess, x, y, z, 2), 2, inverted, tessellator);
+                RenderFacing.renderFace(renderer, block, x, y, z, block.getBlockTexture(renderer.blockAccess, x, y, z, 2), 2, inverted, tessellator);
             
             flag = true;
         }
@@ -880,14 +880,14 @@ public class RenderBlocksImproved
             renderer.colorBlueTopRight *= f6;
             if (block instanceof ILayeredRender)
             {
-            	ILayeredRender inner = (ILayeredRender) block;
-	            if (renderInner)
-	            	RenderFacing.renderFace(renderer, block, x, y, z, inner.getRenderIcon(3, meta), 3, inverted, tessellator);
-	            else
-	            	RenderFacing.renderFace(renderer, block, x, y, z, block.getBlockTexture(renderer.blockAccess, x, y, z, 3), 3, inverted, tessellator);
+                ILayeredRender inner = (ILayeredRender) block;
+                if (renderInner)
+                    RenderFacing.renderFace(renderer, block, x, y, z, inner.getRenderIcon(3, meta), 3, inverted, tessellator);
+                else
+                    RenderFacing.renderFace(renderer, block, x, y, z, block.getBlockTexture(renderer.blockAccess, x, y, z, 3), 3, inverted, tessellator);
             }
             else
-            	RenderFacing.renderFace(renderer, block, x, y, z, block.getBlockTexture(renderer.blockAccess, x, y, z, 3), 3, inverted, tessellator);
+                RenderFacing.renderFace(renderer, block, x, y, z, block.getBlockTexture(renderer.blockAccess, x, y, z, 3), 3, inverted, tessellator);
             
             flag = true;
         }
@@ -1093,14 +1093,14 @@ public class RenderBlocksImproved
             renderer.colorBlueTopRight *= f6;
             if (block instanceof ILayeredRender)
             {
-            	ILayeredRender inner = (ILayeredRender) block;
-	            if (renderInner)
-	            	RenderFacing.renderFace(renderer, block, x, y, z, inner.getRenderIcon(4, meta), 4, inverted, tessellator);
-	            else
-	            	RenderFacing.renderFace(renderer, block, x, y, z, block.getBlockTexture(renderer.blockAccess, x, y, z, 4), 4, inverted, tessellator);
+                ILayeredRender inner = (ILayeredRender) block;
+                if (renderInner)
+                    RenderFacing.renderFace(renderer, block, x, y, z, inner.getRenderIcon(4, meta), 4, inverted, tessellator);
+                else
+                    RenderFacing.renderFace(renderer, block, x, y, z, block.getBlockTexture(renderer.blockAccess, x, y, z, 4), 4, inverted, tessellator);
             }
             else
-            	RenderFacing.renderFace(renderer, block, x, y, z, block.getBlockTexture(renderer.blockAccess, x, y, z, 4), 4, inverted, tessellator);
+                RenderFacing.renderFace(renderer, block, x, y, z, block.getBlockTexture(renderer.blockAccess, x, y, z, 4), 4, inverted, tessellator);
             
             flag = true;
         }
@@ -1306,14 +1306,14 @@ public class RenderBlocksImproved
             renderer.colorBlueTopRight *= f6;
             if (block instanceof ILayeredRender)
             {
-            	ILayeredRender inner = (ILayeredRender) block;
-	            if (renderInner)
-	            	RenderFacing.renderFace(renderer, block, x, y, z, inner.getRenderIcon(5, meta), 5, inverted, tessellator);
-	            else
-	            	RenderFacing.renderFace(renderer, block, x, y, z, block.getBlockTexture(renderer.blockAccess, x, y, z, 5), 5, inverted, tessellator);
+                ILayeredRender inner = (ILayeredRender) block;
+                if (renderInner)
+                    RenderFacing.renderFace(renderer, block, x, y, z, inner.getRenderIcon(5, meta), 5, inverted, tessellator);
+                else
+                    RenderFacing.renderFace(renderer, block, x, y, z, block.getBlockTexture(renderer.blockAccess, x, y, z, 5), 5, inverted, tessellator);
             }
             else
-            	RenderFacing.renderFace(renderer, block, x, y, z, block.getBlockTexture(renderer.blockAccess, x, y, z, 5), 5, inverted, tessellator);
+                RenderFacing.renderFace(renderer, block, x, y, z, block.getBlockTexture(renderer.blockAccess, x, y, z, 5), 5, inverted, tessellator);
             
             flag = true;
         }
@@ -1340,24 +1340,24 @@ public class RenderBlocksImproved
             
             for (int i=0; i<4; i++)
             {
-            	text = tex.getTextureRenderer(0, meta);
-            	if (text != null && text.canConnectOnSide(renderer.blockAccess, new BlockCoord(x, y, z), 0, sideSideMap[0][i]) && new BlockCoord(x, y, z).offset(0).getBlock(renderer.blockAccess) != null)
-            		connectBottom = true;
-            	text = tex.getTextureRenderer(1, meta);
-            	if (text != null && text.canConnectOnSide(renderer.blockAccess, new BlockCoord(x, y, z), 1, sideSideMap[1][i]) && new BlockCoord(x, y, z).offset(1).getBlock(renderer.blockAccess) != null)
-            		connectTop = true;
-            	text = tex.getTextureRenderer(2, meta);
-            	if (text != null && text.canConnectOnSide(renderer.blockAccess, new BlockCoord(x, y, z), 2, sideSideMap[2][i]) && new BlockCoord(x, y, z).offset(2).getBlock(renderer.blockAccess) != null)
-            		connectNorth = true;
-            	text = tex.getTextureRenderer(3, meta);
-            	if (text != null && text.canConnectOnSide(renderer.blockAccess, new BlockCoord(x, y, z), 3, sideSideMap[3][i]) && new BlockCoord(x, y, z).offset(3).getBlock(renderer.blockAccess) != null)
-            		connectSouth = true;
-            	text = tex.getTextureRenderer(4, meta);
-            	if (text != null && text.canConnectOnSide(renderer.blockAccess, new BlockCoord(x, y, z), 4, sideSideMap[4][i]) && new BlockCoord(x, y, z).offset(4).getBlock(renderer.blockAccess) != null)
-            		connectWest = true;
-            	text = tex.getTextureRenderer(5, meta);
-            	if (text != null && text.canConnectOnSide(renderer.blockAccess, new BlockCoord(x, y, z), 5, sideSideMap[5][i]) && new BlockCoord(x, y, z).offset(5).getBlock(renderer.blockAccess) != null)
-            		connectEast = true;
+                text = tex.getTextureRenderer(0, meta);
+                if (text != null && text.canConnectOnSide(renderer.blockAccess, new BlockCoord(x, y, z), 0, sideSideMap[0][i]) && new BlockCoord(x, y, z).offset(0).getBlock(renderer.blockAccess) != null)
+                    connectBottom = true;
+                text = tex.getTextureRenderer(1, meta);
+                if (text != null && text.canConnectOnSide(renderer.blockAccess, new BlockCoord(x, y, z), 1, sideSideMap[1][i]) && new BlockCoord(x, y, z).offset(1).getBlock(renderer.blockAccess) != null)
+                    connectTop = true;
+                text = tex.getTextureRenderer(2, meta);
+                if (text != null && text.canConnectOnSide(renderer.blockAccess, new BlockCoord(x, y, z), 2, sideSideMap[2][i]) && new BlockCoord(x, y, z).offset(2).getBlock(renderer.blockAccess) != null)
+                    connectNorth = true;
+                text = tex.getTextureRenderer(3, meta);
+                if (text != null && text.canConnectOnSide(renderer.blockAccess, new BlockCoord(x, y, z), 3, sideSideMap[3][i]) && new BlockCoord(x, y, z).offset(3).getBlock(renderer.blockAccess) != null)
+                    connectSouth = true;
+                text = tex.getTextureRenderer(4, meta);
+                if (text != null && text.canConnectOnSide(renderer.blockAccess, new BlockCoord(x, y, z), 4, sideSideMap[4][i]) && new BlockCoord(x, y, z).offset(4).getBlock(renderer.blockAccess) != null)
+                    connectWest = true;
+                text = tex.getTextureRenderer(5, meta);
+                if (text != null && text.canConnectOnSide(renderer.blockAccess, new BlockCoord(x, y, z), 5, sideSideMap[5][i]) && new BlockCoord(x, y, z).offset(5).getBlock(renderer.blockAccess) != null)
+                    connectEast = true;
             }
         }
         
@@ -1541,14 +1541,14 @@ public class RenderBlocksImproved
             renderer.colorBlueTopRight *= f6;
             if (block instanceof ILayeredRender)
             {
-            	ILayeredRender inner = (ILayeredRender) block;
-	            if (renderInner)
-	            	RenderFacing.renderFace(renderer, block, x, y, z, inner.getRenderIcon(0, meta), 0, inverted, tessellator);
-	            else
-	            	RenderFacing.renderFace(renderer, block, x, y, z, block.getBlockTexture(renderer.blockAccess, x, y, z, 0), 0, inverted, tessellator);
+                ILayeredRender inner = (ILayeredRender) block;
+                if (renderInner)
+                    RenderFacing.renderFace(renderer, block, x, y, z, inner.getRenderIcon(0, meta), 0, inverted, tessellator);
+                else
+                    RenderFacing.renderFace(renderer, block, x, y, z, block.getBlockTexture(renderer.blockAccess, x, y, z, 0), 0, inverted, tessellator);
             }
             else
-            	RenderFacing.renderFace(renderer, block, x, y, z, block.getBlockTexture(renderer.blockAccess, x, y, z, 0), 0, inverted, tessellator);
+                RenderFacing.renderFace(renderer, block, x, y, z, block.getBlockTexture(renderer.blockAccess, x, y, z, 0), 0, inverted, tessellator);
             flag = true;
         }
         
@@ -1698,14 +1698,14 @@ public class RenderBlocksImproved
             renderer.colorBlueTopRight *= f6;
             if (block instanceof ILayeredRender)
             {
-            	ILayeredRender inner = (ILayeredRender) block;
-	            if (renderInner)
-	            	RenderFacing.renderFace(renderer, block, x, y, z, inner.getRenderIcon(1, meta), 1, inverted, tessellator);
-	            else
-	            	RenderFacing.renderFace(renderer, block, x, y, z, block.getBlockTexture(renderer.blockAccess, x, y, z, 1), 1, inverted, tessellator);
+                ILayeredRender inner = (ILayeredRender) block;
+                if (renderInner)
+                    RenderFacing.renderFace(renderer, block, x, y, z, inner.getRenderIcon(1, meta), 1, inverted, tessellator);
+                else
+                    RenderFacing.renderFace(renderer, block, x, y, z, block.getBlockTexture(renderer.blockAccess, x, y, z, 1), 1, inverted, tessellator);
             }
             else
-            	RenderFacing.renderFace(renderer, block, x, y, z, block.getBlockTexture(renderer.blockAccess, x, y, z, 1), 1, inverted, tessellator);
+                RenderFacing.renderFace(renderer, block, x, y, z, block.getBlockTexture(renderer.blockAccess, x, y, z, 1), 1, inverted, tessellator);
             flag = true;
         }
         
@@ -1868,14 +1868,14 @@ public class RenderBlocksImproved
             renderer.colorBlueTopRight *= f6;
             if (block instanceof ILayeredRender)
             {
-            	ILayeredRender inner = (ILayeredRender) block;
-	            if (renderInner)
-	            	RenderFacing.renderFace(renderer, block, x, y, z, inner.getRenderIcon(2, meta), 2, inverted, tessellator);
-	            else
-	            	RenderFacing.renderFace(renderer, block, x, y, z, block.getBlockTexture(renderer.blockAccess, x, y, z, 2), 2, inverted, tessellator);
+                ILayeredRender inner = (ILayeredRender) block;
+                if (renderInner)
+                    RenderFacing.renderFace(renderer, block, x, y, z, inner.getRenderIcon(2, meta), 2, inverted, tessellator);
+                else
+                    RenderFacing.renderFace(renderer, block, x, y, z, block.getBlockTexture(renderer.blockAccess, x, y, z, 2), 2, inverted, tessellator);
             }
             else
-            	RenderFacing.renderFace(renderer, block, x, y, z, block.getBlockTexture(renderer.blockAccess, x, y, z, 2), 2, inverted, tessellator);
+                RenderFacing.renderFace(renderer, block, x, y, z, block.getBlockTexture(renderer.blockAccess, x, y, z, 2), 2, inverted, tessellator);
             
             flag = true;
         }
@@ -2037,14 +2037,14 @@ public class RenderBlocksImproved
             renderer.colorBlueTopRight *= f6;
             if (block instanceof ILayeredRender)
             {
-            	ILayeredRender inner = (ILayeredRender) block;
-	            if (renderInner)
-	            	RenderFacing.renderFace(renderer, block, x, y, z, inner.getRenderIcon(3, meta), 3, inverted, tessellator);
-	            else
-	            	RenderFacing.renderFace(renderer, block, x, y, z, block.getBlockTexture(renderer.blockAccess, x, y, z, 3), 3, inverted, tessellator);
+                ILayeredRender inner = (ILayeredRender) block;
+                if (renderInner)
+                    RenderFacing.renderFace(renderer, block, x, y, z, inner.getRenderIcon(3, meta), 3, inverted, tessellator);
+                else
+                    RenderFacing.renderFace(renderer, block, x, y, z, block.getBlockTexture(renderer.blockAccess, x, y, z, 3), 3, inverted, tessellator);
             }
             else
-            	RenderFacing.renderFace(renderer, block, x, y, z, block.getBlockTexture(renderer.blockAccess, x, y, z, 3), 3, inverted, tessellator);
+                RenderFacing.renderFace(renderer, block, x, y, z, block.getBlockTexture(renderer.blockAccess, x, y, z, 3), 3, inverted, tessellator);
             
             flag = true;
         }
@@ -2206,14 +2206,14 @@ public class RenderBlocksImproved
             renderer.colorBlueTopRight *= f6;
             if (block instanceof ILayeredRender)
             {
-            	ILayeredRender inner = (ILayeredRender) block;
-	            if (renderInner)
-	            	RenderFacing.renderFace(renderer, block, x, y, z, inner.getRenderIcon(4, meta), 4, inverted, tessellator);
-	            else
-	            	RenderFacing.renderFace(renderer, block, x, y, z, block.getBlockTexture(renderer.blockAccess, x, y, z, 4), 4, inverted, tessellator);
+                ILayeredRender inner = (ILayeredRender) block;
+                if (renderInner)
+                    RenderFacing.renderFace(renderer, block, x, y, z, inner.getRenderIcon(4, meta), 4, inverted, tessellator);
+                else
+                    RenderFacing.renderFace(renderer, block, x, y, z, block.getBlockTexture(renderer.blockAccess, x, y, z, 4), 4, inverted, tessellator);
             }
             else
-            	RenderFacing.renderFace(renderer, block, x, y, z, block.getBlockTexture(renderer.blockAccess, x, y, z, 4), 4, inverted, tessellator);
+                RenderFacing.renderFace(renderer, block, x, y, z, block.getBlockTexture(renderer.blockAccess, x, y, z, 4), 4, inverted, tessellator);
             
             flag = true;
         }
@@ -2375,14 +2375,14 @@ public class RenderBlocksImproved
             renderer.colorBlueTopRight *= f6;
             if (block instanceof ILayeredRender)
             {
-            	ILayeredRender inner = (ILayeredRender) block;
-	            if (renderInner)
-	            	RenderFacing.renderFace(renderer, block, x, y, z, inner.getRenderIcon(5, meta), 5, inverted, tessellator);
-	            else
-	            	RenderFacing.renderFace(renderer, block, x, y, z, block.getBlockTexture(renderer.blockAccess, x, y, z, 5), 5, inverted, tessellator);
+                ILayeredRender inner = (ILayeredRender) block;
+                if (renderInner)
+                    RenderFacing.renderFace(renderer, block, x, y, z, inner.getRenderIcon(5, meta), 5, inverted, tessellator);
+                else
+                    RenderFacing.renderFace(renderer, block, x, y, z, block.getBlockTexture(renderer.blockAccess, x, y, z, 5), 5, inverted, tessellator);
             }
             else
-            	RenderFacing.renderFace(renderer, block, x, y, z, block.getBlockTexture(renderer.blockAccess, x, y, z, 5), 5, inverted, tessellator);
+                RenderFacing.renderFace(renderer, block, x, y, z, block.getBlockTexture(renderer.blockAccess, x, y, z, 5), 5, inverted, tessellator);
             
             flag = true;
         }
@@ -2409,24 +2409,24 @@ public class RenderBlocksImproved
             
             for (int i=0; i<4; i++)
             {
-            	text = tex.getTextureRenderer(0, meta);
-            	if (text != null && text.canConnectOnSide(renderer.blockAccess, new BlockCoord(x, y, z), 0, sideSideMap[0][i]) && new BlockCoord(x, y, z).offset(0).getBlock(renderer.blockAccess) != null)
-            		connectBottom = true;
-            	text = tex.getTextureRenderer(1, meta);
-            	if (text != null && text.canConnectOnSide(renderer.blockAccess, new BlockCoord(x, y, z), 1, sideSideMap[1][i]) && new BlockCoord(x, y, z).offset(1).getBlock(renderer.blockAccess) != null)
-            		connectTop = true;
-            	text = tex.getTextureRenderer(2, meta);
-            	if (text != null && text.canConnectOnSide(renderer.blockAccess, new BlockCoord(x, y, z), 2, sideSideMap[2][i]) && new BlockCoord(x, y, z).offset(2).getBlock(renderer.blockAccess) != null)
-            		connectNorth = true;
-            	text = tex.getTextureRenderer(3, meta);
-            	if (text != null && text.canConnectOnSide(renderer.blockAccess, new BlockCoord(x, y, z), 3, sideSideMap[3][i]) && new BlockCoord(x, y, z).offset(3).getBlock(renderer.blockAccess) != null)
-            		connectSouth = true;
-            	text = tex.getTextureRenderer(4, meta);
-            	if (text != null && text.canConnectOnSide(renderer.blockAccess, new BlockCoord(x, y, z), 4, sideSideMap[4][i]) && new BlockCoord(x, y, z).offset(4).getBlock(renderer.blockAccess) != null)
-            		connectWest = true;
-            	text = tex.getTextureRenderer(5, meta);
-            	if (text != null && text.canConnectOnSide(renderer.blockAccess, new BlockCoord(x, y, z), 5, sideSideMap[5][i]) && new BlockCoord(x, y, z).offset(5).getBlock(renderer.blockAccess) != null)
-            		connectEast = true;
+                text = tex.getTextureRenderer(0, meta);
+                if (text != null && text.canConnectOnSide(renderer.blockAccess, new BlockCoord(x, y, z), 0, sideSideMap[0][i]) && new BlockCoord(x, y, z).offset(0).getBlock(renderer.blockAccess) != null)
+                    connectBottom = true;
+                text = tex.getTextureRenderer(1, meta);
+                if (text != null && text.canConnectOnSide(renderer.blockAccess, new BlockCoord(x, y, z), 1, sideSideMap[1][i]) && new BlockCoord(x, y, z).offset(1).getBlock(renderer.blockAccess) != null)
+                    connectTop = true;
+                text = tex.getTextureRenderer(2, meta);
+                if (text != null && text.canConnectOnSide(renderer.blockAccess, new BlockCoord(x, y, z), 2, sideSideMap[2][i]) && new BlockCoord(x, y, z).offset(2).getBlock(renderer.blockAccess) != null)
+                    connectNorth = true;
+                text = tex.getTextureRenderer(3, meta);
+                if (text != null && text.canConnectOnSide(renderer.blockAccess, new BlockCoord(x, y, z), 3, sideSideMap[3][i]) && new BlockCoord(x, y, z).offset(3).getBlock(renderer.blockAccess) != null)
+                    connectSouth = true;
+                text = tex.getTextureRenderer(4, meta);
+                if (text != null && text.canConnectOnSide(renderer.blockAccess, new BlockCoord(x, y, z), 4, sideSideMap[4][i]) && new BlockCoord(x, y, z).offset(4).getBlock(renderer.blockAccess) != null)
+                    connectWest = true;
+                text = tex.getTextureRenderer(5, meta);
+                if (text != null && text.canConnectOnSide(renderer.blockAccess, new BlockCoord(x, y, z), 5, sideSideMap[5][i]) && new BlockCoord(x, y, z).offset(5).getBlock(renderer.blockAccess) != null)
+                    connectEast = true;
             }
         }
         
@@ -2471,14 +2471,14 @@ public class RenderBlocksImproved
             tessellator.setColorOpaque_F(f10, f13, f16);
             if (block instanceof ILayeredRender)
             {
-            	ILayeredRender inner = (ILayeredRender) block;
-	            if (renderInner)
-	            	RenderFacing.renderFace(renderer, block, x, y, z, inner.getRenderIcon(0, meta), 0, inverted, tessellator);
-	            else
-	            	RenderFacing.renderFace(renderer, block, x, y, z, block.getBlockTexture(renderer.blockAccess, x, y, z, 0), 0, inverted, tessellator);
+                ILayeredRender inner = (ILayeredRender) block;
+                if (renderInner)
+                    RenderFacing.renderFace(renderer, block, x, y, z, inner.getRenderIcon(0, meta), 0, inverted, tessellator);
+                else
+                    RenderFacing.renderFace(renderer, block, x, y, z, block.getBlockTexture(renderer.blockAccess, x, y, z, 0), 0, inverted, tessellator);
             }
             else
-            	RenderFacing.renderFace(renderer, block, x, y, z, block.getBlockTexture(renderer.blockAccess, x, y, z, 0), 0, inverted, tessellator);
+                RenderFacing.renderFace(renderer, block, x, y, z, block.getBlockTexture(renderer.blockAccess, x, y, z, 0), 0, inverted, tessellator);
             flag = true;
         }
         
@@ -2488,14 +2488,14 @@ public class RenderBlocksImproved
             tessellator.setColorOpaque_F(f7, f8, f9);
             if (block instanceof ILayeredRender)
             {
-            	ILayeredRender inner = (ILayeredRender) block;
-	            if (renderInner)
-	            	RenderFacing.renderFace(renderer, block, x, y, z, inner.getRenderIcon(1, meta), 1, inverted, tessellator);
-	            else
-	            	RenderFacing.renderFace(renderer, block, x, y, z, block.getBlockTexture(renderer.blockAccess, x, y, z, 1), 1, inverted, tessellator);
+                ILayeredRender inner = (ILayeredRender) block;
+                if (renderInner)
+                    RenderFacing.renderFace(renderer, block, x, y, z, inner.getRenderIcon(1, meta), 1, inverted, tessellator);
+                else
+                    RenderFacing.renderFace(renderer, block, x, y, z, block.getBlockTexture(renderer.blockAccess, x, y, z, 1), 1, inverted, tessellator);
             }
             else
-            	RenderFacing.renderFace(renderer, block, x, y, z, block.getBlockTexture(renderer.blockAccess, x, y, z, 1), 1, inverted, tessellator);
+                RenderFacing.renderFace(renderer, block, x, y, z, block.getBlockTexture(renderer.blockAccess, x, y, z, 1), 1, inverted, tessellator);
             flag = true;
         }
         
@@ -2507,14 +2507,14 @@ public class RenderBlocksImproved
             tessellator.setColorOpaque_F(f11, f14, f17);
             if (block instanceof ILayeredRender)
             {
-            	ILayeredRender inner = (ILayeredRender) block;
-	            if (renderInner)
-	            	RenderFacing.renderFace(renderer, block, x, y, z, inner.getRenderIcon(2, meta), 2, inverted, tessellator);
-	            else
-	            	RenderFacing.renderFace(renderer, block, x, y, z, block.getBlockTexture(renderer.blockAccess, x, y, z, 2), 2, inverted, tessellator);
+                ILayeredRender inner = (ILayeredRender) block;
+                if (renderInner)
+                    RenderFacing.renderFace(renderer, block, x, y, z, inner.getRenderIcon(2, meta), 2, inverted, tessellator);
+                else
+                    RenderFacing.renderFace(renderer, block, x, y, z, block.getBlockTexture(renderer.blockAccess, x, y, z, 2), 2, inverted, tessellator);
             }
             else
-            	RenderFacing.renderFace(renderer, block, x, y, z, block.getBlockTexture(renderer.blockAccess, x, y, z, 2), 2, inverted, tessellator);
+                RenderFacing.renderFace(renderer, block, x, y, z, block.getBlockTexture(renderer.blockAccess, x, y, z, 2), 2, inverted, tessellator);
             
             flag = true;
         }
@@ -2525,14 +2525,14 @@ public class RenderBlocksImproved
             tessellator.setColorOpaque_F(f11, f14, f17);
             if (block instanceof ILayeredRender)
             {
-            	ILayeredRender inner = (ILayeredRender) block;
-	            if (renderInner)
-	            	RenderFacing.renderFace(renderer, block, x, y, z, inner.getRenderIcon(3, meta), 3, inverted, tessellator);
-	            else
-	            	RenderFacing.renderFace(renderer, block, x, y, z, block.getBlockTexture(renderer.blockAccess, x, y, z, 3), 3, inverted, tessellator);
+                ILayeredRender inner = (ILayeredRender) block;
+                if (renderInner)
+                    RenderFacing.renderFace(renderer, block, x, y, z, inner.getRenderIcon(3, meta), 3, inverted, tessellator);
+                else
+                    RenderFacing.renderFace(renderer, block, x, y, z, block.getBlockTexture(renderer.blockAccess, x, y, z, 3), 3, inverted, tessellator);
             }
             else
-            	RenderFacing.renderFace(renderer, block, x, y, z, block.getBlockTexture(renderer.blockAccess, x, y, z, 3), 3, inverted, tessellator);
+                RenderFacing.renderFace(renderer, block, x, y, z, block.getBlockTexture(renderer.blockAccess, x, y, z, 3), 3, inverted, tessellator);
             
             flag = true;
         }
@@ -2543,14 +2543,14 @@ public class RenderBlocksImproved
             tessellator.setColorOpaque_F(f12, f15, f18);
             if (block instanceof ILayeredRender)
             {
-            	ILayeredRender inner = (ILayeredRender) block;
-	            if (renderInner)
-	            	RenderFacing.renderFace(renderer, block, x, y, z, inner.getRenderIcon(4, meta), 4, inverted, tessellator);
-	            else
-	            	RenderFacing.renderFace(renderer, block, x, y, z, block.getBlockTexture(renderer.blockAccess, x, y, z, 4), 4, inverted, tessellator);
+                ILayeredRender inner = (ILayeredRender) block;
+                if (renderInner)
+                    RenderFacing.renderFace(renderer, block, x, y, z, inner.getRenderIcon(4, meta), 4, inverted, tessellator);
+                else
+                    RenderFacing.renderFace(renderer, block, x, y, z, block.getBlockTexture(renderer.blockAccess, x, y, z, 4), 4, inverted, tessellator);
             }
             else
-            	RenderFacing.renderFace(renderer, block, x, y, z, block.getBlockTexture(renderer.blockAccess, x, y, z, 4), 4, inverted, tessellator);
+                RenderFacing.renderFace(renderer, block, x, y, z, block.getBlockTexture(renderer.blockAccess, x, y, z, 4), 4, inverted, tessellator);
             
             flag = true;
         }
@@ -2561,14 +2561,14 @@ public class RenderBlocksImproved
             tessellator.setColorOpaque_F(f12, f15, f18);
             if (block instanceof ILayeredRender)
             {
-            	ILayeredRender inner = (ILayeredRender) block;
-	            if (renderInner)
-	            	RenderFacing.renderFace(renderer, block, x, y, z, inner.getRenderIcon(5, meta), 5, inverted, tessellator);
-	            else
-	            	RenderFacing.renderFace(renderer, block, x, y, z, block.getBlockTexture(renderer.blockAccess, x, y, z, 5), 5, inverted, tessellator);
+                ILayeredRender inner = (ILayeredRender) block;
+                if (renderInner)
+                    RenderFacing.renderFace(renderer, block, x, y, z, inner.getRenderIcon(5, meta), 5, inverted, tessellator);
+                else
+                    RenderFacing.renderFace(renderer, block, x, y, z, block.getBlockTexture(renderer.blockAccess, x, y, z, 5), 5, inverted, tessellator);
             }
             else
-            	RenderFacing.renderFace(renderer, block, x, y, z, block.getBlockTexture(renderer.blockAccess, x, y, z, 5), 5, inverted, tessellator);
+                RenderFacing.renderFace(renderer, block, x, y, z, block.getBlockTexture(renderer.blockAccess, x, y, z, 5), 5, inverted, tessellator);
             
             flag = true;
         }

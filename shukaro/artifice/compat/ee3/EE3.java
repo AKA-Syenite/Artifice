@@ -20,34 +20,34 @@ import shukaro.artifice.ArtificeCore;
 @NetworkMod(clientSideRequired = false, serverSideRequired = false)
 public class EE3
 {
-	@Init
-	public static void load(FMLInitializationEvent e0)
-	{
-		if (!Loader.isModLoaded("EE3"))
-		{
-			ArtificeCore.logger.warning("EE3 missing, not loading compat");
-			return;
-		}
-		try
-		{
-			Class<?> recipeClass = Class.forName("com.pahimar.ee3.recipe.RecipesTransmutationStone");
-			List<ItemStack> stoneList = (List<ItemStack>) recipeClass.getField("transmutationStones").get(null);
-			
-			if (ArtificeConfig.enableWorldGen.getBoolean(true))
-			{
-				for (ItemStack stone : stoneList)
-				{
-					GameRegistry.addShapelessRecipe(new ItemStack(ArtificeBlocks.blockBasalt.blockID, 2, 1), stone, new ItemStack(Block.cobblestone.blockID, 1, 0), new ItemStack(Block.cobblestone.blockID, 1, 0));
-					GameRegistry.addShapelessRecipe(new ItemStack(ArtificeBlocks.blockBasalt.blockID, 1, 1), stone, new ItemStack(ArtificeBlocks.blockMarble.blockID, 1, 1));
-					GameRegistry.addShapelessRecipe(new ItemStack(ArtificeBlocks.blockMarble.blockID, 1, 1), stone, new ItemStack(ArtificeBlocks.blockBasalt.blockID, 1, 1));
-				}
-			}
-			
-			ArtificeCore.logger.log(Level.INFO, "EE3 Compat Initialized");
-		}
-		catch (Exception ex)
-		{
-			ex.printStackTrace();
-		}
-	}
+    @Init
+    public static void load(FMLInitializationEvent e0)
+    {
+        if (!Loader.isModLoaded("EE3"))
+        {
+            ArtificeCore.logger.warning("EE3 missing, not loading compat");
+            return;
+        }
+        try
+        {
+            Class<?> recipeClass = Class.forName("com.pahimar.ee3.recipe.RecipesTransmutationStone");
+            List<ItemStack> stoneList = (List<ItemStack>) recipeClass.getField("transmutationStones").get(null);
+            
+            if (ArtificeConfig.enableWorldGen.getBoolean(true))
+            {
+                for (ItemStack stone : stoneList)
+                {
+                    GameRegistry.addShapelessRecipe(new ItemStack(ArtificeBlocks.blockBasalt.blockID, 2, 1), stone, new ItemStack(Block.cobblestone.blockID, 1, 0), new ItemStack(Block.cobblestone.blockID, 1, 0));
+                    GameRegistry.addShapelessRecipe(new ItemStack(ArtificeBlocks.blockBasalt.blockID, 1, 1), stone, new ItemStack(ArtificeBlocks.blockMarble.blockID, 1, 1));
+                    GameRegistry.addShapelessRecipe(new ItemStack(ArtificeBlocks.blockMarble.blockID, 1, 1), stone, new ItemStack(ArtificeBlocks.blockBasalt.blockID, 1, 1));
+                }
+            }
+            
+            ArtificeCore.logger.log(Level.INFO, "EE3 Compat Initialized");
+        }
+        catch (Exception ex)
+        {
+            ex.printStackTrace();
+        }
+    }
 }

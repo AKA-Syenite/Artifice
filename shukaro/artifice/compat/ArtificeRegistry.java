@@ -34,113 +34,113 @@ public abstract class ArtificeRegistry
     
     public static void registerMarbleType(int id, int meta)
     {
-    	ItemStack stack = new ItemStack(id, 1, meta);
-    	if (marbleTypes.isEmpty())
-    		marbleTypes.add(stack);
-    	else if (!marbleTypes.contains(stack))
-    	{
-    		marbleTypes.add(stack);
-    		if (marbleTypes.size() < 3)
-    		{
-    			IRecipe inner = new ShapelessOreRecipe(marbleTypes.get(1), marbleTypes.get(0));
-    			IRecipe wrap = new ShapelessOreRecipe(marbleTypes.get(0), marbleTypes.get(1));
-    			CraftingManager.getInstance().getRecipeList().add(inner);
-    			CraftingManager.getInstance().getRecipeList().add(wrap);
-    		}
-    		else
-    		{
-    			IRecipe old = new ShapelessOreRecipe(marbleTypes.get(0), marbleTypes.get(marbleTypes.size() - 1));
-    			IRecipe inner = new ShapelessOreRecipe(marbleTypes.get(marbleTypes.size()), marbleTypes.get(marbleTypes.size() - 1));
-    			IRecipe wrap = new ShapelessOreRecipe(marbleTypes.get(0), marbleTypes.get(marbleTypes.size()));
-    			CraftingManager.getInstance().getRecipeList().remove(old);
-    			CraftingManager.getInstance().getRecipeList().add(inner);
-    			CraftingManager.getInstance().getRecipeList().add(wrap);
-    		}
-    	}
+        ItemStack stack = new ItemStack(id, 1, meta);
+        if (marbleTypes.isEmpty())
+            marbleTypes.add(stack);
+        else if (!marbleTypes.contains(stack))
+        {
+            marbleTypes.add(stack);
+            if (marbleTypes.size() < 3)
+            {
+                IRecipe inner = new ShapelessOreRecipe(marbleTypes.get(1), marbleTypes.get(0));
+                IRecipe wrap = new ShapelessOreRecipe(marbleTypes.get(0), marbleTypes.get(1));
+                CraftingManager.getInstance().getRecipeList().add(inner);
+                CraftingManager.getInstance().getRecipeList().add(wrap);
+            }
+            else
+            {
+                IRecipe old = new ShapelessOreRecipe(marbleTypes.get(0), marbleTypes.get(marbleTypes.size() - 1));
+                IRecipe inner = new ShapelessOreRecipe(marbleTypes.get(marbleTypes.size()), marbleTypes.get(marbleTypes.size() - 1));
+                IRecipe wrap = new ShapelessOreRecipe(marbleTypes.get(0), marbleTypes.get(marbleTypes.size()));
+                CraftingManager.getInstance().getRecipeList().remove(old);
+                CraftingManager.getInstance().getRecipeList().add(inner);
+                CraftingManager.getInstance().getRecipeList().add(wrap);
+            }
+        }
     }
     
     public static List<ItemStack> getMarbleTypes()
     {
-    	return marbleTypes;
+        return marbleTypes;
     }
     
     public static void registerBasaltType(int id, int meta)
     {
-    	ItemStack stack = new ItemStack(id, 1, meta);
-    	if (basaltTypes.isEmpty())
-    		basaltTypes.add(stack);
-    	else if (!basaltTypes.contains(stack))
-    	{
-    		basaltTypes.add(stack);
-    		if (!ArtificeConfig.stoneCycleRecipes.getBoolean(true))
-    			return;
-    		if (basaltTypes.size() < 3)
-    		{
-    			IRecipe inner = new ShapelessOreRecipe(basaltTypes.get(1), basaltTypes.get(0));
-    			IRecipe wrap = new ShapelessOreRecipe(basaltTypes.get(0), basaltTypes.get(1));
-    			CraftingManager.getInstance().getRecipeList().add(inner);
-    			CraftingManager.getInstance().getRecipeList().add(wrap);
-    		}
-    		else
-    		{
-    			IRecipe old = new ShapelessOreRecipe(basaltTypes.get(0), basaltTypes.get(basaltTypes.size() - 1));
-    			IRecipe inner = new ShapelessOreRecipe(basaltTypes.get(basaltTypes.size()), basaltTypes.get(basaltTypes.size() - 1));
-    			IRecipe wrap = new ShapelessOreRecipe(basaltTypes.get(0), basaltTypes.get(basaltTypes.size()));
-    			CraftingManager.getInstance().getRecipeList().remove(old);
-    			CraftingManager.getInstance().getRecipeList().add(inner);
-    			CraftingManager.getInstance().getRecipeList().add(wrap);
-    		}
-    	}
+        ItemStack stack = new ItemStack(id, 1, meta);
+        if (basaltTypes.isEmpty())
+            basaltTypes.add(stack);
+        else if (!basaltTypes.contains(stack))
+        {
+            basaltTypes.add(stack);
+            if (!ArtificeConfig.stoneCycleRecipes.getBoolean(true))
+                return;
+            if (basaltTypes.size() < 3)
+            {
+                IRecipe inner = new ShapelessOreRecipe(basaltTypes.get(1), basaltTypes.get(0));
+                IRecipe wrap = new ShapelessOreRecipe(basaltTypes.get(0), basaltTypes.get(1));
+                CraftingManager.getInstance().getRecipeList().add(inner);
+                CraftingManager.getInstance().getRecipeList().add(wrap);
+            }
+            else
+            {
+                IRecipe old = new ShapelessOreRecipe(basaltTypes.get(0), basaltTypes.get(basaltTypes.size() - 1));
+                IRecipe inner = new ShapelessOreRecipe(basaltTypes.get(basaltTypes.size()), basaltTypes.get(basaltTypes.size() - 1));
+                IRecipe wrap = new ShapelessOreRecipe(basaltTypes.get(0), basaltTypes.get(basaltTypes.size()));
+                CraftingManager.getInstance().getRecipeList().remove(old);
+                CraftingManager.getInstance().getRecipeList().add(inner);
+                CraftingManager.getInstance().getRecipeList().add(wrap);
+            }
+        }
     }
     
     public static List<ItemStack> getBasaltTypes()
     {
-    	return basaltTypes;
+        return basaltTypes;
     }
     
     public static void registerTooltip(int id, int meta, String line)
     {
-    	IdMetaPair pair = new IdMetaPair(id, meta);
-    	if (tooltipMap.get(pair) == null)
-    	{
-    		List<String> temp = new ArrayList<String>();
-    		temp.add(line);
-    		tooltipMap.put(pair, temp);
-    	}
-    	else
-    	{
-    		tooltipMap.get(pair).add(line);
-    	}
+        IdMetaPair pair = new IdMetaPair(id, meta);
+        if (tooltipMap.get(pair) == null)
+        {
+            List<String> temp = new ArrayList<String>();
+            temp.add(line);
+            tooltipMap.put(pair, temp);
+        }
+        else
+        {
+            tooltipMap.get(pair).add(line);
+        }
     }
     
     public static Map<IdMetaPair, List<String>> getTooltipMap()
     {
-    	return tooltipMap;
+        return tooltipMap;
     }
     
     public static void registerSledgeBlock(int id, int meta, ArrayList<ItemStack> drops)
     {
-    	IdMetaPair pair = new IdMetaPair(id, meta);
-    	if (!pair.isValidBlock())
-    		ArtificeCore.logger.log(Level.WARNING, "Tried to register non-block id-meta pair in the sledgeBlock map: " + pair.toString());
-    	else if (!(sledgeBlocks.get(pair) != null))
-    		sledgeBlocks.put(pair, drops);
+        IdMetaPair pair = new IdMetaPair(id, meta);
+        if (!pair.isValidBlock())
+            ArtificeCore.logger.log(Level.WARNING, "Tried to register non-block id-meta pair in the sledgeBlock map: " + pair.toString());
+        else if (!(sledgeBlocks.get(pair) != null))
+            sledgeBlocks.put(pair, drops);
     }
     
     public static void registerWildSledgeBlock(int id, ArrayList<ItemStack> drops)
     {
-    	if (wildSledgeBlocks.get(id) == null)
-    		wildSledgeBlocks.put(id, drops);
+        if (wildSledgeBlocks.get(id) == null)
+            wildSledgeBlocks.put(id, drops);
     }
     
     public static Map<Integer, ArrayList<ItemStack>> getWildSledgeBlocks()
     {
-    	return wildSledgeBlocks;
+        return wildSledgeBlocks;
     }
     
     public static Map<IdMetaPair, ArrayList<ItemStack>> getSledgeBlocks()
     {
-    	return sledgeBlocks;
+        return sledgeBlocks;
     }
     
     public static void registerFloraBlacklist(String biome)

@@ -20,13 +20,13 @@ public class TransparentConnectedTexture extends ConnectedTextureBase
     @Override
     public boolean canConnectOnSide(IBlockAccess blockAccess, BlockCoord coord, int side, int face)
     {
-    	ConnectedTexture neighbor = null;
-    	int meta = coord.getMeta(blockAccess);
-    	BlockCoord self = coord.copy();
-    	
+        ConnectedTexture neighbor = null;
+        int meta = coord.getMeta(blockAccess);
+        BlockCoord self = coord.copy();
+        
         if (coord.offset(side).getBlock(blockAccess) instanceof IConnectedTexture)
         {
-        	neighbor = ((IConnectedTexture) coord.getBlock(blockAccess)).getTextureType(face, meta);
+            neighbor = ((IConnectedTexture) coord.getBlock(blockAccess)).getTextureType(face, meta);
         }
         
         BlockCoord other = coord.copy();

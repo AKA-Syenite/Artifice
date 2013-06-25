@@ -34,6 +34,6 @@ public enum FormatCodes
     
     private FormatCodes(String s)
     {
-    	this.format = s;
+        this.format = s;
     }
 }

@@ -68,7 +68,7 @@ public abstract class ConnectedTextureBase
     
     public int getTextureIndex(IBlockAccess block, int x, int y, int z, int side)
     {
-    	BlockCoord coord = new BlockCoord();
+        BlockCoord coord = new BlockCoord();
         int[][] sideSideMap = {
                 { 2, 5, 3, 4 },
                 { 2, 5, 3, 4 },

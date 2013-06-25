@@ -8,13 +8,13 @@ import shukaro.artifice.ArtificeCore;
 
 public interface IConnectedTexture
 {
-	/*
-	 * Returns the textureset to use for this side and meta
-	 */
-	ConnectedTexture getTextureType(int side, int meta);
-	
-	/*
-	 * Returns the connected texture renderer used by this block
-	 */
-	ConnectedTextureBase getTextureRenderer(int side, int meta);
+    /*
+     * Returns the textureset to use for this side and meta
+     */
+    ConnectedTexture getTextureType(int side, int meta);
+    
+    /*
+     * Returns the connected texture renderer used by this block
+     */
+    ConnectedTextureBase getTextureRenderer(int side, int meta);
 }

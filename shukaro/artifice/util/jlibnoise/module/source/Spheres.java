@@ -25,28 +25,28 @@ import shukaro.artifice.util.jlibnoise.module.Module;
 
 
 public class Spheres extends Module {
-	/// Default frequency value for the noise::module::Spheres noise module.
-	public static final double DEFAULT_SPHERES_FREQUENCY = 1.0;
+    /// Default frequency value for the noise::module::Spheres noise module.
+    public static final double DEFAULT_SPHERES_FREQUENCY = 1.0;
 
-	/// Frequency of the concentric spheres.
-	double frequency = DEFAULT_SPHERES_FREQUENCY;
+    /// Frequency of the concentric spheres.
+    double frequency = DEFAULT_SPHERES_FREQUENCY;
 
-	public Spheres() {
-		super(0);
-	}
+    public Spheres() {
+        super(0);
+    }
 
-	public double getFrequency() {
-		return frequency;
-	}
+    public double getFrequency() {
+        return frequency;
+    }
 
-	public void setFrequency(double frequency) {
-		this.frequency = frequency;
-	}
+    public void setFrequency(double frequency) {
+        this.frequency = frequency;
+    }
 
-	@Override
-	public int GetSourceModuleCount() {
-		return 0;
-	}
+    @Override
+    public int GetSourceModuleCount() {
+        return 0;
+    }
 
     @Override
     public double GetValue(double x, double y, double z) {

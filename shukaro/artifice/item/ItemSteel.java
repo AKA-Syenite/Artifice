@@ -17,44 +17,44 @@ import net.minecraft.util.Icon;
 
 public class ItemSteel extends Item
 {
-	public Icon icon;
-	
-	public ItemSteel(int id)
-	{
-		super(id);
-		this.setUnlocalizedName("artifice.ingot.steel");
-		this.setCreativeTab(ArtificeCreativeTab.tab);
-	}
-	
-	@Override
-	@SideOnly(Side.CLIENT)
-	public Icon getIconFromDamage(int meta)
-	{
-		return icon;
-	}
-	
-	@Override
-	@SideOnly(Side.CLIENT)
+    public Icon icon;
+    
+    public ItemSteel(int id)
+    {
+        super(id);
+        this.setUnlocalizedName("artifice.ingot.steel");
+        this.setCreativeTab(ArtificeCreativeTab.tab);
+    }
+    
+    @Override
+    @SideOnly(Side.CLIENT)
+    public Icon getIconFromDamage(int meta)
+    {
+        return icon;
+    }
+    
+    @Override
+    @SideOnly(Side.CLIENT)
     public void registerIcons(IconRegister reg)
-	{
-		this.icon = reg.registerIcon("artifice:ingot_steel");
-	}
-	
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, EntityPlayer player, List infoList, boolean advancedTooltips)
-	{
-		if (!ArtificeConfig.tooltips.getBoolean(true))
-    		return;
-    	IdMetaPair pair = new IdMetaPair(stack.itemID, 0);
-    	if (ArtificeRegistry.getTooltipMap().get(pair) != null)
-		{
-    		for (String s : ArtificeRegistry.getTooltipMap().get(pair))
-    		{
-    			if (!ArtificeConfig.flavorText.getBoolean(true) && s.startsWith(ArtificeTooltips.commentCode))
-    				continue;
-    			infoList.add(s);
-    		}
-		}
-	}
+    {
+        this.icon = reg.registerIcon("artifice:ingot_steel");
+    }
+    
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void addInformation(ItemStack stack, EntityPlayer player, List infoList, boolean advancedTooltips)
+    {
+        if (!ArtificeConfig.tooltips.getBoolean(true))
+            return;
+        IdMetaPair pair = new IdMetaPair(stack.itemID, 0);
+        if (ArtificeRegistry.getTooltipMap().get(pair) != null)
+        {
+            for (String s : ArtificeRegistry.getTooltipMap().get(pair))
+            {
+                if (!ArtificeConfig.flavorText.getBoolean(true) && s.startsWith(ArtificeTooltips.commentCode))
+                    continue;
+                infoList.add(s);
+            }
+        }
+    }
 }

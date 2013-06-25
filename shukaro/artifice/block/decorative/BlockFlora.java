@@ -37,8 +37,8 @@ public class BlockFlora extends BlockFlower
     @SideOnly(Side.CLIENT)
     public Icon getIcon(int side, int meta)
     {
-    	if (meta > ArtificeCore.flora.length)
-        	return icons[0];
+        if (meta > ArtificeCore.flora.length)
+            return icons[0];
         return icons[meta];
     }
     
@@ -46,8 +46,8 @@ public class BlockFlora extends BlockFlower
     @SideOnly(Side.CLIENT)
     public void registerIcons(IconRegister reg)
     {
-    	for (int i=0; i<ArtificeCore.flora.length; i++)
-    		icons[i] = IconHandler.registerSingle(reg, ArtificeCore.flora[i].toLowerCase(), "flora");
+        for (int i=0; i<ArtificeCore.flora.length; i++)
+            icons[i] = IconHandler.registerSingle(reg, ArtificeCore.flora[i].toLowerCase(), "flora");
     }
     
     @Override

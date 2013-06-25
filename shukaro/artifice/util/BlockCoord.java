@@ -261,16 +261,16 @@ public class BlockCoord implements Comparable
     
     public BlockCoord[] getSides()
     {
-    	BlockCoord[] sides = new BlockCoord[4];
-    	int j = 0;
+        BlockCoord[] sides = new BlockCoord[4];
+        int j = 0;
 
-    	for (int i=2; i<=5; i++)
-    	{
-    		sides[j] = this.copy().offset(i);
-    		j++;
-    	}
-    	
-    	return sides;
+        for (int i=2; i<=5; i++)
+        {
+            sides[j] = this.copy().offset(i);
+            j++;
+        }
+        
+        return sides;
     }
     
     public List<BlockCoord> getNearby()
@@ -310,166 +310,166 @@ public class BlockCoord implements Comparable
     
     public List<BlockCoord> getRadiusMatches(World world, int radius, int blockID, int meta)
     {
-    	List<BlockCoord> matches = new ArrayList<BlockCoord>();
-    	BlockCoord c = this.copy();
-    	
-    	int minX = c.x - radius;
-    	int maxX = c.x + radius + 1;
-    	int minY = c.y - radius;
-    	int maxY = c.y + radius + 1;
-    	int minZ = c.z - radius;
-    	int maxZ = c.z + radius + 1;
-    	
-    	for (int x = minX; x < maxX; x++)
-    	{
-    		for (int y = minY; y < maxY; y++)
-    		{
-				for (int z = minZ; z < maxZ; z++)
-				{
-					BlockCoord t = new BlockCoord(x, y, z);
-					if (t.blockEquals(world, blockID, meta))
-						matches.add(t);
-				}
-    		}
-    	}
-    	
-    	return matches;
+        List<BlockCoord> matches = new ArrayList<BlockCoord>();
+        BlockCoord c = this.copy();
+        
+        int minX = c.x - radius;
+        int maxX = c.x + radius + 1;
+        int minY = c.y - radius;
+        int maxY = c.y + radius + 1;
+        int minZ = c.z - radius;
+        int maxZ = c.z + radius + 1;
+        
+        for (int x = minX; x < maxX; x++)
+        {
+            for (int y = minY; y < maxY; y++)
+            {
+                for (int z = minZ; z < maxZ; z++)
+                {
+                    BlockCoord t = new BlockCoord(x, y, z);
+                    if (t.blockEquals(world, blockID, meta))
+                        matches.add(t);
+                }
+            }
+        }
+        
+        return matches;
     }
     
     public List<BlockCoord> getRadiusBlocks(World world, int radius)
     {
-    	List<BlockCoord> matches = new ArrayList<BlockCoord>();
-    	BlockCoord c = this.copy();
-    	
-    	int minX = c.x - radius;
-    	int maxX = c.x + radius + 1;
-    	int minY = c.y - radius;
-    	int maxY = c.y + radius + 1;
-    	int minZ = c.z - radius;
-    	int maxZ = c.z + radius + 1;
-    	
-    	for (int x = minX; x < maxX; x++)
-    	{
-    		for (int y = minY; y < maxY; y++)
-    		{
-				for (int z = minZ; z < maxZ; z++)
-				{
-					BlockCoord t = new BlockCoord(x, y, z);
-					matches.add(t);
-				}
-    		}
-    	}
-    	
-    	return matches;
+        List<BlockCoord> matches = new ArrayList<BlockCoord>();
+        BlockCoord c = this.copy();
+        
+        int minX = c.x - radius;
+        int maxX = c.x + radius + 1;
+        int minY = c.y - radius;
+        int maxY = c.y + radius + 1;
+        int minZ = c.z - radius;
+        int maxZ = c.z + radius + 1;
+        
+        for (int x = minX; x < maxX; x++)
+        {
+            for (int y = minY; y < maxY; y++)
+            {
+                for (int z = minZ; z < maxZ; z++)
+                {
+                    BlockCoord t = new BlockCoord(x, y, z);
+                    matches.add(t);
+                }
+            }
+        }
+        
+        return matches;
     }
     
     public boolean blockEquals(World world, BlockCoord c)
     {
-    	if (c.getBlock(world) == null && this.getBlock(world) == null)
-    		return true;
-    	if (c.getBlock(world) == null ^ this.getBlock(world) == null)
-    		return false;
-    	return (c.getBlockID(world) == this.getBlockID(world) && c.getMeta(world) == this.getMeta(world));
+        if (c.getBlock(world) == null && this.getBlock(world) == null)
+            return true;
+        if (c.getBlock(world) == null ^ this.getBlock(world) == null)
+            return false;
+        return (c.getBlockID(world) == this.getBlockID(world) && c.getMeta(world) == this.getMeta(world));
     }
     
     public boolean blockEquals(World world, int blockID, int meta)
     {
-    	if (this.getBlock(world) == null)
-    		return false;
-    	return (this.getBlockID(world) == blockID && this.getMeta(world) == meta);
+        if (this.getBlock(world) == null)
+            return false;
+        return (this.getBlockID(world) == blockID && this.getMeta(world) == meta);
     }
     
     public boolean blockEquals(IBlockAccess world, BlockCoord c)
     {
-    	if (c.getBlock(world) == null && this.getBlock(world) == null)
-    		return true;
-    	if (c.getBlock(world) == null ^ this.getBlock(world) == null)
-    		return false;
-    	return (c.getBlockID(world) == this.getBlockID(world) && c.getMeta(world) == this.getMeta(world));
+        if (c.getBlock(world) == null && this.getBlock(world) == null)
+            return true;
+        if (c.getBlock(world) == null ^ this.getBlock(world) == null)
+            return false;
+        return (c.getBlockID(world) == this.getBlockID(world) && c.getMeta(world) == this.getMeta(world));
     }
     
     public boolean blockEquals(IBlockAccess world, int blockID, int meta)
     {
-    	if (this.getBlock(world) == null)
-    		return false;
-    	return (this.getBlockID(world) == blockID && this.getMeta(world) == meta);
+        if (this.getBlock(world) == null)
+            return false;
+        return (this.getBlockID(world) == blockID && this.getMeta(world) == meta);
     }
     
     public boolean isConnected(World world, BlockCoord c)
     {
-    	return this.isConnected(world, c, this.getBlockID(world), this.getMeta(world));
+        return this.isConnected(world, c, this.getBlockID(world), this.getMeta(world));
     }
     
     public boolean isConnected(World world, BlockCoord c, int blockID, int meta)
     {
-    	List<BlockCoord> traversed = new LinkedList<BlockCoord>();
-    	List<BlockCoord> toTraverse = new LinkedList<BlockCoord>();
-    	
-    	toTraverse.add(this);
-    	
-    	while (!toTraverse.isEmpty())
-    	{
-    		BlockCoord t = toTraverse.get(0);
-    		traversed.add(toTraverse.remove(0));
-    		
-    		for (BlockCoord j : t.getAdjacent())
-    		{
-    			if (j.blockEquals(world, blockID, meta))
-    			{
-    				if (j.equals(c))
-    					return true;
-    				if (!traversed.contains(j) && !toTraverse.contains(j))
-    					toTraverse.add(j);
-    			}
-    		}
-    	}
-    	
-    	return false;
+        List<BlockCoord> traversed = new LinkedList<BlockCoord>();
+        List<BlockCoord> toTraverse = new LinkedList<BlockCoord>();
+        
+        toTraverse.add(this);
+        
+        while (!toTraverse.isEmpty())
+        {
+            BlockCoord t = toTraverse.get(0);
+            traversed.add(toTraverse.remove(0));
+            
+            for (BlockCoord j : t.getAdjacent())
+            {
+                if (j.blockEquals(world, blockID, meta))
+                {
+                    if (j.equals(c))
+                        return true;
+                    if (!traversed.contains(j) && !toTraverse.contains(j))
+                        toTraverse.add(j);
+                }
+            }
+        }
+        
+        return false;
     }
     
     public float getDistance(BlockCoord c)
     {
-    	return this.getDistance(c.x, c.y, c.z);
+        return this.getDistance(c.x, c.y, c.z);
     }
     
     public float getDistance(int x, int y, int z)
     {
-    	return (float) Math.sqrt(Math.pow(this.x - x, 2) + Math.pow(this.y - y, 2) + Math.pow(this.z - z, 2));
+        return (float) Math.sqrt(Math.pow(this.x - x, 2) + Math.pow(this.y - y, 2) + Math.pow(this.z - z, 2));
     }
     
     public int getMeta(World world)
     {
-    	return world.getBlockMetadata(this.x, this.y, this.z);
+        return world.getBlockMetadata(this.x, this.y, this.z);
     }
     
     public int getMeta(IBlockAccess access)
     {
-    	return access.getBlockMetadata(this.x, this.y, this.z);
+        return access.getBlockMetadata(this.x, this.y, this.z);
     }
     
     public Block getBlock(World world)
     {
-    	return Block.blocksList[this.getBlockID(world)];
+        return Block.blocksList[this.getBlockID(world)];
     }
     
     public Block getBlock(IBlockAccess access)
     {
-    	return Block.blocksList[this.getBlockID(access)];
+        return Block.blocksList[this.getBlockID(access)];
     }
     
     public int getBlockID(World world)
     {
-    	return world.getBlockId(this.x, this.y, this.z);
+        return world.getBlockId(this.x, this.y, this.z);
     }
     
     public int getBlockID(IBlockAccess access)
     {
-    	return access.getBlockId(this.x, this.y, this.z);
+        return access.getBlockId(this.x, this.y, this.z);
     }
     
     public TileEntity getTileEntity(World world)
     {
-    	return world.getBlockTileEntity(this.x, this.y, this.z);
+        return world.getBlockTileEntity(this.x, this.y, this.z);
     }
     
     @Override

@@ -14,7 +14,7 @@ import net.minecraft.world.gen.feature.WorldGenerator;
 
 public class WorldGenLily
 {
-	private World world;
+    private World world;
     private Random rand;
     private int x;
     private int y;
@@ -34,24 +34,24 @@ public class WorldGenLily
     
     public boolean generate(int chunkX, int chunkZ)
     {
-    	this.xMin = chunkX << 4;
-    	this.zMin = chunkZ << 4;
-    	this.xMax = xMin + 16;
-    	this.zMax = zMax + 16;
-    	
-    	this.startX = xMin + rand.nextInt(16);
-    	this.startZ = zMin + rand.nextInt(16);
-    	
-    	if (!ArtificeRegistry.getLotusWhitelist().contains(world.getBiomeGenForCoords(startX, startZ).biomeName))
-    		return false;
-    	
-    	if (rand.nextInt(10) > 4)
-    		return false;
+        this.xMin = chunkX << 4;
+        this.zMin = chunkZ << 4;
+        this.xMax = xMin + 16;
+        this.zMax = zMax + 16;
         
-    	int tries = rand.nextInt(16) + 8;
-    	
-    	ChunkCoord c = new ChunkCoord(chunkX, chunkZ);
-    	
+        this.startX = xMin + rand.nextInt(16);
+        this.startZ = zMin + rand.nextInt(16);
+        
+        if (!ArtificeRegistry.getLotusWhitelist().contains(world.getBiomeGenForCoords(startX, startZ).biomeName))
+            return false;
+        
+        if (rand.nextInt(10) > 4)
+            return false;
+        
+        int tries = rand.nextInt(16) + 8;
+        
+        ChunkCoord c = new ChunkCoord(chunkX, chunkZ);
+        
         for (int l=0; l < tries; l++)
         {
             x = startX + rand.nextInt(8) - rand.nextInt(8);
@@ -59,7 +59,7 @@ public class WorldGenLily
             y = world.getHeightValue(x, z);
             
             if (!c.contains(x, z))
-            	continue;
+                continue;
             
             if (world.isAirBlock(x, y, z) && ArtificeBlocks.blockLotus.canPlaceBlockAt(world, x, y, z))
             {

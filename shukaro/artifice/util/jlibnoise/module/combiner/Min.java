@@ -27,25 +27,25 @@ import shukaro.artifice.util.jlibnoise.module.Module;
 
 public class Min extends Module {
 
-	public Min() {
-		super(2);
-	}
+    public Min() {
+        super(2);
+    }
 
-	@Override
-	public int GetSourceModuleCount() {
-		return 2;
-	}
+    @Override
+    public int GetSourceModuleCount() {
+        return 2;
+    }
 
-	@Override
-	public double GetValue(double x, double y, double z) {
-		if (SourceModule[0] == null)
-			throw new NoModuleException();
-		if (SourceModule[1] == null)
-			throw new NoModuleException();
+    @Override
+    public double GetValue(double x, double y, double z) {
+        if (SourceModule[0] == null)
+            throw new NoModuleException();
+        if (SourceModule[1] == null)
+            throw new NoModuleException();
 
-		double v0 = SourceModule[0].GetValue(x, y, z);
-		double v1 = SourceModule[1].GetValue(x, y, z);
-		return Utils.GetMin(v0, v1);
-	}
+        double v0 = SourceModule[0].GetValue(x, y, z);
+        double v1 = SourceModule[1].GetValue(x, y, z);
+        return Utils.GetMin(v0, v1);
+    }
 
 }

@@ -25,20 +25,20 @@ import shukaro.artifice.util.jlibnoise.module.Module;
 
 public class Abs extends Module {
 
-	public Abs() {
-		super(1);
-	}
+    public Abs() {
+        super(1);
+    }
 
-	@Override
-	public int GetSourceModuleCount() {
-		return 1;
-	}
+    @Override
+    public int GetSourceModuleCount() {
+        return 1;
+    }
 
-	@Override
-	public double GetValue(double x, double y, double z) {
-		if (SourceModule == null)
-			throw new NoModuleException();
-		return Math.abs(SourceModule[0].GetValue(x, y, z));
-	}
+    @Override
+    public double GetValue(double x, double y, double z) {
+        if (SourceModule == null)
+            throw new NoModuleException();
+        return Math.abs(SourceModule[0].GetValue(x, y, z));
+    }
 
 }

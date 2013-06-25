@@ -24,58 +24,58 @@ public class FrameRenderer implements ISimpleBlockRenderingHandler
         
         if (block instanceof ILayeredRender)
         {
-        	ILayeredRender inner = (ILayeredRender) block;
-        	
+            ILayeredRender inner = (ILayeredRender) block;
+            
             renderer.setRenderBounds(0.0005F, 0.0005F, 0.0005F, 0.9995F, 0.9995F, 0.9995F);
             GL11.glRotatef(90.0F, 0.0F, 1.0F, 0.0F);
             GL11.glTranslatef(-0.5F, -0.5F, -0.5F);
             
             if (inner.getRenderIcon(0, meta) != null)
             {
-	            tessellator.startDrawingQuads();
-	            tessellator.setNormal(0.0F, -1.0F, 0.0F);
-	            renderer.renderFaceYNeg(block, 0.0D, 0.0D, 0.0D, inner.getRenderIcon(0, meta));
-	            tessellator.draw();
+                tessellator.startDrawingQuads();
+                tessellator.setNormal(0.0F, -1.0F, 0.0F);
+                renderer.renderFaceYNeg(block, 0.0D, 0.0D, 0.0D, inner.getRenderIcon(0, meta));
+                tessellator.draw();
             }
             
             if (inner.getRenderIcon(1, meta) != null)
             {
-	            tessellator.startDrawingQuads();
-	            tessellator.setNormal(0.0F, 1.0F, 0.0F);
-	            renderer.renderFaceYPos(block, 0.0D, 0.0D, 0.0D, inner.getRenderIcon(1, meta));
-	            tessellator.draw();
+                tessellator.startDrawingQuads();
+                tessellator.setNormal(0.0F, 1.0F, 0.0F);
+                renderer.renderFaceYPos(block, 0.0D, 0.0D, 0.0D, inner.getRenderIcon(1, meta));
+                tessellator.draw();
             }
             
             if (inner.getRenderIcon(2, meta) != null)
             {
-	            tessellator.startDrawingQuads();
-	            tessellator.setNormal(0.0F, 0.0F, -1.0F);
-	            renderer.renderFaceXPos(block, 0.0D, 0.0D, 0.0D, inner.getRenderIcon(2, meta));
-	            tessellator.draw();
+                tessellator.startDrawingQuads();
+                tessellator.setNormal(0.0F, 0.0F, -1.0F);
+                renderer.renderFaceXPos(block, 0.0D, 0.0D, 0.0D, inner.getRenderIcon(2, meta));
+                tessellator.draw();
             }
             
             if (inner.getRenderIcon(3, meta) != null)
             {
-	            tessellator.startDrawingQuads();
-	            tessellator.setNormal(0.0F, 0.0F, 1.0F);
-	            renderer.renderFaceXNeg(block, 0.0D, 0.0D, 0.0D, inner.getRenderIcon(3, meta));
-	            tessellator.draw();
+                tessellator.startDrawingQuads();
+                tessellator.setNormal(0.0F, 0.0F, 1.0F);
+                renderer.renderFaceXNeg(block, 0.0D, 0.0D, 0.0D, inner.getRenderIcon(3, meta));
+                tessellator.draw();
             }
             
             if (inner.getRenderIcon(4, meta) != null)
             {
-	            tessellator.startDrawingQuads();
-	            tessellator.setNormal(-1.0F, 0.0F, 0.0F);
-	            renderer.renderFaceZNeg(block, 0.0D, 0.0D, 0.0D, inner.getRenderIcon(4, meta));
-	            tessellator.draw();
+                tessellator.startDrawingQuads();
+                tessellator.setNormal(-1.0F, 0.0F, 0.0F);
+                renderer.renderFaceZNeg(block, 0.0D, 0.0D, 0.0D, inner.getRenderIcon(4, meta));
+                tessellator.draw();
             }
             
             if (inner.getRenderIcon(5, meta) != null)
             {
-	            tessellator.startDrawingQuads();
-	            tessellator.setNormal(1.0F, 0.0F, 0.0F);
-	            renderer.renderFaceZPos(block, 0.0D, 0.0D, 0.0D, inner.getRenderIcon(5, meta));
-	            tessellator.draw();
+                tessellator.startDrawingQuads();
+                tessellator.setNormal(1.0F, 0.0F, 0.0F);
+                renderer.renderFaceZPos(block, 0.0D, 0.0D, 0.0D, inner.getRenderIcon(5, meta));
+                tessellator.draw();
             }
             
             GL11.glTranslatef(0.5F, 0.5F, 0.5F);
@@ -120,14 +120,14 @@ public class FrameRenderer implements ISimpleBlockRenderingHandler
     
     @Override
     public boolean renderWorldBlock(IBlockAccess world, int x, int y, int z, Block block, int modelId, RenderBlocks renderer)
-    {	
+    {    
         renderer.setRenderBounds(0.0002F, 0.0002F, 0.0002F, 0.9998F, 0.9998F, 0.9998F);
         
         if (block instanceof ILayeredRender)
         {
-        	if (renderImproved.renderStandardBlock(renderer, block, x, y, z, world.getBlockMetadata(x, y, z), false, true))
+            if (renderImproved.renderStandardBlock(renderer, block, x, y, z, world.getBlockMetadata(x, y, z), false, true))
             {
-            	renderImproved.renderStandardBlock(renderer, block, x, y, z, world.getBlockMetadata(x, y, z), true, true);
+                renderImproved.renderStandardBlock(renderer, block, x, y, z, world.getBlockMetadata(x, y, z), true, true);
             }
         }
         

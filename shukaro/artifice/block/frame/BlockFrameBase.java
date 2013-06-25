@@ -13,8 +13,8 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockFrameBase extends BlockFrame
 {
-	private Icon[] icons = new Icon[ArtificeCore.tiers.length];
-	
+    private Icon[] icons = new Icon[ArtificeCore.tiers.length];
+    
     public BlockFrameBase(int id)
     {
         super(id);
@@ -27,31 +27,31 @@ public class BlockFrameBase extends BlockFrame
         return false;
     }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void registerIcons(IconRegister reg)
-	{
-		for (int i=0; i<ArtificeCore.tiers.length; i++)
-			icons[i] = IconHandler.registerSingle(reg, ArtificeCore.tiers[i].toLowerCase(), "frame");
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void registerIcons(IconRegister reg)
+    {
+        for (int i=0; i<ArtificeCore.tiers.length; i++)
+            icons[i] = IconHandler.registerSingle(reg, ArtificeCore.tiers[i].toLowerCase(), "frame");
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public Icon getIcon(int side, int meta)
-	{
-		return icons[meta];
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public Icon getIcon(int side, int meta)
+    {
+        return icons[meta];
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public Icon getBlockTexture(IBlockAccess block, int x, int y, int z, int side)
-	{
-		return icons[block.getBlockMetadata(x, y, z)];
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public Icon getBlockTexture(IBlockAccess block, int x, int y, int z, int side)
+    {
+        return icons[block.getBlockMetadata(x, y, z)];
+    }
 
-	@Override
-	public TileEntity createNewTileEntity(World world)
-	{
-		return null;
-	}
+    @Override
+    public TileEntity createNewTileEntity(World world)
+    {
+        return null;
+    }
 }

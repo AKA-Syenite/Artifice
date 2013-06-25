@@ -34,25 +34,25 @@ public class WorldGenFlowers
     
     public boolean generate(int chunkX, int chunkZ)
     {
-    	this.type = rand.nextInt(ArtificeCore.flora.length - 1);
-    	this.xMin = chunkX << 4;
-    	this.zMin = chunkZ << 4;
-    	this.xMax = xMin + 16;
-    	this.zMax = zMax + 16;
-    	
-    	this.startX = xMin + rand.nextInt(16);
-    	this.startZ = zMin + rand.nextInt(16);
-    	
-    	if (ArtificeRegistry.getFloraBlacklist().contains(world.getBiomeGenForCoords(startX, startZ).biomeName))
-    		return false;
-    	
-    	if (rand.nextInt(10) > 6)
-    		return false;
+        this.type = rand.nextInt(ArtificeCore.flora.length - 1);
+        this.xMin = chunkX << 4;
+        this.zMin = chunkZ << 4;
+        this.xMax = xMin + 16;
+        this.zMax = zMax + 16;
         
-    	int tries = rand.nextInt(16) + 8;
-    	
-    	ChunkCoord c = new ChunkCoord(chunkX, chunkZ);
-    	
+        this.startX = xMin + rand.nextInt(16);
+        this.startZ = zMin + rand.nextInt(16);
+        
+        if (ArtificeRegistry.getFloraBlacklist().contains(world.getBiomeGenForCoords(startX, startZ).biomeName))
+            return false;
+        
+        if (rand.nextInt(10) > 6)
+            return false;
+        
+        int tries = rand.nextInt(16) + 8;
+        
+        ChunkCoord c = new ChunkCoord(chunkX, chunkZ);
+        
         for (int l=0; l < tries; l++)
         {
             x = startX + rand.nextInt(8) - rand.nextInt(8);
@@ -60,13 +60,13 @@ public class WorldGenFlowers
             y = world.getHeightValue(x, z);
             
             if (!c.contains(x, z))
-            	continue;
+                continue;
             
             if ((world.isAirBlock(x, y, z) || (world.getBlockId(x, y, z) == Block.snow.blockID)) && ArtificeBlocks.blockFlora.canBlockStay(world, x, y, z))
             {
-            	if (rand.nextInt(10) > 5)
-            		continue;
-            	
+                if (rand.nextInt(10) > 5)
+                    continue;
+                
                 if (type == 3)
                 {
                     if (world.getWorldTime() > 12000)

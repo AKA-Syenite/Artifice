@@ -27,23 +27,23 @@ import shukaro.artifice.util.jlibnoise.module.Module;
 
 public class Checkerboard extends Module {
 
-	public Checkerboard() {
-		super(0);
+    public Checkerboard() {
+        super(0);
 
-	}
+    }
 
-	@Override
-	public int GetSourceModuleCount() {
+    @Override
+    public int GetSourceModuleCount() {
 
-		return 0;
-	}
+        return 0;
+    }
 
-	@Override
-	public double GetValue(double x, double y, double z) {
-		int ix = (int) (MathHelper.floor(Utils.MakeInt32Range(x)));
-		int iy = (int) (MathHelper.floor(Utils.MakeInt32Range(y)));
-		int iz = (int) (MathHelper.floor(Utils.MakeInt32Range(z)));
-		return ((ix & 1 ^ iy & 1 ^ iz & 1) != 0) ? -1.0 : 1.0;
-	}
+    @Override
+    public double GetValue(double x, double y, double z) {
+        int ix = (int) (MathHelper.floor(Utils.MakeInt32Range(x)));
+        int iy = (int) (MathHelper.floor(Utils.MakeInt32Range(y)));
+        int iz = (int) (MathHelper.floor(Utils.MakeInt32Range(z)));
+        return ((ix & 1 ^ iy & 1 ^ iz & 1) != 0) ? -1.0 : 1.0;
+    }
 
 }

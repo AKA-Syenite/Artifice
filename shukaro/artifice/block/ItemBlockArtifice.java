@@ -30,20 +30,20 @@ public class ItemBlockArtifice extends ItemBlock
     }
     
     @Override
-	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack stack, EntityPlayer player, List infoList, boolean advancedTooltips)
+    @SideOnly(Side.CLIENT)
+    public void addInformation(ItemStack stack, EntityPlayer player, List infoList, boolean advancedTooltips)
     {
-    	if (!ArtificeConfig.tooltips.getBoolean(true))
-    		return;
-    	IdMetaPair pair = new IdMetaPair(stack.itemID, stack.getItemDamage());
-    	if (ArtificeRegistry.getTooltipMap().get(pair) != null)
-		{
-    		for (String s : ArtificeRegistry.getTooltipMap().get(pair))
-    		{
-    			if (!ArtificeConfig.flavorText.getBoolean(true) && s.startsWith(ArtificeTooltips.commentCode))
-    				continue;
-    			infoList.add(s);
-    		}
-		}
+        if (!ArtificeConfig.tooltips.getBoolean(true))
+            return;
+        IdMetaPair pair = new IdMetaPair(stack.itemID, stack.getItemDamage());
+        if (ArtificeRegistry.getTooltipMap().get(pair) != null)
+        {
+            for (String s : ArtificeRegistry.getTooltipMap().get(pair))
+            {
+                if (!ArtificeConfig.flavorText.getBoolean(true) && s.startsWith(ArtificeTooltips.commentCode))
+                    continue;
+                infoList.add(s);
+            }
+        }
     }
 }

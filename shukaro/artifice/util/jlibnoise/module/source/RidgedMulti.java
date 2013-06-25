@@ -28,109 +28,109 @@ import shukaro.artifice.util.jlibnoise.module.Module;
 
 public class RidgedMulti extends Module {
 
-	/// Default frequency for the noise::module::RidgedMulti noise module.
-	public static final double DEFAULT_RIDGED_FREQUENCY = 1.0;
+    /// Default frequency for the noise::module::RidgedMulti noise module.
+    public static final double DEFAULT_RIDGED_FREQUENCY = 1.0;
 
-	/// Default lacunarity for the noise::module::RidgedMulti noise module.
-	public static final double DEFAULT_RIDGED_LACUNARITY = 2.0;
+    /// Default lacunarity for the noise::module::RidgedMulti noise module.
+    public static final double DEFAULT_RIDGED_LACUNARITY = 2.0;
 
-	/// Default number of octaves for the noise::module::RidgedMulti noise
-	/// module.
-	public static final int DEFAULT_RIDGED_OCTAVE_COUNT = 6;
+    /// Default number of octaves for the noise::module::RidgedMulti noise
+    /// module.
+    public static final int DEFAULT_RIDGED_OCTAVE_COUNT = 6;
 
-	/// Default noise quality for the noise::module::RidgedMulti noise
-	/// module.
-	public static final NoiseQuality DEFAULT_RIDGED_QUALITY = NoiseQuality.STANDARD;
+    /// Default noise quality for the noise::module::RidgedMulti noise
+    /// module.
+    public static final NoiseQuality DEFAULT_RIDGED_QUALITY = NoiseQuality.STANDARD;
 
-	/// Default noise seed for the noise::module::RidgedMulti noise module.
-	public static final int DEFAULT_RIDGED_SEED = 0;
+    /// Default noise seed for the noise::module::RidgedMulti noise module.
+    public static final int DEFAULT_RIDGED_SEED = 0;
 
-	/// Maximum number of octaves for the noise::module::RidgedMulti noise
-	/// module.
-	public static final int RIDGED_MAX_OCTAVE = 30;
+    /// Maximum number of octaves for the noise::module::RidgedMulti noise
+    /// module.
+    public static final int RIDGED_MAX_OCTAVE = 30;
 
-	double frequency = DEFAULT_RIDGED_FREQUENCY;
+    double frequency = DEFAULT_RIDGED_FREQUENCY;
 
-	/// Frequency multiplier between successive octaves.
-	double lacunarity = DEFAULT_RIDGED_LACUNARITY;
+    /// Frequency multiplier between successive octaves.
+    double lacunarity = DEFAULT_RIDGED_LACUNARITY;
 
-	/// Quality of the ridged-multifractal noise.
-	NoiseQuality noiseQuality = DEFAULT_RIDGED_QUALITY;
+    /// Quality of the ridged-multifractal noise.
+    NoiseQuality noiseQuality = DEFAULT_RIDGED_QUALITY;
 
-	/// Total number of octaves that generate the ridged-multifractal
-	/// noise.
-	int octaveCount = DEFAULT_RIDGED_OCTAVE_COUNT;
+    /// Total number of octaves that generate the ridged-multifractal
+    /// noise.
+    int octaveCount = DEFAULT_RIDGED_OCTAVE_COUNT;
 
-	/// Contains the spectral weights for each octave.
-	double[] SpectralWeights;
+    /// Contains the spectral weights for each octave.
+    double[] SpectralWeights;
 
-	/// Seed value used by the ridged-multfractal-noise function.
-	int seed = DEFAULT_RIDGED_SEED;
+    /// Seed value used by the ridged-multfractal-noise function.
+    int seed = DEFAULT_RIDGED_SEED;
 
-	public RidgedMulti() {
-		super(0);
-		CalcSpectralWeights();
-	}
+    public RidgedMulti() {
+        super(0);
+        CalcSpectralWeights();
+    }
 
-	public double getFrequency() {
-		return frequency;
-	}
+    public double getFrequency() {
+        return frequency;
+    }
 
-	public void setFrequency(double frequency) {
-		this.frequency = frequency;
-	}
+    public void setFrequency(double frequency) {
+        this.frequency = frequency;
+    }
 
-	public double getLacunarity() {
-		return lacunarity;
-	}
+    public double getLacunarity() {
+        return lacunarity;
+    }
 
-	public void setLacunarity(double lacunarity) {
-		this.lacunarity = lacunarity;
-	}
+    public void setLacunarity(double lacunarity) {
+        this.lacunarity = lacunarity;
+    }
 
-	public NoiseQuality getNoiseQuality() {
-		return noiseQuality;
-	}
+    public NoiseQuality getNoiseQuality() {
+        return noiseQuality;
+    }
 
-	public void setNoiseQuality(NoiseQuality noiseQuality) {
-		this.noiseQuality = noiseQuality;
-	}
+    public void setNoiseQuality(NoiseQuality noiseQuality) {
+        this.noiseQuality = noiseQuality;
+    }
 
-	public int getOctaveCount() {
-		return octaveCount;
-	}
+    public int getOctaveCount() {
+        return octaveCount;
+    }
 
-	public void setOctaveCount(int octaveCount) {
-		this.octaveCount = Utils.GetMin(octaveCount, RIDGED_MAX_OCTAVE);
-	}
+    public void setOctaveCount(int octaveCount) {
+        this.octaveCount = Utils.GetMin(octaveCount, RIDGED_MAX_OCTAVE);
+    }
 
-	public int getSeed() {
-		return seed;
-	}
+    public int getSeed() {
+        return seed;
+    }
 
-	public void setSeed(int seed) {
-		this.seed = seed;
-	}
+    public void setSeed(int seed) {
+        this.seed = seed;
+    }
 
-	protected void CalcSpectralWeights() {
-		// This exponent parameter should be user-defined; it may be exposed in a
-		// future version of libnoise.
-		double h = 1.0;
+    protected void CalcSpectralWeights() {
+        // This exponent parameter should be user-defined; it may be exposed in a
+        // future version of libnoise.
+        double h = 1.0;
 
-		double frequency = 1.0;
-		SpectralWeights = new double[RIDGED_MAX_OCTAVE];
-		for (int i = 0; i < RIDGED_MAX_OCTAVE; i++) {
-			// Compute weight for each frequency.
-			SpectralWeights[i] = Math.pow(frequency, -h);
-			frequency *= lacunarity;
-		}
+        double frequency = 1.0;
+        SpectralWeights = new double[RIDGED_MAX_OCTAVE];
+        for (int i = 0; i < RIDGED_MAX_OCTAVE; i++) {
+            // Compute weight for each frequency.
+            SpectralWeights[i] = Math.pow(frequency, -h);
+            frequency *= lacunarity;
+        }
 
-	}
+    }
 
-	@Override
-	public int GetSourceModuleCount() {
-		return 0;
-	}
+    @Override
+    public int GetSourceModuleCount() {
+        return 0;
+    }
 
     @Override
     public double GetValue(double x, double y, double z) {

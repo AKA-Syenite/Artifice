@@ -283,49 +283,49 @@ public class ArtificeConfig
             enableFrames.comment = "Set to false to stop frames from initializing";
             if (!enableFrames.getBoolean(true))
             {
-            	frameRecipes.set(false);
-            	detectorRecipe.set(false);
-            	blastWallRecipes.set(false);
-            	glassWallRecipes.set(false);
-            	scaffoldRecipes.set(false);
+                frameRecipes.set(false);
+                detectorRecipe.set(false);
+                blastWallRecipes.set(false);
+                glassWallRecipes.set(false);
+                scaffoldRecipes.set(false);
             }
             enableSledges = c.get("General", "Enable Sledges", true);
             enableSledges.comment = "Set to false to stop sledges from initializing";
             if (!enableSledges.getBoolean(true))
             {
-            	sledgeRecipes.set(false);
+                sledgeRecipes.set(false);
             }
             enableSteel = c.get("General", "Enable Steel", true);
             enableSteel.comment = "Set to false to stop steel from initializing";
             if (!enableSteel.getBoolean(true))
             {
-            	steelSmelting.set(false);
+                steelSmelting.set(false);
             }
             enableWorldGen = c.get("General", "Enable Worldgen", true);
             enableWorldGen.comment = "Set to false to stop worldgen blocks from initializing or generating";
             if (!enableWorldGen.getBoolean(true))
             {
-            	floraWorldGen.set(false);
-            	lotusWorldGen.set(false);
-            	basaltLayerWorldGen.set(false);
-            	basaltClusterWorldGen.set(false);
-            	marbleClusterWorldGen.set(false);
-            	floraRecipes.set(false);
-            	basaltRecipes.set(false);
-            	marbleRecipes.set(false);
-            	floraBoneMeal.set(false);
+                floraWorldGen.set(false);
+                lotusWorldGen.set(false);
+                basaltLayerWorldGen.set(false);
+                basaltClusterWorldGen.set(false);
+                marbleClusterWorldGen.set(false);
+                floraRecipes.set(false);
+                basaltRecipes.set(false);
+                marbleRecipes.set(false);
+                floraBoneMeal.set(false);
             }
             enableBoxes = c.get("General", "Enable Boxes", true);
             enableBoxes.comment = "Set to false to stop boxes from initializing";
             if (!enableBoxes.getBoolean(true))
             {
-            	boxRecipes.set(false);
+                boxRecipes.set(false);
             }
             enableSickles = c.get("General", "Enable Sickles", true);
             enableSickles.comment = "Set to false to stop sickles from initializing";
             if (!enableSickles.getBoolean(true))
             {
-            	sickleRecipes.set(false);
+                sickleRecipes.set(false);
             }
         }
         catch (Exception e)
@@ -343,15 +343,15 @@ public class ArtificeConfig
     
     public static void initClient(FMLPreInitializationEvent evt)
     {
-    	Configuration c = new Configuration(evt.getSuggestedConfigurationFile());
-    	try
-    	{
-    		c.load();
-    		tooltips = c.get("Client", "Tooltips", true);
-    		tooltips.comment = "Set to false to turn off tooltips";
-    		flavorText = c.get("Client", "Flavor Text", true);
-    		flavorText.comment = "Set to false to turn off flavor text in tooltips";
-    	}
+        Configuration c = new Configuration(evt.getSuggestedConfigurationFile());
+        try
+        {
+            c.load();
+            tooltips = c.get("Client", "Tooltips", true);
+            tooltips.comment = "Set to false to turn off tooltips";
+            flavorText = c.get("Client", "Flavor Text", true);
+            flavorText.comment = "Set to false to turn off flavor text in tooltips";
+        }
         catch (Exception e)
         {
             ArtificeCore.logger.log(Level.SEVERE, "Artifice couldn't load the config file");

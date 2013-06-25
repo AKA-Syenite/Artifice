@@ -26,8 +26,8 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public abstract class BlockFrame extends BlockArtifice implements ITileEntityProvider
 {
-	protected List<String> validTiers = new ArrayList<String>();
-	
+    protected List<String> validTiers = new ArrayList<String>();
+    
     public BlockFrame(int id)
     {
         super(id, Material.rock);
@@ -46,8 +46,8 @@ public abstract class BlockFrame extends BlockArtifice implements ITileEntityPro
     {
         for (int j = 0; j < ArtificeCore.tiers.length; j++)
         {
-        	if (this.validTiers.contains(ArtificeCore.tiers[j]))
-        		list.add(new ItemStack(i, 1, j));
+            if (this.validTiers.contains(ArtificeCore.tiers[j]))
+                list.add(new ItemStack(i, 1, j));
         }
     }
     

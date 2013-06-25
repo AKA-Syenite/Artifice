@@ -18,17 +18,17 @@ public class ArtificeCreativeTab extends CreativeTabs
     @Override
     public ItemStack getIconItemStack()
     {
-    	if (ArtificeConfig.enableFrames.getBoolean(true))
-    		return new ItemStack(ArtificeBlocks.blockFrame, 1, 0);
-    	if (ArtificeConfig.enableWorldGen.getBoolean(true))
-    		return new ItemStack(ArtificeBlocks.blockBasalt, 1, 0);
-    	if (ArtificeConfig.enableSledges.getBoolean(true))
-    		return new ItemStack(ArtificeItems.itemSledgeDiamond, 1, 0);
-    	if (ArtificeConfig.enableBoxes.getBoolean(true))
-    		return new ItemStack(ArtificeItems.itemBox, 1, 0);
-    	if (ArtificeConfig.enableSteel.getBoolean(true))
-    		return new ItemStack(ArtificeItems.itemSteelIngot, 1, 0);
-    	return null;
+        if (ArtificeConfig.enableFrames.getBoolean(true))
+            return new ItemStack(ArtificeBlocks.blockFrame, 1, 0);
+        if (ArtificeConfig.enableWorldGen.getBoolean(true))
+            return new ItemStack(ArtificeBlocks.blockBasalt, 1, 0);
+        if (ArtificeConfig.enableSledges.getBoolean(true))
+            return new ItemStack(ArtificeItems.itemSledgeDiamond, 1, 0);
+        if (ArtificeConfig.enableBoxes.getBoolean(true))
+            return new ItemStack(ArtificeItems.itemBox, 1, 0);
+        if (ArtificeConfig.enableSteel.getBoolean(true))
+            return new ItemStack(ArtificeItems.itemSteelIngot, 1, 0);
+        return null;
     }
     
     @Override

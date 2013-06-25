@@ -23,265 +23,265 @@ public class ArtificeRecipes
         if (ArtificeConfig.floraRecipes.getBoolean(true))
             registerDyeRecipes();
         if (ArtificeConfig.sledgeRecipes.getBoolean(true))
-        	registerSledgeRecipes();
+            registerSledgeRecipes();
         if (ArtificeConfig.frameRecipes.getBoolean(true))
-        	registerFrameRecipes();
+            registerFrameRecipes();
         if (ArtificeConfig.detectorRecipe.getBoolean(true))
         {
-        	GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeBlocks.blockDetector, 1, 0), new Object[] {
-        		" Q ",
-        		"YXY",
-        		" Y ",
-        		'Y', new ItemStack(Item.silk.itemID, 1, 0),
-        		'X', new ItemStack(ArtificeBlocks.blockFrame.blockID, 1, 0),
-        		'Q', new ItemStack(Item.redstone.itemID, 1, 0) }));
+            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeBlocks.blockDetector, 1, 0), new Object[] {
+                " Q ",
+                "YXY",
+                " Y ",
+                'Y', new ItemStack(Item.silk.itemID, 1, 0),
+                'X', new ItemStack(ArtificeBlocks.blockFrame.blockID, 1, 0),
+                'Q', new ItemStack(Item.redstone.itemID, 1, 0) }));
         }
         if (ArtificeConfig.steelSmelting.getBoolean(true))
-        	registerSteelRecipes();
-    	if (ArtificeConfig.blastWallRecipes.getBoolean(true))
-    		registerBlastWallRecipes();
-    	if (ArtificeConfig.glassWallRecipes.getBoolean(true))
-    		registerGlassWallRecipes();
-    	if (ArtificeConfig.scaffoldRecipes.getBoolean(true))
-    		registerScaffoldRecipes();
-    	if (ArtificeConfig.boxRecipes.getBoolean(true))
-    	{
-    		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeItems.itemBox, 16, 0), new Object[] {
-    			" Y ",
-    			"YXY",
-    			" Y ",
-    			'Y', "plankWood",
-    			'X', "stickWood" }));
-    		
-    		GameRegistry.addRecipe(new RecipeBox());
-    		GameRegistry.registerCraftingHandler(new BoxCraftingHandler());
-    	}
-    	if (ArtificeConfig.sickleRecipes.getBoolean(true))
-    		registerSickleRecipes();
+            registerSteelRecipes();
+        if (ArtificeConfig.blastWallRecipes.getBoolean(true))
+            registerBlastWallRecipes();
+        if (ArtificeConfig.glassWallRecipes.getBoolean(true))
+            registerGlassWallRecipes();
+        if (ArtificeConfig.scaffoldRecipes.getBoolean(true))
+            registerScaffoldRecipes();
+        if (ArtificeConfig.boxRecipes.getBoolean(true))
+        {
+            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeItems.itemBox, 16, 0), new Object[] {
+                " Y ",
+                "YXY",
+                " Y ",
+                'Y', "plankWood",
+                'X', "stickWood" }));
+            
+            GameRegistry.addRecipe(new RecipeBox());
+            GameRegistry.registerCraftingHandler(new BoxCraftingHandler());
+        }
+        if (ArtificeConfig.sickleRecipes.getBoolean(true))
+            registerSickleRecipes();
     }
     
     private static void registerSickleRecipes()
     {
-    	GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeItems.itemSickleWood, 1, 0), new Object[] {
-    		"X ",
-    		" X",
-    		"Y ",
-    		'X', "plankWood",
-    		'Y', "stickWood" }));
-    	
-    	GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeItems.itemSickleStone, 1, 0), new Object[] {
-    		"X ",
-    		" X",
-    		"Y ",
-    		'X', Block.cobblestone,
-    		'Y', "stickWood" }));
-    	
-    	GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeItems.itemSickleIron, 1, 0), new Object[] {
-    		"X ",
-    		" X",
-    		"Y ",
-    		'X', Item.ingotIron,
-    		'Y', "stickWood" }));
-    	
-    	GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeItems.itemSickleGold, 1, 0), new Object[] {
-    		"X ",
-    		" X",
-    		"Y ",
-    		'X', Item.ingotGold,
-    		'Y', "stickWood" }));
-    	
-    	GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeItems.itemSickleDiamond, 1, 0), new Object[] {
-    		"X ",
-    		" X",
-    		"Y ",
-    		'X', Item.diamond,
-    		'Y', "stickWood" }));
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeItems.itemSickleWood, 1, 0), new Object[] {
+            "X ",
+            " X",
+            "Y ",
+            'X', "plankWood",
+            'Y', "stickWood" }));
+        
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeItems.itemSickleStone, 1, 0), new Object[] {
+            "X ",
+            " X",
+            "Y ",
+            'X', Block.cobblestone,
+            'Y', "stickWood" }));
+        
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeItems.itemSickleIron, 1, 0), new Object[] {
+            "X ",
+            " X",
+            "Y ",
+            'X', Item.ingotIron,
+            'Y', "stickWood" }));
+        
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeItems.itemSickleGold, 1, 0), new Object[] {
+            "X ",
+            " X",
+            "Y ",
+            'X', Item.ingotGold,
+            'Y', "stickWood" }));
+        
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeItems.itemSickleDiamond, 1, 0), new Object[] {
+            "X ",
+            " X",
+            "Y ",
+            'X', Item.diamond,
+            'Y', "stickWood" }));
     }
     
     private static void registerScaffoldRecipes()
     {
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeBlocks.blockScaffold, 8, 0), new Object[] {
-			" Y ",
-			" X ",
-			" Y ",
-			'X', new ItemStack(ArtificeBlocks.blockFrame, 1, 0),
-			'Y', "plankWood" }));
-		
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeBlocks.blockScaffold, 8, 1), new Object[] {
-			" Y ",
-			" X ",
-			" Y ",
-			'X', new ItemStack(ArtificeBlocks.blockFrame, 1, 1),
-			'Y', "plankWood" }));
-		
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeBlocks.blockScaffold, 8, 2), new Object[] {
-			" Y ",
-			" X ",
-			" Y ",
-			'X', new ItemStack(ArtificeBlocks.blockFrame, 1, 2),
-			'Y', new ItemStack(Item.ingotIron.itemID, 1, 0) }));
-		
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeBlocks.blockScaffold, 8, 3), new Object[] {
-			" Y ",
-			" X ",
-			" Y ",
-			'X', new ItemStack(ArtificeBlocks.blockFrame, 1, 3),
-			'Y', "ingotSteel" }));
-	}
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeBlocks.blockScaffold, 8, 0), new Object[] {
+            " Y ",
+            " X ",
+            " Y ",
+            'X', new ItemStack(ArtificeBlocks.blockFrame, 1, 0),
+            'Y', "plankWood" }));
+        
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeBlocks.blockScaffold, 8, 1), new Object[] {
+            " Y ",
+            " X ",
+            " Y ",
+            'X', new ItemStack(ArtificeBlocks.blockFrame, 1, 1),
+            'Y', "plankWood" }));
+        
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeBlocks.blockScaffold, 8, 2), new Object[] {
+            " Y ",
+            " X ",
+            " Y ",
+            'X', new ItemStack(ArtificeBlocks.blockFrame, 1, 2),
+            'Y', new ItemStack(Item.ingotIron.itemID, 1, 0) }));
+        
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeBlocks.blockScaffold, 8, 3), new Object[] {
+            " Y ",
+            " X ",
+            " Y ",
+            'X', new ItemStack(ArtificeBlocks.blockFrame, 1, 3),
+            'Y', "ingotSteel" }));
+    }
 
-	private static void registerGlassWallRecipes()
+    private static void registerGlassWallRecipes()
     {
-    	GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeBlocks.blockGlassWall, 2, 0), new Object[] {
-    		"   ",
-    		"YXY",
-    		" Z ",
-    		'X', new ItemStack(ArtificeBlocks.blockFrame, 1, 0),
-    		'Y', Item.clay,
-    		'Z', Block.glass }));
-    	
-    	GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeBlocks.blockGlassWall, 2, 1), new Object[] {
-    		"   ",
-    		"YXY",
-    		"YZY",
-    		'X', new ItemStack(ArtificeBlocks.blockFrame, 1, 1),
-    		'Y', Item.clay,
-    		'Z', Block.glass }));
-    	
-    	GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeBlocks.blockGlassWall, 2, 2), new Object[] {
-    		" Q ",
-    		"YXY",
-    		" Z ",
-    		'X', new ItemStack(ArtificeBlocks.blockFrame, 1, 2),
-    		'Q', Block.glass,
-    		'Y', Block.obsidian,
-    		'Z', Item.clay }));
-    	
-    	GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeBlocks.blockGlassWall, 2, 3), new Object[] {
-    		" Q ",
-    		"YXY",
-    		"YYY",
-    		'X', new ItemStack(ArtificeBlocks.blockFrame, 1, 3),
-    		'Q', Block.glass,
-    		'Y', "ingotSteel" }));
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeBlocks.blockGlassWall, 2, 0), new Object[] {
+            "   ",
+            "YXY",
+            " Z ",
+            'X', new ItemStack(ArtificeBlocks.blockFrame, 1, 0),
+            'Y', Item.clay,
+            'Z', Block.glass }));
+        
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeBlocks.blockGlassWall, 2, 1), new Object[] {
+            "   ",
+            "YXY",
+            "YZY",
+            'X', new ItemStack(ArtificeBlocks.blockFrame, 1, 1),
+            'Y', Item.clay,
+            'Z', Block.glass }));
+        
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeBlocks.blockGlassWall, 2, 2), new Object[] {
+            " Q ",
+            "YXY",
+            " Z ",
+            'X', new ItemStack(ArtificeBlocks.blockFrame, 1, 2),
+            'Q', Block.glass,
+            'Y', Block.obsidian,
+            'Z', Item.clay }));
+        
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeBlocks.blockGlassWall, 2, 3), new Object[] {
+            " Q ",
+            "YXY",
+            "YYY",
+            'X', new ItemStack(ArtificeBlocks.blockFrame, 1, 3),
+            'Q', Block.glass,
+            'Y', "ingotSteel" }));
     }
     
     private static void registerBlastWallRecipes()
     {
-    	GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeBlocks.blockReinforced, 2, 0), new Object[] {
-    		"   ",
-    		"YXY",
-    		" Z ",
-    		'X', new ItemStack(ArtificeBlocks.blockFrame, 1, 0),
-    		'Y', Block.stoneBrick,
-    		'Z', Item.clay }));
-    	
-    	GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeBlocks.blockReinforced, 2, 1), new Object[] {
-    		"   ",
-    		"YXY",
-    		"YZY",
-    		'X', new ItemStack(ArtificeBlocks.blockFrame, 1, 1),
-    		'Y', Item.brick,
-    		'Z', Item.clay }));
-    	
-    	GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeBlocks.blockReinforced, 2, 2), new Object[] {
-    		"   ",
-    		"YXY",
-    		" Z ",
-    		'X', new ItemStack(ArtificeBlocks.blockFrame, 1, 2),
-    		'Y', Block.obsidian,
-    		'Z', Item.clay }));
-    	
-    	GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeBlocks.blockReinforced, 2, 3), new Object[] {
-    		"   ",
-    		"YXY",
-    		"YYY",
-    		'X', new ItemStack(ArtificeBlocks.blockFrame, 1, 3),
-    		'Y', "ingotSteel" }));
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeBlocks.blockReinforced, 2, 0), new Object[] {
+            "   ",
+            "YXY",
+            " Z ",
+            'X', new ItemStack(ArtificeBlocks.blockFrame, 1, 0),
+            'Y', Block.stoneBrick,
+            'Z', Item.clay }));
+        
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeBlocks.blockReinforced, 2, 1), new Object[] {
+            "   ",
+            "YXY",
+            "YZY",
+            'X', new ItemStack(ArtificeBlocks.blockFrame, 1, 1),
+            'Y', Item.brick,
+            'Z', Item.clay }));
+        
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeBlocks.blockReinforced, 2, 2), new Object[] {
+            "   ",
+            "YXY",
+            " Z ",
+            'X', new ItemStack(ArtificeBlocks.blockFrame, 1, 2),
+            'Y', Block.obsidian,
+            'Z', Item.clay }));
+        
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeBlocks.blockReinforced, 2, 3), new Object[] {
+            "   ",
+            "YXY",
+            "YYY",
+            'X', new ItemStack(ArtificeBlocks.blockFrame, 1, 3),
+            'Y', "ingotSteel" }));
     }
     
     private static void registerSteelRecipes()
     {
-    	GameRegistry.addSmelting(Item.ingotIron.itemID, new ItemStack(ArtificeItems.itemSteelIngot, 1, 0), 1.0F);
-    	
-    	GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeBlocks.blockSteel, 1, 0), new Object[] {
-    		"XXX",
-    		"XXX",
-    		"XXX",
-    		'X', "ingotSteel" }));
-    	
-    	GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ArtificeItems.itemSteelIngot, 9, 0), new ItemStack(ArtificeBlocks.blockSteel, 1, 0)));
+        GameRegistry.addSmelting(Item.ingotIron.itemID, new ItemStack(ArtificeItems.itemSteelIngot, 1, 0), 1.0F);
+        
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeBlocks.blockSteel, 1, 0), new Object[] {
+            "XXX",
+            "XXX",
+            "XXX",
+            'X', "ingotSteel" }));
+        
+        GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ArtificeItems.itemSteelIngot, 9, 0), new ItemStack(ArtificeBlocks.blockSteel, 1, 0)));
     }
     
     private static void registerFrameRecipes()
     {
-    	GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeBlocks.blockFrame, 8, 0), new Object[] {
-    		"XYX",
-    		"YYY",
-    		"XYX",
-    		'X', "plankWood",
-    		'Y', "stickWood" }));
-    	
-    	GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeBlocks.blockFrame, 8, 1), new Object[] {
-    		"XYX",
-    		"YYY",
-    		"XYX",
-    		'X', "plankWood",
-    		'Y', new ItemStack(Item.ingotIron.itemID, 1, 0) }));
-    	
-    	GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeBlocks.blockFrame, 16, 2), new Object[] {
-    		"X X",
-    		" Y ",
-    		"X X",
-    		'X', new ItemStack(Item.ingotIron.itemID, 1, 0),
-    		'Y', new ItemStack(Block.blockIron.blockID, 1, 0) }));
-    	
-    	GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeBlocks.blockFrame, 16, 3), new Object[] {
-    		"X X",
-    		" Y ",
-    		"X X",
-    		'X', "ingotSteel",
-    		'Y', "blockSteel" }));
-	}
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeBlocks.blockFrame, 8, 0), new Object[] {
+            "XYX",
+            "YYY",
+            "XYX",
+            'X', "plankWood",
+            'Y', "stickWood" }));
+        
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeBlocks.blockFrame, 8, 1), new Object[] {
+            "XYX",
+            "YYY",
+            "XYX",
+            'X', "plankWood",
+            'Y', new ItemStack(Item.ingotIron.itemID, 1, 0) }));
+        
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeBlocks.blockFrame, 16, 2), new Object[] {
+            "X X",
+            " Y ",
+            "X X",
+            'X', new ItemStack(Item.ingotIron.itemID, 1, 0),
+            'Y', new ItemStack(Block.blockIron.blockID, 1, 0) }));
+        
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeBlocks.blockFrame, 16, 3), new Object[] {
+            "X X",
+            " Y ",
+            "X X",
+            'X', "ingotSteel",
+            'Y', "blockSteel" }));
+    }
 
-	private static void registerSledgeRecipes()
-	{
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeItems.itemSledgeWood.itemID, 1, 0), new Object[] {
-			" YX",
-			" XY",
-			"X  ",
-			'X', "stickWood",
-			'Y', "plankWood" }));
-		
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeItems.itemSledgeStone.itemID, 1, 0), new Object[] {
-			" YX",
-			" XY",
-			"X  ",
-			'X', "stickWood",
-			'Y', new ItemStack(Block.cobblestone.blockID, 1, 0) }));
-		
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeItems.itemSledgeIron.itemID, 1, 0), new Object[] {
-			" YX",
-			" XY",
-			"X  ",
-			'X', "stickWood",
-			'Y', new ItemStack(Item.ingotIron.itemID, 1, 0) }));
-		
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeItems.itemSledgeGold.itemID, 1, 0), new Object[] {
-			" YX",
-			" XY",
-			"X  ",
-			'X', "stickWood",
-			'Y', new ItemStack(Item.ingotGold.itemID, 1, 0) }));
-		
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeItems.itemSledgeDiamond.itemID, 1, 0), new Object[] {
-			" YX",
-			" XY",
-			"X  ",
-			'X', "stickWood",
-			'Y', new ItemStack(Item.diamond.itemID, 1, 0) }));
-	}
+    private static void registerSledgeRecipes()
+    {
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeItems.itemSledgeWood.itemID, 1, 0), new Object[] {
+            " YX",
+            " XY",
+            "X  ",
+            'X', "stickWood",
+            'Y', "plankWood" }));
+        
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeItems.itemSledgeStone.itemID, 1, 0), new Object[] {
+            " YX",
+            " XY",
+            "X  ",
+            'X', "stickWood",
+            'Y', new ItemStack(Block.cobblestone.blockID, 1, 0) }));
+        
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeItems.itemSledgeIron.itemID, 1, 0), new Object[] {
+            " YX",
+            " XY",
+            "X  ",
+            'X', "stickWood",
+            'Y', new ItemStack(Item.ingotIron.itemID, 1, 0) }));
+        
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeItems.itemSledgeGold.itemID, 1, 0), new Object[] {
+            " YX",
+            " XY",
+            "X  ",
+            'X', "stickWood",
+            'Y', new ItemStack(Item.ingotGold.itemID, 1, 0) }));
+        
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeItems.itemSledgeDiamond.itemID, 1, 0), new Object[] {
+            " YX",
+            " XY",
+            "X  ",
+            'X', "stickWood",
+            'Y', new ItemStack(Item.diamond.itemID, 1, 0) }));
+    }
 
-	private static void registerDyeRecipes()
+    private static void registerDyeRecipes()
     {
         // Black flower
         GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ArtificeItems.itemDye.itemID, 2, 1), new ItemStack(ArtificeBlocks.blockFlora.blockID, 1, 1)));

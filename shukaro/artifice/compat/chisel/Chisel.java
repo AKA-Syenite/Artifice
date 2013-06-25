@@ -20,27 +20,27 @@ import cpw.mods.fml.common.registry.GameRegistry;
 @NetworkMod(clientSideRequired = false, serverSideRequired = false)
 public class Chisel
 {
-	@Init
-	public static void load(FMLInitializationEvent e0)
-	{
-		if (!Loader.isModLoaded("Chisel"))
-		{
-			ArtificeCore.logger.warning("Chisel missing, not loading compat");
-			return;
-		}
-		try
-		{
-			Class<?> main = Class.forName("info.jbcs.minecraft.chisel.Chisel");
-			Block marble = (Block) main.getField("blockMarble").get(null);
-			int id = marble.blockID;
-			
-			ArtificeRegistry.registerMarbleType(id, 0);
-			
-			ArtificeCore.logger.log(Level.INFO, "Chisel Compat Initialized");
-		}
-		catch (Exception ex)
-		{
-			ex.printStackTrace();
-		}
-	}
+    @Init
+    public static void load(FMLInitializationEvent e0)
+    {
+        if (!Loader.isModLoaded("Chisel"))
+        {
+            ArtificeCore.logger.warning("Chisel missing, not loading compat");
+            return;
+        }
+        try
+        {
+            Class<?> main = Class.forName("info.jbcs.minecraft.chisel.Chisel");
+            Block marble = (Block) main.getField("blockMarble").get(null);
+            int id = marble.blockID;
+            
+            ArtificeRegistry.registerMarbleType(id, 0);
+            
+            ArtificeCore.logger.log(Level.INFO, "Chisel Compat Initialized");
+        }
+        catch (Exception ex)
+        {
+            ex.printStackTrace();
+        }
+    }
 }

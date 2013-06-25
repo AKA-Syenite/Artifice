@@ -26,23 +26,23 @@ import shukaro.artifice.util.jlibnoise.module.Module;
 
 public class Multiply extends Module {
 
-	public Multiply() {
-		super(2);
-	}
+    public Multiply() {
+        super(2);
+    }
 
-	@Override
-	public int GetSourceModuleCount() {
-		return 2;
-	}
+    @Override
+    public int GetSourceModuleCount() {
+        return 2;
+    }
 
-	@Override
-	public double GetValue(double x, double y, double z) {
-		if (SourceModule[0] == null)
-			throw new NoModuleException();
-		if (SourceModule[1] == null)
-			throw new NoModuleException();
+    @Override
+    public double GetValue(double x, double y, double z) {
+        if (SourceModule[0] == null)
+            throw new NoModuleException();
+        if (SourceModule[1] == null)
+            throw new NoModuleException();
 
-		return SourceModule[0].GetValue(x, y, z) * SourceModule[1].GetValue(x, y, z);
-	}
+        return SourceModule[0].GetValue(x, y, z) * SourceModule[1].GetValue(x, y, z);
+    }
 
 }

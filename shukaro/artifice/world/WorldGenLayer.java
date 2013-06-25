@@ -23,17 +23,17 @@ public class WorldGenLayer
     
     public WorldGenLayer(World world, int id, int minHeight, int maxHeight)
     {
-    	this(world, id, minHeight, maxHeight, ArtificeRegistry.getStoneTypes());
+        this(world, id, minHeight, maxHeight, ArtificeRegistry.getStoneTypes());
     }
     
     public WorldGenLayer(World world, int id, int minHeight, int maxHeight, Set<Integer> replaced)
     {
-    	this.world = world;
-    	this.id = id;
-    	this.minHeight = minHeight;
-    	this.maxHeight = maxHeight;
-    	this.replaced = replaced;
-    	this.rand = new XSRandom(world.getSeed());
+        this.world = world;
+        this.id = id;
+        this.minHeight = minHeight;
+        this.maxHeight = maxHeight;
+        this.replaced = replaced;
+        this.rand = new XSRandom(world.getSeed());
     }
     
     public boolean generate(int chunkX, int chunkZ)
@@ -45,23 +45,23 @@ public class WorldGenLayer
         int min;
         int max;
         
-    	for (int i=x; i<xMax; i++)
-    	{
-    		for (int j=z; j<zMax; j++)
-    		{
-    			min = this.minHeight + rand.nextInt(2) - rand.nextInt(2);
-    			max = this.maxHeight + rand.nextInt(2) - rand.nextInt(2);
-    			if (min < 0)
-    				min = 0;
-    			if (max > 256)
-    				max = 256;
-    			for (int t=min; t<max; t++)
-    			{
-    				if (replaced.contains(world.getBlockId(i, t, j)))
-    					world.setBlock(i, t, j, this.id, 0, 0);
-    			}
-    		}
-    	}
-    	return true;
+        for (int i=x; i<xMax; i++)
+        {
+            for (int j=z; j<zMax; j++)
+            {
+                min = this.minHeight + rand.nextInt(2) - rand.nextInt(2);
+                max = this.maxHeight + rand.nextInt(2) - rand.nextInt(2);
+                if (min < 0)
+                    min = 0;
+                if (max > 256)
+                    max = 256;
+                for (int t=min; t<max; t++)
+                {
+                    if (replaced.contains(world.getBlockId(i, t, j)))
+                        world.setBlock(i, t, j, this.id, 0, 0);
+                }
+            }
+        }
+        return true;
     }
 }

@@ -33,12 +33,12 @@ public class ChunkCoord implements Comparable<ChunkCoord>, Serializable
     
     public boolean contains(BlockCoord c)
     {
-    	return this.contains(c.x, c.z);
+        return this.contains(c.x, c.z);
     }
     
     public boolean contains(int x, int z)
     {
-    	return this.chunkX == (x >> 4) && this.chunkZ == (z >> 4);
+        return this.chunkX == (x >> 4) && this.chunkZ == (z >> 4);
     }
     
     public int getCenterX()
@@ -57,9 +57,9 @@ public class ChunkCoord implements Comparable<ChunkCoord>, Serializable
         return "[" + this.chunkX + ", " + this.chunkZ + "]";
     }
 
-	@Override
-	public int compareTo(ChunkCoord other)
-	{
-		return this.chunkX == other.chunkX ? this.chunkZ - other.chunkZ : this.chunkX - other.chunkX;
-	}
+    @Override
+    public int compareTo(ChunkCoord other)
+    {
+        return this.chunkX == other.chunkX ? this.chunkZ - other.chunkZ : this.chunkX - other.chunkX;
+    }
 }

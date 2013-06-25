@@ -28,86 +28,86 @@ import shukaro.artifice.util.jlibnoise.module.Module;
 
 public class Billow extends Module {
 
-	public static final double DEFAULT_BILLOW_FREQUENCY = 1.0;
+    public static final double DEFAULT_BILLOW_FREQUENCY = 1.0;
 
-	public static final double DEFAULT_BILLOW_LACUNARITY = 2.0;
+    public static final double DEFAULT_BILLOW_LACUNARITY = 2.0;
 
-	public static final int DEFAULT_BILLOW_OCTAVE_COUNT = 6;
+    public static final int DEFAULT_BILLOW_OCTAVE_COUNT = 6;
 
-	public static final double DEFAULT_BILLOW_PERSISTENCE = 0.5;
+    public static final double DEFAULT_BILLOW_PERSISTENCE = 0.5;
 
-	public static final NoiseQuality DEFAULT_BILLOW_QUALITY = NoiseQuality.STANDARD;
+    public static final NoiseQuality DEFAULT_BILLOW_QUALITY = NoiseQuality.STANDARD;
 
-	public static final int DEFAULT_BILLOW_SEED = 0;
+    public static final int DEFAULT_BILLOW_SEED = 0;
 
-	public static final int BILLOW_MAX_OCTAVE = 30;
+    public static final int BILLOW_MAX_OCTAVE = 30;
 
-	protected double frequency = DEFAULT_BILLOW_FREQUENCY;
-	protected double lacunarity = DEFAULT_BILLOW_LACUNARITY;
-	protected NoiseQuality quality = DEFAULT_BILLOW_QUALITY;
-	protected double persistence = DEFAULT_BILLOW_PERSISTENCE;
-	protected int seed = DEFAULT_BILLOW_SEED;
-	protected int octaveCount = DEFAULT_BILLOW_OCTAVE_COUNT;
+    protected double frequency = DEFAULT_BILLOW_FREQUENCY;
+    protected double lacunarity = DEFAULT_BILLOW_LACUNARITY;
+    protected NoiseQuality quality = DEFAULT_BILLOW_QUALITY;
+    protected double persistence = DEFAULT_BILLOW_PERSISTENCE;
+    protected int seed = DEFAULT_BILLOW_SEED;
+    protected int octaveCount = DEFAULT_BILLOW_OCTAVE_COUNT;
 
-	public Billow() {
-		super(0);
-	}
+    public Billow() {
+        super(0);
+    }
 
-	public int getOctaveCount() {
-		return octaveCount;
-	}
+    public int getOctaveCount() {
+        return octaveCount;
+    }
 
-	public void setOctaveCount(int octaveCount) {
-		if (octaveCount < 1 || octaveCount > BILLOW_MAX_OCTAVE) {
-			throw new IllegalArgumentException("octaveCount must be between 1 and BILLOW_MAX_OCTAVE: " + BILLOW_MAX_OCTAVE);
-		}
-		this.octaveCount = octaveCount;
-	}
+    public void setOctaveCount(int octaveCount) {
+        if (octaveCount < 1 || octaveCount > BILLOW_MAX_OCTAVE) {
+            throw new IllegalArgumentException("octaveCount must be between 1 and BILLOW_MAX_OCTAVE: " + BILLOW_MAX_OCTAVE);
+        }
+        this.octaveCount = octaveCount;
+    }
 
-	public double getFrequency() {
-		return frequency;
-	}
+    public double getFrequency() {
+        return frequency;
+    }
 
-	public void setFrequency(double frequency) {
-		this.frequency = frequency;
-	}
+    public void setFrequency(double frequency) {
+        this.frequency = frequency;
+    }
 
-	public double getLacunarity() {
-		return lacunarity;
-	}
+    public double getLacunarity() {
+        return lacunarity;
+    }
 
-	public void setLacunarity(double lacunarity) {
-		this.lacunarity = lacunarity;
-	}
+    public void setLacunarity(double lacunarity) {
+        this.lacunarity = lacunarity;
+    }
 
-	public NoiseQuality getQuality() {
-		return quality;
-	}
+    public NoiseQuality getQuality() {
+        return quality;
+    }
 
-	public void setQuality(NoiseQuality quality) {
-		this.quality = quality;
-	}
+    public void setQuality(NoiseQuality quality) {
+        this.quality = quality;
+    }
 
-	public double getPersistence() {
-		return persistence;
-	}
+    public double getPersistence() {
+        return persistence;
+    }
 
-	public void setPersistence(double persistance) {
-		this.persistence = persistance;
-	}
+    public void setPersistence(double persistance) {
+        this.persistence = persistance;
+    }
 
-	public int getSeed() {
-		return seed;
-	}
+    public int getSeed() {
+        return seed;
+    }
 
-	public void setSeed(int seed) {
-		this.seed = seed;
-	}
+    public void setSeed(int seed) {
+        this.seed = seed;
+    }
 
-	@Override
-	public int GetSourceModuleCount() {
-		return 0;
-	}
+    @Override
+    public int GetSourceModuleCount() {
+        return 0;
+    }
 
     @Override
     public double GetValue(double x, double y, double z) {

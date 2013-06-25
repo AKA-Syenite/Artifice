@@ -19,6 +19,6 @@ public class ClientProxy extends CommonProxy
         RenderingRegistry.registerBlockHandler(ArtificeCore.lotusRenderID, new LotusRenderer());
         
         if (ArtificeConfig.enableFrames.getBoolean(true))
-        	TickRegistry.registerTickHandler(new ScaffoldTicker(), Side.CLIENT);
+            TickRegistry.registerTickHandler(new ScaffoldTicker(), Side.CLIENT);
     }
 }

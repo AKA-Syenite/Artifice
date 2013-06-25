@@ -11,27 +11,27 @@ import net.minecraft.util.Icon;
 
 public class BlockSteel extends Block
 {
-	public Icon icon;
-	
-	public BlockSteel(int id)
-	{
-		super(id, Material.iron);
-		this.setCreativeTab(ArtificeCreativeTab.tab);
+    public Icon icon;
+    
+    public BlockSteel(int id)
+    {
+        super(id, Material.iron);
+        this.setCreativeTab(ArtificeCreativeTab.tab);
         this.setHardness(3.0F);
         this.setUnlocalizedName("artifice.steel");
-	}
+    }
 
-	@Override
+    @Override
     @SideOnly(Side.CLIENT)
     public void registerIcons(IconRegister reg)
-	{
-		this.icon = IconHandler.registerSingle(reg, "steel", "misc");
-	}
-	
-	@Override
+    {
+        this.icon = IconHandler.registerSingle(reg, "steel", "misc");
+    }
+    
+    @Override
     @SideOnly(Side.CLIENT)
     public Icon getIcon(int side, int meta)
-	{
-		return this.icon;
-	}
+    {
+        return this.icon;
+    }
 }

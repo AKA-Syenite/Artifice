@@ -24,31 +24,31 @@ import cpw.mods.fml.common.registry.GameRegistry;
 @NetworkMod(clientSideRequired = false, serverSideRequired = false)
 public class MFR
 {
-	@Init
-	public static void load(FMLInitializationEvent e0)
-	{
-		if (!Loader.isModLoaded("MineFactoryReloaded"))
-		{
-			ArtificeCore.logger.warning("MFR missing, not loading compat");
-			return;
-		}
-		try
-		{
-			if (ArtificeConfig.enableWorldGen.getBoolean(true))
-				FarmingRegistry.registerHarvestable(new FactoryFlora());
-			
-			Class<?> main = Class.forName("powercrystals.minefactoryreloaded.MineFactoryReloadedCore");
-			Block stone = (Block) main.getField("factoryDecorativeStoneBlock").get(null);
-			int id = stone.blockID;
-			
-			ArtificeRegistry.registerBasaltType(id, 0);
-			ArtificeRegistry.registerMarbleType(id, 1);
-			
-			ArtificeCore.logger.log(Level.INFO, "MFR Compat Initialized");
-		}
-		catch (Exception ex)
-		{
-			ex.printStackTrace();
-		}
-	}
+    @Init
+    public static void load(FMLInitializationEvent e0)
+    {
+        if (!Loader.isModLoaded("MineFactoryReloaded"))
+        {
+            ArtificeCore.logger.warning("MFR missing, not loading compat");
+            return;
+        }
+        try
+        {
+            if (ArtificeConfig.enableWorldGen.getBoolean(true))
+                FarmingRegistry.registerHarvestable(new FactoryFlora());
+            
+            Class<?> main = Class.forName("powercrystals.minefactoryreloaded.MineFactoryReloadedCore");
+            Block stone = (Block) main.getField("factoryDecorativeStoneBlock").get(null);
+            int id = stone.blockID;
+            
+            ArtificeRegistry.registerBasaltType(id, 0);
+            ArtificeRegistry.registerMarbleType(id, 1);
+            
+            ArtificeCore.logger.log(Level.INFO, "MFR Compat Initialized");
+        }
+        catch (Exception ex)
+        {
+            ex.printStackTrace();
+        }
+    }
 }

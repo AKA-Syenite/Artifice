@@ -27,72 +27,72 @@ import shukaro.artifice.util.jlibnoise.module.Module;
 
 public class Voronoi extends Module {
 
-	/// Default displacement to apply to each cell for the
-	/// noise::module::Voronoi noise module.
-	public static final double DEFAULT_VORONOI_DISPLACEMENT = 1.0;
+    /// Default displacement to apply to each cell for the
+    /// noise::module::Voronoi noise module.
+    public static final double DEFAULT_VORONOI_DISPLACEMENT = 1.0;
 
-	/// Default frequency of the seed points for the noise::module::Voronoi
-	/// noise module.
-	public static final double DEFAULT_VORONOI_FREQUENCY = 1.0;
+    /// Default frequency of the seed points for the noise::module::Voronoi
+    /// noise module.
+    public static final double DEFAULT_VORONOI_FREQUENCY = 1.0;
 
-	/// Default seed of the noise function for the noise::module::Voronoi
-	/// noise module.
-	public static final int DEFAULT_VORONOI_SEED = 0;
+    /// Default seed of the noise function for the noise::module::Voronoi
+    /// noise module.
+    public static final int DEFAULT_VORONOI_SEED = 0;
 
-	/// Scale of the random displacement to apply to each Voronoi cell.
-	double displacement = DEFAULT_VORONOI_DISPLACEMENT;
+    /// Scale of the random displacement to apply to each Voronoi cell.
+    double displacement = DEFAULT_VORONOI_DISPLACEMENT;
 
-	/// Determines if the distance from the nearest seed point is applied to
-	/// the output value.
-	boolean enableDistance = false;
+    /// Determines if the distance from the nearest seed point is applied to
+    /// the output value.
+    boolean enableDistance = false;
 
-	/// Frequency of the seed points.
-	double frequency = DEFAULT_VORONOI_FREQUENCY;
+    /// Frequency of the seed points.
+    double frequency = DEFAULT_VORONOI_FREQUENCY;
 
-	/// Seed value used by the coherent-noise function to determine the
-	/// positions of the seed points.
-	int seed = DEFAULT_VORONOI_SEED;
+    /// Seed value used by the coherent-noise function to determine the
+    /// positions of the seed points.
+    int seed = DEFAULT_VORONOI_SEED;
 
-	public Voronoi() {
-		super(0);
-	}
+    public Voronoi() {
+        super(0);
+    }
 
-	public double getDisplacement() {
-		return displacement;
-	}
+    public double getDisplacement() {
+        return displacement;
+    }
 
-	public void setDisplacement(double displacement) {
-		this.displacement = displacement;
-	}
+    public void setDisplacement(double displacement) {
+        this.displacement = displacement;
+    }
 
-	public boolean isEnableDistance() {
-		return enableDistance;
-	}
+    public boolean isEnableDistance() {
+        return enableDistance;
+    }
 
-	public void setEnableDistance(boolean enableDistance) {
-		this.enableDistance = enableDistance;
-	}
+    public void setEnableDistance(boolean enableDistance) {
+        this.enableDistance = enableDistance;
+    }
 
-	public double getFrequency() {
-		return frequency;
-	}
+    public double getFrequency() {
+        return frequency;
+    }
 
-	public void setFrequency(double frequency) {
-		this.frequency = frequency;
-	}
+    public void setFrequency(double frequency) {
+        this.frequency = frequency;
+    }
 
-	public int getSeed() {
-		return seed;
-	}
+    public int getSeed() {
+        return seed;
+    }
 
-	public void setSeed(int seed) {
-		this.seed = seed;
-	}
+    public void setSeed(int seed) {
+        this.seed = seed;
+    }
 
-	@Override
-	public int GetSourceModuleCount() {
-		return 0;
-	}
+    @Override
+    public int GetSourceModuleCount() {
+        return 0;
+    }
 
     @Override
     public double GetValue(double x, double y, double z) {

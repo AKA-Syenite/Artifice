@@ -89,10 +89,10 @@ public class ArtificeRecipes
     
     private static void registerCoinSmelting()
     {
-    	GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ArtificeItems.itemNugget, 1, 0), new ItemStack(ArtificeItems.itemCoin, 1, 0)));
-    	GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ArtificeItems.itemNugget, 1, 1), new ItemStack(ArtificeItems.itemCoin, 1, 1)));
-    	GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(Item.goldNugget, 1, 0), new ItemStack(ArtificeItems.itemCoin, 1, 2)));
-    	GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ArtificeItems.itemNugget, 1, 2), new ItemStack(ArtificeItems.itemCoin, 1, 3)));
+    	FurnaceRecipes.smelting().addSmelting(ArtificeItems.itemCoin.itemID, 0, new ItemStack(ArtificeItems.itemNugget, 1, 0), 0);
+    	FurnaceRecipes.smelting().addSmelting(ArtificeItems.itemCoin.itemID, 1, new ItemStack(ArtificeItems.itemNugget, 1, 1), 0);
+    	FurnaceRecipes.smelting().addSmelting(ArtificeItems.itemCoin.itemID, 2, new ItemStack(Item.goldNugget, 1, 0), 0);
+    	FurnaceRecipes.smelting().addSmelting(ArtificeItems.itemCoin.itemID, 3, new ItemStack(ArtificeItems.itemNugget, 1, 2), 0);
     }
     
     private static void registerSickleRecipes()

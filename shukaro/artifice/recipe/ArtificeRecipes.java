@@ -58,6 +58,41 @@ public class ArtificeRecipes
         }
         if (ArtificeConfig.sickleRecipes.getBoolean(true))
             registerSickleRecipes();
+        if (ArtificeConfig.coinMinting.getBoolean(true))
+        	registerCoinMinting();
+        if (ArtificeConfig.coinChanging.getBoolean(true))
+        	registerCoinChanging();
+        if (ArtificeConfig.coinSmelting.getBoolean(false))
+        	registerCoinSmelting();
+    }
+    
+    private static void registerCoinMinting()
+    {
+    	String[] nuggets = { "nuggetCopper", "nuggetSilver", "nuggetGold", "nuggetPlatinum" };
+    	
+    	for (int i=0; i<nuggets.length; i++)
+    	{
+    		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ArtificeItems.itemCoin, 3, i), nuggets[i], nuggets[i], nuggets[i]));
+    	}
+    }
+    
+    private static void registerCoinChanging()
+    {
+    	GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ArtificeItems.itemCoin, 1, 1), "coinCopper", "coinCopper", "coinCopper", "coinCopper"));
+    	GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ArtificeItems.itemCoin, 1, 2), "coinSilver", "coinSilver", "coinSilver", "coinSilver"));
+    	GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ArtificeItems.itemCoin, 1, 3), "coinGold", "coinGold", "coinGold", "coinGold"));
+    	
+    	GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ArtificeItems.itemCoin, 4, 0), "coinSilver"));
+    	GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ArtificeItems.itemCoin, 4, 1), "coinGold"));
+    	GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ArtificeItems.itemCoin, 4, 2), "coinPlatinum"));
+    }
+    
+    private static void registerCoinSmelting()
+    {
+    	GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ArtificeItems.itemNugget, 1, 0), new ItemStack(ArtificeItems.itemCoin, 1, 0)));
+    	GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ArtificeItems.itemNugget, 1, 1), new ItemStack(ArtificeItems.itemCoin, 1, 1)));
+    	GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(Item.goldNugget, 1, 0), new ItemStack(ArtificeItems.itemCoin, 1, 2)));
+    	GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ArtificeItems.itemNugget, 1, 2), new ItemStack(ArtificeItems.itemCoin, 1, 3)));
     }
     
     private static void registerSickleRecipes()

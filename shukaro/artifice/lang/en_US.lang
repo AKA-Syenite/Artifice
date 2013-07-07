@@ -78,3 +78,12 @@ item.artifice.dye.blue.name = Sea Blue
 item.artifice.dye.black.name = Midnight Black
 item.artifice.dye.brown.name = Oak Brown
 item.artifice.dye.white.name = Bone White
+
+item.artifice.nugget.copper.name = Copper Nugget
+item.artifice.nugget.silver.name = Silver Nugget
+item.artifice.nugget.platinum.name = Platinum Nugget
+
+item.artifice.coin.copper.name = Shilling
+item.artifice.coin.silver.name = Florin
+item.artifice.coin.gold.name = Sovereign
+item.artifice.coin.platinum.name = Marque

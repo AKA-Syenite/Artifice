@@ -55,6 +55,8 @@ public class ArtificeConfig
     public static Property itemSickleIronID;
     public static Property itemSickleGoldID;
     public static Property itemSickleDiamondID;
+    public static Property itemNuggetID;
+    public static Property itemCoinID;
     
     public static Property sledgeRecipes;
     public static Property frameRecipes;
@@ -66,6 +68,9 @@ public class ArtificeConfig
     public static Property boxRecipes;
     public static Property stoneCycleRecipes;
     public static Property sickleRecipes;
+    public static Property coinMinting;
+    public static Property coinChanging;
+    public static Property coinSmelting;
     
     public static Property enableFrames;
     public static Property enableSledges;
@@ -73,6 +78,7 @@ public class ArtificeConfig
     public static Property enableWorldGen;
     public static Property enableBoxes;
     public static Property enableSickles;
+    public static Property enableCoins;
     
     public static Property floraWorldGen;
     public static Property floraFrequency;
@@ -171,6 +177,8 @@ public class ArtificeConfig
             itemSickleIronID = c.getItem("itemSickleIron", i++);
             itemSickleGoldID = c.getItem("itemSickleGold", i++);
             itemSickleDiamondID = c.getItem("itemSickleDiamond", i++);
+            itemNuggetID = c.getItem("itemNugget", i++);
+            itemCoinID = c.getItem("itemCoin", i++);
             
             floraWorldGen = c.get("World Generation", "Generate Flowers", true);
             floraWorldGen.comment = "Whether or not to generate flowers";
@@ -275,6 +283,12 @@ public class ArtificeConfig
             stoneCycleRecipes.comment = "Set to false to prevent cycling through types of stone";
             sickleRecipes = c.get("Recipes", "Sickle Recipes", true);
             sickleRecipes.comment = "Set to false to prevent crafting of sickles";
+            coinMinting = c.get("Recipes", "Coin Minting", true);
+            coinMinting.comment = "Whether or not to allow coins to be minted from nuggets";
+            coinChanging = c.get("Recipes", "Coin Changing", true);
+            coinChanging.comment = "Whether or not to allow coins to be traded up or down for other coins";
+            coinSmelting = c.get("Recipes", "Coin Smelting", false);
+            coinSmelting.comment = "Whether or not to allow coins to be smelted back into nuggets";
             
             floraBoneMeal = c.get("General", "Bonemeal Flowers", true);
             floraBoneMeal.comment = "Set to false to disable random flower growth from bonemeal";
@@ -326,6 +340,14 @@ public class ArtificeConfig
             if (!enableSickles.getBoolean(true))
             {
                 sickleRecipes.set(false);
+            }
+            enableCoins = c.get("General", "Enable Coins", true);
+            enableCoins.comment = "Set to false to stop coins from initializing";
+            if (!enableCoins.getBoolean(true))
+            {
+            	coinMinting.set(false);
+            	coinChanging.set(false);
+            	coinSmelting.set(false);
             }
         }
         catch (Exception e)

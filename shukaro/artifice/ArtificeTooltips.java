@@ -239,5 +239,26 @@ public class ArtificeTooltips
             ArtificeRegistry.registerTooltip(ArtificeBlocks.blockSteel.blockID, 0, "A strong iron alloy");
             ArtificeRegistry.registerTooltip(ArtificeBlocks.blockSteel.blockID, 0, commentCode + "Steel is progress");
         }
+        
+        if (ArtificeConfig.enableCoins.getBoolean(true))
+        {
+        	ArtificeRegistry.registerTooltip(ArtificeItems.itemNugget.itemID, 0, commentCode + "Slightly tarnished");
+        	
+        	ArtificeRegistry.registerTooltip(ArtificeItems.itemNugget.itemID, 1, commentCode + "Like a drop of quicksilver");
+        	
+        	ArtificeRegistry.registerTooltip(ArtificeItems.itemNugget.itemID, 2, commentCode + "Surprisingly heavy");
+        	
+        	ArtificeRegistry.registerTooltip(ArtificeItems.itemCoin.itemID, 0, "Copper Coin");
+        	ArtificeRegistry.registerTooltip(ArtificeItems.itemCoin.itemID, 0, commentCode + "Dependable");
+        	
+        	ArtificeRegistry.registerTooltip(ArtificeItems.itemCoin.itemID, 1, "Silver Coin");
+        	ArtificeRegistry.registerTooltip(ArtificeItems.itemCoin.itemID, 1, commentCode + "Has a mirrored finish");
+        	
+        	ArtificeRegistry.registerTooltip(ArtificeItems.itemCoin.itemID, 2, "Gold Coin");
+        	ArtificeRegistry.registerTooltip(ArtificeItems.itemCoin.itemID, 2, commentCode + "Coin of the realm");
+        	
+        	ArtificeRegistry.registerTooltip(ArtificeItems.itemCoin.itemID, 3, "Platinum Coin");
+        	ArtificeRegistry.registerTooltip(ArtificeItems.itemCoin.itemID, 3, commentCode + "A dollar saved...");
+        }
     }
 }

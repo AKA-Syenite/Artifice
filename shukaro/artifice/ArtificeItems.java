@@ -2,13 +2,16 @@ package shukaro.artifice;
 
 import net.minecraft.block.BlockDispenser;
 import net.minecraft.item.EnumToolMaterial;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemTool;
 import net.minecraftforge.oredict.OreDictionary;
 import shukaro.artifice.item.DispenserBehaviorBox;
 import shukaro.artifice.item.DispenserBehaviorSledge;
 import shukaro.artifice.item.ItemBox;
+import shukaro.artifice.item.ItemCoin;
 import shukaro.artifice.item.ItemDye;
+import shukaro.artifice.item.ItemNugget;
 import shukaro.artifice.item.ItemSickle;
 import shukaro.artifice.item.ItemSledge;
 import shukaro.artifice.item.ItemSteel;
@@ -29,6 +32,8 @@ public class ArtificeItems
     public static ItemTool itemSickleIron;
     public static ItemTool itemSickleGold;
     public static ItemTool itemSickleDiamond;
+    public static ItemNugget itemNugget;
+    public static ItemCoin itemCoin;
     
     public static void initItems()
     {
@@ -87,6 +92,22 @@ public class ArtificeItems
             GameRegistry.registerItem(itemSickleIron, itemSickleIron.getUnlocalizedName());
             GameRegistry.registerItem(itemSickleGold, itemSickleGold.getUnlocalizedName());
             GameRegistry.registerItem(itemSickleDiamond, itemSickleDiamond.getUnlocalizedName());
+        }
+        
+        if (ArtificeConfig.enableCoins.getBoolean(true))
+        {
+        	itemNugget = new ItemNugget(ArtificeConfig.itemNuggetID.getInt());
+        	itemCoin = new ItemCoin(ArtificeConfig.itemCoinID.getInt());
+        	GameRegistry.registerItem(itemNugget, itemNugget.getUnlocalizedName());
+        	GameRegistry.registerItem(itemCoin, itemCoin.getUnlocalizedName());
+        	OreDictionary.registerOre("nuggetCopper", new ItemStack(itemNugget.itemID, 1, 0));
+        	OreDictionary.registerOre("nuggetSilver", new ItemStack(itemNugget.itemID, 1, 1));
+        	OreDictionary.registerOre("nuggetGold", new ItemStack(Item.goldNugget.itemID, 1, 0));
+        	OreDictionary.registerOre("nuggetPlatinum", new ItemStack(itemNugget.itemID, 1, 2));
+        	OreDictionary.registerOre("coinCopper", new ItemStack(itemCoin.itemID, 1, 0));
+        	OreDictionary.registerOre("coinSilver", new ItemStack(itemCoin.itemID, 1, 1));
+        	OreDictionary.registerOre("coinGold", new ItemStack(itemCoin.itemID, 1, 2));
+        	OreDictionary.registerOre("coinPlatinum", new ItemStack(itemCoin.itemID, 1, 3));
         }
     }
 }

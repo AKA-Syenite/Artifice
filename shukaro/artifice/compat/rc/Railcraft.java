@@ -26,11 +26,10 @@ public class Railcraft
         }
         try
         {
-            ItemStack marble = GameRegistry.findItemStack("Railcraft", "cube.stone.quarried", 1);
-            ItemStack basalt = GameRegistry.findItemStack("RailCraft", "cube.stone.abyssal", 1);
+            ItemStack stone = GameRegistry.findItemStack("Railcraft", "cube.stone.quarried", 1);
             
-            ArtificeRegistry.registerMarbleType(marble.itemID, 7);
-            ArtificeRegistry.registerBasaltType(basalt.itemID, 6);
+            ArtificeRegistry.registerMarbleType(stone.itemID, 7);
+            ArtificeRegistry.registerBasaltType(stone.itemID, 6);
             
             ArtificeCore.logger.log(Level.INFO, "Railcraft Compat Initialized");
         }

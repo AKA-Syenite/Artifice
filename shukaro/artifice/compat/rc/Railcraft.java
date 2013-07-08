@@ -29,8 +29,8 @@ public class Railcraft
             ItemStack marble = GameRegistry.findItemStack("Railcraft", "cube.stone.quarried", 1);
             ItemStack basalt = GameRegistry.findItemStack("RailCraft", "cube.stone.abyssal", 1);
             
-            ArtificeRegistry.registerMarbleType(marble.itemID, 0);
-            ArtificeRegistry.registerBasaltType(basalt.itemID, 0);
+            ArtificeRegistry.registerMarbleType(marble.itemID, 7);
+            ArtificeRegistry.registerBasaltType(basalt.itemID, 6);
             
             ArtificeCore.logger.log(Level.INFO, "Railcraft Compat Initialized");
         }

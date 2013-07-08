@@ -32,7 +32,7 @@ public class Forestry
             
             if (ArtificeConfig.enableWorldGen.getBoolean(true))
             {
-                for (int i=0; i<3; i++)
+                for (int i=0; i<4; i++)
                 	flowerList.add(new ItemStack(ArtificeBlocks.blockFlora, 1, i));
             }
             

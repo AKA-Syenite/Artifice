@@ -5,12 +5,12 @@ import java.util.ArrayList;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import shukaro.artifice.ArtificeCore;
+import shukaro.artifice.compat.ArtificeRegistry;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.Init;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.network.NetworkMod;
-import shukaro.artifice.ArtificeCore;
-import shukaro.artifice.compat.ArtificeRegistry;
 
 @Mod(modid = "ArtificeCompat|Vanilla", name = "Artifice Compat: Vanilla", version = ArtificeCore.modVersion, dependencies = "after:Artifice")
 @NetworkMod(clientSideRequired = false, serverSideRequired = false)

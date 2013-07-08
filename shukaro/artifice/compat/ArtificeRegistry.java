@@ -8,16 +8,13 @@ import java.util.Map;
 import java.util.Set;
 import java.util.logging.Level;
 
-import shukaro.artifice.ArtificeConfig;
-import shukaro.artifice.ArtificeCore;
-import shukaro.artifice.ArtificeItems;
-import shukaro.artifice.util.IdMetaPair;
-
-import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.CraftingManager;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraftforge.oredict.ShapelessOreRecipe;
+import shukaro.artifice.ArtificeConfig;
+import shukaro.artifice.ArtificeCore;
+import shukaro.artifice.util.IdMetaPair;
 
 public abstract class ArtificeRegistry
 {

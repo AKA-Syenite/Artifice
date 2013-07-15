@@ -159,4 +159,10 @@ public class BlockFrameDetector extends BlockFrame implements IConnectableRedNet
     {
         return this.icon;
     }
+
+	@Override
+	public boolean isBlockSolidOnSide(World world, int x, int y, int z, ForgeDirection side)
+	{
+		return true;
+	}
 }

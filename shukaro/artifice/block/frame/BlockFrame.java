@@ -41,6 +41,9 @@ public abstract class BlockFrame extends BlockArtifice implements ITileEntityPro
     public abstract boolean isOpaqueCube();
     
     @Override
+    public abstract boolean isBlockSolidOnSide(World world, int x, int y, int z, ForgeDirection side);
+    
+    @Override
     @SideOnly(Side.CLIENT)
     public void getSubBlocks(int i, CreativeTabs tabs, List list)
     {

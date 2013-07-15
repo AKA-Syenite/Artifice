@@ -6,6 +6,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Icon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraftforge.common.ForgeDirection;
 import shukaro.artifice.ArtificeCore;
 import shukaro.artifice.render.IconHandler;
 import cpw.mods.fml.relauncher.Side;
@@ -54,4 +55,10 @@ public class BlockFrameBase extends BlockFrame
     {
         return null;
     }
+
+	@Override
+	public boolean isBlockSolidOnSide(World world, int x, int y, int z, ForgeDirection side)
+	{
+		return false;
+	}
 }

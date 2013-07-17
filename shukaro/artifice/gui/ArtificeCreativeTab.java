@@ -22,6 +22,8 @@ public class ArtificeCreativeTab extends CreativeTabs
             return new ItemStack(ArtificeBlocks.blockFrame, 1, 0);
         if (ArtificeConfig.enableWorldGen.getBoolean(true))
             return new ItemStack(ArtificeBlocks.blockBasalt, 1, 0);
+        if (ArtificeConfig.enableUpgrades.getBoolean(true))
+        	return new ItemStack(ArtificeItems.itemUpgrade, 1, 0);
         if (ArtificeConfig.enableSledges.getBoolean(true))
             return new ItemStack(ArtificeItems.itemSledgeDiamond, 1, 0);
         if (ArtificeConfig.enableCoins.getBoolean(true))

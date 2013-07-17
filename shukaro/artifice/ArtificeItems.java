@@ -15,6 +15,7 @@ import shukaro.artifice.item.ItemNugget;
 import shukaro.artifice.item.ItemSickle;
 import shukaro.artifice.item.ItemSledge;
 import shukaro.artifice.item.ItemSteel;
+import shukaro.artifice.item.ItemUpgrade;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 public class ArtificeItems
@@ -34,6 +35,7 @@ public class ArtificeItems
     public static ItemTool itemSickleDiamond;
     public static ItemNugget itemNugget;
     public static ItemCoin itemCoin;
+    public static ItemUpgrade itemUpgrade;
     
     public static void initItems()
     {
@@ -108,6 +110,12 @@ public class ArtificeItems
         	OreDictionary.registerOre("coinSilver", new ItemStack(itemCoin.itemID, 1, 1));
         	OreDictionary.registerOre("coinGold", new ItemStack(itemCoin.itemID, 1, 2));
         	OreDictionary.registerOre("coinPlatinum", new ItemStack(itemCoin.itemID, 1, 3));
+        }
+        
+        if (ArtificeConfig.enableUpgrades.getBoolean(true))
+        {
+        	itemUpgrade = new ItemUpgrade(ArtificeConfig.itemUpgradeID.getInt());
+        	GameRegistry.registerItem(itemUpgrade, itemUpgrade.getUnlocalizedName());
         }
     }
 }

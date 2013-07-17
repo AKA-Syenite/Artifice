@@ -57,6 +57,7 @@ public class ArtificeConfig
     public static Property itemSickleDiamondID;
     public static Property itemNuggetID;
     public static Property itemCoinID;
+    public static Property itemUpgradeID;
     
     public static Property sledgeRecipes;
     public static Property frameRecipes;
@@ -71,6 +72,7 @@ public class ArtificeConfig
     public static Property coinMinting;
     public static Property coinChanging;
     public static Property coinSmelting;
+    public static Property upgradeRecipes;
     
     public static Property enableFrames;
     public static Property enableSledges;
@@ -79,6 +81,8 @@ public class ArtificeConfig
     public static Property enableBoxes;
     public static Property enableSickles;
     public static Property enableCoins;
+    public static Property enableUpgrades;
+    public static Property limitUpgrades;
     
     public static Property floraWorldGen;
     public static Property floraFrequency;
@@ -179,6 +183,7 @@ public class ArtificeConfig
             itemSickleDiamondID = c.getItem("itemSickleDiamond", i++);
             itemNuggetID = c.getItem("itemNugget", i++);
             itemCoinID = c.getItem("itemCoin", i++);
+            itemUpgradeID = c.getItem("itemUpgrade", i++);
             
             floraWorldGen = c.get("World Generation", "Generate Flowers", true);
             floraWorldGen.comment = "Whether or not to generate flowers";
@@ -289,7 +294,11 @@ public class ArtificeConfig
             coinChanging.comment = "Whether or not to allow coins to be traded up or down for other coins";
             coinSmelting = c.get("Recipes", "Coin Smelting", false);
             coinSmelting.comment = "Whether or not to allow coins to be smelted back into nuggets";
+            upgradeRecipes = c.get("Recipes", "Upgrade Recipes", true);
+            upgradeRecipes.comment = "Set to false to prevent crafting of upgrades";
             
+            limitUpgrades = c.get("General", "Limit Upgrades", true);
+            limitUpgrades.comment = "If true, caps the maximum enchant level that can be applied through upgrades to below the natural cap (Shown in Tooltips)";
             floraBoneMeal = c.get("General", "Bonemeal Flowers", true);
             floraBoneMeal.comment = "Set to false to disable random flower growth from bonemeal";
             
@@ -323,7 +332,10 @@ public class ArtificeConfig
                 lotusWorldGen.set(false);
                 basaltLayerWorldGen.set(false);
                 basaltClusterWorldGen.set(false);
+                basaltCaveWorldGen.set(false);
+                marbleLayerWorldGen.set(false);
                 marbleClusterWorldGen.set(false);
+                marbleCaveWorldGen.set(false);
                 floraRecipes.set(false);
                 basaltRecipes.set(false);
                 marbleRecipes.set(false);
@@ -349,6 +361,13 @@ public class ArtificeConfig
             	coinChanging.set(false);
             	coinSmelting.set(false);
             }
+            enableUpgrades = c.get("General", "Enable Upgrades", true);
+            enableUpgrades.comment = "Set to false to stop upgrades from initializing";
+            if (!enableUpgrades.getBoolean(true))
+            {
+            	upgradeRecipes.set(false);
+            }
+            
         }
         catch (Exception e)
         {

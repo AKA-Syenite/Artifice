@@ -141,7 +141,7 @@ public class ArtificeTooltips
         	
         	ArtificeRegistry.registerTooltip(ArtificeItems.itemUpgrade.itemID, 11, "Helmet Upgrade");
         	ArtificeRegistry.registerTooltip(ArtificeItems.itemUpgrade.itemID, 11, FormatCodes.Yellow.format + StatCollector.translateToLocal(Enchantment.respiration.getName()) + " (" + (ArtificeConfig.limitUpgrades.getBoolean(true) ? RomanUtil.convertToRoman(EnumUpgrades.ScubaTank.maxLevel) : RomanUtil.convertToRoman(Enchantment.respiration.getMaxLevel())) + ")");
-        	ArtificeRegistry.registerTooltip(ArtificeItems.itemUpgrade.itemID, 11, commentCode + "Crude, but effective air tanks");
+        	ArtificeRegistry.registerTooltip(ArtificeItems.itemUpgrade.itemID, 11, commentCode + "Crude, but effective air tank");
         	
         	ArtificeRegistry.registerTooltip(ArtificeItems.itemUpgrade.itemID, 12, "Helmet Upgrade"); 
         	ArtificeRegistry.registerTooltip(ArtificeItems.itemUpgrade.itemID, 12, FormatCodes.Yellow.format + StatCollector.translateToLocal(Enchantment.aquaAffinity.getName()) + " (" + (ArtificeConfig.limitUpgrades.getBoolean(true) ? RomanUtil.convertToRoman(EnumUpgrades.DiveKit.maxLevel) : RomanUtil.convertToRoman(Enchantment.aquaAffinity.getMaxLevel())) + ")");

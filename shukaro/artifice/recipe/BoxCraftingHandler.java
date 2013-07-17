@@ -1,4 +1,4 @@
-package shukaro.artifice.item;
+package shukaro.artifice.recipe;
 
 import org.lwjgl.input.Keyboard;
 

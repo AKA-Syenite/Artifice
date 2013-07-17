@@ -1,7 +1,11 @@
 package shukaro.artifice;
 
+import net.minecraft.enchantment.Enchantment;
+import net.minecraft.util.StatCollector;
 import shukaro.artifice.compat.ArtificeRegistry;
+import shukaro.artifice.recipe.EnumUpgrades;
 import shukaro.artifice.util.FormatCodes;
+import shukaro.artifice.util.RomanUtil;
 
 public class ArtificeTooltips
 {
@@ -86,6 +90,62 @@ public class ArtificeTooltips
         {
             ArtificeRegistry.registerTooltip(ArtificeItems.itemBox.itemID, 0, "Stores items");
             ArtificeRegistry.registerTooltip(ArtificeItems.itemBox.itemID, 0, commentCode + "Watch out for splinters");
+        }
+        
+        if (ArtificeConfig.enableUpgrades.getBoolean(true))
+        {
+        	ArtificeRegistry.registerTooltip(ArtificeItems.itemUpgrade.itemID, 0, "Weapon or Tool Upgrade");
+        	ArtificeRegistry.registerTooltip(ArtificeItems.itemUpgrade.itemID, 0, FormatCodes.Yellow.format + StatCollector.translateToLocal(Enchantment.sharpness.getName()) + " (" + (ArtificeConfig.limitUpgrades.getBoolean(true) ? RomanUtil.convertToRoman(EnumUpgrades.SharpeningKit.maxLevel) : RomanUtil.convertToRoman(Enchantment.sharpness.getMaxLevel())) + ")");
+        	ArtificeRegistry.registerTooltip(ArtificeItems.itemUpgrade.itemID, 0, FormatCodes.Yellow.format + StatCollector.translateToLocal(Enchantment.efficiency.getName()) + " (" + (ArtificeConfig.limitUpgrades.getBoolean(true) ? RomanUtil.convertToRoman(EnumUpgrades.SharpeningKit.maxLevel) : RomanUtil.convertToRoman(Enchantment.efficiency.getMaxLevel())) + ")");
+        	ArtificeRegistry.registerTooltip(ArtificeItems.itemUpgrade.itemID, 0, commentCode + "A simple kit to sharpen blades");
+        	
+        	ArtificeRegistry.registerTooltip(ArtificeItems.itemUpgrade.itemID, 1, "Universal Upgrade");
+        	ArtificeRegistry.registerTooltip(ArtificeItems.itemUpgrade.itemID, 1, FormatCodes.Yellow.format + StatCollector.translateToLocal(Enchantment.unbreaking.getName()) + " (" + (ArtificeConfig.limitUpgrades.getBoolean(true) ? RomanUtil.convertToRoman(EnumUpgrades.Reinforcement.maxLevel) : RomanUtil.convertToRoman(Enchantment.unbreaking.getMaxLevel())) + ")");
+        	ArtificeRegistry.registerTooltip(ArtificeItems.itemUpgrade.itemID, 1, commentCode + "The perfect materials to reinforce weak points");
+        	
+        	ArtificeRegistry.registerTooltip(ArtificeItems.itemUpgrade.itemID, 2, "Bow Upgrade");
+        	ArtificeRegistry.registerTooltip(ArtificeItems.itemUpgrade.itemID, 2, FormatCodes.Yellow.format + StatCollector.translateToLocal(Enchantment.punch.getName()) + " (" + (ArtificeConfig.limitUpgrades.getBoolean(true) ? RomanUtil.convertToRoman(EnumUpgrades.ReinforcedLimbs.maxLevel) : RomanUtil.convertToRoman(Enchantment.punch.getMaxLevel())) + ")");
+        	ArtificeRegistry.registerTooltip(ArtificeItems.itemUpgrade.itemID, 2, commentCode + "Allows for a stronger pull");
+        	
+        	ArtificeRegistry.registerTooltip(ArtificeItems.itemUpgrade.itemID, 3, "Bow Upgrade");
+        	ArtificeRegistry.registerTooltip(ArtificeItems.itemUpgrade.itemID, 3, FormatCodes.Yellow.format + StatCollector.translateToLocal(Enchantment.power.getName()) + " (" + (ArtificeConfig.limitUpgrades.getBoolean(true) ? RomanUtil.convertToRoman(EnumUpgrades.PlaitedString.maxLevel) : RomanUtil.convertToRoman(Enchantment.power.getMaxLevel())) + ")");
+        	ArtificeRegistry.registerTooltip(ArtificeItems.itemUpgrade.itemID, 3, commentCode + "Improves accuracy and stability");
+        	
+        	ArtificeRegistry.registerTooltip(ArtificeItems.itemUpgrade.itemID, 4, "Weapon Upgrade");
+        	ArtificeRegistry.registerTooltip(ArtificeItems.itemUpgrade.itemID, 4, FormatCodes.Yellow.format + StatCollector.translateToLocal(Enchantment.knockback.getName()) + " (" + (ArtificeConfig.limitUpgrades.getBoolean(true) ? RomanUtil.convertToRoman(EnumUpgrades.Counterweight.maxLevel) : RomanUtil.convertToRoman(Enchantment.knockback.getMaxLevel())) + ")");
+        	ArtificeRegistry.registerTooltip(ArtificeItems.itemUpgrade.itemID, 4, commentCode + "Improves weapon balance");
+        	
+        	ArtificeRegistry.registerTooltip(ArtificeItems.itemUpgrade.itemID, 5, "Armor Upgrade");
+        	ArtificeRegistry.registerTooltip(ArtificeItems.itemUpgrade.itemID, 5, FormatCodes.Yellow.format + StatCollector.translateToLocal(Enchantment.thorns.getName()) + " (" + (ArtificeConfig.limitUpgrades.getBoolean(true) ? RomanUtil.convertToRoman(EnumUpgrades.ArmorSpikes.maxLevel) : RomanUtil.convertToRoman(Enchantment.thorns.getMaxLevel())) + ")");
+        	ArtificeRegistry.registerTooltip(ArtificeItems.itemUpgrade.itemID, 5, commentCode + "Sharp spikes deter attacks");
+        	
+        	ArtificeRegistry.registerTooltip(ArtificeItems.itemUpgrade.itemID, 6, "Armor Upgrade");
+        	ArtificeRegistry.registerTooltip(ArtificeItems.itemUpgrade.itemID, 6, FormatCodes.Yellow.format + StatCollector.translateToLocal(Enchantment.protection.getName()) + " (" + (ArtificeConfig.limitUpgrades.getBoolean(true) ? RomanUtil.convertToRoman(EnumUpgrades.LaminatedPadding.maxLevel) : RomanUtil.convertToRoman(Enchantment.protection.getMaxLevel())) + ")");
+        	ArtificeRegistry.registerTooltip(ArtificeItems.itemUpgrade.itemID, 6, commentCode + "Layered materials improve protection");
+        	
+        	ArtificeRegistry.registerTooltip(ArtificeItems.itemUpgrade.itemID, 7, "Armor Upgrade");
+        	ArtificeRegistry.registerTooltip(ArtificeItems.itemUpgrade.itemID, 7, FormatCodes.Yellow.format + StatCollector.translateToLocal(Enchantment.projectileProtection.getName()) + " (" + (ArtificeConfig.limitUpgrades.getBoolean(true) ? RomanUtil.convertToRoman(EnumUpgrades.QuiltedCover.maxLevel) : RomanUtil.convertToRoman(Enchantment.projectileProtection.getMaxLevel())) + ")");
+        	ArtificeRegistry.registerTooltip(ArtificeItems.itemUpgrade.itemID, 7, commentCode + "Thick cloth helps block arrows");
+        	
+        	ArtificeRegistry.registerTooltip(ArtificeItems.itemUpgrade.itemID, 8, "Boot Upgrade");
+        	ArtificeRegistry.registerTooltip(ArtificeItems.itemUpgrade.itemID, 8, FormatCodes.Yellow.format + StatCollector.translateToLocal(Enchantment.featherFalling.getName()) + " (" + (ArtificeConfig.limitUpgrades.getBoolean(true) ? RomanUtil.convertToRoman(EnumUpgrades.ElasticSoles.maxLevel) : RomanUtil.convertToRoman(Enchantment.featherFalling.getMaxLevel())) + ")");
+        	ArtificeRegistry.registerTooltip(ArtificeItems.itemUpgrade.itemID, 8, commentCode + "Slime makes the perfect shock absorber");
+        	
+        	ArtificeRegistry.registerTooltip(ArtificeItems.itemUpgrade.itemID, 9, "Armor Upgrade");
+        	ArtificeRegistry.registerTooltip(ArtificeItems.itemUpgrade.itemID, 9, FormatCodes.Yellow.format + StatCollector.translateToLocal(Enchantment.fireProtection.getName()) + " (" + (ArtificeConfig.limitUpgrades.getBoolean(true) ? RomanUtil.convertToRoman(EnumUpgrades.Firedamp.maxLevel) : RomanUtil.convertToRoman(Enchantment.fireProtection.getMaxLevel())) + ")");
+        	ArtificeRegistry.registerTooltip(ArtificeItems.itemUpgrade.itemID, 9, commentCode + "A thick slurry that helps reduce flammability");
+        	
+        	ArtificeRegistry.registerTooltip(ArtificeItems.itemUpgrade.itemID, 10, "Armor Upgrade");
+        	ArtificeRegistry.registerTooltip(ArtificeItems.itemUpgrade.itemID, 10, FormatCodes.Yellow.format + StatCollector.translateToLocal(Enchantment.blastProtection.getName()) + " (" + (ArtificeConfig.limitUpgrades.getBoolean(true) ? RomanUtil.convertToRoman(EnumUpgrades.ElasticLayering.maxLevel) : RomanUtil.convertToRoman(Enchantment.blastProtection.getMaxLevel())) + ")");
+        	ArtificeRegistry.registerTooltip(ArtificeItems.itemUpgrade.itemID, 10, commentCode + "Helpful in reducing impacts");
+        	
+        	ArtificeRegistry.registerTooltip(ArtificeItems.itemUpgrade.itemID, 11, "Helmet Upgrade");
+        	ArtificeRegistry.registerTooltip(ArtificeItems.itemUpgrade.itemID, 11, FormatCodes.Yellow.format + StatCollector.translateToLocal(Enchantment.respiration.getName()) + " (" + (ArtificeConfig.limitUpgrades.getBoolean(true) ? RomanUtil.convertToRoman(EnumUpgrades.ScubaTank.maxLevel) : RomanUtil.convertToRoman(Enchantment.respiration.getMaxLevel())) + ")");
+        	ArtificeRegistry.registerTooltip(ArtificeItems.itemUpgrade.itemID, 11, commentCode + "Crude, but effective air tanks");
+        	
+        	ArtificeRegistry.registerTooltip(ArtificeItems.itemUpgrade.itemID, 12, "Helmet Upgrade"); 
+        	ArtificeRegistry.registerTooltip(ArtificeItems.itemUpgrade.itemID, 12, FormatCodes.Yellow.format + StatCollector.translateToLocal(Enchantment.aquaAffinity.getName()) + " (" + (ArtificeConfig.limitUpgrades.getBoolean(true) ? RomanUtil.convertToRoman(EnumUpgrades.DiveKit.maxLevel) : RomanUtil.convertToRoman(Enchantment.aquaAffinity.getMaxLevel())) + ")");
+        	ArtificeRegistry.registerTooltip(ArtificeItems.itemUpgrade.itemID, 12, commentCode + "Allows for clearer underwater vision");
         }
     }
 

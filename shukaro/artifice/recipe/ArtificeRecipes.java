@@ -3,7 +3,6 @@ package shukaro.artifice.recipe;
 import shukaro.artifice.ArtificeBlocks;
 import shukaro.artifice.ArtificeConfig;
 import shukaro.artifice.ArtificeItems;
-import shukaro.artifice.item.BoxCraftingHandler;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -64,9 +63,130 @@ public class ArtificeRecipes
         	registerCoinChanging();
         if (ArtificeConfig.coinSmelting.getBoolean(false))
         	registerCoinSmelting();
+        if (ArtificeConfig.upgradeRecipes.getBoolean(true))
+        {
+        	registerUpgrades();
+        	GameRegistry.addRecipe(new RecipeUpgrade());
+        }
     }
     
-    private static void registerCoinMinting()
+    private static void registerUpgrades()
+    {
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeItems.itemUpgrade, 1, 0), new Object[] {
+			" Z ",
+			"YXQ",
+			"   ",
+			'X', Item.coal,
+			'Y', Item.ingotIron,
+			'Q', Block.stone,
+			'Z', Item.flint
+		}));
+		
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeItems.itemUpgrade, 1, 1), new Object[] {
+			"   ",
+			"XQZ",
+			" Y ",
+			'X', Item.silk,
+			'Q', Item.leather,
+			'Z', Item.ingotIron,
+			'Y', "stickWood"
+		}));
+		
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeItems.itemUpgrade, 1, 2), new Object[] {
+			"   ",
+			"YXZ",
+			" X ",
+			'X', "stickWood",
+			'Y', Item.leather,
+			'Z', Item.ingotIron
+		}));
+		
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeItems.itemUpgrade, 1, 3), new Object[] {
+			"  X",
+			" X ",
+			"X  ",
+			'X', Item.silk
+		}));
+		
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeItems.itemUpgrade, 1, 4), new Object[] {
+			" X ",
+			" X ",
+			" Y ",
+			'X', Item.ingotIron,
+			'Y', Block.stone
+		}));
+		
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeItems.itemUpgrade, 1, 5), new Object[] {
+			"   ",
+			"XXX",
+			" Y ",
+			'X', Block.fenceIron,
+			'Y', Item.ingotIron
+		}));
+		
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeItems.itemUpgrade, 1, 6), new Object[] {
+			"   ",
+			"YXY",
+			" X ",
+			'X', Item.leather,
+			'Y', Item.silk
+		}));
+		
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeItems.itemUpgrade, 1, 7), new Object[] {
+			"   ",
+			"YXY",
+			" X ",
+			'X', Block.cloth,
+			'Y', Item.silk
+		}));
+		
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeItems.itemUpgrade, 1, 8), new Object[] {
+			"   ",
+			"X X",
+			"Y Y",
+			'X', Item.leather,
+			'Y', Item.slimeBall
+		}));
+		
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeItems.itemUpgrade, 1, 9), new Object[] {
+			" X ",
+			" Y ",
+			" Q ",
+			'Q', Item.bowlEmpty,
+			'Y', Item.slimeBall,
+			'X', new ItemStack(Item.dyePowder, 1, 15)
+		}));
+		
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeItems.itemUpgrade, 1, 10), new Object[] {
+			"   ",
+			"YXQ",
+			" X ",
+			'X', Item.slimeBall,
+			'Y', Item.leather,
+			'Q', Item.silk
+		}));
+		
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeItems.itemUpgrade, 1, 11), new Object[] {
+			" Q ",
+			" Y ",
+			" X ",
+			'Q', Item.silk,
+			'Y', Item.leather,
+			'X', Item.bucketEmpty
+		}));
+		
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeItems.itemUpgrade, 1, 12), new Object[] {
+			" Q ",
+			"XYX",
+			" Z ",
+			'Y', Block.glass,
+			'X', Item.leather,
+			'Z', Item.ingotIron,
+			'Q', Item.silk
+		}));
+	}
+
+	private static void registerCoinMinting()
     {
     	String[] nuggets = { "nuggetCopper", "nuggetSilver", "nuggetGold", "nuggetPlatinum" };
     	

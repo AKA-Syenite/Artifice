@@ -87,3 +87,17 @@ item.artifice.coin.copper.name = Shilling
 item.artifice.coin.silver.name = Florin
 item.artifice.coin.gold.name = Sovereign
 item.artifice.coin.platinum.name = Marque
+
+item.artifice.upgrade.sharpeningkit.name = Sharpening Kit
+item.artifice.upgrade.reinforcement.name = Reinforcement
+item.artifice.upgrade.reinforcedlimbs.name = Reinforced Limbs
+item.artifice.upgrade.plaitedstring.name = Plaited String
+item.artifice.upgrade.counterweight.name = Counterweight
+item.artifice.upgrade.armorspikes.name = Armor Spikes
+item.artifice.upgrade.laminatedpadding.name = Laminated Padding
+item.artifice.upgrade.quiltedcover.name = Quilted Cover
+item.artifice.upgrade.elasticsoles.name = Elastic Soles
+item.artifice.upgrade.firedamp.name = Firedamp
+item.artifice.upgrade.elasticlayering.name = Elastic Layering
+item.artifice.upgrade.scubatank.name = Scuba Tank
+item.artifice.upgrade.divekit.name = Dive Kit

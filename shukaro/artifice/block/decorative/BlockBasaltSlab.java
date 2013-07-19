@@ -37,7 +37,7 @@ public class BlockBasaltSlab extends BlockHalfSlab implements IConnectedTexture
     public BlockBasaltSlab(int id, boolean isDouble)
     {
         super(id, isDouble, Material.rock);
-        setCreativeTab(ArtificeCreativeTab.tab);
+        setCreativeTab(ArtificeCreativeTab.main);
         setLightOpacity(0);
         setHardness(1.5F);
         setResistance(10.0F);

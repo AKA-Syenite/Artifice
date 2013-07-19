@@ -28,7 +28,7 @@ public class BlockMarble extends BlockArtifice implements IConnectedTexture
     public BlockMarble(int id)
     {
         super(id, Material.rock);
-        setCreativeTab(ArtificeCreativeTab.tab);
+        setCreativeTab(ArtificeCreativeTab.main);
         setHardness(1.5F);
         setResistance(10.0F);
         setUnlocalizedName("artifice.marble");

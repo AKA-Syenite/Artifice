@@ -27,7 +27,7 @@ public class ItemNugget extends Item
 		super(id);
 		this.setUnlocalizedName("artifice.nugget");
 		this.setHasSubtypes(true);
-		this.setCreativeTab(ArtificeCreativeTab.tab);
+		this.setCreativeTab(ArtificeCreativeTab.main);
 	}
 
 	@Override

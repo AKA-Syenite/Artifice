@@ -27,7 +27,7 @@ public class ItemUpgrade extends Item
 		super(id);
 		this.setUnlocalizedName("artifice.upgrade");
 		this.setHasSubtypes(true);
-		this.setCreativeTab(ArtificeCreativeTab.tab);
+		this.setCreativeTab(ArtificeCreativeTab.main);
 	}
 	
 	@Override

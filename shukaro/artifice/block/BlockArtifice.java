@@ -23,7 +23,7 @@ public abstract class BlockArtifice extends Block
     public BlockArtifice(int id, Material mat)
     {
         super(id, mat);
-        setCreativeTab(ArtificeCreativeTab.tab);
+        setCreativeTab(ArtificeCreativeTab.main);
     }
     
     @Override

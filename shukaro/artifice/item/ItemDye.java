@@ -27,7 +27,7 @@ public class ItemDye extends Item
         super(id);
         this.setUnlocalizedName("artifice.dye");
         this.setHasSubtypes(true);
-        this.setCreativeTab(ArtificeCreativeTab.tab);
+        this.setCreativeTab(ArtificeCreativeTab.main);
     }
     
     @Override

@@ -33,7 +33,7 @@ public class ItemBox extends Item
     public ItemBox(int id)
     {
         super(id);
-        this.setCreativeTab(ArtificeCreativeTab.tab);
+        this.setCreativeTab(ArtificeCreativeTab.main);
         this.setUnlocalizedName("artifice.box");
         this.setHasSubtypes(true);
     }

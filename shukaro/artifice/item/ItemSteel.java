@@ -23,7 +23,7 @@ public class ItemSteel extends Item
     {
         super(id);
         this.setUnlocalizedName("artifice.ingot.steel");
-        this.setCreativeTab(ArtificeCreativeTab.tab);
+        this.setCreativeTab(ArtificeCreativeTab.main);
     }
     
     @Override

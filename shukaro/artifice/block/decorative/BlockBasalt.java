@@ -29,7 +29,7 @@ public class BlockBasalt extends BlockArtifice implements IConnectedTexture
     public BlockBasalt(int id)
     {
         super(id, Material.rock);
-        setCreativeTab(ArtificeCreativeTab.tab);
+        setCreativeTab(ArtificeCreativeTab.main);
         setHardness(1.5F);
         setResistance(10.0F);
         setUnlocalizedName("artifice.basalt");

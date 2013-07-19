@@ -27,7 +27,7 @@ public class BlockFlora extends BlockFlower
     {
         super(id, Material.plants);
         this.setTickRandomly(true);
-        setCreativeTab(ArtificeCreativeTab.tab);
+        setCreativeTab(ArtificeCreativeTab.main);
         setHardness(0.0F);
         setStepSound(soundGrassFootstep);
         setUnlocalizedName("artifice.flora");

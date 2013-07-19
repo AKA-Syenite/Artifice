@@ -16,7 +16,7 @@ public class BlockSteel extends Block
     public BlockSteel(int id)
     {
         super(id, Material.iron);
-        this.setCreativeTab(ArtificeCreativeTab.tab);
+        this.setCreativeTab(ArtificeCreativeTab.main);
         this.setHardness(3.0F);
         this.setUnlocalizedName("artifice.steel");
     }

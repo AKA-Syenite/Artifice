@@ -27,7 +27,7 @@ public class ItemCoin extends Item
 		super(id);
 		this.setUnlocalizedName("artifice.coin");
 		this.setHasSubtypes(true);
-		this.setCreativeTab(ArtificeCreativeTab.tab);
+		this.setCreativeTab(ArtificeCreativeTab.main);
 	}
 
 	@Override

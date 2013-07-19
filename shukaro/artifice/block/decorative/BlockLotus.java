@@ -21,7 +21,7 @@ public class BlockLotus extends BlockLilyPad
     public BlockLotus(int par1)
     {
         super(par1);
-        this.setCreativeTab(ArtificeCreativeTab.tab);
+        this.setCreativeTab(ArtificeCreativeTab.main);
         this.setUnlocalizedName("artifice.flora.lily");
     }
     

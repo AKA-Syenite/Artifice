@@ -28,7 +28,7 @@ public class ItemSickle extends ItemTool
     public ItemSickle(int id, EnumToolMaterial mat)
     {
         super(id, 3, mat, null);
-        this.setCreativeTab(ArtificeCreativeTab.tab);
+        this.setCreativeTab(ArtificeCreativeTab.main);
         this.setMaxDamage(mat.getMaxUses()/2);
         this.setUnlocalizedName("artifice.sickle." + this.toolMaterial.toString().toLowerCase());
         this.radius = getRadius(mat);

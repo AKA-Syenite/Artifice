@@ -32,7 +32,7 @@ public class ItemSledge extends ItemTool
     public ItemSledge(int id, EnumToolMaterial mat)
     {
         super(id, 2, mat, null);
-        this.setCreativeTab(ArtificeCreativeTab.tab);
+        this.setCreativeTab(ArtificeCreativeTab.main);
         this.setMaxDamage(mat.getMaxUses()/4);
         this.setUnlocalizedName("artifice.sledge." + this.toolMaterial.toString().toLowerCase());
         this.lossChance = getLossChance(mat);

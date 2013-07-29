@@ -10,7 +10,7 @@ import shukaro.artifice.ArtificeItems;
 public class ArtificeCreativeTab extends CreativeTabs
 {
     public static final ArtificeCreativeTab main = new ArtificeCreativeTab("Artifice");
-    public static final ArtificeCreativeTab documents = new ArtificeCreativeTab("Documents");
+    //public static final ArtificeCreativeTab documents = new ArtificeCreativeTab("Documents");
     
     public ArtificeCreativeTab(String label)
     {
@@ -20,11 +20,13 @@ public class ArtificeCreativeTab extends CreativeTabs
     @Override
     public ItemStack getIconItemStack()
     {
+    	/*
     	if (this.getTabLabel() == documents.getTabLabel())
     	{
     		return new ItemStack(Item.writtenBook);
     	}
-    	else if (this.getTabLabel() == main.getTabLabel())
+    	*/
+    	if (this.getTabLabel() == main.getTabLabel())
     	{
 	        if (ArtificeConfig.enableFrames.getBoolean(true))
 	            return new ItemStack(ArtificeBlocks.blockFrame, 1, 0);

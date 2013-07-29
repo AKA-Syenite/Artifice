@@ -46,9 +46,9 @@ public abstract class ArtificeRegistry
             }
             else
             {
-                IRecipe old = new ShapelessOreRecipe(marbleTypes.get(0), marbleTypes.get(marbleTypes.size() - 1));
+                IRecipe old = new ShapelessOreRecipe(marbleTypes.get(0), marbleTypes.get(marbleTypes.size() - 2));
                 IRecipe inner = new ShapelessOreRecipe(marbleTypes.get(marbleTypes.size()), marbleTypes.get(marbleTypes.size() - 1));
-                IRecipe wrap = new ShapelessOreRecipe(marbleTypes.get(0), marbleTypes.get(marbleTypes.size()));
+                IRecipe wrap = new ShapelessOreRecipe(marbleTypes.get(0), marbleTypes.get(marbleTypes.size() - 1));
                 CraftingManager.getInstance().getRecipeList().remove(old);
                 CraftingManager.getInstance().getRecipeList().add(inner);
                 CraftingManager.getInstance().getRecipeList().add(wrap);
@@ -80,9 +80,9 @@ public abstract class ArtificeRegistry
             }
             else
             {
-                IRecipe old = new ShapelessOreRecipe(basaltTypes.get(0), basaltTypes.get(basaltTypes.size() - 1));
+                IRecipe old = new ShapelessOreRecipe(basaltTypes.get(0), basaltTypes.get(basaltTypes.size() - 2));
                 IRecipe inner = new ShapelessOreRecipe(basaltTypes.get(basaltTypes.size()), basaltTypes.get(basaltTypes.size() - 1));
-                IRecipe wrap = new ShapelessOreRecipe(basaltTypes.get(0), basaltTypes.get(basaltTypes.size()));
+                IRecipe wrap = new ShapelessOreRecipe(basaltTypes.get(0), basaltTypes.get(basaltTypes.size() - 1));
                 CraftingManager.getInstance().getRecipeList().remove(old);
                 CraftingManager.getInstance().getRecipeList().add(inner);
                 CraftingManager.getInstance().getRecipeList().add(wrap);

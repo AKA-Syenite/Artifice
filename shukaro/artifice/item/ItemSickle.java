@@ -15,6 +15,7 @@ import shukaro.artifice.ArtificeConfig;
 import shukaro.artifice.ArtificeTooltips;
 import shukaro.artifice.compat.ArtificeRegistry;
 import shukaro.artifice.gui.ArtificeCreativeTab;
+import shukaro.artifice.render.IconHandler;
 import shukaro.artifice.util.BlockCoord;
 import shukaro.artifice.util.IdMetaPair;
 import cpw.mods.fml.relauncher.Side;
@@ -82,7 +83,7 @@ public class ItemSickle extends ItemTool
     @SideOnly(Side.CLIENT)
     public void registerIcons(IconRegister reg)
     {
-        this.icon = reg.registerIcon("artifice:sickle_" + this.toolMaterial.toString().toLowerCase());
+        this.icon = IconHandler.registerSingle(reg, "sickle_" + this.toolMaterial.toString().toLowerCase(), "sickle");
     }
     
     @Override

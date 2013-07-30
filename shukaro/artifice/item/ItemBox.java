@@ -3,7 +3,6 @@ package shukaro.artifice.item;
 import java.util.List;
 
 import powercrystals.minefactoryreloaded.api.IDeepStorageUnit;
-
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import shukaro.artifice.ArtificeConfig;
@@ -11,6 +10,7 @@ import shukaro.artifice.ArtificeItems;
 import shukaro.artifice.ArtificeTooltips;
 import shukaro.artifice.compat.ArtificeRegistry;
 import shukaro.artifice.gui.ArtificeCreativeTab;
+import shukaro.artifice.render.IconHandler;
 import shukaro.artifice.util.ComparableItemStackNBT;
 import shukaro.artifice.util.FormatCodes;
 import shukaro.artifice.util.IdMetaPair;
@@ -49,7 +49,7 @@ public class ItemBox extends Item
     @SideOnly(Side.CLIENT)
     public void registerIcons(IconRegister reg)
     {
-        this.icon = reg.registerIcon("artifice:box");
+        this.icon = IconHandler.registerSingle(reg, "box", "box");
     }
     
     @Override

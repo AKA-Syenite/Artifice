@@ -177,7 +177,6 @@
         </taskdef>
         <echo message="Downloading forge... " />
         <get src="${forge.url}" dest="${download.dir}/minecraftforge-src-${forge.version}.zip" />
-        </getMethod>
     </target>
     
     <target name="download-ant-contrib" unless="should-download-ant-contrib">

@@ -135,7 +135,7 @@ public class Vanilla
         
         ArrayList<ItemStack> lamp = new ArrayList<ItemStack>();
         lamp.add(new ItemStack(Item.redstone.itemID, 4, 0));
-        lamp.add(new ItemStack(Item.lightStoneDust.itemID, 4, 0));
+        lamp.add(new ItemStack(Item.glowstone.itemID, 4, 0));
         ArtificeRegistry.registerSledgeBlock(Block.redstoneLampIdle.blockID, 0, lamp);
         ArtificeRegistry.registerSledgeBlock(Block.redstoneLampActive.blockID, 0, lamp);
         

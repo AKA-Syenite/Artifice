@@ -8,6 +8,7 @@ import shukaro.artifice.ArtificeConfig;
 import shukaro.artifice.ArtificeTooltips;
 import shukaro.artifice.compat.ArtificeRegistry;
 import shukaro.artifice.gui.ArtificeCreativeTab;
+import shukaro.artifice.render.IconHandler;
 import shukaro.artifice.util.IdMetaPair;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.player.EntityPlayer;
@@ -37,7 +38,7 @@ public class ItemSteel extends Item
     @SideOnly(Side.CLIENT)
     public void registerIcons(IconRegister reg)
     {
-        this.icon = reg.registerIcon("artifice:ingot_steel");
+        this.icon = IconHandler.registerSingle(reg, "ingot_steel", "steel");
     }
     
     @Override

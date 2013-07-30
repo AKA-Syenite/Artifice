@@ -3,19 +3,9 @@ package shukaro.artifice.item;
 import java.util.ArrayList;
 import java.util.List;
 
-import cpw.mods.fml.common.network.Player;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-
-import shukaro.artifice.ArtificeConfig;
-import shukaro.artifice.ArtificeItems;
-import shukaro.artifice.ArtificeTooltips;
-import shukaro.artifice.compat.ArtificeRegistry;
-import shukaro.artifice.gui.ArtificeCreativeTab;
-import shukaro.artifice.util.IdMetaPair;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.texture.IconRegister;
-import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumToolMaterial;
@@ -23,6 +13,14 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemTool;
 import net.minecraft.util.Icon;
 import net.minecraft.world.World;
+import shukaro.artifice.ArtificeConfig;
+import shukaro.artifice.ArtificeTooltips;
+import shukaro.artifice.compat.ArtificeRegistry;
+import shukaro.artifice.gui.ArtificeCreativeTab;
+import shukaro.artifice.render.IconHandler;
+import shukaro.artifice.util.IdMetaPair;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemSledge extends ItemTool
 {
@@ -108,7 +106,7 @@ public class ItemSledge extends ItemTool
     @SideOnly(Side.CLIENT)
     public void registerIcons(IconRegister reg)
     {
-        this.icon = reg.registerIcon("artifice:sledge_" + this.toolMaterial.toString().toLowerCase());
+    	this.icon = IconHandler.registerSingle(reg, "sledge_" + this.toolMaterial.toString().toLowerCase(), "sledge");
     }
 
     @Override
@@ -146,7 +144,7 @@ public class ItemSledge extends ItemTool
     }
     
     @Override
-    public boolean onBlockDestroyed(ItemStack stack, World world, int id, int x, int y, int z, EntityLiving entity)
+    public boolean onBlockDestroyed(ItemStack stack, World world, int id, int x, int y, int z, EntityLivingBase entity)
     {
         int meta = world.getBlockMetadata(x, y, z);
         IdMetaPair pair = new IdMetaPair(id, meta);

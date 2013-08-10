@@ -67,7 +67,7 @@ public class BlockFrameScaffold extends BlockFrame implements IConnectedTexture,
         {
             while (world.getBlockId(x, y, z) == this.blockID)
                 y++;
-            if (checkStay(world, x, y, z, held.getItemDamage()))
+            if (checkStay(world, x, y, z, held.getItemDamage()) && (Block.blocksList[world.getBlockId(x, y, z)] == null || Block.blocksList[world.getBlockId(x, y, z)].isAirBlock(world, x, y, z)))
             {
                 world.setBlock(x, y, z, this.blockID, held.getItemDamage(), 3);
                 if (!player.capabilities.isCreativeMode)

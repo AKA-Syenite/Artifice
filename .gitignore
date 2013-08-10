@@ -8,6 +8,7 @@ forge_logo.png
 mcp.png
 Start.java
 mcpmod.info
+*.lzma
 
 # Eclipse
 *.pydevproject

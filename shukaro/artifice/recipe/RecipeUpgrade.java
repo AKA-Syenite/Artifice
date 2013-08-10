@@ -90,7 +90,7 @@ public class RecipeUpgrade implements IRecipe
 						maxLevel = EnumUpgrades.values()[stack.getItemDamage()].enchant.getMaxLevel();
 				}
 				
-				if (enchant.canApply(this.output))
+				if (enchant.canApply(this.output) && this.output.getItem().getItemEnchantability() > 0)
 				{
 					if (EnchantmentHelper.getEnchantmentLevel(enchant.effectId, this.output) < maxLevel)
 					{
@@ -99,7 +99,7 @@ public class RecipeUpgrade implements IRecipe
 							if (this.output.stackTagCompound != null)
 							{
 								NBTTagList enchants = (NBTTagList)this.output.stackTagCompound.getTag("ench");
-								if (enchants.tagCount() > 0)
+								if (enchants != null && enchants.tagCount() > 0)
 								{
 									for (int k=0; k<enchants.tagCount(); k++)
 									{

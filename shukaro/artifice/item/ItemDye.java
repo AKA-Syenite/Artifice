@@ -34,6 +34,8 @@ public class ItemDye extends Item
     @SideOnly(Side.CLIENT)
     public Icon getIconFromDamage(int meta)
     {
+    	if (meta > icons.length)
+    		meta = 0;
         return icons[meta];
     }
     

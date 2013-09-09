@@ -2,6 +2,7 @@ cpw/
 ibxm/
 net/
 paulscode/
+assets/forge/
 *.cfg
 *.properties
 forge_logo.png

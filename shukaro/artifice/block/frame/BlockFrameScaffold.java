@@ -10,8 +10,6 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 import shukaro.artifice.ArtificeBlocks;
 import shukaro.artifice.ArtificeCore;
-import shukaro.artifice.multiblock.TileEntityMultiblock;
-import shukaro.artifice.multiblock.erogenousbeef.IMultiblockPart;
 import shukaro.artifice.render.IconHandler;
 import shukaro.artifice.render.connectedtexture.ConnectedTexture;
 import shukaro.artifice.render.connectedtexture.ConnectedTextureBase;

@@ -4,7 +4,6 @@ import java.util.logging.Logger;
 
 import net.minecraftforge.common.MinecraftForge;
 import shukaro.artifice.event.EventHandler;
-import shukaro.artifice.multiblock.TileEntityMultiblock;
 import shukaro.artifice.net.ClientProxy;
 import shukaro.artifice.net.CommonProxy;
 import shukaro.artifice.recipe.ArtificeRecipes;
@@ -89,8 +88,6 @@ public class ArtificeCore
         }
         
         ArtificeRecipes.registerRecipes();
-        
-        GameRegistry.registerTileEntity(TileEntityMultiblock.class, "ArtificeMultiblock");
     }
     
     @PostInit

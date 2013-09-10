@@ -3,17 +3,14 @@ package shukaro.artifice;
 import java.util.logging.Logger;
 
 import net.minecraftforge.common.MinecraftForge;
-import shukaro.artifice.event.EventHandler;
+import shukaro.artifice.event.ArtificeEventHandler;
 import shukaro.artifice.net.ClientProxy;
 import shukaro.artifice.net.CommonProxy;
 import shukaro.artifice.recipe.ArtificeRecipes;
 import shukaro.artifice.world.ArtificeWorldGen;
 import cpw.mods.fml.common.Mod;
-import cpw.mods.fml.common.Mod.Init;
+import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
-import cpw.mods.fml.common.Mod.PostInit;
-import cpw.mods.fml.common.Mod.PreInit;
-import cpw.mods.fml.common.Mod.ServerStarting;
 import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
@@ -33,7 +30,7 @@ public class ArtificeCore
     
     public static ArtificeWorldGen worldGen;
     public static Logger logger;
-    public static EventHandler eventHandler;
+    public static ArtificeEventHandler eventHandler;
     
     public static int frameRenderID;
     public static int lotusRenderID;
@@ -45,12 +42,12 @@ public class ArtificeCore
     @Instance(modID)
     public static ArtificeCore instance;
     
-    @ServerStarting
+    @EventHandler
     public void serverStarting(FMLServerStartingEvent evt)
     {
     }
     
-    @PreInit
+    @EventHandler
     public void preInit(FMLPreInitializationEvent evt)
     {
         ArtificeConfig.setConfigFolderBase(evt.getModConfigurationDirectory());
@@ -62,13 +59,13 @@ public class ArtificeCore
         ArtificeConfig.loadLang();
         
         logger = evt.getModLog();
-        ArtificeCore.eventHandler = new EventHandler();
+        ArtificeCore.eventHandler = new ArtificeEventHandler();
         MinecraftForge.EVENT_BUS.register(ArtificeCore.eventHandler);
         ClientProxy.init();
         CommonProxy.init();
     }
     
-    @Init
+    @EventHandler
     public void init(FMLInitializationEvent evt)
     {
         ArtificeBlocks.initBlocks();
@@ -90,7 +87,7 @@ public class ArtificeCore
         ArtificeRecipes.registerRecipes();
     }
     
-    @PostInit
+    @EventHandler
     public void postInit(FMLPostInitializationEvent evt)
     {
         

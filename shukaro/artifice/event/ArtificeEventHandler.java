@@ -21,7 +21,7 @@ import shukaro.artifice.compat.ArtificeRegistry;
 import shukaro.artifice.util.BlockCoord;
 import shukaro.artifice.util.ChunkCoord;
 
-public class EventHandler
+public class ArtificeEventHandler
 {
     private List<Integer> dimBlacklist;
     private int dim;

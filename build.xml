@@ -27,7 +27,7 @@
 	<mkdir dir="${branch.dir}"/>
 	
 	<target name="move-branch">
-	        <copy todir="${branch.dir}">
+	        <copy todir="../${branch.dir}">
 	            <fileset dir="."/>
 	        </copy>
 	    </target>

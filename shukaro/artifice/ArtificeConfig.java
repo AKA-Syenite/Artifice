@@ -11,9 +11,13 @@ import java.io.OutputStream;
 import java.util.Properties;
 import java.util.logging.Level;
 
+import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.util.Icon;
 import net.minecraftforge.common.Configuration;
 import net.minecraftforge.common.Property;
 import shukaro.artifice.compat.ArtificeRegistry;
+import shukaro.artifice.render.IconHandler;
+import shukaro.artifice.render.connectedtexture.ConnectedTexture;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
@@ -132,6 +136,8 @@ public class ArtificeConfig
     public static Property dimensionBlacklist;
     
     public static File configFolder;
+    
+    public static boolean connectedTexturesRegistered = false;
     
     public static void initCommon(FMLPreInitializationEvent evt)
     {
@@ -424,5 +430,23 @@ public class ArtificeConfig
     public static void setConfigFolderBase(File folder)
     {
         configFolder = new File(folder.getAbsolutePath() + "/shukaro/artifice/");
+    }
+    
+    public static void registerConnectedTextures(IconRegister reg)
+    {
+    	if (!ArtificeConfig.connectedTexturesRegistered)
+    	{
+    		IconHandler.registerConnectedTexture(reg, ConnectedTexture.BasicFrame, "frame/basic");
+    		IconHandler.registerConnectedTexture(reg, ConnectedTexture.ReinforcedFrame, "frame/reinforced");
+    		IconHandler.registerConnectedTexture(reg, ConnectedTexture.IndustrialFrame, "frame/industrial");
+    		IconHandler.registerConnectedTexture(reg, ConnectedTexture.AdvancedFrame, "frame/advanced");
+    		
+    		IconHandler.registerConnectedTexture(reg, ConnectedTexture.MarblePaver, "marble/paver");
+    		ConnectedTexture.MarbleAntipaver.textureList = ConnectedTexture.MarblePaver.textureList;
+    		IconHandler.registerConnectedTexture(reg, ConnectedTexture.BasaltPaver, "basalt/paver");
+    		ConnectedTexture.BasaltAntipaver.textureList = ConnectedTexture.BasaltPaver.textureList;
+    		
+    		ArtificeConfig.connectedTexturesRegistered = true;
+    	}
     }
 }

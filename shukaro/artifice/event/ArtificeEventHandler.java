@@ -10,6 +10,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.ChunkCoordIntPair;
 import net.minecraft.world.World;
+import net.minecraftforge.client.event.TextureStitchEvent;
 import net.minecraftforge.event.ForgeSubscribe;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent.Action;
@@ -27,6 +28,12 @@ public class ArtificeEventHandler
     private int dim;
     private ChunkCoordIntPair c;
     private ArrayList chunks;
+    
+    @ForgeSubscribe
+    public void preTextureStitch(TextureStitchEvent.Pre e)
+    {
+    	ArtificeConfig.connectedTexturesRegistered = false;
+    }
     
     @ForgeSubscribe
     public void chunkSave(ChunkDataEvent.Save e)

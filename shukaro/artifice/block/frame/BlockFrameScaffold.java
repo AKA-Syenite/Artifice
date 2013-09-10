@@ -7,8 +7,8 @@ import java.util.Map;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-
 import shukaro.artifice.ArtificeBlocks;
+import shukaro.artifice.ArtificeConfig;
 import shukaro.artifice.ArtificeCore;
 import shukaro.artifice.multiblock.TileEntityMultiblock;
 import shukaro.artifice.multiblock.erogenousbeef.IMultiblockPart;
@@ -240,14 +240,7 @@ public class BlockFrameScaffold extends BlockFrame implements IConnectedTexture,
     @SideOnly(Side.CLIENT)
     public void registerIcons(IconRegister reg)
     {
-        if (!ConnectedTexture.BasicFrame.isRegistered)
-            IconHandler.registerConnectedTexture(reg, ConnectedTexture.BasicFrame, "frame/basic");
-        if (!ConnectedTexture.ReinforcedFrame.isRegistered)
-            IconHandler.registerConnectedTexture(reg, ConnectedTexture.ReinforcedFrame, "frame/reinforced");
-        if (!ConnectedTexture.IndustrialFrame.isRegistered)
-            IconHandler.registerConnectedTexture(reg, ConnectedTexture.IndustrialFrame, "frame/industrial");
-        if (!ConnectedTexture.AdvancedFrame.isRegistered)
-            IconHandler.registerConnectedTexture(reg, ConnectedTexture.AdvancedFrame, "frame/advanced");
+    	ArtificeConfig.registerConnectedTextures(reg);
         for (int i=0; i<ArtificeCore.tiers.length; i++)
         {
             sideIcons[i] = IconHandler.registerSingle(reg, ArtificeCore.tiers[i].toLowerCase() + "_side", "scaffold");

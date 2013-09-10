@@ -9,6 +9,7 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Icon;
 import net.minecraft.world.IBlockAccess;
+import shukaro.artifice.ArtificeConfig;
 import shukaro.artifice.ArtificeCore;
 import shukaro.artifice.block.BlockArtifice;
 import shukaro.artifice.gui.ArtificeCreativeTab;
@@ -55,8 +56,7 @@ public class BlockBasalt extends BlockArtifice implements IConnectedTexture
     @SideOnly(Side.CLIENT)
     public void registerIcons(IconRegister reg)
     {
-        if (!ConnectedTexture.BasaltPaver.isRegistered)
-            IconHandler.registerConnectedTexture(reg, ConnectedTexture.BasaltPaver, "basalt/paver");
+        ArtificeConfig.registerConnectedTextures(reg);
         icons[0] = IconHandler.registerSingle(reg, "basalt", "basalt");
         icons[1] = IconHandler.registerSingle(reg, "cobblestone", "basalt");
         icons[2] = IconHandler.registerSingle(reg, "bricks", "basalt");

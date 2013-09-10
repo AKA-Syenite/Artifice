@@ -23,6 +23,14 @@
 
     <property name="verclass.dir" value="${mcpsrc.dir}/shukaro/artifice" />
     <property name="verclass.name" value="ArtificeCore.java"/>
+	
+	<mkdir dir="${branch.dir}"/>
+	
+	<target name="move-branch">
+	        <copy todir="${branch.dir}">
+	            <fileset dir="checkout"/>
+	        </copy>
+	    </target>
     
     <condition property="have-apis">
         <and>
@@ -48,16 +56,16 @@
         <!-- Copy source -->
         <mkdir dir="${mcpsrc.dir}/shukaro" />
         <copy todir="${mcpsrc.dir}/shukaro" overwrite="true">
-            <fileset dir="shukaro"/>
+            <fileset dir="${branch.dir}/shukaro"/>
         </copy>
-        <copy todir="${mcpsrc.dir}" file="mcmod.info" overwrite="true"/>
+        <copy todir="${mcpsrc.dir}" file="${branch.dir}/mcmod.info" overwrite="true"/>
 
         <exec dir="${verclass.dir}" executable="sh" osfamily="unix" outputproperty="grep.out">
             <arg value="-c"/>
             <arg value="grep -o -P '[0-9.]+R[0-9.]+(RC[0-9]+)?(B[0-9]+)?' ${verclass.name}"/>
         </exec>
         <exec executable="python" osfamily="unix" outputproperty="python.out">
-            <arg value="versionscript.py" />
+            <arg value="${branch.dir}/versionscript.py" />
             <arg value="${grep.out}" />
         </exec>
         <echo message="Grepped version: ${grep.out}"/>
@@ -104,18 +112,18 @@
             <fileset dir="${mcp.dir}/reobf/minecraft"/>
         </copy>
 
-        <copy todir="${classes.dir}" file="mcmod.info"/>
+        <copy todir="${classes.dir}" file="${branch.dir}/mcmod.info"/>
 
         <copy todir="${classes.dir}/mods/artifice/textures/blocks/">
-            <fileset dir="mods/artifice/textures/blocks/" />
+            <fileset dir="${branch.dir}/mods/artifice/textures/blocks/" />
         </copy>
     	
     	<copy todir="${classes.dir}/mods/artifice/textures/items/">
-    		<fileset dir="mods/artifice/textures/items/" />
+    		<fileset dir="${branch.dir}/mods/artifice/textures/items/" />
     	</copy>
         
         <copy todir="${classes.dir}/shukaro/artifice/lang/">
-           <fileset dir="shukaro/artifice/lang/" />
+           <fileset dir="${branch.dir}/shukaro/artifice/lang/" />
         </copy>
     </target>
     
@@ -129,7 +137,7 @@
         <property name="build.number" value="CUSTOM_BUILD" />
     </target>
     
-    <target name="setup-forge" depends="download-forge,build-number-there,build-number-not-there" unless="forge.already.installed">
+    <target name="setup-forge" depends="move-branch,download-forge,build-number-there,build-number-not-there" unless="forge.already.installed">
 
         <property name="build.full" value="${build.number}" />
         <unzip dest="${build.dir}">
@@ -162,9 +170,9 @@
         <!-- Copy source -->
         <mkdir dir="${mcpsrc.dir}/shukaro" />
         <copy todir="${mcpsrc.dir}/shukaro" overwrite="true">
-            <fileset dir="shukaro"/>
+            <fileset dir="${branch.dir}/shukaro"/>
         </copy>
-        <copy todir="${mcpsrc.dir}" file="mcmod.info" overwrite="true"/>
+        <copy todir="${mcpsrc.dir}" file="${branch.dir}/mcmod.info" overwrite="true"/>
     </target>
     
 	<target name="download-forge" depends="download-ant-contrib" unless="forge-exists">

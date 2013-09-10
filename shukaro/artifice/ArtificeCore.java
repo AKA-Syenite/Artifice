@@ -55,9 +55,6 @@ public class ArtificeCore
         ArtificeConfig.initCommon(evt);
         ArtificeConfig.initClient(evt);
         
-        ArtificeConfig.extractLang(new String[] { "en_US" });
-        ArtificeConfig.loadLang();
-        
         logger = evt.getModLog();
         ArtificeCore.eventHandler = new ArtificeEventHandler();
         MinecraftForge.EVENT_BUS.register(ArtificeCore.eventHandler);

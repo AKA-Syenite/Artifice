@@ -1,0 +1,13 @@
+{
+  "pack": {
+    "pack_format": 1,
+    "description": "The default look of Minecraft"
+  },
+  "language": {
+    "en_US": {
+      "name": "English",
+      "region": "US",
+      "bidirectional": false
+    }
+  }
+}

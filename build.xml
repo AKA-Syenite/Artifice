@@ -104,6 +104,8 @@
         </copy>
 
         <copy todir="${classes.dir}" file="mcmod.info"/>
+    	
+    	<copy todir="${classes.dir}" file="pack.mcmeta"/>
 
         <copy todir="${classes.dir}/assets/artifice/textures/blocks/">
             <fileset dir="assets/artifice/textures/blocks/" />
@@ -113,8 +115,8 @@
     		<fileset dir="assets/artifice/textures/items/" />
     	</copy>
         
-        <copy todir="${classes.dir}/shukaro/artifice/lang/">
-           <fileset dir="shukaro/artifice/lang/" />
+        <copy todir="${classes.dir}/assets/artifice/lang/">
+           <fileset dir="assets/artifice/lang/" />
         </copy>
     </target>
     

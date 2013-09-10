@@ -14,13 +14,11 @@ public class IconHandler
         {
             texture.textureList[i] = reg.registerIcon(ArtificeCore.modID.toLowerCase() + ":" + folder + "/" + texture.name + "_" + i);
         }
-        texture.isRegistered = true;
         for (ConnectedTexture t : ConnectedTexture.values())
         {
             if (t.name == texture.name)
             {
                 t.textureList = texture.textureList;
-                t.isRegistered = true;
             }
         }
     }

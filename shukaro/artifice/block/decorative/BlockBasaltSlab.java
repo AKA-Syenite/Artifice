@@ -11,6 +11,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.Icon;
 import net.minecraft.world.IBlockAccess;
 import shukaro.artifice.ArtificeBlocks;
+import shukaro.artifice.ArtificeConfig;
 import shukaro.artifice.ArtificeCore;
 import shukaro.artifice.gui.ArtificeCreativeTab;
 import shukaro.artifice.render.IconHandler;
@@ -74,8 +75,7 @@ public class BlockBasaltSlab extends BlockHalfSlab implements IConnectedTexture
     @SideOnly(Side.CLIENT)
     public void registerIcons(IconRegister reg)
     {
-        if (!ConnectedTexture.BasaltPaver.isRegistered)
-            IconHandler.registerConnectedTexture(reg, ConnectedTexture.BasaltPaver, "basalt/paver");
+    	ArtificeConfig.registerConnectedTextures(reg);
         paverSide = IconHandler.registerSingle(reg, "paverside", "basalt");
     }
     

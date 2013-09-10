@@ -1,5 +1,7 @@
 package shukaro.artifice.render.connectedtexture;
 
+import shukaro.artifice.ArtificeConfig;
+import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.util.Icon;
 
 public enum ConnectedTexture
@@ -15,12 +17,10 @@ public enum ConnectedTexture
     
     public String name;
     public Icon[] textureList;
-    public boolean isRegistered;
     
     private ConnectedTexture(String s)
     {
         this.name = s;
         this.textureList = new Icon[47];
-        this.isRegistered = false;
     }
 }

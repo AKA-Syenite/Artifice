@@ -2,7 +2,7 @@
 
     <property environment="env" />
     
-	<property name="branch.dir" value="152" />
+	<property name="branch.dir" value="/152" />
 	<property name="build.dir" value="${branch.dir}/build" />
     <property name="classes.dir" value="${build.dir}/packaging" />
     <property name="forge.buildnum" value="684" />
@@ -13,7 +13,7 @@
     <property name="mcpsrc.dir" value="${mcp.dir}/src/minecraft" />
     <property name="build.ver" value="1.5.2" />
     <property name="dist.dir" value="${build.dir}/dist" />
-    <property name="download.dir" value="downloads" />
+    <property name="download.dir" value="/downloads" />
     <property name="lib.dir" value="${mcp.dir}/lib" />
     
     <property file="${forge.dir}/forgeversion.properties" />
@@ -27,7 +27,7 @@
 	<mkdir dir="${branch.dir}"/>
 	
 	<target name="move-branch">
-	        <copy todir="../${branch.dir}">
+	        <copy todir="${branch.dir}">
 	            <fileset dir="."/>
 	        </copy>
 	    </target>

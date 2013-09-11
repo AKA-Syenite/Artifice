@@ -13,7 +13,7 @@
     <property name="mcpsrc.dir" value="${mcp.dir}/src/minecraft" />
     <property name="build.ver" value="1.5.2" />
     <property name="dist.dir" value="${build.dir}/dist" />
-    <property name="download.dir" value="/downloads" />
+    <property name="download.dir" value="../downloads" />
     <property name="lib.dir" value="${mcp.dir}/lib" />
     
     <property file="${forge.dir}/forgeversion.properties" />

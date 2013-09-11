@@ -4,6 +4,7 @@
     
 	<property name="branch.dir" value="../master" />
     <property name="build.dir" value="${branch.dir}/build" />
+	<property name="artifacts.dir" value="../artifacts" />
     <property name="classes.dir" value="${build.dir}/packaging" />
     <property name="forge.buildnum" value="859" />
     <property name="forge.version" value="1.6.2-9.10.1.${forge.buildnum}" />
@@ -31,6 +32,8 @@
 	                <fileset dir="."/>
 	            </copy>
 	        </target>
+	
+	<mkdir dir="${artifacts.dir}"/>
 	
     <condition property="have-apis">
         <and>
@@ -211,6 +214,10 @@
     </target>
 
     <target name="clean" >
+    	<delete includeEmptyDirs="true">
+    	  <fileset dir="${artifacts.dir}" includes="**/*" defaultexcludes="no"/>
+    	</delete>
+    	<copy todir="../artifacts" file="${dist.dir}/Artifice-${python.out}-${build.number}.jar"/>
         <delete dir="${build.dir}" />
     	<delete dir="." />
     </target>

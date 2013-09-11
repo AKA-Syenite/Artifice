@@ -33,7 +33,7 @@
 	            </copy>
 	        </target>
 	
-	<mkdir dir="${artifacts.dir}"/>
+	<delete dir="${artifacts.dir}" failonerror="false"/>
 	
     <condition property="have-apis">
         <and>
@@ -86,6 +86,7 @@
     
     <target name="install" depends="build">
         <jar destfile="${dist.dir}/Artifice-${python.out}-${build.number}.jar" basedir="${classes.dir}"/>
+    	<mkdir dir="${artifacts.dir}"/>
     	<copy todir="../artifacts" file="${dist.dir}/Artifice-${python.out}-${build.number}.jar"/>
         <delete dir="${classes.dir}" />
         <delete dir="${mcp.dir}/reobf"/>

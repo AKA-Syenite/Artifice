@@ -86,6 +86,7 @@
     
     <target name="install" depends="build">
         <jar destfile="${dist.dir}/Artifice-${python.out}-${build.number}.jar" basedir="${classes.dir}"/>
+    	<copy todir="../artifacts" file="${dist.dir}/Artifice-${python.out}-${build.number}.jar"/>
         <delete dir="${classes.dir}" />
         <delete dir="${mcp.dir}/reobf"/>
         <delete dir="${mcpsrc.dir}/shukaro/artifice" />
@@ -214,10 +215,6 @@
     </target>
 
     <target name="clean" >
-    	<delete includeEmptyDirs="true">
-    	  <fileset dir="${artifacts.dir}" includes="**/*" defaultexcludes="no"/>
-    	</delete>
-    	<copy todir="../artifacts" file="${dist.dir}/Artifice-${python.out}-${build.number}.jar"/>
         <delete dir="${build.dir}" />
     	<delete dir="." />
     </target>

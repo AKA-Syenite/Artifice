@@ -139,7 +139,7 @@
         <property name="build.number" value="CUSTOM_BUILD" />
     </target>
     
-    <target name="setup-forge" depends="download-forge,build-number-there,build-number-not-there" unless="forge.already.installed">
+    <target name="setup-forge" depends="move-branch,download-forge,build-number-there,build-number-not-there" unless="forge.already.installed">
 
         <property name="build.full" value="${build.number}" />
         <unzip dest="${build.dir}">

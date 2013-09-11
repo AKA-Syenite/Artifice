@@ -2,7 +2,7 @@
 
     <property environment="env" />
     
-	<property name="branch.dir" value="/152" />
+	<property name="branch.dir" value="../152" />
 	<property name="build.dir" value="${branch.dir}/build" />
     <property name="classes.dir" value="${build.dir}/packaging" />
     <property name="forge.buildnum" value="684" />

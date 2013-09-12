@@ -15,6 +15,8 @@ public class ItemBlockFrame extends ItemBlockArtifice
     @Override
     public String getUnlocalizedName(ItemStack stack)
     {
+    	if (stack.getItemDamage() > ArtificeCore.tiers.length)
+    		return Block.blocksList[stack.itemID].getUnlocalizedName() + "." + ArtificeCore.tiers[0].toLowerCase();
         return Block.blocksList[stack.itemID].getUnlocalizedName() + "." + ArtificeCore.tiers[stack.getItemDamage()].toLowerCase();
     }
 }

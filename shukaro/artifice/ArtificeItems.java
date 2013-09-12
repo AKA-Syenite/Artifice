@@ -62,7 +62,8 @@ public class ArtificeItems
         {
             itemSteelIngot = new ItemSteel(ArtificeConfig.itemSteelIngotID.getInt());
             GameRegistry.registerItem(itemSteelIngot, itemSteelIngot.getUnlocalizedName());
-            OreDictionary.registerOre("ingotSteel", itemSteelIngot);
+            OreDictionary.registerOre("ingotSteel", new ItemStack(itemSteelIngot, 1, 0));
+            OreDictionary.registerOre("dustSteel", new ItemStack(itemSteelIngot, 1, 1));
         }
         
         if (ArtificeConfig.enableBoxes.getBoolean(true))

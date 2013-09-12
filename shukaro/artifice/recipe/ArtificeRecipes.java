@@ -7,6 +7,7 @@ import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipes;
+import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 import net.minecraftforge.oredict.ShapelessOreRecipe;
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -68,6 +69,38 @@ public class ArtificeRecipes
         	registerUpgrades();
         	GameRegistry.addRecipe(new RecipeUpgrade());
         }
+        if (ArtificeConfig.alternateSteel.getBoolean(false))
+        {
+        	registerAlternateSteelRecipes();
+        }
+    }
+    
+    private static void registerAlternateSteelRecipes()
+    {
+    	int cost = ArtificeConfig.alternateSteelRequirement.getInt();
+    	if (cost < 1)
+    		cost = 1;
+    	if (cost > 8)
+    		cost = 8;
+    	
+    	Object[] reagents = new Object[cost+1];
+    	ItemStack fuel = new ItemStack(Item.coal, 1, OreDictionary.WILDCARD_VALUE);
+    	
+    	reagents[0] = Item.ingotIron;
+    	for (int i=1; i<cost+1; i++)
+    		reagents[i] = fuel.copy();
+    	
+    	GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ArtificeItems.itemSteelIngot, 1, 1), reagents));
+    	
+    	FurnaceRecipes.smelting().addSmelting(ArtificeItems.itemSteelIngot.itemID, 1, new ItemStack(ArtificeItems.itemSteelIngot, 1, 0), 1.0f);
+    	
+    	GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeBlocks.blockSteel, 1, 0), new Object[] {
+            "XXX",
+            "XXX",
+            "XXX",
+            'X', "ingotSteel" }));
+        
+        GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ArtificeItems.itemSteelIngot, 9, 0), new ItemStack(ArtificeBlocks.blockSteel, 1, 0)));
     }
     
     private static void registerUpgrades()

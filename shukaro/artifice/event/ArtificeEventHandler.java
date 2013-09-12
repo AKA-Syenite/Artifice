@@ -4,23 +4,16 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 
-import net.minecraft.block.Block;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
 import net.minecraft.world.ChunkCoordIntPair;
-import net.minecraft.world.World;
 import net.minecraftforge.client.event.TextureStitchEvent;
 import net.minecraftforge.event.ForgeSubscribe;
-import net.minecraftforge.event.entity.player.PlayerInteractEvent;
-import net.minecraftforge.event.entity.player.PlayerInteractEvent.Action;
 import net.minecraftforge.event.world.ChunkDataEvent;
-import shukaro.artifice.ArtificeBlocks;
 import shukaro.artifice.ArtificeConfig;
 import shukaro.artifice.ArtificeCore;
 import shukaro.artifice.compat.ArtificeRegistry;
-import shukaro.artifice.util.BlockCoord;
 import shukaro.artifice.util.ChunkCoord;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class ArtificeEventHandler
 {
@@ -30,6 +23,7 @@ public class ArtificeEventHandler
     private ArrayList chunks;
     
     @ForgeSubscribe
+    @SideOnly(Side.CLIENT)
     public void preTextureStitch(TextureStitchEvent.Pre e)
     {
     	ArtificeConfig.connectedTexturesRegistered = false;

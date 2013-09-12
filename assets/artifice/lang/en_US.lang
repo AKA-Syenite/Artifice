@@ -70,7 +70,8 @@ item.artifice.sickle.iron.name=Iron Sickle
 item.artifice.sickle.gold.name=Gold Sickle
 item.artifice.sickle.emerald.name=Diamond Sickle
 
-item.artifice.ingot.steel.name=Steel Ingot
+item.artifice.steel.ingot.name=Steel Ingot
+item.artifice.steel.dust.name=Steel Dust
 
 item.artifice.box.name=Box
 

@@ -84,6 +84,8 @@ public class ArtificeTooltips
         {
             ArtificeRegistry.registerTooltip(ArtificeItems.itemSteelIngot.itemID, 0, "A strong iron alloy");
             ArtificeRegistry.registerTooltip(ArtificeItems.itemSteelIngot.itemID, 0, commentCode + "Steel is progress");
+            ArtificeRegistry.registerTooltip(ArtificeItems.itemSteelIngot.itemID, 1, "A pile of coal dust and iron bits");
+            ArtificeRegistry.registerTooltip(ArtificeItems.itemSteelIngot.itemID, 1, commentCode + "Sooty");
         }
         
         if (ArtificeConfig.enableBoxes.getBoolean(true))

@@ -69,6 +69,8 @@ public class ArtificeConfig
     public static Property frameRecipes;
     public static Property detectorRecipe;
     public static Property steelSmelting;
+    public static Property alternateSteel;
+    public static Property alternateSteelRequirement;
     public static Property blastWallRecipes;
     public static Property glassWallRecipes;
     public static Property scaffoldRecipes;
@@ -284,6 +286,10 @@ public class ArtificeConfig
             detectorRecipe.comment = "Set to false to prevent crafting of detectors";
             steelSmelting = c.get("Recipes", "Steel Smelting", true);
             steelSmelting.comment = "Set to false to prevent the smelting of steel";
+            alternateSteel = c.get("Recipes", "Alternate Steel Recipe", false);
+            alternateSteel.comment = "Set to true to enable an alternate steel recipe which uses additional fuel";
+            alternateSteelRequirement = c.get("Recipes", "Alternate Steel Recipe Fuel Requirement", 2);
+            alternateSteelRequirement.comment = "The amount of extra fuel each ingot of steel will require. Minimum of 1, maximum of 8";
             blastWallRecipes = c.get("Recipes", "Blast Wall Recipes", true);
             blastWallRecipes.comment = "Set to false to prevent crafting of blast walls";
             glassWallRecipes = c.get("Recipes", "Glass Wall Recipes", true);
@@ -331,6 +337,7 @@ public class ArtificeConfig
             if (!enableSteel.getBoolean(true))
             {
                 steelSmelting.set(false);
+                alternateSteel.set(false);
             }
             enableWorldGen = c.get("General", "Enable Worldgen", true);
             enableWorldGen.comment = "Set to false to stop worldgen blocks from initializing or generating";

@@ -12,7 +12,6 @@ import java.util.Properties;
 import java.util.logging.Level;
 
 import net.minecraft.client.renderer.texture.IconRegister;
-import net.minecraft.util.Icon;
 import net.minecraftforge.common.Configuration;
 import net.minecraftforge.common.Property;
 import shukaro.artifice.compat.ArtificeRegistry;
@@ -20,6 +19,8 @@ import shukaro.artifice.render.IconHandler;
 import shukaro.artifice.render.connectedtexture.ConnectedTexture;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.registry.LanguageRegistry;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class ArtificeConfig
 {
@@ -491,6 +492,7 @@ public class ArtificeConfig
         }
     }
         
+    @SideOnly(Side.CLIENT)
     public static void registerConnectedTextures(IconRegister reg)
     {
     	if (!ArtificeConfig.connectedTexturesRegistered)

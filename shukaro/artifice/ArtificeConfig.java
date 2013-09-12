@@ -20,6 +20,8 @@ import shukaro.artifice.render.IconHandler;
 import shukaro.artifice.render.connectedtexture.ConnectedTexture;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.registry.LanguageRegistry;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class ArtificeConfig
 {
@@ -432,6 +434,7 @@ public class ArtificeConfig
         configFolder = new File(folder.getAbsolutePath() + "/shukaro/artifice/");
     }
     
+    @SideOnly(Side.CLIENT)
     public static void registerConnectedTextures(IconRegister reg)
     {
     	if (!ArtificeConfig.connectedTexturesRegistered)

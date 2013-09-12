@@ -17,6 +17,8 @@ public class ItemBlockMarble extends ItemBlockArtifice
     {
         if (stack.getItemDamage() == 0)
             return Block.blocksList[stack.itemID].getUnlocalizedName();
+        if (stack.getItemDamage() > ArtificeCore.rocks.length)
+        	return Block.blocksList[stack.itemID].getUnlocalizedName() + "." + ArtificeCore.rocks[0].toLowerCase();
         return Block.blocksList[stack.itemID].getUnlocalizedName() + "." + ArtificeCore.rocks[stack.getItemDamage()].toLowerCase();
     }
 }

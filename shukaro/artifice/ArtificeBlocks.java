@@ -2,6 +2,7 @@ package shukaro.artifice;
 
 import net.minecraft.block.BlockHalfSlab;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 import shukaro.artifice.block.BlockSteel;
 import shukaro.artifice.block.ItemBlockArtifice;
@@ -78,6 +79,10 @@ public class ArtificeBlocks
             GameRegistry.registerBlock(blockMarbleCobbleStairs, ItemBlockArtifice.class, blockMarbleCobbleStairs.getUnlocalizedName());
             ArtificeRegistry.registerBasaltType(ArtificeBlocks.blockBasalt.blockID, 0);
             ArtificeRegistry.registerMarbleType(ArtificeBlocks.blockMarble.blockID, 0);
+            OreDictionary.registerOre("stone", new ItemStack(blockBasalt, 1, 0));
+            OreDictionary.registerOre("stone", new ItemStack(blockMarble, 1, 0));
+            OreDictionary.registerOre("cobblestone", new ItemStack(blockBasalt, 1, 1));
+            OreDictionary.registerOre("cobblestone", new ItemStack(blockMarble, 1, 1));
         }
         
         if (ArtificeConfig.enableFrames.getBoolean(true))

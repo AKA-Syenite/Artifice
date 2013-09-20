@@ -81,6 +81,7 @@ public class ArtificeConfig
     public static Property coinChanging;
     public static Property coinSmelting;
     public static Property upgradeRecipes;
+    public static Property convenienceRecipes;
     
     public static Property enableFrames;
     public static Property enableSledges;
@@ -310,6 +311,8 @@ public class ArtificeConfig
             coinSmelting.comment = "Whether or not to allow coins to be smelted back into nuggets";
             upgradeRecipes = c.get("Recipes", "Upgrade Recipes", true);
             upgradeRecipes.comment = "Set to false to prevent crafting of upgrades";
+            convenienceRecipes = c.get("Recipes", "Convenience Recipes", true);
+            convenienceRecipes.comment = "Set to false to prevent convenience crafting (smashing stone bricks, smelting cracked bricks, etc).";
             
             limitUpgrades = c.get("General", "Limit Upgrades", true);
             limitUpgrades.comment = "If true, caps the maximum enchant level that can be applied through upgrades to below the natural cap (Shown in Tooltips)";

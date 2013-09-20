@@ -73,6 +73,37 @@ public class ArtificeRecipes
         {
         	registerAlternateSteelRecipes();
         }
+        if (ArtificeConfig.convenienceRecipes.getBoolean(true))
+        {
+        	registerConvenienceRecipes();
+        }
+    }
+    
+    private static void registerConvenienceRecipes()
+    {
+    	FurnaceRecipes.smelting().addSmelting(Block.stoneBrick.blockID, 2, new ItemStack(Block.stoneBrick, 1, 0), 0f);
+    	
+    	GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Block.stoneBrick, 2, 3), new Object[] {
+    		"X",
+    		"X",
+    		'X', new ItemStack(Block.stoneBrick, 1, 0)
+    	}));
+    	
+    	GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Block.stoneBrick, 8, 1), new Object[] {
+    		"XXX",
+    		"XYX",
+    		"XXX",
+    		'X', new ItemStack(Block.stoneBrick, 1, 0),
+    		'Y', new ItemStack(Item.bucketWater)
+    	}));
+    	
+    	GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Block.cobblestoneMossy, 8, 0), new Object[] {
+    		"XXX",
+    		"XYX",
+    		"XXX",
+    		'X', new ItemStack(Block.cobblestone),
+    		'Y', new ItemStack(Item.bucketWater)
+    	}));
     }
     
     private static void registerAlternateSteelRecipes()

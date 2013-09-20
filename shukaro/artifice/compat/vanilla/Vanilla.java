@@ -5,10 +5,11 @@ import java.util.ArrayList;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import shukaro.artifice.ArtificeConfig;
 import shukaro.artifice.ArtificeCore;
 import shukaro.artifice.compat.ArtificeRegistry;
 import cpw.mods.fml.common.Mod;
-import cpw.mods.fml.common.Mod.Init;
+import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.network.NetworkMod;
 
@@ -16,7 +17,7 @@ import cpw.mods.fml.common.network.NetworkMod;
 @NetworkMod(clientSideRequired = false, serverSideRequired = false)
 public class Vanilla
 {
-    @Init
+    @EventHandler
     public void load(FMLInitializationEvent e)
     {
         ArtificeRegistry.registerDimensionBlacklist(1);
@@ -37,6 +38,13 @@ public class Vanilla
     
     private void loadSledges()
     {
+    	if (ArtificeConfig.convenienceRecipes.getBoolean(true))
+    	{
+	    	ArrayList<ItemStack> stoneBricks = new ArrayList<ItemStack>();
+	    	stoneBricks.add(new ItemStack(Block.stoneBrick, 1, 2));
+	    	ArtificeRegistry.registerSledgeBlock(Block.stoneBrick.blockID, 0, stoneBricks);
+    	}
+    	
         ArrayList<ItemStack> workbench = new ArrayList<ItemStack>();
         workbench.add(new ItemStack(Block.planks.blockID, 4, 0));
         ArtificeRegistry.registerSledgeBlock(Block.workbench.blockID, 0, workbench);

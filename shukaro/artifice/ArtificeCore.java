@@ -26,7 +26,7 @@ public class ArtificeCore
     
     public static final String modID = "Artifice";
     public static final String modName = "Artifice";
-    public static final String modVersion = "1.6.2R1.1.2";
+    public static final String modVersion = "1.6.3R1.1.2";
     
     public static ArtificeWorldGen worldGen;
     public static Logger logger;

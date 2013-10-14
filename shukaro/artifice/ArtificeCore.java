@@ -2,12 +2,17 @@ package shukaro.artifice;
 
 import java.util.logging.Logger;
 
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.settings.KeyBinding;
 import net.minecraftforge.common.MinecraftForge;
 import shukaro.artifice.event.ArtificeEventHandler;
+import shukaro.artifice.net.ClientPacketHandler;
 import shukaro.artifice.net.ClientProxy;
 import shukaro.artifice.net.CommonProxy;
+import shukaro.artifice.net.ServerPacketHandler;
 import shukaro.artifice.recipe.ArtificeRecipes;
 import shukaro.artifice.world.ArtificeWorldGen;
+import cpw.mods.fml.client.registry.KeyBindingRegistry;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
@@ -16,9 +21,15 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.event.FMLServerStartingEvent;
+import cpw.mods.fml.common.network.NetworkMod;
+import cpw.mods.fml.common.network.NetworkMod.SidedPacketHandler;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 @Mod(modid = ArtificeCore.modID, name = ArtificeCore.modName, version = ArtificeCore.modVersion)
+@NetworkMod(clientSideRequired = true, serverSideRequired = false,
+clientPacketHandlerSpec = @SidedPacketHandler(channels = {ArtificeCore.modChannel}, packetHandler = ClientPacketHandler.class),
+serverPacketHandlerSpec = @SidedPacketHandler(channels = {ArtificeCore.modChannel}, packetHandler = ServerPacketHandler.class)
+)
 public class ArtificeCore
 {
     @SidedProxy(clientSide = "shukaro.artifice.net.ClientProxy", serverSide = "shukaro.artifice.net.CommonProxy")
@@ -26,6 +37,7 @@ public class ArtificeCore
     
     public static final String modID = "Artifice";
     public static final String modName = "Artifice";
+    public static final String modChannel = "Artifice";
     public static final String modVersion = "1.6.4R1.1.3";
     
     public static ArtificeWorldGen worldGen;

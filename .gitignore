@@ -1,6 +1,7 @@
 cpw/
 ibxm/
-net/
+net/minecraft/
+net/minecraftforge/
 paulscode/
 assets/forge/
 *.cfg

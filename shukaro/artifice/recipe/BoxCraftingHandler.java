@@ -3,6 +3,8 @@ package shukaro.artifice.recipe;
 import org.lwjgl.input.Keyboard;
 
 import shukaro.artifice.ArtificeItems;
+import shukaro.artifice.net.PlayerTracking;
+import net.minecraft.client.Minecraft;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
@@ -25,7 +27,7 @@ public class BoxCraftingHandler implements ICraftingHandler
             {
                 // Did the player shift-click the output? (This makes me a little bit uncomfortable, but eh)
                 boolean shift = false;
-                if (Keyboard.isKeyDown(Keyboard.KEY_RSHIFT) || Keyboard.isKeyDown(Keyboard.KEY_LSHIFT))
+                if (PlayerTracking.sneaks.contains(player.entityId))
                     shift = true;
                 
                 // Number of boxes to unbox

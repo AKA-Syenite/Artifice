@@ -72,7 +72,7 @@ public class BlockFrameScaffold extends BlockFrame implements IConnectedTexture,
                 {
                     held.stackSize--;
                     if (held.stackSize <= 0)
-                        held = null;
+                    	player.inventory.setInventorySlotContents(player.inventory.currentItem, null);
                 }
             }
         }
@@ -107,7 +107,7 @@ public class BlockFrameScaffold extends BlockFrame implements IConnectedTexture,
         return this.checkStay(world, x, y, z, world.getBlockMetadata(x, y, z));
     }
     
-    public boolean checkStay(World world, int x, int y, int z, int meta)
+    private boolean checkStay(World world, int x, int y, int z, int meta)
     {
         BlockCoord c = new BlockCoord(x, y, z);
         
@@ -135,7 +135,7 @@ public class BlockFrameScaffold extends BlockFrame implements IConnectedTexture,
         return false;
     }
     
-    public boolean isRooted(World world, int x, int y, int z, int meta)
+    private boolean isRooted(World world, int x, int y, int z, int meta)
     {
         for (int i=y-1; i>0; i--)
         {

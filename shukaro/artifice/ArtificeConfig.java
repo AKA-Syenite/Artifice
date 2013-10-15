@@ -3,9 +3,7 @@ package shukaro.artifice;
 import java.io.File;
 import java.util.logging.Level;
 
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.texture.IconRegister;
-import net.minecraft.client.settings.KeyBinding;
 import net.minecraftforge.common.Configuration;
 import net.minecraftforge.common.Property;
 import shukaro.artifice.compat.ArtificeRegistry;
@@ -445,6 +443,21 @@ public class ArtificeConfig
     		IconHandler.registerConnectedTexture(reg, ConnectedTexture.ReinforcedFrame, "frame/reinforced");
     		IconHandler.registerConnectedTexture(reg, ConnectedTexture.IndustrialFrame, "frame/industrial");
     		IconHandler.registerConnectedTexture(reg, ConnectedTexture.AdvancedFrame, "frame/advanced");
+    		
+    		IconHandler.registerConnectedTexture(reg, ConnectedTexture.BasicScaffold, "scaffold/basic");
+    		IconHandler.registerConnectedTexture(reg, ConnectedTexture.ReinforcedScaffold, "scaffold/reinforced");
+    		IconHandler.registerConnectedTexture(reg, ConnectedTexture.IndustrialScaffold, "scaffold/industrial");
+    		IconHandler.registerConnectedTexture(reg, ConnectedTexture.AdvancedScaffold, "scaffold/advanced");
+    		
+    		IconHandler.registerConnectedTexture(reg, ConnectedTexture.BasicBlastWall, "blastwall/basic");
+    		IconHandler.registerConnectedTexture(reg, ConnectedTexture.ReinforcedBlastWall, "blastwall/reinforced");
+    		IconHandler.registerConnectedTexture(reg, ConnectedTexture.IndustrialBlastWall, "blastwall/industrial");
+    		IconHandler.registerConnectedTexture(reg, ConnectedTexture.AdvancedBlastWall, "blastwall/advanced");
+    		
+    		IconHandler.registerConnectedTexture(reg, ConnectedTexture.BasicGlassWall, "glasswall/basic");
+    		IconHandler.registerConnectedTexture(reg, ConnectedTexture.ReinforcedGlassWall, "glasswall/reinforced");
+    		IconHandler.registerConnectedTexture(reg, ConnectedTexture.IndustrialGlassWall, "glasswall/industrial");
+    		IconHandler.registerConnectedTexture(reg, ConnectedTexture.AdvancedGlassWall, "glasswall/advanced");
     		
     		IconHandler.registerConnectedTexture(reg, ConnectedTexture.MarblePaver, "marble/paver");
     		ConnectedTexture.MarbleAntipaver.textureList = ConnectedTexture.MarblePaver.textureList;

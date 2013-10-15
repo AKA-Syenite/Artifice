@@ -17,7 +17,7 @@ import net.minecraftforge.common.ForgeDirection;
 import shukaro.artifice.ArtificeCore;
 import shukaro.artifice.block.BlockArtifice;
 import shukaro.artifice.render.connectedtexture.ConnectedTextureBase;
-import shukaro.artifice.render.connectedtexture.TransparentConnectedTexture;
+import shukaro.artifice.render.connectedtexture.schemes.TransparentConnectedTexture;
 import shukaro.artifice.util.BlockCoord;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -63,18 +63,5 @@ public abstract class BlockFrame extends BlockArtifice implements ITileEntityPro
     public boolean renderAsNormalBlock()
     {
         return false;
-    }
-    
-    @Override
-    @SideOnly(Side.CLIENT)
-    public boolean shouldSideBeRendered(IBlockAccess world, int x, int y, int z, int side)
-    {
-        return true;
-    }
-    
-    @Override
-    public int getRenderType()
-    {
-        return ArtificeCore.frameRenderID;
     }
 }

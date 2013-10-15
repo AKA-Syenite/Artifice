@@ -1,17 +1,5 @@
-package shukaro.artifice.block.frame;
+ package shukaro.artifice.block.frame;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-import shukaro.artifice.ArtificeBlocks;
-import shukaro.artifice.ArtificeConfig;
-import shukaro.artifice.ArtificeCore;
-import shukaro.artifice.render.IconHandler;
-import shukaro.artifice.render.connectedtexture.ConnectedTexture;
-import shukaro.artifice.render.connectedtexture.ConnectedTextureBase;
-import shukaro.artifice.render.connectedtexture.IConnectedTexture;
-import shukaro.artifice.render.connectedtexture.ILayeredRender;
-import shukaro.artifice.render.connectedtexture.SolidConnectedTexture;
-import net.minecraft.block.Block;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.Entity;
 import net.minecraft.tileentity.TileEntity;
@@ -19,14 +7,23 @@ import net.minecraft.util.Icon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ForgeDirection;
+import shukaro.artifice.ArtificeConfig;
+import shukaro.artifice.ArtificeCore;
+import shukaro.artifice.render.IconHandler;
+import shukaro.artifice.render.connectedtexture.ConnectedTexture;
+import shukaro.artifice.render.connectedtexture.ConnectedTextureBase;
+import shukaro.artifice.render.connectedtexture.IConnectedTexture;
+import shukaro.artifice.render.connectedtexture.schemes.SolidConnectedTexture;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockFrameBlastWall extends BlockFrame implements IConnectedTexture, ILayeredRender
+public class BlockFrameBlastWall extends BlockFrame implements IConnectedTexture
 {
     private Icon[] icons = new Icon[ArtificeCore.tiers.length];
-    private ConnectedTextureBase basic = new SolidConnectedTexture(ConnectedTexture.BasicFrame);
-    private ConnectedTextureBase reinforced = new SolidConnectedTexture(ConnectedTexture.ReinforcedFrame);
-    private ConnectedTextureBase industrial = new SolidConnectedTexture(ConnectedTexture.IndustrialFrame);
-    private ConnectedTextureBase advanced = new SolidConnectedTexture(ConnectedTexture.AdvancedFrame);
+    private ConnectedTextureBase basic = new SolidConnectedTexture(ConnectedTexture.BasicBlastWall);
+    private ConnectedTextureBase reinforced = new SolidConnectedTexture(ConnectedTexture.ReinforcedBlastWall);
+    private ConnectedTextureBase industrial = new SolidConnectedTexture(ConnectedTexture.IndustrialBlastWall);
+    private ConnectedTextureBase advanced = new SolidConnectedTexture(ConnectedTexture.AdvancedBlastWall);
     
     public BlockFrameBlastWall(int id)
     {
@@ -71,24 +68,18 @@ public class BlockFrameBlastWall extends BlockFrame implements IConnectedTexture
     }
 
     @Override
-    public Icon getRenderIcon(int side, int meta)
-    {
-        return icons[meta];
-    }
-
-    @Override
     public ConnectedTexture getTextureType(int side, int meta)
     {
         switch (meta)
         {
         case 0:
-            return ConnectedTexture.BasicFrame;
+            return ConnectedTexture.BasicBlastWall;
         case 1:
-            return ConnectedTexture.ReinforcedFrame;
+            return ConnectedTexture.ReinforcedBlastWall;
         case 2:
-            return ConnectedTexture.IndustrialFrame;
+            return ConnectedTexture.IndustrialBlastWall;
         case 3:
-            return ConnectedTexture.AdvancedFrame;
+            return ConnectedTexture.AdvancedBlastWall;
         default:
             return null;
         }
@@ -138,7 +129,7 @@ public class BlockFrameBlastWall extends BlockFrame implements IConnectedTexture
     @SideOnly(Side.CLIENT)
     public Icon getBlockTexture(IBlockAccess block, int x, int y, int z, int side)
     {
-        return this.getTextureType(side, block.getBlockMetadata(x, y, z)).textureList[this.getTextureRenderer(side, block.getBlockMetadata(x, y, z)).getTextureIndex(block, x, y, z, side)];
+    	return this.getTextureType(side, block.getBlockMetadata(x, y, z)).textureList[this.getTextureRenderer(side, block.getBlockMetadata(x, y, z)).getTextureIndex(block, x, y, z, side)];
     }
 
 	@Override

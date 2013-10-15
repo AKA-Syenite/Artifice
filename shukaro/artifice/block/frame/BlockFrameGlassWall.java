@@ -1,17 +1,5 @@
 package shukaro.artifice.block.frame;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-import shukaro.artifice.ArtificeConfig;
-import shukaro.artifice.ArtificeCore;
-import shukaro.artifice.render.IconHandler;
-import shukaro.artifice.render.connectedtexture.ConnectedTexture;
-import shukaro.artifice.render.connectedtexture.ConnectedTextureBase;
-import shukaro.artifice.render.connectedtexture.IConnectedTexture;
-import shukaro.artifice.render.connectedtexture.ILayeredRender;
-import shukaro.artifice.render.connectedtexture.SolidConnectedTexture;
-import shukaro.artifice.render.connectedtexture.TransparentConnectedTexture;
-import net.minecraft.block.Block;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.Entity;
 import net.minecraft.tileentity.TileEntity;
@@ -19,14 +7,23 @@ import net.minecraft.util.Icon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ForgeDirection;
+import shukaro.artifice.ArtificeConfig;
+import shukaro.artifice.ArtificeCore;
+import shukaro.artifice.render.IconHandler;
+import shukaro.artifice.render.connectedtexture.ConnectedTexture;
+import shukaro.artifice.render.connectedtexture.ConnectedTextureBase;
+import shukaro.artifice.render.connectedtexture.IConnectedTexture;
+import shukaro.artifice.render.connectedtexture.schemes.TransparentConnectedTexture;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockFrameGlassWall extends BlockFrame implements IConnectedTexture, ILayeredRender
+public class BlockFrameGlassWall extends BlockFrame implements IConnectedTexture
 {
     private Icon[] icons = new Icon[ArtificeCore.tiers.length];
-    private ConnectedTextureBase basic = new TransparentConnectedTexture(ConnectedTexture.BasicFrame);
-    private ConnectedTextureBase reinforced = new TransparentConnectedTexture(ConnectedTexture.ReinforcedFrame);
-    private ConnectedTextureBase industrial = new TransparentConnectedTexture(ConnectedTexture.IndustrialFrame);
-    private ConnectedTextureBase advanced = new TransparentConnectedTexture(ConnectedTexture.AdvancedFrame);
+    private ConnectedTextureBase basic = new TransparentConnectedTexture(ConnectedTexture.BasicGlassWall);
+    private ConnectedTextureBase reinforced = new TransparentConnectedTexture(ConnectedTexture.ReinforcedGlassWall);
+    private ConnectedTextureBase industrial = new TransparentConnectedTexture(ConnectedTexture.IndustrialGlassWall);
+    private ConnectedTextureBase advanced = new TransparentConnectedTexture(ConnectedTexture.AdvancedGlassWall);
     
     public BlockFrameGlassWall(int id)
     {
@@ -71,24 +68,18 @@ public class BlockFrameGlassWall extends BlockFrame implements IConnectedTexture
     }
 
     @Override
-    public Icon getRenderIcon(int side, int meta)
-    {
-        return icons[meta];
-    }
-
-    @Override
     public ConnectedTexture getTextureType(int side, int meta)
     {
         switch (meta)
         {
         case 0:
-            return ConnectedTexture.BasicFrame;
+            return ConnectedTexture.BasicGlassWall;
         case 1:
-            return ConnectedTexture.ReinforcedFrame;
+            return ConnectedTexture.ReinforcedGlassWall;
         case 2:
-            return ConnectedTexture.IndustrialFrame;
+            return ConnectedTexture.IndustrialGlassWall;
         case 3:
-            return ConnectedTexture.AdvancedFrame;
+            return ConnectedTexture.AdvancedGlassWall;
         default:
             return null;
         }
@@ -140,4 +131,19 @@ public class BlockFrameGlassWall extends BlockFrame implements IConnectedTexture
 	{
 		return false;
 	}
+	
+	@Override
+	@SideOnly(Side.CLIENT)
+    public int getRenderBlockPass()
+    {
+        return 0;
+    }
+	
+	@Override
+	@SideOnly(Side.CLIENT)
+    public boolean shouldSideBeRendered(IBlockAccess par1IBlockAccess, int par2, int par3, int par4, int par5)
+    {
+        int i1 = par1IBlockAccess.getBlockId(par2, par3, par4);
+        return i1 == this.blockID ? false : super.shouldSideBeRendered(par1IBlockAccess, par2, par3, par4, par5);
+    }
 }

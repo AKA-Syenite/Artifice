@@ -1,24 +1,6 @@
 package shukaro.artifice.block.frame;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-import shukaro.artifice.ArtificeBlocks;
-import shukaro.artifice.ArtificeConfig;
-import shukaro.artifice.ArtificeCore;
-import shukaro.artifice.render.IconHandler;
-import shukaro.artifice.render.connectedtexture.ConnectedTexture;
-import shukaro.artifice.render.connectedtexture.ConnectedTextureBase;
-import shukaro.artifice.render.connectedtexture.IConnectedTexture;
-import shukaro.artifice.render.connectedtexture.ILayeredRender;
-import shukaro.artifice.render.connectedtexture.SolidConnectedTexture;
-import shukaro.artifice.util.BlockCoord;
 import net.minecraft.block.Block;
-import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
@@ -29,22 +11,33 @@ import net.minecraft.util.Icon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ForgeDirection;
+import shukaro.artifice.ArtificeConfig;
+import shukaro.artifice.ArtificeCore;
+import shukaro.artifice.render.IconHandler;
+import shukaro.artifice.render.connectedtexture.ConnectedTexture;
+import shukaro.artifice.render.connectedtexture.ConnectedTextureBase;
+import shukaro.artifice.render.connectedtexture.IConnectedTexture;
+import shukaro.artifice.render.connectedtexture.schemes.SolidConnectedTexture;
+import shukaro.artifice.util.BlockCoord;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockFrameScaffold extends BlockFrame implements IConnectedTexture, ILayeredRender
+public class BlockFrameScaffold extends BlockFrame implements IConnectedTexture
 {
     private static final ForgeDirection[] sides = new ForgeDirection[] { ForgeDirection.NORTH, ForgeDirection.SOUTH, ForgeDirection.EAST, ForgeDirection.WEST, ForgeDirection.DOWN };
     
     private Icon[] sideIcons = new Icon[ArtificeCore.tiers.length];
     private Icon[] vertIcons = new Icon[ArtificeCore.tiers.length];
-    private ConnectedTextureBase basic = new SolidConnectedTexture(ConnectedTexture.BasicFrame);
-    private ConnectedTextureBase reinforced = new SolidConnectedTexture(ConnectedTexture.ReinforcedFrame);
-    private ConnectedTextureBase industrial = new SolidConnectedTexture(ConnectedTexture.IndustrialFrame);
-    private ConnectedTextureBase advanced = new SolidConnectedTexture(ConnectedTexture.AdvancedFrame);
+    private ConnectedTextureBase basic = new SolidConnectedTexture(ConnectedTexture.BasicScaffold);
+    private ConnectedTextureBase reinforced = new SolidConnectedTexture(ConnectedTexture.ReinforcedScaffold);
+    private ConnectedTextureBase industrial = new SolidConnectedTexture(ConnectedTexture.IndustrialScaffold);
+    private ConnectedTextureBase advanced = new SolidConnectedTexture(ConnectedTexture.AdvancedScaffold);
     
     public BlockFrameScaffold(int id)
     {
         super(id);
         setUnlocalizedName("artifice.scaffold");
+        setBlockBounds(0.01F, 0.01F, 0.01F, 0.99F, 0.99F, 0.99F);
     }
     
     @Override
@@ -177,14 +170,6 @@ public class BlockFrameScaffold extends BlockFrame implements IConnectedTexture,
     }
 
     @Override
-    public Icon getRenderIcon(int side, int meta)
-    {
-        if (side == 0 || side == 1)
-            return vertIcons[meta];
-        return null;
-    }
-
-    @Override
     public ConnectedTexture getTextureType(int side, int meta)
     {
         if (side == 0 || side == 1)
@@ -192,13 +177,13 @@ public class BlockFrameScaffold extends BlockFrame implements IConnectedTexture,
             switch (meta)
             {
             case 0:
-                return ConnectedTexture.BasicFrame;
+                return ConnectedTexture.BasicScaffold;
             case 1:
-                return ConnectedTexture.ReinforcedFrame;
+                return ConnectedTexture.ReinforcedScaffold;
             case 2:
-                return ConnectedTexture.IndustrialFrame;
+                return ConnectedTexture.IndustrialScaffold;
             case 3:
-                return ConnectedTexture.AdvancedFrame;
+                return ConnectedTexture.AdvancedScaffold;
             default:
                 return null;
             }
@@ -240,10 +225,7 @@ public class BlockFrameScaffold extends BlockFrame implements IConnectedTexture,
     {
     	ArtificeConfig.registerConnectedTextures(reg);
         for (int i=0; i<ArtificeCore.tiers.length; i++)
-        {
-            sideIcons[i] = IconHandler.registerSingle(reg, ArtificeCore.tiers[i].toLowerCase() + "_side", "scaffold");
-            vertIcons[i] = IconHandler.registerSingle(reg, ArtificeCore.tiers[i].toLowerCase() + "_vert", "scaffold");
-        }
+            sideIcons[i] = IconHandler.registerSingle(reg, ArtificeCore.tiers[i].toLowerCase(), "scaffold/sides");
     }
 
     @Override
@@ -263,4 +245,10 @@ public class BlockFrameScaffold extends BlockFrame implements IConnectedTexture,
             return this.getTextureType(side, block.getBlockMetadata(x, y, z)).textureList[this.getTextureRenderer(side, block.getBlockMetadata(x, y, z)).getTextureIndex(block, x, y, z, side)];
         return this.sideIcons[block.getBlockMetadata(x, y, z)];
     }
+    
+    @Override
+	public int getRenderType()
+	{
+		return ArtificeCore.frameRenderID;
+	}
 }

@@ -20,6 +20,7 @@ public class BlockFrameBase extends BlockFrame
     {
         super(id);
         setUnlocalizedName("artifice.frame");
+        setBlockBounds(0.01F, 0.01F, 0.01F, 0.99F, 0.99F, 0.99F);
     }
     
     @Override
@@ -60,5 +61,11 @@ public class BlockFrameBase extends BlockFrame
 	public boolean isBlockSolidOnSide(World world, int x, int y, int z, ForgeDirection side)
 	{
 		return false;
+	}
+	
+	@Override
+	public int getRenderType()
+	{
+		return ArtificeCore.frameRenderID;
 	}
 }

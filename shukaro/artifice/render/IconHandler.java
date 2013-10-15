@@ -12,7 +12,7 @@ public class IconHandler
     {
         for (int i=0; i<texture.textureList.length; i++)
         {
-            texture.textureList[i] = reg.registerIcon(ArtificeCore.modID.toLowerCase() + ":" + folder + "/" + texture.name + "_" + i);
+            texture.textureList[i] = reg.registerIcon(ArtificeCore.modID.toLowerCase() + ":" + folder + "/" + texture.name + "_" + (i > 9 ? i : "0" + i));
         }
         for (ConnectedTexture t : ConnectedTexture.values())
         {

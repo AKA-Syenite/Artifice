@@ -18,9 +18,9 @@ import shukaro.artifice.render.IconHandler;
 import shukaro.artifice.render.connectedtexture.ConnectedTexture;
 import shukaro.artifice.render.connectedtexture.ConnectedTextureBase;
 import shukaro.artifice.render.connectedtexture.IConnectedTexture;
-import shukaro.artifice.render.connectedtexture.SlabConnectedTexture;
-import shukaro.artifice.render.connectedtexture.SolidConnectedTexture;
-import shukaro.artifice.render.connectedtexture.TransparentConnectedTexture;
+import shukaro.artifice.render.connectedtexture.schemes.SlabConnectedTexture;
+import shukaro.artifice.render.connectedtexture.schemes.SolidConnectedTexture;
+import shukaro.artifice.render.connectedtexture.schemes.TransparentConnectedTexture;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 

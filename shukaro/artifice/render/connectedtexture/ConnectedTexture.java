@@ -13,7 +13,19 @@ public enum ConnectedTexture
     BasicFrame("frame_basic"),
     ReinforcedFrame("frame_reinforced"),
     IndustrialFrame("frame_industrial"),
-    AdvancedFrame("frame_advanced");
+    AdvancedFrame("frame_advanced"),
+    BasicScaffold("scaffold_basic"),
+    ReinforcedScaffold("scaffold_reinforced"),
+    IndustrialScaffold("scaffold_industrial"),
+    AdvancedScaffold("scaffold_advanced"),
+    BasicBlastWall("blastwall_basic"),
+    ReinforcedBlastWall("blastwall_reinforced"),
+    IndustrialBlastWall("blastwall_industrial"),
+    AdvancedBlastWall("blastwall_advanced"),
+    BasicGlassWall("glasswall_basic"),
+    ReinforcedGlassWall("glasswall_reinforced"),
+    IndustrialGlassWall("glasswall_industrial"),
+    AdvancedGlassWall("glasswall_advanced");
     
     public String name;
     public Icon[] textureList;

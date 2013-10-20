@@ -3,13 +3,13 @@ package shukaro.artifice.render.connectedtexture.schemes;
 import net.minecraft.block.Block;
 import net.minecraft.world.IBlockAccess;
 import shukaro.artifice.ArtificeBlocks;
-import shukaro.artifice.render.connectedtexture.ConnectedTexture;
+import shukaro.artifice.render.connectedtexture.ConnectedTextures;
 import shukaro.artifice.render.connectedtexture.ConnectedTextureBase;
 import shukaro.artifice.util.BlockCoord;
 
 public class SlabConnectedTexture extends ConnectedTextureBase
 {
-    public SlabConnectedTexture(ConnectedTexture texture)
+    public SlabConnectedTexture(ConnectedTextures texture)
     {
         super(texture);
     }

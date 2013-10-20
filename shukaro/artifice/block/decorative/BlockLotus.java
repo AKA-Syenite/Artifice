@@ -2,16 +2,16 @@ package shukaro.artifice.block.decorative;
 
 import java.util.Random;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-import shukaro.artifice.ArtificeCore;
-import shukaro.artifice.gui.ArtificeCreativeTab;
-import shukaro.artifice.render.IconHandler;
 import net.minecraft.block.BlockLilyPad;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.util.Icon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import shukaro.artifice.ArtificeConfig;
+import shukaro.artifice.gui.ArtificeCreativeTab;
+import shukaro.artifice.render.IconHandler;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockLotus extends BlockLilyPad
 {
@@ -28,7 +28,7 @@ public class BlockLotus extends BlockLilyPad
     @Override
     public int getRenderType()
     {
-        return ArtificeCore.lotusRenderID;
+        return ArtificeConfig.lotusRenderID;
     }
     
     @Override

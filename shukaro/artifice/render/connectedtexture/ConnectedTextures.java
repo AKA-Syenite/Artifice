@@ -1,10 +1,8 @@
 package shukaro.artifice.render.connectedtexture;
 
-import shukaro.artifice.ArtificeConfig;
-import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.util.Icon;
 
-public enum ConnectedTexture
+public enum ConnectedTextures
 {
     MarblePaver("marble_paver"),
     MarbleAntipaver("marble_paver"),
@@ -30,7 +28,7 @@ public enum ConnectedTexture
     public String name;
     public Icon[] textureList;
     
-    private ConnectedTexture(String s)
+    private ConnectedTextures(String s)
     {
         this.name = s;
         this.textureList = new Icon[47];

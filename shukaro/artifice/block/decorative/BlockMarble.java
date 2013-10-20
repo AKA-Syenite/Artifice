@@ -3,28 +3,34 @@ package shukaro.artifice.block.decorative;
 import java.util.List;
 
 import net.minecraft.block.material.Material;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Icon;
 import net.minecraft.world.IBlockAccess;
+import net.minecraft.world.World;
 import shukaro.artifice.ArtificeConfig;
 import shukaro.artifice.ArtificeCore;
 import shukaro.artifice.block.BlockArtifice;
 import shukaro.artifice.gui.ArtificeCreativeTab;
+import shukaro.artifice.net.Packets;
 import shukaro.artifice.render.IconHandler;
-import shukaro.artifice.render.connectedtexture.ConnectedTexture;
 import shukaro.artifice.render.connectedtexture.ConnectedTextureBase;
-import shukaro.artifice.render.connectedtexture.IConnectedTexture;
+import shukaro.artifice.render.connectedtexture.ConnectedTextures;
 import shukaro.artifice.render.connectedtexture.schemes.SolidConnectedTexture;
+import shukaro.artifice.util.BlockCoord;
+import shukaro.artifice.util.ChunkCoord;
+import shukaro.artifice.util.PacketWrapper;
+import cpw.mods.fml.common.network.PacketDispatcher;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockMarble extends BlockArtifice implements IConnectedTexture
+public class BlockMarble extends BlockArtifice
 {
     private Icon[] icons = new Icon[ArtificeCore.rocks.length];
-    private ConnectedTextureBase paver = new SolidConnectedTexture(ConnectedTexture.MarblePaver);
-    private ConnectedTextureBase antipaver = new SolidConnectedTexture(ConnectedTexture.MarbleAntipaver);
+    private ConnectedTextureBase paver = new SolidConnectedTexture(ConnectedTextures.MarblePaver);
+    private ConnectedTextureBase antipaver = new SolidConnectedTexture(ConnectedTextures.MarbleAntipaver);
     
     public BlockMarble(int id)
     {
@@ -69,7 +75,7 @@ public class BlockMarble extends BlockArtifice implements IConnectedTexture
         if (meta >= ArtificeCore.rocks.length)
             meta = 0;
         if (meta == 3 || meta == 4)
-            return this.getTextureType(side, meta).textureList[0];
+        	return this.getTextureRenderer(side, meta).texture.textureList[0];
         else
             return icons[meta];
     }
@@ -82,22 +88,47 @@ public class BlockMarble extends BlockArtifice implements IConnectedTexture
         if (meta > ArtificeCore.rocks.length)
             meta = 0;
         if (meta == 3 || meta == 4)
-            return this.getTextureType(side, meta).textureList[this.getTextureRenderer(side, meta).getTextureIndex(block, x, y, z, side)];
+        {
+        	Integer worldID = Minecraft.getMinecraft().thePlayer.worldObj.provider.dimensionId;
+        	BlockCoord coord = new BlockCoord(x, y, z);
+        	ChunkCoord chunk = new ChunkCoord(coord);
+        	
+        	if (!ArtificeCore.textureCache.contains(worldID, chunk, coord))
+        	{
+        		int[] indices = new int[6];
+        		for (int i=0; i<indices.length; i++)
+        			indices[i] = this.getTextureRenderer(i, meta).getTextureIndex(block, x, y, z, i);
+        		ArtificeCore.textureCache.add(worldID, chunk, coord, indices);
+        	}
+        	return this.getTextureRenderer(side, meta).texture.textureList[ArtificeCore.textureCache.get(worldID, chunk, coord)[side]];
+        }
         else
             return icons[meta];
     }
-
+    
     @Override
-    public ConnectedTexture getTextureType(int side, int meta)
+    @SideOnly(Side.CLIENT)
+    public void onNeighborBlockChange(World world, int x, int y, int z, int neighborID)
     {
-        if (meta == 3)
-            return ConnectedTexture.MarblePaver;
-        if (meta == 4)
-            return ConnectedTexture.MarbleAntipaver;
-        return null;
+    	int meta = world.getBlockMetadata(x, y, z);
+    	if (meta == 3 || meta == 4)
+    	{
+	    	Integer worldID = world.provider.dimensionId;
+	    	BlockCoord coord = new BlockCoord(x, y, z);
+	    	ChunkCoord chunk = new ChunkCoord(coord);
+	    	
+	    	int[] old = ArtificeCore.textureCache.get(worldID, chunk, coord);
+	    	ArtificeCore.textureCache.remove(worldID, chunk, coord);
+	    	int[] indices = new int[6];
+			for (int i=0; i<indices.length; i++)
+				indices[i] = this.getTextureRenderer(i, meta).getTextureIndex(world, x, y, z, i);
+			ArtificeCore.textureCache.add(worldID, chunk, coord, indices);
+				
+			if (old == null || !old.equals(indices))
+				PacketDispatcher.sendPacketToAllInDimension(PacketWrapper.createPacket(ArtificeCore.modChannel, Packets.INDEXDATA, new Object[] {x, y, z, indices[0], indices[1], indices[2], indices[3], indices[4], indices[5]}), worldID);
+    	}
     }
 
-    @Override
     public ConnectedTextureBase getTextureRenderer(int side, int meta)
     {
         if (meta == 3)

@@ -9,6 +9,7 @@ import net.minecraft.world.ChunkCoordIntPair;
 import net.minecraftforge.client.event.TextureStitchEvent;
 import net.minecraftforge.event.ForgeSubscribe;
 import net.minecraftforge.event.world.ChunkDataEvent;
+import net.minecraftforge.event.world.ChunkWatchEvent;
 import shukaro.artifice.ArtificeConfig;
 import shukaro.artifice.ArtificeCore;
 import shukaro.artifice.compat.ArtificeRegistry;
@@ -28,6 +29,15 @@ public class ArtificeEventHandler
     public void preTextureStitch(TextureStitchEvent.Pre e)
     {
     	ArtificeConfig.connectedTexturesRegistered = false;
+    }
+    
+    @ForgeSubscribe
+    @SideOnly(Side.CLIENT)
+    public void chunkUnWatch(ChunkWatchEvent.UnWatch e)
+    {
+    	Integer worldID = e.player.worldObj.provider.dimensionId;
+    	if (ArtificeCore.textureCache.contains(worldID, new ChunkCoord(e.chunk)))
+    		ArtificeCore.textureCache.remove(worldID, new ChunkCoord(e.chunk));
     }
     
     @ForgeSubscribe

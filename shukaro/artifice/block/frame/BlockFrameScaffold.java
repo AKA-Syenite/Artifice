@@ -1,37 +1,39 @@
 package shukaro.artifice.block.frame;
 
 import net.minecraft.block.Block;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemStack;
-import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Icon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ForgeDirection;
 import shukaro.artifice.ArtificeConfig;
 import shukaro.artifice.ArtificeCore;
+import shukaro.artifice.net.Packets;
 import shukaro.artifice.render.IconHandler;
-import shukaro.artifice.render.connectedtexture.ConnectedTexture;
 import shukaro.artifice.render.connectedtexture.ConnectedTextureBase;
-import shukaro.artifice.render.connectedtexture.IConnectedTexture;
+import shukaro.artifice.render.connectedtexture.ConnectedTextures;
 import shukaro.artifice.render.connectedtexture.schemes.SolidConnectedTexture;
 import shukaro.artifice.util.BlockCoord;
+import shukaro.artifice.util.ChunkCoord;
+import shukaro.artifice.util.PacketWrapper;
+import cpw.mods.fml.common.network.PacketDispatcher;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockFrameScaffold extends BlockFrame implements IConnectedTexture
+public class BlockFrameScaffold extends BlockFrame
 {
     private static final ForgeDirection[] sides = new ForgeDirection[] { ForgeDirection.NORTH, ForgeDirection.SOUTH, ForgeDirection.EAST, ForgeDirection.WEST, ForgeDirection.DOWN };
     
     private Icon[] sideIcons = new Icon[ArtificeCore.tiers.length];
-    private Icon[] vertIcons = new Icon[ArtificeCore.tiers.length];
-    private ConnectedTextureBase basic = new SolidConnectedTexture(ConnectedTexture.BasicScaffold);
-    private ConnectedTextureBase reinforced = new SolidConnectedTexture(ConnectedTexture.ReinforcedScaffold);
-    private ConnectedTextureBase industrial = new SolidConnectedTexture(ConnectedTexture.IndustrialScaffold);
-    private ConnectedTextureBase advanced = new SolidConnectedTexture(ConnectedTexture.AdvancedScaffold);
+    private ConnectedTextureBase basic = new SolidConnectedTexture(ConnectedTextures.BasicScaffold);
+    private ConnectedTextureBase reinforced = new SolidConnectedTexture(ConnectedTextures.ReinforcedScaffold);
+    private ConnectedTextureBase industrial = new SolidConnectedTexture(ConnectedTextures.IndustrialScaffold);
+    private ConnectedTextureBase advanced = new SolidConnectedTexture(ConnectedTextures.AdvancedScaffold);
     
     public BlockFrameScaffold(int id)
     {
@@ -148,13 +150,31 @@ public class BlockFrameScaffold extends BlockFrame implements IConnectedTexture
     }
     
     @Override
-    public void onNeighborBlockChange(World world, int x, int y, int z, int side)
+    public void onNeighborBlockChange(World world, int x, int y, int z, int neighborID)
     {
-        if(!canBlockStay(world, x, y, z))
+    	if (!canBlockStay(world, x, y, z))
         {
             dropBlockAsItem(world, x, y, z, world.getBlockMetadata(x, y, z), 0);
             world.setBlockToAir(x, y, z);
         }
+    	
+    	if (!world.isRemote)
+    	{
+	    	Integer worldID = world.provider.dimensionId;
+	    	BlockCoord coord = new BlockCoord(x, y, z);
+	    	ChunkCoord chunk = new ChunkCoord(coord);
+	    	int meta = coord.getMeta(world);
+	    	
+	    	int[] old = ArtificeCore.textureCache.get(worldID, chunk, coord);
+	    	ArtificeCore.textureCache.remove(worldID, chunk, coord);
+	    	int[] indices = new int[6];
+			for (int i=0; i<indices.length; i++)
+				indices[i] = this.getTextureRenderer(i, meta).getTextureIndex(world, x, y, z, i);
+			ArtificeCore.textureCache.add(worldID, chunk, coord, indices);
+				
+			if (old == null || !old.equals(indices))
+				PacketDispatcher.sendPacketToAllInDimension(PacketWrapper.createPacket(ArtificeCore.modChannel, Packets.INDEXDATA, new Object[] {x, y, z, indices[0], indices[1], indices[2], indices[3], indices[4], indices[5]}), worldID);
+    	}
     }
 
     @Override
@@ -163,35 +183,6 @@ public class BlockFrameScaffold extends BlockFrame implements IConnectedTexture
         return (side == ForgeDirection.UP || side == ForgeDirection.DOWN) ? true : false;
     }
 
-    @Override
-    public TileEntity createNewTileEntity(World world)
-    {
-        return null;
-    }
-
-    @Override
-    public ConnectedTexture getTextureType(int side, int meta)
-    {
-        if (side == 0 || side == 1)
-        {
-            switch (meta)
-            {
-            case 0:
-                return ConnectedTexture.BasicScaffold;
-            case 1:
-                return ConnectedTexture.ReinforcedScaffold;
-            case 2:
-                return ConnectedTexture.IndustrialScaffold;
-            case 3:
-                return ConnectedTexture.AdvancedScaffold;
-            default:
-                return null;
-            }
-        }
-        return null;
-    }
-
-    @Override
     public ConnectedTextureBase getTextureRenderer(int side, int meta)
     {
         if (side == 0 || side == 1)
@@ -233,7 +224,7 @@ public class BlockFrameScaffold extends BlockFrame implements IConnectedTexture
     public Icon getIcon(int side, int meta)
     {
         if (side == 0 || side == 1)
-            return this.getTextureType(side, meta).textureList[0];
+        	return this.getTextureRenderer(side, meta).texture.textureList[0];
         return this.sideIcons[meta];
     }
 
@@ -242,13 +233,27 @@ public class BlockFrameScaffold extends BlockFrame implements IConnectedTexture
     public Icon getBlockTexture(IBlockAccess block, int x, int y, int z, int side)
     {
         if (side == 0 || side == 1)
-            return this.getTextureType(side, block.getBlockMetadata(x, y, z)).textureList[this.getTextureRenderer(side, block.getBlockMetadata(x, y, z)).getTextureIndex(block, x, y, z, side)];
+        {
+        	Integer worldID = Minecraft.getMinecraft().thePlayer.worldObj.provider.dimensionId;
+        	BlockCoord coord = new BlockCoord(x, y, z);
+        	ChunkCoord chunk = new ChunkCoord(coord);
+        	int meta = coord.getMeta(block);
+        	
+        	if (!ArtificeCore.textureCache.contains(worldID, chunk, coord))
+        	{
+        		int[] indices = new int[6];
+        		for (int i=0; i<indices.length; i++)
+        			indices[i] = this.getTextureRenderer(i, meta).getTextureIndex(block, x, y, z, i);
+        		ArtificeCore.textureCache.add(worldID, chunk, coord, indices);
+        	}
+        	return this.getTextureRenderer(side, meta).texture.textureList[ArtificeCore.textureCache.get(worldID, chunk, coord)[side]];
+        }
         return this.sideIcons[block.getBlockMetadata(x, y, z)];
     }
     
     @Override
 	public int getRenderType()
 	{
-		return ArtificeCore.frameRenderID;
+		return ArtificeConfig.frameRenderID;
 	}
 }

@@ -22,7 +22,7 @@ import shukaro.artifice.util.BlockCoord;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public abstract class BlockFrame extends BlockArtifice implements ITileEntityProvider
+public abstract class BlockFrame extends BlockArtifice
 {
     protected List<String> validTiers = new ArrayList<String>();
     

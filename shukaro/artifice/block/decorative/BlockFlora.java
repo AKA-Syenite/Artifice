@@ -1,7 +1,6 @@
 package shukaro.artifice.block.decorative;
 
 import java.util.List;
-import java.util.Map;
 import java.util.Random;
 
 import net.minecraft.block.BlockFlower;
@@ -10,9 +9,7 @@ import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Icon;
-import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-import shukaro.artifice.ArtificeBlocks;
 import shukaro.artifice.ArtificeCore;
 import shukaro.artifice.gui.ArtificeCreativeTab;
 import shukaro.artifice.render.IconHandler;

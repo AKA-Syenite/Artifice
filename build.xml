@@ -43,7 +43,7 @@
     
     <target name="get-dependencies" depends="get-version" unless="${have-apis}">
         <echo message="Downloading MFR API... " />
-        <get src="http://build.technicpack.net/job/MineFactoryReloaded/897/artifact/build/dist/MFR-API-2.6.1-897.zip" dest="${download.dir}/MFRAPI.zip" />
+        <get src="http://www.curseforge.com/media/files/744/249/MFR-API-2.7.0RC1-7.zip" dest="${download.dir}/MFRAPI.zip" />
     </target>
     
     <target name="extract-dependencies" depends="setup-forge,get-dependencies">

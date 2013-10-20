@@ -1,9 +1,9 @@
 package shukaro.artifice.render;
 
-import shukaro.artifice.ArtificeCore;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.RenderBlocks;
 import net.minecraft.world.IBlockAccess;
+import shukaro.artifice.ArtificeConfig;
 import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
 
 public class LotusRenderer implements ISimpleBlockRenderingHandler
@@ -32,7 +32,7 @@ public class LotusRenderer implements ISimpleBlockRenderingHandler
     @Override
     public int getRenderId()
     {
-        return ArtificeCore.lotusRenderID;
+        return ArtificeConfig.lotusRenderID;
     }
     
 }

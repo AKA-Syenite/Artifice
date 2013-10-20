@@ -1,15 +1,16 @@
 package shukaro.artifice.render.connectedtexture.schemes;
 
 import net.minecraft.block.Block;
+import net.minecraft.client.Minecraft;
 import net.minecraft.world.IBlockAccess;
-import shukaro.artifice.render.connectedtexture.ConnectedTexture;
+import net.minecraft.world.World;
 import shukaro.artifice.render.connectedtexture.ConnectedTextureBase;
-import shukaro.artifice.render.connectedtexture.IConnectedTexture;
+import shukaro.artifice.render.connectedtexture.ConnectedTextures;
 import shukaro.artifice.util.BlockCoord;
 
 public class TransparentConnectedTexture extends ConnectedTextureBase
 {
-    public TransparentConnectedTexture(ConnectedTexture texture)
+    public TransparentConnectedTexture(ConnectedTextures texture)
     {
         super(texture);
     }
@@ -23,18 +24,15 @@ public class TransparentConnectedTexture extends ConnectedTextureBase
     @Override
     public boolean canConnectOnSide(IBlockAccess blockAccess, BlockCoord coord, int side, int face)
     {
-        ConnectedTexture neighbor = null;
-        int meta = coord.getMeta(blockAccess);
-        BlockCoord self = coord.copy();
+    	int meta = coord.getMeta(blockAccess);
+    	int neighborMeta = coord.copy().offset(side).getMeta(blockAccess);
+        Block self = coord.getBlock(blockAccess);
+        Block neighbor = coord.copy().offset(side).getBlock(blockAccess);
+        World world = Minecraft.getMinecraft().thePlayer.worldObj;
         
-        if (coord.offset(side).getBlock(blockAccess) instanceof IConnectedTexture)
-        {
-            neighbor = ((IConnectedTexture) coord.getBlock(blockAccess)).getTextureType(face, meta);
-        }
-        
-        BlockCoord other = coord.copy();
-        
-        return neighbor != null && neighbor.name == this.texture.name && self.blockEquals(blockAccess, other);
+        if (self != null && neighbor != null)
+        	return self.getIcon(face, meta).getIconName() == neighbor.getIcon(face, neighborMeta).getIconName() && (self.blockID == neighbor.blockID && meta == neighborMeta);
+        return false;
     }
     
 }

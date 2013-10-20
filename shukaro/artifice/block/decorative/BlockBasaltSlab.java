@@ -5,33 +5,37 @@ import java.util.Random;
 
 import net.minecraft.block.BlockHalfSlab;
 import net.minecraft.block.material.Material;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Icon;
 import net.minecraft.world.IBlockAccess;
+import net.minecraft.world.World;
 import shukaro.artifice.ArtificeBlocks;
 import shukaro.artifice.ArtificeConfig;
 import shukaro.artifice.ArtificeCore;
 import shukaro.artifice.gui.ArtificeCreativeTab;
+import shukaro.artifice.net.Packets;
 import shukaro.artifice.render.IconHandler;
-import shukaro.artifice.render.connectedtexture.ConnectedTexture;
 import shukaro.artifice.render.connectedtexture.ConnectedTextureBase;
-import shukaro.artifice.render.connectedtexture.IConnectedTexture;
+import shukaro.artifice.render.connectedtexture.ConnectedTextures;
 import shukaro.artifice.render.connectedtexture.schemes.SlabConnectedTexture;
-import shukaro.artifice.render.connectedtexture.schemes.SolidConnectedTexture;
-import shukaro.artifice.render.connectedtexture.schemes.TransparentConnectedTexture;
+import shukaro.artifice.util.BlockCoord;
+import shukaro.artifice.util.ChunkCoord;
+import shukaro.artifice.util.PacketWrapper;
+import cpw.mods.fml.common.network.PacketDispatcher;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockBasaltSlab extends BlockHalfSlab implements IConnectedTexture
+public class BlockBasaltSlab extends BlockHalfSlab
 {
     private final String[] types = { "basaltBrick", "basaltCobble", "basaltPaver", "basaltAntipaver" };
     
     private Icon paverSide;
     
-    private ConnectedTextureBase paver = new SlabConnectedTexture(ConnectedTexture.BasaltPaver);
-    private ConnectedTextureBase antipaver = new SlabConnectedTexture(ConnectedTexture.BasaltAntipaver);
+    private ConnectedTextureBase paver = new SlabConnectedTexture(ConnectedTextures.BasaltPaver);
+    private ConnectedTextureBase antipaver = new SlabConnectedTexture(ConnectedTextures.BasaltAntipaver);
     
     private final boolean isDouble;
     
@@ -83,11 +87,11 @@ public class BlockBasaltSlab extends BlockHalfSlab implements IConnectedTexture
     @SideOnly(Side.CLIENT)
     public Icon getIcon(int side, int meta)
     {
-        meta = meta > 7 ? meta - 8 : meta;
+        meta = meta & 7;
         if (meta == 2 || meta == 3)
         {
             if (side == 0 || side == 1)
-                return this.getTextureType(side, meta).textureList[0];
+            	return this.getTextureRenderer(side, meta).texture.textureList[0];
             else
                 return this.paverSide;
         }
@@ -105,7 +109,20 @@ public class BlockBasaltSlab extends BlockHalfSlab implements IConnectedTexture
         if (t == 2 || t == 3)
         {
             if (side == 0 || side == 1)
-                return this.getTextureType(side, block.getBlockMetadata(x, y, z)).textureList[this.getTextureRenderer(side, block.getBlockMetadata(x, y, z)).getTextureIndex(block, x, y, z, side)];
+            {
+            	Integer worldID = Minecraft.getMinecraft().thePlayer.worldObj.provider.dimensionId;
+            	BlockCoord coord = new BlockCoord(x, y, z);
+            	ChunkCoord chunk = new ChunkCoord(coord);
+            	
+            	if (!ArtificeCore.textureCache.contains(worldID, chunk, coord))
+            	{
+            		int[] indices = new int[6];
+            		for (int i=0; i<indices.length; i++)
+            			indices[i] = this.getTextureRenderer(i, meta).getTextureIndex(block, x, y, z, i);
+            		ArtificeCore.textureCache.add(worldID, chunk, coord, indices);
+            	}
+            	return this.getTextureRenderer(side, meta).texture.textureList[ArtificeCore.textureCache.get(worldID, chunk, coord)[side]];
+            }
             else
                 return this.paverSide;
         }
@@ -113,19 +130,27 @@ public class BlockBasaltSlab extends BlockHalfSlab implements IConnectedTexture
             t = 2;
         return ArtificeBlocks.blockBasalt.getIcon(side, t);
     }
-
+    
     @Override
-    public ConnectedTexture getTextureType(int side, int meta)
+    @SideOnly(Side.CLIENT)
+    public void onNeighborBlockChange(World world, int x, int y, int z, int neighborID)
     {
-        meta = meta & 7;
-        if (meta == 2)
-            return ConnectedTexture.BasaltPaver;
-        if (meta == 3)
-            return ConnectedTexture.BasaltAntipaver;
-        return null;
+    	Integer worldID = world.provider.dimensionId;
+    	BlockCoord coord = new BlockCoord(x, y, z);
+    	ChunkCoord chunk = new ChunkCoord(coord);
+    	int meta = coord.getMeta(world);
+    	
+    	int[] old = ArtificeCore.textureCache.get(worldID, chunk, coord);
+    	ArtificeCore.textureCache.remove(worldID, chunk, coord);
+    	int[] indices = new int[6];
+		for (int i=0; i<indices.length; i++)
+			indices[i] = this.getTextureRenderer(i, meta).getTextureIndex(world, x, y, z, i);
+		ArtificeCore.textureCache.add(worldID, chunk, coord, indices);
+			
+		if (old == null || !old.equals(indices))
+			PacketDispatcher.sendPacketToAllInDimension(PacketWrapper.createPacket(ArtificeCore.modChannel, Packets.INDEXDATA, new Object[] {x, y, z, indices[0], indices[1], indices[2], indices[3], indices[4], indices[5]}), worldID);
     }
 
-    @Override
     public ConnectedTextureBase getTextureRenderer(int side, int meta)
     {
         meta = meta & 7;

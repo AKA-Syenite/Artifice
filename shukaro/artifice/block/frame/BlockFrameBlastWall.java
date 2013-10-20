@@ -1,29 +1,31 @@
  package shukaro.artifice.block.frame;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.Entity;
-import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Icon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ForgeDirection;
 import shukaro.artifice.ArtificeConfig;
 import shukaro.artifice.ArtificeCore;
-import shukaro.artifice.render.IconHandler;
-import shukaro.artifice.render.connectedtexture.ConnectedTexture;
+import shukaro.artifice.net.Packets;
 import shukaro.artifice.render.connectedtexture.ConnectedTextureBase;
-import shukaro.artifice.render.connectedtexture.IConnectedTexture;
+import shukaro.artifice.render.connectedtexture.ConnectedTextures;
 import shukaro.artifice.render.connectedtexture.schemes.SolidConnectedTexture;
+import shukaro.artifice.util.BlockCoord;
+import shukaro.artifice.util.ChunkCoord;
+import shukaro.artifice.util.PacketWrapper;
+import cpw.mods.fml.common.network.PacketDispatcher;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockFrameBlastWall extends BlockFrame implements IConnectedTexture
+public class BlockFrameBlastWall extends BlockFrame
 {
-    private Icon[] icons = new Icon[ArtificeCore.tiers.length];
-    private ConnectedTextureBase basic = new SolidConnectedTexture(ConnectedTexture.BasicBlastWall);
-    private ConnectedTextureBase reinforced = new SolidConnectedTexture(ConnectedTexture.ReinforcedBlastWall);
-    private ConnectedTextureBase industrial = new SolidConnectedTexture(ConnectedTexture.IndustrialBlastWall);
-    private ConnectedTextureBase advanced = new SolidConnectedTexture(ConnectedTexture.AdvancedBlastWall);
+    private ConnectedTextureBase basic = new SolidConnectedTexture(ConnectedTextures.BasicBlastWall);
+    private ConnectedTextureBase reinforced = new SolidConnectedTexture(ConnectedTextures.ReinforcedBlastWall);
+    private ConnectedTextureBase industrial = new SolidConnectedTexture(ConnectedTextures.IndustrialBlastWall);
+    private ConnectedTextureBase advanced = new SolidConnectedTexture(ConnectedTextures.AdvancedBlastWall);
     
     public BlockFrameBlastWall(int id)
     {
@@ -60,32 +62,7 @@ public class BlockFrameBlastWall extends BlockFrame implements IConnectedTexture
     {
         return super.getBlockHardness(world, x, y, z) + 5;
     }
-
-    @Override
-    public TileEntity createNewTileEntity(World world)
-    {
-        return null;
-    }
-
-    @Override
-    public ConnectedTexture getTextureType(int side, int meta)
-    {
-        switch (meta)
-        {
-        case 0:
-            return ConnectedTexture.BasicBlastWall;
-        case 1:
-            return ConnectedTexture.ReinforcedBlastWall;
-        case 2:
-            return ConnectedTexture.IndustrialBlastWall;
-        case 3:
-            return ConnectedTexture.AdvancedBlastWall;
-        default:
-            return null;
-        }
-    }
-
-    @Override
+    
     public ConnectedTextureBase getTextureRenderer(int side, int meta)
     {
         switch (meta)
@@ -114,22 +91,52 @@ public class BlockFrameBlastWall extends BlockFrame implements IConnectedTexture
     public void registerIcons(IconRegister reg)
     {
     	ArtificeConfig.registerConnectedTextures(reg);
-        for (int i=0; i<ArtificeCore.tiers.length; i++)
-            icons[i] = IconHandler.registerSingle(reg, ArtificeCore.tiers[i].toLowerCase(), "blastwall");
     }
 
     @Override
     @SideOnly(Side.CLIENT)
     public Icon getIcon(int side, int meta)
     {
-        return this.getTextureType(side, meta).textureList[0];
+        return this.getTextureRenderer(side, meta).texture.textureList[0];
     }
 
     @Override
     @SideOnly(Side.CLIENT)
     public Icon getBlockTexture(IBlockAccess block, int x, int y, int z, int side)
     {
-    	return this.getTextureType(side, block.getBlockMetadata(x, y, z)).textureList[this.getTextureRenderer(side, block.getBlockMetadata(x, y, z)).getTextureIndex(block, x, y, z, side)];
+    	Integer worldID = Minecraft.getMinecraft().thePlayer.worldObj.provider.dimensionId;
+    	BlockCoord coord = new BlockCoord(x, y, z);
+    	ChunkCoord chunk = new ChunkCoord(coord);
+    	int meta = coord.getMeta(block);
+    	
+    	if (!ArtificeCore.textureCache.contains(worldID, chunk, coord))
+    	{
+    		int[] indices = new int[6];
+    		for (int i=0; i<indices.length; i++)
+    			indices[i] = this.getTextureRenderer(i, meta).getTextureIndex(block, x, y, z, i);
+    		ArtificeCore.textureCache.add(worldID, chunk, coord, indices);
+    	}
+    	return this.getTextureRenderer(side, meta).texture.textureList[ArtificeCore.textureCache.get(worldID, chunk, coord)[side]];
+    }
+    
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void onNeighborBlockChange(World world, int x, int y, int z, int neighborID)
+    {
+    	Integer worldID = world.provider.dimensionId;
+    	BlockCoord coord = new BlockCoord(x, y, z);
+    	ChunkCoord chunk = new ChunkCoord(coord);
+    	int meta = coord.getMeta(world);
+    	
+    	int[] old = ArtificeCore.textureCache.get(worldID, chunk, coord);
+    	ArtificeCore.textureCache.remove(worldID, chunk, coord);
+    	int[] indices = new int[6];
+		for (int i=0; i<indices.length; i++)
+			indices[i] = this.getTextureRenderer(i, meta).getTextureIndex(world, x, y, z, i);
+		ArtificeCore.textureCache.add(worldID, chunk, coord, indices);
+			
+		if (old == null || !old.equals(indices))
+			PacketDispatcher.sendPacketToAllInDimension(PacketWrapper.createPacket(ArtificeCore.modChannel, Packets.INDEXDATA, new Object[] {x, y, z, indices[0], indices[1], indices[2], indices[3], indices[4], indices[5]}), worldID);
     }
 
 	@Override

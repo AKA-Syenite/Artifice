@@ -2,6 +2,8 @@ package shukaro.artifice.util;
 
 import java.io.Serializable;
 
+import net.minecraft.world.ChunkCoordIntPair;
+
 public class ChunkCoord implements Comparable<ChunkCoord>, Serializable
 {
     public int chunkX;
@@ -10,6 +12,11 @@ public class ChunkCoord implements Comparable<ChunkCoord>, Serializable
     public ChunkCoord(BlockCoord c)
     {
         this(c.x >> 4, c.z >> 4);
+    }
+    
+    public ChunkCoord(ChunkCoordIntPair c)
+    {
+    	this(c.chunkXPos, c.chunkZPos);
     }
     
     public ChunkCoord(int x, int z)

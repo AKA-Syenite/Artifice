@@ -2,21 +2,18 @@ package shukaro.artifice.block.frame;
 
 import java.util.Random;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-
-import powercrystals.minefactoryreloaded.api.rednet.IConnectableRedNet;
-import powercrystals.minefactoryreloaded.api.rednet.RedNetConnectionType;
-
-import shukaro.artifice.ArtificeCore;
-import shukaro.artifice.render.IconHandler;
-import net.minecraft.block.Block;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Icon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ForgeDirection;
+import powercrystals.minefactoryreloaded.api.rednet.IConnectableRedNet;
+import powercrystals.minefactoryreloaded.api.rednet.RedNetConnectionType;
+import shukaro.artifice.ArtificeCore;
+import shukaro.artifice.render.IconHandler;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockFrameDetector extends BlockFrame implements IConnectableRedNet
 {
@@ -145,12 +142,6 @@ public class BlockFrameDetector extends BlockFrame implements IConnectableRedNet
     @Override
     public void onInputChanged(World world, int x, int y, int z, ForgeDirection side, int inputValue)
     {
-    }
-
-    @Override
-    public TileEntity createNewTileEntity(World world)
-    {
-        return null;
     }
 
     @Override

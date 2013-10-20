@@ -6,10 +6,10 @@ import shukaro.artifice.util.BlockCoord;
 
 public abstract class ConnectedTextureBase
 {
-    protected ConnectedTexture texture;
+    public ConnectedTextures texture;
     protected final int[] textureIndexMap = new int[256];
     
-    public ConnectedTextureBase(ConnectedTexture texture)
+    public ConnectedTextureBase(ConnectedTextures texture)
     {
         this.texture = texture;
         loadTextureMap();
@@ -90,7 +90,7 @@ public abstract class ConnectedTextureBase
         return getTextureFromMap(map);
     }
     
-    public abstract int getTextureFromMap(int map);
+    protected abstract int getTextureFromMap(int map);
     
-    public abstract boolean canConnectOnSide(IBlockAccess block, BlockCoord coord, int side, int face);
+    protected abstract boolean canConnectOnSide(IBlockAccess block, BlockCoord coord, int side, int face);
 }

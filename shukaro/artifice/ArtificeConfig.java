@@ -8,13 +8,16 @@ import net.minecraftforge.common.Configuration;
 import net.minecraftforge.common.Property;
 import shukaro.artifice.compat.ArtificeRegistry;
 import shukaro.artifice.render.IconHandler;
-import shukaro.artifice.render.connectedtexture.ConnectedTexture;
+import shukaro.artifice.render.connectedtexture.ConnectedTextures;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 public class ArtificeConfig
 {
+    public static int frameRenderID;
+    public static int lotusRenderID;
+	
     public static Property idStart;
     
     public static Property blockFrameID;
@@ -439,30 +442,30 @@ public class ArtificeConfig
     {
     	if (!ArtificeConfig.connectedTexturesRegistered)
     	{
-    		IconHandler.registerConnectedTexture(reg, ConnectedTexture.BasicFrame, "frame/basic");
-    		IconHandler.registerConnectedTexture(reg, ConnectedTexture.ReinforcedFrame, "frame/reinforced");
-    		IconHandler.registerConnectedTexture(reg, ConnectedTexture.IndustrialFrame, "frame/industrial");
-    		IconHandler.registerConnectedTexture(reg, ConnectedTexture.AdvancedFrame, "frame/advanced");
+    		IconHandler.registerConnectedTexture(reg, ConnectedTextures.BasicFrame, "frame/basic");
+    		IconHandler.registerConnectedTexture(reg, ConnectedTextures.ReinforcedFrame, "frame/reinforced");
+    		IconHandler.registerConnectedTexture(reg, ConnectedTextures.IndustrialFrame, "frame/industrial");
+    		IconHandler.registerConnectedTexture(reg, ConnectedTextures.AdvancedFrame, "frame/advanced");
     		
-    		IconHandler.registerConnectedTexture(reg, ConnectedTexture.BasicScaffold, "scaffold/basic");
-    		IconHandler.registerConnectedTexture(reg, ConnectedTexture.ReinforcedScaffold, "scaffold/reinforced");
-    		IconHandler.registerConnectedTexture(reg, ConnectedTexture.IndustrialScaffold, "scaffold/industrial");
-    		IconHandler.registerConnectedTexture(reg, ConnectedTexture.AdvancedScaffold, "scaffold/advanced");
+    		IconHandler.registerConnectedTexture(reg, ConnectedTextures.BasicScaffold, "scaffold/basic");
+    		IconHandler.registerConnectedTexture(reg, ConnectedTextures.ReinforcedScaffold, "scaffold/reinforced");
+    		IconHandler.registerConnectedTexture(reg, ConnectedTextures.IndustrialScaffold, "scaffold/industrial");
+    		IconHandler.registerConnectedTexture(reg, ConnectedTextures.AdvancedScaffold, "scaffold/advanced");
     		
-    		IconHandler.registerConnectedTexture(reg, ConnectedTexture.BasicBlastWall, "blastwall/basic");
-    		IconHandler.registerConnectedTexture(reg, ConnectedTexture.ReinforcedBlastWall, "blastwall/reinforced");
-    		IconHandler.registerConnectedTexture(reg, ConnectedTexture.IndustrialBlastWall, "blastwall/industrial");
-    		IconHandler.registerConnectedTexture(reg, ConnectedTexture.AdvancedBlastWall, "blastwall/advanced");
+    		IconHandler.registerConnectedTexture(reg, ConnectedTextures.BasicBlastWall, "blastwall/basic");
+    		IconHandler.registerConnectedTexture(reg, ConnectedTextures.ReinforcedBlastWall, "blastwall/reinforced");
+    		IconHandler.registerConnectedTexture(reg, ConnectedTextures.IndustrialBlastWall, "blastwall/industrial");
+    		IconHandler.registerConnectedTexture(reg, ConnectedTextures.AdvancedBlastWall, "blastwall/advanced");
     		
-    		IconHandler.registerConnectedTexture(reg, ConnectedTexture.BasicGlassWall, "glasswall/basic");
-    		IconHandler.registerConnectedTexture(reg, ConnectedTexture.ReinforcedGlassWall, "glasswall/reinforced");
-    		IconHandler.registerConnectedTexture(reg, ConnectedTexture.IndustrialGlassWall, "glasswall/industrial");
-    		IconHandler.registerConnectedTexture(reg, ConnectedTexture.AdvancedGlassWall, "glasswall/advanced");
+    		IconHandler.registerConnectedTexture(reg, ConnectedTextures.BasicGlassWall, "glasswall/basic");
+    		IconHandler.registerConnectedTexture(reg, ConnectedTextures.ReinforcedGlassWall, "glasswall/reinforced");
+    		IconHandler.registerConnectedTexture(reg, ConnectedTextures.IndustrialGlassWall, "glasswall/industrial");
+    		IconHandler.registerConnectedTexture(reg, ConnectedTextures.AdvancedGlassWall, "glasswall/advanced");
     		
-    		IconHandler.registerConnectedTexture(reg, ConnectedTexture.MarblePaver, "marble/paver");
-    		ConnectedTexture.MarbleAntipaver.textureList = ConnectedTexture.MarblePaver.textureList;
-    		IconHandler.registerConnectedTexture(reg, ConnectedTexture.BasaltPaver, "basalt/paver");
-    		ConnectedTexture.BasaltAntipaver.textureList = ConnectedTexture.BasaltPaver.textureList;
+    		IconHandler.registerConnectedTexture(reg, ConnectedTextures.MarblePaver, "marble/paver");
+    		IconHandler.registerConnectedTexture(reg, ConnectedTextures.MarbleAntipaver, "marble/antipaver");
+    		IconHandler.registerConnectedTexture(reg, ConnectedTextures.BasaltPaver, "basalt/paver");
+    		IconHandler.registerConnectedTexture(reg, ConnectedTextures.BasaltAntipaver, "basalt/antipaver");
     		
     		ArtificeConfig.connectedTexturesRegistered = true;
     	}

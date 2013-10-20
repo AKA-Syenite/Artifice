@@ -1,25 +1,18 @@
 package shukaro.artifice.render;
 
 import shukaro.artifice.ArtificeCore;
-import shukaro.artifice.render.connectedtexture.ConnectedTexture;
+import shukaro.artifice.render.connectedtexture.ConnectedTextures;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.util.Icon;
 import net.minecraftforge.common.ForgeDirection;
 
 public class IconHandler
 {
-    public static void registerConnectedTexture(IconRegister reg, ConnectedTexture texture, String folder)
+    public static void registerConnectedTexture(IconRegister reg, ConnectedTextures texture, String folder)
     {
         for (int i=0; i<texture.textureList.length; i++)
         {
             texture.textureList[i] = reg.registerIcon(ArtificeCore.modID.toLowerCase() + ":" + folder + "/" + texture.name + "_" + (i > 9 ? i : "0" + i));
-        }
-        for (ConnectedTexture t : ConnectedTexture.values())
-        {
-            if (t.name == texture.name)
-            {
-                t.textureList = texture.textureList;
-            }
         }
     }
     

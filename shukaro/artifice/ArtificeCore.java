@@ -2,8 +2,6 @@ package shukaro.artifice;
 
 import java.util.logging.Logger;
 
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.settings.KeyBinding;
 import net.minecraftforge.common.MinecraftForge;
 import shukaro.artifice.event.ArtificeEventHandler;
 import shukaro.artifice.net.ClientPacketHandler;
@@ -11,8 +9,8 @@ import shukaro.artifice.net.ClientProxy;
 import shukaro.artifice.net.CommonProxy;
 import shukaro.artifice.net.ServerPacketHandler;
 import shukaro.artifice.recipe.ArtificeRecipes;
+import shukaro.artifice.util.CoordObjectMap;
 import shukaro.artifice.world.ArtificeWorldGen;
-import cpw.mods.fml.client.registry.KeyBindingRegistry;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
@@ -44,12 +42,11 @@ public class ArtificeCore
     public static Logger logger;
     public static ArtificeEventHandler eventHandler;
     
-    public static int frameRenderID;
-    public static int lotusRenderID;
-    
     public static String[] tiers = { "Basic", "Reinforced", "Industrial", "Advanced" };
     public static String[] flora = { "Bluebell", "Orchid", "Iris", "Lotus", "LotusClosed"};
     public static String[] rocks = { "", "Cobblestone", "Brick", "Paver", "Antipaver", "Chiseled" };
+    
+    public static CoordObjectMap<int[]> textureCache;
     
     @Instance(modID)
     public static ArtificeCore instance;

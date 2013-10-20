@@ -1,12 +1,12 @@
 package shukaro.artifice.block.frame;
 
-import net.minecraft.block.Block;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Icon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ForgeDirection;
+import shukaro.artifice.ArtificeConfig;
 import shukaro.artifice.ArtificeCore;
 import shukaro.artifice.render.IconHandler;
 import cpw.mods.fml.relauncher.Side;
@@ -51,12 +51,6 @@ public class BlockFrameBase extends BlockFrame
         return icons[block.getBlockMetadata(x, y, z)];
     }
 
-    @Override
-    public TileEntity createNewTileEntity(World world)
-    {
-        return null;
-    }
-
 	@Override
 	public boolean isBlockSolidOnSide(World world, int x, int y, int z, ForgeDirection side)
 	{
@@ -66,6 +60,6 @@ public class BlockFrameBase extends BlockFrame
 	@Override
 	public int getRenderType()
 	{
-		return ArtificeCore.frameRenderID;
+		return ArtificeConfig.frameRenderID;
 	}
 }

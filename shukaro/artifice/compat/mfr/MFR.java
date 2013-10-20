@@ -3,7 +3,7 @@ package shukaro.artifice.compat.mfr;
 import java.util.logging.Level;
 
 import net.minecraft.block.Block;
-import powercrystals.minefactoryreloaded.api.FarmingRegistry;
+import powercrystals.minefactoryreloaded.api.FactoryRegistry;
 import shukaro.artifice.ArtificeConfig;
 import shukaro.artifice.ArtificeCore;
 import shukaro.artifice.compat.ArtificeRegistry;
@@ -28,7 +28,7 @@ public class MFR
         try
         {
             if (ArtificeConfig.enableWorldGen.getBoolean(true))
-                FarmingRegistry.registerHarvestable(new FactoryFlora());
+                FactoryRegistry.registerHarvestable(new FactoryFlora());
             
             Class<?> main = Class.forName("powercrystals.minefactoryreloaded.MineFactoryReloadedCore");
             Block stone = (Block) main.getField("factoryDecorativeStoneBlock").get(null);

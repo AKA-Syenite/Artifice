@@ -31,7 +31,6 @@ public class ClientPacketHandler implements IPacketHandler
 			ChunkCoord chunk = new ChunkCoord(coord);
 			int[] indices = new int[] {(Integer)packetReadout[3], (Integer)packetReadout[4], (Integer)packetReadout[5], (Integer)packetReadout[6], (Integer)packetReadout[7], (Integer)packetReadout[8]};
 			
-			ArtificeCore.textureCache.remove(worldID, chunk, coord);
 			ArtificeCore.textureCache.add(worldID, chunk, coord, indices);
 		}
 	}

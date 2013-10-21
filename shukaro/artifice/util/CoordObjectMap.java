@@ -15,18 +15,13 @@ public class CoordObjectMap<T>
 		this.objectMap = new HashMap<Integer, Map<ChunkCoord, Map<BlockCoord, T>>>();
 	}
 	
-	public void add(World world, ChunkCoord chunk, BlockCoord coord, T entry)
-	{
-		this.add(world.provider.dimensionId, chunk, coord, entry);
-	}
-	
 	public void add(Integer worldID, ChunkCoord chunk, BlockCoord coord, T entry)
 	{
-		if (!this.objectMap.containsKey(worldID))
+		if (this.objectMap.get(worldID) == null)
 			this.objectMap.put(worldID, new HashMap<ChunkCoord, Map<BlockCoord, T>>());
-		if (!this.objectMap.get(worldID).containsKey(chunk))
+		if (this.objectMap.get(worldID).get(chunk) == null)
 			this.objectMap.get(worldID).put(chunk, new HashMap<BlockCoord, T>());
-		if (!this.objectMap.get(worldID).get(chunk).containsKey(coord))
+		if (this.objectMap.get(worldID) != null && this.objectMap.get(worldID).get(chunk) != null)
 			this.objectMap.get(worldID).get(chunk).put(coord, entry);
 	}
 	
@@ -37,21 +32,21 @@ public class CoordObjectMap<T>
 	
 	public boolean contains(Integer worldID)
 	{
-		return this.objectMap.containsKey(worldID);
+		return this.objectMap.get(worldID) != null;
 	}
 	
 	public boolean contains(Integer worldID, ChunkCoord chunk)
 	{
 		if (this.objectMap.get(worldID) == null)
 			return false;
-		return this.objectMap.get(worldID).containsKey(chunk);
+		return this.objectMap.get(worldID).get(chunk) != null;
 	}
 	
 	public boolean contains(Integer worldID, ChunkCoord chunk, BlockCoord coord)
 	{
 		if (this.objectMap.get(worldID) == null || this.objectMap.get(worldID).get(chunk) == null)
 			return false;
-		return this.objectMap.get(worldID).get(chunk).containsKey(coord);
+		return this.objectMap.get(worldID).get(chunk).get(coord) != null;
 	}
 	
 	public boolean contains(Integer worldID, ChunkCoord chunk, BlockCoord coord, T entry)
@@ -67,7 +62,7 @@ public class CoordObjectMap<T>
 			return false;
 		for (ChunkCoord chunk : this.objectMap.get(worldID).keySet())
 		{
-			if (this.objectMap.get(worldID).get(chunk).containsKey(coord))
+			if (this.objectMap.get(worldID).get(chunk).get(coord) != null)
 				return true;
 		}
 		return false;
@@ -102,6 +97,20 @@ public class CoordObjectMap<T>
 			}
 		}
 		return false;
+	}
+	
+	public Map<ChunkCoord, Map<BlockCoord, T>> get(Integer worldID)
+	{
+		if (this.contains(worldID))
+			return this.objectMap.get(worldID);
+		return null;
+	}
+	
+	public Map<BlockCoord, T> get(Integer worldID, ChunkCoord chunk)
+	{
+		if (this.contains(worldID, chunk))
+			return this.objectMap.get(worldID).get(chunk);
+		return null;
 	}
 	
 	public T get(Integer worldID, ChunkCoord chunk, BlockCoord coord)

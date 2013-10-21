@@ -166,7 +166,6 @@ public class BlockFrameScaffold extends BlockFrame
 	    	int meta = coord.getMeta(world);
 	    	
 	    	int[] old = ArtificeCore.textureCache.get(worldID, chunk, coord);
-	    	ArtificeCore.textureCache.remove(worldID, chunk, coord);
 	    	int[] indices = new int[6];
 			for (int i=0; i<indices.length; i++)
 				indices[i] = this.getTextureRenderer(i, meta).getTextureIndex(world, x, y, z, i);
@@ -246,6 +245,9 @@ public class BlockFrameScaffold extends BlockFrame
         			indices[i] = this.getTextureRenderer(i, meta).getTextureIndex(block, x, y, z, i);
         		ArtificeCore.textureCache.add(worldID, chunk, coord, indices);
         	}
+        	
+        	if (ArtificeCore.textureCache.get(worldID, chunk, coord) == null)
+        		return this.getIcon(side, meta);
         	return this.getTextureRenderer(side, meta).texture.textureList[ArtificeCore.textureCache.get(worldID, chunk, coord)[side]];
         }
         return this.sideIcons[block.getBlockMetadata(x, y, z)];

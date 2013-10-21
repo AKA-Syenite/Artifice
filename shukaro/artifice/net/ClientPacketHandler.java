@@ -20,18 +20,5 @@ public class ClientPacketHandler implements IPacketHandler
 	{
 		DataInputStream data = new DataInputStream(new ByteArrayInputStream(packet.data));
 		int packetType = PacketWrapper.readPacketID(data);
-		
-		if (packetType == Packets.INDEXDATA)
-		{
-			Class[] decodeAs = {Integer.class, Integer.class, Integer.class, Integer.class, Integer.class, Integer.class, Integer.class, Integer.class, Integer.class};
-			Object[] packetReadout = PacketWrapper.readPacketData(data, decodeAs);
-			
-			Integer worldID = Minecraft.getMinecraft().thePlayer.worldObj.provider.dimensionId;
-			BlockCoord coord = new BlockCoord((Integer)packetReadout[0], (Integer)packetReadout[1], (Integer)packetReadout[2]);
-			ChunkCoord chunk = new ChunkCoord(coord);
-			int[] indices = new int[] {(Integer)packetReadout[3], (Integer)packetReadout[4], (Integer)packetReadout[5], (Integer)packetReadout[6], (Integer)packetReadout[7], (Integer)packetReadout[8]};
-			
-			ArtificeCore.textureCache.add(worldID, chunk, coord, indices);
-		}
 	}
 }

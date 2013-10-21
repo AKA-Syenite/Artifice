@@ -125,9 +125,6 @@ public class BlockBasalt extends BlockArtifice
 			for (int i=0; i<indices.length; i++)
 				indices[i] = this.getTextureRenderer(i, meta).getTextureIndex(world, x, y, z, i);
 			ArtificeCore.textureCache.add(worldID, chunk, coord, indices);
-				
-			if (old == null || !old.equals(indices))
-				PacketDispatcher.sendPacketToAllInDimension(PacketWrapper.createPacket(ArtificeCore.modChannel, Packets.INDEXDATA, new Object[] {x, y, z, indices[0], indices[1], indices[2], indices[3], indices[4], indices[5]}), worldID);
     	}
     }
 

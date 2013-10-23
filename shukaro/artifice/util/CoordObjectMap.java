@@ -1,33 +1,43 @@
 package shukaro.artifice.util;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Map;
-
-import net.minecraft.world.World;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class CoordObjectMap<T>
 {
-	private Map<Integer, Map<ChunkCoord, Map<BlockCoord, T>>> objectMap;
+	public Map<Integer, Map<ChunkCoord, Map<BlockCoord, T>>> objectMap;
 	
 	public CoordObjectMap()
 	{
-		this.objectMap = new HashMap<Integer, Map<ChunkCoord, Map<BlockCoord, T>>>();
+		this.objectMap = new ConcurrentHashMap<Integer, Map<ChunkCoord, Map<BlockCoord, T>>>();
 	}
 	
 	public void add(Integer worldID, ChunkCoord chunk, BlockCoord coord, T entry)
 	{
 		if (this.objectMap.get(worldID) == null)
-			this.objectMap.put(worldID, new HashMap<ChunkCoord, Map<BlockCoord, T>>());
+			this.objectMap.put(worldID, new ConcurrentHashMap<ChunkCoord, Map<BlockCoord, T>>());
 		if (this.objectMap.get(worldID).get(chunk) == null)
-			this.objectMap.get(worldID).put(chunk, new HashMap<BlockCoord, T>());
+			this.objectMap.get(worldID).put(chunk, new ConcurrentHashMap<BlockCoord, T>());
 		if (this.objectMap.get(worldID) != null && this.objectMap.get(worldID).get(chunk) != null)
 			this.objectMap.get(worldID).get(chunk).put(coord, entry);
 	}
 	
 	public void clear()
 	{
-		this.objectMap = new HashMap<Integer, Map<ChunkCoord, Map<BlockCoord, T>>>();
+		this.objectMap = new ConcurrentHashMap<Integer, Map<ChunkCoord, Map<BlockCoord, T>>>();
+	}
+	
+	public int size()
+	{
+		int size = 0;
+		for (Integer worldID : this.objectMap.keySet())
+		{
+			for (ChunkCoord chunk : this.objectMap.get(worldID).keySet())
+			{
+				size += this.objectMap.get(worldID).get(chunk).size();
+			}
+		}
+		return size;
 	}
 	
 	public boolean contains(Integer worldID)

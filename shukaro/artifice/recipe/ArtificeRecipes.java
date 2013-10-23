@@ -402,16 +402,16 @@ public class ArtificeRecipes
             'Y', Block.brick,
             'Z', Item.clay }));
         
-        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeBlocks.blockReinforced, 2, 2), new Object[] {
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeBlocks.blockReinforced, 4, 2), new Object[] {
             "   ",
             "YXY",
             " Z ",
             'X', new ItemStack(ArtificeBlocks.blockFrame, 1, 2),
             'Y', Block.obsidian,
-            'Z', Item.clay }));
+            'Z', Item.bucketLava }));
         
-        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeBlocks.blockReinforced, 2, 3), new Object[] {
-            "   ",
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeBlocks.blockReinforced, 4, 3), new Object[] {
+            "YYY",
             "YXY",
             "YYY",
             'X', new ItemStack(ArtificeBlocks.blockFrame, 1, 3),

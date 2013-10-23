@@ -397,9 +397,9 @@ public class ArtificeRecipes
         GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeBlocks.blockReinforced, 2, 1), new Object[] {
             "   ",
             "YXY",
-            "YZY",
+            " Z ",
             'X', new ItemStack(ArtificeBlocks.blockFrame, 1, 1),
-            'Y', Item.brick,
+            'Y', Block.brick,
             'Z', Item.clay }));
         
         GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeBlocks.blockReinforced, 2, 2), new Object[] {

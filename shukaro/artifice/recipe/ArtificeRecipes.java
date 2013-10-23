@@ -350,34 +350,35 @@ public class ArtificeRecipes
 
     private static void registerGlassWallRecipes()
     {
+    	// to-do: add recipes that make sense
         GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeBlocks.blockGlassWall, 2, 0), new Object[] {
-            "   ",
-            "YXY",
+            "YYY",
+            " X ",
             " Z ",
             'X', new ItemStack(ArtificeBlocks.blockFrame, 1, 0),
-            'Y', Item.clay,
-            'Z', Block.glass }));
+            'Y', Block.thinGlass,
+            'Z', Item.clay }));
         
         GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeBlocks.blockGlassWall, 2, 1), new Object[] {
-            "   ",
-            "YXY",
-            "YZY",
+            "YYY",
+            " X ",
+            " Z ",
             'X', new ItemStack(ArtificeBlocks.blockFrame, 1, 1),
-            'Y', Item.clay,
-            'Z', Block.glass }));
+            'Z', Item.clay,
+            'Y', Block.glass }));
         
-        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeBlocks.blockGlassWall, 2, 2), new Object[] {
-            " Q ",
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeBlocks.blockGlassWall, 4, 2), new Object[] {
+            "QQQ",
             "YXY",
             " Z ",
             'X', new ItemStack(ArtificeBlocks.blockFrame, 1, 2),
             'Q', Block.glass,
             'Y', Block.obsidian,
-            'Z', Item.clay }));
+            'Z', Item.bucketLava }));
         
-        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeBlocks.blockGlassWall, 2, 3), new Object[] {
-            " Q ",
-            "YXY",
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeBlocks.blockGlassWall, 4, 3), new Object[] {
+            "YYY",
+            "QXQ",
             "YYY",
             'X', new ItemStack(ArtificeBlocks.blockFrame, 1, 3),
             'Q', Block.glass,

@@ -31,7 +31,6 @@
 	            <copy todir="${branch.dir}">
 	                <fileset dir="."/>
 	            </copy>
-	    	    <delete dir="."/>
 	        </target>
 	
 	<delete dir="${artifacts.dir}" failonerror="false"/>
@@ -219,6 +218,7 @@
     </target>
 
     <target name="clean" >
+    	<delete dir="."/>
         <delete dir="${build.dir}" />
     </target>
     

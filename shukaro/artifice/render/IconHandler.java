@@ -12,7 +12,7 @@ public class IconHandler
     {
         for (int i=0; i<texture.textureList.length; i++)
         {
-            texture.textureList[i] = reg.registerIcon(ArtificeCore.modID.toLowerCase() + ":" + folder + "/" + texture.name + "_" + (i > 9 ? i : "0" + i));
+            texture.textureList[i] = reg.registerIcon(ArtificeCore.modID.toLowerCase(Locale.ENGLISH) + ":" + folder + "/" + texture.name + "_" + (i > 9 ? i : "0" + i));
         }
     }
     
@@ -21,7 +21,7 @@ public class IconHandler
         Icon[] icons = new Icon[6];
         for (ForgeDirection d : ForgeDirection.VALID_DIRECTIONS)
         {
-            icons[d.ordinal()] = reg.registerIcon(ArtificeCore.modID.toLowerCase() + ":" + folder + "/" + name + "_" + d.toString().toLowerCase());
+            icons[d.ordinal()] = reg.registerIcon(ArtificeCore.modID.toLowerCase(Locale.ENGLISH) + ":" + folder + "/" + name + "_" + d.toString().toLowerCase(Locale.ENGLISH));
         }
         return icons;
     }
@@ -33,7 +33,7 @@ public class IconHandler
         {
             for (ForgeDirection d : ForgeDirection.VALID_DIRECTIONS)
             {
-                icons[i][d.ordinal()] = reg.registerIcon(ArtificeCore.modID.toLowerCase() + ":" + folder + "/" + names[i] + "_" + d.toString().toLowerCase());
+                icons[i][d.ordinal()] = reg.registerIcon(ArtificeCore.modID.toLowerCase(Locale.ENGLISH) + ":" + folder + "/" + names[i] + "_" + d.toString().toLowerCase(Locale.ENGLISH));
             }
         }
         return icons;
@@ -41,7 +41,7 @@ public class IconHandler
     
     public static Icon registerSingle(IconRegister reg, String name, String folder)
     {
-        Icon icon = reg.registerIcon(ArtificeCore.modID.toLowerCase() + ":" + folder + "/" + name);
+        Icon icon = reg.registerIcon(ArtificeCore.modID.toLowerCase(Locale.ENGLISH) + ":" + folder + "/" + name);
         return icon;
     }
     
@@ -50,7 +50,7 @@ public class IconHandler
         Icon[] icons = new Icon[names.length];
         for (int i=0; i<names.length; i++)
         {
-            icons[i] = reg.registerIcon(ArtificeCore.modID.toLowerCase() + ":" + folder + "/" + names[i]);
+            icons[i] = reg.registerIcon(ArtificeCore.modID.toLowerCase(Locale.ENGLISH) + ":" + folder + "/" + names[i]);
         }
         return icons;
     }

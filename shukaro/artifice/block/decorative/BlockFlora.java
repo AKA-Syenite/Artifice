@@ -44,7 +44,7 @@ public class BlockFlora extends BlockFlower
     public void registerIcons(IconRegister reg)
     {
         for (int i=0; i<ArtificeCore.flora.length; i++)
-            icons[i] = IconHandler.registerSingle(reg, ArtificeCore.flora[i].toLowerCase(), "flora");
+            icons[i] = IconHandler.registerSingle(reg, ArtificeCore.flora[i].toLowerCase(Locale.ENGLISH), "flora");
     }
     
     @Override

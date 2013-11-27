@@ -34,7 +34,7 @@ public class BlockFrameBase extends BlockFrame
     public void registerIcons(IconRegister reg)
     {
         for (int i=0; i<ArtificeCore.tiers.length; i++)
-            icons[i] = IconHandler.registerSingle(reg, ArtificeCore.tiers[i].toLowerCase(), "frame");
+            icons[i] = IconHandler.registerSingle(reg, ArtificeCore.tiers[i].toLowerCase(Locale.ENGLISH), "frame");
     }
 
     @Override

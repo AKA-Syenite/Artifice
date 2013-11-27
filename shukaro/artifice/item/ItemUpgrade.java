@@ -43,7 +43,7 @@ public class ItemUpgrade extends Item
     {
         for (int i=0; i<upgrades.length; i++)
         {
-            icons[i] = IconHandler.registerSingle(reg, upgrades[i].toLowerCase().replaceAll("\\s",""), "upgrade");
+            icons[i] = IconHandler.registerSingle(reg, upgrades[i].toLowerCase(Locale.ENGLISH).replaceAll("\\s",""), "upgrade");
         }
     }
     
@@ -58,7 +58,7 @@ public class ItemUpgrade extends Item
     @Override
     public String getUnlocalizedName(ItemStack stack)
     {
-        return "item.artifice.upgrade." + upgrades[stack.getItemDamage()].toLowerCase().replaceAll("\\s","");
+        return "item.artifice.upgrade." + upgrades[stack.getItemDamage()].toLowerCase(Locale.ENGLISH).replaceAll("\\s","");
     }
     
     @Override

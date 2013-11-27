@@ -72,7 +72,7 @@ public class BlockBasaltSlab extends BlockHalfSlab
         meta = meta > 7 ? meta - 8 : meta;
         if (meta >= types.length)
             meta = 0;
-        return "tile.artifice.slab." + types[meta].toLowerCase();
+        return "tile.artifice.slab." + types[meta].toLowerCase(Locale.ENGLISH);
     }
     
     @Override

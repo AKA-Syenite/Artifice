@@ -31,7 +31,7 @@ public class ItemSickle extends ItemTool
         super(id, 3, mat, null);
         this.setCreativeTab(ArtificeCreativeTab.main);
         this.setMaxDamage(mat.getMaxUses()/2);
-        this.setUnlocalizedName("artifice.sickle." + this.toolMaterial.toString().toLowerCase());
+        this.setUnlocalizedName("artifice.sickle." + this.toolMaterial.toString().toLowerCase(Locale.ENGLISH));
         this.radius = getRadius(mat);
     }
     
@@ -83,7 +83,7 @@ public class ItemSickle extends ItemTool
     @SideOnly(Side.CLIENT)
     public void registerIcons(IconRegister reg)
     {
-        this.icon = IconHandler.registerSingle(reg, "sickle_" + this.toolMaterial.toString().toLowerCase(), "sickle");
+        this.icon = IconHandler.registerSingle(reg, "sickle_" + this.toolMaterial.toString().toLowerCase(Locale.ENGLISH), "sickle");
     }
     
     @Override

@@ -12,7 +12,7 @@ public class BlockStairsArtifice extends BlockStairs
         super(id, block, meta);
         setLightOpacity(0);
         setCreativeTab(ArtificeCreativeTab.main);
-        String name = block.getUnlocalizedName() + ".stairs." + ArtificeCore.rocks[meta].toLowerCase();
+        String name = block.getUnlocalizedName() + ".stairs." + ArtificeCore.rocks[meta].toLowerCase(Locale.ENGLISH);
         name = name.replace("tile.", "");
         setUnlocalizedName(name);
     }

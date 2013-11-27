@@ -45,7 +45,7 @@ public class ItemDye extends Item
     {
         for (int i=0; i<names.length; i++)
         {
-            icons[i] = IconHandler.registerSingle(reg, names[i].toLowerCase(), "dye");
+            icons[i] = IconHandler.registerSingle(reg, names[i].toLowerCase(Locale.ENGLISH), "dye");
         }
     }
     
@@ -60,7 +60,7 @@ public class ItemDye extends Item
     @Override
     public String getUnlocalizedName(ItemStack stack)
     {
-        return "item.artifice.dye." + names[stack.getItemDamage()].toLowerCase();
+        return "item.artifice.dye." + names[stack.getItemDamage()].toLowerCase(Locale.ENGLISH);
     }
     
     @Override

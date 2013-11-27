@@ -44,8 +44,8 @@ public class ItemSteel extends Item
     public String getUnlocalizedName(ItemStack stack)
     {
     	if (stack.getItemDamage() > 1)
-    		return "item.artifice.steel." + names[0].toLowerCase();
-        return "item.artifice.steel." + names[stack.getItemDamage()].toLowerCase();
+    		return "item.artifice.steel." + names[0].toLowerCase(Locale.ENGLISH);
+        return "item.artifice.steel." + names[stack.getItemDamage()].toLowerCase(Locale.ENGLISH);
     }
     
     @Override

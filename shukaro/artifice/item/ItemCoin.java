@@ -43,7 +43,7 @@ public class ItemCoin extends Item
     {
         for (int i=0; i<coinTypes.length; i++)
         {
-            icons[i] = IconHandler.registerSingle(reg, coinTypes[i].toLowerCase(), "coin");
+            icons[i] = IconHandler.registerSingle(reg, coinTypes[i].toLowerCase(Locale.ENGLISH), "coin");
         }
     }
     

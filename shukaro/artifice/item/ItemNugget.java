@@ -43,7 +43,7 @@ public class ItemNugget extends Item
     {
         for (int i=0; i<nuggetTypes.length; i++)
         {
-            icons[i] = IconHandler.registerSingle(reg, nuggetTypes[i].toLowerCase(), "nugget");
+            icons[i] = IconHandler.registerSingle(reg, nuggetTypes[i].toLowerCase(Locale.ENGLISH), "nugget");
         }
     }
     
@@ -58,7 +58,7 @@ public class ItemNugget extends Item
     @Override
     public String getUnlocalizedName(ItemStack stack)
     {
-        return "item.artifice.nugget." + nuggetTypes[stack.getItemDamage()].toLowerCase();
+        return "item.artifice.nugget." + nuggetTypes[stack.getItemDamage()].toLowerCase(Locale.ENGLISH);
     }
     
     @Override

@@ -212,7 +212,7 @@ public class BlockFrameScaffold extends BlockFrame
     {
     	ArtificeConfig.registerConnectedTextures(reg);
         for (int i=0; i<ArtificeCore.tiers.length; i++)
-            sideIcons[i] = IconHandler.registerSingle(reg, ArtificeCore.tiers[i].toLowerCase(), "scaffold/sides");
+            sideIcons[i] = IconHandler.registerSingle(reg, ArtificeCore.tiers[i].toLowerCase(Locale.ENGLISH), "scaffold/sides");
     }
 
     @Override

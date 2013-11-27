@@ -32,7 +32,7 @@ public class ItemSledge extends ItemTool
         super(id, 2, mat, null);
         this.setCreativeTab(ArtificeCreativeTab.main);
         this.setMaxDamage(mat.getMaxUses()/4);
-        this.setUnlocalizedName("artifice.sledge." + this.toolMaterial.toString().toLowerCase());
+        this.setUnlocalizedName("artifice.sledge." + this.toolMaterial.toString().toLowerCase(Locale.ENGLISH));
         this.lossChance = getLossChance(mat);
     }
     
@@ -106,7 +106,7 @@ public class ItemSledge extends ItemTool
     @SideOnly(Side.CLIENT)
     public void registerIcons(IconRegister reg)
     {
-    	this.icon = IconHandler.registerSingle(reg, "sledge_" + this.toolMaterial.toString().toLowerCase(), "sledge");
+    	this.icon = IconHandler.registerSingle(reg, "sledge_" + this.toolMaterial.toString().toLowerCase(Locale.ENGLISH), "sledge");
     }
 
     @Override

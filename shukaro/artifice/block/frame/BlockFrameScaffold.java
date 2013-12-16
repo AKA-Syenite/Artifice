@@ -164,19 +164,15 @@ public class BlockFrameScaffold extends BlockFrame
 	    	BlockCoord coord = new BlockCoord(x, y, z);
 	    	ChunkCoord chunk = new ChunkCoord(coord);
 	    	int meta = coord.getMeta(world);
-	    	
-	    	int[] old = ArtificeCore.textureCache.get(worldID, chunk, coord);
-	    	int[] indices = new int[6];
-			for (int i=0; i<indices.length; i++)
-				indices[i] = this.getTextureRenderer(i, meta).getTextureIndex(world, x, y, z, i);
-			ArtificeCore.textureCache.add(worldID, chunk, coord, indices);
+
+            updateTextureCache(world, x, y, z, worldID, coord, chunk, meta);
     	}
     }
 
     @Override
     public boolean isBlockSolidOnSide(World world, int x, int y, int z, ForgeDirection side)
     {
-        return (side == ForgeDirection.UP || side == ForgeDirection.DOWN) ? true : false;
+        return side == ForgeDirection.UP || side == ForgeDirection.DOWN;
     }
 
     public ConnectedTextureBase getTextureRenderer(int side, int meta)
@@ -234,22 +230,33 @@ public class BlockFrameScaffold extends BlockFrame
         	BlockCoord coord = new BlockCoord(x, y, z);
         	ChunkCoord chunk = new ChunkCoord(coord);
         	int meta = coord.getMeta(block);
-        	
-        	if (!ArtificeCore.textureCache.contains(worldID, chunk, coord))
-        	{
-        		int[] indices = new int[6];
-        		for (int i=0; i<indices.length; i++)
-        			indices[i] = this.getTextureRenderer(i, meta).getTextureIndex(block, x, y, z, i);
-        		ArtificeCore.textureCache.add(worldID, chunk, coord, indices);
+
+            int[] textureIndices = ArtificeCore.textureCache.get(worldID, chunk, coord);
+
+        	if (textureIndices == null) {
+                textureIndices = updateTextureCache(block, x, y, z, worldID, coord, chunk, meta);
         	}
-        	
-        	if (ArtificeCore.textureCache.get(worldID, chunk, coord) == null)
-        		return this.getIcon(side, meta);
-        	return this.getTextureRenderer(side, meta).texture.textureList[ArtificeCore.textureCache.get(worldID, chunk, coord)[side]];
+
+        	return this.getTextureRenderer(side, meta).texture.textureList[textureIndices[side]];
         }
+
         return this.sideIcons[block.getBlockMetadata(x, y, z)];
     }
-    
+
+    private int[] updateTextureCache(IBlockAccess block, int x, int y, int z, Integer worldID, BlockCoord coord, ChunkCoord chunk, int meta) {
+        int[] indices = new int[6];
+
+        for (int i = 0; i < indices.length; i++) {
+            ConnectedTextureBase textureRenderer = this.getTextureRenderer(i, meta);
+            if (textureRenderer != null) {
+                indices[i] = textureRenderer.getTextureIndex(block, x, y, z, i);
+            }
+        }
+
+        ArtificeCore.textureCache.add(worldID, chunk, coord, indices);
+        return indices;
+    }
+
     @Override
 	public int getRenderType()
 	{

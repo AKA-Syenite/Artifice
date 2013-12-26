@@ -76,9 +76,9 @@ item.artifice.steel.dust.name=Стальная пыль
 item.artifice.box.name=Коробка
 
 item.artifice.dye.blue.name=Синее море
-item.artifice.dye.black.name=Полуночный-чёрный
-item.artifice.dye.brown.name=Дубовый-коричневый
-item.artifice.dye.white.name=Костный-белый
+item.artifice.dye.black.name=Полуночно-чёрный
+item.artifice.dye.brown.name=Дубово-коричневый
+item.artifice.dye.white.name=Костно-белый
 
 item.artifice.nugget.copper.name=Медный самородок
 item.artifice.nugget.silver.name=Серебряный самородок
@@ -94,7 +94,7 @@ item.artifice.upgrade.reinforcement.name=Арматура
 item.artifice.upgrade.reinforcedlimbs.name=Reinforced Limbs
 item.artifice.upgrade.plaitedstring.name=Плетёная нить
 item.artifice.upgrade.counterweight.name=Противовес
-item.artifice.upgrade.armorspikes.name=Шипы для доспехов
+item.artifice.upgrade.armorspikes.name=Доспешные шипы
 item.artifice.upgrade.laminatedpadding.name=Ламинированные прокладки
 item.artifice.upgrade.quiltedcover.name=Стёганный покров
 item.artifice.upgrade.elasticsoles.name=Эластичные подошвы

@@ -2,6 +2,7 @@ package shukaro.artifice.block.decorative;
 
 import java.util.List;
 import java.util.Random;
+import java.util.Locale;
 
 import net.minecraft.block.BlockHalfSlab;
 import net.minecraft.block.material.Material;
@@ -31,14 +32,14 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class BlockBasaltSlab extends BlockHalfSlab
 {
     private final String[] types = { "basaltBrick", "basaltCobble", "basaltPaver", "basaltAntipaver" };
-    
+
     private Icon paverSide;
-    
+
     private ConnectedTextureBase paver = new SlabConnectedTexture(ConnectedTextures.BasaltPaver);
     private ConnectedTextureBase antipaver = new SlabConnectedTexture(ConnectedTextures.BasaltAntipaver);
-    
+
     private final boolean isDouble;
-    
+
     public BlockBasaltSlab(int id, boolean isDouble)
     {
         super(id, isDouble, Material.rock);
@@ -48,13 +49,13 @@ public class BlockBasaltSlab extends BlockHalfSlab
         setResistance(10.0F);
         this.isDouble = isDouble;
     }
-    
+
     @Override
     public int idDropped(int id, Random rand, int meta)
     {
         return ArtificeBlocks.blockBasaltSlab.blockID;
     }
-    
+
     @Override
     @SideOnly(Side.CLIENT)
     public void getSubBlocks(int id, CreativeTabs tab, List list)
@@ -65,7 +66,7 @@ public class BlockBasaltSlab extends BlockHalfSlab
                 list.add(new ItemStack(id, 1, i));
         }
     }
-    
+
     @Override
     public String getFullSlabName(int meta)
     {
@@ -74,7 +75,7 @@ public class BlockBasaltSlab extends BlockHalfSlab
             meta = 0;
         return "tile.artifice.slab." + types[meta].toLowerCase(Locale.ENGLISH);
     }
-    
+
     @Override
     @SideOnly(Side.CLIENT)
     public void registerIcons(IconRegister reg)
@@ -82,7 +83,7 @@ public class BlockBasaltSlab extends BlockHalfSlab
     	ArtificeConfig.registerConnectedTextures(reg);
         paverSide = IconHandler.registerSingle(reg, "paverside", "basalt");
     }
-    
+
     @Override
     @SideOnly(Side.CLIENT)
     public Icon getIcon(int side, int meta)
@@ -99,7 +100,7 @@ public class BlockBasaltSlab extends BlockHalfSlab
             meta = 2;
         return ArtificeBlocks.blockBasalt.getIcon(side, meta);
     }
-    
+
     @Override
     @SideOnly(Side.CLIENT)
     public Icon getBlockTexture(IBlockAccess block, int x, int y, int z, int side)
@@ -113,7 +114,7 @@ public class BlockBasaltSlab extends BlockHalfSlab
             	Integer worldID = Minecraft.getMinecraft().thePlayer.worldObj.provider.dimensionId;
             	BlockCoord coord = new BlockCoord(x, y, z);
             	ChunkCoord chunk = new ChunkCoord(coord);
-            	
+
             	if (!ArtificeCore.textureCache.contains(worldID, chunk, coord))
             	{
             		int[] indices = new int[6];
@@ -121,7 +122,7 @@ public class BlockBasaltSlab extends BlockHalfSlab
             			indices[i] = this.getTextureRenderer(i, meta).getTextureIndex(block, x, y, z, i);
             		ArtificeCore.textureCache.add(worldID, chunk, coord, indices);
             	}
-            	
+
             	if (ArtificeCore.textureCache.get(worldID, chunk, coord) == null)
             		return this.getIcon(side, meta);
             	return this.getTextureRenderer(side, meta).texture.textureList[ArtificeCore.textureCache.get(worldID, chunk, coord)[side]];
@@ -133,7 +134,7 @@ public class BlockBasaltSlab extends BlockHalfSlab
             t = 2;
         return ArtificeBlocks.blockBasalt.getIcon(side, t);
     }
-    
+
     @Override
     @SideOnly(Side.CLIENT)
     public void onNeighborBlockChange(World world, int x, int y, int z, int neighborID)
@@ -142,7 +143,7 @@ public class BlockBasaltSlab extends BlockHalfSlab
     	BlockCoord coord = new BlockCoord(x, y, z);
     	ChunkCoord chunk = new ChunkCoord(coord);
     	int meta = coord.getMeta(world);
-    	
+
     	int[] old = ArtificeCore.textureCache.get(worldID, chunk, coord);
     	int[] indices = new int[6];
 		for (int i=0; i<indices.length; i++)

@@ -11,18 +11,19 @@ import shukaro.artifice.ArtificeCore;
 import shukaro.artifice.render.IconHandler;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import java.util.Locale;
 
 public class BlockFrameBase extends BlockFrame
 {
     private Icon[] icons = new Icon[ArtificeCore.tiers.length];
-    
+
     public BlockFrameBase(int id)
     {
         super(id);
         setUnlocalizedName("artifice.frame");
         setBlockBounds(0.01F, 0.01F, 0.01F, 0.99F, 0.99F, 0.99F);
     }
-    
+
     @Override
     public boolean isOpaqueCube()
     {
@@ -56,7 +57,7 @@ public class BlockFrameBase extends BlockFrame
 	{
 		return false;
 	}
-	
+
 	@Override
 	public int getRenderType()
 	{

@@ -1,6 +1,7 @@
 package shukaro.artifice.item;
 
 import java.util.List;
+import java.util.Locale;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockFlower;
@@ -25,7 +26,7 @@ public class ItemSickle extends ItemTool
 {
     public Icon icon;
     public int radius;
-    
+
     public ItemSickle(int id, EnumToolMaterial mat)
     {
         super(id, 3, mat, null);
@@ -34,7 +35,7 @@ public class ItemSickle extends ItemTool
         this.setUnlocalizedName("artifice.sickle." + this.toolMaterial.toString().toLowerCase(Locale.ENGLISH));
         this.radius = getRadius(mat);
     }
-    
+
     public int getRadius(EnumToolMaterial mat)
     {
         switch (mat)
@@ -53,7 +54,7 @@ public class ItemSickle extends ItemTool
                 return 0;
         }
     }
-    
+
     @Override
     @SideOnly(Side.CLIENT)
     public void addInformation(ItemStack stack, EntityPlayer player, List infoList, boolean advancedTooltips)
@@ -71,27 +72,27 @@ public class ItemSickle extends ItemTool
             }
         }
     }
-    
+
     @Override
     @SideOnly(Side.CLIENT)
     public Icon getIconFromDamage(int meta)
     {
         return icon;
     }
-    
+
     @Override
     @SideOnly(Side.CLIENT)
     public void registerIcons(IconRegister reg)
     {
         this.icon = IconHandler.registerSingle(reg, "sickle_" + this.toolMaterial.toString().toLowerCase(Locale.ENGLISH), "sickle");
     }
-    
+
     @Override
     public float getStrVsBlock(ItemStack stack, Block block)
     {
         return 1.0F;
     }
-    
+
     @Override
     public boolean onBlockStartBreak(ItemStack stack, int x, int y, int z, EntityPlayer player)
     {
@@ -99,7 +100,7 @@ public class ItemSickle extends ItemTool
         World world = player.worldObj;
         Block block = coord.getBlock(world);
         int radius = getRadius(this.toolMaterial);
-        
+
         if (block instanceof BlockFlower)
         {
             for (int i=-radius; i<radius; i++)
@@ -120,7 +121,7 @@ public class ItemSickle extends ItemTool
             stack.damageItem(1, player);
             return true;
         }
-        
+
         else if (block != null && block.isLeaves(world, x, y, z))
         {
             for (BlockCoord c : coord.getRadiusBlocks(world, radius))
@@ -139,7 +140,7 @@ public class ItemSickle extends ItemTool
             stack.damageItem(1, player);
             return true;
         }
-        
+
         return super.onBlockStartBreak(stack, x, y, z, player);
     }
 }

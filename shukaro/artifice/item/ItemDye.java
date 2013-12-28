@@ -1,6 +1,7 @@
 package shukaro.artifice.item;
 
 import java.util.List;
+import java.util.Locale;
 
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
@@ -21,7 +22,7 @@ public class ItemDye extends Item
 {
     public Icon[] icons = new Icon[4];
     public String[] names = { "Blue", "Black", "Brown", "White" };
-    
+
     public ItemDye(int id)
     {
         super(id);
@@ -29,7 +30,7 @@ public class ItemDye extends Item
         this.setHasSubtypes(true);
         this.setCreativeTab(ArtificeCreativeTab.main);
     }
-    
+
     @Override
     @SideOnly(Side.CLIENT)
     public Icon getIconFromDamage(int meta)
@@ -38,7 +39,7 @@ public class ItemDye extends Item
     		meta = 0;
         return icons[meta];
     }
-    
+
     @Override
     @SideOnly(Side.CLIENT)
     public void registerIcons(IconRegister reg)
@@ -48,7 +49,7 @@ public class ItemDye extends Item
             icons[i] = IconHandler.registerSingle(reg, names[i].toLowerCase(Locale.ENGLISH), "dye");
         }
     }
-    
+
     @Override
     @SideOnly(Side.CLIENT)
     public void getSubItems(int id, CreativeTabs tab, List list)
@@ -56,13 +57,13 @@ public class ItemDye extends Item
         for (int i=0; i<names.length; i++)
             list.add(new ItemStack(id, 1, i));
     }
-    
+
     @Override
     public String getUnlocalizedName(ItemStack stack)
     {
         return "item.artifice.dye." + names[stack.getItemDamage()].toLowerCase(Locale.ENGLISH);
     }
-    
+
     @Override
     @SideOnly(Side.CLIENT)
     public void addInformation(ItemStack stack, EntityPlayer player, List infoList, boolean advancedTooltips)

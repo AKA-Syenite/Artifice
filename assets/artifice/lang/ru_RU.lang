@@ -1,0 +1,104 @@
+tile.artifice.basalt.name=Базальт
+tile.artifice.basalt.cobblestone.name=Базальтовый булыжник
+tile.artifice.basalt.brick.name=Базальтовый кирпич
+tile.artifice.basalt.paver.name=Базальтовая брусчатка
+tile.artifice.basalt.antipaver.name=Базальтовая противо-брусчатка
+tile.artifice.basalt.chiseled.name=Резной базальт
+
+tile.artifice.marble.name=Мрамор
+tile.artifice.marble.cobblestone.name=Мраморный булыжник
+tile.artifice.marble.brick.name=Мраморный кирпич
+tile.artifice.marble.paver.name=Мраморная брусчатка
+tile.artifice.marble.antipaver.name=Мраморная противо-брусчатка
+tile.artifice.marble.chiseled.name=Резной мрамор
+
+tile.artifice.flora.bluebell.name=Колокольчик
+tile.artifice.flora.orchid.name=Орхидея
+tile.artifice.flora.iris.name=Ирис
+tile.artifice.flora.lotus.name=Лотос
+tile.artifice.flora.lily.open.name=Голубой лотос
+
+tile.artifice.slab.marblebrick.name=Плита из мраморного кирпича
+tile.artifice.slab.marblecobble.name=Плита из мраморного булыжника
+tile.artifice.slab.marblepaver.name=Плита из мраморной брусчатки
+tile.artifice.slab.marbleantipaver.name=Плита из мраморной противо-брусчатки
+
+tile.artifice.slab.basaltbrick.name=Плита из базальтового кирпича
+tile.artifice.slab.basaltcobble.name=Плита из базальтового булыжника
+tile.artifice.slab.basaltpaver.name=Плита из базальтовый брусчатки
+tile.artifice.slab.basaltantipaver.name=Плита из базальтовый противо-брусчатки
+
+tile.artifice.basalt.stairs.brick.name=Ступеньки из базальтового кирпича
+tile.artifice.basalt.stairs.cobblestone.name=Ступеньки из базальтового булыжника
+
+tile.artifice.marble.stairs.brick.name=Ступеньки из мраморного кирпича
+tile.artifice.marble.stairs.cobblestone.name=Ступеньки из мраморного булыжника
+
+tile.artifice.frame.basic.name=Обычный каркас
+tile.artifice.frame.reinforced.name=Усиленный каркас
+tile.artifice.frame.industrial.name=Промышленный каркас
+tile.artifice.frame.advanced.name=Продвинутый каркас
+
+tile.artifice.reinforced.basic.name=Обычная взрывостойкая стена
+tile.artifice.reinforced.reinforced.name=Усиленная взрывостойкая стена
+tile.artifice.reinforced.industrial.name=Промышленная взрывостойкая стена
+tile.artifice.reinforced.advanced.name=Продвинутая взрывостойкая стена
+
+tile.artifice.glasswall.basic.name=Обычная стеклянная стена
+tile.artifice.glasswall.reinforced.name=Усиленная стеклянная стена
+tile.artifice.glasswall.industrial.name=Промышленная стеклянная стена
+tile.artifice.glasswall.advanced.name=Продвинутая стеклянная стена
+
+tile.artifice.scaffold.basic.name=Обычные строительные леса
+tile.artifice.scaffold.reinforced.name=Усиленные строительные леса
+tile.artifice.scaffold.industrial.name=Промышленные строительные леса
+tile.artifice.scaffold.advanced.name=Продвинутые строительные леса
+
+tile.artifice.detector.name=Детектор
+
+tile.artifice.steel.name=Стальной блок
+
+item.artifice.sledge.wood.name=Деревянная кувалда
+item.artifice.sledge.stone.name=Каменная кувалда
+item.artifice.sledge.iron.name=Железная кувалда
+item.artifice.sledge.gold.name=Золотая кувалда
+item.artifice.sledge.emerald.name=Алмазная кувалда
+
+item.artifice.sickle.wood.name=Деревянный серп
+item.artifice.sickle.stone.name=Каменный серп
+item.artifice.sickle.iron.name=Железный серп
+item.artifice.sickle.gold.name=Золотой серп
+item.artifice.sickle.emerald.name=Алмазный серп
+
+item.artifice.steel.ingot.name=Стальной слиток
+item.artifice.steel.dust.name=Стальная пыль
+
+item.artifice.box.name=Коробка
+
+item.artifice.dye.blue.name=Синее море
+item.artifice.dye.black.name=Полуночно-чёрный
+item.artifice.dye.brown.name=Дубово-коричневый
+item.artifice.dye.white.name=Костно-белый
+
+item.artifice.nugget.copper.name=Медный самородок
+item.artifice.nugget.silver.name=Серебряный самородок
+item.artifice.nugget.platinum.name=Платиновый самородок
+
+item.artifice.coin.copper.name=Шиллинг
+item.artifice.coin.silver.name=Флорин
+item.artifice.coin.gold.name=Соверен
+item.artifice.coin.platinum.name=Марка
+
+item.artifice.upgrade.sharpeningkit.name=Набор для заточки
+item.artifice.upgrade.reinforcement.name=Арматура
+item.artifice.upgrade.reinforcedlimbs.name=Reinforced Limbs
+item.artifice.upgrade.plaitedstring.name=Плетёная нить
+item.artifice.upgrade.counterweight.name=Противовес
+item.artifice.upgrade.armorspikes.name=Доспешные шипы
+item.artifice.upgrade.laminatedpadding.name=Ламинированные прокладки
+item.artifice.upgrade.quiltedcover.name=Стёганный покров
+item.artifice.upgrade.elasticsoles.name=Эластичные подошвы
+item.artifice.upgrade.firedamp.name=Firedamp
+item.artifice.upgrade.elasticlayering.name=Эластичное расслоение
+item.artifice.upgrade.scubatank.name=Scuba Tank
+item.artifice.upgrade.divekit.name=Набор для ныряния

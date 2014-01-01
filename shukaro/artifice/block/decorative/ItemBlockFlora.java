@@ -7,6 +7,7 @@ import shukaro.artifice.ArtificeCore;
 import shukaro.artifice.block.ItemBlockArtifice;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import java.util.Locale;
 
 public class ItemBlockFlora extends ItemBlockArtifice
 {
@@ -14,7 +15,7 @@ public class ItemBlockFlora extends ItemBlockArtifice
     {
         super(id);
     }
-    
+
     @Override
     public int getMetadata(int meta)
     {
@@ -22,7 +23,7 @@ public class ItemBlockFlora extends ItemBlockArtifice
             return 0;
         return meta;
     }
-    
+
     @Override
     @SideOnly(Side.CLIENT)
     public Icon getIconFromDamage(int meta)
@@ -31,7 +32,7 @@ public class ItemBlockFlora extends ItemBlockArtifice
             return BlockFlora.icons[0];
         return BlockFlora.icons[meta];
     }
-    
+
     @Override
     public String getUnlocalizedName(ItemStack stack)
     {

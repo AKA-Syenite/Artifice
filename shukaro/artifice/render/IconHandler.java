@@ -5,6 +5,7 @@ import shukaro.artifice.render.connectedtexture.ConnectedTextures;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.util.Icon;
 import net.minecraftforge.common.ForgeDirection;
+import java.util.Locale;
 
 public class IconHandler
 {
@@ -15,7 +16,7 @@ public class IconHandler
             texture.textureList[i] = reg.registerIcon(ArtificeCore.modID.toLowerCase(Locale.ENGLISH) + ":" + folder + "/" + texture.name + "_" + (i > 9 ? i : "0" + i));
         }
     }
-    
+
     public static Icon[] registerSingleDirectional(IconRegister reg, String name, String folder)
     {
         Icon[] icons = new Icon[6];
@@ -25,7 +26,7 @@ public class IconHandler
         }
         return icons;
     }
-    
+
     public static Icon[][] registerMetaDirectional(IconRegister reg, String[] names, String folder)
     {
         Icon[][] icons = new Icon[names.length][6];
@@ -38,13 +39,13 @@ public class IconHandler
         }
         return icons;
     }
-    
+
     public static Icon registerSingle(IconRegister reg, String name, String folder)
     {
         Icon icon = reg.registerIcon(ArtificeCore.modID.toLowerCase(Locale.ENGLISH) + ":" + folder + "/" + name);
         return icon;
     }
-    
+
     public static Icon[] registerMeta(IconRegister reg, String names[], String folder)
     {
         Icon[] icons = new Icon[names.length];

@@ -15,11 +15,12 @@ import shukaro.artifice.gui.ArtificeCreativeTab;
 import shukaro.artifice.render.IconHandler;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import java.util.Locale;
 
 public class BlockFlora extends BlockFlower
 {
     public static Icon[] icons = new Icon[ArtificeCore.flora.length];
-    
+
     public BlockFlora(int id)
     {
         super(id, Material.plants);
@@ -29,7 +30,7 @@ public class BlockFlora extends BlockFlower
         setStepSound(soundGrassFootstep);
         setUnlocalizedName("artifice.flora");
     }
-    
+
     @Override
     @SideOnly(Side.CLIENT)
     public Icon getIcon(int side, int meta)
@@ -38,7 +39,7 @@ public class BlockFlora extends BlockFlower
             return icons[0];
         return icons[meta];
     }
-    
+
     @Override
     @SideOnly(Side.CLIENT)
     public void registerIcons(IconRegister reg)
@@ -46,18 +47,18 @@ public class BlockFlora extends BlockFlower
         for (int i=0; i<ArtificeCore.flora.length; i++)
             icons[i] = IconHandler.registerSingle(reg, ArtificeCore.flora[i].toLowerCase(Locale.ENGLISH), "flora");
     }
-    
+
     @Override
     public void updateTick(World world, int x, int y, int z, Random random)
     {
         int meta = world.getBlockMetadata(x, y, z);
-        
+
         if (meta == 3 && (world.getBlockLightValue(x, y, z) < 8))
             world.setBlockMetadataWithNotify(x, y, z, 4, 2);
         if (meta == 4 && (world.getBlockLightValue(x, y, z) >= 8))
             world.setBlockMetadataWithNotify(x, y, z, 3, 2);
     }
-    
+
     @Override
     @SideOnly(Side.CLIENT)
     public void getSubBlocks(int i, CreativeTabs tabs, List list)
@@ -67,13 +68,13 @@ public class BlockFlora extends BlockFlower
             list.add(new ItemStack(i, 1, j));
         }
     }
-    
+
     @Override
     public int damageDropped(int meta)
     {
         return meta == 4 ? 3 : meta;
     }
-    
+
     @Override
     public int getDamageValue(World world, int x, int y, int z)
     {

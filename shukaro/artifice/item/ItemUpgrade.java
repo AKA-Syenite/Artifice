@@ -1,6 +1,7 @@
 package shukaro.artifice.item;
 
 import java.util.List;
+import java.util.Locale;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -21,7 +22,7 @@ public class ItemUpgrade extends Item
 {
 	private Icon[] icons = new Icon[13];
 	public String[] upgrades = { "Sharpening Kit", "Reinforcement", "Reinforced Limbs", "Plaited String", "Counterweight", "Armor Spikes", "Laminated Padding", "Quilted Cover", "Elastic Soles", "Firedamp", "Elastic Layering", "Scuba Tank", "Dive Kit" };
-	
+
 	public ItemUpgrade(int id)
 	{
 		super(id);
@@ -29,14 +30,14 @@ public class ItemUpgrade extends Item
 		this.setHasSubtypes(true);
 		this.setCreativeTab(ArtificeCreativeTab.main);
 	}
-	
+
 	@Override
     @SideOnly(Side.CLIENT)
     public Icon getIconFromDamage(int meta)
     {
         return icons[meta];
     }
-    
+
     @Override
     @SideOnly(Side.CLIENT)
     public void registerIcons(IconRegister reg)
@@ -46,7 +47,7 @@ public class ItemUpgrade extends Item
             icons[i] = IconHandler.registerSingle(reg, upgrades[i].toLowerCase(Locale.ENGLISH).replaceAll("\\s",""), "upgrade");
         }
     }
-    
+
     @Override
     @SideOnly(Side.CLIENT)
     public void getSubItems(int id, CreativeTabs tab, List list)
@@ -54,13 +55,13 @@ public class ItemUpgrade extends Item
         for (int i=0; i<upgrades.length; i++)
             list.add(new ItemStack(id, 1, i));
     }
-    
+
     @Override
     public String getUnlocalizedName(ItemStack stack)
     {
         return "item.artifice.upgrade." + upgrades[stack.getItemDamage()].toLowerCase(Locale.ENGLISH).replaceAll("\\s","");
     }
-    
+
     @Override
     @SideOnly(Side.CLIENT)
     public void addInformation(ItemStack stack, EntityPlayer player, List infoList, boolean advancedTooltips)

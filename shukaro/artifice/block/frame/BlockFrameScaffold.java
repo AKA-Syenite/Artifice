@@ -24,24 +24,25 @@ import shukaro.artifice.util.PacketWrapper;
 import cpw.mods.fml.common.network.PacketDispatcher;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import java.util.Locale;
 
 public class BlockFrameScaffold extends BlockFrame
 {
     private static final ForgeDirection[] sides = new ForgeDirection[] { ForgeDirection.NORTH, ForgeDirection.SOUTH, ForgeDirection.EAST, ForgeDirection.WEST, ForgeDirection.DOWN };
-    
+
     private Icon[] sideIcons = new Icon[ArtificeCore.tiers.length];
     private ConnectedTextureBase basic = new SolidConnectedTexture(ConnectedTextures.BasicScaffold);
     private ConnectedTextureBase reinforced = new SolidConnectedTexture(ConnectedTextures.ReinforcedScaffold);
     private ConnectedTextureBase industrial = new SolidConnectedTexture(ConnectedTextures.IndustrialScaffold);
     private ConnectedTextureBase advanced = new SolidConnectedTexture(ConnectedTextures.AdvancedScaffold);
-    
+
     public BlockFrameScaffold(int id)
     {
         super(id);
         setUnlocalizedName("artifice.scaffold");
         setBlockBounds(0.01F, 0.01F, 0.01F, 0.99F, 0.99F, 0.99F);
     }
-    
+
     @Override
     public void onEntityCollidedWithBlock(World world, int x, int y, int z, Entity entity)
     {
@@ -51,7 +52,7 @@ public class BlockFrameScaffold extends BlockFrame
             entity.fallDistance = 0;
         }
     }
-    
+
     @Override
     public void onBlockClicked(World world, int x, int y, int z, EntityPlayer player)
     {
@@ -72,13 +73,13 @@ public class BlockFrameScaffold extends BlockFrame
             }
         }
     }
-    
+
     @Override
     public boolean canPlaceBlockOnSide(World world, int x, int y, int z, int side, ItemStack stack)
     {
         return this.checkStay(world, x, y, z, stack.getItemDamage());
     }
-    
+
     public int getOverhang(int meta)
     {
         switch (meta)
@@ -101,14 +102,14 @@ public class BlockFrameScaffold extends BlockFrame
     {
         return this.checkStay(world, x, y, z, world.getBlockMetadata(x, y, z));
     }
-    
+
     private boolean checkStay(World world, int x, int y, int z, int meta)
     {
         BlockCoord c = new BlockCoord(x, y, z);
-        
+
         if (isRooted(world, x, y, z, meta))
             return true;
-        
+
         for (ForgeDirection d : sides)
         {
             BlockCoord t = c.copy().offset(d.ordinal());
@@ -129,7 +130,7 @@ public class BlockFrameScaffold extends BlockFrame
         }
         return false;
     }
-    
+
     private boolean isRooted(World world, int x, int y, int z, int meta)
     {
         for (int i=y-1; i>0; i--)
@@ -148,7 +149,7 @@ public class BlockFrameScaffold extends BlockFrame
         }
         return false;
     }
-    
+
     @Override
     public void onNeighborBlockChange(World world, int x, int y, int z, int neighborID)
     {
@@ -157,14 +158,14 @@ public class BlockFrameScaffold extends BlockFrame
             dropBlockAsItem(world, x, y, z, world.getBlockMetadata(x, y, z), 0);
             world.setBlockToAir(x, y, z);
         }
-    	
+
     	if (!world.isRemote)
     	{
 	    	Integer worldID = world.provider.dimensionId;
 	    	BlockCoord coord = new BlockCoord(x, y, z);
 	    	ChunkCoord chunk = new ChunkCoord(coord);
 	    	int meta = coord.getMeta(world);
-	    	
+
 	    	int[] old = ArtificeCore.textureCache.get(worldID, chunk, coord);
 	    	int[] indices = new int[6];
 			for (int i=0; i<indices.length; i++)
@@ -234,7 +235,7 @@ public class BlockFrameScaffold extends BlockFrame
         	BlockCoord coord = new BlockCoord(x, y, z);
         	ChunkCoord chunk = new ChunkCoord(coord);
         	int meta = coord.getMeta(block);
-        	
+
         	if (!ArtificeCore.textureCache.contains(worldID, chunk, coord))
         	{
         		int[] indices = new int[6];
@@ -242,14 +243,14 @@ public class BlockFrameScaffold extends BlockFrame
         			indices[i] = this.getTextureRenderer(i, meta).getTextureIndex(block, x, y, z, i);
         		ArtificeCore.textureCache.add(worldID, chunk, coord, indices);
         	}
-        	
+
         	if (ArtificeCore.textureCache.get(worldID, chunk, coord) == null)
         		return this.getIcon(side, meta);
         	return this.getTextureRenderer(side, meta).texture.textureList[ArtificeCore.textureCache.get(worldID, chunk, coord)[side]];
         }
         return this.sideIcons[block.getBlockMetadata(x, y, z)];
     }
-    
+
     @Override
 	public int getRenderType()
 	{

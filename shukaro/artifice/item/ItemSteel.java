@@ -16,20 +16,21 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Icon;
+import java.util.Locale;
 
 public class ItemSteel extends Item
 {
     public Icon icon;
     public Icon dustIcon;
     private String[] names = { "ingot", "dust" };
-    
+
     public ItemSteel(int id)
     {
         super(id);
         this.setUnlocalizedName("artifice.steel");
         this.setCreativeTab(ArtificeCreativeTab.main);
     }
-    
+
     @Override
     @SideOnly(Side.CLIENT)
     public Icon getIconFromDamage(int meta)
@@ -39,7 +40,7 @@ public class ItemSteel extends Item
         else
         	return dustIcon;
     }
-    
+
     @Override
     public String getUnlocalizedName(ItemStack stack)
     {
@@ -47,7 +48,7 @@ public class ItemSteel extends Item
     		return "item.artifice.steel." + names[0].toLowerCase(Locale.ENGLISH);
         return "item.artifice.steel." + names[stack.getItemDamage()].toLowerCase(Locale.ENGLISH);
     }
-    
+
     @Override
     @SideOnly(Side.CLIENT)
     public void getSubItems(int id, CreativeTabs tab, List list)
@@ -56,7 +57,7 @@ public class ItemSteel extends Item
     	if (ArtificeConfig.alternateSteel.getBoolean(false))
     		list.add(new ItemStack(id, 1, 1));
     }
-    
+
     @Override
     @SideOnly(Side.CLIENT)
     public void registerIcons(IconRegister reg)
@@ -64,7 +65,7 @@ public class ItemSteel extends Item
         this.icon = IconHandler.registerSingle(reg, "ingot_steel", "steel");
         this.dustIcon = IconHandler.registerSingle(reg, "dust_steel", "steel");
     }
-    
+
     @Override
     @SideOnly(Side.CLIENT)
     public void addInformation(ItemStack stack, EntityPlayer player, List infoList, boolean advancedTooltips)

@@ -4,6 +4,7 @@ import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
 import shukaro.artifice.ArtificeCore;
 import shukaro.artifice.block.ItemBlockArtifice;
+import java.util.Locale;
 
 public class ItemBlockBasalt extends ItemBlockArtifice
 {
@@ -11,7 +12,7 @@ public class ItemBlockBasalt extends ItemBlockArtifice
     {
         super(id);
     }
-    
+
     @Override
     public String getUnlocalizedName(ItemStack stack)
     {

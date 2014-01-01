@@ -2,6 +2,7 @@ package shukaro.artifice.item;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.texture.IconRegister;
@@ -26,7 +27,7 @@ public class ItemSledge extends ItemTool
 {
     private Icon icon;
     private int lossChance;
-    
+
     public ItemSledge(int id, EnumToolMaterial mat)
     {
         super(id, 2, mat, null);
@@ -35,7 +36,7 @@ public class ItemSledge extends ItemTool
         this.setUnlocalizedName("artifice.sledge." + this.toolMaterial.toString().toLowerCase(Locale.ENGLISH));
         this.lossChance = getLossChance(mat);
     }
-    
+
     public int getLossChance(EnumToolMaterial mat)
     {
         switch (mat)
@@ -54,7 +55,7 @@ public class ItemSledge extends ItemTool
                 return 0;
         }
     }
-    
+
     @Override
     @SideOnly(Side.CLIENT)
     public void addInformation(ItemStack stack, EntityPlayer player, List infoList, boolean advancedTooltips)
@@ -72,7 +73,7 @@ public class ItemSledge extends ItemTool
             }
         }
     }
-    
+
     @Override
     public boolean canHarvestBlock(Block block)
     {
@@ -85,23 +86,23 @@ public class ItemSledge extends ItemTool
         }
         return false;
     }
-    
+
     @Override
-    public float getStrVsBlock(ItemStack stack, Block block, int meta) 
+    public float getStrVsBlock(ItemStack stack, Block block, int meta)
     {
         IdMetaPair pair = new IdMetaPair(block.blockID, meta);
         if (ArtificeRegistry.getWildSledgeBlocks().get(block.blockID) != null || ArtificeRegistry.getSledgeBlocks().get(pair) != null)
             return this.toolMaterial.getEfficiencyOnProperMaterial();
         return 1.0F;
     }
-    
+
     @Override
     @SideOnly(Side.CLIENT)
     public Icon getIconFromDamage(int meta)
     {
         return icon;
     }
-    
+
     @Override
     @SideOnly(Side.CLIENT)
     public void registerIcons(IconRegister reg)
@@ -115,17 +116,17 @@ public class ItemSledge extends ItemTool
         World world = player.worldObj;
         if (world.isRemote || player.capabilities.isCreativeMode)
             return super.onBlockStartBreak(stack, x, y, z, player);
-        
+
         try
         {
             int id = world.getBlockId(x, y, z);
             int meta = world.getBlockMetadata(x, y, z);
             IdMetaPair pair = new IdMetaPair(id, meta);
-            
+
             ArrayList<ItemStack> dropped = ArtificeRegistry.getWildSledgeBlocks().get(id);
             if (dropped == null)
                 dropped = ArtificeRegistry.getSledgeBlocks().get(pair);
-            
+
             if (dropped != null)
             {
                 for (ItemStack is : dropped)
@@ -142,23 +143,23 @@ public class ItemSledge extends ItemTool
         }
         return super.onBlockStartBreak(stack, x, y, z, player);
     }
-    
+
     @Override
     public boolean onBlockDestroyed(ItemStack stack, World world, int id, int x, int y, int z, EntityLivingBase entity)
     {
         int meta = world.getBlockMetadata(x, y, z);
         IdMetaPair pair = new IdMetaPair(id, meta);
-        
+
         if (entity instanceof EntityPlayer)
         {
             EntityPlayer player = (EntityPlayer) entity;
             if (player.capabilities.isCreativeMode)
                 return true;
         }
-        
+
         if (ArtificeRegistry.getSledgeBlocks().get(pair) != null)
             stack.damageItem(1, entity);
-        
+
         return true;
     }
 }

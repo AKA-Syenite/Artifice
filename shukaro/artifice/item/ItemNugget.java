@@ -1,6 +1,7 @@
 package shukaro.artifice.item;
 
 import java.util.List;
+import java.util.Locale;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -21,7 +22,7 @@ public class ItemNugget extends Item
 {
 	private Icon[] icons = new Icon[3];
 	public String[] nuggetTypes = { "Copper", "Silver", "Platinum" };
-	
+
 	public ItemNugget(int id)
 	{
 		super(id);
@@ -36,7 +37,7 @@ public class ItemNugget extends Item
     {
         return icons[meta];
     }
-    
+
     @Override
     @SideOnly(Side.CLIENT)
     public void registerIcons(IconRegister reg)
@@ -46,7 +47,7 @@ public class ItemNugget extends Item
             icons[i] = IconHandler.registerSingle(reg, nuggetTypes[i].toLowerCase(Locale.ENGLISH), "nugget");
         }
     }
-    
+
     @Override
     @SideOnly(Side.CLIENT)
     public void getSubItems(int id, CreativeTabs tab, List list)
@@ -54,13 +55,13 @@ public class ItemNugget extends Item
         for (int i=0; i<nuggetTypes.length; i++)
             list.add(new ItemStack(id, 1, i));
     }
-    
+
     @Override
     public String getUnlocalizedName(ItemStack stack)
     {
         return "item.artifice.nugget." + nuggetTypes[stack.getItemDamage()].toLowerCase(Locale.ENGLISH);
     }
-    
+
     @Override
     @SideOnly(Side.CLIENT)
     public void addInformation(ItemStack stack, EntityPlayer player, List infoList, boolean advancedTooltips)

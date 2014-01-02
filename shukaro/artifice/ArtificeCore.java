@@ -1,5 +1,6 @@
 package shukaro.artifice;
 
+import java.util.Map;
 import java.util.logging.Logger;
 
 import net.minecraftforge.common.MinecraftForge;
@@ -9,7 +10,7 @@ import shukaro.artifice.net.ClientProxy;
 import shukaro.artifice.net.CommonProxy;
 import shukaro.artifice.net.ServerPacketHandler;
 import shukaro.artifice.recipe.ArtificeRecipes;
-import shukaro.artifice.util.CoordObjectMap;
+import shukaro.artifice.util.BlockCoord;
 import shukaro.artifice.world.ArtificeWorldGen;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
@@ -46,7 +47,7 @@ public class ArtificeCore
     public static String[] flora = { "Bluebell", "Orchid", "Iris", "Lotus", "LotusClosed"};
     public static String[] rocks = { "", "Cobblestone", "Brick", "Paver", "Antipaver", "Chiseled" };
     
-    public static CoordObjectMap<int[]> textureCache;
+    public static Map<BlockCoord, int[]> textureCache;
     
     @Instance(modID)
     public static ArtificeCore instance;

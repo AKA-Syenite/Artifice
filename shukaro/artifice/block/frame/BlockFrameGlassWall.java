@@ -10,6 +10,7 @@ import net.minecraftforge.common.ForgeDirection;
 import shukaro.artifice.ArtificeConfig;
 import shukaro.artifice.ArtificeCore;
 import shukaro.artifice.net.Packets;
+import shukaro.artifice.render.TextureHandler;
 import shukaro.artifice.render.connectedtexture.ConnectedTextureBase;
 import shukaro.artifice.render.connectedtexture.ConnectedTextures;
 import shukaro.artifice.render.connectedtexture.schemes.TransparentConnectedTexture;
@@ -63,23 +64,6 @@ public class BlockFrameGlassWall extends BlockFrame
         return false;
     }
 
-    public ConnectedTextureBase getTextureRenderer(int side, int meta)
-    {
-        switch (meta)
-        {
-        case 0:
-            return basic;
-        case 1:
-            return reinforced;
-        case 2:
-            return industrial;
-        case 3:
-            return advanced;
-        default:
-            return null;
-        }
-    }
-
     @Override
     @SideOnly(Side.CLIENT)
     public void registerIcons(IconRegister reg)
@@ -91,45 +75,50 @@ public class BlockFrameGlassWall extends BlockFrame
     @SideOnly(Side.CLIENT)
     public Icon getIcon(int side, int meta)
     {
-        return this.getTextureRenderer(side, meta).texture.textureList[0];
+        if (meta >= ArtificeCore.tiers.length)
+            meta = 0;
+        switch(meta)
+        {
+        case 0:
+        	return ConnectedTextures.BasicGlassWall.textureList[0];
+        case 1:
+        	return ConnectedTextures.ReinforcedGlassWall.textureList[0];
+        case 2:
+        	return ConnectedTextures.IndustrialGlassWall.textureList[0];
+        case 3:
+        	return ConnectedTextures.AdvancedGlassWall.textureList[0];
+        default:
+        	return ConnectedTextures.BasicGlassWall.textureList[0];
+        }
     }
 
     @Override
     @SideOnly(Side.CLIENT)
-    public Icon getBlockTexture(IBlockAccess block, int x, int y, int z, int side)
+    public Icon getBlockTexture(IBlockAccess access, int x, int y, int z, int side)
     {
-    	Integer worldID = Minecraft.getMinecraft().thePlayer.worldObj.provider.dimensionId;
+        int meta = access.getBlockMetadata(x, y, z);
+        if (meta > ArtificeCore.tiers.length)
+            meta = 0;
+        
     	BlockCoord coord = new BlockCoord(x, y, z);
-    	ChunkCoord chunk = new ChunkCoord(coord);
-    	int meta = coord.getMeta(block);
+    	if (!ArtificeCore.textureCache.containsKey(coord))
+    		TextureHandler.updateTexture(coord);
     	
-    	if (!ArtificeCore.textureCache.contains(worldID, chunk, coord))
-    	{
-    		int[] indices = new int[6];
-    		for (int i=0; i<indices.length; i++)
-    			indices[i] = this.getTextureRenderer(i, meta).getTextureIndex(block, x, y, z, i);
-    		ArtificeCore.textureCache.add(worldID, chunk, coord, indices);
-    	}
-    	
-    	if (ArtificeCore.textureCache.get(worldID, chunk, coord) == null)
+    	if (ArtificeCore.textureCache.get(coord) == null)
     		return this.getIcon(side, meta);
-    	return this.getTextureRenderer(side, meta).texture.textureList[ArtificeCore.textureCache.get(worldID, chunk, coord)[side]];
+    	if (TextureHandler.getConnectedTexture(this.getIcon(side, meta)) != null)
+    		return TextureHandler.getConnectedTexture(this.getIcon(side, meta)).textureList[ArtificeCore.textureCache.get(coord)[side]];
+    	return this.getIcon(side, meta);
     }
     
     @Override
     @SideOnly(Side.CLIENT)
     public void onNeighborBlockChange(World world, int x, int y, int z, int neighborID)
     {
-    	Integer worldID = world.provider.dimensionId;
-    	BlockCoord coord = new BlockCoord(x, y, z);
-    	ChunkCoord chunk = new ChunkCoord(coord);
-    	int meta = coord.getMeta(world);
-    	
-    	int[] old = ArtificeCore.textureCache.get(worldID, chunk, coord);
-    	int[] indices = new int[6];
-		for (int i=0; i<indices.length; i++)
-			indices[i] = this.getTextureRenderer(i, meta).getTextureIndex(world, x, y, z, i);
-		ArtificeCore.textureCache.add(worldID, chunk, coord, indices);
+	    BlockCoord coord = new BlockCoord(x, y, z);
+	    TextureHandler.updateTexture(world, coord);
+	    for (BlockCoord n : coord.getAdjacent())
+    		TextureHandler.updateTexture(n);
     }
 
 	@Override

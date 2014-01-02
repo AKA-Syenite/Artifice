@@ -1,36 +1,43 @@
 package shukaro.artifice.render.connectedtexture;
 
+import shukaro.artifice.render.connectedtexture.schemes.SolidConnectedTexture;
+import shukaro.artifice.render.connectedtexture.schemes.TransparentConnectedTexture;
 import net.minecraft.util.Icon;
 
 public enum ConnectedTextures
 {
-    MarblePaver("marble_paver"),
-    MarbleAntipaver("marble_paver"),
-    BasaltPaver("basalt_paver"),
-    BasaltAntipaver("basalt_paver"),
-    BasicFrame("frame_basic"),
-    ReinforcedFrame("frame_reinforced"),
-    IndustrialFrame("frame_industrial"),
-    AdvancedFrame("frame_advanced"),
-    BasicScaffold("scaffold_basic"),
-    ReinforcedScaffold("scaffold_reinforced"),
-    IndustrialScaffold("scaffold_industrial"),
-    AdvancedScaffold("scaffold_advanced"),
-    BasicBlastWall("blastwall_basic"),
-    ReinforcedBlastWall("blastwall_reinforced"),
-    IndustrialBlastWall("blastwall_industrial"),
-    AdvancedBlastWall("blastwall_advanced"),
-    BasicGlassWall("glasswall_basic"),
-    ReinforcedGlassWall("glasswall_reinforced"),
-    IndustrialGlassWall("glasswall_industrial"),
-    AdvancedGlassWall("glasswall_advanced");
+    MarblePaver("marble_paver", true),
+    MarbleAntipaver("marble_paver", true),
+    BasaltPaver("basalt_paver", true),
+    BasaltAntipaver("basalt_paver", true),
+    BasicFrame("frame_basic", true),
+    ReinforcedFrame("frame_reinforced", true),
+    IndustrialFrame("frame_industrial", true),
+    AdvancedFrame("frame_advanced", true),
+    BasicScaffold("scaffold_basic", true),
+    ReinforcedScaffold("scaffold_reinforced", true),
+    IndustrialScaffold("scaffold_industrial", true),
+    AdvancedScaffold("scaffold_advanced", true),
+    BasicBlastWall("blastwall_basic", true),
+    ReinforcedBlastWall("blastwall_reinforced", true),
+    IndustrialBlastWall("blastwall_industrial", true),
+    AdvancedBlastWall("blastwall_advanced", true),
+    BasicGlassWall("glasswall_basic", false),
+    ReinforcedGlassWall("glasswall_reinforced", false),
+    IndustrialGlassWall("glasswall_industrial", false),
+    AdvancedGlassWall("glasswall_advanced", false);
     
     public String name;
     public Icon[] textureList;
+    public ConnectedTextureBase renderer;
     
-    private ConnectedTextures(String s)
+    private ConnectedTextures(String s, Boolean solid)
     {
         this.name = s;
         this.textureList = new Icon[47];
+        if (solid)
+        	this.renderer = new SolidConnectedTexture(this);
+        else
+        	this.renderer = new TransparentConnectedTexture(this);
     }
 }

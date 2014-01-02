@@ -10,6 +10,7 @@ import net.minecraftforge.client.event.TextureStitchEvent;
 import net.minecraftforge.event.ForgeSubscribe;
 import net.minecraftforge.event.world.ChunkDataEvent;
 import net.minecraftforge.event.world.ChunkWatchEvent;
+import net.minecraftforge.event.world.WorldEvent;
 import shukaro.artifice.ArtificeConfig;
 import shukaro.artifice.ArtificeCore;
 import shukaro.artifice.compat.ArtificeRegistry;
@@ -35,9 +36,16 @@ public class ArtificeEventHandler
     @SideOnly(Side.CLIENT)
     public void chunkUnWatch(ChunkWatchEvent.UnWatch e)
     {
-    	Integer worldID = e.player.worldObj.provider.dimensionId;
-    	if (ArtificeCore.textureCache.contains(worldID, new ChunkCoord(e.chunk)))
-    		ArtificeCore.textureCache.remove(worldID, new ChunkCoord(e.chunk));
+    	if (ArtificeCore.textureCache.size() > 0)
+    		ArtificeCore.textureCache.clear();
+    }
+    
+    @ForgeSubscribe
+    @SideOnly(Side.CLIENT)
+    public void worldUnload(WorldEvent.Unload e)
+    {
+    	if (ArtificeCore.textureCache.size() > 0)
+    		ArtificeCore.textureCache.clear();
     }
     
     @ForgeSubscribe

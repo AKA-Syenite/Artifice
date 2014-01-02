@@ -16,6 +16,7 @@ import shukaro.artifice.block.BlockArtifice;
 import shukaro.artifice.gui.ArtificeCreativeTab;
 import shukaro.artifice.net.Packets;
 import shukaro.artifice.render.IconHandler;
+import shukaro.artifice.render.TextureHandler;
 import shukaro.artifice.render.connectedtexture.ConnectedTextureBase;
 import shukaro.artifice.render.connectedtexture.ConnectedTextures;
 import shukaro.artifice.render.connectedtexture.schemes.SolidConnectedTexture;
@@ -29,8 +30,6 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class BlockMarble extends BlockArtifice
 {
     private Icon[] icons = new Icon[ArtificeCore.rocks.length];
-    private ConnectedTextureBase paver = new SolidConnectedTexture(ConnectedTextures.MarblePaver);
-    private ConnectedTextureBase antipaver = new SolidConnectedTexture(ConnectedTextures.MarbleAntipaver);
     
     public BlockMarble(int id)
     {
@@ -74,36 +73,32 @@ public class BlockMarble extends BlockArtifice
     {
         if (meta >= ArtificeCore.rocks.length)
             meta = 0;
-        if (meta == 3 || meta == 4)
-        	return this.getTextureRenderer(side, meta).texture.textureList[0];
+        if (meta == 3)
+        	return ConnectedTextures.MarblePaver.textureList[0];
+        if (meta == 4)
+        	return ConnectedTextures.MarbleAntipaver.textureList[0];
         else
             return icons[meta];
     }
 
     @Override
     @SideOnly(Side.CLIENT)
-    public Icon getBlockTexture(IBlockAccess block, int x, int y, int z, int side)
+    public Icon getBlockTexture(IBlockAccess access, int x, int y, int z, int side)
     {
-        int meta = block.getBlockMetadata(x, y, z);
+        int meta = access.getBlockMetadata(x, y, z);
         if (meta > ArtificeCore.rocks.length)
             meta = 0;
         if (meta == 3 || meta == 4)
         {
-        	Integer worldID = Minecraft.getMinecraft().thePlayer.worldObj.provider.dimensionId;
         	BlockCoord coord = new BlockCoord(x, y, z);
-        	ChunkCoord chunk = new ChunkCoord(coord);
+        	if (!ArtificeCore.textureCache.containsKey(coord))
+        		TextureHandler.updateTexture(coord);
         	
-        	if (!ArtificeCore.textureCache.contains(worldID, chunk, coord))
-        	{
-        		int[] indices = new int[6];
-        		for (int i=0; i<indices.length; i++)
-        			indices[i] = this.getTextureRenderer(i, meta).getTextureIndex(block, x, y, z, i);
-        		ArtificeCore.textureCache.add(worldID, chunk, coord, indices);
-        	}
-        	
-        	if (ArtificeCore.textureCache.get(worldID, chunk, coord) == null)
+        	if (ArtificeCore.textureCache.get(coord) == null)
         		return this.getIcon(side, meta);
-        	return this.getTextureRenderer(side, meta).texture.textureList[ArtificeCore.textureCache.get(worldID, chunk, coord)[side]];
+        	if (TextureHandler.getConnectedTexture(this.getIcon(side, meta)) != null)
+        		return TextureHandler.getConnectedTexture(this.getIcon(side, meta)).textureList[ArtificeCore.textureCache.get(coord)[side]];
+        	return this.getIcon(side, meta);
         }
         else
             return icons[meta];
@@ -114,26 +109,12 @@ public class BlockMarble extends BlockArtifice
     public void onNeighborBlockChange(World world, int x, int y, int z, int neighborID)
     {
     	int meta = world.getBlockMetadata(x, y, z);
-    	if (meta == 3 || meta == 4)
+    	BlockCoord c = new BlockCoord(x, y, z);
+    	if (c.getBlock(world) != null && (meta == 3 || meta == 4))
     	{
-	    	Integer worldID = world.provider.dimensionId;
-	    	BlockCoord coord = new BlockCoord(x, y, z);
-	    	ChunkCoord chunk = new ChunkCoord(coord);
-	    	
-	    	int[] old = ArtificeCore.textureCache.get(worldID, chunk, coord);
-	    	int[] indices = new int[6];
-			for (int i=0; i<indices.length; i++)
-				indices[i] = this.getTextureRenderer(i, meta).getTextureIndex(world, x, y, z, i);
-			ArtificeCore.textureCache.add(worldID, chunk, coord, indices);
+	    	TextureHandler.updateTexture(c);
+	    	for (BlockCoord n : c.getAdjacent())
+	    		TextureHandler.updateTexture(n);
     	}
-    }
-
-    public ConnectedTextureBase getTextureRenderer(int side, int meta)
-    {
-        if (meta == 3)
-            return this.paver;
-        if (meta == 4)
-            return this.antipaver;
-        return null;
     }
 }

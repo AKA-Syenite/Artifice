@@ -60,12 +60,13 @@ public class ArtificeCore
     @EventHandler
     public void preInit(FMLPreInitializationEvent evt)
     {
+    	logger = evt.getModLog();
+    	
         ArtificeConfig.setConfigFolderBase(evt.getModConfigurationDirectory());
         
         ArtificeConfig.initCommon(evt);
         ArtificeConfig.initClient(evt);
         
-        logger = evt.getModLog();
         ArtificeCore.eventHandler = new ArtificeEventHandler();
         MinecraftForge.EVENT_BUS.register(ArtificeCore.eventHandler);
         ClientProxy.init();

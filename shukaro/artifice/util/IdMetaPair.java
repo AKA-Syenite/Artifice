@@ -74,6 +74,6 @@ public class IdMetaPair
     
     public String toString()
     {
-        return "[ " + this.id + ", " + this.meta + " ]";
+        return this.id + ":" + this.meta;
     }
 }

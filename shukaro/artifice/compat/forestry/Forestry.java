@@ -22,7 +22,7 @@ public class Forestry
     {
         if (!Loader.isModLoaded("Forestry"))
         {
-            ArtificeCore.logger.warning("Forestry missing, not loading compat");
+        	ArtificeCore.logger.log(Level.INFO, "Forestry not installed, skipping compat");
             return;
         }
         try
@@ -32,6 +32,7 @@ public class Forestry
             
             if (ArtificeConfig.enableWorldGen.getBoolean(true))
             {
+            	ArtificeCore.logger.log(Level.INFO, "Adding flowers to the Flower Manager");
                 for (int i=0; i<4; i++)
                 	flowerList.add(new ItemStack(ArtificeBlocks.blockFlora, 1, i));
             }
@@ -40,6 +41,7 @@ public class Forestry
         }
         catch (Exception ex)
         {
+        	ArtificeCore.logger.log(Level.WARNING, "Couldn't initialize Forestry compat");
             ex.printStackTrace();
         }
     }

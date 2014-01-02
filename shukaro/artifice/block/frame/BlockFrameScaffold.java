@@ -161,7 +161,7 @@ public class BlockFrameScaffold extends BlockFrame
             world.setBlockToAir(x, y, z);
         }
 
-    	if (!world.isRemote)
+    	if (world.isRemote)
     	{
     		BlockCoord coord = new BlockCoord(x, y, z);
     	    TextureHandler.updateTexture(world, coord);

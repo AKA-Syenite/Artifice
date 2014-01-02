@@ -397,7 +397,7 @@ public class ArtificeConfig
         }
         catch (Exception e)
         {
-            ArtificeCore.logger.log(Level.SEVERE, "Artifice couldn't load the config file");
+            ArtificeCore.logger.log(Level.SEVERE, "Couldn't load the config file");
             e.printStackTrace();
         }
         finally
@@ -423,7 +423,7 @@ public class ArtificeConfig
         }
         catch (Exception e)
         {
-            ArtificeCore.logger.log(Level.SEVERE, "Artifice couldn't load the config file");
+            ArtificeCore.logger.log(Level.SEVERE, "Couldn't load the config file");
             e.printStackTrace();
         }
         finally
@@ -434,6 +434,7 @@ public class ArtificeConfig
     
     private static void setDimBlacklist()
     {
+    	ArtificeCore.logger.log(Level.INFO, "Reading the dimension blacklist");
         String blacklist = dimensionBlacklist.getString().trim();
         
         for (String dim : blacklist.split(","))
@@ -445,7 +446,7 @@ public class ArtificeConfig
             }
             catch (Exception e)
             {
-            	ArtificeCore.logger.log(Level.WARNING, "Artifice couldn't load the dimension blacklist from string");
+            	ArtificeCore.logger.log(Level.WARNING, "Couldn't load the dimension blacklist from string");
             }
         }
     }
@@ -454,9 +455,15 @@ public class ArtificeConfig
     {
     	String stoneList;
     	if (isMarble)
+    	{
+    		ArtificeCore.logger.log(Level.INFO, "Reading the marble list");
     		stoneList = marbleList.getString().trim();
+    	}
     	else
+    	{
+    		ArtificeCore.logger.log(Level.INFO, "Reading the basalt list");
     		stoneList = basaltList.getString().trim();
+    	}
     	
 		for (String pair : stoneList.split(","))
 		{
@@ -472,9 +479,9 @@ public class ArtificeConfig
 			catch (Exception e)
 			{
 				if (isMarble)
-					ArtificeCore.logger.log(Level.WARNING, "Artifice couldn't load the marble list from string");
+					ArtificeCore.logger.log(Level.WARNING, "Couldn't load the marble list from string");
 				else
-					ArtificeCore.logger.log(Level.WARNING, "Artifice couldn't load the basalt list from string");
+					ArtificeCore.logger.log(Level.WARNING, "Couldn't load the basalt list from string");
 			}
 		}
     }

@@ -31,6 +31,7 @@ public abstract class ArtificeRegistry
     
     public static void registerMarbleType(int id, int meta)
     {
+    	ArtificeCore.logger.log(Level.INFO, "Registering marble type " + id + ":" + meta);
         ItemStack stack = new ItemStack(id, 1, meta);
         if (marbleTypes.isEmpty())
             marbleTypes.add(stack);
@@ -63,6 +64,7 @@ public abstract class ArtificeRegistry
     
     public static void registerBasaltType(int id, int meta)
     {
+    	ArtificeCore.logger.log(Level.INFO, "Registering basalt type " + id + ":" + meta);
         ItemStack stack = new ItemStack(id, 1, meta);
         if (basaltTypes.isEmpty())
             basaltTypes.add(stack);
@@ -121,13 +123,19 @@ public abstract class ArtificeRegistry
         if (!pair.isValidBlock())
             ArtificeCore.logger.log(Level.WARNING, "Tried to register non-block id-meta pair in the sledgeBlock map: " + pair.toString());
         else if (!(sledgeBlocks.get(pair) != null))
+        {
+        	ArtificeCore.logger.log(Level.INFO, "Registering sledgeable block " + pair);
             sledgeBlocks.put(pair, drops);
+        }
     }
     
     public static void registerWildSledgeBlock(int id, ArrayList<ItemStack> drops)
     {
         if (wildSledgeBlocks.get(id) == null)
+        {
+        	ArtificeCore.logger.log(Level.INFO, "Registering non-meta'd sledgeable block with ID " + id);
             wildSledgeBlocks.put(id, drops);
+        }
     }
     
     public static Map<Integer, ArrayList<ItemStack>> getWildSledgeBlocks()
@@ -143,7 +151,10 @@ public abstract class ArtificeRegistry
     public static void registerFloraBlacklist(String biome)
     {
         if (!floraBlacklist.contains(biome))
+        {
+        	ArtificeCore.logger.log(Level.INFO, "Registering " + biome + " to flora blacklist");
             floraBlacklist.add(biome);
+        }
     }
     
     public static List<String> getFloraBlacklist()
@@ -154,7 +165,10 @@ public abstract class ArtificeRegistry
     public static void registerDimensionBlacklist(int dimID)
     {
         if (!dimensionBlacklist.contains(dimID))
+        {
+        	ArtificeCore.logger.log(Level.INFO, "Registering " + dimID + " to dimension blacklist");
             dimensionBlacklist.add(dimID);
+        }
     }
     
     public static List<Integer> getDimensionBlacklist()
@@ -165,7 +179,10 @@ public abstract class ArtificeRegistry
     public static void registerStoneType(int stoneID)
     {
         if (!stoneTypes.contains(stoneID))
+        {
+        	ArtificeCore.logger.log(Level.INFO, "Registering stone type with ID " + stoneID);
             stoneTypes.add(stoneID);
+        }
     }
     
     public static Set<Integer> getStoneTypes()
@@ -176,7 +193,10 @@ public abstract class ArtificeRegistry
     public static void registerWorldTypeBlacklist(String type)
     {
         if (!worldTypeBlacklist.contains(type))
+        {
+        	ArtificeCore.logger.log(Level.INFO, "Registering " + type + " to world type blacklist");
             worldTypeBlacklist.add(type);
+        }
     }
     
     public static List<String> getWorldTypeBlacklist()
@@ -187,7 +207,10 @@ public abstract class ArtificeRegistry
     public static void registerLotusWhitelist(String biome)
     {
         if (!lotusWhitelist.contains(biome))
+        {
+        	ArtificeCore.logger.log(Level.INFO, "Registering " + biome + " to lotus whitelist");
             lotusWhitelist.add(biome);
+        }
     }
     
     public static List<String> getLotusWhitelist()

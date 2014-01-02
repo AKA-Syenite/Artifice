@@ -76,7 +76,7 @@
         <delete dir="${mcpsrc.dir}/shukaro/artifice" />
     </target>
     
-    <target name="build" unless="already-compiled">
+    <target name="build" depends="get-version" unless="already-compiled">
         <!-- Recompile -->
         <exec dir="${mcp.dir}" executable="cmd" osfamily="windows" failonerror="true">
             <arg line="/c recompile.bat"/>

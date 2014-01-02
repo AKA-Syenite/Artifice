@@ -7,9 +7,9 @@ import net.minecraft.util.Icon;
 public enum ConnectedTextures
 {
     MarblePaver("marble_paver", true),
-    MarbleAntipaver("marble_paver", true),
+    MarbleAntipaver("marble_antipaver", true),
     BasaltPaver("basalt_paver", true),
-    BasaltAntipaver("basalt_paver", true),
+    BasaltAntipaver("basalt_antipaver", true),
     BasicFrame("frame_basic", true),
     ReinforcedFrame("frame_reinforced", true),
     IndustrialFrame("frame_industrial", true),

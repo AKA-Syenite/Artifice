@@ -85,6 +85,8 @@ public class ArtificeConfig
     public static Property enableCoins;
     public static Property enableUpgrades;
     public static Property limitUpgrades;
+    public static Property marbleList;
+    public static Property basaltList;
     
     public static Property floraWorldGen;
     public static Property floraFrequency;
@@ -319,6 +321,11 @@ public class ArtificeConfig
             limitUpgrades.comment = "If true, caps the maximum enchant level that can be applied through upgrades to below the natural cap (Shown in Tooltips)";
             floraBoneMeal = c.get("General", "Bonemeal Flowers", true);
             floraBoneMeal.comment = "Set to false to disable random flower growth from bonemeal";
+            marbleList = c.get("General", "Marble List", "");
+            marbleList.comment = "Comma-seperated list of ID:Meta pairs to add to a cycling chain of 1:1 marble exchange recipes. No spaces.";
+            basaltList = c.get("General", "Basalt List", "");
+            basaltList.comment = "Comma-seperated list of ID:Meta pairs to add to a cycling chain of 1:1 basalt exchange recipes. No spaces.";
+            
             
             enableFrames = c.get("General", "Enable Frames", true);
             enableFrames.comment = "Set to false to stop frames from initializing";
@@ -399,6 +406,8 @@ public class ArtificeConfig
         }
         
         setDimBlacklist();
+        setStoneList(true);
+        setStoneList(false);
     }
     
     public static void initClient(FMLPreInitializationEvent evt)
@@ -436,8 +445,38 @@ public class ArtificeConfig
             }
             catch (Exception e)
             {
+            	ArtificeCore.logger.log(Level.WARNING, "Artifice couldn't load the dimension blacklist from string");
             }
         }
+    }
+    
+    private static void setStoneList(boolean isMarble)
+    {
+    	String stoneList;
+    	if (isMarble)
+    		stoneList = marbleList.getString().trim();
+    	else
+    		stoneList = basaltList.getString().trim();
+    	
+		for (String pair : stoneList.split(","))
+		{
+			try
+			{
+				Integer ID = Integer.parseInt(pair.split(":")[0]);
+				Integer meta = Integer.parseInt(pair.split(":")[1]);
+				if (isMarble)
+					ArtificeRegistry.registerMarbleType(ID, meta);
+				else
+					ArtificeRegistry.registerBasaltType(ID, meta);
+			}
+			catch (Exception e)
+			{
+				if (isMarble)
+					ArtificeCore.logger.log(Level.WARNING, "Artifice couldn't load the marble list from string");
+				else
+					ArtificeCore.logger.log(Level.WARNING, "Artifice couldn't load the basalt list from string");
+			}
+		}
     }
     
     public static void setConfigFolderBase(File folder)

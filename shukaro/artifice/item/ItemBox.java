@@ -13,7 +13,6 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.util.Icon;
 import net.minecraft.world.World;
-import powercrystals.minefactoryreloaded.api.IDeepStorageUnit;
 import shukaro.artifice.ArtificeConfig;
 import shukaro.artifice.ArtificeItems;
 import shukaro.artifice.ArtificeTooltips;
@@ -67,85 +66,11 @@ public class ItemBox extends Item
             num = stack.stackSize;
         if (tag != null)
         {
-            if (Block.blocksList[world.getBlockId(x, y, z)] instanceof IDeepStorageUnit)
-            {
-                IDeepStorageUnit unit = (IDeepStorageUnit) Block.blocksList[world.getBlockId(x, y, z)];
-                ItemStack contained = unit.getStoredItemType();
-                ItemStack boxed = new ItemStack(tag.getInteger("id"), tag.getInteger("size") * num, tag.getInteger("meta"));
-                if (contained == null)
-                {
-                    unit.setStoredItemType(new ItemStack(boxed.itemID, 1, boxed.getItemDamage()), boxed.stackSize);
-                    stack.stackSize -= num;
-                    return true;
-                }
-                if (tag.getCompoundTag("nbt").hasNoTags() && contained.isItemEqual(boxed))
-                {
-                    if (unit.getMaxStoredCount() < (contained.stackSize + boxed.stackSize))
-                        return false;
-                    else
-                    {
-                        unit.setStoredItemCount(contained.stackSize + boxed.stackSize);
-                        stack.stackSize -= num;
-                        return true;
-                    }
-                }
-                return false;
-            }
-            else
-            {
-                this.onItemRightClick(stack, world, player);
-                return true;
-            }
+            this.onItemRightClick(stack, world, player);
+            return true;
         }
         else
         {
-            if (Block.blocksList[world.getBlockId(x, y, z)] instanceof IDeepStorageUnit)
-            {
-                IDeepStorageUnit unit = (IDeepStorageUnit) Block.blocksList[world.getBlockId(x, y, z)];
-                ItemStack contained = unit.getStoredItemType();
-                if (contained == null)
-                    return false;
-                
-                NBTTagCompound newTag = new NBTTagCompound();
-                newTag.setInteger("meta", contained.getItemDamage());
-                newTag.setInteger("id", contained.itemID);
-                
-                boolean canFill = true;
-                if (contained.stackSize > (8 * num))
-                {
-                    newTag.setInteger("size", 8);
-                    unit.setStoredItemCount(contained.stackSize - (8 * num));
-                }
-                else if (contained.stackSize > 8)
-                {
-                    newTag.setInteger("size", 8);
-                    unit.setStoredItemCount(contained.stackSize - 8);
-                    canFill = false;
-                }
-                else
-                {
-                    newTag.setInteger("size", contained.stackSize);
-                    unit.setStoredItemCount(0);
-                    canFill = false;
-                }
-
-                ItemStack newStack;
-                if (!canFill)
-                {
-                    newStack = new ItemStack(ArtificeItems.itemBox.itemID, 1, newTag.getInteger("size"));
-                    stack.stackSize--;
-                }
-                else
-                {
-                    newStack = new ItemStack(ArtificeItems.itemBox.itemID, num, newTag.getInteger("size"));
-                    stack.stackSize -= num;
-                }
-                newStack.setTagCompound(newTag);
-                
-                if (!player.inventory.addItemStackToInventory(newStack) && !world.isRemote)
-                    world.spawnEntityInWorld(new EntityItem(world, player.posX + 0.5D, player.posY + 0.5D, player.posZ + 0.5D, newStack));
-                return true;
-            }
             return false;
         }
     }

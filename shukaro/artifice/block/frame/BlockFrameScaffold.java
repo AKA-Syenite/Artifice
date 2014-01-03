@@ -14,6 +14,7 @@ import net.minecraftforge.common.ForgeDirection;
 import shukaro.artifice.ArtificeConfig;
 import shukaro.artifice.ArtificeCore;
 import shukaro.artifice.net.Packets;
+import shukaro.artifice.net.PlayerTracking;
 import shukaro.artifice.render.IconHandler;
 import shukaro.artifice.render.TextureHandler;
 import shukaro.artifice.render.connectedtexture.ConnectedTextureBase;
@@ -45,15 +46,28 @@ public class BlockFrameScaffold extends BlockFrame
         setBlockBounds(0.01F, 0.01F, 0.01F, 0.99F, 0.99F, 0.99F);
     }
 
-    @Override
-    public void onEntityCollidedWithBlock(World world, int x, int y, int z, Entity entity)
-    {
-        if(entity instanceof EntityPlayerMP)
-        {
-            ((EntityPlayerMP)entity).playerNetServerHandler.ticksForFloatKick = 0;
-            entity.fallDistance = 0;
-        }
-    }
+	@Override
+	public void onEntityCollidedWithBlock(World world, int x, int y, int z, Entity entity)
+	{
+		if(entity instanceof EntityPlayerMP)
+			((EntityPlayerMP)entity).playerNetServerHandler.ticksForFloatKick = 0;
+		entity.fallDistance = 0;
+		if (entity.isCollidedHorizontally)
+		{
+			entity.motionY = 0.2D;
+		}
+		else if (PlayerTracking.sneaks.contains(entity.entityId))
+		{
+			double diff = entity.prevPosY - entity.posY;
+			entity.boundingBox.minY += diff;
+			entity.boundingBox.maxY += diff;
+			entity.posY = entity.prevPosY;
+		}
+		else
+		{
+			entity.motionY = -0.10D;
+		}
+	}
 
     @Override
     public void onBlockClicked(World world, int x, int y, int z, EntityPlayer player)

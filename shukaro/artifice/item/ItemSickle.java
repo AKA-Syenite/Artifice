@@ -2,6 +2,7 @@ package shukaro.artifice.item;
 
 import java.util.List;
 import java.util.Locale;
+import java.util.Random;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockFlower;
@@ -26,6 +27,7 @@ public class ItemSickle extends ItemTool
 {
     public Icon icon;
     public int radius;
+    Random rand = new Random();
 
     public ItemSickle(int id, EnumToolMaterial mat)
     {
@@ -100,9 +102,10 @@ public class ItemSickle extends ItemTool
         World world = player.worldObj;
         Block block = coord.getBlock(world);
         int radius = getRadius(this.toolMaterial);
-
+        
         if (block instanceof BlockFlower)
         {
+        	int count = 0;
             for (int i=-radius; i<radius; i++)
             {
                 for (int k=-radius; k<radius; k++)
@@ -113,17 +116,21 @@ public class ItemSickle extends ItemTool
                     {
                         b.harvestBlock(world, player, x+i, y, z+k, meta);
                         world.setBlockToAir(x+i, y, z+k);
+                        count++;
                     }
                 }
             }
             if (!world.isRemote)
                 world.playSoundEffect((double)x + 0.5D, (double)y + 0.5D, (double)z + 0.5D, block.stepSound.getBreakSound(), 1.0F, world.rand.nextFloat() * 0.1F + 0.9F);
-            stack.damageItem(1, player);
+            stack.damageItem(count/4, player);
+            if (stack.stackSize <= 0)
+            	player.destroyCurrentEquippedItem();
             return true;
         }
 
         else if (block != null && block.isLeaves(world, x, y, z))
         {
+        	int count = 0;
             for (BlockCoord c : coord.getRadiusBlocks(world, radius))
             {
                 Block b = Block.blocksList[world.getBlockId(c.x, c.y, c.z)];
@@ -133,11 +140,14 @@ public class ItemSickle extends ItemTool
                     if (b.canHarvestBlock(player, meta))
                         b.harvestBlock(world, player, c.x, c.y, c.z, meta);
                     world.setBlockToAir(c.x, c.y, c.z);
+                    count++;
                 }
             }
             if (!world.isRemote)
                 world.playSoundEffect((double)x + 0.5D, (double)y + 0.5D, (double)z + 0.5D, block.stepSound.getBreakSound(), 1.0F, world.rand.nextFloat() * 0.1F + 0.9F);
-            stack.damageItem(1, player);
+            stack.damageItem(count/4, player);
+            if (stack.stackSize <= 0)
+            	player.destroyCurrentEquippedItem();
             return true;
         }
 

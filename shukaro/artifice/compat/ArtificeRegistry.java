@@ -18,11 +18,9 @@ import shukaro.artifice.util.IdMetaPair;
 
 public abstract class ArtificeRegistry
 {
-    private static List<String> floraBlacklist = new ArrayList<String>();
     private static List<Integer> dimensionBlacklist = new ArrayList<Integer>();
     private static Set<Integer> stoneTypes = new HashSet<Integer>();
     private static List<String> worldTypeBlacklist = new ArrayList<String>();
-    private static List<String> lotusWhitelist = new ArrayList<String>();
     private static Map<IdMetaPair, ArrayList<ItemStack>> sledgeBlocks = new HashMap<IdMetaPair, ArrayList<ItemStack>>();
     private static Map<Integer, ArrayList<ItemStack>> wildSledgeBlocks = new HashMap<Integer, ArrayList<ItemStack>>();
     private static Map<IdMetaPair, List<String>> tooltipMap = new HashMap<IdMetaPair, List<String>>();
@@ -148,20 +146,6 @@ public abstract class ArtificeRegistry
         return sledgeBlocks;
     }
     
-    public static void registerFloraBlacklist(String biome)
-    {
-        if (!floraBlacklist.contains(biome))
-        {
-        	ArtificeCore.logger.log(Level.INFO, "Registering " + biome + " to flora blacklist");
-            floraBlacklist.add(biome);
-        }
-    }
-    
-    public static List<String> getFloraBlacklist()
-    {
-        return floraBlacklist;
-    }
-    
     public static void registerDimensionBlacklist(int dimID)
     {
         if (!dimensionBlacklist.contains(dimID))
@@ -202,19 +186,5 @@ public abstract class ArtificeRegistry
     public static List<String> getWorldTypeBlacklist()
     {
         return worldTypeBlacklist;
-    }
-    
-    public static void registerLotusWhitelist(String biome)
-    {
-        if (!lotusWhitelist.contains(biome))
-        {
-        	ArtificeCore.logger.log(Level.INFO, "Registering " + biome + " to lotus whitelist");
-            lotusWhitelist.add(biome);
-        }
-    }
-    
-    public static List<String> getLotusWhitelist()
-    {
-        return lotusWhitelist;
     }
 }

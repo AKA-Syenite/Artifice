@@ -27,12 +27,6 @@ public class Vanilla
         
         ArtificeRegistry.registerWorldTypeBlacklist("flat");
         
-        ArtificeRegistry.registerFloraBlacklist("Swampland");
-        ArtificeRegistry.registerFloraBlacklist("MushroomIsland");
-        ArtificeRegistry.registerFloraBlacklist("MushroomIslandShore");
-        
-        ArtificeRegistry.registerLotusWhitelist("Swampland");
-        
         loadSledges();
     }
     

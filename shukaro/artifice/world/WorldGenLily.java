@@ -2,15 +2,12 @@ package shukaro.artifice.world;
 
 import java.util.Random;
 
-import shukaro.artifice.ArtificeBlocks;
-import shukaro.artifice.ArtificeCore;
-import shukaro.artifice.compat.ArtificeRegistry;
-import shukaro.artifice.util.ChunkCoord;
-import shukaro.artifice.util.XSRandom;
-
-import net.minecraft.block.Block;
 import net.minecraft.world.World;
-import net.minecraft.world.gen.feature.WorldGenerator;
+import net.minecraft.world.biome.BiomeGenBase;
+import net.minecraftforge.common.BiomeDictionary;
+import net.minecraftforge.common.BiomeDictionary.Type;
+import shukaro.artifice.ArtificeBlocks;
+import shukaro.artifice.util.ChunkCoord;
 
 public class WorldGenLily
 {
@@ -36,14 +33,9 @@ public class WorldGenLily
     {
         this.xMin = chunkX << 4;
         this.zMin = chunkZ << 4;
-        this.xMax = xMin + 16;
-        this.zMax = zMax + 16;
         
         this.startX = xMin + rand.nextInt(16);
         this.startZ = zMin + rand.nextInt(16);
-        
-        if (!ArtificeRegistry.getLotusWhitelist().contains(world.getBiomeGenForCoords(startX, startZ).biomeName))
-            return false;
         
         if (rand.nextInt(10) > 4)
             return false;
@@ -60,6 +52,11 @@ public class WorldGenLily
             
             if (!c.contains(x, z))
                 continue;
+            
+            BiomeGenBase biome = world.getBiomeGenForCoords(x, z);
+            
+            if (!BiomeDictionary.isBiomeOfType(biome, Type.SWAMP))
+            	continue;
             
             if (world.isAirBlock(x, y, z) && ArtificeBlocks.blockLotus.canPlaceBlockAt(world, x, y, z))
             {

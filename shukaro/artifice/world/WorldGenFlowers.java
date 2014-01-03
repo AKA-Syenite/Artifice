@@ -44,6 +44,19 @@ public class WorldGenFlowers
         if (rand.nextInt(10) > 6)
             return false;
         
+        BiomeGenBase biome = world.getBiomeGenForCoords(startX, startZ);
+        boolean biomeRight = false;
+        if (BiomeDictionary.isBiomeOfType(biome, Type.PLAINS) || BiomeDictionary.isBiomeOfType(biome, Type.JUNGLE))
+        	biomeRight = true;
+        else if ((BiomeDictionary.isBiomeOfType(biome, Type.FOREST) || BiomeDictionary.isBiomeOfType(biome, Type.HILLS)) && (type == 0 || type == 2))
+        	biomeRight = true;
+        else if (BiomeDictionary.isBiomeOfType(biome, Type.MOUNTAIN) && (type == 0 || type == 3))
+        	biomeRight = true;
+        else if (BiomeDictionary.isBiomeOfType(biome, Type.SWAMP) && (type == 1))
+        	biomeRight = true;
+        if (!biomeRight)
+        	return false;
+        
         int tries = rand.nextInt(16) + 8;
         
         ChunkCoord c = new ChunkCoord(chunkX, chunkZ);
@@ -57,18 +70,7 @@ public class WorldGenFlowers
             if (!c.contains(x, z))
                 continue;
             
-            BiomeGenBase biome = world.getBiomeGenForCoords(x, z);
-            boolean biomeRight = false;
-            if (BiomeDictionary.isBiomeOfType(biome, Type.PLAINS) || BiomeDictionary.isBiomeOfType(biome, Type.JUNGLE))
-            	biomeRight = true;
-            else if ((BiomeDictionary.isBiomeOfType(biome, Type.FOREST) || BiomeDictionary.isBiomeOfType(biome, Type.HILLS)) && (type == 0 || type == 2))
-            	biomeRight = true;
-            else if (BiomeDictionary.isBiomeOfType(biome, Type.MOUNTAIN) && (type == 0 || type == 3))
-            	biomeRight = true;
-            else if (BiomeDictionary.isBiomeOfType(biome, Type.SWAMP) && (type == 1))
-            	biomeRight = true;
-            
-            if (biomeRight && (world.isAirBlock(x, y, z) || (world.getBlockId(x, y, z) == Block.snow.blockID)) && ArtificeBlocks.blockFlora.canBlockStay(world, x, y, z))
+            if ((world.isAirBlock(x, y, z) || (world.getBlockId(x, y, z) == Block.snow.blockID)) && ArtificeBlocks.blockFlora.canBlockStay(world, x, y, z))
             {
                 if (rand.nextInt(10) > 5)
                     continue;

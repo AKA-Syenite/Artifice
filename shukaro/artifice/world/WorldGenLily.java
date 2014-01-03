@@ -40,6 +40,10 @@ public class WorldGenLily
         if (rand.nextInt(10) > 4)
             return false;
         
+        BiomeGenBase biome = world.getBiomeGenForCoords(startX, startZ);
+        if (!BiomeDictionary.isBiomeOfType(biome, Type.SWAMP))
+        	return false;
+        
         int tries = rand.nextInt(16) + 8;
         
         ChunkCoord c = new ChunkCoord(chunkX, chunkZ);
@@ -52,11 +56,6 @@ public class WorldGenLily
             
             if (!c.contains(x, z))
                 continue;
-            
-            BiomeGenBase biome = world.getBiomeGenForCoords(x, z);
-            
-            if (!BiomeDictionary.isBiomeOfType(biome, Type.SWAMP))
-            	continue;
             
             if (world.isAirBlock(x, y, z) && ArtificeBlocks.blockLotus.canPlaceBlockAt(world, x, y, z))
             {

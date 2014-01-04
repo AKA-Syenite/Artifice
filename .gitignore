@@ -18,3 +18,6 @@ gradlew.bat
 .classpath
 .project
 .settings/
+crash-reports/
+ForgeModLoader-*
+output-*

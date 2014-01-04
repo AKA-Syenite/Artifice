@@ -1,0 +1,78 @@
+{
+"modinfoversion": 2,
+"modlist":
+    [
+        {
+          "modid": "Artifice",
+          "name": "Artifice",
+          "description": "Practical solutions",
+          "version": "${version}",
+          "mcversion": "${mcversion}",
+          "url": "http://www.minecraftforum.net/topic/1860869-",
+          "updateUrl": "",
+          "authorList": [
+            "Shukaro"
+          ],
+          "credits": "All the contributors",
+          "logoFile": "",
+          "screenshots": [
+          ],
+          "parent":"",
+          "dependencies": [ "Forge" ]
+        },
+        {
+          "modid": "ArtificeCompat|Vanilla",
+          "name": "Artifice Compat: Vanilla",
+          "description": "Vanilla Compatibility Module",
+          "version": "${version}",
+          "mcversion": "${mcversion}",
+          "url": "http://www.minecraftforum.net/topic/1860869-",
+          "updateUrl": "",
+          "authorList": [
+            "Shukaro"
+          ],
+          "credits": "All the contributors",
+          "logoFile": "",
+          "screenshots": [
+          ],
+          "parent":"Artifice",
+          "dependencies": [ "Artifice" ]
+        },
+        {
+          "modid": "ArtificeCompat|EE3",
+          "name": "Artifice Compat: EE3",
+          "description": "Equivalent Exchange 3 Compatibility Module",
+          "version": "${version}",
+          "mcversion": "${mcversion}",
+          "url": "http://www.minecraftforum.net/topic/1860869-",
+          "updateUrl": "",
+          "authorList": [
+            "Shukaro"
+          ],
+          "credits": "All the contributors",
+          "logoFile": "",
+          "screenshots": [
+          ],
+          "parent":"Artifice",
+          "dependencies": [ "Artifice" ]
+        },
+        {
+          "modid": "ArtificeCompat|Forestry",
+          "name": "Artifice Compat: Forestry",
+          "description": "Forestry Compatibility Module",
+          "version": "${version}",
+          "mcversion": "${mcversion}",
+          "url": "http://www.minecraftforum.net/topic/1860869-",
+          "updateUrl": "",
+          "authorList": [
+            "Shukaro"
+          ],
+          "credits": "All the contributors",
+          "logoFile": "",
+          "screenshots": [
+          ],
+          "parent":"Artifice",
+          "dependencies": [ "Artifice" ]
+        }
+    ]
+}

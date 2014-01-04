@@ -1,0 +1,51 @@
+buildscript {
+    repositories {
+        mavenCentral()
+        maven {
+            name = "forge"
+            url = "http://files.minecraftforge.net/maven"
+        }
+    }
+    dependencies {
+        classpath 'net.minecraftforge.gradle:ForgeGradle:1.0-SNAPSHOT'
+    }
+}
+
+apply plugin: 'forge'
+
+build_number = System.getenv("BUILD_NUMBER")
+if(build_number)  {
+    version = mod_version + "-" + build_number
+} else {
+    version = mod_version
+}
+group = "com.shukaro.artifice"
+archivesBaseName = "Artifice"
+
+minecraft {
+    version = forge_version
+}
+
+sourceCompatibility = mc_version
+targetCompatibility = mc_version
+
+processResources
+{
+    // replace stuff in mcmod.info, nothing else
+    from(sourceSets.main.resources.srcDirs) {
+        include 'mcmod.info'
+
+        // replace version and mcversion
+        expand 'version':project.version, 'mcversion':project.minecraft.version
+    }
+
+    // copy everything else, thats not the mcmod.info
+    from(sourceSets.main.resources.srcDirs) {
+        exclude 'mcmod.info'
+    }
+}
+
+jar
+{
+    destinationDir = new File("build/dist/")
+}

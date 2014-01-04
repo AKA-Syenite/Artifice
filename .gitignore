@@ -15,3 +15,6 @@ resourcepacks/
 LICENSE*
 gradlew
 gradlew.bat
+.classpath
+.project
+.settings/

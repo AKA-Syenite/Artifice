@@ -21,3 +21,8 @@ gradlew.bat
 crash-reports/
 ForgeModLoader-*
 output-*
+world/
+white-list.txt
+ops.txt
+banned-*.txt
+server*

@@ -2,6 +2,8 @@ package shukaro.artifice.render;
 
 import java.util.Locale;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.util.Icon;
@@ -11,6 +13,7 @@ import shukaro.artifice.render.connectedtexture.ConnectedTextureBase;
 import shukaro.artifice.render.connectedtexture.ConnectedTextures;
 import shukaro.artifice.util.BlockCoord;
 
+@SideOnly(Side.CLIENT)
 public class TextureHandler
 {
 	public static void updateTexture(BlockCoord c)

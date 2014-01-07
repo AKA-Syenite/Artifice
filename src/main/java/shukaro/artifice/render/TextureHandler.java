@@ -13,7 +13,6 @@ import shukaro.artifice.render.connectedtexture.ConnectedTextureBase;
 import shukaro.artifice.render.connectedtexture.ConnectedTextures;
 import shukaro.artifice.util.BlockCoord;
 
-@SideOnly(Side.CLIENT)
 public class TextureHandler
 {
 	public static void updateTexture(BlockCoord c)

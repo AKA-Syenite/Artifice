@@ -10,7 +10,6 @@ import shukaro.artifice.render.connectedtexture.ConnectedTextureBase;
 import shukaro.artifice.render.connectedtexture.ConnectedTextures;
 import shukaro.artifice.util.BlockCoord;
 
-@SideOnly(Side.CLIENT)
 public class TransparentConnectedTexture extends ConnectedTextureBase
 {
     public TransparentConnectedTexture(ConnectedTextures texture)
@@ -31,10 +30,9 @@ public class TransparentConnectedTexture extends ConnectedTextureBase
     	int neighborMeta = coord.copy().offset(side).getMeta(blockAccess);
         Block self = coord.getBlock(blockAccess);
         Block neighbor = coord.copy().offset(side).getBlock(blockAccess);
-        World world = Minecraft.getMinecraft().thePlayer.worldObj;
         
         if (self != null && neighbor != null)
-        	return self.getIcon(face, meta).getIconName() == neighbor.getIcon(face, neighborMeta).getIconName() && (self.blockID == neighbor.blockID && meta == neighborMeta);
+        	return self.getIcon(face, meta) != null && neighbor.getIcon(face, neighborMeta) != null && self.getIcon(face, meta).getIconName() == neighbor.getIcon(face, neighborMeta).getIconName() && (self.blockID == neighbor.blockID && meta == neighborMeta);
         return false;
     }
     

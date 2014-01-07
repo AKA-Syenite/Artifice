@@ -1,9 +1,12 @@
 package shukaro.artifice.render.connectedtexture;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.world.IBlockAccess;
 import shukaro.artifice.util.BlockCoord;
 
+@SideOnly(Side.CLIENT)
 public abstract class ConnectedTextureBase
 {
     public ConnectedTextures texture;

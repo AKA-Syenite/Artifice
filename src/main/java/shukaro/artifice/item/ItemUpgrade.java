@@ -18,7 +18,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Icon;
 
-public class ItemUpgrade extends Item
+public class ItemUpgrade extends ItemArtifice
 {
 	private Icon[] icons = new Icon[13];
 	public String[] upgrades = { "Sharpening Kit", "Reinforcement", "Reinforced Limbs", "Plaited String", "Counterweight", "Armor Spikes", "Laminated Padding", "Quilted Cover", "Elastic Soles", "Firedamp", "Elastic Layering", "Scuba Tank", "Dive Kit" };
@@ -27,8 +27,6 @@ public class ItemUpgrade extends Item
 	{
 		super(id);
 		this.setUnlocalizedName("artifice.upgrade");
-		this.setHasSubtypes(true);
-		this.setCreativeTab(ArtificeCreativeTab.main);
 	}
 
 	@Override
@@ -60,23 +58,5 @@ public class ItemUpgrade extends Item
     public String getUnlocalizedName(ItemStack stack)
     {
         return "item.artifice.upgrade." + upgrades[stack.getItemDamage()].toLowerCase(Locale.ENGLISH).replaceAll("\\s","");
-    }
-
-    @Override
-    @SideOnly(Side.CLIENT)
-    public void addInformation(ItemStack stack, EntityPlayer player, List infoList, boolean advancedTooltips)
-    {
-        if (!ArtificeConfig.tooltips.getBoolean(true))
-            return;
-        IdMetaPair pair = new IdMetaPair(stack.itemID, stack.getItemDamage());
-        if (ArtificeRegistry.getTooltipMap().get(pair) != null)
-        {
-            for (String s : ArtificeRegistry.getTooltipMap().get(pair))
-            {
-                if (!ArtificeConfig.flavorText.getBoolean(true) && s.startsWith(ArtificeTooltips.commentCode))
-                    continue;
-                infoList.add(s);
-            }
-        }
     }
 }

@@ -9,7 +9,7 @@ import shukaro.artifice.util.RomanUtil;
 
 public class ArtificeTooltips
 {
-    public final static String commentCode = FormatCodes.DarkGrey.format + FormatCodes.Italic.format;
+    public final static String commentCode = FormatCodes.DarkGrey.code + FormatCodes.Italic.code;
     
     public static void initTooltips()
     {
@@ -37,46 +37,46 @@ public class ArtificeTooltips
         if (ArtificeConfig.enableSledges.getBoolean(true))
         {
             ArtificeRegistry.registerTooltip(ArtificeItems.itemSledgeWood.itemID, 0, "Smash blocks into parts");
-            ArtificeRegistry.registerTooltip(ArtificeItems.itemSledgeWood.itemID, 0, "Loss Chance: " + FormatCodes.Aqua.format + "50%");
+            ArtificeRegistry.registerTooltip(ArtificeItems.itemSledgeWood.itemID, 0, FormatCodes.Italic.code + "Loss Chance: " + FormatCodes.Reset.code + FormatCodes.Aqua.code + "50%");
             ArtificeRegistry.registerTooltip(ArtificeItems.itemSledgeWood.itemID, 0, commentCode + "When all you've got is a hammer...");
             
             ArtificeRegistry.registerTooltip(ArtificeItems.itemSledgeStone.itemID, 0, "Smash blocks into parts");
-            ArtificeRegistry.registerTooltip(ArtificeItems.itemSledgeStone.itemID, 0, "Loss Chance: " + FormatCodes.Aqua.format + "40%");
+            ArtificeRegistry.registerTooltip(ArtificeItems.itemSledgeStone.itemID, 0, FormatCodes.Italic.code + "Loss Chance: " + FormatCodes.Reset.code + FormatCodes.Aqua.code + "40%");
             ArtificeRegistry.registerTooltip(ArtificeItems.itemSledgeStone.itemID, 0, commentCode + "When all you've got is a hammer...");
             
             ArtificeRegistry.registerTooltip(ArtificeItems.itemSledgeIron.itemID, 0, "Smash blocks into parts");
-            ArtificeRegistry.registerTooltip(ArtificeItems.itemSledgeIron.itemID, 0, "Loss Chance: " + FormatCodes.Aqua.format + "30%");
+            ArtificeRegistry.registerTooltip(ArtificeItems.itemSledgeIron.itemID, 0, FormatCodes.Italic.code + "Loss Chance: " + FormatCodes.Reset.code + FormatCodes.Aqua.code + "30%");
             ArtificeRegistry.registerTooltip(ArtificeItems.itemSledgeIron.itemID, 0, commentCode + "When all you've got is a hammer...");
             
             ArtificeRegistry.registerTooltip(ArtificeItems.itemSledgeGold.itemID, 0, "Smash blocks into parts");
-            ArtificeRegistry.registerTooltip(ArtificeItems.itemSledgeGold.itemID, 0, "Loss Chance: " + FormatCodes.Aqua.format + "25%");
+            ArtificeRegistry.registerTooltip(ArtificeItems.itemSledgeGold.itemID, 0, FormatCodes.Italic.code + "Loss Chance: " + FormatCodes.Reset.code + FormatCodes.Aqua.code + "25%");
             ArtificeRegistry.registerTooltip(ArtificeItems.itemSledgeGold.itemID, 0, commentCode + "When all you've got is a hammer...");
             
             ArtificeRegistry.registerTooltip(ArtificeItems.itemSledgeDiamond.itemID, 0, "Smash blocks into parts");
-            ArtificeRegistry.registerTooltip(ArtificeItems.itemSledgeDiamond.itemID, 0, "Loss Chance: " + FormatCodes.Aqua.format + "20%");
+            ArtificeRegistry.registerTooltip(ArtificeItems.itemSledgeDiamond.itemID, 0, FormatCodes.Italic.code + "Loss Chance: " + FormatCodes.Reset.code + FormatCodes.Aqua.code + "20%");
             ArtificeRegistry.registerTooltip(ArtificeItems.itemSledgeDiamond.itemID, 0, commentCode + "When all you've got is a hammer...");
         }
         
         if (ArtificeConfig.enableSickles.getBoolean(true))
         {
             ArtificeRegistry.registerTooltip(ArtificeItems.itemSickleWood.itemID, 0, "Harvest plants and leaves");
-            ArtificeRegistry.registerTooltip(ArtificeItems.itemSickleWood.itemID, 0, "Radius: " + FormatCodes.Aqua.format + "1");
+            ArtificeRegistry.registerTooltip(ArtificeItems.itemSickleWood.itemID, 0, FormatCodes.Italic.code + "Radius: " + FormatCodes.Reset.code + FormatCodes.Aqua.code + "1");
             ArtificeRegistry.registerTooltip(ArtificeItems.itemSickleWood.itemID, 0, commentCode + "Cutting branches with wood...");
             
             ArtificeRegistry.registerTooltip(ArtificeItems.itemSickleStone.itemID, 0, "Harvest plants and leaves");
-            ArtificeRegistry.registerTooltip(ArtificeItems.itemSickleStone.itemID, 0, "Radius: " + FormatCodes.Aqua.format + "2");
+            ArtificeRegistry.registerTooltip(ArtificeItems.itemSickleStone.itemID, 0, FormatCodes.Italic.code + "Radius: " + FormatCodes.Reset.code + FormatCodes.Aqua.code + "2");
             ArtificeRegistry.registerTooltip(ArtificeItems.itemSickleStone.itemID, 0, commentCode + "Reasonably effective");
             
             ArtificeRegistry.registerTooltip(ArtificeItems.itemSickleIron.itemID, 0, "Harvest plants and leaves");
-            ArtificeRegistry.registerTooltip(ArtificeItems.itemSickleIron.itemID, 0, "Radius: " + FormatCodes.Aqua.format + "3");
+            ArtificeRegistry.registerTooltip(ArtificeItems.itemSickleIron.itemID, 0, FormatCodes.Italic.code + "Radius: " + FormatCodes.Reset.code + FormatCodes.Aqua.code + "3");
             ArtificeRegistry.registerTooltip(ArtificeItems.itemSickleIron.itemID, 0, commentCode + "Durable and perfect for horticulture");
             
             ArtificeRegistry.registerTooltip(ArtificeItems.itemSickleGold.itemID, 0, "Harvest plants and leaves");
-            ArtificeRegistry.registerTooltip(ArtificeItems.itemSickleGold.itemID, 0, "Radius: " + FormatCodes.Aqua.format + "4");
+            ArtificeRegistry.registerTooltip(ArtificeItems.itemSickleGold.itemID, 0, FormatCodes.Italic.code + "Radius: " + FormatCodes.Reset.code + FormatCodes.Aqua.code + "4");
             ArtificeRegistry.registerTooltip(ArtificeItems.itemSickleGold.itemID, 0, commentCode + "So soft you're almost smashing them...");
             
             ArtificeRegistry.registerTooltip(ArtificeItems.itemSickleDiamond.itemID, 0, "Harvest plants and leaves");
-            ArtificeRegistry.registerTooltip(ArtificeItems.itemSickleDiamond.itemID, 0, "Radius: " + FormatCodes.Aqua.format + "5");
+            ArtificeRegistry.registerTooltip(ArtificeItems.itemSickleDiamond.itemID, 0, FormatCodes.Italic.code + "Radius: " + FormatCodes.Reset.code + FormatCodes.Aqua.code + "5");
             ArtificeRegistry.registerTooltip(ArtificeItems.itemSickleDiamond.itemID, 0, commentCode + "The ultimate in anti-plant weaponry");
         }
         
@@ -96,57 +96,57 @@ public class ArtificeTooltips
         
         if (ArtificeConfig.enableUpgrades.getBoolean(true))
         {
-        	ArtificeRegistry.registerTooltip(ArtificeItems.itemUpgrade.itemID, 0, "Weapon or Tool Upgrade");
-        	ArtificeRegistry.registerTooltip(ArtificeItems.itemUpgrade.itemID, 0, FormatCodes.Yellow.format + StatCollector.translateToLocal(Enchantment.sharpness.getName()) + " (" + (ArtificeConfig.limitUpgrades.getBoolean(true) ? RomanUtil.convertToRoman(EnumUpgrades.SharpeningKit.maxLevel) : RomanUtil.convertToRoman(Enchantment.sharpness.getMaxLevel())) + ")");
-        	ArtificeRegistry.registerTooltip(ArtificeItems.itemUpgrade.itemID, 0, FormatCodes.Yellow.format + StatCollector.translateToLocal(Enchantment.efficiency.getName()) + " (" + (ArtificeConfig.limitUpgrades.getBoolean(true) ? RomanUtil.convertToRoman(EnumUpgrades.SharpeningKit.maxLevel) : RomanUtil.convertToRoman(Enchantment.efficiency.getMaxLevel())) + ")");
+        	ArtificeRegistry.registerTooltip(ArtificeItems.itemUpgrade.itemID, 0, "Tool or Weapon Upgrade");
+        	ArtificeRegistry.registerTooltip(ArtificeItems.itemUpgrade.itemID, 0, FormatCodes.Yellow.code + StatCollector.translateToLocal(Enchantment.efficiency.getName()) + " (" + (ArtificeConfig.limitUpgrades.getBoolean(true) ? RomanUtil.convertToRoman(EnumUpgrades.SharpeningKit.maxLevel) : RomanUtil.convertToRoman(Enchantment.sharpness.getMaxLevel())) + ")");
+        	ArtificeRegistry.registerTooltip(ArtificeItems.itemUpgrade.itemID, 0, FormatCodes.Yellow.code + StatCollector.translateToLocal(Enchantment.sharpness.getName()) + " (" + (ArtificeConfig.limitUpgrades.getBoolean(true) ? RomanUtil.convertToRoman(EnumUpgrades.SharpeningKit.maxLevel) : RomanUtil.convertToRoman(Enchantment.efficiency.getMaxLevel())) + ")");
         	ArtificeRegistry.registerTooltip(ArtificeItems.itemUpgrade.itemID, 0, commentCode + "A simple kit to sharpen blades");
         	
         	ArtificeRegistry.registerTooltip(ArtificeItems.itemUpgrade.itemID, 1, "Universal Upgrade");
-        	ArtificeRegistry.registerTooltip(ArtificeItems.itemUpgrade.itemID, 1, FormatCodes.Yellow.format + StatCollector.translateToLocal(Enchantment.unbreaking.getName()) + " (" + (ArtificeConfig.limitUpgrades.getBoolean(true) ? RomanUtil.convertToRoman(EnumUpgrades.Reinforcement.maxLevel) : RomanUtil.convertToRoman(Enchantment.unbreaking.getMaxLevel())) + ")");
+        	ArtificeRegistry.registerTooltip(ArtificeItems.itemUpgrade.itemID, 1, FormatCodes.Yellow.code + StatCollector.translateToLocal(Enchantment.unbreaking.getName()) + " (" + (ArtificeConfig.limitUpgrades.getBoolean(true) ? RomanUtil.convertToRoman(EnumUpgrades.Reinforcement.maxLevel) : RomanUtil.convertToRoman(Enchantment.unbreaking.getMaxLevel())) + ")");
         	ArtificeRegistry.registerTooltip(ArtificeItems.itemUpgrade.itemID, 1, commentCode + "The perfect materials to reinforce weak points");
         	
         	ArtificeRegistry.registerTooltip(ArtificeItems.itemUpgrade.itemID, 2, "Bow Upgrade");
-        	ArtificeRegistry.registerTooltip(ArtificeItems.itemUpgrade.itemID, 2, FormatCodes.Yellow.format + StatCollector.translateToLocal(Enchantment.punch.getName()) + " (" + (ArtificeConfig.limitUpgrades.getBoolean(true) ? RomanUtil.convertToRoman(EnumUpgrades.ReinforcedLimbs.maxLevel) : RomanUtil.convertToRoman(Enchantment.punch.getMaxLevel())) + ")");
+        	ArtificeRegistry.registerTooltip(ArtificeItems.itemUpgrade.itemID, 2, FormatCodes.Yellow.code + StatCollector.translateToLocal(Enchantment.punch.getName()) + " (" + (ArtificeConfig.limitUpgrades.getBoolean(true) ? RomanUtil.convertToRoman(EnumUpgrades.ReinforcedLimbs.maxLevel) : RomanUtil.convertToRoman(Enchantment.punch.getMaxLevel())) + ")");
         	ArtificeRegistry.registerTooltip(ArtificeItems.itemUpgrade.itemID, 2, commentCode + "Allows for a stronger pull");
         	
         	ArtificeRegistry.registerTooltip(ArtificeItems.itemUpgrade.itemID, 3, "Bow Upgrade");
-        	ArtificeRegistry.registerTooltip(ArtificeItems.itemUpgrade.itemID, 3, FormatCodes.Yellow.format + StatCollector.translateToLocal(Enchantment.power.getName()) + " (" + (ArtificeConfig.limitUpgrades.getBoolean(true) ? RomanUtil.convertToRoman(EnumUpgrades.PlaitedString.maxLevel) : RomanUtil.convertToRoman(Enchantment.power.getMaxLevel())) + ")");
+        	ArtificeRegistry.registerTooltip(ArtificeItems.itemUpgrade.itemID, 3, FormatCodes.Yellow.code + StatCollector.translateToLocal(Enchantment.power.getName()) + " (" + (ArtificeConfig.limitUpgrades.getBoolean(true) ? RomanUtil.convertToRoman(EnumUpgrades.PlaitedString.maxLevel) : RomanUtil.convertToRoman(Enchantment.power.getMaxLevel())) + ")");
         	ArtificeRegistry.registerTooltip(ArtificeItems.itemUpgrade.itemID, 3, commentCode + "Improves accuracy and stability");
         	
         	ArtificeRegistry.registerTooltip(ArtificeItems.itemUpgrade.itemID, 4, "Weapon Upgrade");
-        	ArtificeRegistry.registerTooltip(ArtificeItems.itemUpgrade.itemID, 4, FormatCodes.Yellow.format + StatCollector.translateToLocal(Enchantment.knockback.getName()) + " (" + (ArtificeConfig.limitUpgrades.getBoolean(true) ? RomanUtil.convertToRoman(EnumUpgrades.Counterweight.maxLevel) : RomanUtil.convertToRoman(Enchantment.knockback.getMaxLevel())) + ")");
+        	ArtificeRegistry.registerTooltip(ArtificeItems.itemUpgrade.itemID, 4, FormatCodes.Yellow.code + StatCollector.translateToLocal(Enchantment.knockback.getName()) + " (" + (ArtificeConfig.limitUpgrades.getBoolean(true) ? RomanUtil.convertToRoman(EnumUpgrades.Counterweight.maxLevel) : RomanUtil.convertToRoman(Enchantment.knockback.getMaxLevel())) + ")");
         	ArtificeRegistry.registerTooltip(ArtificeItems.itemUpgrade.itemID, 4, commentCode + "Improves weapon balance");
         	
         	ArtificeRegistry.registerTooltip(ArtificeItems.itemUpgrade.itemID, 5, "Armor Upgrade");
-        	ArtificeRegistry.registerTooltip(ArtificeItems.itemUpgrade.itemID, 5, FormatCodes.Yellow.format + StatCollector.translateToLocal(Enchantment.thorns.getName()) + " (" + (ArtificeConfig.limitUpgrades.getBoolean(true) ? RomanUtil.convertToRoman(EnumUpgrades.ArmorSpikes.maxLevel) : RomanUtil.convertToRoman(Enchantment.thorns.getMaxLevel())) + ")");
+        	ArtificeRegistry.registerTooltip(ArtificeItems.itemUpgrade.itemID, 5, FormatCodes.Yellow.code + StatCollector.translateToLocal(Enchantment.thorns.getName()) + " (" + (ArtificeConfig.limitUpgrades.getBoolean(true) ? RomanUtil.convertToRoman(EnumUpgrades.ArmorSpikes.maxLevel) : RomanUtil.convertToRoman(Enchantment.thorns.getMaxLevel())) + ")");
         	ArtificeRegistry.registerTooltip(ArtificeItems.itemUpgrade.itemID, 5, commentCode + "Sharp spikes deter attacks");
         	
         	ArtificeRegistry.registerTooltip(ArtificeItems.itemUpgrade.itemID, 6, "Armor Upgrade");
-        	ArtificeRegistry.registerTooltip(ArtificeItems.itemUpgrade.itemID, 6, FormatCodes.Yellow.format + StatCollector.translateToLocal(Enchantment.protection.getName()) + " (" + (ArtificeConfig.limitUpgrades.getBoolean(true) ? RomanUtil.convertToRoman(EnumUpgrades.LaminatedPadding.maxLevel) : RomanUtil.convertToRoman(Enchantment.protection.getMaxLevel())) + ")");
+        	ArtificeRegistry.registerTooltip(ArtificeItems.itemUpgrade.itemID, 6, FormatCodes.Yellow.code + StatCollector.translateToLocal(Enchantment.protection.getName()) + " (" + (ArtificeConfig.limitUpgrades.getBoolean(true) ? RomanUtil.convertToRoman(EnumUpgrades.LaminatedPadding.maxLevel) : RomanUtil.convertToRoman(Enchantment.protection.getMaxLevel())) + ")");
         	ArtificeRegistry.registerTooltip(ArtificeItems.itemUpgrade.itemID, 6, commentCode + "Layered materials improve protection");
         	
         	ArtificeRegistry.registerTooltip(ArtificeItems.itemUpgrade.itemID, 7, "Armor Upgrade");
-        	ArtificeRegistry.registerTooltip(ArtificeItems.itemUpgrade.itemID, 7, FormatCodes.Yellow.format + StatCollector.translateToLocal(Enchantment.projectileProtection.getName()) + " (" + (ArtificeConfig.limitUpgrades.getBoolean(true) ? RomanUtil.convertToRoman(EnumUpgrades.QuiltedCover.maxLevel) : RomanUtil.convertToRoman(Enchantment.projectileProtection.getMaxLevel())) + ")");
+        	ArtificeRegistry.registerTooltip(ArtificeItems.itemUpgrade.itemID, 7, FormatCodes.Yellow.code + StatCollector.translateToLocal(Enchantment.projectileProtection.getName()) + " (" + (ArtificeConfig.limitUpgrades.getBoolean(true) ? RomanUtil.convertToRoman(EnumUpgrades.QuiltedCover.maxLevel) : RomanUtil.convertToRoman(Enchantment.projectileProtection.getMaxLevel())) + ")");
         	ArtificeRegistry.registerTooltip(ArtificeItems.itemUpgrade.itemID, 7, commentCode + "Thick cloth helps block arrows");
         	
         	ArtificeRegistry.registerTooltip(ArtificeItems.itemUpgrade.itemID, 8, "Boot Upgrade");
-        	ArtificeRegistry.registerTooltip(ArtificeItems.itemUpgrade.itemID, 8, FormatCodes.Yellow.format + StatCollector.translateToLocal(Enchantment.featherFalling.getName()) + " (" + (ArtificeConfig.limitUpgrades.getBoolean(true) ? RomanUtil.convertToRoman(EnumUpgrades.ElasticSoles.maxLevel) : RomanUtil.convertToRoman(Enchantment.featherFalling.getMaxLevel())) + ")");
+        	ArtificeRegistry.registerTooltip(ArtificeItems.itemUpgrade.itemID, 8, FormatCodes.Yellow.code + StatCollector.translateToLocal(Enchantment.featherFalling.getName()) + " (" + (ArtificeConfig.limitUpgrades.getBoolean(true) ? RomanUtil.convertToRoman(EnumUpgrades.ElasticSoles.maxLevel) : RomanUtil.convertToRoman(Enchantment.featherFalling.getMaxLevel())) + ")");
         	ArtificeRegistry.registerTooltip(ArtificeItems.itemUpgrade.itemID, 8, commentCode + "Slime makes the perfect shock absorber");
         	
         	ArtificeRegistry.registerTooltip(ArtificeItems.itemUpgrade.itemID, 9, "Armor Upgrade");
-        	ArtificeRegistry.registerTooltip(ArtificeItems.itemUpgrade.itemID, 9, FormatCodes.Yellow.format + StatCollector.translateToLocal(Enchantment.fireProtection.getName()) + " (" + (ArtificeConfig.limitUpgrades.getBoolean(true) ? RomanUtil.convertToRoman(EnumUpgrades.Firedamp.maxLevel) : RomanUtil.convertToRoman(Enchantment.fireProtection.getMaxLevel())) + ")");
+        	ArtificeRegistry.registerTooltip(ArtificeItems.itemUpgrade.itemID, 9, FormatCodes.Yellow.code + StatCollector.translateToLocal(Enchantment.fireProtection.getName()) + " (" + (ArtificeConfig.limitUpgrades.getBoolean(true) ? RomanUtil.convertToRoman(EnumUpgrades.Firedamp.maxLevel) : RomanUtil.convertToRoman(Enchantment.fireProtection.getMaxLevel())) + ")");
         	ArtificeRegistry.registerTooltip(ArtificeItems.itemUpgrade.itemID, 9, commentCode + "A thick slurry that helps reduce flammability");
         	
         	ArtificeRegistry.registerTooltip(ArtificeItems.itemUpgrade.itemID, 10, "Armor Upgrade");
-        	ArtificeRegistry.registerTooltip(ArtificeItems.itemUpgrade.itemID, 10, FormatCodes.Yellow.format + StatCollector.translateToLocal(Enchantment.blastProtection.getName()) + " (" + (ArtificeConfig.limitUpgrades.getBoolean(true) ? RomanUtil.convertToRoman(EnumUpgrades.ElasticLayering.maxLevel) : RomanUtil.convertToRoman(Enchantment.blastProtection.getMaxLevel())) + ")");
+        	ArtificeRegistry.registerTooltip(ArtificeItems.itemUpgrade.itemID, 10, FormatCodes.Yellow.code + StatCollector.translateToLocal(Enchantment.blastProtection.getName()) + " (" + (ArtificeConfig.limitUpgrades.getBoolean(true) ? RomanUtil.convertToRoman(EnumUpgrades.ElasticLayering.maxLevel) : RomanUtil.convertToRoman(Enchantment.blastProtection.getMaxLevel())) + ")");
         	ArtificeRegistry.registerTooltip(ArtificeItems.itemUpgrade.itemID, 10, commentCode + "Helpful in reducing impacts");
         	
         	ArtificeRegistry.registerTooltip(ArtificeItems.itemUpgrade.itemID, 11, "Helmet Upgrade");
-        	ArtificeRegistry.registerTooltip(ArtificeItems.itemUpgrade.itemID, 11, FormatCodes.Yellow.format + StatCollector.translateToLocal(Enchantment.respiration.getName()) + " (" + (ArtificeConfig.limitUpgrades.getBoolean(true) ? RomanUtil.convertToRoman(EnumUpgrades.ScubaTank.maxLevel) : RomanUtil.convertToRoman(Enchantment.respiration.getMaxLevel())) + ")");
+        	ArtificeRegistry.registerTooltip(ArtificeItems.itemUpgrade.itemID, 11, FormatCodes.Yellow.code + StatCollector.translateToLocal(Enchantment.respiration.getName()) + " (" + (ArtificeConfig.limitUpgrades.getBoolean(true) ? RomanUtil.convertToRoman(EnumUpgrades.ScubaTank.maxLevel) : RomanUtil.convertToRoman(Enchantment.respiration.getMaxLevel())) + ")");
         	ArtificeRegistry.registerTooltip(ArtificeItems.itemUpgrade.itemID, 11, commentCode + "Crude, but effective air tank");
         	
         	ArtificeRegistry.registerTooltip(ArtificeItems.itemUpgrade.itemID, 12, "Helmet Upgrade"); 
-        	ArtificeRegistry.registerTooltip(ArtificeItems.itemUpgrade.itemID, 12, FormatCodes.Yellow.format + StatCollector.translateToLocal(Enchantment.aquaAffinity.getName()) + " (" + (ArtificeConfig.limitUpgrades.getBoolean(true) ? RomanUtil.convertToRoman(EnumUpgrades.DiveKit.maxLevel) : RomanUtil.convertToRoman(Enchantment.aquaAffinity.getMaxLevel())) + ")");
+        	ArtificeRegistry.registerTooltip(ArtificeItems.itemUpgrade.itemID, 12, FormatCodes.Yellow.code + StatCollector.translateToLocal(Enchantment.aquaAffinity.getName()) + " (" + (ArtificeConfig.limitUpgrades.getBoolean(true) ? RomanUtil.convertToRoman(EnumUpgrades.DiveKit.maxLevel) : RomanUtil.convertToRoman(Enchantment.aquaAffinity.getMaxLevel())) + ")");
         	ArtificeRegistry.registerTooltip(ArtificeItems.itemUpgrade.itemID, 12, commentCode + "Allows for clearer underwater vision");
         }
     }
@@ -248,51 +248,51 @@ public class ArtificeTooltips
             ArtificeRegistry.registerTooltip(ArtificeBlocks.blockFrame.blockID, 3, commentCode + "...anything is possible");
             
             ArtificeRegistry.registerTooltip(ArtificeBlocks.blockGlassWall.blockID, 0, "Reinforced Glass");
-            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockGlassWall.blockID, 0, "Resistance: " + FormatCodes.Aqua.format + (int) ArtificeBlocks.blockGlassWall.getResistance(0));
+            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockGlassWall.blockID, 0, "Resistance: " + FormatCodes.Aqua.code + (int) ArtificeBlocks.blockGlassWall.getResistance(0));
             ArtificeRegistry.registerTooltip(ArtificeBlocks.blockGlassWall.blockID, 0, commentCode + "Strengthening glass is tricky");
             
             ArtificeRegistry.registerTooltip(ArtificeBlocks.blockGlassWall.blockID, 1, "Ceramic Glass");
-            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockGlassWall.blockID, 1, "Resistance: " + FormatCodes.Aqua.format + (int) ArtificeBlocks.blockGlassWall.getResistance(1));
+            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockGlassWall.blockID, 1, "Resistance: " + FormatCodes.Aqua.code + (int) ArtificeBlocks.blockGlassWall.getResistance(1));
             ArtificeRegistry.registerTooltip(ArtificeBlocks.blockGlassWall.blockID, 1, commentCode + "Ceramics make the world go round");
             
             ArtificeRegistry.registerTooltip(ArtificeBlocks.blockGlassWall.blockID, 2, "Rock Glass");
-            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockGlassWall.blockID, 2, "Resistance: " + FormatCodes.Aqua.format + (int) ArtificeBlocks.blockGlassWall.getResistance(2));
+            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockGlassWall.blockID, 2, "Resistance: " + FormatCodes.Aqua.code + (int) ArtificeBlocks.blockGlassWall.getResistance(2));
             ArtificeRegistry.registerTooltip(ArtificeBlocks.blockGlassWall.blockID, 2, commentCode + "Volcanic glass is naturally strong");
             
             ArtificeRegistry.registerTooltip(ArtificeBlocks.blockGlassWall.blockID, 3, "Laminated Glass");
-            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockGlassWall.blockID, 3, "Resistance: " + FormatCodes.Aqua.format + (int) ArtificeBlocks.blockGlassWall.getResistance(3));
+            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockGlassWall.blockID, 3, "Resistance: " + FormatCodes.Aqua.code + (int) ArtificeBlocks.blockGlassWall.getResistance(3));
             ArtificeRegistry.registerTooltip(ArtificeBlocks.blockGlassWall.blockID, 3, commentCode + "Filled with thin steel threads");
             
             ArtificeRegistry.registerTooltip(ArtificeBlocks.blockReinforced.blockID, 0, "Reinforced Stone Bricks");
-            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockReinforced.blockID, 0, "Resistance: " + FormatCodes.Aqua.format + (int) ArtificeBlocks.blockReinforced.getResistance(0));
+            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockReinforced.blockID, 0, "Resistance: " + FormatCodes.Aqua.code + (int) ArtificeBlocks.blockReinforced.getResistance(0));
             ArtificeRegistry.registerTooltip(ArtificeBlocks.blockReinforced.blockID, 0, commentCode + "A good first attempt");
             
             ArtificeRegistry.registerTooltip(ArtificeBlocks.blockReinforced.blockID, 1, "Reinforced Bricks");
-            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockReinforced.blockID, 1, "Resistance: " + FormatCodes.Aqua.format + (int) ArtificeBlocks.blockReinforced.getResistance(1));
+            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockReinforced.blockID, 1, "Resistance: " + FormatCodes.Aqua.code + (int) ArtificeBlocks.blockReinforced.getResistance(1));
             ArtificeRegistry.registerTooltip(ArtificeBlocks.blockReinforced.blockID, 1, commentCode + "Hardened bricks, eh?");
             
             ArtificeRegistry.registerTooltip(ArtificeBlocks.blockReinforced.blockID, 2, "Obsidian Bricks");
-            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockReinforced.blockID, 2, "Resistance: " + FormatCodes.Aqua.format + (int) ArtificeBlocks.blockReinforced.getResistance(2));
+            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockReinforced.blockID, 2, "Resistance: " + FormatCodes.Aqua.code + (int) ArtificeBlocks.blockReinforced.getResistance(2));
             ArtificeRegistry.registerTooltip(ArtificeBlocks.blockReinforced.blockID, 2, commentCode + "There is always progress to be made...");
             
             ArtificeRegistry.registerTooltip(ArtificeBlocks.blockReinforced.blockID, 3, "Steel Plating");
-            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockReinforced.blockID, 3, "Resistance: " + FormatCodes.Aqua.format + (int) ArtificeBlocks.blockReinforced.getResistance(3));
+            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockReinforced.blockID, 3, "Resistance: " + FormatCodes.Aqua.code + (int) ArtificeBlocks.blockReinforced.getResistance(3));
             ArtificeRegistry.registerTooltip(ArtificeBlocks.blockReinforced.blockID, 3, commentCode + "...and progress always provides");
             
             ArtificeRegistry.registerTooltip(ArtificeBlocks.blockScaffold.blockID, 0, "Simple scaffold");
-            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockScaffold.blockID, 0, "Max Overhang: " + FormatCodes.Aqua.format + ArtificeBlocks.blockScaffold.getOverhang(0));
+            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockScaffold.blockID, 0, "Max Overhang: " + FormatCodes.Aqua.code + ArtificeBlocks.blockScaffold.getOverhang(0));
             ArtificeRegistry.registerTooltip(ArtificeBlocks.blockScaffold.blockID, 0, commentCode + "Handy to have");
             
             ArtificeRegistry.registerTooltip(ArtificeBlocks.blockScaffold.blockID, 1, "Composite scaffold");
-            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockScaffold.blockID, 1, "Max Overhang: " + FormatCodes.Aqua.format + ArtificeBlocks.blockScaffold.getOverhang(1));
+            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockScaffold.blockID, 1, "Max Overhang: " + FormatCodes.Aqua.code + ArtificeBlocks.blockScaffold.getOverhang(1));
             ArtificeRegistry.registerTooltip(ArtificeBlocks.blockScaffold.blockID, 1, commentCode + "A bit less rickety");
             
             ArtificeRegistry.registerTooltip(ArtificeBlocks.blockScaffold.blockID, 2, "Construction scaffold");
-            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockScaffold.blockID, 2, "Max Overhang: " + FormatCodes.Aqua.format + ArtificeBlocks.blockScaffold.getOverhang(2));
+            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockScaffold.blockID, 2, "Max Overhang: " + FormatCodes.Aqua.code + ArtificeBlocks.blockScaffold.getOverhang(2));
             ArtificeRegistry.registerTooltip(ArtificeBlocks.blockScaffold.blockID, 2, commentCode + "100% safe");
             
             ArtificeRegistry.registerTooltip(ArtificeBlocks.blockScaffold.blockID, 3, "Rugged scaffold");
-            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockScaffold.blockID, 3, "Max Overhang: " + FormatCodes.Aqua.format + ArtificeBlocks.blockScaffold.getOverhang(3));
+            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockScaffold.blockID, 3, "Max Overhang: " + FormatCodes.Aqua.code + ArtificeBlocks.blockScaffold.getOverhang(3));
             ArtificeRegistry.registerTooltip(ArtificeBlocks.blockScaffold.blockID, 3, commentCode + "Precisely machined");
         }
 

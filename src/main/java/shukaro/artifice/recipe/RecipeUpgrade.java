@@ -11,6 +11,8 @@ import net.minecraft.world.World;
 import shukaro.artifice.ArtificeConfig;
 import shukaro.artifice.ArtificeItems;
 
+import java.util.Random;
+
 public class RecipeUpgrade implements IRecipe
 {
 	private ItemStack output;
@@ -73,8 +75,8 @@ public class RecipeUpgrade implements IRecipe
 						maxLevel = EnumUpgrades.SharpeningKit.maxLevel;
 					else
 						maxLevel = EnumUpgrades.SharpeningKit.enchant.getMaxLevel();
-					
-					if (Enchantment.sharpness.canApply(this.output))
+
+					if (Enchantment.sharpness.canApply(this.output) && i % 2 == 0)
 						enchant = Enchantment.sharpness;
 					else if (Enchantment.efficiency.canApply(this.output))
 						enchant = Enchantment.efficiency;

@@ -39,6 +39,16 @@ public class RecipeBox implements IRecipe
         }
         if (!hasBox)
             return false;
+        // Is there more than 1 box in the grid?
+        int c = 0;
+        for (int i=0; i<craft.getSizeInventory(); i++)
+        {
+            ItemStack stack = craft.getStackInSlot(i);
+            if (stack != null && stack.itemID == ArtificeItems.itemBox.itemID)
+                c++;
+        }
+        if (c != 1)
+            return false;
         
         // The box isn't empty
         if (!isEmpty)
@@ -50,17 +60,7 @@ public class RecipeBox implements IRecipe
                 if (stack != null && stack.itemID != ArtificeItems.itemBox.itemID)
                     return false;
             }
-            // Is there more than 1 box in the grid?
-            int c = 0;
-            for (int i=0; i<craft.getSizeInventory(); i++)
-            {
-                ItemStack stack = craft.getStackInSlot(i);
-                if (stack != null && stack.itemID == ArtificeItems.itemBox.itemID)
-                    c++;
-            }
-            if (c != 1)
-                return false;
-            // There one full box in the grid, set it
+            // There's one full box in the grid, set it
             for (int i=0; i<craft.getSizeInventory(); i++)
             {
                 ItemStack stack = craft.getStackInSlot(i);

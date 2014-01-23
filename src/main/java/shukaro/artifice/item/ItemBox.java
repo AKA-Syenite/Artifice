@@ -2,40 +2,48 @@ package shukaro.artifice.item;
 
 import java.util.List;
 
-import net.minecraft.block.Block;
 import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.Item;
+import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.util.Icon;
 import net.minecraft.world.World;
 import shukaro.artifice.ArtificeConfig;
-import shukaro.artifice.ArtificeItems;
 import shukaro.artifice.ArtificeTooltips;
 import shukaro.artifice.compat.ArtificeRegistry;
-import shukaro.artifice.gui.ArtificeCreativeTab;
 import shukaro.artifice.render.IconHandler;
 import shukaro.artifice.util.FormatCodes;
 import shukaro.artifice.util.IdMetaPair;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ItemBox extends Item
+public class ItemBox extends ItemArtifice
 {
     private Icon icon;
     
     public ItemBox(int id)
     {
         super(id);
-        this.setCreativeTab(ArtificeCreativeTab.main);
         this.setUnlocalizedName("artifice.box");
-        this.setHasSubtypes(true);
     }
-    
+
+    @Override
+    public String getUnlocalizedName(ItemStack stack)
+    {
+        return this.getUnlocalizedName();
+    }
+
+    @Override
+    public void getSubItems(int id, CreativeTabs tab, List list)
+    {
+        list.add(new ItemStack(id, 1, 0));
+    }
+
     @Override
     @SideOnly(Side.CLIENT)
     public Icon getIconFromDamage(int meta)
@@ -49,12 +57,19 @@ public class ItemBox extends Item
     {
         this.icon = IconHandler.registerSingle(reg, "box", "box");
     }
-    
+
     @Override
     @SideOnly(Side.CLIENT)
-    public boolean hasEffect(ItemStack stack)
+    public EnumRarity getRarity(ItemStack stack)
     {
-        return stack.getTagCompound() != null;
+        return stack.hasTagCompound() ? EnumRarity.uncommon : EnumRarity.common;
+    }
+
+    @Override
+    @SideOnly(Side.CLIENT)
+    public boolean hasEffect(ItemStack stack, int pass)
+    {
+        return stack.hasTagCompound();
     }
     
     @Override
@@ -180,8 +195,8 @@ public class ItemBox extends Item
         NBTTagCompound tag = stack.getTagCompound();
         if (tag != null)
         {
-            infoList.add("Contains: " + FormatCodes.Aqua.format + new ItemStack(tag.getInteger("id"), 1, tag.getInteger("meta")).getDisplayName());
-            infoList.add("Amount: " + FormatCodes.Aqua.format + stack.getItemDamage());
+            infoList.add(FormatCodes.Italic.code + "Contains: " + FormatCodes.Reset.code + FormatCodes.Aqua.code + new ItemStack(tag.getInteger("id"), 1, tag.getInteger("meta")).getDisplayName());
+            infoList.add(FormatCodes.Italic.code + "Amount: " + FormatCodes.Reset.code + FormatCodes.Aqua.code + stack.getItemDamage());
             NBTTagList enchants = (NBTTagList) tag.getCompoundTag("nbt").getTag("ench") != null ? (NBTTagList) tag.getCompoundTag("nbt").getTag("ench") : (NBTTagList) tag.getCompoundTag("nbt").getTag("StoredEnchantments");
             if (enchants != null)
             {
@@ -191,7 +206,7 @@ public class ItemBox extends Item
                     short lvl = ((NBTTagCompound)enchants.tagAt(i)).getShort("lvl");
                     if (Enchantment.enchantmentsList[id] != null)
                     {
-                        infoList.add(FormatCodes.Yellow.format + Enchantment.enchantmentsList[id].getTranslatedName(lvl));
+                        infoList.add(FormatCodes.Yellow.code + Enchantment.enchantmentsList[id].getTranslatedName(lvl));
                     }
                 }
             }

@@ -18,7 +18,7 @@ import shukaro.artifice.util.IdMetaPair;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ItemDye extends Item
+public class ItemDye extends ItemArtifice
 {
     public Icon[] icons = new Icon[4];
     public String[] names = { "Blue", "Black", "Brown", "White" };
@@ -27,8 +27,6 @@ public class ItemDye extends Item
     {
         super(id);
         this.setUnlocalizedName("artifice.dye");
-        this.setHasSubtypes(true);
-        this.setCreativeTab(ArtificeCreativeTab.main);
     }
 
     @Override
@@ -62,23 +60,5 @@ public class ItemDye extends Item
     public String getUnlocalizedName(ItemStack stack)
     {
         return "item.artifice.dye." + names[stack.getItemDamage()].toLowerCase(Locale.ENGLISH);
-    }
-
-    @Override
-    @SideOnly(Side.CLIENT)
-    public void addInformation(ItemStack stack, EntityPlayer player, List infoList, boolean advancedTooltips)
-    {
-        if (!ArtificeConfig.tooltips.getBoolean(true))
-            return;
-        IdMetaPair pair = new IdMetaPair(stack.itemID, stack.getItemDamage());
-        if (ArtificeRegistry.getTooltipMap().get(pair) != null)
-        {
-            for (String s : ArtificeRegistry.getTooltipMap().get(pair))
-            {
-                if (!ArtificeConfig.flavorText.getBoolean(true) && s.startsWith(ArtificeTooltips.commentCode))
-                    continue;
-                infoList.add(s);
-            }
-        }
     }
 }

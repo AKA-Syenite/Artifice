@@ -18,7 +18,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Icon;
 
-public class ItemCoin extends Item
+public class ItemCoin extends ItemArtifice
 {
 	private Icon[] icons = new Icon[4];
 	public String[] coinTypes = { "Copper", "Silver", "Gold", "Platinum" };
@@ -27,8 +27,6 @@ public class ItemCoin extends Item
 	{
 		super(id);
 		this.setUnlocalizedName("artifice.coin");
-		this.setHasSubtypes(true);
-		this.setCreativeTab(ArtificeCreativeTab.main);
 	}
 
 	@Override
@@ -60,23 +58,5 @@ public class ItemCoin extends Item
     public String getUnlocalizedName(ItemStack stack)
     {
         return "item.artifice.coin." + coinTypes[stack.getItemDamage()].toLowerCase();
-    }
-
-    @Override
-    @SideOnly(Side.CLIENT)
-    public void addInformation(ItemStack stack, EntityPlayer player, List infoList, boolean advancedTooltips)
-    {
-        if (!ArtificeConfig.tooltips.getBoolean(true))
-            return;
-        IdMetaPair pair = new IdMetaPair(stack.itemID, stack.getItemDamage());
-        if (ArtificeRegistry.getTooltipMap().get(pair) != null)
-        {
-            for (String s : ArtificeRegistry.getTooltipMap().get(pair))
-            {
-                if (!ArtificeConfig.flavorText.getBoolean(true) && s.startsWith(ArtificeTooltips.commentCode))
-                    continue;
-                infoList.add(s);
-            }
-        }
     }
 }

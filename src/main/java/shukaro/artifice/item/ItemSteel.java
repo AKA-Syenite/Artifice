@@ -18,7 +18,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.Icon;
 import java.util.Locale;
 
-public class ItemSteel extends Item
+public class ItemSteel extends ItemArtifice
 {
     public Icon icon;
     public Icon dustIcon;
@@ -28,7 +28,6 @@ public class ItemSteel extends Item
     {
         super(id);
         this.setUnlocalizedName("artifice.steel");
-        this.setCreativeTab(ArtificeCreativeTab.main);
     }
 
     @Override
@@ -64,23 +63,5 @@ public class ItemSteel extends Item
     {
         this.icon = IconHandler.registerSingle(reg, "ingot_steel", "steel");
         this.dustIcon = IconHandler.registerSingle(reg, "dust_steel", "steel");
-    }
-
-    @Override
-    @SideOnly(Side.CLIENT)
-    public void addInformation(ItemStack stack, EntityPlayer player, List infoList, boolean advancedTooltips)
-    {
-        if (!ArtificeConfig.tooltips.getBoolean(true))
-            return;
-        IdMetaPair pair = new IdMetaPair(stack.itemID, stack.getItemDamage());
-        if (ArtificeRegistry.getTooltipMap().get(pair) != null)
-        {
-            for (String s : ArtificeRegistry.getTooltipMap().get(pair))
-            {
-                if (!ArtificeConfig.flavorText.getBoolean(true) && s.startsWith(ArtificeTooltips.commentCode))
-                    continue;
-                infoList.add(s);
-            }
-        }
     }
 }

@@ -1,7 +1,7 @@
 package shukaro.artifice.util;
 
 /**
- * Enum of format codes used by the vanilla Minecraft font renderer
+ * Enum of code codes used by the vanilla Minecraft font renderer
  *
  * @author MachineMuse
  */
@@ -30,10 +30,10 @@ public enum FormatCodes
     Italic("\u00A7o"),
     Reset("\u00A7r");
     
-    public String format;
+    public String code;
     
     private FormatCodes(String s)
     {
-        this.format = s;
+        this.code = s;
     }
 }

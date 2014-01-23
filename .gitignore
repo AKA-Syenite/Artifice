@@ -9,6 +9,7 @@ stats/
 mods/
 out/
 resourcepacks/
+screenshots/
 *.iml
 *.ipr
 *.iws
@@ -26,3 +27,4 @@ white-list.txt
 ops.txt
 banned-*.txt
 server*
+options.txt

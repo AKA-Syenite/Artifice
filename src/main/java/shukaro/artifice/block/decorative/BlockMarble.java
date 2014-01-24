@@ -1,9 +1,9 @@
 package shukaro.artifice.block.decorative;
 
-import java.util.List;
-
+import cpw.mods.fml.common.network.PacketDispatcher;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
@@ -17,20 +17,16 @@ import shukaro.artifice.gui.ArtificeCreativeTab;
 import shukaro.artifice.net.Packets;
 import shukaro.artifice.render.IconHandler;
 import shukaro.artifice.render.TextureHandler;
-import shukaro.artifice.render.connectedtexture.ConnectedTextureBase;
 import shukaro.artifice.render.connectedtexture.ConnectedTextures;
-import shukaro.artifice.render.connectedtexture.schemes.SolidConnectedTexture;
 import shukaro.artifice.util.BlockCoord;
-import shukaro.artifice.util.ChunkCoord;
 import shukaro.artifice.util.PacketWrapper;
-import cpw.mods.fml.common.network.PacketDispatcher;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+
+import java.util.List;
 
 public class BlockMarble extends BlockArtifice
 {
     private Icon[] icons = new Icon[ArtificeCore.rocks.length];
-    
+
     public BlockMarble(int id)
     {
         super(id, Material.rock);
@@ -39,7 +35,7 @@ public class BlockMarble extends BlockArtifice
         setResistance(10.0F);
         setUnlocalizedName("artifice.marble");
     }
-    
+
     @Override
     @SideOnly(Side.CLIENT)
     public void getSubBlocks(int i, CreativeTabs tabs, List list)
@@ -49,7 +45,7 @@ public class BlockMarble extends BlockArtifice
             list.add(new ItemStack(i, 1, j));
         }
     }
-    
+
     @Override
     public int damageDropped(int meta)
     {
@@ -60,7 +56,7 @@ public class BlockMarble extends BlockArtifice
     @SideOnly(Side.CLIENT)
     public void registerIcons(IconRegister reg)
     {
-    	ArtificeConfig.registerConnectedTextures(reg);
+        ArtificeConfig.registerConnectedTextures(reg);
         icons[0] = IconHandler.registerSingle(reg, "marble", "marble");
         icons[1] = IconHandler.registerSingle(reg, "cobblestone", "marble");
         icons[2] = IconHandler.registerSingle(reg, "bricks", "marble");
@@ -74,9 +70,9 @@ public class BlockMarble extends BlockArtifice
         if (meta >= ArtificeCore.rocks.length)
             meta = 0;
         if (meta == 3)
-        	return ConnectedTextures.MarblePaver.textureList[0];
+            return ConnectedTextures.MarblePaver.textureList[0];
         if (meta == 4)
-        	return ConnectedTextures.MarbleAntipaver.textureList[0];
+            return ConnectedTextures.MarbleAntipaver.textureList[0];
         else
             return icons[meta];
     }
@@ -90,17 +86,14 @@ public class BlockMarble extends BlockArtifice
             meta = 0;
         if (meta == 3 || meta == 4)
         {
-        	BlockCoord coord = new BlockCoord(x, y, z);
-        	if (!ArtificeCore.textureCache.containsKey(coord))
-        		TextureHandler.updateTexture(coord);
-        	
-        	if (ArtificeCore.textureCache.get(coord) == null)
-        		return this.getIcon(side, meta);
-        	if (TextureHandler.getConnectedTexture(this.getIcon(side, meta)) != null)
-        		return TextureHandler.getConnectedTexture(this.getIcon(side, meta)).textureList[ArtificeCore.textureCache.get(coord)[side]];
-        	return this.getIcon(side, meta);
-        }
-        else
+            BlockCoord coord = new BlockCoord(x, y, z);
+            if (!ArtificeCore.textureCache.containsKey(coord))
+                TextureHandler.updateTexture(coord);
+
+            if (TextureHandler.getConnectedTexture(this.getIcon(side, meta)) != null && ArtificeCore.textureCache.get(coord) != null)
+                return TextureHandler.getConnectedTexture(this.getIcon(side, meta)).textureList[ArtificeCore.textureCache.get(coord)[side]];
+            return this.getIcon(side, meta);
+        } else
             return icons[meta];
     }
 
@@ -112,7 +105,7 @@ public class BlockMarble extends BlockArtifice
             int meta = world.getBlockMetadata(x, y, z);
             BlockCoord c = new BlockCoord(x, y, z);
             if (c.getBlock(world) != null && (meta == 3 || meta == 4))
-                PacketDispatcher.sendPacketToAllAround(c.x, c.y, c.z, 192, world.provider.dimensionId, PacketWrapper.createPacket(ArtificeCore.modChannel, Packets.TEXTUREUPDATE, new Object[] {c.x, c.y, c.z}));
+                PacketDispatcher.sendPacketToAllAround(c.x, c.y, c.z, 192, world.provider.dimensionId, PacketWrapper.createPacket(ArtificeCore.modChannel, Packets.TEXTUREUPDATE, new Object[]{c.x, c.y, c.z}));
         }
     }
 }

@@ -1,9 +1,7 @@
 package shukaro.artifice.item;
 
-import java.util.List;
-import java.util.Locale;
-import java.util.Random;
-
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockFlower;
 import net.minecraft.client.renderer.texture.IconRegister;
@@ -20,20 +18,20 @@ import shukaro.artifice.gui.ArtificeCreativeTab;
 import shukaro.artifice.render.IconHandler;
 import shukaro.artifice.util.BlockCoord;
 import shukaro.artifice.util.IdMetaPair;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+
+import java.util.List;
+import java.util.Locale;
 
 public class ItemSickle extends ItemTool
 {
-    public Icon icon;
-    public int radius;
-    Random rand = new Random();
+    private Icon icon;
+    private int radius;
 
     public ItemSickle(int id, EnumToolMaterial mat)
     {
         super(id, 3, mat, null);
         this.setCreativeTab(ArtificeCreativeTab.main);
-        this.setMaxDamage(mat.getMaxUses()/2);
+        this.setMaxDamage(mat.getMaxUses() / 2);
         this.setUnlocalizedName("artifice.sickle." + this.toolMaterial.toString().toLowerCase(Locale.ENGLISH));
         this.radius = getRadius(mat);
     }
@@ -102,35 +100,33 @@ public class ItemSickle extends ItemTool
         World world = player.worldObj;
         Block block = coord.getBlock(world);
         int radius = getRadius(this.toolMaterial);
-        
+
         if (block instanceof BlockFlower)
         {
-        	int count = 0;
-            for (int i=-radius; i<radius; i++)
+            int count = 0;
+            for (int i = -radius; i < radius; i++)
             {
-                for (int k=-radius; k<radius; k++)
+                for (int k = -radius; k < radius; k++)
                 {
-                    Block b = Block.blocksList[world.getBlockId(x+i, y, z+k)];
-                    int meta = world.getBlockMetadata(x+i, y, z+k);
-                    if (b instanceof BlockFlower && coord.getDistance(x+i, y, z+k) <= radius && b.canHarvestBlock(player, meta))
+                    Block b = Block.blocksList[world.getBlockId(x + i, y, z + k)];
+                    int meta = world.getBlockMetadata(x + i, y, z + k);
+                    if (b instanceof BlockFlower && coord.getDistance(x + i, y, z + k) <= radius && b.canHarvestBlock(player, meta))
                     {
-                        b.harvestBlock(world, player, x+i, y, z+k, meta);
-                        world.setBlockToAir(x+i, y, z+k);
+                        b.harvestBlock(world, player, x + i, y, z + k, meta);
+                        world.setBlockToAir(x + i, y, z + k);
                         count++;
                     }
                 }
             }
             if (!world.isRemote)
-                world.playSoundEffect((double)x + 0.5D, (double)y + 0.5D, (double)z + 0.5D, block.stepSound.getBreakSound(), 1.0F, world.rand.nextFloat() * 0.1F + 0.9F);
-            stack.damageItem(count/4, player);
+                world.playSoundEffect((double) x + 0.5D, (double) y + 0.5D, (double) z + 0.5D, block.stepSound.getBreakSound(), 1.0F, world.rand.nextFloat() * 0.1F + 0.9F);
+            stack.damageItem(count / 4, player);
             if (stack.stackSize <= 0)
-            	player.destroyCurrentEquippedItem();
+                player.destroyCurrentEquippedItem();
             return true;
-        }
-
-        else if (block != null && block.isLeaves(world, x, y, z))
+        } else if (block != null && block.isLeaves(world, x, y, z))
         {
-        	int count = 0;
+            int count = 0;
             for (BlockCoord c : coord.getRadiusBlocks(world, radius))
             {
                 Block b = Block.blocksList[world.getBlockId(c.x, c.y, c.z)];
@@ -144,10 +140,10 @@ public class ItemSickle extends ItemTool
                 }
             }
             if (!world.isRemote)
-                world.playSoundEffect((double)x + 0.5D, (double)y + 0.5D, (double)z + 0.5D, block.stepSound.getBreakSound(), 1.0F, world.rand.nextFloat() * 0.1F + 0.9F);
-            stack.damageItem(count/4, player);
+                world.playSoundEffect((double) x + 0.5D, (double) y + 0.5D, (double) z + 0.5D, block.stepSound.getBreakSound(), 1.0F, world.rand.nextFloat() * 0.1F + 0.9F);
+            stack.damageItem(count / 4, player);
             if (stack.stackSize <= 0)
-            	player.destroyCurrentEquippedItem();
+                player.destroyCurrentEquippedItem();
             return true;
         }
 

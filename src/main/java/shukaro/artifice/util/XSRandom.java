@@ -5,12 +5,12 @@ import java.util.Random;
 public class XSRandom extends Random
 {
     private long seed;
-    
+
     public XSRandom(long seed)
     {
         this.seed = seed;
     }
-    
+
     protected int next(int nbits)
     {
         long x = seed;

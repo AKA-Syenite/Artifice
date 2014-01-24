@@ -1,16 +1,13 @@
 package shukaro.artifice.recipe;
 
-import org.lwjgl.input.Keyboard;
-
-import shukaro.artifice.ArtificeItems;
-import shukaro.artifice.net.PlayerTracking;
-import net.minecraft.client.Minecraft;
+import cpw.mods.fml.common.ICraftingHandler;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import cpw.mods.fml.common.ICraftingHandler;
+import shukaro.artifice.ArtificeItems;
+import shukaro.artifice.net.PlayerTracking;
 
 public class BoxCraftingHandler implements ICraftingHandler
 {
@@ -18,7 +15,7 @@ public class BoxCraftingHandler implements ICraftingHandler
     @Override
     public void onCrafting(EntityPlayer player, ItemStack item, IInventory craft)
     {
-        for (int i=0; i<craft.getSizeInventory(); i++)
+        for (int i = 0; i < craft.getSizeInventory(); i++)
         {
             // Is the item in the grid a box?
             // Is the output NOT a box?
@@ -29,26 +26,26 @@ public class BoxCraftingHandler implements ICraftingHandler
                 boolean shift = false;
                 if (PlayerTracking.sneaks.contains(player.entityId))
                     shift = true;
-                
+
                 // Number of boxes to unbox
                 int num;
                 if (shift)
                     num = slot.stackSize;
                 else
                     num = 1;
-                
+
                 // The thing in the box
                 NBTTagCompound tag = slot.getTagCompound();
                 ItemStack thing = new ItemStack(tag.getInteger("id"), 1, tag.getInteger("meta"));
                 if (!tag.getCompoundTag("nbt").hasNoTags())
                     thing.setTagCompound(tag.getCompoundTag("nbt"));
-                
+
                 // Number of things per box
                 int size = slot.getItemDamage();
-                
+
                 // Number of things per craft
                 int numPer = thing.getMaxStackSize() < size ? thing.getMaxStackSize() : size;
-                
+
                 // If we're only crafting one, we'll need to set up a new stack
                 // The itemstack for the box that we'll take something out of
                 ItemStack damaged = null;
@@ -69,11 +66,11 @@ public class BoxCraftingHandler implements ICraftingHandler
                 // If we're shift-crafting we use up every box in the grid
                 else
                     slot.stackSize = 0;
-                
+
                 // Give the player the damaged box, if it exists
                 if (damaged != null && damaged.stackSize > 0 && !player.inventory.addItemStackToInventory(damaged) && !player.worldObj.isRemote)
                     player.worldObj.spawnEntityInWorld(new EntityItem(player.worldObj, player.posX + 0.5D, player.posY + 0.5D, player.posZ + 0.5D, damaged));
-                
+
                 // If the player shift clicked, they'll only get one craft's worth of result
                 if (shift)
                 {
@@ -114,6 +111,6 @@ public class BoxCraftingHandler implements ICraftingHandler
     @Override
     public void onSmelting(EntityPlayer player, ItemStack item)
     {
-        
+
     }
 }

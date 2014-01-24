@@ -1,8 +1,7 @@
 package shukaro.artifice.block.decorative;
 
-import java.util.List;
-import java.util.Random;
-
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.BlockFlower;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
@@ -13,9 +12,10 @@ import net.minecraft.world.World;
 import shukaro.artifice.ArtificeCore;
 import shukaro.artifice.gui.ArtificeCreativeTab;
 import shukaro.artifice.render.IconHandler;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+
+import java.util.List;
 import java.util.Locale;
+import java.util.Random;
 
 public class BlockFlora extends BlockFlower
 {
@@ -44,7 +44,7 @@ public class BlockFlora extends BlockFlower
     @SideOnly(Side.CLIENT)
     public void registerIcons(IconRegister reg)
     {
-        for (int i=0; i<ArtificeCore.flora.length; i++)
+        for (int i = 0; i < ArtificeCore.flora.length; i++)
             icons[i] = IconHandler.registerSingle(reg, ArtificeCore.flora[i].toLowerCase(Locale.ENGLISH), "flora");
     }
 

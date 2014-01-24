@@ -1,32 +1,14 @@
 package shukaro.artifice;
 
+import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.block.BlockHalfSlab;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 import shukaro.artifice.block.BlockSteel;
 import shukaro.artifice.block.ItemBlockArtifice;
-import shukaro.artifice.block.decorative.BlockBasalt;
-import shukaro.artifice.block.decorative.BlockBasaltSlab;
-import shukaro.artifice.block.decorative.BlockFlora;
-import shukaro.artifice.block.decorative.BlockLotus;
-import shukaro.artifice.block.decorative.BlockMarble;
-import shukaro.artifice.block.decorative.BlockMarbleSlab;
-import shukaro.artifice.block.decorative.BlockStairsArtifice;
-import shukaro.artifice.block.decorative.ItemBlockBasalt;
-import shukaro.artifice.block.decorative.ItemBlockFlora;
-import shukaro.artifice.block.decorative.ItemBlockLotus;
-import shukaro.artifice.block.decorative.ItemBlockMarble;
-import shukaro.artifice.block.decorative.ItemBlockSlabArtifice;
-import shukaro.artifice.block.frame.BlockFrame;
-import shukaro.artifice.block.frame.BlockFrameBase;
-import shukaro.artifice.block.frame.BlockFrameBlastWall;
-import shukaro.artifice.block.frame.BlockFrameDetector;
-import shukaro.artifice.block.frame.BlockFrameGlassWall;
-import shukaro.artifice.block.frame.BlockFrameScaffold;
-import shukaro.artifice.block.frame.ItemBlockFrame;
+import shukaro.artifice.block.decorative.*;
+import shukaro.artifice.block.frame.*;
 import shukaro.artifice.compat.ArtificeRegistry;
-import cpw.mods.fml.common.registry.GameRegistry;
 
 public class ArtificeBlocks
 {
@@ -48,7 +30,7 @@ public class ArtificeBlocks
     public static BlockFrameBlastWall blockReinforced;
     public static BlockFrameGlassWall blockGlassWall;
     public static BlockFrameScaffold blockScaffold;
-    
+
     public static void initBlocks()
     {
         if (ArtificeConfig.enableWorldGen.getBoolean(true))
@@ -84,7 +66,7 @@ public class ArtificeBlocks
             //OreDictionary.registerOre("cobblestone", new ItemStack(blockBasalt, 1, 1));
             //OreDictionary.registerOre("cobblestone", new ItemStack(blockMarble, 1, 1));
         }
-        
+
         if (ArtificeConfig.enableFrames.getBoolean(true))
         {
             blockFrame = new BlockFrameBase(ArtificeConfig.blockFrameID.getInt());
@@ -98,7 +80,7 @@ public class ArtificeBlocks
             GameRegistry.registerBlock(blockGlassWall, ItemBlockFrame.class, blockGlassWall.getUnlocalizedName());
             GameRegistry.registerBlock(blockScaffold, ItemBlockFrame.class, blockScaffold.getUnlocalizedName());
         }
-        
+
         if (ArtificeConfig.enableSteel.getBoolean(true))
         {
             blockSteel = new BlockSteel(ArtificeConfig.blockSteelID.getInt());

@@ -1,22 +1,19 @@
 package shukaro.artifice.render.connectedtexture;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-import net.minecraft.block.Block;
 import net.minecraft.world.IBlockAccess;
 import shukaro.artifice.util.BlockCoord;
 
 public abstract class ConnectedTextureBase
 {
-    public ConnectedTextures texture;
+    private ConnectedTextures texture;
     protected final int[] textureIndexMap = new int[256];
-    
+
     public ConnectedTextureBase(ConnectedTextures texture)
     {
         this.texture = texture;
         loadTextureMap();
     }
-    
+
     private void loadTextureMap()
     {
         this.textureIndexMap[0] = 26;
@@ -67,18 +64,18 @@ public abstract class ConnectedTextureBase
         this.textureIndexMap[253] = 36;
         this.textureIndexMap[255] = 0;
     }
-    
+
     public int getTextureIndex(IBlockAccess block, int x, int y, int z, int side)
     {
         BlockCoord coord = new BlockCoord();
         int[][] sideSideMap = {
-                { 2, 5, 3, 4 },
-                { 2, 5, 3, 4 },
-                { 1, 4, 0, 5 },
-                { 1, 5, 0, 4 },
-                { 1, 3, 0, 2 },
-                { 1, 2, 0, 3 }};
-        
+                {2, 5, 3, 4},
+                {2, 5, 3, 4},
+                {1, 4, 0, 5},
+                {1, 5, 0, 4},
+                {1, 3, 0, 2},
+                {1, 2, 0, 3}};
+
         int map = 0;
         for (int i = 0; i < 4; i++)
         {
@@ -91,8 +88,8 @@ public abstract class ConnectedTextureBase
         }
         return getTextureFromMap(map);
     }
-    
+
     protected abstract int getTextureFromMap(int map);
-    
+
     protected abstract boolean canConnectOnSide(IBlockAccess block, BlockCoord coord, int side, int face);
 }

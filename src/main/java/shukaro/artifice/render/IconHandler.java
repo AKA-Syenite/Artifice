@@ -1,17 +1,18 @@
 package shukaro.artifice.render;
 
-import shukaro.artifice.ArtificeCore;
-import shukaro.artifice.render.connectedtexture.ConnectedTextures;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.util.Icon;
 import net.minecraftforge.common.ForgeDirection;
+import shukaro.artifice.ArtificeCore;
+import shukaro.artifice.render.connectedtexture.ConnectedTextures;
+
 import java.util.Locale;
 
 public class IconHandler
 {
     public static void registerConnectedTexture(IconRegister reg, ConnectedTextures texture, String folder)
     {
-        for (int i=0; i<texture.textureList.length; i++)
+        for (int i = 0; i < texture.textureList.length; i++)
         {
             texture.textureList[i] = reg.registerIcon(ArtificeCore.modID.toLowerCase(Locale.ENGLISH) + ":" + folder + "/" + texture.name + "_" + (i > 9 ? i : "0" + i));
         }
@@ -30,7 +31,7 @@ public class IconHandler
     public static Icon[][] registerMetaDirectional(IconRegister reg, String[] names, String folder)
     {
         Icon[][] icons = new Icon[names.length][6];
-        for (int i=0; i<names.length; i++)
+        for (int i = 0; i < names.length; i++)
         {
             for (ForgeDirection d : ForgeDirection.VALID_DIRECTIONS)
             {
@@ -42,14 +43,13 @@ public class IconHandler
 
     public static Icon registerSingle(IconRegister reg, String name, String folder)
     {
-        Icon icon = reg.registerIcon(ArtificeCore.modID.toLowerCase(Locale.ENGLISH) + ":" + folder + "/" + name);
-        return icon;
+        return reg.registerIcon(ArtificeCore.modID.toLowerCase(Locale.ENGLISH) + ":" + folder + "/" + name);
     }
 
     public static Icon[] registerMeta(IconRegister reg, String names[], String folder)
     {
         Icon[] icons = new Icon[names.length];
-        for (int i=0; i<names.length; i++)
+        for (int i = 0; i < names.length; i++)
         {
             icons[i] = reg.registerIcon(ArtificeCore.modID.toLowerCase(Locale.ENGLISH) + ":" + folder + "/" + names[i]);
         }

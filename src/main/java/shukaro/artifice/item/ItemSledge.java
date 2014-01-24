@@ -1,9 +1,7 @@
 package shukaro.artifice.item;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
-
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.EntityLivingBase;
@@ -20,8 +18,10 @@ import shukaro.artifice.compat.ArtificeRegistry;
 import shukaro.artifice.gui.ArtificeCreativeTab;
 import shukaro.artifice.render.IconHandler;
 import shukaro.artifice.util.IdMetaPair;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
 
 public class ItemSledge extends ItemTool
 {
@@ -32,7 +32,7 @@ public class ItemSledge extends ItemTool
     {
         super(id, 2, mat, null);
         this.setCreativeTab(ArtificeCreativeTab.main);
-        this.setMaxDamage(mat.getMaxUses()/4);
+        this.setMaxDamage(mat.getMaxUses() / 4);
         this.setUnlocalizedName("artifice.sledge." + this.toolMaterial.toString().toLowerCase(Locale.ENGLISH));
         this.lossChance = getLossChance(mat);
     }
@@ -79,7 +79,7 @@ public class ItemSledge extends ItemTool
     {
         if (ArtificeRegistry.getWildSledgeBlocks().get(block.blockID) != null)
             return true;
-        for (int i=0; i<16; i++)
+        for (int i = 0; i < 16; i++)
         {
             if (ArtificeRegistry.getSledgeBlocks().get(new IdMetaPair(block.blockID, i)) != null)
                 return true;
@@ -107,7 +107,7 @@ public class ItemSledge extends ItemTool
     @SideOnly(Side.CLIENT)
     public void registerIcons(IconRegister reg)
     {
-    	this.icon = IconHandler.registerSingle(reg, "sledge_" + this.toolMaterial.toString().toLowerCase(Locale.ENGLISH), "sledge");
+        this.icon = IconHandler.registerSingle(reg, "sledge_" + this.toolMaterial.toString().toLowerCase(Locale.ENGLISH), "sledge");
     }
 
     @Override
@@ -136,8 +136,7 @@ public class ItemSledge extends ItemTool
                 }
                 world.setBlockToAir(x, y, z);
             }
-        }
-        catch (Exception e)
+        } catch (Exception e)
         {
             e.printStackTrace();
         }

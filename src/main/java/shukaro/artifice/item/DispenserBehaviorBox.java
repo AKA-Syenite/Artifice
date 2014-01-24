@@ -1,20 +1,15 @@
 package shukaro.artifice.item;
 
-import net.minecraft.block.BlockDispenser;
 import net.minecraft.dispenser.BehaviorDefaultDispenseItem;
 import net.minecraft.dispenser.IBlockSource;
-import net.minecraft.dispenser.IPosition;
-import net.minecraft.entity.item.EntityItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntityDispenser;
-import net.minecraft.util.EnumFacing;
-import net.minecraft.world.World;
 
 public class DispenserBehaviorBox extends BehaviorDefaultDispenseItem
 {
     private final BehaviorDefaultDispenseItem defaultDispense = new BehaviorDefaultDispenseItem();
-    
+
     @Override
     public ItemStack dispenseStack(IBlockSource dispenser, ItemStack stack)
     {
@@ -25,7 +20,7 @@ public class DispenserBehaviorBox extends BehaviorDefaultDispenseItem
             ItemStack thing = new ItemStack(tag.getInteger("id"), stack.getItemDamage(), tag.getInteger("meta"));
             if (!tag.getCompoundTag("nbt").hasNoTags())
                 thing.setTagCompound(tag.getCompoundTag("nbt"));
-            
+
             // Split the stack if stack sizes won't permit normal unboxing
             ItemStack extra = null;
             if (thing.stackSize > thing.getMaxStackSize() && stack.stackSize > 1)
@@ -46,15 +41,14 @@ public class DispenserBehaviorBox extends BehaviorDefaultDispenseItem
                     stack.stackSize--;
                 if (drop != null)
                     defaultDispense.dispense(dispenser, drop);
-            }
-            else
+            } else
             {
                 drop = thing.copy();
                 stack.stackSize--;
                 if (drop != null)
                     defaultDispense.dispense(dispenser, drop);
             }
-            
+
             TileEntityDispenser d = (TileEntityDispenser) dispenser.getBlockTileEntity();
             // Give the dispenser the leftover boxes
             // If they won't fit dispense them
@@ -63,7 +57,7 @@ public class DispenserBehaviorBox extends BehaviorDefaultDispenseItem
         }
         return stack;
     }
-    
+
     @Override
     protected void playDispenseSound(IBlockSource dispenser)
     {

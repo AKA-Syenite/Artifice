@@ -1,6 +1,8 @@
- package shukaro.artifice.block.frame;
+package shukaro.artifice.block.frame;
 
-import net.minecraft.client.Minecraft;
+import cpw.mods.fml.common.network.PacketDispatcher;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.Icon;
@@ -11,15 +13,9 @@ import shukaro.artifice.ArtificeConfig;
 import shukaro.artifice.ArtificeCore;
 import shukaro.artifice.net.Packets;
 import shukaro.artifice.render.TextureHandler;
-import shukaro.artifice.render.connectedtexture.ConnectedTextureBase;
 import shukaro.artifice.render.connectedtexture.ConnectedTextures;
-import shukaro.artifice.render.connectedtexture.schemes.SolidConnectedTexture;
 import shukaro.artifice.util.BlockCoord;
-import shukaro.artifice.util.ChunkCoord;
 import shukaro.artifice.util.PacketWrapper;
-import cpw.mods.fml.common.network.PacketDispatcher;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockFrameBlastWall extends BlockFrame
 {
@@ -28,31 +24,31 @@ public class BlockFrameBlastWall extends BlockFrame
         super(id);
         setUnlocalizedName("artifice.reinforced");
     }
-    
+
     @Override
     public float getExplosionResistance(Entity par1Entity, World world, int x, int y, int z, double explosionX, double explosionY, double explosionZ)
     {
         int meta = world.getBlockMetadata(x, y, z);
         return this.getResistance(meta);
     }
-    
+
     public float getResistance(int meta)
     {
         switch (meta)
         {
-        case 0:
-            return 20.0F;
-        case 1:
-            return 30.0F;
-        case 2:
-            return 50.0F;
-        case 3:
-            return 80.0F;
-        default:
-            return 10.0F;
+            case 0:
+                return 20.0F;
+            case 1:
+                return 30.0F;
+            case 2:
+                return 50.0F;
+            case 3:
+                return 80.0F;
+            default:
+                return 10.0F;
         }
     }
-    
+
     @Override
     public float getBlockHardness(World world, int x, int y, int z)
     {
@@ -69,7 +65,7 @@ public class BlockFrameBlastWall extends BlockFrame
     @SideOnly(Side.CLIENT)
     public void registerIcons(IconRegister reg)
     {
-    	ArtificeConfig.registerConnectedTextures(reg);
+        ArtificeConfig.registerConnectedTextures(reg);
     }
 
     @Override
@@ -78,18 +74,18 @@ public class BlockFrameBlastWall extends BlockFrame
     {
         if (meta >= ArtificeCore.tiers.length)
             meta = 0;
-        switch(meta)
+        switch (meta)
         {
-        case 0:
-        	return ConnectedTextures.BasicBlastWall.textureList[0];
-        case 1:
-        	return ConnectedTextures.ReinforcedBlastWall.textureList[0];
-        case 2:
-        	return ConnectedTextures.IndustrialBlastWall.textureList[0];
-        case 3:
-        	return ConnectedTextures.AdvancedBlastWall.textureList[0];
-        default:
-        	return ConnectedTextures.BasicBlastWall.textureList[0];
+            case 0:
+                return ConnectedTextures.BasicBlastWall.textureList[0];
+            case 1:
+                return ConnectedTextures.ReinforcedBlastWall.textureList[0];
+            case 2:
+                return ConnectedTextures.IndustrialBlastWall.textureList[0];
+            case 3:
+                return ConnectedTextures.AdvancedBlastWall.textureList[0];
+            default:
+                return ConnectedTextures.BasicBlastWall.textureList[0];
         }
     }
 
@@ -100,31 +96,29 @@ public class BlockFrameBlastWall extends BlockFrame
         int meta = access.getBlockMetadata(x, y, z);
         if (meta > ArtificeCore.tiers.length)
             meta = 0;
-        
-    	BlockCoord coord = new BlockCoord(x, y, z);
-    	if (!ArtificeCore.textureCache.containsKey(coord))
-    		TextureHandler.updateTexture(coord);
-    	
-    	if (ArtificeCore.textureCache.get(coord) == null)
-    		return this.getIcon(side, meta);
-    	if (TextureHandler.getConnectedTexture(this.getIcon(side, meta)) != null)
-    		return TextureHandler.getConnectedTexture(this.getIcon(side, meta)).textureList[ArtificeCore.textureCache.get(coord)[side]];
-    	return this.getIcon(side, meta);
+
+        BlockCoord coord = new BlockCoord(x, y, z);
+        if (!ArtificeCore.textureCache.containsKey(coord))
+            TextureHandler.updateTexture(coord);
+
+        if (TextureHandler.getConnectedTexture(this.getIcon(side, meta)) != null && ArtificeCore.textureCache.get(coord) != null)
+            return TextureHandler.getConnectedTexture(this.getIcon(side, meta)).textureList[ArtificeCore.textureCache.get(coord)[side]];
+        return this.getIcon(side, meta);
     }
-    
+
     @Override
     public void onNeighborBlockChange(World world, int x, int y, int z, int neighborID)
     {
         if (!world.isRemote)
         {
-	        BlockCoord c = new BlockCoord(x, y, z);
-            PacketDispatcher.sendPacketToAllAround(c.x, c.y, c.z, 192, world.provider.dimensionId, PacketWrapper.createPacket(ArtificeCore.modChannel, Packets.TEXTUREUPDATE, new Object[] {c.x, c.y, c.z}));
+            BlockCoord c = new BlockCoord(x, y, z);
+            PacketDispatcher.sendPacketToAllAround(c.x, c.y, c.z, 192, world.provider.dimensionId, PacketWrapper.createPacket(ArtificeCore.modChannel, Packets.TEXTUREUPDATE, new Object[]{c.x, c.y, c.z}));
         }
     }
 
-	@Override
-	public boolean isBlockSolidOnSide(World world, int x, int y, int z, ForgeDirection side)
-	{
-		return true;
-	}
+    @Override
+    public boolean isBlockSolidOnSide(World world, int x, int y, int z, ForgeDirection side)
+    {
+        return true;
+    }
 }

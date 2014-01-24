@@ -24,7 +24,7 @@ public class TextureHandler
 	{
         World world = Minecraft.getMinecraft().theWorld;
 
-		if (world != null && c.getBlock(world) != null)
+		if (world != null && c.getBlock(world) != null && !c.getBlock(world).isAirBlock(world, c.x, c.y, c.z))
 		{
 			Block block = c.getBlock(world);
 			int meta = c.getMeta(world);

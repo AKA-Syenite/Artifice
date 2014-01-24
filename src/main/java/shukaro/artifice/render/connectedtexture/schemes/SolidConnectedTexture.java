@@ -27,7 +27,6 @@ public class SolidConnectedTexture extends ConnectedTextureBase
     @Override
     public boolean canConnectOnSide(IBlockAccess blockAccess, BlockCoord coord, int side, int face)
     {
-
     	int meta = coord.getMeta(blockAccess);
     	int neighborMeta = coord.copy().offset(side).getMeta(blockAccess);
         Block self = coord.getBlock(blockAccess);

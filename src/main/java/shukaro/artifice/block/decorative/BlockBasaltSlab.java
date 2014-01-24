@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Random;
 
+import cpw.mods.fml.common.network.PacketDispatcher;
 import net.minecraft.block.BlockHalfSlab;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
@@ -16,12 +17,14 @@ import shukaro.artifice.ArtificeBlocks;
 import shukaro.artifice.ArtificeConfig;
 import shukaro.artifice.ArtificeCore;
 import shukaro.artifice.gui.ArtificeCreativeTab;
+import shukaro.artifice.net.Packets;
 import shukaro.artifice.render.IconHandler;
 import shukaro.artifice.render.TextureHandler;
 import shukaro.artifice.render.connectedtexture.ConnectedTextures;
 import shukaro.artifice.util.BlockCoord;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import shukaro.artifice.util.PacketWrapper;
 
 public class BlockBasaltSlab extends BlockHalfSlab
 {
@@ -130,16 +133,14 @@ public class BlockBasaltSlab extends BlockHalfSlab
     }
 
     @Override
-    @SideOnly(Side.CLIENT)
     public void onNeighborBlockChange(World world, int x, int y, int z, int neighborID)
     {
-    	int meta = world.getBlockMetadata(x, y, z) & 7;
-    	BlockCoord coord = new BlockCoord(x, y, z);
-        if (coord.getBlock(world) != null && (meta == 2 || meta == 3))
+        if (!world.isRemote)
         {
-        	TextureHandler.updateTexture(coord);
-        	for (BlockCoord n : coord.getAdjacent())
-	    		TextureHandler.updateTexture(n);
+            int meta = world.getBlockMetadata(x, y, z) & 7;
+            BlockCoord c = new BlockCoord(x, y, z);
+            if (c.getBlock(world) != null && (meta == 2 || meta == 3))
+                PacketDispatcher.sendPacketToAllAround(c.x, c.y, c.z, 192, world.provider.dimensionId, PacketWrapper.createPacket(ArtificeCore.modChannel, Packets.TEXTUREUPDATE, new Object[]{c.x, c.y, c.z}));
         }
     }
 }

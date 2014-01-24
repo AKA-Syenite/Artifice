@@ -3,6 +3,8 @@ package shukaro.artifice;
 import java.util.Map;
 import java.util.logging.Logger;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraftforge.common.MinecraftForge;
 import shukaro.artifice.event.ArtificeEventHandler;
 import shukaro.artifice.net.ClientPacketHandler;
@@ -46,7 +48,8 @@ public class ArtificeCore
     public static String[] tiers = { "Basic", "Reinforced", "Industrial", "Advanced" };
     public static String[] flora = { "Bluebell", "Orchid", "Iris", "Lotus", "LotusClosed"};
     public static String[] rocks = { "", "Cobblestone", "Brick", "Paver", "Antipaver", "Chiseled" };
-    
+
+    @SideOnly(Side.CLIENT)
     public static Map<BlockCoord, int[]> textureCache;
     
     @Instance(modID)
@@ -69,8 +72,9 @@ public class ArtificeCore
         
         ArtificeCore.eventHandler = new ArtificeEventHandler();
         MinecraftForge.EVENT_BUS.register(ArtificeCore.eventHandler);
-        ClientProxy.init();
         CommonProxy.init();
+        if (evt.getSide() == Side.CLIENT)
+            ClientProxy.init();
     }
     
     @EventHandler

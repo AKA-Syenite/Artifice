@@ -103,18 +103,16 @@ public class BlockMarble extends BlockArtifice
         else
             return icons[meta];
     }
-    
+
     @Override
-    @SideOnly(Side.CLIENT)
     public void onNeighborBlockChange(World world, int x, int y, int z, int neighborID)
     {
-    	int meta = world.getBlockMetadata(x, y, z);
-    	BlockCoord c = new BlockCoord(x, y, z);
-    	if (c.getBlock(world) != null && (meta == 3 || meta == 4))
-    	{
-	    	TextureHandler.updateTexture(c);
-	    	for (BlockCoord n : c.getAdjacent())
-	    		TextureHandler.updateTexture(n);
-    	}
+        if (!world.isRemote)
+        {
+            int meta = world.getBlockMetadata(x, y, z);
+            BlockCoord c = new BlockCoord(x, y, z);
+            if (c.getBlock(world) != null && (meta == 3 || meta == 4))
+                PacketDispatcher.sendPacketToAllAround(c.x, c.y, c.z, 192, world.provider.dimensionId, PacketWrapper.createPacket(ArtificeCore.modChannel, Packets.TEXTUREUPDATE, new Object[] {c.x, c.y, c.z}));
+        }
     }
 }

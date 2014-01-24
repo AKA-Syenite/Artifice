@@ -110,15 +110,15 @@ public class BlockFrameGlassWall extends BlockFrame
     		return TextureHandler.getConnectedTexture(this.getIcon(side, meta)).textureList[ArtificeCore.textureCache.get(coord)[side]];
     	return this.getIcon(side, meta);
     }
-    
+
     @Override
-    @SideOnly(Side.CLIENT)
     public void onNeighborBlockChange(World world, int x, int y, int z, int neighborID)
     {
-	    BlockCoord coord = new BlockCoord(x, y, z);
-	    TextureHandler.updateTexture(world, coord);
-	    for (BlockCoord n : coord.getAdjacent())
-    		TextureHandler.updateTexture(n);
+        if (!world.isRemote)
+        {
+            BlockCoord c = new BlockCoord(x, y, z);
+            PacketDispatcher.sendPacketToAllAround(c.x, c.y, c.z, 192, world.provider.dimensionId, PacketWrapper.createPacket(ArtificeCore.modChannel, Packets.TEXTUREUPDATE, new Object[] {c.x, c.y, c.z}));
+        }
     }
 
 	@Override

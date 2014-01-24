@@ -32,7 +32,8 @@ public class KeyTicker implements ITickHandler
         {
             PlayerTracking.sneaks.add(playerID);
             PacketDispatcher.sendPacketToServer(PacketWrapper.createPacket(ArtificeCore.modChannel, Packets.SNEAKEVENT, new Object[]{playerID, true}));
-        } else if (!Keyboard.isKeyDown(mc.gameSettings.keyBindSneak.keyCode) && PlayerTracking.sneaks.contains(playerID))
+        }
+        else if (!Keyboard.isKeyDown(mc.gameSettings.keyBindSneak.keyCode) && PlayerTracking.sneaks.contains(playerID))
         {
             PlayerTracking.sneaks.remove(playerID);
             PacketDispatcher.sendPacketToServer(PacketWrapper.createPacket(ArtificeCore.modChannel, Packets.SNEAKEVENT, new Object[]{playerID, false}));

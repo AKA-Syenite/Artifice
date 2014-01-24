@@ -53,13 +53,15 @@ public class BlockFrameScaffold extends BlockFrame
         if (entity.isCollidedHorizontally)
         {
             entity.motionY = 0.2D;
-        } else if (PlayerTracking.sneaks.contains(entity.entityId))
+        }
+        else if (PlayerTracking.sneaks.contains(entity.entityId))
         {
             double diff = entity.prevPosY - entity.posY;
             entity.boundingBox.minY += diff;
             entity.boundingBox.maxY += diff;
             entity.posY = entity.prevPosY;
-        } else
+        }
+        else
         {
             entity.motionY = -0.10D;
         }

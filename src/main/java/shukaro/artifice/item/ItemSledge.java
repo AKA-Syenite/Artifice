@@ -136,7 +136,8 @@ public class ItemSledge extends ItemTool
                 }
                 world.setBlockToAir(x, y, z);
             }
-        } catch (Exception e)
+        }
+        catch (Exception e)
         {
             e.printStackTrace();
         }

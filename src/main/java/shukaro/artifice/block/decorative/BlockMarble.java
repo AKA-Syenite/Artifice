@@ -93,7 +93,8 @@ public class BlockMarble extends BlockArtifice
             if (TextureHandler.getConnectedTexture(this.getIcon(side, meta)) != null && ArtificeCore.textureCache.get(coord) != null)
                 return TextureHandler.getConnectedTexture(this.getIcon(side, meta)).textureList[ArtificeCore.textureCache.get(coord)[side]];
             return this.getIcon(side, meta);
-        } else
+        }
+        else
             return icons[meta];
     }
 

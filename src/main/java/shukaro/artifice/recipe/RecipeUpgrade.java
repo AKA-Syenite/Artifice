@@ -69,18 +69,36 @@ public class RecipeUpgrade implements IRecipe
                 // Sharpening Kit
                 if (stack.getItemDamage() == 0)
                 {
-                    if (ArtificeConfig.limitUpgrades.getBoolean(true))
-                        maxLevel = EnumUpgrades.SharpeningKit.maxLevel;
-                    else
-                        maxLevel = EnumUpgrades.SharpeningKit.enchant.getMaxLevel();
-
-                    if (Enchantment.sharpness.canApply(this.output) && i % 2 == 0)
+                    if (Enchantment.sharpness.canApply(this.output) && Enchantment.efficiency.canApply(this.output))
+                    {
+                        if (i % 2 == 0)
+                            enchant = Enchantment.sharpness;
+                        else
+                            enchant = Enchantment.efficiency;
+                    }
+                    else if (Enchantment.sharpness.canApply(this.output))
                         enchant = Enchantment.sharpness;
                     else if (Enchantment.efficiency.canApply(this.output))
                         enchant = Enchantment.efficiency;
                     else
                         return false;
-                } else
+
+                    if (ArtificeConfig.limitUpgrades.getBoolean(true))
+                    {
+                        if (enchant == Enchantment.sharpness)
+                            maxLevel = EnumUpgrades.SharpeningKitS.maxLevel;
+                        else
+                            maxLevel = EnumUpgrades.SharpeningKitE.maxLevel;
+                    }
+                    else
+                    {
+                        if (enchant == Enchantment.sharpness)
+                            maxLevel = EnumUpgrades.SharpeningKitS.enchant.getMaxLevel();
+                        else
+                            maxLevel = EnumUpgrades.SharpeningKitE.enchant.getMaxLevel();
+                    }
+                }
+                else
                 {
                     enchant = EnumUpgrades.values()[stack.getItemDamage()].enchant;
                     if (ArtificeConfig.limitUpgrades.getBoolean(true))
@@ -110,7 +128,8 @@ public class RecipeUpgrade implements IRecipe
                                 }
                             }
                             this.output.addEnchantment(enchant, 1);
-                        } else
+                        }
+                        else
                         {
                             NBTTagList enchants = (NBTTagList) this.output.stackTagCompound.getTag("ench");
                             for (int j = 0; j < enchants.tagCount(); j++)
@@ -120,9 +139,11 @@ public class RecipeUpgrade implements IRecipe
                                     tag.setShort("lvl", (short) (tag.getShort("lvl") + 1));
                             }
                         }
-                    } else
+                    }
+                    else
                         return false;
-                } else
+                }
+                else
                     return false;
             }
         }

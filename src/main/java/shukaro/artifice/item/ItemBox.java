@@ -84,7 +84,8 @@ public class ItemBox extends ItemArtifice
         {
             this.onItemRightClick(stack, world, player);
             return true;
-        } else
+        }
+        else
         {
             return false;
         }
@@ -159,7 +160,8 @@ public class ItemBox extends ItemArtifice
                     stack.stackSize--;
                 if (drop != null && !player.inventory.addItemStackToInventory(drop) && !world.isRemote)
                     world.spawnEntityInWorld(new EntityItem(world, player.posX + 0.5D, player.posY + 0.5D, player.posZ + 0.5D, drop));
-            } else
+            }
+            else
             {
                 drop = thing.copy();
                 stack.stackSize--;

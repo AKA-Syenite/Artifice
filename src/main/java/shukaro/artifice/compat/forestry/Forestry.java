@@ -38,7 +38,8 @@ public class Forestry
             }
 
             ArtificeCore.logger.log(Level.INFO, "Forestry Compat Initialized");
-        } catch (Exception ex)
+        }
+        catch (Exception ex)
         {
             ArtificeCore.logger.log(Level.WARNING, "Couldn't initialize Forestry compat");
             ex.printStackTrace();

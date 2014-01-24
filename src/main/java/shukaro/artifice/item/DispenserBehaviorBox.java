@@ -41,7 +41,8 @@ public class DispenserBehaviorBox extends BehaviorDefaultDispenseItem
                     stack.stackSize--;
                 if (drop != null)
                     defaultDispense.dispense(dispenser, drop);
-            } else
+            }
+            else
             {
                 drop = thing.copy();
                 stack.stackSize--;

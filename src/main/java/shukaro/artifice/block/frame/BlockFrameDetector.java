@@ -81,11 +81,13 @@ public class BlockFrameDetector extends BlockFrame
         {
             par1World.setBlockMetadataWithNotify(par2, par3, par4, 1, 3);
             par1World.scheduleBlockUpdate(par2, par3, par4, this.blockID, tickRate());
-        } else if (par1World.getBlockMetadata(par2, par3, par4) == 1)
+        }
+        else if (par1World.getBlockMetadata(par2, par3, par4) == 1)
         {
             par1World.setBlockMetadataWithNotify(par2, par3, par4, 2, 3);
             par1World.scheduleBlockUpdate(par2, par3, par4, this.blockID, tickRate());
-        } else
+        }
+        else
         {
             par1World.setBlockMetadataWithNotify(par2, par3, par4, 0, 3);
         }

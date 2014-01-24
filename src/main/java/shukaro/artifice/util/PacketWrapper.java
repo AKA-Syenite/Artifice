@@ -39,7 +39,8 @@ public final class PacketWrapper
                 }
             }
 
-        } catch (IOException e)
+        }
+        catch (IOException e)
         {
             e.printStackTrace();
         }
@@ -69,7 +70,8 @@ public final class PacketWrapper
             {
                 result.add(readObjectFromStream(data, curClass));
             }
-        } catch (IOException e)
+        }
+        catch (IOException e)
         {
             e.printStackTrace();
         }
@@ -85,25 +87,32 @@ public final class PacketWrapper
         if (objClass.equals(Boolean.class))
         {
             data.writeBoolean((Boolean) obj);
-        } else if (objClass.equals(Byte.class))
+        }
+        else if (objClass.equals(Byte.class))
         {
             data.writeByte((Byte) obj);
-        } else if (objClass.equals(Integer.class))
+        }
+        else if (objClass.equals(Integer.class))
         {
             data.writeInt((Integer) obj);
-        } else if (objClass.equals(String.class))
+        }
+        else if (objClass.equals(String.class))
         {
             data.writeUTF((String) obj);
-        } else if (objClass.equals(Double.class))
+        }
+        else if (objClass.equals(Double.class))
         {
             data.writeDouble((Double) obj);
-        } else if (objClass.equals(Float.class))
+        }
+        else if (objClass.equals(Float.class))
         {
             data.writeFloat((Float) obj);
-        } else if (objClass.equals(Long.class))
+        }
+        else if (objClass.equals(Long.class))
         {
             data.writeLong((Long) obj);
-        } else if (objClass.equals(Short.class))
+        }
+        else if (objClass.equals(Short.class))
         {
             data.writeShort((Short) obj);
         }
@@ -115,25 +124,32 @@ public final class PacketWrapper
         if (curClass.equals(Boolean.class))
         {
             return data.readBoolean();
-        } else if (curClass.equals(Byte.class))
+        }
+        else if (curClass.equals(Byte.class))
         {
             return data.readByte();
-        } else if (curClass.equals(Integer.class))
+        }
+        else if (curClass.equals(Integer.class))
         {
             return data.readInt();
-        } else if (curClass.equals(String.class))
+        }
+        else if (curClass.equals(String.class))
         {
             return data.readUTF();
-        } else if (curClass.equals(Double.class))
+        }
+        else if (curClass.equals(Double.class))
         {
             return data.readDouble();
-        } else if (curClass.equals(Float.class))
+        }
+        else if (curClass.equals(Float.class))
         {
             return data.readFloat();
-        } else if (curClass.equals(Long.class))
+        }
+        else if (curClass.equals(Long.class))
         {
             return data.readLong();
-        } else if (curClass.equals(Short.class))
+        }
+        else if (curClass.equals(Short.class))
         {
             return data.readShort();
         }
@@ -148,7 +164,8 @@ public final class PacketWrapper
         try
         {
             result = data.read();
-        } catch (IOException e)
+        }
+        catch (IOException e)
         {
             e.printStackTrace();
         }

@@ -102,8 +102,8 @@ public class ArtificeTooltips
         if (ArtificeConfig.enableUpgrades.getBoolean(true))
         {
             ArtificeRegistry.registerTooltip(ArtificeItems.itemUpgrade.itemID, 0, localizeTooltip("upgrade.type.toolweapon", false));
-            ArtificeRegistry.registerTooltip(ArtificeItems.itemUpgrade.itemID, 0, FormatCodes.Yellow.code + StatCollector.translateToLocal(Enchantment.efficiency.getName()) + " (" + (ArtificeConfig.limitUpgrades.getBoolean(true) ? RomanUtil.convertToRoman(EnumUpgrades.SharpeningKit.maxLevel) : RomanUtil.convertToRoman(Enchantment.sharpness.getMaxLevel())) + ")");
-            ArtificeRegistry.registerTooltip(ArtificeItems.itemUpgrade.itemID, 0, FormatCodes.Yellow.code + StatCollector.translateToLocal(Enchantment.sharpness.getName()) + " (" + (ArtificeConfig.limitUpgrades.getBoolean(true) ? RomanUtil.convertToRoman(EnumUpgrades.SharpeningKit.maxLevel) : RomanUtil.convertToRoman(Enchantment.efficiency.getMaxLevel())) + ")");
+            ArtificeRegistry.registerTooltip(ArtificeItems.itemUpgrade.itemID, 0, FormatCodes.Yellow.code + StatCollector.translateToLocal(Enchantment.efficiency.getName()) + " (" + (ArtificeConfig.limitUpgrades.getBoolean(true) ? RomanUtil.convertToRoman(EnumUpgrades.SharpeningKitS.maxLevel) : RomanUtil.convertToRoman(Enchantment.sharpness.getMaxLevel())) + ")");
+            ArtificeRegistry.registerTooltip(ArtificeItems.itemUpgrade.itemID, 0, FormatCodes.Yellow.code + StatCollector.translateToLocal(Enchantment.sharpness.getName()) + " (" + (ArtificeConfig.limitUpgrades.getBoolean(true) ? RomanUtil.convertToRoman(EnumUpgrades.SharpeningKitE.maxLevel) : RomanUtil.convertToRoman(Enchantment.efficiency.getMaxLevel())) + ")");
             ArtificeRegistry.registerTooltip(ArtificeItems.itemUpgrade.itemID, 0, localizeTooltip("upgrade.sharpener", true));
 
             ArtificeRegistry.registerTooltip(ArtificeItems.itemUpgrade.itemID, 1, localizeTooltip("upgrade.type.universal", false));

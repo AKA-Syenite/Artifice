@@ -83,19 +83,24 @@ public class BlockCoord implements Comparable
             if (this.x < t.x)
             {
                 return -1;
-            } else if (this.x > t.x)
+            }
+            else if (this.x > t.x)
             {
                 return 1;
-            } else if (this.y < t.y)
+            }
+            else if (this.y < t.y)
             {
                 return -1;
-            } else if (this.y > t.y)
+            }
+            else if (this.y > t.y)
             {
                 return 1;
-            } else if (this.z < t.z)
+            }
+            else if (this.z < t.z)
             {
                 return -1;
-            } else if (this.z > t.z)
+            }
+            else if (this.z > t.z)
             {
                 return 1;
             }
@@ -108,22 +113,28 @@ public class BlockCoord implements Comparable
         if (this.x < x)
         {
             return ForgeDirection.WEST;
-        } else if (this.x > x)
+        }
+        else if (this.x > x)
         {
             return ForgeDirection.EAST;
-        } else if (this.y < y)
+        }
+        else if (this.y < y)
         {
             return ForgeDirection.DOWN;
-        } else if (this.y > y)
+        }
+        else if (this.y > y)
         {
             return ForgeDirection.UP;
-        } else if (this.z < z)
+        }
+        else if (this.z < z)
         {
             return ForgeDirection.SOUTH;
-        } else if (this.z > z)
+        }
+        else if (this.z > z)
         {
             return ForgeDirection.NORTH;
-        } else
+        }
+        else
         {
             return ForgeDirection.UNKNOWN;
         }
@@ -134,22 +145,28 @@ public class BlockCoord implements Comparable
         if (this.x < x)
         {
             return ForgeDirection.EAST;
-        } else if (this.x > x)
+        }
+        else if (this.x > x)
         {
             return ForgeDirection.WEST;
-        } else if (this.y < y)
+        }
+        else if (this.y < y)
         {
             return ForgeDirection.UP;
-        } else if (this.y > y)
+        }
+        else if (this.y > y)
         {
             return ForgeDirection.DOWN;
-        } else if (this.z < z)
+        }
+        else if (this.z < z)
         {
             return ForgeDirection.NORTH;
-        } else if (this.z > z)
+        }
+        else if (this.z > z)
         {
             return ForgeDirection.SOUTH;
-        } else
+        }
+        else
         {
             return ForgeDirection.UNKNOWN;
         }

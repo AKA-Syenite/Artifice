@@ -64,8 +64,6 @@ public class BlockCoord implements Comparable
     @Override
     public boolean equals(Object o)
     {
-        if (o == null)
-            return false;
         if (!(o instanceof BlockCoord))
             return false;
         BlockCoord t = (BlockCoord) o;
@@ -75,7 +73,7 @@ public class BlockCoord implements Comparable
     @Override
     public int hashCode()
     {
-        return (this.x ^ this.z) * 31 + this.y;
+        return (this.x * this.z) + this.y;
     }
     
     @Override

@@ -1,5 +1,6 @@
 package shukaro.artifice.net;
 
+import java.util.HashMap;
 import java.util.concurrent.ConcurrentHashMap;
 
 import shukaro.artifice.ArtificeConfig;
@@ -24,6 +25,6 @@ public class ClientProxy extends CommonProxy
         if (ArtificeConfig.enableBoxes.getBoolean(true))
 	        TickRegistry.registerTickHandler(new KeyTicker(), Side.CLIENT);
         
-        ArtificeCore.textureCache = new ConcurrentHashMap<BlockCoord, int[]>();
+        ArtificeCore.textureCache = new HashMap<BlockCoord, int[]>();
     }
 }

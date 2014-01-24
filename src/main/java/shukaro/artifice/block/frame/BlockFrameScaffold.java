@@ -169,12 +169,10 @@ public class BlockFrameScaffold extends BlockFrame
     @Override
     public void onNeighborBlockChange(World world, int x, int y, int z, int neighborID)
     {
-    	if (Minecraft.getMinecraft().thePlayer != null)
+    	if (!world.isRemote)
     	{
-			BlockCoord coord = new BlockCoord(x, y, z);
-		    TextureHandler.updateTexture(world, coord);
-		    for (BlockCoord n : coord.getAdjacent())
-	    		TextureHandler.updateTexture(n);
+			BlockCoord c = new BlockCoord(x, y, z);
+            PacketDispatcher.sendPacketToAllAround(c.x, c.y, c.z, 192, world.provider.dimensionId, PacketWrapper.createPacket(ArtificeCore.modChannel, Packets.TEXTUREUPDATE, new Object[] {c.x, c.y, c.z}));
     	}
     	
     	if (!canBlockStay(world, x, y, z))

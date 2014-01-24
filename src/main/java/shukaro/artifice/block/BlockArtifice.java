@@ -13,10 +13,12 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ForgeDirection;
 import shukaro.artifice.ArtificeCore;
+import shukaro.artifice.compat.ArtificeRegistry;
 import shukaro.artifice.gui.ArtificeCreativeTab;
 import shukaro.artifice.render.connectedtexture.ConnectedTextureBase;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import shukaro.artifice.util.BlockCoord;
 
 public abstract class BlockArtifice extends Block
 {

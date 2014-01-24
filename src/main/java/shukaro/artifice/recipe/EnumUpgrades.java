@@ -1,22 +1,24 @@
 package shukaro.artifice.recipe;
 
 import net.minecraft.enchantment.Enchantment;
+import shukaro.artifice.ArtificeConfig;
 
 public enum EnumUpgrades
 {
-    SharpeningKit(Enchantment.sharpness, 3),
-    Reinforcement(Enchantment.unbreaking, 2),
-    ReinforcedLimbs(Enchantment.punch, 2),
-    PlaitedString(Enchantment.power, 3),
-    Counterweight(Enchantment.knockback, 2),
-    ArmorSpikes(Enchantment.thorns, 2),
-    LaminatedPadding(Enchantment.protection, 3),
-    QuiltedCover(Enchantment.projectileProtection, 3),
-    ElasticSoles(Enchantment.featherFalling, 3),
-    Firedamp(Enchantment.fireProtection, 3),
-    ElasticLayering(Enchantment.blastProtection, 3),
-    ScubaTank(Enchantment.respiration, 3),
-    DiveKit(Enchantment.aquaAffinity, 1);
+    SharpeningKitS(Enchantment.sharpness, ArtificeConfig.maxSharpness.getInt()),
+    SharpeningKitE(Enchantment.efficiency, ArtificeConfig.maxEfficiency.getInt()),
+    Reinforcement(Enchantment.unbreaking, ArtificeConfig.maxUnbreaking.getInt()),
+    ReinforcedLimbs(Enchantment.punch, ArtificeConfig.maxPunch.getInt()),
+    PlaitedString(Enchantment.power, ArtificeConfig.maxPower.getInt()),
+    Counterweight(Enchantment.knockback, ArtificeConfig.maxKnockback.getInt()),
+    ArmorSpikes(Enchantment.thorns, ArtificeConfig.maxThorns.getInt()),
+    LaminatedPadding(Enchantment.protection, ArtificeConfig.maxProtection.getInt()),
+    QuiltedCover(Enchantment.projectileProtection, ArtificeConfig.maxProjectileProtection.getInt()),
+    ElasticSoles(Enchantment.featherFalling, ArtificeConfig.maxFeatherFalling.getInt()),
+    Firedamp(Enchantment.fireProtection, ArtificeConfig.maxFireProtection.getInt()),
+    ElasticLayering(Enchantment.blastProtection, ArtificeConfig.maxBlastProtection.getInt()),
+    ScubaTank(Enchantment.respiration, ArtificeConfig.maxRespiration.getInt()),
+    DiveKit(Enchantment.aquaAffinity, ArtificeConfig.maxAquaAffinity.getInt());
 
     public Enchantment enchant;
     public int maxLevel;

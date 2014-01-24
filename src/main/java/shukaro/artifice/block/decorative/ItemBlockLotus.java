@@ -43,7 +43,8 @@ public class ItemBlockLotus extends ItemBlockArtifice
         if (movingobjectposition == null)
         {
             return par1ItemStack;
-        } else
+        }
+        else
         {
             if (movingobjectposition.typeOfHit == EnumMovingObjectType.TILE)
             {

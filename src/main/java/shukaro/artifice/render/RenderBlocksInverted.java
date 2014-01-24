@@ -51,7 +51,8 @@ public class RenderBlocksInverted
         if (renderer.getBlockIcon(par1Block).getIconName().equals("grass_top"))
         {
             flag1 = false;
-        } else if (renderer.hasOverrideBlockTexture())
+        }
+        else if (renderer.hasOverrideBlockTexture())
         {
             flag1 = false;
         }
@@ -87,7 +88,8 @@ public class RenderBlocksInverted
             {
                 renderer.aoLightValueScratchXYZNNN = renderer.aoLightValueScratchXYNN;
                 renderer.aoBrightnessXYZNNN = renderer.aoBrightnessXYNN;
-            } else
+            }
+            else
             {
                 renderer.aoLightValueScratchXYZNNN = par1Block.getAmbientOcclusionLightValue(renderer.blockAccess, par2 - 1, par3, par4 - 1);
                 renderer.aoBrightnessXYZNNN = par1Block.getMixedBrightnessForBlock(renderer.blockAccess, par2 - 1, par3, par4 - 1);
@@ -97,7 +99,8 @@ public class RenderBlocksInverted
             {
                 renderer.aoLightValueScratchXYZNNP = renderer.aoLightValueScratchXYNN;
                 renderer.aoBrightnessXYZNNP = renderer.aoBrightnessXYNN;
-            } else
+            }
+            else
             {
                 renderer.aoLightValueScratchXYZNNP = par1Block.getAmbientOcclusionLightValue(renderer.blockAccess, par2 - 1, par3, par4 + 1);
                 renderer.aoBrightnessXYZNNP = par1Block.getMixedBrightnessForBlock(renderer.blockAccess, par2 - 1, par3, par4 + 1);
@@ -107,7 +110,8 @@ public class RenderBlocksInverted
             {
                 renderer.aoLightValueScratchXYZPNN = renderer.aoLightValueScratchXYPN;
                 renderer.aoBrightnessXYZPNN = renderer.aoBrightnessXYPN;
-            } else
+            }
+            else
             {
                 renderer.aoLightValueScratchXYZPNN = par1Block.getAmbientOcclusionLightValue(renderer.blockAccess, par2 + 1, par3, par4 - 1);
                 renderer.aoBrightnessXYZPNN = par1Block.getMixedBrightnessForBlock(renderer.blockAccess, par2 + 1, par3, par4 - 1);
@@ -117,7 +121,8 @@ public class RenderBlocksInverted
             {
                 renderer.aoLightValueScratchXYZPNP = renderer.aoLightValueScratchXYPN;
                 renderer.aoBrightnessXYZPNP = renderer.aoBrightnessXYPN;
-            } else
+            }
+            else
             {
                 renderer.aoLightValueScratchXYZPNP = par1Block.getAmbientOcclusionLightValue(renderer.blockAccess, par2 + 1, par3, par4 + 1);
                 renderer.aoBrightnessXYZPNP = par1Block.getMixedBrightnessForBlock(renderer.blockAccess, par2 + 1, par3, par4 + 1);
@@ -150,7 +155,8 @@ public class RenderBlocksInverted
                 renderer.colorRedTopLeft = renderer.colorRedBottomLeft = renderer.colorRedBottomRight = renderer.colorRedTopRight = par5 * 0.5F;
                 renderer.colorGreenTopLeft = renderer.colorGreenBottomLeft = renderer.colorGreenBottomRight = renderer.colorGreenTopRight = par6 * 0.5F;
                 renderer.colorBlueTopLeft = renderer.colorBlueBottomLeft = renderer.colorBlueBottomRight = renderer.colorBlueTopRight = par7 * 0.5F;
-            } else
+            }
+            else
             {
                 renderer.colorRedTopLeft = renderer.colorRedBottomLeft = renderer.colorRedBottomRight = renderer.colorRedTopRight = 0.5F;
                 renderer.colorGreenTopLeft = renderer.colorGreenBottomLeft = renderer.colorGreenBottomRight = renderer.colorGreenTopRight = 0.5F;
@@ -198,7 +204,8 @@ public class RenderBlocksInverted
             {
                 renderer.aoLightValueScratchXYZNPN = renderer.aoLightValueScratchXYNP;
                 renderer.aoBrightnessXYZNPN = renderer.aoBrightnessXYNP;
-            } else
+            }
+            else
             {
                 renderer.aoLightValueScratchXYZNPN = par1Block.getAmbientOcclusionLightValue(renderer.blockAccess, par2 - 1, par3, par4 - 1);
                 renderer.aoBrightnessXYZNPN = par1Block.getMixedBrightnessForBlock(renderer.blockAccess, par2 - 1, par3, par4 - 1);
@@ -208,7 +215,8 @@ public class RenderBlocksInverted
             {
                 renderer.aoLightValueScratchXYZPPN = renderer.aoLightValueScratchXYPP;
                 renderer.aoBrightnessXYZPPN = renderer.aoBrightnessXYPP;
-            } else
+            }
+            else
             {
                 renderer.aoLightValueScratchXYZPPN = par1Block.getAmbientOcclusionLightValue(renderer.blockAccess, par2 + 1, par3, par4 - 1);
                 renderer.aoBrightnessXYZPPN = par1Block.getMixedBrightnessForBlock(renderer.blockAccess, par2 + 1, par3, par4 - 1);
@@ -218,7 +226,8 @@ public class RenderBlocksInverted
             {
                 renderer.aoLightValueScratchXYZNPP = renderer.aoLightValueScratchXYNP;
                 renderer.aoBrightnessXYZNPP = renderer.aoBrightnessXYNP;
-            } else
+            }
+            else
             {
                 renderer.aoLightValueScratchXYZNPP = par1Block.getAmbientOcclusionLightValue(renderer.blockAccess, par2 - 1, par3, par4 + 1);
                 renderer.aoBrightnessXYZNPP = par1Block.getMixedBrightnessForBlock(renderer.blockAccess, par2 - 1, par3, par4 + 1);
@@ -228,7 +237,8 @@ public class RenderBlocksInverted
             {
                 renderer.aoLightValueScratchXYZPPP = renderer.aoLightValueScratchXYPP;
                 renderer.aoBrightnessXYZPPP = renderer.aoBrightnessXYPP;
-            } else
+            }
+            else
             {
                 renderer.aoLightValueScratchXYZPPP = par1Block.getAmbientOcclusionLightValue(renderer.blockAccess, par2 + 1, par3, par4 + 1);
                 renderer.aoBrightnessXYZPPP = par1Block.getMixedBrightnessForBlock(renderer.blockAccess, par2 + 1, par3, par4 + 1);
@@ -309,7 +319,8 @@ public class RenderBlocksInverted
             {
                 renderer.aoLightValueScratchXYZNNN = renderer.aoLightValueScratchXZNN;
                 renderer.aoBrightnessXYZNNN = renderer.aoBrightnessXZNN;
-            } else
+            }
+            else
             {
                 renderer.aoLightValueScratchXYZNNN = par1Block.getAmbientOcclusionLightValue(renderer.blockAccess, par2 - 1, par3 - 1, par4);
                 renderer.aoBrightnessXYZNNN = par1Block.getMixedBrightnessForBlock(renderer.blockAccess, par2 - 1, par3 - 1, par4);
@@ -319,7 +330,8 @@ public class RenderBlocksInverted
             {
                 renderer.aoLightValueScratchXYZNPN = renderer.aoLightValueScratchXZNN;
                 renderer.aoBrightnessXYZNPN = renderer.aoBrightnessXZNN;
-            } else
+            }
+            else
             {
                 renderer.aoLightValueScratchXYZNPN = par1Block.getAmbientOcclusionLightValue(renderer.blockAccess, par2 - 1, par3 + 1, par4);
                 renderer.aoBrightnessXYZNPN = par1Block.getMixedBrightnessForBlock(renderer.blockAccess, par2 - 1, par3 + 1, par4);
@@ -329,7 +341,8 @@ public class RenderBlocksInverted
             {
                 renderer.aoLightValueScratchXYZPNN = renderer.aoLightValueScratchXZPN;
                 renderer.aoBrightnessXYZPNN = renderer.aoBrightnessXZPN;
-            } else
+            }
+            else
             {
                 renderer.aoLightValueScratchXYZPNN = par1Block.getAmbientOcclusionLightValue(renderer.blockAccess, par2 + 1, par3 - 1, par4);
                 renderer.aoBrightnessXYZPNN = par1Block.getMixedBrightnessForBlock(renderer.blockAccess, par2 + 1, par3 - 1, par4);
@@ -339,7 +352,8 @@ public class RenderBlocksInverted
             {
                 renderer.aoLightValueScratchXYZPPN = renderer.aoLightValueScratchXZPN;
                 renderer.aoBrightnessXYZPPN = renderer.aoBrightnessXZPN;
-            } else
+            }
+            else
             {
                 renderer.aoLightValueScratchXYZPPN = par1Block.getAmbientOcclusionLightValue(renderer.blockAccess, par2 + 1, par3 + 1, par4);
                 renderer.aoBrightnessXYZPPN = par1Block.getMixedBrightnessForBlock(renderer.blockAccess, par2 + 1, par3 + 1, par4);
@@ -392,7 +406,8 @@ public class RenderBlocksInverted
                 renderer.colorRedTopLeft = renderer.colorRedBottomLeft = renderer.colorRedBottomRight = renderer.colorRedTopRight = par5 * 0.8F;
                 renderer.colorGreenTopLeft = renderer.colorGreenBottomLeft = renderer.colorGreenBottomRight = renderer.colorGreenTopRight = par6 * 0.8F;
                 renderer.colorBlueTopLeft = renderer.colorBlueBottomLeft = renderer.colorBlueBottomRight = renderer.colorBlueTopRight = par7 * 0.8F;
-            } else
+            }
+            else
             {
                 renderer.colorRedTopLeft = renderer.colorRedBottomLeft = renderer.colorRedBottomRight = renderer.colorRedTopRight = 0.8F;
                 renderer.colorGreenTopLeft = renderer.colorGreenBottomLeft = renderer.colorGreenBottomRight = renderer.colorGreenTopRight = 0.8F;
@@ -458,7 +473,8 @@ public class RenderBlocksInverted
             {
                 renderer.aoLightValueScratchXYZNNP = renderer.aoLightValueScratchXZNP;
                 renderer.aoBrightnessXYZNNP = renderer.aoBrightnessXZNP;
-            } else
+            }
+            else
             {
                 renderer.aoLightValueScratchXYZNNP = par1Block.getAmbientOcclusionLightValue(renderer.blockAccess, par2 - 1, par3 - 1, par4);
                 renderer.aoBrightnessXYZNNP = par1Block.getMixedBrightnessForBlock(renderer.blockAccess, par2 - 1, par3 - 1, par4);
@@ -468,7 +484,8 @@ public class RenderBlocksInverted
             {
                 renderer.aoLightValueScratchXYZNPP = renderer.aoLightValueScratchXZNP;
                 renderer.aoBrightnessXYZNPP = renderer.aoBrightnessXZNP;
-            } else
+            }
+            else
             {
                 renderer.aoLightValueScratchXYZNPP = par1Block.getAmbientOcclusionLightValue(renderer.blockAccess, par2 - 1, par3 + 1, par4);
                 renderer.aoBrightnessXYZNPP = par1Block.getMixedBrightnessForBlock(renderer.blockAccess, par2 - 1, par3 + 1, par4);
@@ -478,7 +495,8 @@ public class RenderBlocksInverted
             {
                 renderer.aoLightValueScratchXYZPNP = renderer.aoLightValueScratchXZPP;
                 renderer.aoBrightnessXYZPNP = renderer.aoBrightnessXZPP;
-            } else
+            }
+            else
             {
                 renderer.aoLightValueScratchXYZPNP = par1Block.getAmbientOcclusionLightValue(renderer.blockAccess, par2 + 1, par3 - 1, par4);
                 renderer.aoBrightnessXYZPNP = par1Block.getMixedBrightnessForBlock(renderer.blockAccess, par2 + 1, par3 - 1, par4);
@@ -488,7 +506,8 @@ public class RenderBlocksInverted
             {
                 renderer.aoLightValueScratchXYZPPP = renderer.aoLightValueScratchXZPP;
                 renderer.aoBrightnessXYZPPP = renderer.aoBrightnessXZPP;
-            } else
+            }
+            else
             {
                 renderer.aoLightValueScratchXYZPPP = par1Block.getAmbientOcclusionLightValue(renderer.blockAccess, par2 + 1, par3 + 1, par4);
                 renderer.aoBrightnessXYZPPP = par1Block.getMixedBrightnessForBlock(renderer.blockAccess, par2 + 1, par3 + 1, par4);
@@ -545,7 +564,8 @@ public class RenderBlocksInverted
                 renderer.colorRedTopLeft = renderer.colorRedBottomLeft = renderer.colorRedBottomRight = renderer.colorRedTopRight = par5 * 0.8F;
                 renderer.colorGreenTopLeft = renderer.colorGreenBottomLeft = renderer.colorGreenBottomRight = renderer.colorGreenTopRight = par6 * 0.8F;
                 renderer.colorBlueTopLeft = renderer.colorBlueBottomLeft = renderer.colorBlueBottomRight = renderer.colorBlueTopRight = par7 * 0.8F;
-            } else
+            }
+            else
             {
                 renderer.colorRedTopLeft = renderer.colorRedBottomLeft = renderer.colorRedBottomRight = renderer.colorRedTopRight = 0.8F;
                 renderer.colorGreenTopLeft = renderer.colorGreenBottomLeft = renderer.colorGreenBottomRight = renderer.colorGreenTopRight = 0.8F;
@@ -612,7 +632,8 @@ public class RenderBlocksInverted
             {
                 renderer.aoLightValueScratchXYZNNN = renderer.aoLightValueScratchXZNN;
                 renderer.aoBrightnessXYZNNN = renderer.aoBrightnessXZNN;
-            } else
+            }
+            else
             {
                 renderer.aoLightValueScratchXYZNNN = par1Block.getAmbientOcclusionLightValue(renderer.blockAccess, par2, par3 - 1, par4 - 1);
                 renderer.aoBrightnessXYZNNN = par1Block.getMixedBrightnessForBlock(renderer.blockAccess, par2, par3 - 1, par4 - 1);
@@ -622,7 +643,8 @@ public class RenderBlocksInverted
             {
                 renderer.aoLightValueScratchXYZNNP = renderer.aoLightValueScratchXZNP;
                 renderer.aoBrightnessXYZNNP = renderer.aoBrightnessXZNP;
-            } else
+            }
+            else
             {
                 renderer.aoLightValueScratchXYZNNP = par1Block.getAmbientOcclusionLightValue(renderer.blockAccess, par2, par3 - 1, par4 + 1);
                 renderer.aoBrightnessXYZNNP = par1Block.getMixedBrightnessForBlock(renderer.blockAccess, par2, par3 - 1, par4 + 1);
@@ -632,7 +654,8 @@ public class RenderBlocksInverted
             {
                 renderer.aoLightValueScratchXYZNPN = renderer.aoLightValueScratchXZNN;
                 renderer.aoBrightnessXYZNPN = renderer.aoBrightnessXZNN;
-            } else
+            }
+            else
             {
                 renderer.aoLightValueScratchXYZNPN = par1Block.getAmbientOcclusionLightValue(renderer.blockAccess, par2, par3 + 1, par4 - 1);
                 renderer.aoBrightnessXYZNPN = par1Block.getMixedBrightnessForBlock(renderer.blockAccess, par2, par3 + 1, par4 - 1);
@@ -642,7 +665,8 @@ public class RenderBlocksInverted
             {
                 renderer.aoLightValueScratchXYZNPP = renderer.aoLightValueScratchXZNP;
                 renderer.aoBrightnessXYZNPP = renderer.aoBrightnessXZNP;
-            } else
+            }
+            else
             {
                 renderer.aoLightValueScratchXYZNPP = par1Block.getAmbientOcclusionLightValue(renderer.blockAccess, par2, par3 + 1, par4 + 1);
                 renderer.aoBrightnessXYZNPP = par1Block.getMixedBrightnessForBlock(renderer.blockAccess, par2, par3 + 1, par4 + 1);
@@ -699,7 +723,8 @@ public class RenderBlocksInverted
                 renderer.colorRedTopLeft = renderer.colorRedBottomLeft = renderer.colorRedBottomRight = renderer.colorRedTopRight = par5 * 0.6F;
                 renderer.colorGreenTopLeft = renderer.colorGreenBottomLeft = renderer.colorGreenBottomRight = renderer.colorGreenTopRight = par6 * 0.6F;
                 renderer.colorBlueTopLeft = renderer.colorBlueBottomLeft = renderer.colorBlueBottomRight = renderer.colorBlueTopRight = par7 * 0.6F;
-            } else
+            }
+            else
             {
                 renderer.colorRedTopLeft = renderer.colorRedBottomLeft = renderer.colorRedBottomRight = renderer.colorRedTopRight = 0.6F;
                 renderer.colorGreenTopLeft = renderer.colorGreenBottomLeft = renderer.colorGreenBottomRight = renderer.colorGreenTopRight = 0.6F;
@@ -765,7 +790,8 @@ public class RenderBlocksInverted
             {
                 renderer.aoLightValueScratchXYZPNN = renderer.aoLightValueScratchXZPN;
                 renderer.aoBrightnessXYZPNN = renderer.aoBrightnessXZPN;
-            } else
+            }
+            else
             {
                 renderer.aoLightValueScratchXYZPNN = par1Block.getAmbientOcclusionLightValue(renderer.blockAccess, par2, par3 - 1, par4 - 1);
                 renderer.aoBrightnessXYZPNN = par1Block.getMixedBrightnessForBlock(renderer.blockAccess, par2, par3 - 1, par4 - 1);
@@ -775,7 +801,8 @@ public class RenderBlocksInverted
             {
                 renderer.aoLightValueScratchXYZPNP = renderer.aoLightValueScratchXZPP;
                 renderer.aoBrightnessXYZPNP = renderer.aoBrightnessXZPP;
-            } else
+            }
+            else
             {
                 renderer.aoLightValueScratchXYZPNP = par1Block.getAmbientOcclusionLightValue(renderer.blockAccess, par2, par3 - 1, par4 + 1);
                 renderer.aoBrightnessXYZPNP = par1Block.getMixedBrightnessForBlock(renderer.blockAccess, par2, par3 - 1, par4 + 1);
@@ -785,7 +812,8 @@ public class RenderBlocksInverted
             {
                 renderer.aoLightValueScratchXYZPPN = renderer.aoLightValueScratchXZPN;
                 renderer.aoBrightnessXYZPPN = renderer.aoBrightnessXZPN;
-            } else
+            }
+            else
             {
                 renderer.aoLightValueScratchXYZPPN = par1Block.getAmbientOcclusionLightValue(renderer.blockAccess, par2, par3 + 1, par4 - 1);
                 renderer.aoBrightnessXYZPPN = par1Block.getMixedBrightnessForBlock(renderer.blockAccess, par2, par3 + 1, par4 - 1);
@@ -795,7 +823,8 @@ public class RenderBlocksInverted
             {
                 renderer.aoLightValueScratchXYZPPP = renderer.aoLightValueScratchXZPP;
                 renderer.aoBrightnessXYZPPP = renderer.aoBrightnessXZPP;
-            } else
+            }
+            else
             {
                 renderer.aoLightValueScratchXYZPPP = par1Block.getAmbientOcclusionLightValue(renderer.blockAccess, par2, par3 + 1, par4 + 1);
                 renderer.aoBrightnessXYZPPP = par1Block.getMixedBrightnessForBlock(renderer.blockAccess, par2, par3 + 1, par4 + 1);
@@ -852,7 +881,8 @@ public class RenderBlocksInverted
                 renderer.colorRedTopLeft = renderer.colorRedBottomLeft = renderer.colorRedBottomRight = renderer.colorRedTopRight = par5 * 0.6F;
                 renderer.colorGreenTopLeft = renderer.colorGreenBottomLeft = renderer.colorGreenBottomRight = renderer.colorGreenTopRight = par6 * 0.6F;
                 renderer.colorBlueTopLeft = renderer.colorBlueBottomLeft = renderer.colorBlueBottomRight = renderer.colorBlueTopRight = par7 * 0.6F;
-            } else
+            }
+            else
             {
                 renderer.colorRedTopLeft = renderer.colorRedBottomLeft = renderer.colorRedBottomRight = renderer.colorRedTopRight = 0.6F;
                 renderer.colorGreenTopLeft = renderer.colorGreenBottomLeft = renderer.colorGreenBottomRight = renderer.colorGreenTopRight = 0.6F;
@@ -915,7 +945,8 @@ public class RenderBlocksInverted
         if (renderer.getBlockIcon(par1Block).getIconName().equals("grass_top"))
         {
             flag1 = false;
-        } else if (renderer.hasOverrideBlockTexture())
+        }
+        else if (renderer.hasOverrideBlockTexture())
         {
             flag1 = false;
         }
@@ -951,7 +982,8 @@ public class RenderBlocksInverted
             {
                 renderer.aoLightValueScratchXYZNNN = renderer.aoLightValueScratchXYNN;
                 renderer.aoBrightnessXYZNNN = renderer.aoBrightnessXYNN;
-            } else
+            }
+            else
             {
                 renderer.aoLightValueScratchXYZNNN = par1Block.getAmbientOcclusionLightValue(renderer.blockAccess, par2 - 1, par3, par4 - 1);
                 renderer.aoBrightnessXYZNNN = par1Block.getMixedBrightnessForBlock(renderer.blockAccess, par2 - 1, par3, par4 - 1);
@@ -961,7 +993,8 @@ public class RenderBlocksInverted
             {
                 renderer.aoLightValueScratchXYZNNP = renderer.aoLightValueScratchXYNN;
                 renderer.aoBrightnessXYZNNP = renderer.aoBrightnessXYNN;
-            } else
+            }
+            else
             {
                 renderer.aoLightValueScratchXYZNNP = par1Block.getAmbientOcclusionLightValue(renderer.blockAccess, par2 - 1, par3, par4 + 1);
                 renderer.aoBrightnessXYZNNP = par1Block.getMixedBrightnessForBlock(renderer.blockAccess, par2 - 1, par3, par4 + 1);
@@ -971,7 +1004,8 @@ public class RenderBlocksInverted
             {
                 renderer.aoLightValueScratchXYZPNN = renderer.aoLightValueScratchXYPN;
                 renderer.aoBrightnessXYZPNN = renderer.aoBrightnessXYPN;
-            } else
+            }
+            else
             {
                 renderer.aoLightValueScratchXYZPNN = par1Block.getAmbientOcclusionLightValue(renderer.blockAccess, par2 + 1, par3, par4 - 1);
                 renderer.aoBrightnessXYZPNN = par1Block.getMixedBrightnessForBlock(renderer.blockAccess, par2 + 1, par3, par4 - 1);
@@ -981,7 +1015,8 @@ public class RenderBlocksInverted
             {
                 renderer.aoLightValueScratchXYZPNP = renderer.aoLightValueScratchXYPN;
                 renderer.aoBrightnessXYZPNP = renderer.aoBrightnessXYPN;
-            } else
+            }
+            else
             {
                 renderer.aoLightValueScratchXYZPNP = par1Block.getAmbientOcclusionLightValue(renderer.blockAccess, par2 + 1, par3, par4 + 1);
                 renderer.aoBrightnessXYZPNP = par1Block.getMixedBrightnessForBlock(renderer.blockAccess, par2 + 1, par3, par4 + 1);
@@ -1014,7 +1049,8 @@ public class RenderBlocksInverted
                 renderer.colorRedTopLeft = renderer.colorRedBottomLeft = renderer.colorRedBottomRight = renderer.colorRedTopRight = par5 * 0.5F;
                 renderer.colorGreenTopLeft = renderer.colorGreenBottomLeft = renderer.colorGreenBottomRight = renderer.colorGreenTopRight = par6 * 0.5F;
                 renderer.colorBlueTopLeft = renderer.colorBlueBottomLeft = renderer.colorBlueBottomRight = renderer.colorBlueTopRight = par7 * 0.5F;
-            } else
+            }
+            else
             {
                 renderer.colorRedTopLeft = renderer.colorRedBottomLeft = renderer.colorRedBottomRight = renderer.colorRedTopRight = 0.5F;
                 renderer.colorGreenTopLeft = renderer.colorGreenBottomLeft = renderer.colorGreenBottomRight = renderer.colorGreenTopRight = 0.5F;
@@ -1062,7 +1098,8 @@ public class RenderBlocksInverted
             {
                 renderer.aoLightValueScratchXYZNPN = renderer.aoLightValueScratchXYNP;
                 renderer.aoBrightnessXYZNPN = renderer.aoBrightnessXYNP;
-            } else
+            }
+            else
             {
                 renderer.aoLightValueScratchXYZNPN = par1Block.getAmbientOcclusionLightValue(renderer.blockAccess, par2 - 1, par3, par4 - 1);
                 renderer.aoBrightnessXYZNPN = par1Block.getMixedBrightnessForBlock(renderer.blockAccess, par2 - 1, par3, par4 - 1);
@@ -1072,7 +1109,8 @@ public class RenderBlocksInverted
             {
                 renderer.aoLightValueScratchXYZPPN = renderer.aoLightValueScratchXYPP;
                 renderer.aoBrightnessXYZPPN = renderer.aoBrightnessXYPP;
-            } else
+            }
+            else
             {
                 renderer.aoLightValueScratchXYZPPN = par1Block.getAmbientOcclusionLightValue(renderer.blockAccess, par2 + 1, par3, par4 - 1);
                 renderer.aoBrightnessXYZPPN = par1Block.getMixedBrightnessForBlock(renderer.blockAccess, par2 + 1, par3, par4 - 1);
@@ -1082,7 +1120,8 @@ public class RenderBlocksInverted
             {
                 renderer.aoLightValueScratchXYZNPP = renderer.aoLightValueScratchXYNP;
                 renderer.aoBrightnessXYZNPP = renderer.aoBrightnessXYNP;
-            } else
+            }
+            else
             {
                 renderer.aoLightValueScratchXYZNPP = par1Block.getAmbientOcclusionLightValue(renderer.blockAccess, par2 - 1, par3, par4 + 1);
                 renderer.aoBrightnessXYZNPP = par1Block.getMixedBrightnessForBlock(renderer.blockAccess, par2 - 1, par3, par4 + 1);
@@ -1092,7 +1131,8 @@ public class RenderBlocksInverted
             {
                 renderer.aoLightValueScratchXYZPPP = renderer.aoLightValueScratchXYPP;
                 renderer.aoBrightnessXYZPPP = renderer.aoBrightnessXYPP;
-            } else
+            }
+            else
             {
                 renderer.aoLightValueScratchXYZPPP = par1Block.getAmbientOcclusionLightValue(renderer.blockAccess, par2 + 1, par3, par4 + 1);
                 renderer.aoBrightnessXYZPPP = par1Block.getMixedBrightnessForBlock(renderer.blockAccess, par2 + 1, par3, par4 + 1);
@@ -1165,7 +1205,8 @@ public class RenderBlocksInverted
             {
                 renderer.aoLightValueScratchXYZNNN = renderer.aoLightValueScratchXZNN;
                 renderer.aoBrightnessXYZNNN = renderer.aoBrightnessXZNN;
-            } else
+            }
+            else
             {
                 renderer.aoLightValueScratchXYZNNN = par1Block.getAmbientOcclusionLightValue(renderer.blockAccess, par2 - 1, par3 - 1, par4);
                 renderer.aoBrightnessXYZNNN = par1Block.getMixedBrightnessForBlock(renderer.blockAccess, par2 - 1, par3 - 1, par4);
@@ -1175,7 +1216,8 @@ public class RenderBlocksInverted
             {
                 renderer.aoLightValueScratchXYZNPN = renderer.aoLightValueScratchXZNN;
                 renderer.aoBrightnessXYZNPN = renderer.aoBrightnessXZNN;
-            } else
+            }
+            else
             {
                 renderer.aoLightValueScratchXYZNPN = par1Block.getAmbientOcclusionLightValue(renderer.blockAccess, par2 - 1, par3 + 1, par4);
                 renderer.aoBrightnessXYZNPN = par1Block.getMixedBrightnessForBlock(renderer.blockAccess, par2 - 1, par3 + 1, par4);
@@ -1185,7 +1227,8 @@ public class RenderBlocksInverted
             {
                 renderer.aoLightValueScratchXYZPNN = renderer.aoLightValueScratchXZPN;
                 renderer.aoBrightnessXYZPNN = renderer.aoBrightnessXZPN;
-            } else
+            }
+            else
             {
                 renderer.aoLightValueScratchXYZPNN = par1Block.getAmbientOcclusionLightValue(renderer.blockAccess, par2 + 1, par3 - 1, par4);
                 renderer.aoBrightnessXYZPNN = par1Block.getMixedBrightnessForBlock(renderer.blockAccess, par2 + 1, par3 - 1, par4);
@@ -1195,7 +1238,8 @@ public class RenderBlocksInverted
             {
                 renderer.aoLightValueScratchXYZPPN = renderer.aoLightValueScratchXZPN;
                 renderer.aoBrightnessXYZPPN = renderer.aoBrightnessXZPN;
-            } else
+            }
+            else
             {
                 renderer.aoLightValueScratchXYZPPN = par1Block.getAmbientOcclusionLightValue(renderer.blockAccess, par2 + 1, par3 + 1, par4);
                 renderer.aoBrightnessXYZPPN = par1Block.getMixedBrightnessForBlock(renderer.blockAccess, par2 + 1, par3 + 1, par4);
@@ -1228,7 +1272,8 @@ public class RenderBlocksInverted
                 renderer.colorRedTopLeft = renderer.colorRedBottomLeft = renderer.colorRedBottomRight = renderer.colorRedTopRight = par5 * 0.8F;
                 renderer.colorGreenTopLeft = renderer.colorGreenBottomLeft = renderer.colorGreenBottomRight = renderer.colorGreenTopRight = par6 * 0.8F;
                 renderer.colorBlueTopLeft = renderer.colorBlueBottomLeft = renderer.colorBlueBottomRight = renderer.colorBlueTopRight = par7 * 0.8F;
-            } else
+            }
+            else
             {
                 renderer.colorRedTopLeft = renderer.colorRedBottomLeft = renderer.colorRedBottomRight = renderer.colorRedTopRight = 0.8F;
                 renderer.colorGreenTopLeft = renderer.colorGreenBottomLeft = renderer.colorGreenBottomRight = renderer.colorGreenTopRight = 0.8F;
@@ -1294,7 +1339,8 @@ public class RenderBlocksInverted
             {
                 renderer.aoLightValueScratchXYZNNP = renderer.aoLightValueScratchXZNP;
                 renderer.aoBrightnessXYZNNP = renderer.aoBrightnessXZNP;
-            } else
+            }
+            else
             {
                 renderer.aoLightValueScratchXYZNNP = par1Block.getAmbientOcclusionLightValue(renderer.blockAccess, par2 - 1, par3 - 1, par4);
                 renderer.aoBrightnessXYZNNP = par1Block.getMixedBrightnessForBlock(renderer.blockAccess, par2 - 1, par3 - 1, par4);
@@ -1304,7 +1350,8 @@ public class RenderBlocksInverted
             {
                 renderer.aoLightValueScratchXYZNPP = renderer.aoLightValueScratchXZNP;
                 renderer.aoBrightnessXYZNPP = renderer.aoBrightnessXZNP;
-            } else
+            }
+            else
             {
                 renderer.aoLightValueScratchXYZNPP = par1Block.getAmbientOcclusionLightValue(renderer.blockAccess, par2 - 1, par3 + 1, par4);
                 renderer.aoBrightnessXYZNPP = par1Block.getMixedBrightnessForBlock(renderer.blockAccess, par2 - 1, par3 + 1, par4);
@@ -1314,7 +1361,8 @@ public class RenderBlocksInverted
             {
                 renderer.aoLightValueScratchXYZPNP = renderer.aoLightValueScratchXZPP;
                 renderer.aoBrightnessXYZPNP = renderer.aoBrightnessXZPP;
-            } else
+            }
+            else
             {
                 renderer.aoLightValueScratchXYZPNP = par1Block.getAmbientOcclusionLightValue(renderer.blockAccess, par2 + 1, par3 - 1, par4);
                 renderer.aoBrightnessXYZPNP = par1Block.getMixedBrightnessForBlock(renderer.blockAccess, par2 + 1, par3 - 1, par4);
@@ -1324,7 +1372,8 @@ public class RenderBlocksInverted
             {
                 renderer.aoLightValueScratchXYZPPP = renderer.aoLightValueScratchXZPP;
                 renderer.aoBrightnessXYZPPP = renderer.aoBrightnessXZPP;
-            } else
+            }
+            else
             {
                 renderer.aoLightValueScratchXYZPPP = par1Block.getAmbientOcclusionLightValue(renderer.blockAccess, par2 + 1, par3 + 1, par4);
                 renderer.aoBrightnessXYZPPP = par1Block.getMixedBrightnessForBlock(renderer.blockAccess, par2 + 1, par3 + 1, par4);
@@ -1357,7 +1406,8 @@ public class RenderBlocksInverted
                 renderer.colorRedTopLeft = renderer.colorRedBottomLeft = renderer.colorRedBottomRight = renderer.colorRedTopRight = par5 * 0.8F;
                 renderer.colorGreenTopLeft = renderer.colorGreenBottomLeft = renderer.colorGreenBottomRight = renderer.colorGreenTopRight = par6 * 0.8F;
                 renderer.colorBlueTopLeft = renderer.colorBlueBottomLeft = renderer.colorBlueBottomRight = renderer.colorBlueTopRight = par7 * 0.8F;
-            } else
+            }
+            else
             {
                 renderer.colorRedTopLeft = renderer.colorRedBottomLeft = renderer.colorRedBottomRight = renderer.colorRedTopRight = 0.8F;
                 renderer.colorGreenTopLeft = renderer.colorGreenBottomLeft = renderer.colorGreenBottomRight = renderer.colorGreenTopRight = 0.8F;
@@ -1424,7 +1474,8 @@ public class RenderBlocksInverted
             {
                 renderer.aoLightValueScratchXYZNNN = renderer.aoLightValueScratchXZNN;
                 renderer.aoBrightnessXYZNNN = renderer.aoBrightnessXZNN;
-            } else
+            }
+            else
             {
                 renderer.aoLightValueScratchXYZNNN = par1Block.getAmbientOcclusionLightValue(renderer.blockAccess, par2, par3 - 1, par4 - 1);
                 renderer.aoBrightnessXYZNNN = par1Block.getMixedBrightnessForBlock(renderer.blockAccess, par2, par3 - 1, par4 - 1);
@@ -1434,7 +1485,8 @@ public class RenderBlocksInverted
             {
                 renderer.aoLightValueScratchXYZNNP = renderer.aoLightValueScratchXZNP;
                 renderer.aoBrightnessXYZNNP = renderer.aoBrightnessXZNP;
-            } else
+            }
+            else
             {
                 renderer.aoLightValueScratchXYZNNP = par1Block.getAmbientOcclusionLightValue(renderer.blockAccess, par2, par3 - 1, par4 + 1);
                 renderer.aoBrightnessXYZNNP = par1Block.getMixedBrightnessForBlock(renderer.blockAccess, par2, par3 - 1, par4 + 1);
@@ -1444,7 +1496,8 @@ public class RenderBlocksInverted
             {
                 renderer.aoLightValueScratchXYZNPN = renderer.aoLightValueScratchXZNN;
                 renderer.aoBrightnessXYZNPN = renderer.aoBrightnessXZNN;
-            } else
+            }
+            else
             {
                 renderer.aoLightValueScratchXYZNPN = par1Block.getAmbientOcclusionLightValue(renderer.blockAccess, par2, par3 + 1, par4 - 1);
                 renderer.aoBrightnessXYZNPN = par1Block.getMixedBrightnessForBlock(renderer.blockAccess, par2, par3 + 1, par4 - 1);
@@ -1454,7 +1507,8 @@ public class RenderBlocksInverted
             {
                 renderer.aoLightValueScratchXYZNPP = renderer.aoLightValueScratchXZNP;
                 renderer.aoBrightnessXYZNPP = renderer.aoBrightnessXZNP;
-            } else
+            }
+            else
             {
                 renderer.aoLightValueScratchXYZNPP = par1Block.getAmbientOcclusionLightValue(renderer.blockAccess, par2, par3 + 1, par4 + 1);
                 renderer.aoBrightnessXYZNPP = par1Block.getMixedBrightnessForBlock(renderer.blockAccess, par2, par3 + 1, par4 + 1);
@@ -1487,7 +1541,8 @@ public class RenderBlocksInverted
                 renderer.colorRedTopLeft = renderer.colorRedBottomLeft = renderer.colorRedBottomRight = renderer.colorRedTopRight = par5 * 0.6F;
                 renderer.colorGreenTopLeft = renderer.colorGreenBottomLeft = renderer.colorGreenBottomRight = renderer.colorGreenTopRight = par6 * 0.6F;
                 renderer.colorBlueTopLeft = renderer.colorBlueBottomLeft = renderer.colorBlueBottomRight = renderer.colorBlueTopRight = par7 * 0.6F;
-            } else
+            }
+            else
             {
                 renderer.colorRedTopLeft = renderer.colorRedBottomLeft = renderer.colorRedBottomRight = renderer.colorRedTopRight = 0.6F;
                 renderer.colorGreenTopLeft = renderer.colorGreenBottomLeft = renderer.colorGreenBottomRight = renderer.colorGreenTopRight = 0.6F;
@@ -1553,7 +1608,8 @@ public class RenderBlocksInverted
             {
                 renderer.aoLightValueScratchXYZPNN = renderer.aoLightValueScratchXZPN;
                 renderer.aoBrightnessXYZPNN = renderer.aoBrightnessXZPN;
-            } else
+            }
+            else
             {
                 renderer.aoLightValueScratchXYZPNN = par1Block.getAmbientOcclusionLightValue(renderer.blockAccess, par2, par3 - 1, par4 - 1);
                 renderer.aoBrightnessXYZPNN = par1Block.getMixedBrightnessForBlock(renderer.blockAccess, par2, par3 - 1, par4 - 1);
@@ -1563,7 +1619,8 @@ public class RenderBlocksInverted
             {
                 renderer.aoLightValueScratchXYZPNP = renderer.aoLightValueScratchXZPP;
                 renderer.aoBrightnessXYZPNP = renderer.aoBrightnessXZPP;
-            } else
+            }
+            else
             {
                 renderer.aoLightValueScratchXYZPNP = par1Block.getAmbientOcclusionLightValue(renderer.blockAccess, par2, par3 - 1, par4 + 1);
                 renderer.aoBrightnessXYZPNP = par1Block.getMixedBrightnessForBlock(renderer.blockAccess, par2, par3 - 1, par4 + 1);
@@ -1573,7 +1630,8 @@ public class RenderBlocksInverted
             {
                 renderer.aoLightValueScratchXYZPPN = renderer.aoLightValueScratchXZPN;
                 renderer.aoBrightnessXYZPPN = renderer.aoBrightnessXZPN;
-            } else
+            }
+            else
             {
                 renderer.aoLightValueScratchXYZPPN = par1Block.getAmbientOcclusionLightValue(renderer.blockAccess, par2, par3 + 1, par4 - 1);
                 renderer.aoBrightnessXYZPPN = par1Block.getMixedBrightnessForBlock(renderer.blockAccess, par2, par3 + 1, par4 - 1);
@@ -1583,7 +1641,8 @@ public class RenderBlocksInverted
             {
                 renderer.aoLightValueScratchXYZPPP = renderer.aoLightValueScratchXZPP;
                 renderer.aoBrightnessXYZPPP = renderer.aoBrightnessXZPP;
-            } else
+            }
+            else
             {
                 renderer.aoLightValueScratchXYZPPP = par1Block.getAmbientOcclusionLightValue(renderer.blockAccess, par2, par3 + 1, par4 + 1);
                 renderer.aoBrightnessXYZPPP = par1Block.getMixedBrightnessForBlock(renderer.blockAccess, par2, par3 + 1, par4 + 1);
@@ -1616,7 +1675,8 @@ public class RenderBlocksInverted
                 renderer.colorRedTopLeft = renderer.colorRedBottomLeft = renderer.colorRedBottomRight = renderer.colorRedTopRight = par5 * 0.6F;
                 renderer.colorGreenTopLeft = renderer.colorGreenBottomLeft = renderer.colorGreenBottomRight = renderer.colorGreenTopRight = par6 * 0.6F;
                 renderer.colorBlueTopLeft = renderer.colorBlueBottomLeft = renderer.colorBlueBottomRight = renderer.colorBlueTopRight = par7 * 0.6F;
-            } else
+            }
+            else
             {
                 renderer.colorRedTopLeft = renderer.colorRedBottomLeft = renderer.colorRedBottomRight = renderer.colorRedTopRight = 0.6F;
                 renderer.colorGreenTopLeft = renderer.colorGreenBottomLeft = renderer.colorGreenBottomRight = renderer.colorGreenTopRight = 0.6F;
@@ -1838,7 +1898,8 @@ public class RenderBlocksInverted
             d8 = d4;
             d5 = d6;
             d6 = d9;
-        } else if (renderer.uvRotateBottom == 1)
+        }
+        else if (renderer.uvRotateBottom == 1)
         {
             d3 = par8Icon.getInterpolatedU(16.0D - renderer.renderMaxZ * 16.0D);
             d5 = par8Icon.getInterpolatedV(renderer.renderMinX * 16.0D);
@@ -1850,7 +1911,8 @@ public class RenderBlocksInverted
             d4 = d8;
             d9 = d6;
             d10 = d5;
-        } else if (renderer.uvRotateBottom == 3)
+        }
+        else if (renderer.uvRotateBottom == 3)
         {
             d3 = par8Icon.getInterpolatedU(16.0D - renderer.renderMinX * 16.0D);
             d4 = par8Icon.getInterpolatedU(16.0D - renderer.renderMaxX * 16.0D);
@@ -1882,7 +1944,8 @@ public class RenderBlocksInverted
             tessellator.setColorOpaque_F(renderer.colorRedTopLeft, renderer.colorGreenTopLeft, renderer.colorBlueTopLeft);
             tessellator.setBrightness(renderer.brightnessTopLeft);
             tessellator.addVertexWithUV(d11, d13, d15, d8, d10);
-        } else
+        }
+        else
         {
             tessellator.addVertexWithUV(d12, d13, d15, d4, d6);
             tessellator.addVertexWithUV(d12, d13, d14, d7, d9);
@@ -1938,7 +2001,8 @@ public class RenderBlocksInverted
             d8 = d4;
             d5 = d6;
             d6 = d9;
-        } else if (renderer.uvRotateTop == 2)
+        }
+        else if (renderer.uvRotateTop == 2)
         {
             d3 = par8Icon.getInterpolatedU(16.0D - renderer.renderMaxZ * 16.0D);
             d5 = par8Icon.getInterpolatedV(renderer.renderMinX * 16.0D);
@@ -1950,7 +2014,8 @@ public class RenderBlocksInverted
             d4 = d8;
             d9 = d6;
             d10 = d5;
-        } else if (renderer.uvRotateTop == 3)
+        }
+        else if (renderer.uvRotateTop == 3)
         {
             d3 = par8Icon.getInterpolatedU(16.0D - renderer.renderMinX * 16.0D);
             d4 = par8Icon.getInterpolatedU(16.0D - renderer.renderMaxX * 16.0D);
@@ -1982,7 +2047,8 @@ public class RenderBlocksInverted
             tessellator.setColorOpaque_F(renderer.colorRedTopLeft, renderer.colorGreenTopLeft, renderer.colorBlueTopLeft);
             tessellator.setBrightness(renderer.brightnessTopLeft);
             tessellator.addVertexWithUV(d12, d13, d15, d4, d6);
-        } else
+        }
+        else
         {
             tessellator.addVertexWithUV(d11, d13, d15, d8, d10);
             tessellator.addVertexWithUV(d11, d13, d14, d3, d5);
@@ -2046,7 +2112,8 @@ public class RenderBlocksInverted
             d8 = d4;
             d5 = d6;
             d6 = d9;
-        } else if (renderer.uvRotateEast == 1)
+        }
+        else if (renderer.uvRotateEast == 1)
         {
             d3 = par8Icon.getInterpolatedU(16.0D - renderer.renderMaxY * 16.0D);
             d5 = par8Icon.getInterpolatedV(renderer.renderMaxX * 16.0D);
@@ -2058,7 +2125,8 @@ public class RenderBlocksInverted
             d4 = d8;
             d9 = d6;
             d10 = d5;
-        } else if (renderer.uvRotateEast == 3)
+        }
+        else if (renderer.uvRotateEast == 3)
         {
             d3 = par8Icon.getInterpolatedU(16.0D - renderer.renderMinX * 16.0D);
             d4 = par8Icon.getInterpolatedU(16.0D - renderer.renderMaxX * 16.0D);
@@ -2090,7 +2158,8 @@ public class RenderBlocksInverted
             tessellator.setColorOpaque_F(renderer.colorRedTopLeft, renderer.colorGreenTopLeft, renderer.colorBlueTopLeft);
             tessellator.setBrightness(renderer.brightnessTopLeft);
             tessellator.addVertexWithUV(d11, d14, d15, d7, d9);
-        } else
+        }
+        else
         {
             tessellator.addVertexWithUV(d11, d13, d15, d4, d6);
             tessellator.addVertexWithUV(d12, d13, d15, d8, d10);
@@ -2154,7 +2223,8 @@ public class RenderBlocksInverted
             d8 = d4;
             d5 = d6;
             d6 = d9;
-        } else if (renderer.uvRotateWest == 2)
+        }
+        else if (renderer.uvRotateWest == 2)
         {
             d3 = par8Icon.getInterpolatedU(16.0D - renderer.renderMaxY * 16.0D);
             d5 = par8Icon.getInterpolatedV(renderer.renderMinX * 16.0D);
@@ -2166,7 +2236,8 @@ public class RenderBlocksInverted
             d4 = d8;
             d9 = d6;
             d10 = d5;
-        } else if (renderer.uvRotateWest == 3)
+        }
+        else if (renderer.uvRotateWest == 3)
         {
             d3 = par8Icon.getInterpolatedU(16.0D - renderer.renderMinX * 16.0D);
             d4 = par8Icon.getInterpolatedU(16.0D - renderer.renderMaxX * 16.0D);
@@ -2198,7 +2269,8 @@ public class RenderBlocksInverted
             tessellator.setColorOpaque_F(renderer.colorRedTopLeft, renderer.colorGreenTopLeft, renderer.colorBlueTopLeft);
             tessellator.setBrightness(renderer.brightnessTopLeft);
             tessellator.addVertexWithUV(d11, d14, d15, d3, d5);
-        } else
+        }
+        else
         {
             tessellator.addVertexWithUV(d12, d14, d15, d7, d9);
             tessellator.addVertexWithUV(d12, d13, d15, d4, d6);
@@ -2262,7 +2334,8 @@ public class RenderBlocksInverted
             d8 = d4;
             d5 = d6;
             d6 = d9;
-        } else if (renderer.uvRotateNorth == 2)
+        }
+        else if (renderer.uvRotateNorth == 2)
         {
             d3 = par8Icon.getInterpolatedU(16.0D - renderer.renderMaxY * 16.0D);
             d5 = par8Icon.getInterpolatedV(renderer.renderMinZ * 16.0D);
@@ -2274,7 +2347,8 @@ public class RenderBlocksInverted
             d4 = d8;
             d9 = d6;
             d10 = d5;
-        } else if (renderer.uvRotateNorth == 3)
+        }
+        else if (renderer.uvRotateNorth == 3)
         {
             d3 = par8Icon.getInterpolatedU(16.0D - renderer.renderMinZ * 16.0D);
             d4 = par8Icon.getInterpolatedU(16.0D - renderer.renderMaxZ * 16.0D);
@@ -2306,7 +2380,8 @@ public class RenderBlocksInverted
             tessellator.setColorOpaque_F(renderer.colorRedTopLeft, renderer.colorGreenTopLeft, renderer.colorBlueTopLeft);
             tessellator.setBrightness(renderer.brightnessTopLeft);
             tessellator.addVertexWithUV(d11, d13, d15, d7, d9);
-        } else
+        }
+        else
         {
             tessellator.addVertexWithUV(d11, d12, d15, d4, d6);
             tessellator.addVertexWithUV(d11, d12, d14, d8, d10);
@@ -2370,7 +2445,8 @@ public class RenderBlocksInverted
             d8 = d4;
             d5 = d6;
             d6 = d9;
-        } else if (renderer.uvRotateSouth == 1)
+        }
+        else if (renderer.uvRotateSouth == 1)
         {
             d3 = par8Icon.getInterpolatedU(16.0D - renderer.renderMaxY * 16.0D);
             d5 = par8Icon.getInterpolatedV(renderer.renderMaxZ * 16.0D);
@@ -2382,7 +2458,8 @@ public class RenderBlocksInverted
             d4 = d8;
             d9 = d6;
             d10 = d5;
-        } else if (renderer.uvRotateSouth == 3)
+        }
+        else if (renderer.uvRotateSouth == 3)
         {
             d3 = par8Icon.getInterpolatedU(16.0D - renderer.renderMinZ * 16.0D);
             d4 = par8Icon.getInterpolatedU(16.0D - renderer.renderMaxZ * 16.0D);
@@ -2414,7 +2491,8 @@ public class RenderBlocksInverted
             tessellator.setColorOpaque_F(renderer.colorRedTopLeft, renderer.colorGreenTopLeft, renderer.colorBlueTopLeft);
             tessellator.setBrightness(renderer.brightnessTopLeft);
             tessellator.addVertexWithUV(d11, d12, d15, d8, d10);
-        } else
+        }
+        else
         {
             tessellator.addVertexWithUV(d11, d13, d15, d3, d5);
             tessellator.addVertexWithUV(d11, d13, d14, d7, d9);

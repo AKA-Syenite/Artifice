@@ -39,7 +39,8 @@ public abstract class ArtificeRegistry
                 IRecipe wrap = new ShapelessOreRecipe(marbleTypes.get(0), marbleTypes.get(1));
                 CraftingManager.getInstance().getRecipeList().add(inner);
                 CraftingManager.getInstance().getRecipeList().add(wrap);
-            } else
+            }
+            else
             {
                 IRecipe inner = new ShapelessOreRecipe(marbleTypes.get(marbleTypes.size() - 1), marbleTypes.get(marbleTypes.size() - 2));
                 IRecipe wrap = new ShapelessOreRecipe(marbleTypes.get(0), marbleTypes.get(marbleTypes.size() - 1));
@@ -85,7 +86,8 @@ public abstract class ArtificeRegistry
                 IRecipe wrap = new ShapelessOreRecipe(basaltTypes.get(0), basaltTypes.get(1));
                 CraftingManager.getInstance().getRecipeList().add(inner);
                 CraftingManager.getInstance().getRecipeList().add(wrap);
-            } else
+            }
+            else
             {
                 IRecipe inner = new ShapelessOreRecipe(basaltTypes.get(basaltTypes.size() - 1), basaltTypes.get(basaltTypes.size() - 2));
                 IRecipe wrap = new ShapelessOreRecipe(basaltTypes.get(0), basaltTypes.get(basaltTypes.size() - 1));
@@ -122,7 +124,8 @@ public abstract class ArtificeRegistry
             List<String> temp = new ArrayList<String>();
             temp.add(line);
             tooltipMap.put(pair, temp);
-        } else
+        }
+        else
         {
             tooltipMap.get(pair).add(line);
         }

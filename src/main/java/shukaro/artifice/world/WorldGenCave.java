@@ -75,17 +75,20 @@ public class WorldGenCave
                     {
                         coord.set(extra.get(rand.nextInt(extra.size())));
                         extra.remove(coord);
-                    } else if (extra.isEmpty())
+                    }
+                    else if (extra.isEmpty())
                     {
                         coord.set(lining.get(rand.nextInt(lining.size())));
                         lining.remove(coord);
-                    } else
+                    }
+                    else
                     {
                         if (rand.nextInt(100) < adherence)
                         {
                             coord.set(lining.get(rand.nextInt(lining.size())));
                             lining.remove(coord);
-                        } else
+                        }
+                        else
                         {
                             coord.set(extra.get(rand.nextInt(extra.size())));
                             extra.remove(coord);

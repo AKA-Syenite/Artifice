@@ -20,7 +20,7 @@ public class ArtificeCreativeTab extends CreativeTabs
     public ItemStack getIconItemStack()
     {
         /*
-    	if (this.getTabLabel() == documents.getTabLabel())
+        if (this.getTabLabel() == documents.getTabLabel())
     	{
     		return new ItemStack(Item.writtenBook);
     	}
@@ -42,7 +42,8 @@ public class ArtificeCreativeTab extends CreativeTabs
             if (ArtificeConfig.enableSteel.getBoolean(true))
                 return new ItemStack(ArtificeItems.itemSteelIngot, 1, 0);
             return null;
-        } else
+        }
+        else
             return null;
     }
 

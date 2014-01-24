@@ -124,7 +124,8 @@ public class ItemSickle extends ItemTool
             if (stack.stackSize <= 0)
                 player.destroyCurrentEquippedItem();
             return true;
-        } else if (block != null && block.isLeaves(world, x, y, z))
+        }
+        else if (block != null && block.isLeaves(world, x, y, z))
         {
             int count = 0;
             for (BlockCoord c : coord.getRadiusBlocks(world, radius))

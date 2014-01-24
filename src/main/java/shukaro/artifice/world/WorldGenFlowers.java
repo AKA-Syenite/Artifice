@@ -71,7 +71,8 @@ public class WorldGenFlowers
                         world.setBlock(x, y, z, ArtificeBlocks.blockFlora.blockID, 4, 0);
                     else
                         world.setBlock(x, y, z, ArtificeBlocks.blockFlora.blockID, 3, 0);
-                } else
+                }
+                else
                     world.setBlock(x, y, z, ArtificeBlocks.blockFlora.blockID, type, 0);
             }
         }

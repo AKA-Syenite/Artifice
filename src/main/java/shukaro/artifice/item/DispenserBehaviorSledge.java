@@ -40,7 +40,8 @@ public class DispenserBehaviorSledge extends BehaviorDefaultDispenseItem
                 item.setVelocity(xVel, 0.1, zVel);
                 world.spawnEntityInWorld(item);
             }
-        } else if (ArtificeRegistry.getWildSledgeBlocks().containsKey(target.getBlockID(world)))
+        }
+        else if (ArtificeRegistry.getWildSledgeBlocks().containsKey(target.getBlockID(world)))
         {
             world.setBlockToAir(target.x, target.y, target.z);
             stack.setItemDamage(stack.getItemDamage() + 1);

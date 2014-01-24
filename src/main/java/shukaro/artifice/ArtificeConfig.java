@@ -86,6 +86,20 @@ public class ArtificeConfig
     public static Property limitUpgrades;
     private static Property marbleList;
     private static Property basaltList;
+    public static Property maxSharpness;
+    public static Property maxEfficiency;
+    public static Property maxUnbreaking;
+    public static Property maxPunch;
+    public static Property maxPower;
+    public static Property maxKnockback;
+    public static Property maxThorns;
+    public static Property maxProtection;
+    public static Property maxProjectileProtection;
+    public static Property maxFeatherFalling;
+    public static Property maxFireProtection;
+    public static Property maxBlastProtection;
+    public static Property maxRespiration;
+    public static Property maxAquaAffinity;
 
     public static Property floraWorldGen;
     public static Property floraFrequency;
@@ -323,6 +337,35 @@ public class ArtificeConfig
             basaltList = c.get("General", "Basalt List", "");
             basaltList.comment = "Comma-seperated list of ID:Meta pairs to add to a cycling chain of 1:1 basalt exchange recipes. No spaces.";
 
+            maxSharpness = c.get("Upgrades", "Max Sharpness Level", 3);
+            maxSharpness.comment = "Maximum level of Sharpness that can be applied via upgrades";
+            maxEfficiency = c.get("Upgrades", "Max Efficiency Level", 3);
+            maxEfficiency.comment = "Maximum level of Efficiency that can be applied via upgrades";
+            maxUnbreaking = c.get("Upgrades", "Max Unbreaking Level", 2);
+            maxUnbreaking.comment = "Maximum level of Unbreaking that can be applied via upgrades";
+            maxPunch = c.get("Upgrades", "Max Punch Level", 2);
+            maxPunch.comment = "Maximum level of Punch that can be applied via upgrades";
+            maxPower = c.get("Upgrades", "Max Power Level", 3);
+            maxPower.comment = "Maximum level of Power that can be applied via upgrades";
+            maxKnockback = c.get("Upgrades", "Max Knockback Level", 2);
+            maxKnockback.comment = "Maximum level of Knockback that can be applied via upgrades";
+            maxThorns = c.get("Upgrades", "Max Thorns Level", 2);
+            maxThorns.comment = "Maximum level of Thorns that can be applied via upgrades";
+            maxProtection = c.get("Upgrades", "Max Protection Level", 3);
+            maxProtection.comment = "Maximum level of Protection that can be applied via upgrades";
+            maxProjectileProtection = c.get("Upgrades", "Max Projectile Protection Level", 3);
+            maxProjectileProtection.comment = "Maximum level of Projectile Protection that can be applied via upgrades";
+            maxFeatherFalling = c.get("Upgrades", "Max Feather Falling Level", 3);
+            maxFeatherFalling.comment = "Maximum level of Feather Falling that can be applied via upgrades";
+            maxFireProtection = c.get("Upgrades", "Max Fire Protection Level", 3);
+            maxFireProtection.comment = "Maximum level of Fire Protection that can be applied via upgrades";
+            maxBlastProtection = c.get("Upgrades", "Max Blast Protection Level", 3);
+            maxBlastProtection.comment = "Maximum level of Blast Protection that can be applied via upgrades";
+            maxRespiration = c.get("Upgrades", "Max Respiration Level", 3);
+            maxRespiration.comment = "Maximum level of Respiration that can be applied via upgrades";
+            maxAquaAffinity = c.get("Upgrades", "Max Aqua Affinity Level", 1);
+            maxAquaAffinity.comment = "Maximum level of Aqua Affinity that can be applied via upgrades";
+
 
             enableFrames = c.get("General", "Enable Frames", true);
             enableFrames.comment = "Set to false to stop frames from initializing";
@@ -391,11 +434,13 @@ public class ArtificeConfig
                 upgradeRecipes.set(false);
             }
 
-        } catch (Exception e)
+        }
+        catch (Exception e)
         {
             ArtificeCore.logger.log(Level.SEVERE, "Couldn't load the config file");
             e.printStackTrace();
-        } finally
+        }
+        finally
         {
             c.save();
         }
@@ -415,11 +460,13 @@ public class ArtificeConfig
             tooltips.comment = "Set to false to turn off tooltips";
             flavorText = c.get("Client", "Flavor Text", true);
             flavorText.comment = "Set to false to turn off flavor text in tooltips";
-        } catch (Exception e)
+        }
+        catch (Exception e)
         {
             ArtificeCore.logger.log(Level.SEVERE, "Couldn't load the config file");
             e.printStackTrace();
-        } finally
+        }
+        finally
         {
             c.save();
         }
@@ -436,7 +483,8 @@ public class ArtificeConfig
             {
                 Integer dimID = Integer.parseInt(dim);
                 ArtificeRegistry.registerDimensionBlacklist(dimID);
-            } catch (Exception e)
+            }
+            catch (Exception e)
             {
                 ArtificeCore.logger.log(Level.WARNING, "Couldn't load the dimension blacklist from string");
             }
@@ -450,7 +498,8 @@ public class ArtificeConfig
         {
             ArtificeCore.logger.log(Level.INFO, "Reading the marble list");
             stoneList = marbleList.getString().trim();
-        } else
+        }
+        else
         {
             ArtificeCore.logger.log(Level.INFO, "Reading the basalt list");
             stoneList = basaltList.getString().trim();
@@ -466,7 +515,8 @@ public class ArtificeConfig
                     ArtificeRegistry.registerMarbleType(ID, meta);
                 else
                     ArtificeRegistry.registerBasaltType(ID, meta);
-            } catch (Exception e)
+            }
+            catch (Exception e)
             {
                 if (isMarble)
                     ArtificeCore.logger.log(Level.WARNING, "Couldn't load the marble list from string");

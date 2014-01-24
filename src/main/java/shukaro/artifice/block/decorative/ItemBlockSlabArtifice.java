@@ -1,17 +1,17 @@
 package shukaro.artifice.block.decorative;
 
-import java.util.List;
-
-import shukaro.artifice.ArtificeConfig;
-import shukaro.artifice.ArtificeTooltips;
-import shukaro.artifice.compat.ArtificeRegistry;
-import shukaro.artifice.util.IdMetaPair;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.BlockHalfSlab;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemSlab;
 import net.minecraft.item.ItemStack;
+import shukaro.artifice.ArtificeConfig;
+import shukaro.artifice.ArtificeTooltips;
+import shukaro.artifice.compat.ArtificeRegistry;
+import shukaro.artifice.util.IdMetaPair;
+
+import java.util.List;
 
 public class ItemBlockSlabArtifice extends ItemSlab
 {

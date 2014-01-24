@@ -1,7 +1,7 @@
 package shukaro.artifice.item;
 
-import java.util.List;
-
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.enchantment.Enchantment;
@@ -19,13 +19,13 @@ import shukaro.artifice.compat.ArtificeRegistry;
 import shukaro.artifice.render.IconHandler;
 import shukaro.artifice.util.FormatCodes;
 import shukaro.artifice.util.IdMetaPair;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+
+import java.util.List;
 
 public class ItemBox extends ItemArtifice
 {
     private Icon icon;
-    
+
     public ItemBox(int id)
     {
         super(id);
@@ -50,7 +50,7 @@ public class ItemBox extends ItemArtifice
     {
         return icon;
     }
-    
+
     @Override
     @SideOnly(Side.CLIENT)
     public void registerIcons(IconRegister reg)
@@ -71,7 +71,7 @@ public class ItemBox extends ItemArtifice
     {
         return stack.hasTagCompound();
     }
-    
+
     @Override
     public boolean onItemUse(ItemStack stack, EntityPlayer player, World world, int x, int y, int z, int side, float xOffset, float yOffset, float zOffset)
     {
@@ -83,13 +83,12 @@ public class ItemBox extends ItemArtifice
         {
             this.onItemRightClick(stack, world, player);
             return true;
-        }
-        else
+        } else
         {
             return false;
         }
     }
-    
+
     @Override
     public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player)
     {
@@ -100,7 +99,7 @@ public class ItemBox extends ItemArtifice
             ItemStack thing = new ItemStack(tag.getInteger("id"), stack.getItemDamage(), tag.getInteger("meta"));
             if (!tag.getCompoundTag("nbt").hasNoTags())
                 thing.setTagCompound(tag.getCompoundTag("nbt"));
-            
+
             // We're dropping everything since the player is sneaking
             if (player.isSneaking())
             {
@@ -133,12 +132,12 @@ public class ItemBox extends ItemArtifice
                     if (out != null && out.stackSize > 0 && !player.inventory.addItemStackToInventory(out) && !player.worldObj.isRemote)
                         player.worldObj.spawnEntityInWorld(new EntityItem(player.worldObj, player.posX + 0.5D, player.posY + 0.5D, player.posZ + 0.5D, out));
                 }
-                
+
                 // Stack is gone, we're done here folks
                 stack.stackSize = 0;
                 return stack;
             }
-            
+
             // Split the stack if stack sizes won't permit normal unboxing
             ItemStack extra = null;
             if (thing.stackSize > thing.getMaxStackSize() && stack.stackSize > 1)
@@ -159,22 +158,21 @@ public class ItemBox extends ItemArtifice
                     stack.stackSize--;
                 if (drop != null && !player.inventory.addItemStackToInventory(drop) && !world.isRemote)
                     world.spawnEntityInWorld(new EntityItem(world, player.posX + 0.5D, player.posY + 0.5D, player.posZ + 0.5D, drop));
-            }
-            else
+            } else
             {
                 drop = thing.copy();
                 stack.stackSize--;
                 if (drop != null && !player.inventory.addItemStackToInventory(drop) && !world.isRemote)
                     world.spawnEntityInWorld(new EntityItem(world, player.posX + 0.5D, player.posY + 0.5D, player.posZ + 0.5D, drop));
             }
-            
+
             // Give the player the leftover boxes
             if (extra != null && !player.inventory.addItemStackToInventory(extra) && !world.isRemote)
                 world.spawnEntityInWorld(new EntityItem(world, player.posX + 0.5D, player.posY + 0.5D, player.posZ + 0.5D, extra));
         }
         return stack;
     }
-    
+
     @Override
     @SideOnly(Side.CLIENT)
     public void addInformation(ItemStack stack, EntityPlayer player, List infoList, boolean advancedTooltips)
@@ -197,13 +195,13 @@ public class ItemBox extends ItemArtifice
         {
             infoList.add(FormatCodes.Italic.code + "Contains: " + FormatCodes.Reset.code + FormatCodes.Aqua.code + new ItemStack(tag.getInteger("id"), 1, tag.getInteger("meta")).getDisplayName());
             infoList.add(FormatCodes.Italic.code + "Amount: " + FormatCodes.Reset.code + FormatCodes.Aqua.code + stack.getItemDamage());
-            NBTTagList enchants = (NBTTagList) tag.getCompoundTag("nbt").getTag("ench") != null ? (NBTTagList) tag.getCompoundTag("nbt").getTag("ench") : (NBTTagList) tag.getCompoundTag("nbt").getTag("StoredEnchantments");
+            NBTTagList enchants = tag.getCompoundTag("nbt").getTag("ench") != null ? (NBTTagList) tag.getCompoundTag("nbt").getTag("ench") : (NBTTagList) tag.getCompoundTag("nbt").getTag("StoredEnchantments");
             if (enchants != null)
             {
-                for (int i=0; i<enchants.tagCount(); i++)
+                for (int i = 0; i < enchants.tagCount(); i++)
                 {
-                    short id = ((NBTTagCompound)enchants.tagAt(i)).getShort("id");
-                    short lvl = ((NBTTagCompound)enchants.tagAt(i)).getShort("lvl");
+                    short id = ((NBTTagCompound) enchants.tagAt(i)).getShort("id");
+                    short lvl = ((NBTTagCompound) enchants.tagAt(i)).getShort("lvl");
                     if (Enchantment.enchantmentsList[id] != null)
                     {
                         infoList.add(FormatCodes.Yellow.code + Enchantment.enchantmentsList[id].getTranslatedName(lvl));

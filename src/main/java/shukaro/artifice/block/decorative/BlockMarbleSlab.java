@@ -1,10 +1,8 @@
 package shukaro.artifice.block.decorative;
 
-import java.util.List;
-import java.util.Locale;
-import java.util.Random;
-
 import cpw.mods.fml.common.network.PacketDispatcher;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.BlockHalfSlab;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
@@ -22,18 +20,18 @@ import shukaro.artifice.render.IconHandler;
 import shukaro.artifice.render.TextureHandler;
 import shukaro.artifice.render.connectedtexture.ConnectedTextures;
 import shukaro.artifice.util.BlockCoord;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import shukaro.artifice.util.PacketWrapper;
+
+import java.util.List;
+import java.util.Locale;
+import java.util.Random;
 
 public class BlockMarbleSlab extends BlockHalfSlab
 {
-    private final String[] types = { "marbleBrick", "marbleCobble", "marblePaver", "marbleAntipaver" };
-    
+    private final String[] types = {"marbleBrick", "marbleCobble", "marblePaver", "marbleAntipaver"};
+
     private Icon paverSide;
-    
-    private final boolean isDouble;
-    
+
     public BlockMarbleSlab(int id, boolean isDouble)
     {
         super(id, isDouble, Material.rock);
@@ -41,15 +39,14 @@ public class BlockMarbleSlab extends BlockHalfSlab
         setLightOpacity(0);
         setHardness(1.5F);
         setResistance(10.0F);
-        this.isDouble = isDouble;
     }
-    
+
     @Override
     public int idDropped(int id, Random rand, int meta)
     {
         return ArtificeBlocks.blockMarbleSlab.blockID;
     }
-    
+
     @Override
     @SideOnly(Side.CLIENT)
     public void getSubBlocks(int id, CreativeTabs tab, List list)
@@ -60,7 +57,7 @@ public class BlockMarbleSlab extends BlockHalfSlab
                 list.add(new ItemStack(id, 1, i));
         }
     }
-    
+
     @Override
     public String getFullSlabName(int meta)
     {
@@ -69,33 +66,33 @@ public class BlockMarbleSlab extends BlockHalfSlab
             meta = 0;
         return "tile.artifice.slab." + types[meta].toLowerCase(Locale.ENGLISH);
     }
-    
+
     @Override
     @SideOnly(Side.CLIENT)
     public void registerIcons(IconRegister reg)
     {
-    	ArtificeConfig.registerConnectedTextures(reg);
+        ArtificeConfig.registerConnectedTextures(reg);
         paverSide = IconHandler.registerSingle(reg, "paverside", "marble");
     }
-    
+
     @Override
     @SideOnly(Side.CLIENT)
     public Icon getIcon(int side, int meta)
     {
         meta = meta & 7;
         if (meta > types.length)
-        	meta = 0;
+            meta = 0;
         if (meta == 2)
         {
             if (side == 0 || side == 1)
-            	return ConnectedTextures.MarblePaver.textureList[0];
+                return ConnectedTextures.MarblePaver.textureList[0];
             else
                 return this.paverSide;
         }
         if (meta == 3)
         {
             if (side == 0 || side == 1)
-            	return ConnectedTextures.MarbleAntipaver.textureList[0];
+                return ConnectedTextures.MarbleAntipaver.textureList[0];
             else
                 return this.paverSide;
         }
@@ -113,18 +110,15 @@ public class BlockMarbleSlab extends BlockHalfSlab
         {
             if (side == 0 || side == 1)
             {
-            	BlockCoord coord = new BlockCoord(x, y, z);
+                BlockCoord coord = new BlockCoord(x, y, z);
 
-            	if (!ArtificeCore.textureCache.containsKey(coord))
-            		TextureHandler.updateTexture(coord);
+                if (!ArtificeCore.textureCache.containsKey(coord))
+                    TextureHandler.updateTexture(coord);
 
-            	if (ArtificeCore.textureCache.get(coord) == null)
-            		return this.getIcon(side, meta);
-            	if (TextureHandler.getConnectedTexture(this.getIcon(side, meta)) != null)
-            		return TextureHandler.getConnectedTexture(this.getIcon(side, meta)).textureList[ArtificeCore.textureCache.get(coord)[side]];
-            	return this.getIcon(side, meta);
-            }
-            else
+                if (TextureHandler.getConnectedTexture(this.getIcon(side, meta)) != null && ArtificeCore.textureCache.get(coord) != null)
+                    return TextureHandler.getConnectedTexture(this.getIcon(side, meta)).textureList[ArtificeCore.textureCache.get(coord)[side]];
+                return this.getIcon(side, meta);
+            } else
                 return this.paverSide;
         }
         if (meta == 0)

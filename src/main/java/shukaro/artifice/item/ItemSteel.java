@@ -1,28 +1,22 @@
 package shukaro.artifice.item;
 
-import java.util.List;
-
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import shukaro.artifice.ArtificeConfig;
-import shukaro.artifice.ArtificeTooltips;
-import shukaro.artifice.compat.ArtificeRegistry;
-import shukaro.artifice.gui.ArtificeCreativeTab;
-import shukaro.artifice.render.IconHandler;
-import shukaro.artifice.util.IdMetaPair;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Icon;
+import shukaro.artifice.ArtificeConfig;
+import shukaro.artifice.render.IconHandler;
+
+import java.util.List;
 import java.util.Locale;
 
 public class ItemSteel extends ItemArtifice
 {
-    public Icon icon;
-    public Icon dustIcon;
-    private String[] names = { "ingot", "dust" };
+    private Icon icon;
+    private Icon dustIcon;
+    private String[] names = {"ingot", "dust"};
 
     public ItemSteel(int id)
     {
@@ -35,16 +29,16 @@ public class ItemSteel extends ItemArtifice
     public Icon getIconFromDamage(int meta)
     {
         if (meta == 0)
-        	return icon;
+            return icon;
         else
-        	return dustIcon;
+            return dustIcon;
     }
 
     @Override
     public String getUnlocalizedName(ItemStack stack)
     {
-    	if (stack.getItemDamage() > 1)
-    		return "item.artifice.steel." + names[0].toLowerCase(Locale.ENGLISH);
+        if (stack.getItemDamage() > 1)
+            return "item.artifice.steel." + names[0].toLowerCase(Locale.ENGLISH);
         return "item.artifice.steel." + names[stack.getItemDamage()].toLowerCase(Locale.ENGLISH);
     }
 
@@ -52,9 +46,9 @@ public class ItemSteel extends ItemArtifice
     @SideOnly(Side.CLIENT)
     public void getSubItems(int id, CreativeTabs tab, List list)
     {
-    	list.add(new ItemStack(id, 1, 0));
-    	if (ArtificeConfig.alternateSteel.getBoolean(false))
-    		list.add(new ItemStack(id, 1, 1));
+        list.add(new ItemStack(id, 1, 0));
+        if (ArtificeConfig.alternateSteel.getBoolean(false))
+            list.add(new ItemStack(id, 1, 1));
     }
 
     @Override

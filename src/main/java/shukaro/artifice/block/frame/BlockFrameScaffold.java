@@ -1,7 +1,9 @@
 package shukaro.artifice.block.frame;
 
+import cpw.mods.fml.common.network.PacketDispatcher;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
@@ -21,17 +23,13 @@ import shukaro.artifice.render.connectedtexture.ConnectedTextureBase;
 import shukaro.artifice.render.connectedtexture.ConnectedTextures;
 import shukaro.artifice.render.connectedtexture.schemes.SolidConnectedTexture;
 import shukaro.artifice.util.BlockCoord;
-import shukaro.artifice.util.ChunkCoord;
 import shukaro.artifice.util.PacketWrapper;
-import cpw.mods.fml.common.network.PacketDispatcher;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 import java.util.Locale;
 
 public class BlockFrameScaffold extends BlockFrame
 {
-    private static final ForgeDirection[] sides = new ForgeDirection[] { ForgeDirection.NORTH, ForgeDirection.SOUTH, ForgeDirection.EAST, ForgeDirection.WEST, ForgeDirection.DOWN };
+    private static final ForgeDirection[] sides = new ForgeDirection[]{ForgeDirection.NORTH, ForgeDirection.SOUTH, ForgeDirection.EAST, ForgeDirection.WEST, ForgeDirection.DOWN};
 
     private Icon[] sideIcons = new Icon[ArtificeCore.tiers.length];
     private ConnectedTextureBase basic = new SolidConnectedTexture(ConnectedTextures.BasicScaffold);
@@ -46,28 +44,26 @@ public class BlockFrameScaffold extends BlockFrame
         setBlockBounds(0.01F, 0.01F, 0.01F, 0.99F, 0.99F, 0.99F);
     }
 
-	@Override
-	public void onEntityCollidedWithBlock(World world, int x, int y, int z, Entity entity)
-	{
-		if(entity instanceof EntityPlayerMP)
-			((EntityPlayerMP)entity).playerNetServerHandler.ticksForFloatKick = 0;
-		entity.fallDistance = 0;
-		if (entity.isCollidedHorizontally)
-		{
-			entity.motionY = 0.2D;
-		}
-		else if (PlayerTracking.sneaks.contains(entity.entityId))
-		{
-			double diff = entity.prevPosY - entity.posY;
-			entity.boundingBox.minY += diff;
-			entity.boundingBox.maxY += diff;
-			entity.posY = entity.prevPosY;
-		}
-		else
-		{
-			entity.motionY = -0.10D;
-		}
-	}
+    @Override
+    public void onEntityCollidedWithBlock(World world, int x, int y, int z, Entity entity)
+    {
+        if (entity instanceof EntityPlayerMP)
+            ((EntityPlayerMP) entity).playerNetServerHandler.ticksForFloatKick = 0;
+        entity.fallDistance = 0;
+        if (entity.isCollidedHorizontally)
+        {
+            entity.motionY = 0.2D;
+        } else if (PlayerTracking.sneaks.contains(entity.entityId))
+        {
+            double diff = entity.prevPosY - entity.posY;
+            entity.boundingBox.minY += diff;
+            entity.boundingBox.maxY += diff;
+            entity.posY = entity.prevPosY;
+        } else
+        {
+            entity.motionY = -0.10D;
+        }
+    }
 
     @Override
     public void onBlockClicked(World world, int x, int y, int z, EntityPlayer player)
@@ -84,7 +80,7 @@ public class BlockFrameScaffold extends BlockFrame
                 {
                     held.stackSize--;
                     if (held.stackSize <= 0)
-                    	player.inventory.setInventorySlotContents(player.inventory.currentItem, null);
+                        player.inventory.setInventorySlotContents(player.inventory.currentItem, null);
                 }
             }
         }
@@ -100,16 +96,16 @@ public class BlockFrameScaffold extends BlockFrame
     {
         switch (meta)
         {
-        case 0:
-            return 4;
-        case 1:
-            return 8;
-        case 2:
-            return 12;
-        case 3:
-            return 16;
-        default:
-            return 0;
+            case 0:
+                return 4;
+            case 1:
+                return 8;
+            case 2:
+                return 12;
+            case 3:
+                return 16;
+            default:
+                return 0;
         }
     }
 
@@ -149,7 +145,7 @@ public class BlockFrameScaffold extends BlockFrame
 
     private boolean isRooted(World world, int x, int y, int z, int meta)
     {
-        for (int i=y-1; i>0; i--)
+        for (int i = y - 1; i > 0; i--)
         {
             if (world.isBlockSolidOnSide(x, i, z, ForgeDirection.UP))
             {
@@ -169,13 +165,13 @@ public class BlockFrameScaffold extends BlockFrame
     @Override
     public void onNeighborBlockChange(World world, int x, int y, int z, int neighborID)
     {
-    	if (!world.isRemote)
-    	{
-			BlockCoord c = new BlockCoord(x, y, z);
-            PacketDispatcher.sendPacketToAllAround(c.x, c.y, c.z, 192, world.provider.dimensionId, PacketWrapper.createPacket(ArtificeCore.modChannel, Packets.TEXTUREUPDATE, new Object[] {c.x, c.y, c.z}));
-    	}
-    	
-    	if (!canBlockStay(world, x, y, z))
+        if (!world.isRemote)
+        {
+            BlockCoord c = new BlockCoord(x, y, z);
+            PacketDispatcher.sendPacketToAllAround(c.x, c.y, c.z, 192, world.provider.dimensionId, PacketWrapper.createPacket(ArtificeCore.modChannel, Packets.TEXTUREUPDATE, new Object[]{c.x, c.y, c.z}));
+        }
+
+        if (!canBlockStay(world, x, y, z))
         {
             dropBlockAsItem(world, x, y, z, world.getBlockMetadata(x, y, z), 0);
             world.setBlockToAir(x, y, z);
@@ -198,8 +194,8 @@ public class BlockFrameScaffold extends BlockFrame
     @SideOnly(Side.CLIENT)
     public void registerIcons(IconRegister reg)
     {
-    	ArtificeConfig.registerConnectedTextures(reg);
-        for (int i=0; i<ArtificeCore.tiers.length; i++)
+        ArtificeConfig.registerConnectedTextures(reg);
+        for (int i = 0; i < ArtificeCore.tiers.length; i++)
             sideIcons[i] = IconHandler.registerSingle(reg, ArtificeCore.tiers[i].toLowerCase(Locale.ENGLISH), "scaffold/sides");
     }
 
@@ -207,22 +203,22 @@ public class BlockFrameScaffold extends BlockFrame
     @SideOnly(Side.CLIENT)
     public Icon getIcon(int side, int meta)
     {
-    	if (meta >= ArtificeCore.tiers.length)
+        if (meta >= ArtificeCore.tiers.length)
             meta = 0;
         if (side == 0 || side == 1)
         {
-            switch(meta)
+            switch (meta)
             {
-            case 0:
-            	return ConnectedTextures.BasicScaffold.textureList[0];
-            case 1:
-            	return ConnectedTextures.ReinforcedScaffold.textureList[0];
-            case 2:
-            	return ConnectedTextures.IndustrialScaffold.textureList[0];
-            case 3:
-            	return ConnectedTextures.AdvancedScaffold.textureList[0];
-            default:
-            	return ConnectedTextures.BasicScaffold.textureList[0];
+                case 0:
+                    return ConnectedTextures.BasicScaffold.textureList[0];
+                case 1:
+                    return ConnectedTextures.ReinforcedScaffold.textureList[0];
+                case 2:
+                    return ConnectedTextures.IndustrialScaffold.textureList[0];
+                case 3:
+                    return ConnectedTextures.AdvancedScaffold.textureList[0];
+                default:
+                    return ConnectedTextures.BasicScaffold.textureList[0];
             }
         }
         return this.sideIcons[meta];
@@ -232,28 +228,26 @@ public class BlockFrameScaffold extends BlockFrame
     @SideOnly(Side.CLIENT)
     public Icon getBlockTexture(IBlockAccess access, int x, int y, int z, int side)
     {
-    	int meta = access.getBlockMetadata(x, y, z);
+        int meta = access.getBlockMetadata(x, y, z);
         if (meta > ArtificeCore.tiers.length)
             meta = 0;
-        
+
         if (side == 0 || side == 1)
         {
-        	BlockCoord coord = new BlockCoord(x, y, z);
-        	if (!ArtificeCore.textureCache.containsKey(coord))
-        		TextureHandler.updateTexture(coord);
-        	
-        	if (ArtificeCore.textureCache.get(coord) == null)
-        		return this.getIcon(side, meta);
-        	if (TextureHandler.getConnectedTexture(this.getIcon(side, meta)) != null)
-        		return TextureHandler.getConnectedTexture(this.getIcon(side, meta)).textureList[ArtificeCore.textureCache.get(coord)[side]];
-        	return this.getIcon(side, meta);
+            BlockCoord coord = new BlockCoord(x, y, z);
+            if (!ArtificeCore.textureCache.containsKey(coord))
+                TextureHandler.updateTexture(coord);
+
+            if (TextureHandler.getConnectedTexture(this.getIcon(side, meta)) != null && ArtificeCore.textureCache.get(coord) != null)
+                return TextureHandler.getConnectedTexture(this.getIcon(side, meta)).textureList[ArtificeCore.textureCache.get(coord)[side]];
+            return this.getIcon(side, meta);
         }
         return this.sideIcons[access.getBlockMetadata(x, y, z)];
     }
 
     @Override
-	public int getRenderType()
-	{
-		return ArtificeConfig.frameRenderID;
-	}
+    public int getRenderType()
+    {
+        return ArtificeConfig.frameRenderID;
+    }
 }

@@ -1,10 +1,8 @@
 package shukaro.artifice.block.decorative;
 
-import java.util.List;
-import java.util.Locale;
-import java.util.Random;
-
 import cpw.mods.fml.common.network.PacketDispatcher;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.BlockHalfSlab;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
@@ -22,17 +20,17 @@ import shukaro.artifice.render.IconHandler;
 import shukaro.artifice.render.TextureHandler;
 import shukaro.artifice.render.connectedtexture.ConnectedTextures;
 import shukaro.artifice.util.BlockCoord;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import shukaro.artifice.util.PacketWrapper;
+
+import java.util.List;
+import java.util.Locale;
+import java.util.Random;
 
 public class BlockBasaltSlab extends BlockHalfSlab
 {
-    private final String[] types = { "basaltBrick", "basaltCobble", "basaltPaver", "basaltAntipaver" };
+    private final String[] types = {"basaltBrick", "basaltCobble", "basaltPaver", "basaltAntipaver"};
 
     private Icon paverSide;
-
-    private final boolean isDouble;
 
     public BlockBasaltSlab(int id, boolean isDouble)
     {
@@ -41,7 +39,6 @@ public class BlockBasaltSlab extends BlockHalfSlab
         setLightOpacity(0);
         setHardness(1.5F);
         setResistance(10.0F);
-        this.isDouble = isDouble;
     }
 
     @Override
@@ -74,7 +71,7 @@ public class BlockBasaltSlab extends BlockHalfSlab
     @SideOnly(Side.CLIENT)
     public void registerIcons(IconRegister reg)
     {
-    	ArtificeConfig.registerConnectedTextures(reg);
+        ArtificeConfig.registerConnectedTextures(reg);
         paverSide = IconHandler.registerSingle(reg, "paverside", "basalt");
     }
 
@@ -84,18 +81,18 @@ public class BlockBasaltSlab extends BlockHalfSlab
     {
         meta = meta & 7;
         if (meta > types.length)
-        	meta = 0;
+            meta = 0;
         if (meta == 2)
         {
             if (side == 0 || side == 1)
-            	return ConnectedTextures.BasaltPaver.textureList[0];
+                return ConnectedTextures.BasaltPaver.textureList[0];
             else
                 return this.paverSide;
         }
         if (meta == 3)
         {
             if (side == 0 || side == 1)
-            	return ConnectedTextures.BasaltAntipaver.textureList[0];
+                return ConnectedTextures.BasaltAntipaver.textureList[0];
             else
                 return this.paverSide;
         }
@@ -113,18 +110,15 @@ public class BlockBasaltSlab extends BlockHalfSlab
         {
             if (side == 0 || side == 1)
             {
-            	BlockCoord coord = new BlockCoord(x, y, z);
+                BlockCoord coord = new BlockCoord(x, y, z);
 
-            	if (!ArtificeCore.textureCache.containsKey(coord))
-            		TextureHandler.updateTexture(coord);
+                if (!ArtificeCore.textureCache.containsKey(coord))
+                    TextureHandler.updateTexture(coord);
 
-            	if (ArtificeCore.textureCache.get(coord) == null)
-            		return this.getIcon(side, meta);
-            	if (TextureHandler.getConnectedTexture(this.getIcon(side, meta)) != null)
-            		return TextureHandler.getConnectedTexture(this.getIcon(side, meta)).textureList[ArtificeCore.textureCache.get(coord)[side]];
-            	return this.getIcon(side, meta);
-            }
-            else
+                if (TextureHandler.getConnectedTexture(this.getIcon(side, meta)) != null && ArtificeCore.textureCache.get(coord) != null)
+                    return TextureHandler.getConnectedTexture(this.getIcon(side, meta)).textureList[ArtificeCore.textureCache.get(coord)[side]];
+                return this.getIcon(side, meta);
+            } else
                 return this.paverSide;
         }
         if (meta == 0)

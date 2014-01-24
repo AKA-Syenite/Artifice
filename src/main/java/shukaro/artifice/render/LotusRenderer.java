@@ -1,10 +1,10 @@
 package shukaro.artifice.render;
 
+import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.RenderBlocks;
 import net.minecraft.world.IBlockAccess;
 import shukaro.artifice.ArtificeConfig;
-import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
 
 public class LotusRenderer implements ISimpleBlockRenderingHandler
 {
@@ -34,5 +34,5 @@ public class LotusRenderer implements ISimpleBlockRenderingHandler
     {
         return ArtificeConfig.lotusRenderID;
     }
-    
+
 }

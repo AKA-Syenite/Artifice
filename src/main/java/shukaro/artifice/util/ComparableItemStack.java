@@ -6,22 +6,24 @@ import net.minecraftforge.oredict.OreDictionary;
 
 /**
  * This class allows for OreDictionary-compatible ItemStack comparisons.
- * 
+ * <p/>
  * The intended purpose of this is for things such as Recipe Handlers or HashMaps of ItemStacks.
- * 
+ *
  * @author King Lemming
- * 
  */
-public class ComparableItemStack {
+public class ComparableItemStack
+{
 
     public int itemID = -1;
     public int metadata = -1;
     public int stackSize = -1;
     public int oreID = -1;
 
-    public ComparableItemStack(ItemStack stack) {
+    public ComparableItemStack(ItemStack stack)
+    {
 
-        if (stack != null) {
+        if (stack != null)
+        {
             itemID = stack.itemID;
             metadata = stack.getItemDamage();
             stackSize = stack.stackSize;
@@ -29,7 +31,8 @@ public class ComparableItemStack {
         }
     }
 
-    public ComparableItemStack(int itemID, int damage, int stackSize) {
+    public ComparableItemStack(int itemID, int damage, int stackSize)
+    {
 
         this.itemID = itemID;
         this.metadata = damage;
@@ -37,7 +40,8 @@ public class ComparableItemStack {
         this.oreID = OreDictionary.getOreID(this.toItemStack());
     }
 
-    public ComparableItemStack(ComparableItemStack stack) {
+    public ComparableItemStack(ComparableItemStack stack)
+    {
 
         this.itemID = stack.itemID;
         this.metadata = stack.metadata;
@@ -45,9 +49,11 @@ public class ComparableItemStack {
         this.oreID = stack.oreID;
     }
 
-    public ComparableItemStack(String oreName) {
+    public ComparableItemStack(String oreName)
+    {
 
-        if (!OreDictionary.getOres(oreName).isEmpty()) {
+        if (!OreDictionary.getOres(oreName).isEmpty())
+        {
             ItemStack ore = OreDictionary.getOres(oreName).get(0);
             itemID = ore.itemID;
             metadata = ore.getItemDamage();
@@ -56,50 +62,55 @@ public class ComparableItemStack {
         }
     }
 
-    public boolean isItemEqual(ComparableItemStack other) {
+    public boolean isItemEqual(ComparableItemStack other)
+    {
 
         return other != null && (oreID != -1 && oreID == other.oreID || itemID == other.itemID && metadata == other.metadata);
     }
 
-    public boolean isStackEqual(ComparableItemStack other) {
+    public boolean isStackEqual(ComparableItemStack other)
+    {
 
         return isItemEqual(other) && stackSize == other.stackSize;
     }
 
-    public boolean isStackValid() {
+    public boolean isStackValid()
+    {
 
         return getItem() != null;
     }
 
-    public Item getItem() {
+    public Item getItem()
+    {
 
         return itemID < 0 || itemID >= 32000 ? null : Item.itemsList[itemID];
     }
 
-    public ItemStack toItemStack() {
+    public ItemStack toItemStack()
+    {
 
         return itemID < 0 || itemID >= 32000 ? null : new ItemStack(itemID, stackSize, metadata);
     }
 
     @Override
-    public ComparableItemStack clone() {
+    public ComparableItemStack clone()
+    {
 
         return new ComparableItemStack(this);
     }
 
     @Override
-    public int hashCode() {
+    public int hashCode()
+    {
 
         return oreID != -1 ? oreID : metadata | itemID << 16;
     }
 
     @Override
-    public boolean equals(Object o) {
+    public boolean equals(Object o)
+    {
 
-        if (!(o instanceof ComparableItemStack)) {
-            return false;
-        }
-        return isItemEqual((ComparableItemStack) o);
+        return o instanceof ComparableItemStack && isItemEqual((ComparableItemStack) o);
     }
 
 }

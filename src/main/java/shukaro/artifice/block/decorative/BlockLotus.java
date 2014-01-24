@@ -1,7 +1,7 @@
 package shukaro.artifice.block.decorative;
 
-import java.util.Random;
-
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.BlockLilyPad;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.util.Icon;
@@ -10,45 +10,45 @@ import net.minecraft.world.World;
 import shukaro.artifice.ArtificeConfig;
 import shukaro.artifice.gui.ArtificeCreativeTab;
 import shukaro.artifice.render.IconHandler;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+
+import java.util.Random;
 
 public class BlockLotus extends BlockLilyPad
 {
-    public static Icon lotus;
-    public static Icon lotusClosed;
-    
+    private static Icon lotus;
+    private static Icon lotusClosed;
+
     public BlockLotus(int par1)
     {
         super(par1);
         this.setCreativeTab(ArtificeCreativeTab.main);
         this.setUnlocalizedName("artifice.flora.lily");
     }
-    
+
     @Override
     public int getRenderType()
     {
         return ArtificeConfig.lotusRenderID;
     }
-    
+
     @Override
     public void updateTick(World world, int x, int y, int z, Random random)
     {
         int meta = world.getBlockMetadata(x, y, z);
-        
+
         if (meta == 0 && (world.getBlockLightValue(x, y, z) < 8))
             world.setBlockMetadataWithNotify(x, y, z, 1, 2);
         if (meta == 1 && (world.getBlockLightValue(x, y, z) >= 8))
             world.setBlockMetadataWithNotify(x, y, z, 0, 2);
     }
-    
+
     @Override
     @SideOnly(Side.CLIENT)
     public Icon getIcon(int side, int meta)
     {
         return meta == 0 ? lotus : lotusClosed;
     }
-    
+
     @Override
     @SideOnly(Side.CLIENT)
     public void registerIcons(IconRegister reg)
@@ -56,25 +56,25 @@ public class BlockLotus extends BlockLilyPad
         lotus = IconHandler.registerSingle(reg, "waterlotus", "flora");
         lotusClosed = IconHandler.registerSingle(reg, "waterlotusclosed", "flora");
     }
-    
+
     @Override
     public int damageDropped(int meta)
     {
         return meta == 1 ? 0 : meta;
     }
-    
+
     @Override
     public int getDamageValue(World world, int x, int y, int z)
     {
         return world.getBlockMetadata(x, y, z) == 1 ? 0 : world.getBlockMetadata(x, y, z);
     }
-    
+
     @SideOnly(Side.CLIENT)
     public int getBlockColor()
     {
         return 16777215;
     }
-    
+
     @SideOnly(Side.CLIENT)
     public int getRenderColor(int par1)
     {

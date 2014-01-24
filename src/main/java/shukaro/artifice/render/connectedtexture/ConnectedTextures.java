@@ -1,8 +1,8 @@
 package shukaro.artifice.render.connectedtexture;
 
+import net.minecraft.util.Icon;
 import shukaro.artifice.render.connectedtexture.schemes.SolidConnectedTexture;
 import shukaro.artifice.render.connectedtexture.schemes.TransparentConnectedTexture;
-import net.minecraft.util.Icon;
 
 public enum ConnectedTextures
 {
@@ -26,18 +26,18 @@ public enum ConnectedTextures
     ReinforcedGlassWall("glasswall_reinforced", false),
     IndustrialGlassWall("glasswall_industrial", false),
     AdvancedGlassWall("glasswall_advanced", false);
-    
+
     public String name;
     public Icon[] textureList;
     public ConnectedTextureBase renderer;
-    
+
     private ConnectedTextures(String s, Boolean solid)
     {
         this.name = s;
         this.textureList = new Icon[47];
         if (solid)
-        	this.renderer = new SolidConnectedTexture(this);
+            this.renderer = new SolidConnectedTexture(this);
         else
-        	this.renderer = new TransparentConnectedTexture(this);
+            this.renderer = new TransparentConnectedTexture(this);
     }
 }

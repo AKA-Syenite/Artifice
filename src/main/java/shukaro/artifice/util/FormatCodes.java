@@ -29,9 +29,9 @@ public enum FormatCodes
     Underlined("\u00A7n"),
     Italic("\u00A7o"),
     Reset("\u00A7r");
-    
+
     public String code;
-    
+
     private FormatCodes(String s)
     {
         this.code = s;

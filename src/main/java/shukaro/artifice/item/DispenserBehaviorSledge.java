@@ -1,7 +1,5 @@
 package shukaro.artifice.item;
 
-import java.util.Random;
-
 import net.minecraft.block.BlockDispenser;
 import net.minecraft.dispenser.BehaviorDefaultDispenseItem;
 import net.minecraft.dispenser.IBlockSource;
@@ -14,10 +12,12 @@ import shukaro.artifice.compat.ArtificeRegistry;
 import shukaro.artifice.util.BlockCoord;
 import shukaro.artifice.util.IdMetaPair;
 
+import java.util.Random;
+
 public class DispenserBehaviorSledge extends BehaviorDefaultDispenseItem
 {
     private final BehaviorDefaultDispenseItem defaultDispense = new BehaviorDefaultDispenseItem();
-    
+
     @Override
     public ItemStack dispenseStack(IBlockSource dispenser, ItemStack stack)
     {
@@ -40,12 +40,11 @@ public class DispenserBehaviorSledge extends BehaviorDefaultDispenseItem
                 item.setVelocity(xVel, 0.1, zVel);
                 world.spawnEntityInWorld(item);
             }
-        }
-        else if (ArtificeRegistry.getWildSledgeBlocks().containsKey(pair))
+        } else if (ArtificeRegistry.getWildSledgeBlocks().containsKey(target.getBlockID(world)))
         {
             world.setBlockToAir(target.x, target.y, target.z);
             stack.setItemDamage(stack.getItemDamage() + 1);
-            for (ItemStack drop : ArtificeRegistry.getWildSledgeBlocks().get(pair))
+            for (ItemStack drop : ArtificeRegistry.getWildSledgeBlocks().get(target.getBlockID(world)))
             {
                 EntityItem item = new EntityItem(world, target.x + 0.5, target.y + 0.5, target.z + 0.5, drop.copy());
                 double xVel = -0.1 + (0.1 - -0.1) * rand.nextDouble();
@@ -56,7 +55,7 @@ public class DispenserBehaviorSledge extends BehaviorDefaultDispenseItem
         }
         return stack;
     }
-    
+
     @Override
     protected void playDispenseSound(IBlockSource dispenser)
     {

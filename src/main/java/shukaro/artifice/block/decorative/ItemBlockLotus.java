@@ -1,5 +1,7 @@
 package shukaro.artifice.block.decorative;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.EntityPlayer;
@@ -8,10 +10,7 @@ import net.minecraft.util.EnumMovingObjectType;
 import net.minecraft.util.Icon;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import shukaro.artifice.ArtificeBlocks;
-import shukaro.artifice.ArtificeCore;
 import shukaro.artifice.block.ItemBlockArtifice;
 
 public class ItemBlockLotus extends ItemBlockArtifice
@@ -20,14 +19,14 @@ public class ItemBlockLotus extends ItemBlockArtifice
     {
         super(id);
     }
-    
+
     @Override
     @SideOnly(Side.CLIENT)
     public Icon getIconFromDamage(int meta)
     {
-        return BlockLotus.lotus;
+        return ArtificeBlocks.blockLotus.getIcon(0, meta);
     }
-    
+
     @Override
     public String getUnlocalizedName(ItemStack stack)
     {
@@ -36,7 +35,7 @@ public class ItemBlockLotus extends ItemBlockArtifice
         else
             return Block.blocksList[stack.itemID].getUnlocalizedName() + ".closed";
     }
-    
+
     public ItemStack onItemRightClick(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer)
     {
         MovingObjectPosition movingobjectposition = this.getMovingObjectPositionFromPlayer(par2World, par3EntityPlayer, true);
@@ -44,8 +43,7 @@ public class ItemBlockLotus extends ItemBlockArtifice
         if (movingobjectposition == null)
         {
             return par1ItemStack;
-        }
-        else
+        } else
         {
             if (movingobjectposition.typeOfHit == EnumMovingObjectType.TILE)
             {

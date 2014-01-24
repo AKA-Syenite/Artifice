@@ -12,6 +12,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.util.Icon;
+import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 import shukaro.artifice.ArtificeConfig;
 import shukaro.artifice.ArtificeTooltips;
@@ -193,8 +194,8 @@ public class ItemBox extends ItemArtifice
         NBTTagCompound tag = stack.getTagCompound();
         if (tag != null)
         {
-            infoList.add(FormatCodes.Italic.code + "Contains: " + FormatCodes.Reset.code + FormatCodes.Aqua.code + new ItemStack(tag.getInteger("id"), 1, tag.getInteger("meta")).getDisplayName());
-            infoList.add(FormatCodes.Italic.code + "Amount: " + FormatCodes.Reset.code + FormatCodes.Aqua.code + stack.getItemDamage());
+            infoList.add(FormatCodes.Italic.code + StatCollector.translateToLocal("tooltip.artifice.box.contains") + " " + FormatCodes.Reset.code + FormatCodes.Aqua.code + new ItemStack(tag.getInteger("id"), 1, tag.getInteger("meta")).getDisplayName());
+            infoList.add(FormatCodes.Italic.code + StatCollector.translateToLocal("tooltip.artifice.box.amount") + " " + FormatCodes.Reset.code + FormatCodes.Aqua.code + stack.getItemDamage());
             NBTTagList enchants = tag.getCompoundTag("nbt").getTag("ench") != null ? (NBTTagList) tag.getCompoundTag("nbt").getTag("ench") : (NBTTagList) tag.getCompoundTag("nbt").getTag("StoredEnchantments");
             if (enchants != null)
             {

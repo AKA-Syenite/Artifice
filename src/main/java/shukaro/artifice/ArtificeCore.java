@@ -65,8 +65,8 @@ public class ArtificeCore
     {
         logger = evt.getModLog();
 
-        ArtificeConfig.initCommon(evt);
         ArtificeConfig.initClient(evt);
+        ArtificeConfig.initCommon(evt);
 
         ArtificeCore.eventHandler = new ArtificeEventHandler();
         MinecraftForge.EVENT_BUS.register(ArtificeCore.eventHandler);

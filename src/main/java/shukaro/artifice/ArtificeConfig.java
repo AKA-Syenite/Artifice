@@ -265,58 +265,36 @@ public class ArtificeConfig
             marbleCaveAdherence = c.get("Cave Generation - Marble", "Marble Cave Adherence", 75);
             marbleCaveAdherence.comment = "How much generation 'sticks' to walls, 0-100, higher numbers lead to more extensive caves with thinner walls (Default 75)";
 
-            dimensionBlacklist = c.get("World Generation", "Dimension Blacklist", "");
-            dimensionBlacklist.comment = "A comma-separated list of dimension IDs to disable worldgen in. (No spaces)";
-
             regenBasaltLayer = c.get("World Regeneration", "Regenerate Basalt Layer", false);
-            regenBasaltLayer.comment = "Set to true to regenerate the basalt layer";
             regenMarbleLayer = c.get("World Regeneration", "Regenerate Marble Layer", false);
-            regenMarbleLayer.comment = "Set to true to regenerate the marble layer";
             regenBasaltClusters = c.get("World Regeneration", "Regenerate Basalt Clusters", false);
-            regenBasaltClusters.comment = "Set to true to regenerate basalt clusters";
             regenMarbleClusters = c.get("World Regeneration", "Regenerate Marble Clusters", false);
-            regenMarbleClusters.comment = "Set to true to regenerate marble clusters";
             regenBasaltCaves = c.get("World Regeneration", "Regenerate Basalt Caves", false);
-            regenBasaltCaves.comment = "Set to true to regenerate basalt caves";
             regenMarbleCaves = c.get("World Regeneration", "Regenerate Marble Caves", false);
-            regenMarbleCaves.comment = "Set to true to regenerate marble caves";
             regenFlora = c.get("World Regeneration", "Regenerate Flora", false);
-            regenFlora.comment = "Set to true to regenerate flowers";
             regenLotus = c.get("World Regeneration", "Regenerate Lotus Lilies", false);
-            regenLotus.comment = "Set to true to regenerate lotus lilies";
             regenKey = c.get("World Regeneration", "Regen Key", "DEFAULT");
-            regenKey.comment = "This key is used to keep track of which chunk have been generated/regenerated. Changing it will cause the regeneration code to run again, so only change it if you want it to happen. Useful to regen only one world feature at a time.";
+            c.addCustomCategoryComment("World Regeneration", "Set the features you want to regenerate or not to true/false, and change the Regen Key to begin regeneration on next startup");
 
             floraRecipes = c.get("Recipes", "Flower Recipes", true);
-            floraRecipes.comment = "Set to false to disable flower-related recipes";
             basaltRecipes = c.get("Recipes", "Basalt Recipes", true);
-            basaltRecipes.comment = "Set to false to disable basalt recipes";
             marbleRecipes = c.get("Recipes", "Marble Recipes", true);
-            marbleRecipes.comment = "Set to false to disable marble recipes";
             sledgeRecipes = c.get("Recipes", "Sledge Recipes", true);
-            sledgeRecipes.comment = "Set to false to prevent crafting of sledges";
             frameRecipes = c.get("Recipes", "Frame Recipes", true);
-            frameRecipes.comment = "Set to false to prevent crafting of frames";
             detectorRecipe = c.get("Recipes", "Detector Recipe", true);
-            detectorRecipe.comment = "Set to false to prevent crafting of detectors";
             steelSmelting = c.get("Recipes", "Steel Smelting", true);
             steelSmelting.comment = "Set to false to prevent the smelting of steel";
             alternateSteel = c.get("Recipes", "Alternate Steel Recipe", false);
-            alternateSteel.comment = "Set to true to enable an alternate steel recipe which uses additional fuel";
+            alternateSteel.comment = "Set to true to enable an alternate steel recipe crafts steel dust from an iron ingot and coal/charcoal";
             alternateSteelRequirement = c.get("Recipes", "Alternate Steel Recipe Fuel Requirement", 2);
-            alternateSteelRequirement.comment = "The amount of extra fuel each ingot of steel will require. Minimum of 1, maximum of 8";
+            alternateSteelRequirement.comment = "The amount of extra coal/charcoal each pile of steel dust will require to craft on a workbench. Minimum of 1, maximum of 8";
             blastWallRecipes = c.get("Recipes", "Blast Wall Recipes", true);
-            blastWallRecipes.comment = "Set to false to prevent crafting of blast walls";
             glassWallRecipes = c.get("Recipes", "Glass Wall Recipes", true);
-            glassWallRecipes.comment = "Set to false to prevent crafting of glass blast walls";
             scaffoldRecipes = c.get("Recipes", "Scaffolding Recipes", true);
-            scaffoldRecipes.comment = "Set to false to prevent crafting of scaffolding";
             boxRecipes = c.get("Recipes", "Box Recipes", true);
-            boxRecipes.comment = "Set to false to prevent crafting of boxes";
             stoneCycleRecipes = c.get("Recipes", "Stone Cycling Recipes", true);
-            stoneCycleRecipes.comment = "Set to false to prevent cycling through types of stone";
+            stoneCycleRecipes.comment = "Set to false to prevent cycling through types of stone as defined in the Basalt/Marble lists";
             sickleRecipes = c.get("Recipes", "Sickle Recipes", true);
-            sickleRecipes.comment = "Set to false to prevent crafting of sickles";
             coinMinting = c.get("Recipes", "Coin Minting", true);
             coinMinting.comment = "Whether or not to allow coins to be minted from nuggets";
             coinChanging = c.get("Recipes", "Coin Changing", true);
@@ -324,51 +302,38 @@ public class ArtificeConfig
             coinSmelting = c.get("Recipes", "Coin Smelting", false);
             coinSmelting.comment = "Whether or not to allow coins to be smelted back into nuggets";
             upgradeRecipes = c.get("Recipes", "Upgrade Recipes", true);
-            upgradeRecipes.comment = "Set to false to prevent crafting of upgrades";
             convenienceRecipes = c.get("Recipes", "Convenience Recipes", true);
-            convenienceRecipes.comment = "Set to false to prevent convenience crafting (smashing stone bricks, smelting cracked bricks, etc).";
+            convenienceRecipes.comment = "Set to false to prevent convenience crafting (Smelt stone bricks to cracked variant, craft mossy brick/cobble variants with water bucket, craft 2 chiseled brick from 2 normal).";
+            c.addCustomCategoryComment("Recipes", "Controls whether or not to make recipes available for use");
 
-            limitUpgrades = c.get("General", "Limit Upgrades", true);
-            limitUpgrades.comment = "If true, caps the maximum enchant level that can be applied through upgrades to below the natural cap (Shown in Tooltips)";
-            floraBoneMeal = c.get("General", "Bonemeal Flowers", true);
+            dimensionBlacklist = c.get("Compatibility", "Dimension Blacklist", "");
+            dimensionBlacklist.comment = "A comma-separated list of dimension IDs to disable worldgen in. (No spaces)";
+            floraBoneMeal = c.get("Compatibility", "Bonemeal Flowers", true);
             floraBoneMeal.comment = "Set to false to disable random flower growth from bonemeal";
-            marbleList = c.get("General", "Marble List", "");
-            marbleList.comment = "Comma-seperated list of ID:Meta pairs to add to a cycling chain of 1:1 marble exchange recipes. No spaces.";
-            basaltList = c.get("General", "Basalt List", "");
-            basaltList.comment = "Comma-seperated list of ID:Meta pairs to add to a cycling chain of 1:1 basalt exchange recipes. No spaces.";
+            marbleList = c.get("Compatibility", "Marble List", "");
+            marbleList.comment = "Comma-seperated list of ID:Meta pairs to add to a cycling chain of 1:1 marble exchange recipes. No spaces or quotes, meta is required.";
+            basaltList = c.get("Compatibility", "Basalt List", "");
+            basaltList.comment = "Comma-seperated list of ID:Meta pairs to add to a cycling chain of 1:1 basalt exchange recipes. No spaces or quotes, meta is required.";
 
+            limitUpgrades = c.get("Upgrades", "Limit Upgrades", true);
+            limitUpgrades.comment = "If true, caps the maximum enchant level that can be applied through upgrades to the configured levels, if not set they will cap at the natural level cap";
             maxSharpness = c.get("Upgrades", "Max Sharpness Level", 3);
-            maxSharpness.comment = "Maximum level of Sharpness that can be applied via upgrades";
             maxEfficiency = c.get("Upgrades", "Max Efficiency Level", 3);
-            maxEfficiency.comment = "Maximum level of Efficiency that can be applied via upgrades";
             maxUnbreaking = c.get("Upgrades", "Max Unbreaking Level", 2);
-            maxUnbreaking.comment = "Maximum level of Unbreaking that can be applied via upgrades";
             maxPunch = c.get("Upgrades", "Max Punch Level", 2);
-            maxPunch.comment = "Maximum level of Punch that can be applied via upgrades";
             maxPower = c.get("Upgrades", "Max Power Level", 3);
-            maxPower.comment = "Maximum level of Power that can be applied via upgrades";
             maxKnockback = c.get("Upgrades", "Max Knockback Level", 2);
-            maxKnockback.comment = "Maximum level of Knockback that can be applied via upgrades";
             maxThorns = c.get("Upgrades", "Max Thorns Level", 2);
-            maxThorns.comment = "Maximum level of Thorns that can be applied via upgrades";
             maxProtection = c.get("Upgrades", "Max Protection Level", 3);
-            maxProtection.comment = "Maximum level of Protection that can be applied via upgrades";
             maxProjectileProtection = c.get("Upgrades", "Max Projectile Protection Level", 3);
-            maxProjectileProtection.comment = "Maximum level of Projectile Protection that can be applied via upgrades";
             maxFeatherFalling = c.get("Upgrades", "Max Feather Falling Level", 3);
-            maxFeatherFalling.comment = "Maximum level of Feather Falling that can be applied via upgrades";
             maxFireProtection = c.get("Upgrades", "Max Fire Protection Level", 3);
-            maxFireProtection.comment = "Maximum level of Fire Protection that can be applied via upgrades";
             maxBlastProtection = c.get("Upgrades", "Max Blast Protection Level", 3);
-            maxBlastProtection.comment = "Maximum level of Blast Protection that can be applied via upgrades";
             maxRespiration = c.get("Upgrades", "Max Respiration Level", 3);
-            maxRespiration.comment = "Maximum level of Respiration that can be applied via upgrades";
             maxAquaAffinity = c.get("Upgrades", "Max Aqua Affinity Level", 1);
-            maxAquaAffinity.comment = "Maximum level of Aqua Affinity that can be applied via upgrades";
-
+            c.addCustomCategoryComment("Upgrades", "Maximum level of enchantment allowed for each enchantment via upgrades");
 
             enableFrames = c.get("General", "Enable Frames", true);
-            enableFrames.comment = "Set to false to stop frames from initializing";
             if (!enableFrames.getBoolean(true))
             {
                 frameRecipes.set(false);
@@ -378,20 +343,17 @@ public class ArtificeConfig
                 scaffoldRecipes.set(false);
             }
             enableSledges = c.get("General", "Enable Sledges", true);
-            enableSledges.comment = "Set to false to stop sledges from initializing";
             if (!enableSledges.getBoolean(true))
             {
                 sledgeRecipes.set(false);
             }
             enableSteel = c.get("General", "Enable Steel", true);
-            enableSteel.comment = "Set to false to stop steel from initializing";
             if (!enableSteel.getBoolean(true))
             {
                 steelSmelting.set(false);
                 alternateSteel.set(false);
             }
             enableWorldGen = c.get("General", "Enable Worldgen", true);
-            enableWorldGen.comment = "Set to false to stop worldgen blocks from initializing or generating";
             if (!enableWorldGen.getBoolean(true))
             {
                 floraWorldGen.set(false);
@@ -408,19 +370,16 @@ public class ArtificeConfig
                 floraBoneMeal.set(false);
             }
             enableBoxes = c.get("General", "Enable Boxes", true);
-            enableBoxes.comment = "Set to false to stop boxes from initializing";
             if (!enableBoxes.getBoolean(true))
             {
                 boxRecipes.set(false);
             }
             enableSickles = c.get("General", "Enable Sickles", true);
-            enableSickles.comment = "Set to false to stop sickles from initializing";
             if (!enableSickles.getBoolean(true))
             {
                 sickleRecipes.set(false);
             }
             enableCoins = c.get("General", "Enable Coins", true);
-            enableCoins.comment = "Set to false to stop coins from initializing";
             if (!enableCoins.getBoolean(true))
             {
                 coinMinting.set(false);
@@ -428,12 +387,11 @@ public class ArtificeConfig
                 coinSmelting.set(false);
             }
             enableUpgrades = c.get("General", "Enable Upgrades", true);
-            enableUpgrades.comment = "Set to false to stop upgrades from initializing";
             if (!enableUpgrades.getBoolean(true))
             {
                 upgradeRecipes.set(false);
             }
-
+            c.addCustomCategoryComment("General", "Enable or disable mod features completely");
         }
         catch (Exception e)
         {
@@ -456,9 +414,9 @@ public class ArtificeConfig
         try
         {
             c.load();
-            tooltips = c.get("Client", "Tooltips", true);
+            tooltips = c.get("Client", "Enable Tooltips", true);
             tooltips.comment = "Set to false to turn off tooltips";
-            flavorText = c.get("Client", "Flavor Text", true);
+            flavorText = c.get("Client", "Tooltip Flavor Text", true);
             flavorText.comment = "Set to false to turn off flavor text in tooltips";
         }
         catch (Exception e)

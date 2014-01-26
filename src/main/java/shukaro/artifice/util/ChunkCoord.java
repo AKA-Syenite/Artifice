@@ -3,8 +3,10 @@ package shukaro.artifice.util;
 import net.minecraft.world.ChunkCoordIntPair;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
-public class ChunkCoord implements Comparable<ChunkCoord>, Serializable
+public class ChunkCoord implements Comparable
 {
     public int chunkX;
     public int chunkZ;
@@ -25,9 +27,15 @@ public class ChunkCoord implements Comparable<ChunkCoord>, Serializable
         this.chunkZ = z;
     }
 
-    public boolean equals(ChunkCoord chunk)
+    @Override
+    public boolean equals(Object o)
     {
-        return (chunk.chunkX == this.chunkX) && (chunk.chunkZ == this.chunkZ);
+        if (o instanceof ChunkCoord)
+        {
+            ChunkCoord chunk = (ChunkCoord) o;
+            return (chunk.chunkX == this.chunkX) && (chunk.chunkZ == this.chunkZ);
+        }
+        return false;
     }
 
     @Override
@@ -65,8 +73,13 @@ public class ChunkCoord implements Comparable<ChunkCoord>, Serializable
     }
 
     @Override
-    public int compareTo(ChunkCoord other)
+    public int compareTo(Object o)
     {
-        return this.chunkX == other.chunkX ? this.chunkZ - other.chunkZ : this.chunkX - other.chunkX;
+        if (o instanceof ChunkCoord)
+        {
+            ChunkCoord other = (ChunkCoord) o;
+            return this.chunkX == other.chunkX ? this.chunkZ - other.chunkZ : this.chunkX - other.chunkX;
+        }
+        return 0;
     }
 }

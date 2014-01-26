@@ -9,8 +9,10 @@ import shukaro.artifice.event.KeyTicker;
 import shukaro.artifice.render.FrameRenderer;
 import shukaro.artifice.render.LotusRenderer;
 import shukaro.artifice.util.BlockCoord;
+import shukaro.artifice.util.ChunkCoord;
 
 import java.util.HashMap;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class ClientProxy extends CommonProxy
 {
@@ -24,6 +26,6 @@ public class ClientProxy extends CommonProxy
         if (ArtificeConfig.enableBoxes.getBoolean(true))
             TickRegistry.registerTickHandler(new KeyTicker(), Side.CLIENT);
 
-        ArtificeCore.textureCache = new HashMap<BlockCoord, int[]>();
+        ArtificeCore.textureCache = new ConcurrentHashMap<ChunkCoord, ConcurrentHashMap<BlockCoord, int[]>>();
     }
 }

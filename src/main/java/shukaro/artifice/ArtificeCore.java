@@ -21,9 +21,11 @@ import shukaro.artifice.net.CommonProxy;
 import shukaro.artifice.net.ServerPacketHandler;
 import shukaro.artifice.recipe.ArtificeRecipes;
 import shukaro.artifice.util.BlockCoord;
+import shukaro.artifice.util.ChunkCoord;
 import shukaro.artifice.world.ArtificeWorldGen;
 
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.logging.Logger;
 
 @Mod(modid = ArtificeCore.modID, name = ArtificeCore.modName, version = ArtificeCore.modVersion)
@@ -50,7 +52,7 @@ public class ArtificeCore
     public static final String[] rocks = {"", "Cobblestone", "Brick", "Paver", "Antipaver", "Chiseled"};
 
     @SideOnly(Side.CLIENT)
-    public static Map<BlockCoord, int[]> textureCache;
+    public static ConcurrentHashMap<ChunkCoord, ConcurrentHashMap<BlockCoord, int[]>> textureCache;
 
     @Instance(modID)
     public static ArtificeCore instance;

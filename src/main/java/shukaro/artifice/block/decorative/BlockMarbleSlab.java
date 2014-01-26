@@ -20,6 +20,7 @@ import shukaro.artifice.render.IconHandler;
 import shukaro.artifice.render.TextureHandler;
 import shukaro.artifice.render.connectedtexture.ConnectedTextures;
 import shukaro.artifice.util.BlockCoord;
+import shukaro.artifice.util.ChunkCoord;
 import shukaro.artifice.util.PacketWrapper;
 
 import java.util.List;
@@ -111,12 +112,17 @@ public class BlockMarbleSlab extends BlockHalfSlab
             if (side == 0 || side == 1)
             {
                 BlockCoord coord = new BlockCoord(x, y, z);
-
-                if (!ArtificeCore.textureCache.containsKey(coord))
+                boolean found = false;
+                for (ChunkCoord sector : ArtificeCore.textureCache.keySet())
+                {
+                    if (ArtificeCore.textureCache.get(sector).containsKey(coord))
+                        found = true;
+                }
+                if (!found)
                     TextureHandler.updateTexture(coord);
 
-                if (TextureHandler.getConnectedTexture(this.getIcon(side, meta)) != null && ArtificeCore.textureCache.get(coord) != null)
-                    return TextureHandler.getConnectedTexture(this.getIcon(side, meta)).textureList[ArtificeCore.textureCache.get(coord)[side]];
+                if (TextureHandler.getConnectedTexture(this.getIcon(side, meta)) != null && ArtificeCore.textureCache.containsKey(new ChunkCoord(coord)) && ArtificeCore.textureCache.get(new ChunkCoord(coord)).get(coord) != null)
+                    return TextureHandler.getConnectedTexture(this.getIcon(side, meta)).textureList[ArtificeCore.textureCache.get(new ChunkCoord(coord)).get(coord)[side]];
                 return this.getIcon(side, meta);
             }
             else

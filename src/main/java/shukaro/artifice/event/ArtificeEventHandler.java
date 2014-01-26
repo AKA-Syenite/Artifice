@@ -71,6 +71,13 @@ public class ArtificeEventHandler
     }
 
     @ForgeSubscribe
+    @SideOnly(Side.CLIENT)
+    public void chunkUnWatch(ChunkWatchEvent.UnWatch e)
+    {
+        ArtificeCore.textureCache.remove(new ChunkCoord(e.chunk));
+    }
+
+    @ForgeSubscribe
     public void chunkSave(ChunkDataEvent.Save e)
     {
         e.getData().setString("Artifice", ArtificeConfig.regenKey.getString());

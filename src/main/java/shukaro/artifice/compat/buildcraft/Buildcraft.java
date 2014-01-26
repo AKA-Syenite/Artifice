@@ -34,7 +34,7 @@ public class Buildcraft
             FMLInterModComms.sendMessage("BuildCraft|Core", "add-facade", ArtificeBlocks.blockSteel.blockID + "@0");
             ArtificeCore.logger.log(Level.INFO, "BuildCraft Compat Initialized");
         }
-        catch (Exception ex)
+        catch (Throwable ex)
         {
             ArtificeCore.logger.log(Level.WARNING, "Couldn't initialize BuildCraft compat");
             ex.printStackTrace();

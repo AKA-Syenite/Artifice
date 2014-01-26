@@ -26,7 +26,7 @@ public class MFR
             FactoryRegistry.registerHarvestable(new FactoryFlora());
             ArtificeCore.logger.log(Level.INFO, "MineFactoryReloaded Compat Initialized");
         }
-        catch (Exception ex)
+        catch (Throwable ex)
         {
             ArtificeCore.logger.log(Level.WARNING, "Couldn't initialize MineFactoryReloaded compat");
             ex.printStackTrace();

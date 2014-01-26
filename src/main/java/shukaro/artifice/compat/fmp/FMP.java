@@ -38,7 +38,7 @@ public class FMP
             FMLInterModComms.sendMessage("ForgeMicroblock", "microMaterial", new ItemStack(ArtificeBlocks.blockSteel.blockID, 1, 0));
             ArtificeCore.logger.log(Level.INFO, "ForgeMultiPart Compat Initialized");
         }
-        catch (Exception ex)
+        catch (Throwable ex)
         {
             ArtificeCore.logger.log(Level.WARNING, "Couldn't initialize ForgeMultiPart compat");
             ex.printStackTrace();

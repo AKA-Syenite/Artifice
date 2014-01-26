@@ -31,8 +31,7 @@ import java.util.logging.Logger;
 @Mod(modid = ArtificeCore.modID, name = ArtificeCore.modName, version = ArtificeCore.modVersion)
 @NetworkMod(clientSideRequired = true, serverSideRequired = false,
         clientPacketHandlerSpec = @SidedPacketHandler(channels = {ArtificeCore.modChannel}, packetHandler = ClientPacketHandler.class),
-        serverPacketHandlerSpec = @SidedPacketHandler(channels = {ArtificeCore.modChannel}, packetHandler = ServerPacketHandler.class)
-)
+        serverPacketHandlerSpec = @SidedPacketHandler(channels = {ArtificeCore.modChannel}, packetHandler = ServerPacketHandler.class))
 public class ArtificeCore
 {
     @SidedProxy(clientSide = "shukaro.artifice.net.ClientProxy", serverSide = "shukaro.artifice.net.CommonProxy")
@@ -75,15 +74,9 @@ public class ArtificeCore
         CommonProxy.init();
         if (evt.getSide() == Side.CLIENT)
             ClientProxy.init();
-    }
 
-    @EventHandler
-    public void init(FMLInitializationEvent evt)
-    {
         ArtificeBlocks.initBlocks();
         ArtificeItems.initItems();
-
-        ArtificeTooltips.initTooltips();
 
         if (ArtificeConfig.enableWorldGen.getBoolean(true))
             GameRegistry.registerWorldGenerator(ArtificeCore.worldGen = new ArtificeWorldGen());
@@ -95,13 +88,17 @@ public class ArtificeCore
             MinecraftForge.addGrassPlant(ArtificeBlocks.blockFlora, 2, 10);
             MinecraftForge.addGrassPlant(ArtificeBlocks.blockFlora, 3, 10);
         }
+    }
 
+    @EventHandler
+    public void init(FMLInitializationEvent evt)
+    {
+        ArtificeTooltips.initTooltips();
         ArtificeRecipes.registerRecipes();
     }
 
     @EventHandler
     public void postInit(FMLPostInitializationEvent evt)
     {
-
     }
 }

@@ -7,8 +7,10 @@ import net.minecraft.world.World;
 import shukaro.artifice.ArtificeCore;
 import shukaro.artifice.render.connectedtexture.ConnectedTextures;
 import shukaro.artifice.util.BlockCoord;
+import shukaro.artifice.util.ChunkCoord;
 
 import java.util.Locale;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class TextureHandler
 {
@@ -18,6 +20,9 @@ public class TextureHandler
 
         if (world != null && c.getBlock(world) != null && !c.getBlock(world).isAirBlock(world, c.x, c.y, c.z))
         {
+            if (!ArtificeCore.textureCache.containsKey(new ChunkCoord(c)))
+                ArtificeCore.textureCache.put(new ChunkCoord(c), new ConcurrentHashMap<BlockCoord, int[]>());
+
             Block block = c.getBlock(world);
             int meta = c.getMeta(world);
             boolean updated = false;
@@ -28,17 +33,17 @@ public class TextureHandler
                 ConnectedTextures t = getConnectedTexture(block.getIcon(i, meta));
                 if (t != null)
                 {
-                    if (ArtificeCore.textureCache.get(c) == null)
+                    if (ArtificeCore.textureCache.get(new ChunkCoord(c)).get(c) == null)
                         updated = true;
-                    else if (ArtificeCore.textureCache.get(c)[i] != t.renderer.getTextureIndex(world, c.x, c.y, c.z, i))
+                    else if (ArtificeCore.textureCache.get(new ChunkCoord(c)).get(c)[i] != t.renderer.getTextureIndex(world, c.x, c.y, c.z, i))
                         updated = true;
                     indices[i] = t.renderer.getTextureIndex(world, c.x, c.y, c.z, i);
                 }
             }
 
-            if (updated)
+            if (updated && ArtificeCore.textureCache.containsKey(new ChunkCoord(c)))
             {
-                ArtificeCore.textureCache.put(c, indices);
+                ArtificeCore.textureCache.get(new ChunkCoord(c)).put(c, indices);
                 world.markBlockForRenderUpdate(c.x, c.y, c.z);
             }
         }

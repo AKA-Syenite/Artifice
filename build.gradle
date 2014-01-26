@@ -47,5 +47,6 @@ processResources
 
 jar
 {
+    exclude 'powercrystals'
     destinationDir = new File("build/dist/")
 }

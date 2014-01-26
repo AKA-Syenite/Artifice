@@ -1,5 +1,6 @@
 package shukaro.artifice.block.frame;
 
+import cpw.mods.fml.common.Optional;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.renderer.texture.IconRegister;
@@ -7,12 +8,15 @@ import net.minecraft.util.Icon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ForgeDirection;
+import powercrystals.minefactoryreloaded.api.rednet.IConnectableRedNet;
+import powercrystals.minefactoryreloaded.api.rednet.RedNetConnectionType;
 import shukaro.artifice.ArtificeCore;
 import shukaro.artifice.render.IconHandler;
 
 import java.util.Random;
 
-public class BlockFrameDetector extends BlockFrame
+@Optional.Interface(iface = "powercrystals.minefactoryreloaded.api.rednet.IConnectableRedNet", modid = "MineFactoryReloaded")
+public class BlockFrameDetector extends BlockFrame implements IConnectableRedNet
 {
     private Icon icon;
 
@@ -124,5 +128,38 @@ public class BlockFrameDetector extends BlockFrame
     public boolean isBlockSolidOnSide(World world, int x, int y, int z, ForgeDirection side)
     {
         return true;
+    }
+
+    @Override
+    @Optional.Method(modid = "MineFactoryReloaded")
+    public RedNetConnectionType getConnectionType(World world, int x, int y, int z, ForgeDirection side)
+    {
+        return RedNetConnectionType.CableSingle;
+    }
+
+    @Override
+    @Optional.Method(modid = "MineFactoryReloaded")
+    public int[] getOutputValues(World world, int x, int y, int z, ForgeDirection side)
+    {
+        return new int[0];
+    }
+
+    @Override
+    @Optional.Method(modid = "MineFactoryReloaded")
+    public int getOutputValue(World world, int x, int y, int z, ForgeDirection side, int subnet)
+    {
+        return world.getBlockMetadata(x, y, z) == 1 ? 15 : 0;
+    }
+
+    @Override
+    @Optional.Method(modid = "MineFactoryReloaded")
+    public void onInputsChanged(World world, int x, int y, int z, ForgeDirection side, int[] inputValues)
+    {
+    }
+
+    @Override
+    @Optional.Method(modid = "MineFactoryReloaded")
+    public void onInputChanged(World world, int x, int y, int z, ForgeDirection side, int inputValue)
+    {
     }
 }

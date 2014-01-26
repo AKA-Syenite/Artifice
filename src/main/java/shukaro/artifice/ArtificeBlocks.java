@@ -4,7 +4,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.block.BlockHalfSlab;
 import net.minecraft.item.Item;
 import net.minecraftforge.oredict.OreDictionary;
-import shukaro.artifice.block.BlockSteel;
+import shukaro.artifice.block.decorative.BlockSteel;
 import shukaro.artifice.block.ItemBlockArtifice;
 import shukaro.artifice.block.decorative.*;
 import shukaro.artifice.block.frame.*;

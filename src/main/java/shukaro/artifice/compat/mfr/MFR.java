@@ -4,7 +4,6 @@ import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.network.NetworkMod;
-import powercrystals.minefactoryreloaded.api.FactoryRegistry;
 import shukaro.artifice.ArtificeCore;
 
 import java.util.logging.Level;
@@ -23,7 +22,7 @@ public class MFR
         }
         try
         {
-            FactoryRegistry.registerHarvestable(new FactoryFlora());
+            MFRHandler.handle();
             ArtificeCore.logger.log(Level.INFO, "MineFactoryReloaded Compat Initialized");
         }
         catch (Throwable ex)

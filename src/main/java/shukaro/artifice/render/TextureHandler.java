@@ -52,11 +52,14 @@ public class TextureHandler
     public static ConnectedTextures getConnectedTexture(Icon icon)
     {
         String s = icon.getIconName();
-        for (ConnectedTextures t : ConnectedTextures.values())
+        if (s != null)
         {
-            if (s.startsWith(ArtificeCore.modID.toLowerCase(Locale.ENGLISH) + ":" + t.name.replace('_', '/')))
+            for (ConnectedTextures t : ConnectedTextures.values())
             {
-                return t;
+                if (s.startsWith(ArtificeCore.modID.toLowerCase(Locale.ENGLISH) + ":" + t.name.replace('_', '/')))
+                {
+                    return t;
+                }
             }
         }
         return null;

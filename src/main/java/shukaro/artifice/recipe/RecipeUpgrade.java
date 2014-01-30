@@ -100,11 +100,11 @@ public class RecipeUpgrade implements IRecipe
                 }
                 else
                 {
-                    enchant = EnumUpgrades.values()[stack.getItemDamage()].enchant;
+                    enchant = EnumUpgrades.values()[stack.getItemDamage() + 1].enchant;
                     if (ArtificeConfig.limitUpgrades.getBoolean(true))
-                        maxLevel = EnumUpgrades.values()[stack.getItemDamage()].maxLevel;
+                        maxLevel = EnumUpgrades.values()[stack.getItemDamage() + 1].maxLevel;
                     else
-                        maxLevel = EnumUpgrades.values()[stack.getItemDamage()].enchant.getMaxLevel();
+                        maxLevel = EnumUpgrades.values()[stack.getItemDamage() + 1].enchant.getMaxLevel();
                 }
 
                 if (enchant.canApply(this.output) && this.output.getItem().getItemEnchantability() > 0)

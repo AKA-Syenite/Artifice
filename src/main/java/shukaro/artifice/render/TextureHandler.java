@@ -51,9 +51,9 @@ public class TextureHandler
 
     public static ConnectedTextures getConnectedTexture(Icon icon)
     {
-        String s = icon.getIconName();
-        if (s != null)
+        if (icon != null && icon.getIconName() != null)
         {
+            String s = icon.getIconName();
             for (ConnectedTextures t : ConnectedTextures.values())
             {
                 if (s.startsWith(ArtificeCore.modID.toLowerCase(Locale.ENGLISH) + ":" + t.name.replace('_', '/')))

@@ -160,151 +160,151 @@ public class ArtificeTooltips
     {
         if (ArtificeConfig.enableWorldGen.getBoolean(true))
         {
-            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockFlora.blockID, 3, localizeTooltip("lotus", false));
-            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockFlora.blockID, 3, localizeTooltip("lotus.close", false));
-            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockFlora.blockID, 3, localizeTooltip("lotus", true));
+            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockFlora, 3, localizeTooltip("lotus", false));
+            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockFlora, 3, localizeTooltip("lotus.close", false));
+            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockFlora, 3, localizeTooltip("lotus", true));
 
-            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockLotus.blockID, 0, localizeTooltip("lotus.close", false));
-            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockLotus.blockID, 0, localizeTooltip("lily", true));
+            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockLotus, 0, localizeTooltip("lotus.close", false));
+            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockLotus, 0, localizeTooltip("lily", true));
 
-            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockFlora.blockID, 0, localizeTooltip("bluebell", false));
-            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockFlora.blockID, 0, localizeTooltip("bluebell", true));
+            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockFlora, 0, localizeTooltip("bluebell", false));
+            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockFlora, 0, localizeTooltip("bluebell", true));
 
-            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockFlora.blockID, 1, localizeTooltip("orchid", false));
-            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockFlora.blockID, 1, localizeTooltip("orchid", true));
+            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockFlora, 1, localizeTooltip("orchid", false));
+            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockFlora, 1, localizeTooltip("orchid", true));
 
-            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockFlora.blockID, 2, localizeTooltip("iris", false));
-            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockFlora.blockID, 2, localizeTooltip("iris", true));
+            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockFlora, 2, localizeTooltip("iris", false));
+            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockFlora, 2, localizeTooltip("iris", true));
 
-            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockBasalt.blockID, 3, localizeTooltip("connected", false));
-            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockBasalt.blockID, 3, localizeTooltip("connected.snug", true));
+            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockBasalt, 3, localizeTooltip("connected", false));
+            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockBasalt, 3, localizeTooltip("connected.snug", true));
 
-            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockMarble.blockID, 3, localizeTooltip("connected", false));
-            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockMarble.blockID, 3, localizeTooltip("connected.snug", true));
+            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockMarble, 3, localizeTooltip("connected", false));
+            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockMarble, 3, localizeTooltip("connected.snug", true));
 
-            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockBasalt.blockID, 4, localizeTooltip("connected", false));
-            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockBasalt.blockID, 4, localizeTooltip("connected.carving", true));
+            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockBasalt, 4, localizeTooltip("connected", false));
+            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockBasalt, 4, localizeTooltip("connected.carving", true));
 
-            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockMarble.blockID, 4, localizeTooltip("connected", false));
-            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockMarble.blockID, 4, localizeTooltip("connected.carving", true));
+            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockMarble, 4, localizeTooltip("connected", false));
+            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockMarble, 4, localizeTooltip("connected.carving", true));
 
-            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockBasaltSlab.blockID, 2, localizeTooltip("connected", false));
-            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockBasaltSlab.blockID, 2, localizeTooltip("connected.snug", true));
+            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockBasaltSlab, 2, localizeTooltip("connected", false));
+            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockBasaltSlab, 2, localizeTooltip("connected.snug", true));
 
-            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockMarbleSlab.blockID, 2, localizeTooltip("connected", false));
-            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockMarbleSlab.blockID, 2, localizeTooltip("connected.snug", true));
+            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockMarbleSlab, 2, localizeTooltip("connected", false));
+            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockMarbleSlab, 2, localizeTooltip("connected.snug", true));
 
-            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockBasaltSlab.blockID, 3, localizeTooltip("connected", false));
-            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockBasaltSlab.blockID, 3, localizeTooltip("connected.carving", true));
+            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockBasaltSlab, 3, localizeTooltip("connected", false));
+            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockBasaltSlab, 3, localizeTooltip("connected.carving", true));
 
-            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockMarbleSlab.blockID, 3, localizeTooltip("connected", false));
-            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockMarbleSlab.blockID, 3, localizeTooltip("connected.carving", true));
+            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockMarbleSlab, 3, localizeTooltip("connected", false));
+            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockMarbleSlab, 3, localizeTooltip("connected.carving", true));
 
-            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockBasalt.blockID, 0, localizeTooltip("volcanic", false));
-            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockBasalt.blockID, 0, localizeTooltip("basalt.smooth", true));
+            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockBasalt, 0, localizeTooltip("volcanic", false));
+            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockBasalt, 0, localizeTooltip("basalt.smooth", true));
 
-            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockBasalt.blockID, 1, localizeTooltip("basalt.cobble", true));
+            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockBasalt, 1, localizeTooltip("basalt.cobble", true));
 
-            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockBasalt.blockID, 2, localizeTooltip("basalt.brick", true));
+            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockBasalt, 2, localizeTooltip("basalt.brick", true));
 
-            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockBasalt.blockID, 5, localizeTooltip("basalt.chiseled", true));
+            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockBasalt, 5, localizeTooltip("basalt.chiseled", true));
 
-            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockMarble.blockID, 0, localizeTooltip("metamorphic", false));
-            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockMarble.blockID, 0, localizeTooltip("marble.smooth", true));
+            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockMarble, 0, localizeTooltip("metamorphic", false));
+            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockMarble, 0, localizeTooltip("marble.smooth", true));
 
-            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockMarble.blockID, 1, localizeTooltip("marble.cobble", true));
+            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockMarble, 1, localizeTooltip("marble.cobble", true));
 
-            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockMarble.blockID, 2, localizeTooltip("marble.brick", true));
+            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockMarble, 2, localizeTooltip("marble.brick", true));
 
-            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockMarble.blockID, 5, localizeTooltip("marble.chiseled", true));
+            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockMarble, 5, localizeTooltip("marble.chiseled", true));
 
-            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockBasaltBrickStairs.blockID, 0, localizeTooltip("basalt.brick.stairs", true));
+            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockBasaltBrickStairs, 0, localizeTooltip("basalt.brick.stairs", true));
 
-            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockMarbleBrickStairs.blockID, 0, localizeTooltip("marble.brick.stairs", true));
+            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockMarbleBrickStairs, 0, localizeTooltip("marble.brick.stairs", true));
 
-            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockBasaltCobbleStairs.blockID, 0, localizeTooltip("basalt.cobble.stairs", true));
+            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockBasaltCobbleStairs, 0, localizeTooltip("basalt.cobble.stairs", true));
 
-            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockMarbleCobbleStairs.blockID, 0, localizeTooltip("marble.cobble.stairs", true));
+            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockMarbleCobbleStairs, 0, localizeTooltip("marble.cobble.stairs", true));
 
-            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockBasaltSlab.blockID, 0, localizeTooltip("basalt.brick.slab", true));
+            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockBasaltSlab, 0, localizeTooltip("basalt.brick.slab", true));
 
-            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockMarbleSlab.blockID, 0, localizeTooltip("marble.brick.slab", true));
+            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockMarbleSlab, 0, localizeTooltip("marble.brick.slab", true));
 
-            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockBasaltSlab.blockID, 1, localizeTooltip("basalt.cobble.slab", true));
+            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockBasaltSlab, 1, localizeTooltip("basalt.cobble.slab", true));
 
-            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockMarbleSlab.blockID, 1, localizeTooltip("marble.cobble.slab", true));
+            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockMarbleSlab, 1, localizeTooltip("marble.cobble.slab", true));
         }
 
         if (ArtificeConfig.enableFrames.getBoolean(true))
         {
-            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockDetector.blockID, 0, localizeTooltip("detector", false));
-            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockDetector.blockID, 0, localizeTooltip("detector", true));
+            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockDetector, 0, localizeTooltip("detector", false));
+            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockDetector, 0, localizeTooltip("detector", true));
 
-            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockFrame.blockID, 0, localizeTooltip("frame.basic", false));
-            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockFrame.blockID, 0, localizeTooltip("frame.basic", true));
+            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockFrame, 0, localizeTooltip("frame.basic", false));
+            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockFrame, 0, localizeTooltip("frame.basic", true));
 
-            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockFrame.blockID, 1, localizeTooltip("frame.reinforced", false));
-            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockFrame.blockID, 1, localizeTooltip("frame.reinforced", true));
+            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockFrame, 1, localizeTooltip("frame.reinforced", false));
+            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockFrame, 1, localizeTooltip("frame.reinforced", true));
 
-            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockFrame.blockID, 2, localizeTooltip("frame.industrial", false));
-            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockFrame.blockID, 2, localizeTooltip("frame.industrial", true));
+            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockFrame, 2, localizeTooltip("frame.industrial", false));
+            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockFrame, 2, localizeTooltip("frame.industrial", true));
 
-            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockFrame.blockID, 3, localizeTooltip("frame.advanced", false));
-            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockFrame.blockID, 3, localizeTooltip("frame.advanced", true));
+            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockFrame, 3, localizeTooltip("frame.advanced", false));
+            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockFrame, 3, localizeTooltip("frame.advanced", true));
 
-            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockGlassWall.blockID, 0, localizeTooltip("glasswall.basic", false));
-            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockGlassWall.blockID, 0, FormatCodes.Italic.code + localizeTooltip("resistance", false) + " " + FormatCodes.Reset.code + FormatCodes.Aqua.code + (int) ArtificeBlocks.blockGlassWall.getResistance(0));
-            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockGlassWall.blockID, 0, localizeTooltip("glasswall.basic", true));
+            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockGlassWall, 0, localizeTooltip("glasswall.basic", false));
+            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockGlassWall, 0, FormatCodes.Italic.code + localizeTooltip("resistance", false) + " " + FormatCodes.Reset.code + FormatCodes.Aqua.code + (int) ArtificeBlocks.blockGlassWall.getResistance(0));
+            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockGlassWall, 0, localizeTooltip("glasswall.basic", true));
 
-            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockGlassWall.blockID, 1, localizeTooltip("glasswall.reinforced", false));
-            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockGlassWall.blockID, 1, FormatCodes.Italic.code + localizeTooltip("resistance", false) + " " + FormatCodes.Reset.code + FormatCodes.Aqua.code + (int) ArtificeBlocks.blockGlassWall.getResistance(1));
-            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockGlassWall.blockID, 1, localizeTooltip("glasswall.reinforced", true));
+            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockGlassWall, 1, localizeTooltip("glasswall.reinforced", false));
+            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockGlassWall, 1, FormatCodes.Italic.code + localizeTooltip("resistance", false) + " " + FormatCodes.Reset.code + FormatCodes.Aqua.code + (int) ArtificeBlocks.blockGlassWall.getResistance(1));
+            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockGlassWall, 1, localizeTooltip("glasswall.reinforced", true));
 
-            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockGlassWall.blockID, 2, localizeTooltip("glasswall.industrial", false));
-            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockGlassWall.blockID, 2, FormatCodes.Italic.code + localizeTooltip("resistance", false) + " " + FormatCodes.Reset.code + FormatCodes.Aqua.code + (int) ArtificeBlocks.blockGlassWall.getResistance(2));
-            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockGlassWall.blockID, 2, localizeTooltip("glasswall.industrial", true));
+            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockGlassWall, 2, localizeTooltip("glasswall.industrial", false));
+            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockGlassWall, 2, FormatCodes.Italic.code + localizeTooltip("resistance", false) + " " + FormatCodes.Reset.code + FormatCodes.Aqua.code + (int) ArtificeBlocks.blockGlassWall.getResistance(2));
+            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockGlassWall, 2, localizeTooltip("glasswall.industrial", true));
 
-            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockGlassWall.blockID, 3, localizeTooltip("glasswall.advanced", false));
-            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockGlassWall.blockID, 3, FormatCodes.Italic.code + localizeTooltip("resistance", false) + " " + FormatCodes.Reset.code + FormatCodes.Aqua.code + (int) ArtificeBlocks.blockGlassWall.getResistance(3));
-            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockGlassWall.blockID, 3, localizeTooltip("glasswall.advanced", true));
+            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockGlassWall, 3, localizeTooltip("glasswall.advanced", false));
+            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockGlassWall, 3, FormatCodes.Italic.code + localizeTooltip("resistance", false) + " " + FormatCodes.Reset.code + FormatCodes.Aqua.code + (int) ArtificeBlocks.blockGlassWall.getResistance(3));
+            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockGlassWall, 3, localizeTooltip("glasswall.advanced", true));
 
-            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockReinforced.blockID, 0, localizeTooltip("blastwall.basic", false));
-            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockReinforced.blockID, 0, FormatCodes.Italic.code + localizeTooltip("resistance", false) + " " + FormatCodes.Reset.code + FormatCodes.Aqua.code + (int) ArtificeBlocks.blockReinforced.getResistance(0));
-            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockReinforced.blockID, 0, localizeTooltip("blastwall.basic", true));
+            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockReinforced, 0, localizeTooltip("blastwall.basic", false));
+            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockReinforced, 0, FormatCodes.Italic.code + localizeTooltip("resistance", false) + " " + FormatCodes.Reset.code + FormatCodes.Aqua.code + (int) ArtificeBlocks.blockReinforced.getResistance(0));
+            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockReinforced, 0, localizeTooltip("blastwall.basic", true));
 
-            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockReinforced.blockID, 1, localizeTooltip("blastwall.reinforced", false));
-            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockReinforced.blockID, 1, FormatCodes.Italic.code + localizeTooltip("resistance", false) + " " + FormatCodes.Reset.code + FormatCodes.Aqua.code + (int) ArtificeBlocks.blockReinforced.getResistance(1));
-            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockReinforced.blockID, 1, localizeTooltip("blastwall.reinforced", true));
+            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockReinforced, 1, localizeTooltip("blastwall.reinforced", false));
+            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockReinforced, 1, FormatCodes.Italic.code + localizeTooltip("resistance", false) + " " + FormatCodes.Reset.code + FormatCodes.Aqua.code + (int) ArtificeBlocks.blockReinforced.getResistance(1));
+            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockReinforced, 1, localizeTooltip("blastwall.reinforced", true));
 
-            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockReinforced.blockID, 2, localizeTooltip("blastwall.industrial", false));
-            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockReinforced.blockID, 2, FormatCodes.Italic.code + localizeTooltip("resistance", false) + " " + FormatCodes.Reset.code + FormatCodes.Aqua.code + (int) ArtificeBlocks.blockReinforced.getResistance(2));
-            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockReinforced.blockID, 2, localizeTooltip("blastwall.industrial", true));
+            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockReinforced, 2, localizeTooltip("blastwall.industrial", false));
+            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockReinforced, 2, FormatCodes.Italic.code + localizeTooltip("resistance", false) + " " + FormatCodes.Reset.code + FormatCodes.Aqua.code + (int) ArtificeBlocks.blockReinforced.getResistance(2));
+            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockReinforced, 2, localizeTooltip("blastwall.industrial", true));
 
-            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockReinforced.blockID, 3, localizeTooltip("blastwall.advanced", false));
-            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockReinforced.blockID, 3, FormatCodes.Italic.code + localizeTooltip("resistance", false) + " " + FormatCodes.Reset.code + FormatCodes.Aqua.code + (int) ArtificeBlocks.blockReinforced.getResistance(3));
-            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockReinforced.blockID, 3, localizeTooltip("blastwall.advanced", true));
+            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockReinforced, 3, localizeTooltip("blastwall.advanced", false));
+            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockReinforced, 3, FormatCodes.Italic.code + localizeTooltip("resistance", false) + " " + FormatCodes.Reset.code + FormatCodes.Aqua.code + (int) ArtificeBlocks.blockReinforced.getResistance(3));
+            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockReinforced, 3, localizeTooltip("blastwall.advanced", true));
 
-            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockScaffold.blockID, 0, localizeTooltip("scaffold.basic", false));
-            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockScaffold.blockID, 0, FormatCodes.Italic.code + localizeTooltip("overhang", false) + " " + FormatCodes.Reset.code + FormatCodes.Aqua.code + ArtificeBlocks.blockScaffold.getOverhang(0));
-            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockScaffold.blockID, 0, localizeTooltip("scaffold.basic", true));
+            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockScaffold, 0, localizeTooltip("scaffold.basic", false));
+            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockScaffold, 0, FormatCodes.Italic.code + localizeTooltip("overhang", false) + " " + FormatCodes.Reset.code + FormatCodes.Aqua.code + ArtificeBlocks.blockScaffold.getOverhang(0));
+            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockScaffold, 0, localizeTooltip("scaffold.basic", true));
 
-            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockScaffold.blockID, 1, localizeTooltip("scaffold.reinforced", false));
-            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockScaffold.blockID, 1, FormatCodes.Italic.code + localizeTooltip("overhang", false) + " " + FormatCodes.Reset.code + FormatCodes.Aqua.code + ArtificeBlocks.blockScaffold.getOverhang(1));
-            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockScaffold.blockID, 1, localizeTooltip("scaffold.reinforced", true));
+            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockScaffold, 1, localizeTooltip("scaffold.reinforced", false));
+            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockScaffold, 1, FormatCodes.Italic.code + localizeTooltip("overhang", false) + " " + FormatCodes.Reset.code + FormatCodes.Aqua.code + ArtificeBlocks.blockScaffold.getOverhang(1));
+            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockScaffold, 1, localizeTooltip("scaffold.reinforced", true));
 
-            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockScaffold.blockID, 2, localizeTooltip("scaffold.industrial", false));
-            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockScaffold.blockID, 2, FormatCodes.Italic.code + localizeTooltip("overhang", false) + " " + FormatCodes.Reset.code + FormatCodes.Aqua.code + ArtificeBlocks.blockScaffold.getOverhang(2));
-            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockScaffold.blockID, 2, localizeTooltip("scaffold.industrial", true));
+            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockScaffold, 2, localizeTooltip("scaffold.industrial", false));
+            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockScaffold, 2, FormatCodes.Italic.code + localizeTooltip("overhang", false) + " " + FormatCodes.Reset.code + FormatCodes.Aqua.code + ArtificeBlocks.blockScaffold.getOverhang(2));
+            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockScaffold, 2, localizeTooltip("scaffold.industrial", true));
 
-            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockScaffold.blockID, 3, localizeTooltip("scaffold.advanced", false));
-            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockScaffold.blockID, 3, FormatCodes.Italic.code + localizeTooltip("overhang", false) + " " + FormatCodes.Reset.code + FormatCodes.Aqua.code + ArtificeBlocks.blockScaffold.getOverhang(3));
-            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockScaffold.blockID, 3, localizeTooltip("scaffold.advanced", true));
+            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockScaffold, 3, localizeTooltip("scaffold.advanced", false));
+            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockScaffold, 3, FormatCodes.Italic.code + localizeTooltip("overhang", false) + " " + FormatCodes.Reset.code + FormatCodes.Aqua.code + ArtificeBlocks.blockScaffold.getOverhang(3));
+            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockScaffold, 3, localizeTooltip("scaffold.advanced", true));
         }
 
         if (ArtificeConfig.enableSteel.getBoolean(true))
         {
-            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockSteel.blockID, 0, localizeTooltip("steel.ingot", false));
-            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockSteel.blockID, 0, localizeTooltip("steel.ingot", true));
+            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockSteel, 0, localizeTooltip("steel.ingot", false));
+            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockSteel, 0, localizeTooltip("steel.ingot", true));
         }
 
         if (ArtificeConfig.enableCoins.getBoolean(true))

@@ -12,7 +12,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.Icon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-import net.minecraftforge.common.ForgeDirection;
+import net.minecraftforge.common.util.ForgeDirection;
 import shukaro.artifice.ArtificeConfig;
 import shukaro.artifice.ArtificeCore;
 import shukaro.artifice.net.Packets;
@@ -72,13 +72,13 @@ public class BlockFrameScaffold extends BlockFrame
     public void onBlockClicked(World world, int x, int y, int z, EntityPlayer player)
     {
         ItemStack held = player.inventory.mainInventory[player.inventory.currentItem];
-        if (held != null && held.itemID == this.blockID && held.getItemDamage() == world.getBlockMetadata(x, y, z))
+        if (held != null && held.itemID == this && held.getItemDamage() == world.getBlockMetadata(x, y, z))
         {
-            while (world.getBlockId(x, y, z) == this.blockID)
+            while (world.getBlockId(x, y, z) == this)
                 y++;
             if (checkStay(world, x, y, z, held.getItemDamage()) && (Block.blocksList[world.getBlockId(x, y, z)] == null || Block.blocksList[world.getBlockId(x, y, z)].isAirBlock(world, x, y, z)))
             {
-                world.setBlock(x, y, z, this.blockID, held.getItemDamage(), 3);
+                world.setBlock(x, y, z, this, held.getItemDamage(), 3);
                 if (!player.capabilities.isCreativeMode)
                 {
                     held.stackSize--;
@@ -130,13 +130,13 @@ public class BlockFrameScaffold extends BlockFrame
             BlockCoord t = c.copy().offset(d.ordinal());
             if (t.getBlock(world) instanceof BlockFrameScaffold)
             {
-                if (t.blockEquals(world, this.blockID, meta))
+                if (t.blockEquals(world, this, meta))
                 {
                     if (isRooted(world, t.x, t.y, t.z, meta))
                         return true;
-                    for (BlockCoord match : c.getRadiusMatches(world, getOverhang(meta), this.blockID, meta))
+                    for (BlockCoord match : c.getRadiusMatches(world, getOverhang(meta), this, meta))
                     {
-                        if (isRooted(world, match.x, match.y, match.z, meta) && c.isConnected(world, match, this.blockID, meta) && c.getDistance(match) <= getOverhang(meta))
+                        if (isRooted(world, match.x, match.y, match.z, meta) && c.isConnected(world, match, this, meta) && c.getDistance(match) <= getOverhang(meta))
                             return true;
                     }
                 }
@@ -152,7 +152,7 @@ public class BlockFrameScaffold extends BlockFrame
         {
             if (world.isBlockSolidOnSide(x, i, z, ForgeDirection.UP))
             {
-                if (world.getBlockId(x, i, z) == this.blockID)
+                if (world.getBlockId(x, i, z) == this)
                 {
                     if (world.getBlockMetadata(x, i, z) == meta)
                         continue;

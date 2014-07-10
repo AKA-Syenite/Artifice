@@ -45,14 +45,14 @@ public class BlockMarbleSlab extends BlockHalfSlab
     @Override
     public int idDropped(int id, Random rand, int meta)
     {
-        return ArtificeBlocks.blockMarbleSlab.blockID;
+        return ArtificeBlocks.blockMarbleSlab;
     }
 
     @Override
     @SideOnly(Side.CLIENT)
     public void getSubBlocks(int id, CreativeTabs tab, List list)
     {
-        if (id != ArtificeBlocks.blockMarbleDoubleSlab.blockID)
+        if (id != ArtificeBlocks.blockMarbleDoubleSlab)
         {
             for (int i = 0; i < types.length; i++)
                 list.add(new ItemStack(id, 1, i));

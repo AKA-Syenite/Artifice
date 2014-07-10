@@ -77,11 +77,11 @@ public class ItemSledge extends ItemTool
     @Override
     public boolean canHarvestBlock(Block block)
     {
-        if (ArtificeRegistry.getWildSledgeBlocks().get(block.blockID) != null)
+        if (ArtificeRegistry.getWildSledgeBlocks().get(block) != null)
             return true;
         for (int i = 0; i < 16; i++)
         {
-            if (ArtificeRegistry.getSledgeBlocks().get(new IdMetaPair(block.blockID, i)) != null)
+            if (ArtificeRegistry.getSledgeBlocks().get(new IdMetaPair(block, i)) != null)
                 return true;
         }
         return false;
@@ -90,8 +90,8 @@ public class ItemSledge extends ItemTool
     @Override
     public float getStrVsBlock(ItemStack stack, Block block, int meta)
     {
-        IdMetaPair pair = new IdMetaPair(block.blockID, meta);
-        if (ArtificeRegistry.getWildSledgeBlocks().get(block.blockID) != null || ArtificeRegistry.getSledgeBlocks().get(pair) != null)
+        IdMetaPair pair = new IdMetaPair(block, meta);
+        if (ArtificeRegistry.getWildSledgeBlocks().get(block) != null || ArtificeRegistry.getSledgeBlocks().get(pair) != null)
             return this.toolMaterial.getEfficiencyOnProperMaterial();
         return 1.0F;
     }

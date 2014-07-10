@@ -18,9 +18,9 @@ import java.util.List;
 
 public abstract class ItemArtifice extends Item
 {
-    public ItemArtifice(int id)
+    public ItemArtifice()
     {
-        super(id);
+        super();
         this.setHasSubtypes(true);
         this.setCreativeTab(ArtificeCreativeTab.main);
     }

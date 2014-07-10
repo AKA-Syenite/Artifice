@@ -4,7 +4,6 @@ import cpw.mods.fml.common.FMLLog;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
-import cpw.mods.fml.common.network.NetworkMod;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -20,7 +19,6 @@ import java.util.LinkedHashMap;
 import java.util.logging.Level;
 
 @Mod(modid = "ArtificeCompat|Thaumcraft", name = "Artifice Compat: Thaumcraft", version = ArtificeCore.modVersion, dependencies = "after:Artifice;after:Thaumcraft")
-@NetworkMod(clientSideRequired = false, serverSideRequired = false)
 public class Thaumcraft
 {
     private static LinkedHashMap<String, ? extends Object> aspects = null;
@@ -65,7 +63,7 @@ public class Thaumcraft
         String[] list = toadd.split(",");
         Object aspectList;
         if (craftedAspects)
-            aspectList = newAspectList.newInstance(item.itemID, item.getItemDamage());
+            aspectList = newAspectList.newInstance(item.getItem(), item.getItemDamage());
         else
             aspectList = AspectList.newInstance();
         for (int i = list.length; i --> 0; )
@@ -77,7 +75,7 @@ public class Thaumcraft
             else
                 FMLLog.severe("%s aspect missing.", temp[1]);
         }
-        registerItem.invoke(null, item.itemID, item.getItemDamage(), aspectList);
+        registerItem.invoke(null, item.getItem(), item.getItemDamage(), aspectList);
     }
 
     private static void parseAspects(String entity, String toadd) throws Throwable

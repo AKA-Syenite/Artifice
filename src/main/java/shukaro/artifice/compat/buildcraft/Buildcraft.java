@@ -25,13 +25,13 @@ public class Buildcraft
         try
         {
             for (int i = 0; i < ArtificeCore.tiers.length; i++)
-                FMLInterModComms.sendMessage("BuildCraft|Core", "add-facade", ArtificeBlocks.blockReinforced.blockID + "@" + i);
+                FMLInterModComms.sendMessage("BuildCraft|Core", "add-facade", ArtificeBlocks.blockReinforced + "@" + i);
             for (int i = 0; i < ArtificeCore.rocks.length; i++)
             {
-                FMLInterModComms.sendMessage("BuildCraft|Core", "add-facade", ArtificeBlocks.blockBasalt.blockID + "@" + i);
-                FMLInterModComms.sendMessage("BuildCraft|Core", "add-facade", ArtificeBlocks.blockMarble.blockID + "@" + i);
+                FMLInterModComms.sendMessage("BuildCraft|Core", "add-facade", ArtificeBlocks.blockBasalt + "@" + i);
+                FMLInterModComms.sendMessage("BuildCraft|Core", "add-facade", ArtificeBlocks.blockMarble + "@" + i);
             }
-            FMLInterModComms.sendMessage("BuildCraft|Core", "add-facade", ArtificeBlocks.blockSteel.blockID + "@0");
+            FMLInterModComms.sendMessage("BuildCraft|Core", "add-facade", ArtificeBlocks.blockSteel + "@0");
             ArtificeCore.logger.log(Level.INFO, "BuildCraft Compat Initialized");
         }
         catch (Throwable ex)

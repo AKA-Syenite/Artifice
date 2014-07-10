@@ -64,7 +64,7 @@ public class ItemBlockLotus extends ItemBlockArtifice
 
                 if (par2World.getBlockMaterial(i, j, k) == Material.water && par2World.getBlockMetadata(i, j, k) == 0 && par2World.isAirBlock(i, j + 1, k))
                 {
-                    par2World.setBlock(i, j + 1, k, ArtificeBlocks.blockLotus.blockID);
+                    par2World.setBlock(i, j + 1, k, ArtificeBlocks.blockLotus);
 
                     if (!par3EntityPlayer.capabilities.isCreativeMode)
                     {

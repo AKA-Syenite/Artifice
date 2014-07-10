@@ -60,7 +60,7 @@ public class WorldGenFlowers
             if (!c.contains(x, z))
                 continue;
 
-            if ((world.isAirBlock(x, y, z) || (world.getBlockId(x, y, z) == Block.snow.blockID)) && ArtificeBlocks.blockFlora.canBlockStay(world, x, y, z))
+            if ((world.isAirBlock(x, y, z) || (world.getBlockId(x, y, z) == Block.snow)) && ArtificeBlocks.blockFlora.canBlockStay(world, x, y, z))
             {
                 if (rand.nextInt(10) > 5)
                     continue;
@@ -68,12 +68,12 @@ public class WorldGenFlowers
                 if (type == 3)
                 {
                     if (world.getWorldTime() > 12000)
-                        world.setBlock(x, y, z, ArtificeBlocks.blockFlora.blockID, 4, 0);
+                        world.setBlock(x, y, z, ArtificeBlocks.blockFlora, 4, 0);
                     else
-                        world.setBlock(x, y, z, ArtificeBlocks.blockFlora.blockID, 3, 0);
+                        world.setBlock(x, y, z, ArtificeBlocks.blockFlora, 3, 0);
                 }
                 else
-                    world.setBlock(x, y, z, ArtificeBlocks.blockFlora.blockID, type, 0);
+                    world.setBlock(x, y, z, ArtificeBlocks.blockFlora, type, 0);
             }
         }
 

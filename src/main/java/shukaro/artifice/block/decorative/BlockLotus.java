@@ -3,8 +3,8 @@ package shukaro.artifice.block.decorative;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.BlockLilyPad;
-import net.minecraft.client.renderer.texture.IconRegister;
-import net.minecraft.util.Icon;
+import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import shukaro.artifice.ArtificeConfig;
@@ -15,14 +15,14 @@ import java.util.Random;
 
 public class BlockLotus extends BlockLilyPad
 {
-    private static Icon lotus;
-    private static Icon lotusClosed;
+    private static IIcon lotus;
+    private static IIcon lotusClosed;
 
-    public BlockLotus(int par1)
+    public BlockLotus()
     {
-        super(par1);
+        super();
         this.setCreativeTab(ArtificeCreativeTab.main);
-        this.setUnlocalizedName("artifice.flora.lily");
+        this.setBlockName("artifice.flora.lily");
     }
 
     @Override
@@ -44,14 +44,14 @@ public class BlockLotus extends BlockLilyPad
 
     @Override
     @SideOnly(Side.CLIENT)
-    public Icon getIcon(int side, int meta)
+    public IIcon getIcon(int side, int meta)
     {
         return meta == 0 ? lotus : lotusClosed;
     }
 
     @Override
     @SideOnly(Side.CLIENT)
-    public void registerIcons(IconRegister reg)
+    public void registerBlockIcons(IIconRegister reg)
     {
         lotus = IconHandler.registerSingle(reg, "waterlotus", "flora");
         lotusClosed = IconHandler.registerSingle(reg, "waterlotusclosed", "flora");

@@ -3,12 +3,13 @@ package shukaro.artifice.block.decorative;
 import cpw.mods.fml.common.network.PacketDispatcher;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import net.minecraft.block.BlockHalfSlab;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockSlab;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import shukaro.artifice.ArtificeBlocks;
@@ -27,15 +28,15 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Random;
 
-public class BlockBasaltSlab extends BlockHalfSlab
+public class BlockBasaltSlab extends BlockSlab
 {
     private final String[] types = {"basaltBrick", "basaltCobble", "basaltPaver", "basaltAntipaver"};
 
-    private Icon paverSide;
+    private IIcon paverSide;
 
-    public BlockBasaltSlab(int id, boolean isDouble)
+    public BlockBasaltSlab(boolean isDouble)
     {
-        super(id, isDouble, Material.rock);
+        super(isDouble, Material.rock);
         setCreativeTab(ArtificeCreativeTab.main);
         setLightOpacity(0);
         setHardness(1.5F);
@@ -45,14 +46,14 @@ public class BlockBasaltSlab extends BlockHalfSlab
     @Override
     public int idDropped(int id, Random rand, int meta)
     {
-        return ArtificeBlocks.blockBasaltSlab.blockID;
+        return ArtificeBlocks.blockBasaltSlab;
     }
 
     @Override
     @SideOnly(Side.CLIENT)
     public void getSubBlocks(int id, CreativeTabs tab, List list)
     {
-        if (id != ArtificeBlocks.blockBasaltDoubleSlab.blockID)
+        if (id != ArtificeBlocks.blockBasaltDoubleSlab)
         {
             for (int i = 0; i < types.length; i++)
                 list.add(new ItemStack(id, 1, i));
@@ -70,7 +71,7 @@ public class BlockBasaltSlab extends BlockHalfSlab
 
     @Override
     @SideOnly(Side.CLIENT)
-    public void registerIcons(IconRegister reg)
+    public void registerBlockIcons(IIconRegister reg)
     {
         ArtificeConfig.registerConnectedTextures(reg);
         paverSide = IconHandler.registerSingle(reg, "paverside", "basalt");

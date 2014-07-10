@@ -4,7 +4,7 @@ import net.minecraft.block.Block;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-import net.minecraftforge.common.ForgeDirection;
+import net.minecraftforge.common.util.ForgeDirection;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -304,7 +304,7 @@ public class BlockCoord implements Comparable
         return set(t.x, t.y, t.z);
     }
 
-    public List<BlockCoord> getRadiusMatches(World world, int radius, int blockID, int meta)
+    public List<BlockCoord> getRadiusMatches(World world, int radius, Block block, int meta)
     {
         List<BlockCoord> matches = new ArrayList<BlockCoord>();
         BlockCoord c = this.copy();
@@ -323,7 +323,7 @@ public class BlockCoord implements Comparable
                 for (int z = minZ; z < maxZ; z++)
                 {
                     BlockCoord t = new BlockCoord(x, y, z);
-                    if (t.blockEquals(world, blockID, meta))
+                    if (t.blockEquals(world, block, meta))
                         matches.add(t);
                 }
             }
@@ -361,30 +361,30 @@ public class BlockCoord implements Comparable
 
     public boolean blockEquals(World world, BlockCoord c)
     {
-        return c.getBlock(world) == null && this.getBlock(world) == null || !(c.getBlock(world) == null ^ this.getBlock(world) == null) && (c.getBlockID(world) == this.getBlockID(world) && c.getMeta(world) == this.getMeta(world));
+        return c.getBlock(world) == null && this.getBlock(world) == null || !(c.getBlock(world) == null ^ this.getBlock(world) == null) && ( c.getBlock(world).equals(this.getBlock(world)) && c.getMeta(world) == this.getMeta(world));
     }
 
-    public boolean blockEquals(World world, int blockID, int meta)
+    public boolean blockEquals(World world, Block block, int meta)
     {
-        return this.getBlock(world) != null && (this.getBlockID(world) == blockID && this.getMeta(world) == meta);
+        return this.getBlock(world) != null && (this.getBlock(world).equals(block) && this.getMeta(world) == meta);
     }
 
     public boolean blockEquals(IBlockAccess world, BlockCoord c)
     {
-        return c.getBlock(world) == null && this.getBlock(world) == null || !(c.getBlock(world) == null ^ this.getBlock(world) == null) && (c.getBlockID(world) == this.getBlockID(world) && c.getMeta(world) == this.getMeta(world));
+        return c.getBlock(world) == null && this.getBlock(world) == null || !(c.getBlock(world) == null ^ this.getBlock(world) == null) && (c.getBlock(world).equals(this.getBlock(world)) && c.getMeta(world) == this.getMeta(world));
     }
 
-    public boolean blockEquals(IBlockAccess world, int blockID, int meta)
+    public boolean blockEquals(IBlockAccess world, Block block, int meta)
     {
-        return this.getBlock(world) != null && (this.getBlockID(world) == blockID && this.getMeta(world) == meta);
+        return this.getBlock(world) != null && (this.getBlock(world).equals(block) && this.getMeta(world) == meta);
     }
 
     public boolean isConnected(World world, BlockCoord c)
     {
-        return this.isConnected(world, c, this.getBlockID(world), this.getMeta(world));
+        return this.isConnected(world, c, this.getBlock(world), this.getMeta(world));
     }
 
-    public boolean isConnected(World world, BlockCoord c, int blockID, int meta)
+    public boolean isConnected(World world, BlockCoord c, Block block, int meta)
     {
         List<BlockCoord> traversed = new LinkedList<BlockCoord>();
         List<BlockCoord> toTraverse = new LinkedList<BlockCoord>();
@@ -398,7 +398,7 @@ public class BlockCoord implements Comparable
 
             for (BlockCoord j : t.getAdjacent())
             {
-                if (j.blockEquals(world, blockID, meta))
+                if (j.blockEquals(world, block, meta))
                 {
                     if (j.equals(c))
                         return true;
@@ -433,27 +433,17 @@ public class BlockCoord implements Comparable
 
     public Block getBlock(World world)
     {
-        return Block.blocksList[this.getBlockID(world)];
+        return world.getBlock(this.x, this.y, this.z);
     }
 
     public Block getBlock(IBlockAccess access)
     {
-        return Block.blocksList[this.getBlockID(access)];
-    }
-
-    public int getBlockID(World world)
-    {
-        return world.getBlockId(this.x, this.y, this.z);
-    }
-
-    public int getBlockID(IBlockAccess access)
-    {
-        return access.getBlockId(this.x, this.y, this.z);
+        return access.getBlock(this.x, this.y, this.z);
     }
 
     public TileEntity getTileEntity(World world)
     {
-        return world.getBlockTileEntity(this.x, this.y, this.z);
+        return world.getTileEntity(this.x, this.y, this.z);
     }
 
     @Override

@@ -2,10 +2,10 @@ package shukaro.artifice.item;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 import shukaro.artifice.render.IconHandler;
 
 import java.util.List;
@@ -13,12 +13,12 @@ import java.util.Locale;
 
 public class ItemUpgrade extends ItemArtifice
 {
-    private Icon[] icons = new Icon[13];
+    private IIcon[] icons = new IIcon[13];
     private String[] upgrades = {"Sharpening Kit", "Reinforcement", "Reinforced Limbs", "Plaited String", "Counterweight", "Armor Spikes", "Laminated Padding", "Quilted Cover", "Elastic Soles", "Firedamp", "Elastic Layering", "Scuba Tank", "Dive Kit"};
 
-    public ItemUpgrade(int id)
+    public ItemUpgrade()
     {
-        super(id);
+        super();
         this.setUnlocalizedName("artifice.upgrade");
     }
 

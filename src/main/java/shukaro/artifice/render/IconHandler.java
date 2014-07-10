@@ -1,8 +1,8 @@
 package shukaro.artifice.render;
 
-import net.minecraft.client.renderer.texture.IconRegister;
-import net.minecraft.util.Icon;
-import net.minecraftforge.common.ForgeDirection;
+import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.util.IIcon;
+import net.minecraftforge.common.util.ForgeDirection;
 import shukaro.artifice.ArtificeCore;
 import shukaro.artifice.render.connectedtexture.ConnectedTextures;
 
@@ -10,7 +10,7 @@ import java.util.Locale;
 
 public class IconHandler
 {
-    public static void registerConnectedTexture(IconRegister reg, ConnectedTextures texture, String folder)
+    public static void registerConnectedTexture(IIconRegister reg, ConnectedTextures texture, String folder)
     {
         for (int i = 0; i < texture.textureList.length; i++)
         {
@@ -18,9 +18,9 @@ public class IconHandler
         }
     }
 
-    public static Icon[] registerSingleDirectional(IconRegister reg, String name, String folder)
+    public static IIcon[] registerSingleDirectional(IIconRegister reg, String name, String folder)
     {
-        Icon[] icons = new Icon[6];
+        IIcon[] icons = new IIcon[6];
         for (ForgeDirection d : ForgeDirection.VALID_DIRECTIONS)
         {
             icons[d.ordinal()] = reg.registerIcon(ArtificeCore.modID.toLowerCase(Locale.ENGLISH) + ":" + folder + "/" + name + "_" + d.toString().toLowerCase(Locale.ENGLISH));
@@ -28,9 +28,9 @@ public class IconHandler
         return icons;
     }
 
-    public static Icon[][] registerMetaDirectional(IconRegister reg, String[] names, String folder)
+    public static IIcon[][] registerMetaDirectional(IIconRegister reg, String[] names, String folder)
     {
-        Icon[][] icons = new Icon[names.length][6];
+        IIcon[][] icons = new IIcon[names.length][6];
         for (int i = 0; i < names.length; i++)
         {
             for (ForgeDirection d : ForgeDirection.VALID_DIRECTIONS)
@@ -41,14 +41,14 @@ public class IconHandler
         return icons;
     }
 
-    public static Icon registerSingle(IconRegister reg, String name, String folder)
+    public static IIcon registerSingle(IIconRegister reg, String name, String folder)
     {
         return reg.registerIcon(ArtificeCore.modID.toLowerCase(Locale.ENGLISH) + ":" + folder + "/" + name);
     }
 
-    public static Icon[] registerMeta(IconRegister reg, String names[], String folder)
+    public static IIcon[] registerMeta(IIconRegister reg, String names[], String folder)
     {
-        Icon[] icons = new Icon[names.length];
+        IIcon[] icons = new IIcon[names.length];
         for (int i = 0; i < names.length; i++)
         {
             icons[i] = reg.registerIcon(ArtificeCore.modID.toLowerCase(Locale.ENGLISH) + ":" + folder + "/" + names[i]);

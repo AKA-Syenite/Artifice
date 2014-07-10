@@ -4,9 +4,9 @@ import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
-import cpw.mods.fml.common.network.NetworkMod;
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.block.Block;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import shukaro.artifice.ArtificeBlocks;
 import shukaro.artifice.ArtificeConfig;
@@ -16,7 +16,6 @@ import java.util.List;
 import java.util.logging.Level;
 
 @Mod(modid = "ArtificeCompat|EE3", name = "Artifice Compat: EE3", version = ArtificeCore.modVersion, dependencies = "after:Artifice;after:EE3")
-@NetworkMod(clientSideRequired = false, serverSideRequired = false)
 public class EE3
 {
     @EventHandler
@@ -37,9 +36,9 @@ public class EE3
                 ArtificeCore.logger.log(Level.INFO, "Adding transmutation recipes");
                 for (ItemStack stone : stoneList)
                 {
-                    GameRegistry.addShapelessRecipe(new ItemStack(ArtificeBlocks.blockBasalt.blockID, 2, 1), stone, new ItemStack(Block.cobblestone.blockID, 1, 0), new ItemStack(Block.cobblestone.blockID, 1, 0));
-                    GameRegistry.addShapelessRecipe(new ItemStack(ArtificeBlocks.blockBasalt.blockID, 1, 1), stone, new ItemStack(ArtificeBlocks.blockMarble.blockID, 1, 1));
-                    GameRegistry.addShapelessRecipe(new ItemStack(ArtificeBlocks.blockMarble.blockID, 1, 1), stone, new ItemStack(ArtificeBlocks.blockBasalt.blockID, 1, 1));
+                    GameRegistry.addShapelessRecipe(new ItemStack(ArtificeBlocks.blockBasalt, 2, 1), stone, new ItemStack(Blocks.cobblestone, 1, 0), new ItemStack(Blocks.cobblestone, 1, 0));
+                    GameRegistry.addShapelessRecipe(new ItemStack(ArtificeBlocks.blockBasalt, 1, 1), stone, new ItemStack(ArtificeBlocks.blockMarble, 1, 1));
+                    GameRegistry.addShapelessRecipe(new ItemStack(ArtificeBlocks.blockMarble, 1, 1), stone, new ItemStack(ArtificeBlocks.blockBasalt, 1, 1));
                 }
             }
 

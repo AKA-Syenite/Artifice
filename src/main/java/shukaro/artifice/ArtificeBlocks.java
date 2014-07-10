@@ -1,7 +1,7 @@
 package shukaro.artifice;
 
 import cpw.mods.fml.common.registry.GameRegistry;
-import net.minecraft.block.BlockHalfSlab;
+import net.minecraft.block.BlockSlab;
 import net.minecraft.item.Item;
 import net.minecraftforge.oredict.OreDictionary;
 import shukaro.artifice.block.decorative.BlockSteel;
@@ -21,10 +21,10 @@ public class ArtificeBlocks
     public static BlockStairsArtifice blockMarbleBrickStairs;
     public static BlockStairsArtifice blockBasaltCobbleStairs;
     public static BlockStairsArtifice blockMarbleCobbleStairs;
-    public static BlockHalfSlab blockBasaltSlab;
-    public static BlockHalfSlab blockBasaltDoubleSlab;
-    public static BlockHalfSlab blockMarbleSlab;
-    public static BlockHalfSlab blockMarbleDoubleSlab;
+    public static BlockSlab blockBasaltSlab;
+    public static BlockSlab blockBasaltDoubleSlab;
+    public static BlockSlab blockMarbleSlab;
+    public static BlockSlab blockMarbleDoubleSlab;
     public static BlockFrame blockDetector;
     public static BlockSteel blockSteel;
     public static BlockFrameBlastWall blockReinforced;
@@ -59,8 +59,8 @@ public class ArtificeBlocks
             GameRegistry.registerBlock(blockMarbleBrickStairs, ItemBlockArtifice.class, blockMarbleBrickStairs.getUnlocalizedName());
             GameRegistry.registerBlock(blockBasaltCobbleStairs, ItemBlockArtifice.class, blockBasaltCobbleStairs.getUnlocalizedName());
             GameRegistry.registerBlock(blockMarbleCobbleStairs, ItemBlockArtifice.class, blockMarbleCobbleStairs.getUnlocalizedName());
-            ArtificeRegistry.registerBasaltType(ArtificeBlocks.blockBasalt.blockID, 0);
-            ArtificeRegistry.registerMarbleType(ArtificeBlocks.blockMarble.blockID, 0);
+            ArtificeRegistry.registerBasaltType(ArtificeBlocks.blockBasalt, 0);
+            ArtificeRegistry.registerMarbleType(ArtificeBlocks.blockMarble, 0);
             //OreDictionary.registerOre("stone", new ItemStack(blockBasalt, 1, 0));
             //OreDictionary.registerOre("stone", new ItemStack(blockMarble, 1, 0));
             //OreDictionary.registerOre("cobblestone", new ItemStack(blockBasalt, 1, 1));
@@ -69,11 +69,11 @@ public class ArtificeBlocks
 
         if (ArtificeConfig.enableFrames.getBoolean(true))
         {
-            blockFrame = new BlockFrameBase(ArtificeConfig.blockFrameID.getInt());
-            blockDetector = new BlockFrameDetector(ArtificeConfig.blockDetectorID.getInt());
-            blockReinforced = new BlockFrameBlastWall(ArtificeConfig.blockReinforcedID.getInt());
-            blockGlassWall = new BlockFrameGlassWall(ArtificeConfig.blockGlassWallID.getInt());
-            blockScaffold = new BlockFrameScaffold(ArtificeConfig.blockScaffoldID.getInt());
+            blockFrame = new BlockFrameBase();
+            blockDetector = new BlockFrameDetector();
+            blockReinforced = new BlockFrameBlastWall();
+            blockGlassWall = new BlockFrameGlassWall();
+            blockScaffold = new BlockFrameScaffold();
             GameRegistry.registerBlock(blockFrame, ItemBlockFrame.class, blockFrame.getUnlocalizedName());
             GameRegistry.registerBlock(blockDetector, ItemBlockArtifice.class, blockDetector.getUnlocalizedName());
             GameRegistry.registerBlock(blockReinforced, ItemBlockFrame.class, blockReinforced.getUnlocalizedName());

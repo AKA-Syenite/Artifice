@@ -7,7 +7,7 @@ import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.util.Icon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-import net.minecraftforge.common.ForgeDirection;
+import net.minecraftforge.common.util.ForgeDirection;
 import powercrystals.minefactoryreloaded.api.rednet.IConnectableRedNet;
 import powercrystals.minefactoryreloaded.api.rednet.RedNetConnectionType;
 import shukaro.artifice.ArtificeCore;
@@ -60,23 +60,23 @@ public class BlockFrameDetector extends BlockFrame implements IConnectableRedNet
     @Override
     public void onNeighborBlockChange(World world, int x, int y, int z, int neighborID)
     {
-        if (neighborID != this.blockID)
+        if (neighborID != this)
         {
             if (world.getBlockMetadata(x, y, z) == 0)
             {
-                world.scheduleBlockUpdate(x, y, z, this.blockID, tickRate());
+                world.scheduleBlockUpdate(x, y, z, this, tickRate());
             }
         }
     }
 
     private void updateRedstone(World par1World, int par2, int par3, int par4)
     {
-        par1World.notifyBlocksOfNeighborChange(par2, par3 - 1, par4, this.blockID);
-        par1World.notifyBlocksOfNeighborChange(par2, par3 + 1, par4, this.blockID);
-        par1World.notifyBlocksOfNeighborChange(par2 - 1, par3, par4, this.blockID);
-        par1World.notifyBlocksOfNeighborChange(par2 + 1, par3, par4, this.blockID);
-        par1World.notifyBlocksOfNeighborChange(par2, par3, par4 - 1, this.blockID);
-        par1World.notifyBlocksOfNeighborChange(par2, par3, par4 + 1, this.blockID);
+        par1World.notifyBlocksOfNeighborChange(par2, par3 - 1, par4, this);
+        par1World.notifyBlocksOfNeighborChange(par2, par3 + 1, par4, this);
+        par1World.notifyBlocksOfNeighborChange(par2 - 1, par3, par4, this);
+        par1World.notifyBlocksOfNeighborChange(par2 + 1, par3, par4, this);
+        par1World.notifyBlocksOfNeighborChange(par2, par3, par4 - 1, this);
+        par1World.notifyBlocksOfNeighborChange(par2, par3, par4 + 1, this);
     }
 
     public void updateTick(World par1World, int par2, int par3, int par4, Random par5Random)
@@ -84,12 +84,12 @@ public class BlockFrameDetector extends BlockFrame implements IConnectableRedNet
         if (par1World.getBlockMetadata(par2, par3, par4) == 0)
         {
             par1World.setBlockMetadataWithNotify(par2, par3, par4, 1, 3);
-            par1World.scheduleBlockUpdate(par2, par3, par4, this.blockID, tickRate());
+            par1World.scheduleBlockUpdate(par2, par3, par4, this, tickRate());
         }
         else if (par1World.getBlockMetadata(par2, par3, par4) == 1)
         {
             par1World.setBlockMetadataWithNotify(par2, par3, par4, 2, 3);
-            par1World.scheduleBlockUpdate(par2, par3, par4, this.blockID, tickRate());
+            par1World.scheduleBlockUpdate(par2, par3, par4, this, tickRate());
         }
         else
         {

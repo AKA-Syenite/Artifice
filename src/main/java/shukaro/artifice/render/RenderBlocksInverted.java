@@ -30,7 +30,7 @@ public class RenderBlocksInverted
             f2 = f5;
         }
 
-        return Minecraft.isAmbientOcclusionEnabled() && Block.lightValue[par1Block.blockID] == 0 ? (renderer.partialRenderBounds ? this.func_102027_b(renderer,
+        return Minecraft.isAmbientOcclusionEnabled() && Block.lightValue[par1Block] == 0 ? (renderer.partialRenderBounds ? this.func_102027_b(renderer,
                 par1Block, par2, par3, par4, f, f1, f2) : this.renderStandardBlockWithAmbientOcclusion(renderer, par1Block, par2, par3, par4, f, f1, f2))
                 : this.renderStandardBlockWithColorMultiplier(renderer, par1Block, par2, par3, par4, f, f1, f2);
     }

@@ -15,7 +15,7 @@ public class FactoryFlora implements IFactoryHarvestable
     @Override
     public int getPlantId()
     {
-        return ArtificeBlocks.blockFlora.blockID;
+        return ArtificeBlocks.blockFlora;
     }
 
     @Override

@@ -14,9 +14,9 @@ import java.util.List;
 
 public class ItemBlockArtifice extends ItemBlock
 {
-    public ItemBlockArtifice(int id)
+    public ItemBlockArtifice(Block block)
     {
-        super(id);
+        super(block);
         setMaxDamage(0);
         setHasSubtypes(true);
     }

@@ -8,8 +8,6 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.event.FMLServerStartingEvent;
-import cpw.mods.fml.common.network.NetworkMod;
-import cpw.mods.fml.common.network.NetworkMod.SidedPacketHandler;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -26,12 +24,10 @@ import shukaro.artifice.world.ArtificeWorldGen;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.logging.Logger;
+
+import org.apache.logging.log4j.Logger;
 
 @Mod(modid = ArtificeCore.modID, name = ArtificeCore.modName, version = ArtificeCore.modVersion)
-@NetworkMod(clientSideRequired = true, serverSideRequired = false,
-        clientPacketHandlerSpec = @SidedPacketHandler(channels = {ArtificeCore.modChannel}, packetHandler = ClientPacketHandler.class),
-        serverPacketHandlerSpec = @SidedPacketHandler(channels = {ArtificeCore.modChannel}, packetHandler = ServerPacketHandler.class))
 public class ArtificeCore
 {
     @SidedProxy(clientSide = "shukaro.artifice.net.ClientProxy", serverSide = "shukaro.artifice.net.CommonProxy")
@@ -79,7 +75,7 @@ public class ArtificeCore
         ArtificeItems.initItems();
 
         if (ArtificeConfig.enableWorldGen.getBoolean(true))
-            GameRegistry.registerWorldGenerator(ArtificeCore.worldGen = new ArtificeWorldGen());
+            GameRegistry.registerWorldGenerator(ArtificeCore.worldGen = new ArtificeWorldGen(), 100);
 
         if (ArtificeConfig.floraBoneMeal.getBoolean(true) && ArtificeConfig.enableWorldGen.getBoolean(true))
         {

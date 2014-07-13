@@ -4,33 +4,33 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IconRegister;
-import net.minecraft.util.Icon;
+import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.util.IIcon;
 import shukaro.artifice.gui.ArtificeCreativeTab;
 import shukaro.artifice.render.IconHandler;
 
 public class BlockSteel extends Block
 {
-    private Icon icon;
+    private IIcon icon;
 
-    public BlockSteel(int id)
+    public BlockSteel()
     {
-        super(id, Material.iron);
+        super(Material.iron);
         this.setCreativeTab(ArtificeCreativeTab.main);
         this.setHardness(3.0F);
-        this.setUnlocalizedName("artifice.steel");
+        this.setBlockName("artifice.steel");
     }
 
     @Override
     @SideOnly(Side.CLIENT)
-    public void registerIcons(IconRegister reg)
+    public void registerBlockIcons(IIconRegister reg)
     {
         this.icon = IconHandler.registerSingle(reg, "steel", "misc");
     }
 
     @Override
     @SideOnly(Side.CLIENT)
-    public Icon getIcon(int side, int meta)
+    public IIcon getIcon(int side, int meta)
     {
         return this.icon;
     }

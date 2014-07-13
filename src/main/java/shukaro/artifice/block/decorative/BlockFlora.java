@@ -4,10 +4,11 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.BlockFlower;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 import shukaro.artifice.ArtificeCore;
 import shukaro.artifice.gui.ArtificeCreativeTab;
@@ -19,21 +20,21 @@ import java.util.Random;
 
 public class BlockFlora extends BlockFlower
 {
-    public static Icon[] icons = new Icon[ArtificeCore.flora.length];
+    public static IIcon[] icons = new IIcon[ArtificeCore.flora.length];
 
-    public BlockFlora(int id)
+    public BlockFlora()
     {
-        super(id, Material.plants);
+        super(0);
         this.setTickRandomly(true);
         setCreativeTab(ArtificeCreativeTab.main);
         setHardness(0.0F);
-        setStepSound(soundGrassFootstep);
-        setUnlocalizedName("artifice.flora");
+        setStepSound(soundTypeGrass);
+        setBlockName("artifice.flora");
     }
 
     @Override
     @SideOnly(Side.CLIENT)
-    public Icon getIcon(int side, int meta)
+    public IIcon getIcon(int side, int meta)
     {
         if (meta > ArtificeCore.flora.length)
             return icons[0];
@@ -42,7 +43,7 @@ public class BlockFlora extends BlockFlower
 
     @Override
     @SideOnly(Side.CLIENT)
-    public void registerIcons(IconRegister reg)
+    public void registerBlockIcons(IIconRegister reg)
     {
         for (int i = 0; i < ArtificeCore.flora.length; i++)
             icons[i] = IconHandler.registerSingle(reg, ArtificeCore.flora[i].toLowerCase(Locale.ENGLISH), "flora");
@@ -61,7 +62,7 @@ public class BlockFlora extends BlockFlower
 
     @Override
     @SideOnly(Side.CLIENT)
-    public void getSubBlocks(int i, CreativeTabs tabs, List list)
+    public void getSubBlocks(Item i, CreativeTabs tabs, List list)
     {
         for (int j = 0; j < ArtificeCore.flora.length - 1; j++)
         {

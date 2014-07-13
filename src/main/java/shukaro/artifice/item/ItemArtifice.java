@@ -2,12 +2,12 @@ package shukaro.artifice.item;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 import shukaro.artifice.ArtificeConfig;
 import shukaro.artifice.ArtificeTooltips;
 import shukaro.artifice.compat.ArtificeRegistry;
@@ -30,15 +30,15 @@ public abstract class ItemArtifice extends Item
 
     @Override
     @SideOnly(Side.CLIENT)
-    public abstract void getSubItems(int id, CreativeTabs tab, List list);
+    public abstract void getSubItems(Item id, CreativeTabs tab, List list);
 
     @Override
     @SideOnly(Side.CLIENT)
-    public abstract Icon getIconFromDamage(int meta);
+    public abstract IIcon getIconFromDamage(int meta);
 
     @Override
     @SideOnly(Side.CLIENT)
-    public abstract void registerIcons(IconRegister reg);
+    public abstract void registerIcons(IIconRegister reg);
 
     @Override
     @SideOnly(Side.CLIENT)

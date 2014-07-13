@@ -3,11 +3,13 @@ package shukaro.artifice.block.decorative;
 import cpw.mods.fml.common.network.PacketDispatcher;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import shukaro.artifice.ArtificeConfig;
@@ -26,20 +28,20 @@ import java.util.List;
 
 public class BlockMarble extends BlockArtifice
 {
-    private Icon[] icons = new Icon[ArtificeCore.rocks.length];
+    private IIcon[] icons = new IIcon[ArtificeCore.rocks.length];
 
-    public BlockMarble(int id)
+    public BlockMarble()
     {
-        super(id, Material.rock);
+        super(Material.rock);
         setCreativeTab(ArtificeCreativeTab.main);
         setHardness(1.5F);
         setResistance(10.0F);
-        setUnlocalizedName("artifice.marble");
+        setBlockName("artifice.marble");
     }
 
     @Override
     @SideOnly(Side.CLIENT)
-    public void getSubBlocks(int i, CreativeTabs tabs, List list)
+    public void getSubBlocks(Item i, CreativeTabs tabs, List list)
     {
         for (int j = 0; j < ArtificeCore.rocks.length; j++)
         {
@@ -55,7 +57,7 @@ public class BlockMarble extends BlockArtifice
 
     @Override
     @SideOnly(Side.CLIENT)
-    public void registerIcons(IconRegister reg)
+    public void registerBlockIcons(IIconRegister reg)
     {
         ArtificeConfig.registerConnectedTextures(reg);
         icons[0] = IconHandler.registerSingle(reg, "marble", "marble");
@@ -66,7 +68,7 @@ public class BlockMarble extends BlockArtifice
 
     @Override
     @SideOnly(Side.CLIENT)
-    public Icon getIcon(int side, int meta)
+    public IIcon getIcon(int side, int meta)
     {
         if (meta >= ArtificeCore.rocks.length)
             meta = 0;
@@ -80,7 +82,7 @@ public class BlockMarble extends BlockArtifice
 
     @Override
     @SideOnly(Side.CLIENT)
-    public Icon getBlockTexture(IBlockAccess access, int x, int y, int z, int side)
+    public IIcon getIcon(IBlockAccess access, int x, int y, int z, int side)
     {
         int meta = access.getBlockMetadata(x, y, z);
         if (meta > ArtificeCore.rocks.length)
@@ -106,7 +108,7 @@ public class BlockMarble extends BlockArtifice
     }
 
     @Override
-    public void onNeighborBlockChange(World world, int x, int y, int z, int neighborID)
+    public void onNeighborBlockChange(World world, int x, int y, int z, Block neighbor)
     {
         if (!world.isRemote)
         {

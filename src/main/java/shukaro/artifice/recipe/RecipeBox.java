@@ -1,6 +1,7 @@
 package shukaro.artifice.recipe;
 
 import net.minecraft.inventory.InventoryCrafting;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.nbt.NBTTagCompound;
@@ -25,7 +26,7 @@ public class RecipeBox implements IRecipe
         for (int i = 0; i < craft.getSizeInventory(); i++)
         {
             ItemStack stack = craft.getStackInSlot(i);
-            if (stack != null && stack.itemID == ArtificeItems.itemBox.itemID)
+            if (stack != null && stack.getItem().equals(ArtificeItems.itemBox))
             {
                 hasBox = true;
                 // Is it an empty box?
@@ -41,7 +42,7 @@ public class RecipeBox implements IRecipe
         for (int i = 0; i < craft.getSizeInventory(); i++)
         {
             ItemStack stack = craft.getStackInSlot(i);
-            if (stack != null && stack.itemID == ArtificeItems.itemBox.itemID)
+            if (stack != null && stack.getItem().equals(ArtificeItems.itemBox))
                 c++;
         }
         if (c != 1)
@@ -54,14 +55,14 @@ public class RecipeBox implements IRecipe
             for (int i = 0; i < craft.getSizeInventory(); i++)
             {
                 ItemStack stack = craft.getStackInSlot(i);
-                if (stack != null && stack.itemID != ArtificeItems.itemBox.itemID)
+                if (stack != null && stack.getItem().equals(ArtificeItems.itemBox))
                     return false;
             }
             // There's one full box in the grid, set it
             for (int i = 0; i < craft.getSizeInventory(); i++)
             {
                 ItemStack stack = craft.getStackInSlot(i);
-                if (stack != null && stack.itemID == ArtificeItems.itemBox.itemID)
+                if (stack != null && stack.getItem().equals(ArtificeItems.itemBox))
                     box = stack;
             }
 
@@ -77,7 +78,7 @@ public class RecipeBox implements IRecipe
             NBTTagCompound nbt = tag.getCompoundTag("nbt");
 
             // This is our thing
-            thing = new ItemStack(id, 1, meta);
+            thing = new ItemStack((Item)Item.itemRegistry.getObjectById(id), 1, meta);
             if (nbt != null)
                 thing.setTagCompound(nbt);
 
@@ -87,7 +88,7 @@ public class RecipeBox implements IRecipe
                 outAmount = thing.getMaxStackSize();
 
             // Set our final output
-            this.output = new ItemStack(id, outAmount, meta);
+            this.output = new ItemStack((Item)Item.itemRegistry.getObjectById(id), outAmount, meta);
             if (nbt != null && !nbt.hasNoTags())
                 this.output.setTagCompound(nbt);
 
@@ -98,7 +99,7 @@ public class RecipeBox implements IRecipe
         for (int i = 0; i < craft.getSizeInventory(); i++)
         {
             ItemStack stack = craft.getStackInSlot(i);
-            if (stack != null && stack.itemID != ArtificeItems.itemBox.itemID)
+            if (stack != null && stack.getItem().equals(ArtificeItems.itemBox))
             {
                 thing = stack;
                 break;
@@ -118,7 +119,7 @@ public class RecipeBox implements IRecipe
             if (stack != null)
             {
                 ComparableItemStackNBT t = new ComparableItemStackNBT(stack);
-                if (stack.itemID == ArtificeItems.itemBox.itemID)
+                if (stack.getItem().equals(ArtificeItems.itemBox))
                     continue;
                 else if (t.isStackEqual(contents))
                     num++;
@@ -132,13 +133,13 @@ public class RecipeBox implements IRecipe
         // Write the thing's meta
         tag.setInteger("meta", thing.getItemDamage());
         // Write the thing's id
-        tag.setInteger("id", thing.itemID);
+        tag.setInteger("id", Item.itemRegistry.getIDForObject(thing));
         // Does the thing have nbt data?
         if (thing.getTagCompound() != null && !thing.getTagCompound().hasNoTags())
-            tag.setCompoundTag("nbt", thing.getTagCompound());
+            tag.setTag("nbt", thing.getTagCompound());
 
         // Create our final output
-        this.output = new ItemStack(ArtificeItems.itemBox.itemID, 1, num);
+        this.output = new ItemStack(ArtificeItems.itemBox, 1, num);
         this.output.setTagCompound(tag);
 
         return true;

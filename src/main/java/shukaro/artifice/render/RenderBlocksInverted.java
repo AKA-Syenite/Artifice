@@ -6,7 +6,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.EntityRenderer;
 import net.minecraft.client.renderer.RenderBlocks;
 import net.minecraft.client.renderer.Tessellator;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 
 public class RenderBlocksInverted
 {
@@ -30,7 +30,7 @@ public class RenderBlocksInverted
             f2 = f5;
         }
 
-        return Minecraft.isAmbientOcclusionEnabled() && Block.lightValue[par1Block] == 0 ? (renderer.partialRenderBounds ? this.func_102027_b(renderer,
+        return Minecraft.isAmbientOcclusionEnabled() && par1Block.getLightValue() == 0 ? (renderer.partialRenderBounds ? this.func_102027_b(renderer,
                 par1Block, par2, par3, par4, f, f1, f2) : this.renderStandardBlockWithAmbientOcclusion(renderer, par1Block, par2, par3, par4, f, f1, f2))
                 : this.renderStandardBlockWithColorMultiplier(renderer, par1Block, par2, par3, par4, f, f1, f2);
     }
@@ -293,7 +293,7 @@ public class RenderBlocksInverted
         int k1;
         int l1;
         int i2;
-        Icon icon;
+        IIcon icon;
 
         if (renderer.renderAllFaces || par1Block.shouldSideBeRendered(renderer.blockAccess, par2, par3, par4 - 1, 2))
         {
@@ -1749,7 +1749,7 @@ public class RenderBlocksInverted
         float f17 = f5;
         float f18 = f6;
 
-        if (par1Block != Block.grass)
+        if (par1Block != Blocks.grass)
         {
             f10 = f3 * par5;
             f11 = f5 * par5;

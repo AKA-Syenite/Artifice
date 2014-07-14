@@ -2,12 +2,13 @@ package shukaro.artifice.block;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import shukaro.artifice.ArtificeConfig;
+import shukaro.artifice.ArtificeRegistry;
 import shukaro.artifice.ArtificeTooltips;
-import shukaro.artifice.compat.ArtificeRegistry;
 import shukaro.artifice.util.IdMetaPair;
 
 import java.util.List;

@@ -9,10 +9,9 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import shukaro.artifice.ArtificeConfig;
+import shukaro.artifice.ArtificeRegistry;
 import shukaro.artifice.ArtificeTooltips;
-import shukaro.artifice.compat.ArtificeRegistry;
 import shukaro.artifice.gui.ArtificeCreativeTab;
-import shukaro.artifice.util.IdMetaPair;
 
 import java.util.List;
 

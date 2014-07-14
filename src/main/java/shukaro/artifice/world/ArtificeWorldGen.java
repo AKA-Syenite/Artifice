@@ -5,7 +5,7 @@ import net.minecraft.world.World;
 import net.minecraft.world.chunk.IChunkProvider;
 import shukaro.artifice.ArtificeBlocks;
 import shukaro.artifice.ArtificeConfig;
-import shukaro.artifice.compat.ArtificeRegistry;
+import shukaro.artifice.ArtificeRegistry;
 
 import java.util.List;
 import java.util.Random;

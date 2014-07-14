@@ -1,5 +1,6 @@
 package shukaro.artifice.event;
 
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.world.ChunkCoordIntPair;
@@ -9,7 +10,7 @@ import net.minecraftforge.event.world.ChunkWatchEvent;
 import net.minecraftforge.event.world.WorldEvent;
 import shukaro.artifice.ArtificeConfig;
 import shukaro.artifice.ArtificeCore;
-import shukaro.artifice.compat.ArtificeRegistry;
+import shukaro.artifice.ArtificeRegistry;
 import shukaro.artifice.render.TextureHandler;
 import shukaro.artifice.util.BlockCoord;
 import shukaro.artifice.util.ChunkCoord;
@@ -22,14 +23,14 @@ public class ArtificeEventHandler
 {
     private List<Integer> dimBlacklist;
 
-    @ForgeSubscribe
+    @SubscribeEvent
     @SideOnly(Side.CLIENT)
     public void preTextureStitch(TextureStitchEvent.Pre e)
     {
         ArtificeConfig.connectedTexturesRegistered = false;
     }
 
-    @ForgeSubscribe
+    @SubscribeEvent
     @SideOnly(Side.CLIENT)
     public void worldUnload(WorldEvent.Unload e)
     {
@@ -37,7 +38,7 @@ public class ArtificeEventHandler
             ArtificeCore.textureCache.clear();
     }
 
-    @ForgeSubscribe
+    @SubscribeEvent
     @SideOnly(Side.CLIENT)
     public void chunkWatch(ChunkWatchEvent.Watch e)
     {
@@ -53,7 +54,7 @@ public class ArtificeEventHandler
                         if (c.z < (chunk.chunkZ << 4) + 16 && c.z > (chunk.chunkZ <<4) - 1)
                         {
                             ArtificeCore.textureCache.get(sector).remove(c);
-                            e.player.worldObj.markBlockForRenderUpdate(c.x, c.y, c.z);
+                            e.player.worldObj.markBlockRangeForRenderUpdate(c.x, c.y, c.z, c.x, c.y, c.z);
                         }
                     }
                     if (c.z == (chunk.chunkZ << 4) - 1 || c.z == (chunk.chunkZ << 4) + 16)
@@ -61,7 +62,7 @@ public class ArtificeEventHandler
                         if (c.x > (chunk.chunkX << 4) - 1 && c.x < (chunk.chunkX <<4) + 16)
                         {
                             ArtificeCore.textureCache.get(sector).remove(c);
-                            e.player.worldObj.markBlockForRenderUpdate(c.x, c.y, c.z);
+                            e.player.worldObj.markBlockRangeForRenderUpdate(c.x, c.y, c.z, c.x, c.y, c.z);
                         }
                     }
                 }
@@ -69,20 +70,20 @@ public class ArtificeEventHandler
         }
     }
 
-    @ForgeSubscribe
+    @SubscribeEvent
     @SideOnly(Side.CLIENT)
     public void chunkUnWatch(ChunkWatchEvent.UnWatch e)
     {
         ArtificeCore.textureCache.remove(new ChunkCoord(e.chunk));
     }
 
-    @ForgeSubscribe
+    @SubscribeEvent
     public void chunkSave(ChunkDataEvent.Save e)
     {
         e.getData().setString("Artifice", ArtificeConfig.regenKey.getString());
     }
 
-    @ForgeSubscribe
+    @SubscribeEvent
     public void chunkLoad(ChunkDataEvent.Load e)
     {
         if (!ArtificeConfig.enableWorldGen.getBoolean(true))
@@ -99,7 +100,7 @@ public class ArtificeEventHandler
 
         if ((!e.getData().getString("Artifice").equals(ArtificeConfig.regenKey.getString())) && (ArtificeConfig.regenLotus.getBoolean(false) || ArtificeConfig.regenFlora.getBoolean(false) || ArtificeConfig.regenBasaltLayer.getBoolean(false) || ArtificeConfig.regenMarbleLayer.getBoolean(false) || ArtificeConfig.regenBasaltClusters.getBoolean(false) || ArtificeConfig.regenMarbleClusters.getBoolean(false) || ArtificeConfig.regenBasaltCaves.getBoolean(false) || ArtificeConfig.regenMarbleCaves.getBoolean(false)))
         {
-            ArtificeCore.logger.log(Level.WARNING, "World gen was never run for chunk at " + e.getChunk().getChunkCoordIntPair() + ". Adding to queue for regeneration.");
+            ArtificeCore.logger.warn("World gen was never run for chunk at " + e.getChunk().getChunkCoordIntPair() + ". Adding to queue for regeneration.");
             ArrayList chunks = (ArrayList) WorldTicker.chunksToGen.get(Integer.valueOf(dim));
             if (chunks == null)
             {

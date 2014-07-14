@@ -1,12 +1,12 @@
-package shukaro.artifice.compat;
+package shukaro.artifice;
 
+import net.minecraft.block.Block;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.CraftingManager;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraftforge.oredict.ShapelessOreRecipe;
-import shukaro.artifice.ArtificeConfig;
-import shukaro.artifice.ArtificeCore;
-import shukaro.artifice.util.IdMetaPair;
+import shukaro.artifice.util.ItemMetaPair;
 
 import java.util.*;
 import java.util.logging.Level;
@@ -16,16 +16,16 @@ public abstract class ArtificeRegistry
     private static final List<Integer> dimensionBlacklist = new ArrayList<Integer>();
     private static final Set<Integer> stoneTypes = new HashSet<Integer>();
     private static final List<String> worldTypeBlacklist = new ArrayList<String>();
-    private static final Map<IdMetaPair, ArrayList<ItemStack>> sledgeBlocks = new HashMap<IdMetaPair, ArrayList<ItemStack>>();
-    private static final Map<Integer, ArrayList<ItemStack>> wildSledgeBlocks = new HashMap<Integer, ArrayList<ItemStack>>();
-    private static final Map<IdMetaPair, List<String>> tooltipMap = new HashMap<IdMetaPair, List<String>>();
+    private static final Map<ItemMetaPair, ArrayList<ItemStack>> sledgeBlocks = new HashMap<ItemMetaPair, ArrayList<ItemStack>>();
+    private static final Map<Block, ArrayList<ItemStack>> wildSledgeBlocks = new HashMap<Block, ArrayList<ItemStack>>();
+    private static final Map<ItemMetaPair, List<String>> tooltipMap = new HashMap<ItemMetaPair, List<String>>();
     private static final List<ItemStack> marbleTypes = new ArrayList<ItemStack>();
     private static final List<ItemStack> basaltTypes = new ArrayList<ItemStack>();
 
-    public static void registerMarbleType(int id, int meta)
+    public static void registerMarbleType(Item item, int meta)
     {
-        ArtificeCore.logger.log(Level.INFO, "Registering marble type " + id + ":" + meta);
-        ItemStack stack = new ItemStack(id, 1, meta);
+        ArtificeCore.logger.info( "Registering marble type " + Item.itemRegistry.getNameForObject(item) + ":" + meta);
+        ItemStack stack = new ItemStack(item, 1, meta);
         if (marbleTypes.isEmpty())
             marbleTypes.add(stack);
         else if (!marbleTypes.contains(stack))
@@ -51,10 +51,10 @@ public abstract class ArtificeRegistry
                         ItemStack output = ((ShapelessOreRecipe) o).getRecipeOutput();
                         if (!output.isItemEqual(marbleTypes.get(0)))
                             continue;
-                        ArrayList<ItemStack> input = ((ShapelessOreRecipe) o).getInput();
+                        ArrayList<Object> input = ((ShapelessOreRecipe) o).getInput();
                         if (input.size() > 1)
                             continue;
-                        else if (input.get(0).isItemEqual(marbleTypes.get(marbleTypes.size() - 2)))
+                        else if (input.get(0) instanceof ItemStack && ((ItemStack)input.get(0)).isItemEqual(marbleTypes.get(marbleTypes.size() - 2)))
                             CraftingManager.getInstance().getRecipeList().remove(o);
                     }
                 }
@@ -69,10 +69,10 @@ public abstract class ArtificeRegistry
         return marbleTypes;
     }
 
-    public static void registerBasaltType(int id, int meta)
+    public static void registerBasaltType(Item item, int meta)
     {
-        ArtificeCore.logger.log(Level.INFO, "Registering basalt type " + id + ":" + meta);
-        ItemStack stack = new ItemStack(id, 1, meta);
+        ArtificeCore.logger.info( "Registering basalt type " + Item.itemRegistry.getNameForObject(item) + ":" + meta);
+        ItemStack stack = new ItemStack(item, 1, meta);
         if (basaltTypes.isEmpty())
             basaltTypes.add(stack);
         else if (!basaltTypes.contains(stack))
@@ -98,10 +98,10 @@ public abstract class ArtificeRegistry
                         ItemStack output = ((ShapelessOreRecipe) o).getRecipeOutput();
                         if (!output.isItemEqual(basaltTypes.get(0)))
                             continue;
-                        ArrayList<ItemStack> input = ((ShapelessOreRecipe) o).getInput();
+                        ArrayList<Object> input = ((ShapelessOreRecipe) o).getInput();
                         if (input.size() > 1)
                             continue;
-                        else if (input.get(0).isItemEqual(basaltTypes.get(basaltTypes.size() - 2)))
+                        else if ((input.get(0) instanceof ItemStack) && ((ItemStack)input.get(0)).isItemEqual(basaltTypes.get(basaltTypes.size() - 2)))
                             CraftingManager.getInstance().getRecipeList().remove(o);
                     }
                 }
@@ -116,9 +116,9 @@ public abstract class ArtificeRegistry
         return basaltTypes;
     }
 
-    public static void registerTooltip(int id, int meta, String line)
+    public static void registerTooltip(Item item, int meta, String line)
     {
-        IdMetaPair pair = new IdMetaPair(id, meta);
+        ItemMetaPair pair = new ItemMetaPair(item, meta);
         if (tooltipMap.get(pair) == null)
         {
             List<String> temp = new ArrayList<String>();
@@ -130,39 +130,43 @@ public abstract class ArtificeRegistry
             tooltipMap.get(pair).add(line);
         }
     }
+    
+    public static void registerTooltip(Block block, int meta, String line) {
+    	registerTooltip(Item.getItemFromBlock(block), meta, line);
+    }
 
-    public static Map<IdMetaPair, List<String>> getTooltipMap()
+    public static Map<ItemMetaPair, List<String>> getTooltipMap()
     {
         return tooltipMap;
     }
 
-    public static void registerSledgeBlock(int id, int meta, ArrayList<ItemStack> drops)
+    public static void registerSledgeBlock(Item item, int meta, ArrayList<ItemStack> drops)
     {
-        IdMetaPair pair = new IdMetaPair(id, meta);
+        ItemMetaPair pair = new ItemMetaPair(item, meta);
         if (!pair.isValidBlock())
-            ArtificeCore.logger.log(Level.WARNING, "Tried to register non-block id-meta pair in the sledgeBlock map: " + pair.toString());
+            ArtificeCore.logger.warn("Tried to register non-block id-meta pair in the sledgeBlock map: " + pair.toString());
         else if (sledgeBlocks.get(pair) == null)
         {
-            ArtificeCore.logger.log(Level.INFO, "Registering sledgeable block " + pair);
+            ArtificeCore.logger.info( "Registering sledgeable block " + pair);
             sledgeBlocks.put(pair, drops);
         }
     }
 
-    public static void registerWildSledgeBlock(int id, ArrayList<ItemStack> drops)
+    public static void registerWildSledgeBlock(Block block, ArrayList<ItemStack> drops)
     {
-        if (wildSledgeBlocks.get(id) == null)
+        if (wildSledgeBlocks.get(block) == null)
         {
-            ArtificeCore.logger.log(Level.INFO, "Registering non-meta'd sledgeable block with ID " + id);
-            wildSledgeBlocks.put(id, drops);
+            ArtificeCore.logger.info( "Registering non-meta'd sledgeable block with name " + Item.itemRegistry.getNameForObject(block));
+            wildSledgeBlocks.put(block, drops);
         }
     }
 
-    public static Map<Integer, ArrayList<ItemStack>> getWildSledgeBlocks()
+    public static Map<Block, ArrayList<ItemStack>> getWildSledgeBlocks()
     {
         return wildSledgeBlocks;
     }
 
-    public static Map<IdMetaPair, ArrayList<ItemStack>> getSledgeBlocks()
+    public static Map<ItemMetaPair, ArrayList<ItemStack>> getSledgeBlocks()
     {
         return sledgeBlocks;
     }
@@ -171,7 +175,7 @@ public abstract class ArtificeRegistry
     {
         if (!dimensionBlacklist.contains(dimID))
         {
-            ArtificeCore.logger.log(Level.INFO, "Registering " + dimID + " to dimension blacklist");
+            ArtificeCore.logger.info("Registering " + dimID + " to dimension blacklist");
             dimensionBlacklist.add(dimID);
         }
     }
@@ -185,7 +189,7 @@ public abstract class ArtificeRegistry
     {
         if (!stoneTypes.contains(stoneID))
         {
-            ArtificeCore.logger.log(Level.INFO, "Registering stone type with ID " + stoneID);
+            ArtificeCore.logger.info( "Registering stone type with ID " + stoneID);
             stoneTypes.add(stoneID);
         }
     }
@@ -199,7 +203,7 @@ public abstract class ArtificeRegistry
     {
         if (!worldTypeBlacklist.contains(type))
         {
-            ArtificeCore.logger.log(Level.INFO, "Registering " + type + " to world type blacklist");
+            ArtificeCore.logger.info( "Registering " + type + " to world type blacklist");
             worldTypeBlacklist.add(type);
         }
     }

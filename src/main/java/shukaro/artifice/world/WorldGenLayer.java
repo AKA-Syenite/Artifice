@@ -1,7 +1,7 @@
 package shukaro.artifice.world;
 
 import net.minecraft.world.World;
-import shukaro.artifice.compat.ArtificeRegistry;
+import shukaro.artifice.ArtificeRegistry;
 import shukaro.artifice.util.XSRandom;
 
 import java.util.Random;

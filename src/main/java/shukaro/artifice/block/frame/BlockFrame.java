@@ -4,7 +4,9 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
 import shukaro.artifice.ArtificeCore;
@@ -17,9 +19,9 @@ public abstract class BlockFrame extends BlockArtifice
 {
     protected List<String> validTiers = new ArrayList<String>();
 
-    public BlockFrame(int id)
+    public BlockFrame()
     {
-        super(id, Material.rock);
+        super(Material.rock);
         this.validTiers.add(ArtificeCore.tiers[0]);
         this.validTiers.add(ArtificeCore.tiers[1]);
         this.validTiers.add(ArtificeCore.tiers[2]);
@@ -30,11 +32,11 @@ public abstract class BlockFrame extends BlockArtifice
     public abstract boolean isOpaqueCube();
 
     @Override
-    public abstract boolean isBlockSolidOnSide(World world, int x, int y, int z, ForgeDirection side);
+    public abstract boolean isBlockSolid(IBlockAccess world, int x, int y, int z, int side);
 
     @Override
     @SideOnly(Side.CLIENT)
-    public void getSubBlocks(int i, CreativeTabs tabs, List list)
+    public void getSubBlocks(Item i, CreativeTabs tabs, List list)
     {
         for (int j = 0; j < ArtificeCore.tiers.length; j++)
         {

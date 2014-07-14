@@ -2,8 +2,8 @@ package shukaro.artifice.block.frame;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import net.minecraft.client.renderer.texture.IconRegister;
-import net.minecraft.util.Icon;
+import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
@@ -15,12 +15,12 @@ import java.util.Locale;
 
 public class BlockFrameBase extends BlockFrame
 {
-    private Icon[] icons = new Icon[ArtificeCore.tiers.length];
+    private IIcon[] icons = new IIcon[ArtificeCore.tiers.length];
 
-    public BlockFrameBase(int id)
+    public BlockFrameBase()
     {
-        super(id);
-        setUnlocalizedName("artifice.frame");
+        super();
+        setBlockName("artifice.frame");
         setBlockBounds(0.01F, 0.01F, 0.01F, 0.99F, 0.99F, 0.99F);
     }
 
@@ -32,7 +32,7 @@ public class BlockFrameBase extends BlockFrame
 
     @Override
     @SideOnly(Side.CLIENT)
-    public void registerIcons(IconRegister reg)
+    public void registerBlockIcons(IIconRegister reg)
     {
         for (int i = 0; i < ArtificeCore.tiers.length; i++)
             icons[i] = IconHandler.registerSingle(reg, ArtificeCore.tiers[i].toLowerCase(Locale.ENGLISH), "frame");
@@ -40,20 +40,20 @@ public class BlockFrameBase extends BlockFrame
 
     @Override
     @SideOnly(Side.CLIENT)
-    public Icon getIcon(int side, int meta)
+    public IIcon getIcon(int side, int meta)
     {
         return icons[meta];
     }
 
     @Override
     @SideOnly(Side.CLIENT)
-    public Icon getBlockTexture(IBlockAccess block, int x, int y, int z, int side)
+    public IIcon getIcon(IBlockAccess block, int x, int y, int z, int side)
     {
         return icons[block.getBlockMetadata(x, y, z)];
     }
 
     @Override
-    public boolean isBlockSolidOnSide(World world, int x, int y, int z, ForgeDirection side)
+    public boolean isBlockSolid(IBlockAccess world, int x, int y, int z, int side)
     {
         return false;
     }

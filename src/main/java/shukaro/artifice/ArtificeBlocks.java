@@ -46,11 +46,11 @@ public class ArtificeBlocks
             blockBasaltDoubleSlab = new BlockBasaltSlab(true);
             blockMarbleSlab = new BlockMarbleSlab(false);
             blockMarbleDoubleSlab = new BlockMarbleSlab(true);
-            GameRegistry.registerBlock(block, itemclass, name)
-            Item.itemsList[ArtificeConfig.blockBasaltSlabID.getInt()] = new ItemBlockSlabArtifice(ArtificeConfig.blockBasaltSlabID.getInt() - 256, blockBasaltSlab, blockBasaltDoubleSlab, false);
-            Item.itemsList[ArtificeConfig.blockBasaltDoubleSlabID.getInt()] = new ItemBlockSlabArtifice(ArtificeConfig.blockBasaltDoubleSlabID.getInt() - 256, blockBasaltSlab, blockBasaltDoubleSlab, true);
-            Item.itemsList[ArtificeConfig.blockMarbleSlabID.getInt()] = new ItemBlockSlabArtifice(ArtificeConfig.blockMarbleSlabID.getInt() - 256, blockMarbleSlab, blockMarbleDoubleSlab, false);
-            Item.itemsList[ArtificeConfig.blockMarbleDoubleSlabID.getInt()] = new ItemBlockSlabArtifice(ArtificeConfig.blockMarbleDoubleSlabID.getInt() - 256, blockMarbleSlab, blockMarbleDoubleSlab, true);
+            GameRegistry.registerBlock(blockBasaltSlab, ItemBlockSlabArtifice.class, blockBasalt.getUnlocalizedName() + "_slab");
+            GameRegistry.registerBlock(blockBasaltDoubleSlab, ItemBlockSlabArtifice.class, blockBasalt.getUnlocalizedName() + "_double_slab");
+            GameRegistry.registerBlock(blockMarbleSlab, ItemBlockSlabArtifice.class, blockMarble.getUnlocalizedName() + "_slab");
+            GameRegistry.registerBlock(blockMarbleDoubleSlab, ItemBlockSlabArtifice.class, blockMarble.getUnlocalizedName() + "_dobule_slab");
+ 
             GameRegistry.registerBlock(blockFlora, ItemBlockFlora.class, blockFlora.getUnlocalizedName());
             GameRegistry.registerBlock(blockLotus, ItemBlockLotus.class, blockLotus.getUnlocalizedName());
             GameRegistry.registerBlock(blockBasalt, ItemBlockBasalt.class, blockBasalt.getUnlocalizedName());
@@ -83,7 +83,7 @@ public class ArtificeBlocks
 
         if (ArtificeConfig.enableSteel.getBoolean(true))
         {
-            blockSteel = new BlockSteel(ArtificeConfig.blockSteelID.getInt());
+            blockSteel = new BlockSteel();
             GameRegistry.registerBlock(blockSteel, ItemBlockArtifice.class, blockSteel.getUnlocalizedName());
             OreDictionary.registerOre("blockSteel", blockSteel);
         }

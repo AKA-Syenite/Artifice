@@ -12,6 +12,7 @@ import shukaro.artifice.ArtificeConfig;
 import shukaro.artifice.ArtificeRegistry;
 import shukaro.artifice.ArtificeTooltips;
 import shukaro.artifice.gui.ArtificeCreativeTab;
+import shukaro.artifice.util.ItemMetaPair;
 
 import java.util.List;
 
@@ -45,7 +46,7 @@ public abstract class ItemArtifice extends Item
     {
         if (!ArtificeConfig.tooltips.getBoolean(true))
             return;
-        IdMetaPair pair = new IdMetaPair(stack.itemID, stack.getItemDamage());
+        ItemMetaPair pair = new ItemMetaPair(stack.getItem(), stack.getItemDamage());
         if (ArtificeRegistry.getTooltipMap().get(pair) != null)
         {
             for (String s : ArtificeRegistry.getTooltipMap().get(pair))

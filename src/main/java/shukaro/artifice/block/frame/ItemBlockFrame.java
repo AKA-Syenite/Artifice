@@ -9,16 +9,16 @@ import java.util.Locale;
 
 public class ItemBlockFrame extends ItemBlockArtifice
 {
-    public ItemBlockFrame(int id)
+    public ItemBlockFrame(Block block)
     {
-        super(id);
+        super(block);
     }
 
     @Override
     public String getUnlocalizedName(ItemStack stack)
     {
         if (stack.getItemDamage() > ArtificeCore.tiers.length)
-            return Block.blocksList[stack.itemID].getUnlocalizedName() + "." + ArtificeCore.tiers[0].toLowerCase(Locale.ENGLISH);
-        return Block.blocksList[stack.itemID].getUnlocalizedName() + "." + ArtificeCore.tiers[stack.getItemDamage()].toLowerCase(Locale.ENGLISH);
+            return Block.getBlockFromItem(stack.getItem()).getUnlocalizedName() + "." + ArtificeCore.tiers[0].toLowerCase(Locale.ENGLISH);
+        return Block.getBlockFromItem(stack.getItem()).getUnlocalizedName() + "." + ArtificeCore.tiers[stack.getItemDamage()].toLowerCase(Locale.ENGLISH);
     }
 }

@@ -1,15 +1,14 @@
 package shukaro.artifice.block.frame;
 
-import cpw.mods.fml.common.network.PacketDispatcher;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
@@ -32,30 +31,31 @@ public class BlockFrameScaffold extends BlockFrame
 {
     private static final ForgeDirection[] sides = new ForgeDirection[]{ForgeDirection.NORTH, ForgeDirection.SOUTH, ForgeDirection.EAST, ForgeDirection.WEST, ForgeDirection.DOWN};
 
-    private Icon[] sideIcons = new Icon[ArtificeCore.tiers.length];
+    private IIcon[] sideIcons = new IIcon[ArtificeCore.tiers.length];
     private ConnectedTextureBase basic = new SolidConnectedTexture(ConnectedTextures.BasicScaffold);
     private ConnectedTextureBase reinforced = new SolidConnectedTexture(ConnectedTextures.ReinforcedScaffold);
     private ConnectedTextureBase industrial = new SolidConnectedTexture(ConnectedTextures.IndustrialScaffold);
     private ConnectedTextureBase advanced = new SolidConnectedTexture(ConnectedTextures.AdvancedScaffold);
 
-    public BlockFrameScaffold(int id)
+    public BlockFrameScaffold()
     {
-        super(id);
-        setUnlocalizedName("artifice.scaffold");
+        super();
+        setBlockName("artifice.scaffold");
         setBlockBounds(0.01F, 0.01F, 0.01F, 0.99F, 0.99F, 0.99F);
     }
 
     @Override
     public void onEntityCollidedWithBlock(World world, int x, int y, int z, Entity entity)
     {
-        if (entity instanceof EntityPlayerMP)
-            ((EntityPlayerMP) entity).playerNetServerHandler.ticksForFloatKick = 0;
+    	// TODO
+        /*if (entity instanceof EntityPlayerMP)
+            ((EntityPlayerMP) entity).playerNetServerHandler.ticksForFloatKick = 0;*/
         entity.fallDistance = 0;
         if (entity.isCollidedHorizontally)
         {
             entity.motionY = 0.2D;
         }
-        else if (PlayerTracking.sneaks.contains(entity.entityId))
+        else if (PlayerTracking.sneaks.contains(entity.getEntityId()))
         {
             double diff = entity.prevPosY - entity.posY;
             entity.boundingBox.minY += diff;
@@ -72,11 +72,12 @@ public class BlockFrameScaffold extends BlockFrame
     public void onBlockClicked(World world, int x, int y, int z, EntityPlayer player)
     {
         ItemStack held = player.inventory.mainInventory[player.inventory.currentItem];
-        if (held != null && held.itemID == this && held.getItemDamage() == world.getBlockMetadata(x, y, z))
+        Block hb = Block.getBlockFromItem(held.getItem());
+        if (held != null && hb != null && hb.equals(this) && held.getItemDamage() == world.getBlockMetadata(x, y, z))
         {
-            while (world.getBlockId(x, y, z) == this)
+            while (world.getBlock(x, y, z).equals(this))
                 y++;
-            if (checkStay(world, x, y, z, held.getItemDamage()) && (Block.blocksList[world.getBlockId(x, y, z)] == null || Block.blocksList[world.getBlockId(x, y, z)].isAirBlock(world, x, y, z)))
+            if (checkStay(world, x, y, z, held.getItemDamage()) && (world.isAirBlock(x, y, z)))
             {
                 world.setBlock(x, y, z, this, held.getItemDamage(), 3);
                 if (!player.capabilities.isCreativeMode)
@@ -150,9 +151,9 @@ public class BlockFrameScaffold extends BlockFrame
     {
         for (int i = y - 1; i > 0; i--)
         {
-            if (world.isBlockSolidOnSide(x, i, z, ForgeDirection.UP))
+            if (world.isSideSolid(x, i, z, ForgeDirection.UP))
             {
-                if (world.getBlockId(x, i, z) == this)
+                if (world.getBlock(x, i, z).equals(this))
                 {
                     if (world.getBlockMetadata(x, i, z) == meta)
                         continue;
@@ -182,9 +183,9 @@ public class BlockFrameScaffold extends BlockFrame
     }
 
     @Override
-    public boolean isBlockSolidOnSide(World world, int x, int y, int z, ForgeDirection side)
+    public boolean isBlockSolid(IBlockAccess world, int x, int y, int z, int side)
     {
-        return side == ForgeDirection.UP || side == ForgeDirection.DOWN;
+        return side < 2;
     }
 
     @Override
@@ -195,7 +196,7 @@ public class BlockFrameScaffold extends BlockFrame
 
     @Override
     @SideOnly(Side.CLIENT)
-    public void registerIcons(IconRegister reg)
+    public void registerBlockIcons(IIconRegister reg)
     {
         ArtificeConfig.registerConnectedTextures(reg);
         for (int i = 0; i < ArtificeCore.tiers.length; i++)
@@ -204,7 +205,7 @@ public class BlockFrameScaffold extends BlockFrame
 
     @Override
     @SideOnly(Side.CLIENT)
-    public Icon getIcon(int side, int meta)
+    public IIcon getIcon(int side, int meta)
     {
         if (meta >= ArtificeCore.tiers.length)
             meta = 0;
@@ -229,7 +230,7 @@ public class BlockFrameScaffold extends BlockFrame
 
     @Override
     @SideOnly(Side.CLIENT)
-    public Icon getBlockTexture(IBlockAccess access, int x, int y, int z, int side)
+    public IIcon getIcon(IBlockAccess access, int x, int y, int z, int side)
     {
         int meta = access.getBlockMetadata(x, y, z);
         if (meta > ArtificeCore.tiers.length)

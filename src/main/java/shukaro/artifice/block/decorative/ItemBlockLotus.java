@@ -6,23 +6,23 @@ import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.EnumMovingObjectType;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 import net.minecraft.util.MovingObjectPosition;
+import net.minecraft.util.MovingObjectPosition.MovingObjectType;
 import net.minecraft.world.World;
 import shukaro.artifice.ArtificeBlocks;
 import shukaro.artifice.block.ItemBlockArtifice;
 
 public class ItemBlockLotus extends ItemBlockArtifice
 {
-    public ItemBlockLotus(int id)
+    public ItemBlockLotus(Block block)
     {
-        super(id);
+        super(block);
     }
 
     @Override
     @SideOnly(Side.CLIENT)
-    public Icon getIconFromDamage(int meta)
+    public IIcon getIconFromDamage(int meta)
     {
         return ArtificeBlocks.blockLotus.getIcon(0, meta);
     }
@@ -31,9 +31,9 @@ public class ItemBlockLotus extends ItemBlockArtifice
     public String getUnlocalizedName(ItemStack stack)
     {
         if (stack.getItemDamage() == 0)
-            return Block.blocksList[stack.itemID].getUnlocalizedName() + ".open";
+            return Block.getBlockFromItem(stack.getItem()).getUnlocalizedName() + ".open";
         else
-            return Block.blocksList[stack.itemID].getUnlocalizedName() + ".closed";
+            return Block.getBlockFromItem(stack.getItem()).getUnlocalizedName() + ".closed";
     }
 
     public ItemStack onItemRightClick(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer)
@@ -46,7 +46,7 @@ public class ItemBlockLotus extends ItemBlockArtifice
         }
         else
         {
-            if (movingobjectposition.typeOfHit == EnumMovingObjectType.TILE)
+            if (movingobjectposition.typeOfHit == MovingObjectType.BLOCK)
             {
                 int i = movingobjectposition.blockX;
                 int j = movingobjectposition.blockY;
@@ -62,7 +62,7 @@ public class ItemBlockLotus extends ItemBlockArtifice
                     return par1ItemStack;
                 }
 
-                if (par2World.getBlockMaterial(i, j, k) == Material.water && par2World.getBlockMetadata(i, j, k) == 0 && par2World.isAirBlock(i, j + 1, k))
+                if (par2World.getBlock(i, j, k).getMaterial() == Material.water && par2World.getBlockMetadata(i, j, k) == 0 && par2World.isAirBlock(i, j + 1, k))
                 {
                     par2World.setBlock(i, j + 1, k, ArtificeBlocks.blockLotus);
 

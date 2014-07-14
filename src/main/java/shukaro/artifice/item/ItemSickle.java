@@ -17,6 +17,7 @@ import shukaro.artifice.ArtificeTooltips;
 import shukaro.artifice.gui.ArtificeCreativeTab;
 import shukaro.artifice.render.IconHandler;
 import shukaro.artifice.util.BlockCoord;
+import shukaro.artifice.util.ItemMetaPair;
 
 import java.util.List;
 import java.util.Locale;
@@ -60,7 +61,7 @@ public class ItemSickle extends ItemTool
     {
         if (!ArtificeConfig.tooltips.getBoolean(true))
             return;
-        IdMetaPair pair = new IdMetaPair(stack.itemID, 0);
+        ItemMetaPair pair = new ItemMetaPair(stack.getItem(), 0);
         if (ArtificeRegistry.getTooltipMap().get(pair) != null)
         {
             for (String s : ArtificeRegistry.getTooltipMap().get(pair))

@@ -8,6 +8,7 @@ import shukaro.artifice.render.connectedtexture.ConnectedTextures;
 
 import java.util.logging.Level;
 
+import net.minecraft.block.Block;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.item.Item;
 import net.minecraftforge.common.config.Configuration;
@@ -387,9 +388,9 @@ public class ArtificeConfig
                 String itemName = pair.split(";")[0];
                 Integer meta = Integer.parseInt(pair.split(";")[1]);
                 if (isMarble)
-                    ArtificeRegistry.registerMarbleType((Item)Item.itemRegistry.getObject(itemName), meta);
+                    ArtificeRegistry.registerMarbleType((Block)Block.blockRegistry.getObject(itemName), meta);
                 else
-                    ArtificeRegistry.registerBasaltType((Item)Item.itemRegistry.getObject(itemName), meta);
+                    ArtificeRegistry.registerBasaltType((Block)Block.blockRegistry.getObject(itemName), meta);
             }
             catch (Exception e)
             {

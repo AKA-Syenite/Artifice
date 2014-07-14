@@ -2,31 +2,43 @@ package shukaro.artifice.block.decorative;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import net.minecraft.block.BlockHalfSlab;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockSlab;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemSlab;
 import net.minecraft.item.ItemStack;
+import shukaro.artifice.ArtificeBlocks;
 import shukaro.artifice.ArtificeConfig;
 import shukaro.artifice.ArtificeRegistry;
 import shukaro.artifice.ArtificeTooltips;
-import shukaro.artifice.util.IdMetaPair;
+import shukaro.artifice.util.ItemMetaPair;
 
 import java.util.List;
 
 public class ItemBlockSlabArtifice extends ItemSlab
 {
-    public ItemBlockSlabArtifice(int par1, BlockHalfSlab par2BlockHalfSlab, BlockHalfSlab par3BlockHalfSlab, boolean par4)
+    public ItemBlockSlabArtifice(Block block)
     {
-        super(par1, par2BlockHalfSlab, par3BlockHalfSlab, par4);
+        super(block, getHalfSlab(block), getDoubleSlab(block), block.isOpaqueCube());
+    }
+    
+    private static BlockSlab getHalfSlab(Block block) {
+    	if(block instanceof BlockBasaltSlab) return ArtificeBlocks.blockBasaltSlab;
+    	else return ArtificeBlocks.blockMarbleSlab;
     }
 
+    private static BlockSlab getDoubleSlab(Block block) {
+    	if(block instanceof BlockBasaltSlab) return ArtificeBlocks.blockBasaltDoubleSlab;
+    	else return ArtificeBlocks.blockMarbleDoubleSlab;
+    }
+    
     @Override
     @SideOnly(Side.CLIENT)
     public void addInformation(ItemStack stack, EntityPlayer player, List infoList, boolean advancedTooltips)
     {
         if (!ArtificeConfig.tooltips.getBoolean(true))
             return;
-        IdMetaPair pair = new IdMetaPair(stack.itemID, stack.getItemDamage());
+        ItemMetaPair pair = new ItemMetaPair(stack.getItem(), stack.getItemDamage());
         if (ArtificeRegistry.getTooltipMap().get(pair) != null)
         {
             for (String s : ArtificeRegistry.getTooltipMap().get(pair))

@@ -1,6 +1,7 @@
 package shukaro.artifice.gui;
 
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import shukaro.artifice.ArtificeBlocks;
 import shukaro.artifice.ArtificeConfig;
@@ -17,7 +18,7 @@ public class ArtificeCreativeTab extends CreativeTabs
     }
 
     @Override
-    public ItemStack getIconItemStack()
+    public Item getTabIconItem()
     {
         /*
         if (this.getTabLabel() == documents.getTabLabel())
@@ -28,19 +29,19 @@ public class ArtificeCreativeTab extends CreativeTabs
         if (this.getTabLabel().equals(main.getTabLabel()))
         {
             if (ArtificeConfig.enableFrames.getBoolean(true))
-                return new ItemStack(ArtificeBlocks.blockFrame, 1, 0);
+                return Item.getItemFromBlock(ArtificeBlocks.blockFrame);
             if (ArtificeConfig.enableWorldGen.getBoolean(true))
-                return new ItemStack(ArtificeBlocks.blockBasalt, 1, 0);
+                return Item.getItemFromBlock(ArtificeBlocks.blockBasalt);
             if (ArtificeConfig.enableUpgrades.getBoolean(true))
-                return new ItemStack(ArtificeItems.itemUpgrade, 1, 0);
+                return ArtificeItems.itemUpgrade;
             if (ArtificeConfig.enableSledges.getBoolean(true))
-                return new ItemStack(ArtificeItems.itemSledgeDiamond, 1, 0);
+                return ArtificeItems.itemSledgeDiamond;
             if (ArtificeConfig.enableCoins.getBoolean(true))
-                return new ItemStack(ArtificeItems.itemCoin, 1, 2);
+                return ArtificeItems.itemCoin;
             if (ArtificeConfig.enableBoxes.getBoolean(true))
-                return new ItemStack(ArtificeItems.itemBox, 1, 0);
+                return ArtificeItems.itemBox;
             if (ArtificeConfig.enableSteel.getBoolean(true))
-                return new ItemStack(ArtificeItems.itemSteelIngot, 1, 0);
+                return ArtificeItems.itemSteelIngot;
             return null;
         }
         else

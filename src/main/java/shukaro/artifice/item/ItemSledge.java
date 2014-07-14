@@ -17,7 +17,7 @@ import shukaro.artifice.ArtificeRegistry;
 import shukaro.artifice.ArtificeTooltips;
 import shukaro.artifice.gui.ArtificeCreativeTab;
 import shukaro.artifice.render.IconHandler;
-import shukaro.artifice.util.IdMetaPair;
+import shukaro.artifice.util.ItemMetaPair;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -62,7 +62,7 @@ public class ItemSledge extends ItemTool
     {
         if (!ArtificeConfig.tooltips.getBoolean(true))
             return;
-        IdMetaPair pair = new IdMetaPair(stack.itemID, 0);
+        ItemMetaPair pair = new ItemMetaPair(stack.getItem(), 0);
         if (ArtificeRegistry.getTooltipMap().get(pair) != null)
         {
             for (String s : ArtificeRegistry.getTooltipMap().get(pair))
@@ -82,7 +82,7 @@ public class ItemSledge extends ItemTool
             return true;
         for (int i = 0; i < 16; i++)
         {
-            if (ArtificeRegistry.getSledgeBlocks().get(new IdMetaPair(block, i)) != null)
+            if (ArtificeRegistry.getSledgeBlocks().get(new ItemMetaPair(block, i)) != null)
                 return true;
         }
         return false;
@@ -122,11 +122,11 @@ public class ItemSledge extends ItemTool
         {
             Block block = world.getBlock(x, y, z);
             int meta = world.getBlockMetadata(x, y, z);
-            //IdMetaPair pair = new IdMetaPair(id, meta);
+            ItemMetaPair pair = new ItemMetaPair(block, meta);
 
             ArrayList<ItemStack> dropped = ArtificeRegistry.getWildSledgeBlocks().get(block);
-            //if (dropped == null)
-            //    dropped = ArtificeRegistry.getSledgeBlocks().get(pair);
+            if (dropped == null)
+                dropped = ArtificeRegistry.getSledgeBlocks().get(pair);
 
             if (dropped != null)
             {
@@ -146,10 +146,10 @@ public class ItemSledge extends ItemTool
     }
 
     @Override
-    public boolean onBlockDestroyed(ItemStack stack, World world, int id, int x, int y, int z, EntityLivingBase entity)
+    public boolean onBlockDestroyed(ItemStack stack, World world, Block block, int x, int y, int z, EntityLivingBase entity)
     {
         int meta = world.getBlockMetadata(x, y, z);
-        IdMetaPair pair = new IdMetaPair(id, meta);
+        ItemMetaPair pair = new ItemMetaPair(block, meta);
 
         if (entity instanceof EntityPlayer)
         {

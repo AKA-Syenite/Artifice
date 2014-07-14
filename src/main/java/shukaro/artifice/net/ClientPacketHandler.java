@@ -1,34 +1,29 @@
 package shukaro.artifice.net;
 
-import cpw.mods.fml.common.network.IPacketHandler;
-import cpw.mods.fml.common.network.Player;
-import net.minecraft.network.INetworkManager;
-import net.minecraft.network.packet.Packet250CustomPayload;
 import shukaro.artifice.render.TextureHandler;
 import shukaro.artifice.util.BlockCoord;
-import shukaro.artifice.util.PacketWrapper;
 
 import java.io.ByteArrayInputStream;
 import java.io.DataInputStream;
+import java.io.IOException;
 
-public class ClientPacketHandler implements IPacketHandler
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.network.INetHandler;
+import pl.asie.lib.network.MessageHandlerBase;
+import pl.asie.lib.network.Packet;
+
+public class ClientPacketHandler extends MessageHandlerBase
 {
-    @Override
-    public void onPacketData(INetworkManager manager, Packet250CustomPayload packet, Player player)
-    {
-        DataInputStream data = new DataInputStream(new ByteArrayInputStream(packet.data));
-        int packetType = PacketWrapper.readPacketID(data);
-
-        if (packetType == Packets.TEXTUREUPDATE)
-        {
-            Class[] decodeAs = {Integer.class, Integer.class, Integer.class};
-            Object[] packetReadout = PacketWrapper.readPacketData(data, decodeAs);
-
-            BlockCoord coord = new BlockCoord((Integer) packetReadout[0], (Integer) packetReadout[1], (Integer) packetReadout[2]);
-
+	@Override
+	public void onMessage(Packet packet, INetHandler handler, EntityPlayer player,
+			int command) throws IOException {
+		switch(command) {
+		case Packets.TEXTUREUPDATE: {
+			BlockCoord coord = new BlockCoord(packet.readInt(), packet.readInt(), packet.readInt());
             TextureHandler.updateTexture(coord);
             for (BlockCoord n : coord.getNearby())
                 TextureHandler.updateTexture(n);
-        }
-    }
+		} return;
+		}
+	}
 }

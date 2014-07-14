@@ -11,6 +11,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
 import shukaro.artifice.ArtificeConfig;
 import shukaro.artifice.ArtificeCore;
+import shukaro.artifice.net.PacketSender;
 import shukaro.artifice.net.Packets;
 import shukaro.artifice.render.TextureHandler;
 import shukaro.artifice.render.connectedtexture.ConnectedTextureBase;
@@ -18,7 +19,6 @@ import shukaro.artifice.render.connectedtexture.ConnectedTextures;
 import shukaro.artifice.render.connectedtexture.schemes.TransparentConnectedTexture;
 import shukaro.artifice.util.BlockCoord;
 import shukaro.artifice.util.ChunkCoord;
-import shukaro.artifice.util.PacketWrapper;
 
 public class BlockFrameGlassWall extends BlockFrame
 {
@@ -118,10 +118,7 @@ public class BlockFrameGlassWall extends BlockFrame
     public void onNeighborBlockChange(World world, int x, int y, int z, Block neighbor)
     {
         if (!world.isRemote)
-        {
-            BlockCoord c = new BlockCoord(x, y, z);
-            PacketDispatcher.sendPacketToAllAround(c.x, c.y, c.z, 192, world.provider.dimensionId, PacketWrapper.createPacket(ArtificeCore.modChannel, Packets.TEXTUREUPDATE, new Object[]{c.x, c.y, c.z}));
-        }
+        	PacketSender.sendTextureUpdatePacket(world, x, y, z);
     }
 
     @Override

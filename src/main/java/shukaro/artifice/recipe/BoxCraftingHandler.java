@@ -24,7 +24,7 @@ public class BoxCraftingHandler implements ICraftingHandler
             {
                 // Did the player shift-click the output? (This makes me a little bit uncomfortable, but eh)
                 boolean shift = false;
-                if (PlayerTracking.sneaks.contains(player.entityId))
+                if (PlayerTracking.sneaks.contains(player.getEntityId()))
                     shift = true;
 
                 // Number of boxes to unbox

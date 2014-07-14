@@ -14,8 +14,6 @@ import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraftforge.common.MinecraftForge;
 import shukaro.artifice.event.ArtificeEventHandler;
 import shukaro.artifice.net.ClientPacketHandler;
-import shukaro.artifice.net.ClientProxy;
-import shukaro.artifice.net.CommonProxy;
 import shukaro.artifice.net.ServerPacketHandler;
 import shukaro.artifice.recipe.ArtificeRecipes;
 import shukaro.artifice.util.BlockCoord;
@@ -27,12 +25,11 @@ import java.util.concurrent.ConcurrentHashMap;
 
 import org.apache.logging.log4j.Logger;
 
+import pl.asie.lib.network.PacketHandler;
+
 @Mod(modid = ArtificeCore.modID, name = ArtificeCore.modName, version = ArtificeCore.modVersion)
 public class ArtificeCore
 {
-    @SidedProxy(clientSide = "shukaro.artifice.net.ClientProxy", serverSide = "shukaro.artifice.net.CommonProxy")
-    public static CommonProxy proxy;
-
     public static final String modID = "Artifice";
     public static final String modName = "Artifice";
     public static final String modChannel = "Artifice";
@@ -41,7 +38,8 @@ public class ArtificeCore
     public static ArtificeWorldGen worldGen;
     public static Logger logger;
     public static ArtificeEventHandler eventHandler;
-
+    public static PacketHandler packet;
+    
     public static final String[] tiers = {"Basic", "Reinforced", "Industrial", "Advanced"};
     public static final String[] flora = {"Bluebell", "Orchid", "Iris", "Lotus", "LotusClosed"};
     public static final String[] rocks = {"", "Cobblestone", "Brick", "Paver", "Antipaver", "Chiseled"};
@@ -65,11 +63,9 @@ public class ArtificeCore
         ArtificeConfig.initClient(evt);
         ArtificeConfig.initCommon(evt);
 
+        packet = new PacketHandler(modID, new ClientPacketHandler(), new ServerPacketHandler());
         ArtificeCore.eventHandler = new ArtificeEventHandler();
         MinecraftForge.EVENT_BUS.register(ArtificeCore.eventHandler);
-        CommonProxy.init();
-        if (evt.getSide() == Side.CLIENT)
-            ClientProxy.init();
 
         ArtificeBlocks.initBlocks();
         ArtificeItems.initItems();

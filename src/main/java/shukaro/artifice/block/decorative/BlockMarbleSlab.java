@@ -1,8 +1,8 @@
 package shukaro.artifice.block.decorative;
 
-import cpw.mods.fml.common.network.PacketDispatcher;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockSlab;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -16,13 +16,13 @@ import shukaro.artifice.ArtificeBlocks;
 import shukaro.artifice.ArtificeConfig;
 import shukaro.artifice.ArtificeCore;
 import shukaro.artifice.gui.ArtificeCreativeTab;
+import shukaro.artifice.net.PacketSender;
 import shukaro.artifice.net.Packets;
 import shukaro.artifice.render.IconHandler;
 import shukaro.artifice.render.TextureHandler;
 import shukaro.artifice.render.connectedtexture.ConnectedTextures;
 import shukaro.artifice.util.BlockCoord;
 import shukaro.artifice.util.ChunkCoord;
-import shukaro.artifice.util.PacketWrapper;
 
 import java.util.List;
 import java.util.Locale;
@@ -44,9 +44,9 @@ public class BlockMarbleSlab extends BlockSlab
     }
 
     @Override
-    public int idDropped(int id, Random rand, int meta)
+    public Item getItemDropped(int meta, Random rand, int fortune)
     {
-        return ArtificeBlocks.blockMarbleSlab;
+        return Item.getItemFromBlock(ArtificeBlocks.blockMarbleSlab);
     }
 
     @Override
@@ -61,7 +61,7 @@ public class BlockMarbleSlab extends BlockSlab
     }
 
     @Override
-    public String getFullSlabName(int meta)
+    public String func_150002_b(int meta)
     {
         meta = meta > 7 ? meta - 8 : meta;
         if (meta >= types.length)
@@ -142,7 +142,7 @@ public class BlockMarbleSlab extends BlockSlab
             int meta = world.getBlockMetadata(x, y, z) & 7;
             BlockCoord c = new BlockCoord(x, y, z);
             if (c.getBlock(world) != null && (meta == 2 || meta == 3))
-                PacketDispatcher.sendPacketToAllAround(c.x, c.y, c.z, 192, world.provider.dimensionId, PacketWrapper.createPacket(ArtificeCore.modChannel, Packets.TEXTUREUPDATE, new Object[]{c.x, c.y, c.z}));
+            	PacketSender.sendTextureUpdatePacket(world, x, y, z);
         }
     }
 }

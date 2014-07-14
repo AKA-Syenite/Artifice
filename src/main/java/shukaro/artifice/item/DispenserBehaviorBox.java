@@ -18,7 +18,7 @@ public class DispenserBehaviorBox extends BehaviorDefaultDispenseItem
         if (tag != null)
         {
             // The thing in the boxes
-            ItemStack thing = new ItemStack((Item)Item.itemRegistry.getObjectById(tag.getInteger("id")), stack.getItemDamage(), tag.getInteger("meta"));
+            ItemStack thing = new ItemStack(Item.getItemById(tag.getInteger("id")), stack.getItemDamage(), tag.getInteger("meta"));
             if (!tag.getCompoundTag("nbt").hasNoTags())
                 thing.setTagCompound(tag.getCompoundTag("nbt"));
 

@@ -1,4 +1,4 @@
-package shukaro.artifice.compat.ee3;
+package shukaro.artifice.compat;
 
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.Mod;
@@ -15,17 +15,11 @@ import shukaro.artifice.ArtificeCore;
 import java.util.List;
 import java.util.logging.Level;
 
-@Mod(modid = "ArtificeCompat|EE3", name = "Artifice Compat: EE3", version = ArtificeCore.modVersion, dependencies = "after:Artifice;after:EE3")
-public class EE3
+public class EE3 implements ICompat
 {
-    @EventHandler
-    public static void load(FMLInitializationEvent e0)
+	public String getModID() { return "EE3"; }
+    public void load()
     {
-        if (!Loader.isModLoaded("EE3"))
-        {
-            ArtificeCore.logger.info("EE3 not installed, skipping compat");
-            return;
-        }
         try
         {
             Class<?> recipeClass = Class.forName("com.pahimar.ee3.recipe.RecipesTransmutationStone");

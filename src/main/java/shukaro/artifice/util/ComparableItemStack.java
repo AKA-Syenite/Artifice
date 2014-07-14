@@ -93,15 +93,13 @@ public class ComparableItemStack
     @Override
     public ComparableItemStack clone()
     {
-
         return new ComparableItemStack(this);
     }
 
     @Override
     public int hashCode()
     {
-
-        return oreID != -1 ? oreID : metadata | (Item.itemRegistry.getIDForObject(item) << 16);
+        return oreID != -1 ? oreID : metadata | (Item.getIdFromItem(item) << 16);
     }
 
     @Override

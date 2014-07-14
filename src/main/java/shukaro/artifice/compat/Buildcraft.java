@@ -1,4 +1,4 @@
-package shukaro.artifice.compat.buildcraft;
+package shukaro.artifice.compat;
 
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.Mod;
@@ -9,17 +9,14 @@ import shukaro.artifice.ArtificeCore;
 
 import java.util.logging.Level;
 
-@Mod(modid = "ArtificeCompat|Buildcraft", name = "Artifice Compat: Buildcraft", version = ArtificeCore.modVersion, dependencies = "after:Artifice;after:BuildCraft|Core")
-public class Buildcraft
+public class Buildcraft implements ICompat
 {
-    @Mod.EventHandler
-    public static void load(FMLInitializationEvent e0)
+	public String getModID() {
+		return "BuildCraft|Core";
+	}
+	
+    public void load()
     {
-        if (!Loader.isModLoaded("BuildCraft|Core"))
-        {
-            ArtificeCore.logger.info("BuildCraft not installed, skipping compat");
-            return;
-        }
         try
         {
             for (int i = 0; i < ArtificeCore.tiers.length; i++)

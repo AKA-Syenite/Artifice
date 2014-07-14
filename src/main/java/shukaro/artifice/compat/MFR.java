@@ -1,23 +1,18 @@
-package shukaro.artifice.compat.mfr;
+package shukaro.artifice.compat;
 
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import shukaro.artifice.ArtificeCore;
+import shukaro.artifice.compat.mfr.MFRHandler;
 
 import java.util.logging.Level;
 
-@Mod(modid = "ArtificeCompat|MFR", name = "Artifice Compat: MFR", version = ArtificeCore.modVersion, dependencies = "after:Artifice;after:MineFactoryReloaded")
-public class MFR
+public class MFR implements ICompat
 {
-    @Mod.EventHandler
-    public static void load(FMLInitializationEvent e0)
+	public String getModID() { return "MineFactoryReloaded"; }
+    public void load()
     {
-        if (!Loader.isModLoaded("MineFactoryReloaded"))
-        {
-            ArtificeCore.logger.info("MineFactoryReloaded not installed, skipping compat");
-            return;
-        }
         try
         {
             MFRHandler.handle();

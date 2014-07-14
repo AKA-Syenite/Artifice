@@ -1,5 +1,6 @@
 package shukaro.artifice;
 
+import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
@@ -13,6 +14,14 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraftforge.common.MinecraftForge;
+import shukaro.artifice.compat.Buildcraft;
+import shukaro.artifice.compat.EE3;
+import shukaro.artifice.compat.FMP;
+import shukaro.artifice.compat.Forestry;
+import shukaro.artifice.compat.ICompat;
+import shukaro.artifice.compat.MFR;
+import shukaro.artifice.compat.Thaumcraft;
+import shukaro.artifice.compat.Vanilla;
 import shukaro.artifice.event.ArtificeEventHandler;
 import shukaro.artifice.net.ClientPacketHandler;
 import shukaro.artifice.net.ServerPacketHandler;
@@ -21,6 +30,7 @@ import shukaro.artifice.util.BlockCoord;
 import shukaro.artifice.util.ChunkCoord;
 import shukaro.artifice.world.ArtificeWorldGen;
 
+import java.util.ArrayList;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -28,7 +38,8 @@ import org.apache.logging.log4j.Logger;
 
 import pl.asie.lib.network.PacketHandler;
 
-@Mod(modid = ArtificeCore.modID, name = ArtificeCore.modName, version = ArtificeCore.modVersion, dependencies="required-after:asielib")
+@Mod(modid = ArtificeCore.modID, name = ArtificeCore.modName, version = ArtificeCore.modVersion,
+dependencies="required-after:asielib;after:BuildCraft|Core;after:EE3;after:Forestry;after:MineFactoryReloaded;after:Thaumcraft")
 public class ArtificeCore
 {
 	@SidedProxy(clientSide="shukaro.artifice.ClientProxy", serverSide="shukaro.artifice.CommonProxy")	
@@ -58,10 +69,20 @@ public class ArtificeCore
     public void serverStarting(FMLServerStartingEvent evt)
     {
     }
+    
+    private ArrayList<ICompat> compats = new ArrayList<ICompat>();
 
     @EventHandler
     public void preInit(FMLPreInitializationEvent evt)
     {
+    	compats.add(new Buildcraft());
+    	compats.add(new EE3());
+    	compats.add(new FMP());
+    	compats.add(new Forestry());
+    	compats.add(new MFR());
+    	compats.add(new Thaumcraft());
+    	compats.add(new Vanilla());
+    	
         logger = evt.getModLog();
 
         ArtificeConfig.initClient(evt);
@@ -81,6 +102,13 @@ public class ArtificeCore
     @EventHandler
     public void init(FMLInitializationEvent evt)
     {
+    	for(ICompat c: compats) {
+    		if(c.getModID() == null || Loader.isModLoaded(c.getModID())) {
+    			logger.debug("Loading compat " + c.getClass().getName());
+    			c.load();
+    		}
+    	}
+    	
         ArtificeTooltips.initTooltips();
         ArtificeRecipes.registerRecipes();
         

@@ -1,4 +1,4 @@
-package shukaro.artifice.compat.vanilla;
+package shukaro.artifice.compat;
 
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
@@ -14,11 +14,10 @@ import shukaro.artifice.ArtificeRegistry;
 
 import java.util.ArrayList;
 
-@Mod(modid = "ArtificeCompat|Vanilla", name = "Artifice Compat: Vanilla", version = ArtificeCore.modVersion, dependencies = "after:Artifice")
-public class Vanilla
+public class Vanilla implements ICompat
 {
-    @EventHandler
-    public void load(FMLInitializationEvent e)
+    public String getModID() { return null; }
+    public void load()
     {
         ArtificeRegistry.registerDimensionBlacklist(1);
         ArtificeRegistry.registerDimensionBlacklist(-1);

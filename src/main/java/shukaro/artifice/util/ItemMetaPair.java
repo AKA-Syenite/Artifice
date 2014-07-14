@@ -29,6 +29,8 @@ public class ItemMetaPair {
 	public boolean equals(Object o) {
 		if(o == null || !(o instanceof ItemMetaPair)) return false;
 		ItemMetaPair imp = (ItemMetaPair)o;
+		if(this.item != null && imp.item == null || this.item == null && imp.item != null) return false;
+		if(this.item == null && imp.item == null) return true;
 		return this.meta == imp.meta && this.item.equals(imp.item);
 	}
 }

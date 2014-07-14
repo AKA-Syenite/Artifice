@@ -1,4 +1,4 @@
-package shukaro.artifice.compat.thaumcraft;
+package shukaro.artifice.compat;
 
 import cpw.mods.fml.common.FMLLog;
 import cpw.mods.fml.common.Loader;
@@ -18,8 +18,7 @@ import java.lang.reflect.Method;
 import java.util.LinkedHashMap;
 import java.util.logging.Level;
 
-@Mod(modid = "ArtificeCompat|Thaumcraft", name = "Artifice Compat: Thaumcraft", version = ArtificeCore.modVersion, dependencies = "after:Artifice;after:Thaumcraft")
-public class Thaumcraft
+public class Thaumcraft implements ICompat
 {
     private static LinkedHashMap<String, ? extends Object> aspects = null;
     private static Method registerItem = null;
@@ -28,14 +27,9 @@ public class Thaumcraft
     private static Constructor<?> newAspectList = null;
     private static Method addAspect = null;
 
-    @Mod.EventHandler
-    public static void load(FMLInitializationEvent e0)
+    public String getModID() { return "Thaumcraft"; }
+    public void load()
     {
-        if (!Loader.isModLoaded("Thaumcraft"))
-        {
-            ArtificeCore.logger.info("Thaumcraft not installed, skipping compat");
-            return;
-        }
         try
         {
             Class<?> Aspect = Class.forName("thaumcraft.api.aspects.Aspect");

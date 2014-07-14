@@ -3,13 +3,13 @@ package shukaro.artifice;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import shukaro.artifice.compat.ArtificeRegistry;
 import shukaro.artifice.render.IconHandler;
 import shukaro.artifice.render.connectedtexture.ConnectedTextures;
 
 import java.util.logging.Level;
 
 import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.item.Item;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.common.config.Property;
 
@@ -312,7 +312,7 @@ public class ArtificeConfig
         }
         catch (Exception e)
         {
-            ArtificeCore.logger.log(Level.SEVERE, "Couldn't load the config file");
+            ArtificeCore.logger.error("Couldn't load the config file");
             e.printStackTrace();
         }
         finally
@@ -338,7 +338,7 @@ public class ArtificeConfig
         }
         catch (Exception e)
         {
-            ArtificeCore.logger.log(Level.SEVERE, "Couldn't load the config file");
+            ArtificeCore.logger.error("Couldn't load the config file");
             e.printStackTrace();
         }
         finally
@@ -349,7 +349,7 @@ public class ArtificeConfig
 
     private static void setDimBlacklist()
     {
-        ArtificeCore.logger.log(Level.INFO, "Reading the dimension blacklist");
+        ArtificeCore.logger.info("Reading the dimension blacklist");
         String blacklist = dimensionBlacklist.getString().trim();
 
         for (String dim : blacklist.split(","))
@@ -361,7 +361,7 @@ public class ArtificeConfig
             }
             catch (Exception e)
             {
-                ArtificeCore.logger.log(Level.WARNING, "Couldn't load the dimension blacklist from string");
+                ArtificeCore.logger.warn("Couldn't load the dimension blacklist from string");
             }
         }
     }
@@ -371,12 +371,12 @@ public class ArtificeConfig
         String stoneList;
         if (isMarble)
         {
-            ArtificeCore.logger.log(Level.INFO, "Reading the marble list");
+            ArtificeCore.logger.info("Reading the marble list");
             stoneList = marbleList.getString().trim();
         }
         else
         {
-            ArtificeCore.logger.log(Level.INFO, "Reading the basalt list");
+            ArtificeCore.logger.info("Reading the basalt list");
             stoneList = basaltList.getString().trim();
         }
 
@@ -384,19 +384,19 @@ public class ArtificeConfig
         {
             try
             {
-                Integer ID = Integer.parseInt(pair.split(":")[0]);
-                Integer meta = Integer.parseInt(pair.split(":")[1]);
+                String itemName = pair.split(";")[0];
+                Integer meta = Integer.parseInt(pair.split(";")[1]);
                 if (isMarble)
-                    ArtificeRegistry.registerMarbleType(ID, meta);
+                    ArtificeRegistry.registerMarbleType((Item)Item.itemRegistry.getObject(itemName), meta);
                 else
-                    ArtificeRegistry.registerBasaltType(ID, meta);
+                    ArtificeRegistry.registerBasaltType((Item)Item.itemRegistry.getObject(itemName), meta);
             }
             catch (Exception e)
             {
                 if (isMarble)
-                    ArtificeCore.logger.log(Level.WARNING, "Couldn't load the marble list from string");
+                    ArtificeCore.logger.warn("Couldn't load the marble list from string");
                 else
-                    ArtificeCore.logger.log(Level.WARNING, "Couldn't load the basalt list from string");
+                    ArtificeCore.logger.warn("Couldn't load the basalt list from string");
             }
         }
     }

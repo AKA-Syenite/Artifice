@@ -8,7 +8,7 @@ import net.minecraft.entity.item.EntityItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.world.World;
-import shukaro.artifice.compat.ArtificeRegistry;
+import shukaro.artifice.ArtificeRegistry;
 import shukaro.artifice.util.BlockCoord;
 import shukaro.artifice.util.IdMetaPair;
 

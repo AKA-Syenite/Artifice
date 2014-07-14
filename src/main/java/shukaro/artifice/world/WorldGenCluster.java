@@ -1,7 +1,8 @@
 package shukaro.artifice.world;
 
+import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
-import shukaro.artifice.compat.ArtificeRegistry;
+import shukaro.artifice.ArtificeRegistry;
 import shukaro.artifice.util.BlockCoord;
 import shukaro.artifice.util.ChunkCoord;
 
@@ -70,7 +71,7 @@ public class WorldGenCluster
                 break;
             c.set(blocks.get(rand.nextInt(blocks.size())));
             blocks.remove(c);
-            world.setBlock(c.x, c.y, c.z, id, 0, 0);
+            world.setBlockToAir(c.x, c.y, c.z);
             genned++;
             while (blocks.size() > threshold && genned < size)
             {
@@ -78,7 +79,7 @@ public class WorldGenCluster
                     break;
                 c.set(blocks.get(rand.nextInt(blocks.size())));
                 blocks.remove(c);
-                world.setBlock(c.x, c.y, c.z, id, 0, 0);
+                world.setBlockToAir(c.x, c.y, c.z);
                 genned++;
             }
         }

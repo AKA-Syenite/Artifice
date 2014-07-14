@@ -4,6 +4,7 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import shukaro.artifice.render.IconHandler;
@@ -24,14 +25,14 @@ public class ItemUpgrade extends ItemArtifice
 
     @Override
     @SideOnly(Side.CLIENT)
-    public Icon getIconFromDamage(int meta)
+    public IIcon getIconFromDamage(int meta)
     {
         return icons[meta];
     }
 
     @Override
     @SideOnly(Side.CLIENT)
-    public void registerIcons(IconRegister reg)
+    public void registerIcons(IIconRegister reg)
     {
         for (int i = 0; i < upgrades.length; i++)
         {
@@ -41,7 +42,7 @@ public class ItemUpgrade extends ItemArtifice
 
     @Override
     @SideOnly(Side.CLIENT)
-    public void getSubItems(int id, CreativeTabs tab, List list)
+    public void getSubItems(Item id, CreativeTabs tab, List list)
     {
         for (int i = 0; i < upgrades.length; i++)
             list.add(new ItemStack(id, 1, i));

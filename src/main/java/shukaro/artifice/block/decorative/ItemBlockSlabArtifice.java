@@ -7,8 +7,8 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemSlab;
 import net.minecraft.item.ItemStack;
 import shukaro.artifice.ArtificeConfig;
+import shukaro.artifice.ArtificeRegistry;
 import shukaro.artifice.ArtificeTooltips;
-import shukaro.artifice.compat.ArtificeRegistry;
 import shukaro.artifice.util.IdMetaPair;
 
 import java.util.List;

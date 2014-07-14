@@ -1,6 +1,7 @@
 package shukaro.artifice.world;
 
 import net.minecraft.block.Block;
+import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraftforge.common.BiomeDictionary;
@@ -60,7 +61,7 @@ public class WorldGenFlowers
             if (!c.contains(x, z))
                 continue;
 
-            if ((world.isAirBlock(x, y, z) || (world.getBlockId(x, y, z) == Block.snow)) && ArtificeBlocks.blockFlora.canBlockStay(world, x, y, z))
+            if ((world.isAirBlock(x, y, z) || (world.getBlock(x, y, z).equals(Blocks.snow_layer))) && ArtificeBlocks.blockFlora.canBlockStay(world, x, y, z))
             {
                 if (rand.nextInt(10) > 5)
                     continue;

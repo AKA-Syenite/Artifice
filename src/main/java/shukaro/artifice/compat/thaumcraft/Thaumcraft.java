@@ -33,7 +33,7 @@ public class Thaumcraft
     {
         if (!Loader.isModLoaded("Thaumcraft"))
         {
-            ArtificeCore.logger.log(Level.INFO, "Thaumcraft not installed, skipping compat");
+            ArtificeCore.logger.info("Thaumcraft not installed, skipping compat");
             return;
         }
         try
@@ -49,11 +49,11 @@ public class Thaumcraft
 
             doAspects();
 
-            ArtificeCore.logger.log(Level.INFO, "Thaumcraft Compat Initialized");
+            ArtificeCore.logger.info("Thaumcraft Compat Initialized");
         }
         catch (Throwable ex)
         {
-            ArtificeCore.logger.log(Level.WARNING, "Couldn't initialize Thaumcraft compat");
+            ArtificeCore.logger.warn("Couldn't initialize Thaumcraft compat");
             ex.printStackTrace();
         }
     }

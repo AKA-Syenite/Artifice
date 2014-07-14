@@ -14,6 +14,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
 import shukaro.artifice.ArtificeConfig;
 import shukaro.artifice.ArtificeCore;
+import shukaro.artifice.net.PacketSender;
 import shukaro.artifice.net.Packets;
 import shukaro.artifice.net.PlayerTracking;
 import shukaro.artifice.render.IconHandler;
@@ -23,7 +24,6 @@ import shukaro.artifice.render.connectedtexture.ConnectedTextures;
 import shukaro.artifice.render.connectedtexture.schemes.SolidConnectedTexture;
 import shukaro.artifice.util.BlockCoord;
 import shukaro.artifice.util.ChunkCoord;
-import shukaro.artifice.util.PacketWrapper;
 
 import java.util.Locale;
 
@@ -91,7 +91,7 @@ public class BlockFrameScaffold extends BlockFrame
     }
 
     @Override
-    public boolean canPlaceBlockOnSide(World world, int x, int y, int z, int side, ItemStack stack)
+    public boolean canReplace(World world, int x, int y, int z, int side, ItemStack stack)
     {
         return this.checkStay(world, x, y, z, stack.getItemDamage());
     }
@@ -167,13 +167,10 @@ public class BlockFrameScaffold extends BlockFrame
     }
 
     @Override
-    public void onNeighborBlockChange(World world, int x, int y, int z, int neighborID)
+    public void onNeighborBlockChange(World world, int x, int y, int z, Block neighbor)
     {
         if (!world.isRemote)
-        {
-            BlockCoord c = new BlockCoord(x, y, z);
-            PacketDispatcher.sendPacketToAllAround(c.x, c.y, c.z, 192, world.provider.dimensionId, PacketWrapper.createPacket(ArtificeCore.modChannel, Packets.TEXTUREUPDATE, new Object[]{c.x, c.y, c.z}));
-        }
+            PacketSender.sendTextureUpdatePacket(world, x, y, z);
 
         if (!canBlockStay(world, x, y, z))
         {

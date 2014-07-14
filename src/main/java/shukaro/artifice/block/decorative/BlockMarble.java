@@ -1,6 +1,5 @@
 package shukaro.artifice.block.decorative;
 
-import cpw.mods.fml.common.network.PacketDispatcher;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
@@ -16,13 +15,13 @@ import shukaro.artifice.ArtificeConfig;
 import shukaro.artifice.ArtificeCore;
 import shukaro.artifice.block.BlockArtifice;
 import shukaro.artifice.gui.ArtificeCreativeTab;
+import shukaro.artifice.net.PacketSender;
 import shukaro.artifice.net.Packets;
 import shukaro.artifice.render.IconHandler;
 import shukaro.artifice.render.TextureHandler;
 import shukaro.artifice.render.connectedtexture.ConnectedTextures;
 import shukaro.artifice.util.BlockCoord;
 import shukaro.artifice.util.ChunkCoord;
-import shukaro.artifice.util.PacketWrapper;
 
 import java.util.List;
 
@@ -115,7 +114,7 @@ public class BlockMarble extends BlockArtifice
             int meta = world.getBlockMetadata(x, y, z);
             BlockCoord c = new BlockCoord(x, y, z);
             if (c.getBlock(world) != null && (meta == 3 || meta == 4))
-                PacketDispatcher.sendPacketToAllAround(c.x, c.y, c.z, 192, world.provider.dimensionId, PacketWrapper.createPacket(ArtificeCore.modChannel, Packets.TEXTUREUPDATE, new Object[]{c.x, c.y, c.z}));
+            	PacketSender.sendTextureUpdatePacket(world, x, y, z);
         }
     }
 }

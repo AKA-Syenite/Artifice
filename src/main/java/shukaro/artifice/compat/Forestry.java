@@ -1,4 +1,4 @@
-package shukaro.artifice.compat.forestry;
+package shukaro.artifice.compat;
 
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.Mod;
@@ -12,17 +12,11 @@ import shukaro.artifice.ArtificeCore;
 import java.util.List;
 import java.util.logging.Level;
 
-@Mod(modid = "ArtificeCompat|Forestry", name = "Artifice Compat: Forestry", version = ArtificeCore.modVersion, dependencies = "after:Artifice;after:Forestry")
-public class Forestry
+public class Forestry implements ICompat
 {
-    @EventHandler
-    public static void load(FMLInitializationEvent e0)
+	public String getModID() { return "Forestry"; }
+    public void load()
     {
-        if (!Loader.isModLoaded("Forestry"))
-        {
-            ArtificeCore.logger.info("Forestry not installed, skipping compat");
-            return;
-        }
         try
         {
             Class<?> flowerClass = Class.forName("forestry.api.apiculture.FlowerManager");

@@ -28,7 +28,7 @@ public class RecipeUpgrade implements IRecipe
             if (stack == null)
                 continue;
             // If it isn't a tool and it's not an upgrade, false
-            if (!stack.getItem().isItemTool(stack) && stack.getItem().equals(ArtificeItems.itemUpgrade))
+            if (!stack.getItem().isItemTool(stack) && !stack.getItem().equals(ArtificeItems.itemUpgrade))
                 return false;
             else if (stack.getItem().isItemTool(stack))
                 numTools++;

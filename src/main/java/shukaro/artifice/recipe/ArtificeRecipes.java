@@ -9,6 +9,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.oredict.OreDictionary;
+import net.minecraftforge.oredict.RecipeSorter;
+import net.minecraftforge.oredict.RecipeSorter.Category;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 import net.minecraftforge.oredict.ShapelessOreRecipe;
 import shukaro.artifice.ArtificeBlocks;
@@ -57,6 +59,8 @@ public class ArtificeRecipes
                     'X', "stickWood"}));
 
             GameRegistry.addRecipe(new RecipeBox());
+            RecipeSorter.register("artifice:box", RecipeBox.class, Category.SHAPED, "after:minecraft:shaped before:minecraft:shapeless");
+            
             MinecraftForge.EVENT_BUS.register(new BoxCraftingHandler());
         }
         if (ArtificeConfig.sickleRecipes.getBoolean(true))
@@ -71,6 +75,7 @@ public class ArtificeRecipes
         {
             registerUpgrades();
             GameRegistry.addRecipe(new RecipeUpgrade());
+            RecipeSorter.register("artifice:upgrades", RecipeUpgrade.class, Category.SHAPELESS, "after:minecraft:shapeless");
         }
         if (ArtificeConfig.alternateSteel.getBoolean(false))
         {

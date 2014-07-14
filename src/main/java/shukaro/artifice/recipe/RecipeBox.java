@@ -55,7 +55,7 @@ public class RecipeBox implements IRecipe
             for (int i = 0; i < craft.getSizeInventory(); i++)
             {
                 ItemStack stack = craft.getStackInSlot(i);
-                if (stack != null && stack.getItem().equals(ArtificeItems.itemBox))
+                if (stack != null && !stack.getItem().equals(ArtificeItems.itemBox))
                     return false;
             }
             // There's one full box in the grid, set it
@@ -78,7 +78,7 @@ public class RecipeBox implements IRecipe
             NBTTagCompound nbt = tag.getCompoundTag("nbt");
 
             // This is our thing
-            thing = new ItemStack((Item)Item.itemRegistry.getObjectById(id), 1, meta);
+            thing = new ItemStack(Item.getItemById(id), 1, meta);
             if (nbt != null)
                 thing.setTagCompound(nbt);
 
@@ -88,7 +88,7 @@ public class RecipeBox implements IRecipe
                 outAmount = thing.getMaxStackSize();
 
             // Set our final output
-            this.output = new ItemStack((Item)Item.itemRegistry.getObjectById(id), outAmount, meta);
+            this.output = new ItemStack(Item.getItemById(id), outAmount, meta);
             if (nbt != null && !nbt.hasNoTags())
                 this.output.setTagCompound(nbt);
 
@@ -99,7 +99,7 @@ public class RecipeBox implements IRecipe
         for (int i = 0; i < craft.getSizeInventory(); i++)
         {
             ItemStack stack = craft.getStackInSlot(i);
-            if (stack != null && stack.getItem().equals(ArtificeItems.itemBox))
+            if (stack != null && !stack.getItem().equals(ArtificeItems.itemBox))
             {
                 thing = stack;
                 break;
@@ -133,7 +133,7 @@ public class RecipeBox implements IRecipe
         // Write the thing's meta
         tag.setInteger("meta", thing.getItemDamage());
         // Write the thing's id
-        tag.setInteger("id", Item.itemRegistry.getIDForObject(thing));
+        tag.setInteger("id", Item.getIdFromItem(thing.getItem()));
         // Does the thing have nbt data?
         if (thing.getTagCompound() != null && !thing.getTagCompound().hasNoTags())
             tag.setTag("nbt", thing.getTagCompound());

@@ -1,4 +1,4 @@
-package shukaro.artifice.compat.fmp;
+package shukaro.artifice.compat;
 
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.Mod;
@@ -10,17 +10,11 @@ import shukaro.artifice.ArtificeCore;
 
 import java.util.logging.Level;
 
-@Mod(modid = "ArtificeCompat|ForgeMicroblock", name = "Artifice Compat: ForgeMicroblock", version = ArtificeCore.modVersion, dependencies = "after:Artifice")
-public class FMP
+public class FMP implements ICompat
 {
-    @Mod.EventHandler
-    public static void load(FMLInitializationEvent e0)
+	public String getModID() { return "ForgeMicroblock"; }
+    public void load()
     {
-        if (!Loader.isModLoaded("ForgeMicroblock"))
-        {
-            ArtificeCore.logger.info("ForgeMultiPart not installed, skipping compat");
-            return;
-        }
         try
         {
             for (int i = 0; i < ArtificeCore.tiers.length; i++)

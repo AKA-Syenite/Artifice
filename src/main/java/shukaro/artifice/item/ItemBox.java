@@ -197,6 +197,7 @@ public class ItemBox extends ItemArtifice
         NBTTagCompound tag = stack.getTagCompound();
         if (tag != null)
         {
+        	if(Item.getItemById(tag.getInteger("id")) == null) return;
             infoList.add(FormatCodes.Italic.code + StatCollector.translateToLocal("tooltip.artifice.box.contains") + " " + FormatCodes.Reset.code + FormatCodes.Aqua.code + new ItemStack(Item.getItemById(tag.getInteger("id")), 1, tag.getInteger("meta")).getDisplayName());
             infoList.add(FormatCodes.Italic.code + StatCollector.translateToLocal("tooltip.artifice.box.amount") + " " + FormatCodes.Reset.code + FormatCodes.Aqua.code + stack.getItemDamage());
             NBTTagList enchants = tag.getCompoundTag("nbt").getTag("ench") != null ? (NBTTagList) tag.getCompoundTag("nbt").getTag("ench") : (NBTTagList) tag.getCompoundTag("nbt").getTag("StoredEnchantments");

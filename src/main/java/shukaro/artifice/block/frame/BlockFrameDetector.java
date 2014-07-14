@@ -3,27 +3,29 @@ package shukaro.artifice.block.frame;
 import cpw.mods.fml.common.Optional;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import net.minecraft.client.renderer.texture.IconRegister;
-import net.minecraft.util.Icon;
+import net.minecraft.block.Block;
+import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
-import powercrystals.minefactoryreloaded.api.rednet.IConnectableRedNet;
-import powercrystals.minefactoryreloaded.api.rednet.RedNetConnectionType;
+/*import powercrystals.minefactoryreloaded.api.rednet.IConnectableRedNet;
+import powercrystals.minefactoryreloaded.api.rednet.RedNetConnectionType;*/
 import shukaro.artifice.ArtificeCore;
 import shukaro.artifice.render.IconHandler;
 
 import java.util.Random;
 
-@Optional.Interface(iface = "powercrystals.minefactoryreloaded.api.rednet.IConnectableRedNet", modid = "MineFactoryReloaded")
-public class BlockFrameDetector extends BlockFrame implements IConnectableRedNet
+//@Optional.Interface(iface = "powercrystals.minefactoryreloaded.api.rednet.IConnectableRedNet", modid = "MineFactoryReloaded")
+//public class BlockFrameDetector extends BlockFrame implements IConnectableRedNet
+public class BlockFrameDetector extends BlockFrame
 {
-    private Icon icon;
+    private IIcon icon;
 
-    public BlockFrameDetector(int id)
+    public BlockFrameDetector()
     {
-        super(id);
-        setUnlocalizedName("artifice.detector");
+        super();
+        setBlockName("artifice.detector");
         for (int i = 1; i <= 3; i++)
             this.validTiers.remove(ArtificeCore.tiers[i]);
     }
@@ -58,9 +60,9 @@ public class BlockFrameDetector extends BlockFrame implements IConnectableRedNet
     }
 
     @Override
-    public void onNeighborBlockChange(World world, int x, int y, int z, int neighborID)
+    public void onNeighborBlockChange(World world, int x, int y, int z, Block neighbor)
     {
-        if (neighborID != this)
+        if (!neighbor.equals(this))
         {
             if (world.getBlockMetadata(x, y, z) == 0)
             {
@@ -100,13 +102,13 @@ public class BlockFrameDetector extends BlockFrame implements IConnectableRedNet
     }
 
     @Override
-    public void registerIcons(IconRegister reg)
+    public void registerBlockIcons(IIconRegister reg)
     {
         this.icon = IconHandler.registerSingle(reg, "detector", "misc");
     }
 
     @Override
-    public Icon getIcon(int side, int meta)
+    public IIcon getIcon(int side, int meta)
     {
         return this.icon;
     }
@@ -119,18 +121,18 @@ public class BlockFrameDetector extends BlockFrame implements IConnectableRedNet
 
     @Override
     @SideOnly(Side.CLIENT)
-    public Icon getBlockTexture(IBlockAccess block, int x, int y, int z, int side)
+    public IIcon getIcon(IBlockAccess block, int x, int y, int z, int side)
     {
         return this.icon;
     }
 
     @Override
-    public boolean isBlockSolidOnSide(World world, int x, int y, int z, ForgeDirection side)
+    public boolean isBlockSolid(IBlockAccess world, int x, int y, int z, int side)
     {
         return true;
     }
 
-    @Override
+ /*   @Override
     @Optional.Method(modid = "MineFactoryReloaded")
     public RedNetConnectionType getConnectionType(World world, int x, int y, int z, ForgeDirection side)
     {
@@ -161,5 +163,5 @@ public class BlockFrameDetector extends BlockFrame implements IConnectableRedNet
     @Optional.Method(modid = "MineFactoryReloaded")
     public void onInputChanged(World world, int x, int y, int z, ForgeDirection side, int inputValue)
     {
-    }
+    } */
 }

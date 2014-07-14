@@ -14,7 +14,7 @@ import java.util.logging.Level;
 public abstract class ArtificeRegistry
 {
     private static final List<Integer> dimensionBlacklist = new ArrayList<Integer>();
-    private static final Set<Integer> stoneTypes = new HashSet<Integer>();
+    private static final Set<Block> stoneTypes = new HashSet<Block>();
     private static final List<String> worldTypeBlacklist = new ArrayList<String>();
     private static final Map<ItemMetaPair, ArrayList<ItemStack>> sledgeBlocks = new HashMap<ItemMetaPair, ArrayList<ItemStack>>();
     private static final Map<Block, ArrayList<ItemStack>> wildSledgeBlocks = new HashMap<Block, ArrayList<ItemStack>>();
@@ -22,10 +22,10 @@ public abstract class ArtificeRegistry
     private static final List<ItemStack> marbleTypes = new ArrayList<ItemStack>();
     private static final List<ItemStack> basaltTypes = new ArrayList<ItemStack>();
 
-    public static void registerMarbleType(Item item, int meta)
+    public static void registerMarbleType(Block block, int meta)
     {
-        ArtificeCore.logger.info( "Registering marble type " + Item.itemRegistry.getNameForObject(item) + ":" + meta);
-        ItemStack stack = new ItemStack(item, 1, meta);
+        ArtificeCore.logger.info( "Registering marble type " + Block.blockRegistry.getNameForObject(block) + ":" + meta);
+        ItemStack stack = new ItemStack(block, 1, meta);
         if (marbleTypes.isEmpty())
             marbleTypes.add(stack);
         else if (!marbleTypes.contains(stack))
@@ -69,10 +69,10 @@ public abstract class ArtificeRegistry
         return marbleTypes;
     }
 
-    public static void registerBasaltType(Item item, int meta)
+    public static void registerBasaltType(Block block, int meta)
     {
-        ArtificeCore.logger.info( "Registering basalt type " + Item.itemRegistry.getNameForObject(item) + ":" + meta);
-        ItemStack stack = new ItemStack(item, 1, meta);
+        ArtificeCore.logger.info( "Registering basalt type " + Block.blockRegistry.getNameForObject(block) + ":" + meta);
+        ItemStack stack = new ItemStack(block, 1, meta);
         if (basaltTypes.isEmpty())
             basaltTypes.add(stack);
         else if (!basaltTypes.contains(stack))
@@ -185,16 +185,16 @@ public abstract class ArtificeRegistry
         return dimensionBlacklist;
     }
 
-    public static void registerStoneType(int stoneID)
+    public static void registerStoneType(Block stone)
     {
-        if (!stoneTypes.contains(stoneID))
+        if (!stoneTypes.contains(stone))
         {
-            ArtificeCore.logger.info( "Registering stone type with ID " + stoneID);
-            stoneTypes.add(stoneID);
+            ArtificeCore.logger.info( "Registering stone type with name " + Block.blockRegistry.getNameForObject(stone));
+            stoneTypes.add(stone);
         }
     }
 
-    public static Set<Integer> getStoneTypes()
+    public static Set<Block> getStoneTypes()
     {
         return stoneTypes;
     }

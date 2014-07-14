@@ -1,5 +1,6 @@
 package shukaro.artifice.world;
 
+import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
 import shukaro.artifice.ArtificeRegistry;
@@ -15,22 +16,22 @@ public class WorldGenCluster
 {
     private World world;
     private Random rand;
-    private int id;
+    private Block block;
     private int maxHeight;
-    private Set<Integer> replaced;
+    private Set<Block> replaced;
     private BlockCoord c;
     private List<BlockCoord> blocks;
 
-    public WorldGenCluster(World world, Random rand, int id, int maxHeight)
+    public WorldGenCluster(World world, Random rand, Block block, int maxHeight)
     {
-        this(world, rand, id, maxHeight, ArtificeRegistry.getStoneTypes());
+        this(world, rand, block, maxHeight, ArtificeRegistry.getStoneTypes());
     }
 
-    public WorldGenCluster(World world, Random rand, int id, int maxHeight, Set<Integer> replaced)
+    public WorldGenCluster(World world, Random rand, Block block, int maxHeight, Set<Block> replaced)
     {
         this.world = world;
         this.rand = rand;
-        this.id = id;
+        this.block = block;
         this.maxHeight = maxHeight;
         this.replaced = replaced;
         this.blocks = new ArrayList<BlockCoord>();
@@ -89,6 +90,6 @@ public class WorldGenCluster
 
     public boolean canGenHere(World world, ChunkCoord c, BlockCoord b)
     {
-        return c.contains(b) && b.getBlock(world) != null && replaced.contains(b.getBlockID(world));
+        return c.contains(b) && b.getBlock(world) != null && replaced.contains(b.getBlock(world));
     }
 }

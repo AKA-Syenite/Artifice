@@ -1,26 +1,30 @@
 package shukaro.artifice.recipe;
 
-import cpw.mods.fml.common.ICraftingHandler;
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+import cpw.mods.fml.common.gameevent.PlayerEvent;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import shukaro.artifice.ArtificeItems;
 import shukaro.artifice.net.PlayerTracking;
 
-public class BoxCraftingHandler implements ICraftingHandler
+public class BoxCraftingHandler
 {
     // Called when an item is crafted
-    @Override
-    public void onCrafting(EntityPlayer player, ItemStack item, IInventory craft)
+    @SubscribeEvent
+    public void onCrafting(PlayerEvent.ItemCraftedEvent event)
     {
+    	IInventory craft = event.craftMatrix;
+    	EntityPlayer player = event.player;
         for (int i = 0; i < craft.getSizeInventory(); i++)
         {
             // Is the item in the grid a box?
             // Is the output NOT a box?
             ItemStack slot = craft.getStackInSlot(i);
-            if (slot != null && slot.itemID == ArtificeItems.itemBox.itemID && item.itemID != ArtificeItems.itemBox.itemID)
+            if (slot != null && slot.getItem().equals(ArtificeItems.itemBox) && !event.crafting.getItem().equals(ArtificeItems.itemBox))
             {
                 // Did the player shift-click the output? (This makes me a little bit uncomfortable, but eh)
                 boolean shift = false;
@@ -36,7 +40,7 @@ public class BoxCraftingHandler implements ICraftingHandler
 
                 // The thing in the box
                 NBTTagCompound tag = slot.getTagCompound();
-                ItemStack thing = new ItemStack(tag.getInteger("id"), 1, tag.getInteger("meta"));
+                ItemStack thing = new ItemStack(Item.getItemById(tag.getInteger("id")), 1, tag.getInteger("meta"));
                 if (!tag.getCompoundTag("nbt").hasNoTags())
                     thing.setTagCompound(tag.getCompoundTag("nbt"));
 
@@ -106,11 +110,5 @@ public class BoxCraftingHandler implements ICraftingHandler
                 }
             }
         }
-    }
-
-    @Override
-    public void onSmelting(EntityPlayer player, ItemStack item)
-    {
-
     }
 }

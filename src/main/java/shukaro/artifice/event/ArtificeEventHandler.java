@@ -35,28 +35,6 @@ import org.lwjgl.input.Keyboard;
 public class ArtificeEventHandler
 {
     private List<Integer> dimBlacklist;
-
-    @SubscribeEvent
-    @SideOnly(Side.CLIENT)
-    public void keyTicker(ClientTickEvent cte)
-    {
-    	if(cte.phase != TickEvent.Phase.START) return;
-        final Minecraft mc = Minecraft.getMinecraft();
-        if (mc.thePlayer == null)
-            return;
-        Integer playerID = mc.thePlayer.getEntityId();
-
-        if (Keyboard.isKeyDown(mc.gameSettings.keyBindSneak.getKeyCode()) && !PlayerTracking.sneaks.contains(playerID))
-        {
-            PlayerTracking.sneaks.add(playerID);
-            PacketSender.sendSneakEvent(playerID, true);
-        }
-        else if (!Keyboard.isKeyDown(mc.gameSettings.keyBindSneak.getKeyCode()) && PlayerTracking.sneaks.contains(playerID))
-        {
-            PlayerTracking.sneaks.remove(playerID);
-            PacketSender.sendSneakEvent(playerID, false);
-        }
-    }
     
     public static HashMap chunksToGen = new HashMap();
     private int chunkCount = 0;
@@ -83,60 +61,6 @@ public class ArtificeEventHandler
             chunksToGen.put(dim, chunks);
             ArtificeCore.logger.info("Regenerated " + chunkCount + " chunks. " + Math.max(0, chunks.size()) + " chunks left");
         }
-    }
-    
-    @SubscribeEvent
-    @SideOnly(Side.CLIENT)
-    public void preTextureStitch(TextureStitchEvent.Pre e)
-    {
-        ArtificeConfig.connectedTexturesRegistered = false;
-    }
-
-    @SubscribeEvent
-    @SideOnly(Side.CLIENT)
-    public void worldUnload(WorldEvent.Unload e)
-    {
-        if (ArtificeCore.textureCache.size() > 0)
-            ArtificeCore.textureCache.clear();
-    }
-
-    @SubscribeEvent
-    @SideOnly(Side.CLIENT)
-    public void chunkWatch(ChunkWatchEvent.Watch e)
-    {
-        ChunkCoord chunk = new ChunkCoord(e.chunk);
-        for (ChunkCoord sector : ArtificeCore.textureCache.keySet())
-        {
-            if ((sector.chunkX + 1 == chunk.chunkX || sector.chunkX == chunk.chunkX || sector.chunkX - 1 == chunk.chunkX) && (sector.chunkZ + 1 == chunk.chunkZ || sector.chunkX == chunk.chunkX || sector.chunkZ - 1 == chunk.chunkZ))
-            {
-                for (BlockCoord c : ArtificeCore.textureCache.get(sector).keySet())
-                {
-                    if (c.x == (chunk.chunkX << 4) - 1 || c.x == (chunk.chunkX << 4) + 16)
-                    {
-                        if (c.z < (chunk.chunkZ << 4) + 16 && c.z > (chunk.chunkZ <<4) - 1)
-                        {
-                            ArtificeCore.textureCache.get(sector).remove(c);
-                            e.player.worldObj.markBlockRangeForRenderUpdate(c.x, c.y, c.z, c.x, c.y, c.z);
-                        }
-                    }
-                    if (c.z == (chunk.chunkZ << 4) - 1 || c.z == (chunk.chunkZ << 4) + 16)
-                    {
-                        if (c.x > (chunk.chunkX << 4) - 1 && c.x < (chunk.chunkX <<4) + 16)
-                        {
-                            ArtificeCore.textureCache.get(sector).remove(c);
-                            e.player.worldObj.markBlockRangeForRenderUpdate(c.x, c.y, c.z, c.x, c.y, c.z);
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-    @SubscribeEvent
-    @SideOnly(Side.CLIENT)
-    public void chunkUnWatch(ChunkWatchEvent.UnWatch e)
-    {
-        ArtificeCore.textureCache.remove(new ChunkCoord(e.chunk));
     }
 
     @SubscribeEvent

@@ -11,6 +11,7 @@ import cpw.mods.fml.common.event.FMLServerStartingEvent;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraftforge.common.MinecraftForge;
 import shukaro.artifice.event.ArtificeEventHandler;
 import shukaro.artifice.net.ClientPacketHandler;
@@ -27,9 +28,12 @@ import org.apache.logging.log4j.Logger;
 
 import pl.asie.lib.network.PacketHandler;
 
-@Mod(modid = ArtificeCore.modID, name = ArtificeCore.modName, version = ArtificeCore.modVersion)
+@Mod(modid = ArtificeCore.modID, name = ArtificeCore.modName, version = ArtificeCore.modVersion, dependencies="required-after:asielib")
 public class ArtificeCore
 {
+	@SidedProxy(clientSide="shukaro.artifice.ClientProxy", serverSide="shukaro.artifice.CommonProxy")	
+	public static CommonProxy proxy;
+	
     public static final String modID = "Artifice";
     public static final String modName = "Artifice";
     public static final String modChannel = "Artifice";
@@ -72,14 +76,6 @@ public class ArtificeCore
 
         if (ArtificeConfig.enableWorldGen.getBoolean(true))
             GameRegistry.registerWorldGenerator(ArtificeCore.worldGen = new ArtificeWorldGen(), 100);
-
-        if (ArtificeConfig.floraBoneMeal.getBoolean(true) && ArtificeConfig.enableWorldGen.getBoolean(true))
-        {
-            MinecraftForge.addGrassPlant(ArtificeBlocks.blockFlora, 0, 10);
-            MinecraftForge.addGrassPlant(ArtificeBlocks.blockFlora, 1, 10);
-            MinecraftForge.addGrassPlant(ArtificeBlocks.blockFlora, 2, 10);
-            MinecraftForge.addGrassPlant(ArtificeBlocks.blockFlora, 3, 10);
-        }
     }
 
     @EventHandler
@@ -87,10 +83,19 @@ public class ArtificeCore
     {
         ArtificeTooltips.initTooltips();
         ArtificeRecipes.registerRecipes();
+        
+        proxy.init();
     }
 
     @EventHandler
     public void postInit(FMLPostInitializationEvent evt)
     {
+        if (ArtificeConfig.floraBoneMeal.getBoolean(true) && ArtificeConfig.enableWorldGen.getBoolean(true))
+        {
+        	for(BiomeGenBase biome: BiomeGenBase.getBiomeGenArray()) {
+        		if(biome != null) for(int i = 0; i < 4; i++)
+        			biome.addFlower(ArtificeBlocks.blockFlora, i, 10);
+        	}
+        }
     }
 }

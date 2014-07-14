@@ -23,7 +23,7 @@ public class EE3
     {
         if (!Loader.isModLoaded("EE3"))
         {
-            ArtificeCore.logger.log(Level.INFO, "EE3 not installed, skipping compat");
+            ArtificeCore.logger.info("EE3 not installed, skipping compat");
             return;
         }
         try
@@ -33,7 +33,7 @@ public class EE3
 
             if (ArtificeConfig.enableWorldGen.getBoolean(true))
             {
-                ArtificeCore.logger.log(Level.INFO, "Adding transmutation recipes");
+                ArtificeCore.logger.info("Adding transmutation recipes");
                 for (ItemStack stone : stoneList)
                 {
                     GameRegistry.addShapelessRecipe(new ItemStack(ArtificeBlocks.blockBasalt, 2, 1), stone, new ItemStack(Blocks.cobblestone, 1, 0), new ItemStack(Blocks.cobblestone, 1, 0));
@@ -42,11 +42,11 @@ public class EE3
                 }
             }
 
-            ArtificeCore.logger.log(Level.CONFIG, "EE3 Compat Initialized");
+            ArtificeCore.logger.info("EE3 Compat Initialized");
         }
         catch (Throwable ex)
         {
-            ArtificeCore.logger.log(Level.WARNING, "Couldn't initialize EE3 compat");
+            ArtificeCore.logger.info("Couldn't initialize EE3 compat");
             ex.printStackTrace();
         }
     }

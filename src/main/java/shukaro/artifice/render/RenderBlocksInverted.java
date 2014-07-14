@@ -6,6 +6,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.EntityRenderer;
 import net.minecraft.client.renderer.RenderBlocks;
 import net.minecraft.client.renderer.Tessellator;
+import net.minecraft.init.Blocks;
 import net.minecraft.util.IIcon;
 
 public class RenderBlocksInverted
@@ -1782,7 +1783,7 @@ public class RenderBlocksInverted
             flag = true;
         }
 
-        Icon icon;
+        IIcon icon;
 
         if (renderer.renderAllFaces || par1Block.shouldSideBeRendered(renderer.blockAccess, par2, par3, par4 - 1, 2))
         {
@@ -1855,7 +1856,7 @@ public class RenderBlocksInverted
      * Renders the given texture to the bottom face of the block. Args: block,
      * x, y, z, texture
      */
-    public void renderBottomFace(RenderBlocks renderer, Block par1Block, double par2, double par4, double par6, Icon par8Icon)
+    public void renderBottomFace(RenderBlocks renderer, Block par1Block, double par2, double par4, double par6, IIcon par8Icon)
     {
         Tessellator tessellator = Tessellator.instance;
 
@@ -1958,7 +1959,7 @@ public class RenderBlocksInverted
      * Renders the given texture to the top face of the block. Args: block, x,
      * y, z, texture
      */
-    public void renderTopFace(RenderBlocks renderer, Block par1Block, double par2, double par4, double par6, Icon par8Icon)
+    public void renderTopFace(RenderBlocks renderer, Block par1Block, double par2, double par4, double par6, IIcon par8Icon)
     {
         Tessellator tessellator = Tessellator.instance;
 
@@ -2061,7 +2062,7 @@ public class RenderBlocksInverted
      * Renders the given texture to the east (z-negative) face of the block.
      * Args: block, x, y, z, texture
      */
-    public void renderEastFace(RenderBlocks renderer, Block par1Block, double par2, double par4, double par6, Icon par8Icon)
+    public void renderEastFace(RenderBlocks renderer, Block par1Block, double par2, double par4, double par6, IIcon par8Icon)
     {
         Tessellator tessellator = Tessellator.instance;
 
@@ -2172,7 +2173,7 @@ public class RenderBlocksInverted
      * Renders the given texture to the west (z-positive) face of the block.
      * Args: block, x, y, z, texture
      */
-    public void renderWestFace(RenderBlocks renderer, Block par1Block, double par2, double par4, double par6, Icon par8Icon)
+    public void renderWestFace(RenderBlocks renderer, Block par1Block, double par2, double par4, double par6, IIcon par8Icon)
     {
         Tessellator tessellator = Tessellator.instance;
 
@@ -2283,7 +2284,7 @@ public class RenderBlocksInverted
      * Renders the given texture to the north (x-negative) face of the block.
      * Args: block, x, y, z, texture
      */
-    public void renderNorthFace(RenderBlocks renderer, Block par1Block, double par2, double par4, double par6, Icon par8Icon)
+    public void renderNorthFace(RenderBlocks renderer, Block par1Block, double par2, double par4, double par6, IIcon par8Icon)
     {
         Tessellator tessellator = Tessellator.instance;
 
@@ -2394,7 +2395,7 @@ public class RenderBlocksInverted
      * Renders the given texture to the south (x-positive) face of the block.
      * Args: block, x, y, z, texture
      */
-    public void renderSouthFace(RenderBlocks renderer, Block par1Block, double par2, double par4, double par6, Icon par8Icon)
+    public void renderSouthFace(RenderBlocks renderer, Block par1Block, double par2, double par4, double par6, IIcon par8Icon)
     {
         Tessellator tessellator = Tessellator.instance;
 

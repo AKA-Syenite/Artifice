@@ -140,9 +140,9 @@ public abstract class ArtificeRegistry
         return tooltipMap;
     }
 
-    public static void registerSledgeBlock(Item item, int meta, ArrayList<ItemStack> drops)
+    public static void registerSledgeBlock(Block block, int meta, ArrayList<ItemStack> drops)
     {
-        ItemMetaPair pair = new ItemMetaPair(item, meta);
+        ItemMetaPair pair = new ItemMetaPair(block, meta);
         if (!pair.isValidBlock())
             ArtificeCore.logger.warn("Tried to register non-block id-meta pair in the sledgeBlock map: " + pair.toString());
         else if (sledgeBlocks.get(pair) == null)

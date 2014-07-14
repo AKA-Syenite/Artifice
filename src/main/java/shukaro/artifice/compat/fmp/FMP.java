@@ -18,7 +18,7 @@ public class FMP
     {
         if (!Loader.isModLoaded("ForgeMicroblock"))
         {
-            ArtificeCore.logger.log(Level.INFO, "ForgeMultiPart not installed, skipping compat");
+            ArtificeCore.logger.info("ForgeMultiPart not installed, skipping compat");
             return;
         }
         try
@@ -34,11 +34,11 @@ public class FMP
                 FMLInterModComms.sendMessage("ForgeMicroblock", "microMaterial", new ItemStack(ArtificeBlocks.blockMarble, 1, i));
             }
             FMLInterModComms.sendMessage("ForgeMicroblock", "microMaterial", new ItemStack(ArtificeBlocks.blockSteel, 1, 0));
-            ArtificeCore.logger.log(Level.INFO, "ForgeMultiPart Compat Initialized");
+            ArtificeCore.logger.info("ForgeMultiPart Compat Initialized");
         }
         catch (Throwable ex)
         {
-            ArtificeCore.logger.log(Level.WARNING, "Couldn't initialize ForgeMultiPart compat");
+            ArtificeCore.logger.warn("Couldn't initialize ForgeMultiPart compat");
             ex.printStackTrace();
         }
     }

@@ -1,6 +1,5 @@
 package shukaro.artifice.block.decorative;
 
-import cpw.mods.fml.common.network.PacketDispatcher;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
@@ -8,6 +7,7 @@ import net.minecraft.block.BlockSlab;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
@@ -51,9 +51,9 @@ public class BlockBasaltSlab extends BlockSlab
 
     @Override
     @SideOnly(Side.CLIENT)
-    public void getSubBlocks(int id, CreativeTabs tab, List list)
+    public void getSubBlocks(Item id, CreativeTabs tab, List list)
     {
-        if (id != ArtificeBlocks.blockBasaltDoubleSlab)
+        if (id != Item.getItemFromBlock(ArtificeBlocks.blockBasaltDoubleSlab))
         {
             for (int i = 0; i < types.length; i++)
                 list.add(new ItemStack(id, 1, i));
@@ -79,7 +79,7 @@ public class BlockBasaltSlab extends BlockSlab
 
     @Override
     @SideOnly(Side.CLIENT)
-    public Icon getIcon(int side, int meta)
+    public IIcon getIcon(int side, int meta)
     {
         meta = meta & 7;
         if (meta > types.length)
@@ -105,7 +105,7 @@ public class BlockBasaltSlab extends BlockSlab
 
     @Override
     @SideOnly(Side.CLIENT)
-    public Icon getBlockTexture(IBlockAccess block, int x, int y, int z, int side)
+    public IIcon getIcon(IBlockAccess block, int x, int y, int z, int side)
     {
         int meta = block.getBlockMetadata(x, y, z) & 7;
         if (meta == 2 || meta == 3)

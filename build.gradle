@@ -30,6 +30,10 @@ minecraft {
     version = forge_version
 }
 
+dependencies {
+    compile files("lib/AsieLib-1.7.10-0.2.6-deobf.jar")
+}
+
 sourceCompatibility = mc_version
 targetCompatibility = mc_version
 

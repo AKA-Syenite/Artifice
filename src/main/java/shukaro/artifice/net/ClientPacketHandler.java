@@ -9,8 +9,6 @@ import java.io.IOException;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.network.INetHandler;
-import pl.asie.lib.network.MessageHandlerBase;
-import pl.asie.lib.network.Packet;
 
 public class ClientPacketHandler extends MessageHandlerBase
 {

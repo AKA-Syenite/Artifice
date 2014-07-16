@@ -3,7 +3,6 @@ package shukaro.artifice.net;
 import cpw.mods.fml.common.network.NetworkRegistry.TargetPoint;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import pl.asie.lib.network.Packet;
 import shukaro.artifice.ArtificeCore;
 import net.minecraft.world.World;
 

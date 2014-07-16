@@ -3,6 +3,7 @@ package shukaro.artifice;
 import java.util.concurrent.ConcurrentHashMap;
 
 import cpw.mods.fml.client.registry.RenderingRegistry;
+import cpw.mods.fml.common.FMLCommonHandler;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.network.INetHandler;
@@ -15,6 +16,8 @@ import shukaro.artifice.render.FrameRenderer;
 import shukaro.artifice.render.LotusRenderer;
 import shukaro.artifice.util.BlockCoord;
 import shukaro.artifice.util.ChunkCoord;
+import shukaro.artifice.net.MessageHandlerBase;
+import shukaro.artifice.net.Packet;
 
 public class ClientProxy extends CommonProxy {
 	public void init() {

@@ -9,9 +9,6 @@ import java.io.ByteArrayInputStream;
 import java.io.DataInputStream;
 import java.io.IOException;
 
-import pl.asie.lib.network.MessageHandlerBase;
-import pl.asie.lib.network.Packet;
-
 public class ServerPacketHandler extends MessageHandlerBase
 {
 	@Override

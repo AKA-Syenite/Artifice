@@ -1,5 +1,6 @@
 package shukaro.artifice;
-import net.minecraft.client.Minecraft;
+import shukaro.artifice.net.MessageHandlerBase;
+import shukaro.artifice.net.Packet;
 import net.minecraft.network.INetHandler;
 import net.minecraft.network.NetHandlerPlayServer;
 import net.minecraft.server.MinecraftServer;

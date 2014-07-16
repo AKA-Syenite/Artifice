@@ -1,41 +1,42 @@
 package shukaro.artifice.block.decorative;
 
-import cpw.mods.fml.common.network.PacketDispatcher;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import net.minecraft.block.BlockHalfSlab;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockSlab;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import shukaro.artifice.ArtificeBlocks;
 import shukaro.artifice.ArtificeConfig;
 import shukaro.artifice.ArtificeCore;
 import shukaro.artifice.gui.ArtificeCreativeTab;
+import shukaro.artifice.net.PacketSender;
 import shukaro.artifice.net.Packets;
 import shukaro.artifice.render.IconHandler;
 import shukaro.artifice.render.TextureHandler;
 import shukaro.artifice.render.connectedtexture.ConnectedTextures;
 import shukaro.artifice.util.BlockCoord;
 import shukaro.artifice.util.ChunkCoord;
-import shukaro.artifice.util.PacketWrapper;
 
 import java.util.List;
 import java.util.Locale;
 import java.util.Random;
 
-public class BlockMarbleSlab extends BlockHalfSlab
+public class BlockMarbleSlab extends BlockSlab
 {
     private final String[] types = {"marbleBrick", "marbleCobble", "marblePaver", "marbleAntipaver"};
 
-    private Icon paverSide;
+    private IIcon paverSide;
 
-    public BlockMarbleSlab(int id, boolean isDouble)
+    public BlockMarbleSlab(boolean isDouble)
     {
-        super(id, isDouble, Material.rock);
+        super(isDouble, Material.rock);
         setCreativeTab(ArtificeCreativeTab.main);
         setLightOpacity(0);
         setHardness(1.5F);
@@ -43,16 +44,16 @@ public class BlockMarbleSlab extends BlockHalfSlab
     }
 
     @Override
-    public int idDropped(int id, Random rand, int meta)
+    public Item getItemDropped(int meta, Random rand, int fortune)
     {
-        return ArtificeBlocks.blockMarbleSlab.blockID;
+        return Item.getItemFromBlock(ArtificeBlocks.blockMarbleSlab);
     }
 
     @Override
     @SideOnly(Side.CLIENT)
-    public void getSubBlocks(int id, CreativeTabs tab, List list)
+    public void getSubBlocks(Item id, CreativeTabs tab, List list)
     {
-        if (id != ArtificeBlocks.blockMarbleDoubleSlab.blockID)
+        if (!id.equals(Item.getItemFromBlock(ArtificeBlocks.blockMarbleDoubleSlab)))
         {
             for (int i = 0; i < types.length; i++)
                 list.add(new ItemStack(id, 1, i));
@@ -60,7 +61,7 @@ public class BlockMarbleSlab extends BlockHalfSlab
     }
 
     @Override
-    public String getFullSlabName(int meta)
+    public String func_150002_b(int meta)
     {
         meta = meta > 7 ? meta - 8 : meta;
         if (meta >= types.length)
@@ -70,7 +71,7 @@ public class BlockMarbleSlab extends BlockHalfSlab
 
     @Override
     @SideOnly(Side.CLIENT)
-    public void registerIcons(IconRegister reg)
+    public void registerBlockIcons(IIconRegister reg)
     {
         ArtificeConfig.registerConnectedTextures(reg);
         paverSide = IconHandler.registerSingle(reg, "paverside", "marble");
@@ -78,7 +79,7 @@ public class BlockMarbleSlab extends BlockHalfSlab
 
     @Override
     @SideOnly(Side.CLIENT)
-    public Icon getIcon(int side, int meta)
+    public IIcon getIcon(int side, int meta)
     {
         meta = meta & 7;
         if (meta > types.length)
@@ -104,7 +105,7 @@ public class BlockMarbleSlab extends BlockHalfSlab
 
     @Override
     @SideOnly(Side.CLIENT)
-    public Icon getBlockTexture(IBlockAccess block, int x, int y, int z, int side)
+    public IIcon getIcon(IBlockAccess block, int x, int y, int z, int side)
     {
         int meta = block.getBlockMetadata(x, y, z) & 7;
         if (meta == 2 || meta == 3)
@@ -134,14 +135,14 @@ public class BlockMarbleSlab extends BlockHalfSlab
     }
 
     @Override
-    public void onNeighborBlockChange(World world, int x, int y, int z, int neighborID)
+    public void onNeighborBlockChange(World world, int x, int y, int z, Block neighbor)
     {
         if (!world.isRemote)
         {
             int meta = world.getBlockMetadata(x, y, z) & 7;
             BlockCoord c = new BlockCoord(x, y, z);
             if (c.getBlock(world) != null && (meta == 2 || meta == 3))
-                PacketDispatcher.sendPacketToAllAround(c.x, c.y, c.z, 192, world.provider.dimensionId, PacketWrapper.createPacket(ArtificeCore.modChannel, Packets.TEXTUREUPDATE, new Object[]{c.x, c.y, c.z}));
+            	PacketSender.sendTextureUpdatePacket(world, x, y, z);
         }
     }
 }

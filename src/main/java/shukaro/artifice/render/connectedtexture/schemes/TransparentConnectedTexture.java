@@ -28,7 +28,7 @@ public class TransparentConnectedTexture extends ConnectedTextureBase
         Block neighbor = coord.copy().offset(side).getBlock(blockAccess);
 
         if (self != null && neighbor != null)
-            return self.getIcon(face, meta) != null && neighbor.getIcon(face, neighborMeta) != null && self.getIcon(face, meta).getIconName().equals(neighbor.getIcon(face, neighborMeta).getIconName()) && (self.blockID == neighbor.blockID && meta == neighborMeta);
+            return self.getIcon(face, meta) != null && neighbor.getIcon(face, neighborMeta) != null && self.getIcon(face, meta).getIconName().equals(neighbor.getIcon(face, neighborMeta).getIconName()) && (self == neighbor && meta == neighborMeta);
         return false;
     }
 

@@ -2,10 +2,11 @@ package shukaro.artifice.item;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 import shukaro.artifice.ArtificeConfig;
 import shukaro.artifice.render.IconHandler;
 
@@ -14,19 +15,19 @@ import java.util.Locale;
 
 public class ItemSteel extends ItemArtifice
 {
-    private Icon icon;
-    private Icon dustIcon;
+    private IIcon icon;
+    private IIcon dustIcon;
     private String[] names = {"ingot", "dust"};
 
-    public ItemSteel(int id)
+    public ItemSteel()
     {
-        super(id);
+        super();
         this.setUnlocalizedName("artifice.steel");
     }
 
     @Override
     @SideOnly(Side.CLIENT)
-    public Icon getIconFromDamage(int meta)
+    public IIcon getIconFromDamage(int meta)
     {
         if (meta == 0)
             return icon;
@@ -44,7 +45,7 @@ public class ItemSteel extends ItemArtifice
 
     @Override
     @SideOnly(Side.CLIENT)
-    public void getSubItems(int id, CreativeTabs tab, List list)
+    public void getSubItems(Item id, CreativeTabs tab, List list)
     {
         list.add(new ItemStack(id, 1, 0));
         if (ArtificeConfig.alternateSteel.getBoolean(false))
@@ -53,7 +54,7 @@ public class ItemSteel extends ItemArtifice
 
     @Override
     @SideOnly(Side.CLIENT)
-    public void registerIcons(IconRegister reg)
+    public void registerIcons(IIconRegister reg)
     {
         this.icon = IconHandler.registerSingle(reg, "ingot_steel", "steel");
         this.dustIcon = IconHandler.registerSingle(reg, "dust_steel", "steel");

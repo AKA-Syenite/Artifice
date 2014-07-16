@@ -1,31 +1,29 @@
 package shukaro.artifice.net;
 
-import cpw.mods.fml.common.network.IPacketHandler;
-import cpw.mods.fml.common.network.Player;
-import net.minecraft.network.INetworkManager;
-import net.minecraft.network.packet.Packet250CustomPayload;
-import shukaro.artifice.util.PacketWrapper;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.network.INetHandler;
+import shukaro.artifice.render.TextureHandler;
+import shukaro.artifice.util.BlockCoord;
 
 import java.io.ByteArrayInputStream;
 import java.io.DataInputStream;
+import java.io.IOException;
 
-public class ServerPacketHandler implements IPacketHandler
+public class ServerPacketHandler extends MessageHandlerBase
 {
-    @Override
-    public void onPacketData(INetworkManager manager, Packet250CustomPayload packet, Player player)
-    {
-        DataInputStream data = new DataInputStream(new ByteArrayInputStream(packet.data));
-        int packetType = PacketWrapper.readPacketID(data);
-
-        if (packetType == Packets.SNEAKEVENT)
-        {
-            Class[] decodeAs = {Integer.class, Boolean.class};
-            Object[] packetReadout = PacketWrapper.readPacketData(data, decodeAs);
-
-            if ((Boolean) packetReadout[1])
-                PlayerTracking.sneaks.add((Integer) packetReadout[0]);
-            else
-                PlayerTracking.sneaks.remove(packetReadout[0]);
-        }
-    }
+	@Override
+	public void onMessage(Packet packet, INetHandler handler, EntityPlayer player,
+			int command) throws IOException {
+		switch(command) {
+		case Packets.SNEAKEVENT: {
+			int entityId = packet.readInt();
+			boolean doAdd = packet.readByte() != 0;
+			if(doAdd) {
+				PlayerTracking.sneaks.add(entityId);
+			} else {
+				PlayerTracking.sneaks.remove(entityId);
+			}
+		} return;
+		}
+	}
 }

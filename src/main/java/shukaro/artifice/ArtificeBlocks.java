@@ -1,14 +1,13 @@
 package shukaro.artifice;
 
 import cpw.mods.fml.common.registry.GameRegistry;
-import net.minecraft.block.BlockHalfSlab;
+import net.minecraft.block.BlockSlab;
 import net.minecraft.item.Item;
 import net.minecraftforge.oredict.OreDictionary;
 import shukaro.artifice.block.decorative.BlockSteel;
 import shukaro.artifice.block.ItemBlockArtifice;
 import shukaro.artifice.block.decorative.*;
 import shukaro.artifice.block.frame.*;
-import shukaro.artifice.compat.ArtificeRegistry;
 
 public class ArtificeBlocks
 {
@@ -21,10 +20,10 @@ public class ArtificeBlocks
     public static BlockStairsArtifice blockMarbleBrickStairs;
     public static BlockStairsArtifice blockBasaltCobbleStairs;
     public static BlockStairsArtifice blockMarbleCobbleStairs;
-    public static BlockHalfSlab blockBasaltSlab;
-    public static BlockHalfSlab blockBasaltDoubleSlab;
-    public static BlockHalfSlab blockMarbleSlab;
-    public static BlockHalfSlab blockMarbleDoubleSlab;
+    public static BlockSlab blockBasaltSlab;
+    public static BlockSlab blockBasaltDoubleSlab;
+    public static BlockSlab blockMarbleSlab;
+    public static BlockSlab blockMarbleDoubleSlab;
     public static BlockFrame blockDetector;
     public static BlockSteel blockSteel;
     public static BlockFrameBlastWall blockReinforced;
@@ -35,22 +34,23 @@ public class ArtificeBlocks
     {
         if (ArtificeConfig.enableWorldGen.getBoolean(true))
         {
-            blockFlora = new BlockFlora(ArtificeConfig.blockFloraID.getInt());
-            blockLotus = new BlockLotus(ArtificeConfig.blockLotusID.getInt());
-            blockBasalt = new BlockBasalt(ArtificeConfig.blockBasaltID.getInt());
-            blockMarble = new BlockMarble(ArtificeConfig.blockMarbleID.getInt());
-            blockBasaltBrickStairs = new BlockStairsArtifice(ArtificeConfig.blockBasaltBrickStairsID.getInt(), blockBasalt, 2);
-            blockMarbleBrickStairs = new BlockStairsArtifice(ArtificeConfig.blockMarbleBrickStairsID.getInt(), blockMarble, 2);
-            blockBasaltCobbleStairs = new BlockStairsArtifice(ArtificeConfig.blockBasaltCobbleStairsID.getInt(), blockBasalt, 1);
-            blockMarbleCobbleStairs = new BlockStairsArtifice(ArtificeConfig.blockMarbleCobbleStairsID.getInt(), blockMarble, 1);
-            blockBasaltSlab = new BlockBasaltSlab(ArtificeConfig.blockBasaltSlabID.getInt(), false);
-            blockBasaltDoubleSlab = new BlockBasaltSlab(ArtificeConfig.blockBasaltDoubleSlabID.getInt(), true);
-            blockMarbleSlab = new BlockMarbleSlab(ArtificeConfig.blockMarbleSlabID.getInt(), false);
-            blockMarbleDoubleSlab = new BlockMarbleSlab(ArtificeConfig.blockMarbleDoubleSlabID.getInt(), true);
-            Item.itemsList[ArtificeConfig.blockBasaltSlabID.getInt()] = new ItemBlockSlabArtifice(ArtificeConfig.blockBasaltSlabID.getInt() - 256, blockBasaltSlab, blockBasaltDoubleSlab, false);
-            Item.itemsList[ArtificeConfig.blockBasaltDoubleSlabID.getInt()] = new ItemBlockSlabArtifice(ArtificeConfig.blockBasaltDoubleSlabID.getInt() - 256, blockBasaltSlab, blockBasaltDoubleSlab, true);
-            Item.itemsList[ArtificeConfig.blockMarbleSlabID.getInt()] = new ItemBlockSlabArtifice(ArtificeConfig.blockMarbleSlabID.getInt() - 256, blockMarbleSlab, blockMarbleDoubleSlab, false);
-            Item.itemsList[ArtificeConfig.blockMarbleDoubleSlabID.getInt()] = new ItemBlockSlabArtifice(ArtificeConfig.blockMarbleDoubleSlabID.getInt() - 256, blockMarbleSlab, blockMarbleDoubleSlab, true);
+            blockFlora = new BlockFlora();
+            blockLotus = new BlockLotus();
+            blockBasalt = new BlockBasalt();
+            blockMarble = new BlockMarble();
+            blockBasaltBrickStairs = new BlockStairsArtifice(blockBasalt, 2);
+            blockMarbleBrickStairs = new BlockStairsArtifice(blockMarble, 2);
+            blockBasaltCobbleStairs = new BlockStairsArtifice(blockBasalt, 1);
+            blockMarbleCobbleStairs = new BlockStairsArtifice(blockMarble, 1);
+            blockBasaltSlab = new BlockBasaltSlab(false);
+            blockBasaltDoubleSlab = new BlockBasaltSlab(true);
+            blockMarbleSlab = new BlockMarbleSlab(false);
+            blockMarbleDoubleSlab = new BlockMarbleSlab(true);
+            GameRegistry.registerBlock(blockBasaltSlab, ItemBlockSlabArtifice.class, blockBasalt.getUnlocalizedName() + "_slab");
+            GameRegistry.registerBlock(blockBasaltDoubleSlab, ItemBlockSlabArtifice.class, blockBasalt.getUnlocalizedName() + "_double_slab");
+            GameRegistry.registerBlock(blockMarbleSlab, ItemBlockSlabArtifice.class, blockMarble.getUnlocalizedName() + "_slab");
+            GameRegistry.registerBlock(blockMarbleDoubleSlab, ItemBlockSlabArtifice.class, blockMarble.getUnlocalizedName() + "_dobule_slab");
+ 
             GameRegistry.registerBlock(blockFlora, ItemBlockFlora.class, blockFlora.getUnlocalizedName());
             GameRegistry.registerBlock(blockLotus, ItemBlockLotus.class, blockLotus.getUnlocalizedName());
             GameRegistry.registerBlock(blockBasalt, ItemBlockBasalt.class, blockBasalt.getUnlocalizedName());
@@ -59,8 +59,8 @@ public class ArtificeBlocks
             GameRegistry.registerBlock(blockMarbleBrickStairs, ItemBlockArtifice.class, blockMarbleBrickStairs.getUnlocalizedName());
             GameRegistry.registerBlock(blockBasaltCobbleStairs, ItemBlockArtifice.class, blockBasaltCobbleStairs.getUnlocalizedName());
             GameRegistry.registerBlock(blockMarbleCobbleStairs, ItemBlockArtifice.class, blockMarbleCobbleStairs.getUnlocalizedName());
-            ArtificeRegistry.registerBasaltType(ArtificeBlocks.blockBasalt.blockID, 0);
-            ArtificeRegistry.registerMarbleType(ArtificeBlocks.blockMarble.blockID, 0);
+            ArtificeRegistry.registerBasaltType(ArtificeBlocks.blockBasalt, 0);
+            ArtificeRegistry.registerMarbleType(ArtificeBlocks.blockMarble, 0);
             //OreDictionary.registerOre("stone", new ItemStack(blockBasalt, 1, 0));
             //OreDictionary.registerOre("stone", new ItemStack(blockMarble, 1, 0));
             //OreDictionary.registerOre("cobblestone", new ItemStack(blockBasalt, 1, 1));
@@ -69,11 +69,11 @@ public class ArtificeBlocks
 
         if (ArtificeConfig.enableFrames.getBoolean(true))
         {
-            blockFrame = new BlockFrameBase(ArtificeConfig.blockFrameID.getInt());
-            blockDetector = new BlockFrameDetector(ArtificeConfig.blockDetectorID.getInt());
-            blockReinforced = new BlockFrameBlastWall(ArtificeConfig.blockReinforcedID.getInt());
-            blockGlassWall = new BlockFrameGlassWall(ArtificeConfig.blockGlassWallID.getInt());
-            blockScaffold = new BlockFrameScaffold(ArtificeConfig.blockScaffoldID.getInt());
+            blockFrame = new BlockFrameBase();
+            blockDetector = new BlockFrameDetector();
+            blockReinforced = new BlockFrameBlastWall();
+            blockGlassWall = new BlockFrameGlassWall();
+            blockScaffold = new BlockFrameScaffold();
             GameRegistry.registerBlock(blockFrame, ItemBlockFrame.class, blockFrame.getUnlocalizedName());
             GameRegistry.registerBlock(blockDetector, ItemBlockArtifice.class, blockDetector.getUnlocalizedName());
             GameRegistry.registerBlock(blockReinforced, ItemBlockFrame.class, blockReinforced.getUnlocalizedName());
@@ -83,7 +83,7 @@ public class ArtificeBlocks
 
         if (ArtificeConfig.enableSteel.getBoolean(true))
         {
-            blockSteel = new BlockSteel(ArtificeConfig.blockSteelID.getInt());
+            blockSteel = new BlockSteel();
             GameRegistry.registerBlock(blockSteel, ItemBlockArtifice.class, blockSteel.getUnlocalizedName());
             OreDictionary.registerOre("blockSteel", blockSteel);
         }

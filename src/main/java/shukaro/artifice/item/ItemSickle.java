@@ -4,39 +4,39 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockFlower;
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.EnumToolMaterial;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemTool;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 import shukaro.artifice.ArtificeConfig;
+import shukaro.artifice.ArtificeRegistry;
 import shukaro.artifice.ArtificeTooltips;
-import shukaro.artifice.compat.ArtificeRegistry;
 import shukaro.artifice.gui.ArtificeCreativeTab;
 import shukaro.artifice.render.IconHandler;
 import shukaro.artifice.util.BlockCoord;
-import shukaro.artifice.util.IdMetaPair;
+import shukaro.artifice.util.ItemMetaPair;
 
 import java.util.List;
 import java.util.Locale;
 
 public class ItemSickle extends ItemTool
 {
-    private Icon icon;
+    private IIcon icon;
     private int radius;
 
-    public ItemSickle(int id, EnumToolMaterial mat)
+    public ItemSickle(Item.ToolMaterial mat)
     {
-        super(id, 3, mat, null);
+        super(3, mat, null);
         this.setCreativeTab(ArtificeCreativeTab.main);
         this.setMaxDamage(mat.getMaxUses() / 2);
         this.setUnlocalizedName("artifice.sickle." + this.toolMaterial.toString().toLowerCase(Locale.ENGLISH));
         this.radius = getRadius(mat);
     }
 
-    public int getRadius(EnumToolMaterial mat)
+    public int getRadius(Item.ToolMaterial mat)
     {
         switch (mat)
         {
@@ -61,7 +61,7 @@ public class ItemSickle extends ItemTool
     {
         if (!ArtificeConfig.tooltips.getBoolean(true))
             return;
-        IdMetaPair pair = new IdMetaPair(stack.itemID, 0);
+        ItemMetaPair pair = new ItemMetaPair(stack.getItem(), 0);
         if (ArtificeRegistry.getTooltipMap().get(pair) != null)
         {
             for (String s : ArtificeRegistry.getTooltipMap().get(pair))
@@ -75,20 +75,21 @@ public class ItemSickle extends ItemTool
 
     @Override
     @SideOnly(Side.CLIENT)
-    public Icon getIconFromDamage(int meta)
+    public IIcon getIconFromDamage(int meta)
     {
         return icon;
     }
 
     @Override
     @SideOnly(Side.CLIENT)
-    public void registerIcons(IconRegister reg)
+    public void registerIcons(IIconRegister reg)
     {
         this.icon = IconHandler.registerSingle(reg, "sickle_" + this.toolMaterial.toString().toLowerCase(Locale.ENGLISH), "sickle");
     }
 
+    // getStrVsBlock
     @Override
-    public float getStrVsBlock(ItemStack stack, Block block)
+    public float func_150893_a(ItemStack stack, Block block)
     {
         return 1.0F;
     }
@@ -108,7 +109,7 @@ public class ItemSickle extends ItemTool
             {
                 for (int k = -radius; k < radius; k++)
                 {
-                    Block b = Block.blocksList[world.getBlockId(x + i, y, z + k)];
+                    Block b = world.getBlock(x + i, y, z + k);
                     int meta = world.getBlockMetadata(x + i, y, z + k);
                     if (b instanceof BlockFlower && coord.getDistance(x + i, y, z + k) <= radius && b.canHarvestBlock(player, meta))
                     {
@@ -130,7 +131,7 @@ public class ItemSickle extends ItemTool
             int count = 0;
             for (BlockCoord c : coord.getRadiusBlocks(world, radius))
             {
-                Block b = Block.blocksList[world.getBlockId(c.x, c.y, c.z)];
+                Block b = world.getBlock(c.x, c.y, c.z);
                 int meta = world.getBlockMetadata(c.x, c.y, c.z);
                 if (b != null && coord.getDistance(c) <= radius && b.isLeaves(world, c.x, c.y, c.z))
                 {

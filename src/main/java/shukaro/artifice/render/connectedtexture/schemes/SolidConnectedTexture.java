@@ -29,9 +29,9 @@ public class SolidConnectedTexture extends ConnectedTextureBase
         Block cover = coord.copy().offset(side).offset(face).getBlock(blockAccess);
 
         if (self != null && neighbor != null && cover != null)
-            return !cover.isOpaqueCube() && self.getIcon(face, meta) != null && neighbor.getIcon(face, neighborMeta) != null && self.getIcon(face, meta).getIconName().equals(neighbor.getIcon(face, neighborMeta).getIconName()) && (self.blockID == neighbor.blockID && meta == neighborMeta);
+            return !cover.isOpaqueCube() && self.getIcon(face, meta) != null && neighbor.getIcon(face, neighborMeta) != null && self.getIcon(face, meta).getIconName().equals(neighbor.getIcon(face, neighborMeta).getIconName()) && (self == neighbor && meta == neighborMeta);
         else if (self != null && neighbor != null)
-            return self.getIcon(face, meta) != null && neighbor.getIcon(face, neighborMeta) != null && self.getIcon(face, meta).getIconName().equals(neighbor.getIcon(face, neighborMeta).getIconName()) && (self.blockID == neighbor.blockID && meta == neighborMeta);
+            return self.getIcon(face, meta) != null && neighbor.getIcon(face, neighborMeta) != null && self.getIcon(face, meta).getIconName().equals(neighbor.getIcon(face, neighborMeta).getIconName()) && (self == neighbor && meta == neighborMeta);
         return false;
     }
 }

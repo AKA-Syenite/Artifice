@@ -9,18 +9,18 @@ import java.util.Locale;
 
 public class ItemBlockMarble extends ItemBlockArtifice
 {
-    public ItemBlockMarble(int id)
+    public ItemBlockMarble(Block block)
     {
-        super(id);
+        super(block);
     }
 
     @Override
     public String getUnlocalizedName(ItemStack stack)
     {
         if (stack.getItemDamage() == 0)
-            return Block.blocksList[stack.itemID].getUnlocalizedName();
+            return Block.getBlockFromItem(stack.getItem()).getUnlocalizedName();
         if (stack.getItemDamage() > ArtificeCore.rocks.length)
-            return Block.blocksList[stack.itemID].getUnlocalizedName() + "." + ArtificeCore.rocks[0].toLowerCase(Locale.ENGLISH);
-        return Block.blocksList[stack.itemID].getUnlocalizedName() + "." + ArtificeCore.rocks[stack.getItemDamage()].toLowerCase(Locale.ENGLISH);
+            return Block.getBlockFromItem(stack.getItem()).getUnlocalizedName() + "." + ArtificeCore.rocks[0].toLowerCase(Locale.ENGLISH);
+        return Block.getBlockFromItem(stack.getItem()).getUnlocalizedName() + "." + ArtificeCore.rocks[stack.getItemDamage()].toLowerCase(Locale.ENGLISH);
     }
 }

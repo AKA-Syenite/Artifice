@@ -3,14 +3,16 @@ package shukaro.artifice;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import net.minecraft.client.renderer.texture.IconRegister;
-import net.minecraftforge.common.Configuration;
-import net.minecraftforge.common.Property;
-import shukaro.artifice.compat.ArtificeRegistry;
 import shukaro.artifice.render.IconHandler;
 import shukaro.artifice.render.connectedtexture.ConnectedTextures;
 
 import java.util.logging.Level;
+
+import net.minecraft.block.Block;
+import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.item.Item;
+import net.minecraftforge.common.config.Configuration;
+import net.minecraftforge.common.config.Property;
 
 public class ArtificeConfig
 {
@@ -18,44 +20,6 @@ public class ArtificeConfig
     public static int lotusRenderID;
 
     private static Property idStart;
-
-    public static Property blockFrameID;
-    public static Property blockDetectorID;
-    public static Property blockFloraID;
-    public static Property blockLotusID;
-    public static Property blockBasaltID;
-    public static Property blockMarbleID;
-    public static Property blockBasaltBrickStairsID;
-    public static Property blockMarbleBrickStairsID;
-    public static Property blockBasaltCobbleStairsID;
-    public static Property blockMarbleCobbleStairsID;
-    public static Property blockBasaltSlabID;
-    public static Property blockBasaltDoubleSlabID;
-    public static Property blockMarbleSlabID;
-    public static Property blockMarbleDoubleSlabID;
-    public static Property blockSteelID;
-    public static Property blockReinforcedID;
-    public static Property blockGlassWallID;
-    public static Property blockScaffoldID;
-
-    private static Property idStartItem;
-
-    public static Property itemSledgeWoodID;
-    public static Property itemSledgeStoneID;
-    public static Property itemSledgeIronID;
-    public static Property itemSledgeGoldID;
-    public static Property itemSledgeDiamondID;
-    public static Property itemSteelIngotID;
-    public static Property itemBoxID;
-    public static Property itemDyeID;
-    public static Property itemSickleWoodID;
-    public static Property itemSickleStoneID;
-    public static Property itemSickleIronID;
-    public static Property itemSickleGoldID;
-    public static Property itemSickleDiamondID;
-    public static Property itemNuggetID;
-    public static Property itemCoinID;
-    public static Property itemUpgradeID;
 
     public static Property sledgeRecipes;
     public static Property frameRecipes;
@@ -156,52 +120,6 @@ public class ArtificeConfig
         try
         {
             c.load();
-            idStart = c.get(Configuration.CATEGORY_BLOCK, "Block Starting ID", 3000);
-            idStart.comment = "The block ID to use as the starting point for assignment, delete the other IDs to reassign";
-
-            int s = idStart.getInt();
-
-            blockFrameID = c.getBlock("blockFrame", s++);
-            blockDetectorID = c.getBlock("blockDetector", s++);
-            blockFloraID = c.getBlock("blockFlora", s++);
-            blockBasaltID = c.getBlock("blockBasalt", s++);
-            blockMarbleID = c.getBlock("blockMarble", s++);
-            blockBasaltBrickStairsID = c.getBlock("blockBasaltBrickStairs", s++);
-            blockMarbleBrickStairsID = c.getBlock("blockMarbleBrickStairs", s++);
-            blockBasaltCobbleStairsID = c.getBlock("blockBasaltCobbleStairs", s++);
-            blockMarbleCobbleStairsID = c.getBlock("blockMarbleCobbleStairs", s++);
-            blockBasaltSlabID = c.getBlock("blockBasaltSlab", s++);
-            blockBasaltDoubleSlabID = c.getBlock("blockBasaltDoubleSlab", s++);
-            blockMarbleSlabID = c.getBlock("blockMarbleSlab", s++);
-            blockMarbleDoubleSlabID = c.getBlock("blockMarbleDoubleSlab", s++);
-            blockLotusID = c.getBlock("blockLotus", s++);
-            blockSteelID = c.getBlock("blockSteel", s++);
-            blockReinforcedID = c.getBlock("blockReinforced", s++);
-            blockGlassWallID = c.getBlock("blockGlassWall", s++);
-            blockScaffoldID = c.getBlock("blockScaffold", s++);
-
-            idStartItem = c.get(Configuration.CATEGORY_ITEM, "Item Starting ID", 5000);
-            idStartItem.comment = "The item ID to use as the starting point for assignment, delete the other IDs to reassign";
-
-            int i = idStartItem.getInt();
-
-            itemSledgeWoodID = c.getItem("itemSledgeWood", i++);
-            itemSledgeStoneID = c.getItem("itemSledgeStone", i++);
-            itemSledgeIronID = c.getItem("itemSledgeIron", i++);
-            itemSledgeGoldID = c.getItem("itemSledgeGold", i++);
-            itemSledgeDiamondID = c.getItem("itemSledgeDiamond", i++);
-            itemSteelIngotID = c.getItem("itemSteelIngot", i++);
-            itemBoxID = c.getItem("itemBox", i++);
-            itemDyeID = c.getItem("itemDye", i++);
-            itemSickleWoodID = c.getItem("itemSickleWood", i++);
-            itemSickleStoneID = c.getItem("itemSickleStone", i++);
-            itemSickleIronID = c.getItem("itemSickleIron", i++);
-            itemSickleGoldID = c.getItem("itemSickleGold", i++);
-            itemSickleDiamondID = c.getItem("itemSickleDiamond", i++);
-            itemNuggetID = c.getItem("itemNugget", i++);
-            itemCoinID = c.getItem("itemCoin", i++);
-            itemUpgradeID = c.getItem("itemUpgrade", i++);
-
             floraWorldGen = c.get("Plant Generation", "Generate Flowers", true);
             floraWorldGen.comment = "Whether or not to generate flowers";
             floraFrequency = c.get("Plant Generation", "Flower Frequency", 1);
@@ -395,7 +313,7 @@ public class ArtificeConfig
         }
         catch (Exception e)
         {
-            ArtificeCore.logger.log(Level.SEVERE, "Couldn't load the config file");
+            ArtificeCore.logger.error("Couldn't load the config file");
             e.printStackTrace();
         }
         finally
@@ -421,7 +339,7 @@ public class ArtificeConfig
         }
         catch (Exception e)
         {
-            ArtificeCore.logger.log(Level.SEVERE, "Couldn't load the config file");
+            ArtificeCore.logger.error("Couldn't load the config file");
             e.printStackTrace();
         }
         finally
@@ -432,7 +350,7 @@ public class ArtificeConfig
 
     private static void setDimBlacklist()
     {
-        ArtificeCore.logger.log(Level.INFO, "Reading the dimension blacklist");
+        ArtificeCore.logger.info("Reading the dimension blacklist");
         String blacklist = dimensionBlacklist.getString().trim();
 
         for (String dim : blacklist.split(","))
@@ -444,7 +362,7 @@ public class ArtificeConfig
             }
             catch (Exception e)
             {
-                ArtificeCore.logger.log(Level.WARNING, "Couldn't load the dimension blacklist from string");
+                ArtificeCore.logger.warn("Couldn't load the dimension blacklist from string");
             }
         }
     }
@@ -454,12 +372,12 @@ public class ArtificeConfig
         String stoneList;
         if (isMarble)
         {
-            ArtificeCore.logger.log(Level.INFO, "Reading the marble list");
+            ArtificeCore.logger.info("Reading the marble list");
             stoneList = marbleList.getString().trim();
         }
         else
         {
-            ArtificeCore.logger.log(Level.INFO, "Reading the basalt list");
+            ArtificeCore.logger.info("Reading the basalt list");
             stoneList = basaltList.getString().trim();
         }
 
@@ -467,25 +385,25 @@ public class ArtificeConfig
         {
             try
             {
-                Integer ID = Integer.parseInt(pair.split(":")[0]);
-                Integer meta = Integer.parseInt(pair.split(":")[1]);
+                String itemName = pair.split(";")[0];
+                Integer meta = Integer.parseInt(pair.split(";")[1]);
                 if (isMarble)
-                    ArtificeRegistry.registerMarbleType(ID, meta);
+                    ArtificeRegistry.registerMarbleType((Block)Block.blockRegistry.getObject(itemName), meta);
                 else
-                    ArtificeRegistry.registerBasaltType(ID, meta);
+                    ArtificeRegistry.registerBasaltType((Block)Block.blockRegistry.getObject(itemName), meta);
             }
             catch (Exception e)
             {
                 if (isMarble)
-                    ArtificeCore.logger.log(Level.WARNING, "Couldn't load the marble list from string");
+                    ArtificeCore.logger.warn("Couldn't load the marble list from string");
                 else
-                    ArtificeCore.logger.log(Level.WARNING, "Couldn't load the basalt list from string");
+                    ArtificeCore.logger.warn("Couldn't load the basalt list from string");
             }
         }
     }
 
     @SideOnly(Side.CLIENT)
-    public static void registerConnectedTextures(IconRegister reg)
+    public static void registerConnectedTextures(IIconRegister reg)
     {
         if (!ArtificeConfig.connectedTexturesRegistered)
         {

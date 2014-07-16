@@ -1,6 +1,6 @@
 package shukaro.artifice.render.connectedtexture;
 
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 import shukaro.artifice.render.connectedtexture.schemes.SolidConnectedTexture;
 import shukaro.artifice.render.connectedtexture.schemes.TransparentConnectedTexture;
 
@@ -28,13 +28,13 @@ public enum ConnectedTextures
     AdvancedGlassWall("glasswall_advanced", false);
 
     public String name;
-    public Icon[] textureList;
+    public IIcon[] textureList;
     public ConnectedTextureBase renderer;
 
     private ConnectedTextures(String s, Boolean solid)
     {
         this.name = s;
-        this.textureList = new Icon[47];
+        this.textureList = new IIcon[47];
         if (solid)
             this.renderer = new SolidConnectedTexture(this);
         else

@@ -9,13 +9,13 @@ import java.util.Locale;
 
 public class BlockStairsArtifice extends BlockStairs
 {
-    public BlockStairsArtifice(int id, Block block, int meta)
+    public BlockStairsArtifice(Block block, int meta)
     {
-        super(id, block, meta);
+        super(block, meta);
         setLightOpacity(0);
         setCreativeTab(ArtificeCreativeTab.main);
         String name = block.getUnlocalizedName() + ".stairs." + ArtificeCore.rocks[meta].toLowerCase(Locale.ENGLISH);
         name = name.replace("tile.", "");
-        setUnlocalizedName(name);
+        setBlockName(name);
     }
 }

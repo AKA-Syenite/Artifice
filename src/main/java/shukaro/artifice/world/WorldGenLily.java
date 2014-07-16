@@ -51,9 +51,9 @@ public class WorldGenLily
             if (world.isAirBlock(x, y, z) && ArtificeBlocks.blockLotus.canPlaceBlockAt(world, x, y, z))
             {
                 if (world.getWorldTime() > 12000)
-                    world.setBlock(x, y, z, ArtificeBlocks.blockLotus.blockID, 1, 0);
+                    world.setBlock(x, y, z, ArtificeBlocks.blockLotus, 1, 0);
                 else
-                    world.setBlock(x, y, z, ArtificeBlocks.blockLotus.blockID, 0, 0);
+                    world.setBlock(x, y, z, ArtificeBlocks.blockLotus, 0, 0);
             }
         }
 

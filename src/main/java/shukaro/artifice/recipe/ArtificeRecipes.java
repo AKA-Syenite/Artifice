@@ -2,10 +2,15 @@ package shukaro.artifice.recipe;
 
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.block.Block;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipes;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.oredict.OreDictionary;
+import net.minecraftforge.oredict.RecipeSorter;
+import net.minecraftforge.oredict.RecipeSorter.Category;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 import net.minecraftforge.oredict.ShapelessOreRecipe;
 import shukaro.artifice.ArtificeBlocks;
@@ -32,9 +37,9 @@ public class ArtificeRecipes
                     " Q ",
                     "YXY",
                     " Y ",
-                    'Y', new ItemStack(Item.silk.itemID, 1, 0),
-                    'X', new ItemStack(ArtificeBlocks.blockFrame.blockID, 1, 0),
-                    'Q', new ItemStack(Item.redstone.itemID, 1, 0)}));
+                    'Y', new ItemStack(Items.string, 1, 0),
+                    'X', new ItemStack(ArtificeBlocks.blockFrame, 1, 0),
+                    'Q', new ItemStack(Items.redstone, 1, 0)}));
         }
         if (ArtificeConfig.steelSmelting.getBoolean(true))
             registerSteelRecipes();
@@ -54,7 +59,9 @@ public class ArtificeRecipes
                     'X', "stickWood"}));
 
             GameRegistry.addRecipe(new RecipeBox());
-            GameRegistry.registerCraftingHandler(new BoxCraftingHandler());
+            RecipeSorter.register("artifice:box", RecipeBox.class, Category.SHAPED, "after:minecraft:shaped before:minecraft:shapeless");
+            
+            MinecraftForge.EVENT_BUS.register(new BoxCraftingHandler());
         }
         if (ArtificeConfig.sickleRecipes.getBoolean(true))
             registerSickleRecipes();
@@ -68,6 +75,7 @@ public class ArtificeRecipes
         {
             registerUpgrades();
             GameRegistry.addRecipe(new RecipeUpgrade());
+            RecipeSorter.register("artifice:upgrades", RecipeUpgrade.class, Category.SHAPELESS, "after:minecraft:shapeless");
         }
         if (ArtificeConfig.alternateSteel.getBoolean(false))
         {
@@ -81,28 +89,28 @@ public class ArtificeRecipes
 
     private static void registerConvenienceRecipes()
     {
-        FurnaceRecipes.smelting().addSmelting(Block.stoneBrick.blockID, 2, new ItemStack(Block.stoneBrick, 1, 0), 0f);
+        FurnaceRecipes.smelting().func_151394_a(new ItemStack(Blocks.stonebrick, 1, 2), new ItemStack(Blocks.stonebrick, 1, 0), 0f);
 
-        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Block.stoneBrick, 2, 3), new Object[]{
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Blocks.stonebrick, 2, 3), new Object[]{
                 "X",
                 "X",
-                'X', new ItemStack(Block.stoneBrick, 1, 0)
+                'X', new ItemStack(Blocks.stonebrick, 1, 0)
         }));
 
-        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Block.stoneBrick, 8, 1), new Object[]{
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Blocks.stonebrick, 8, 1), new Object[]{
                 "XXX",
                 "XYX",
                 "XXX",
-                'X', new ItemStack(Block.stoneBrick, 1, 0),
-                'Y', new ItemStack(Item.bucketWater)
+                'X', new ItemStack(Blocks.stonebrick, 1, 0),
+                'Y', new ItemStack(Items.water_bucket)
         }));
 
-        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Block.cobblestoneMossy, 8, 0), new Object[]{
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Blocks.mossy_cobblestone, 8, 0), new Object[]{
                 "XXX",
                 "XYX",
                 "XXX",
-                'X', new ItemStack(Block.cobblestone),
-                'Y', new ItemStack(Item.bucketWater)
+                'X', new ItemStack(Blocks.cobblestone),
+                'Y', new ItemStack(Items.water_bucket)
         }));
     }
 
@@ -115,15 +123,15 @@ public class ArtificeRecipes
             cost = 8;
 
         Object[] reagents = new Object[cost + 1];
-        ItemStack fuel = new ItemStack(Item.coal, 1, OreDictionary.WILDCARD_VALUE);
+        ItemStack fuel = new ItemStack(Items.coal, 1, OreDictionary.WILDCARD_VALUE);
 
-        reagents[0] = Item.ingotIron;
+        reagents[0] = Items.iron_ingot;
         for (int i = 1; i < cost + 1; i++)
             reagents[i] = fuel.copy();
 
         GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ArtificeItems.itemSteelIngot, 1, 1), reagents));
 
-        FurnaceRecipes.smelting().addSmelting(ArtificeItems.itemSteelIngot.itemID, 1, new ItemStack(ArtificeItems.itemSteelIngot, 1, 0), 1.0f);
+        FurnaceRecipes.smelting().func_151394_a(new ItemStack(ArtificeItems.itemSteelIngot, 1, 1), new ItemStack(ArtificeItems.itemSteelIngot, 1, 0), 1.0f);
 
         GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeBlocks.blockSteel, 1, 0), new Object[]{
                 "XXX",
@@ -140,19 +148,19 @@ public class ArtificeRecipes
                 " Z ",
                 "YXQ",
                 "   ",
-                'X', Item.coal,
-                'Y', Item.ingotIron,
-                'Q', Block.stone,
-                'Z', Item.flint
+                'X', Items.coal,
+                'Y', Items.iron_ingot,
+                'Q', Blocks.stone,
+                'Z', Items.flint
         }));
 
         GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeItems.itemUpgrade, 1, 1), new Object[]{
                 "   ",
                 "XQZ",
                 " Y ",
-                'X', Item.silk,
-                'Q', Item.leather,
-                'Z', Item.ingotIron,
+                'X', Items.string,
+                'Q', Items.leather,
+                'Z', Items.iron_ingot,
                 'Y', "stickWood"
         }));
 
@@ -161,92 +169,92 @@ public class ArtificeRecipes
                 "YXZ",
                 " X ",
                 'X', "stickWood",
-                'Y', Item.leather,
-                'Z', Item.ingotIron
+                'Y', Items.leather,
+                'Z', Items.iron_ingot
         }));
 
         GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeItems.itemUpgrade, 1, 3), new Object[]{
                 "  X",
                 " X ",
                 "X  ",
-                'X', Item.silk
+                'X', Items.string
         }));
 
         GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeItems.itemUpgrade, 1, 4), new Object[]{
                 " X ",
                 " X ",
                 " Y ",
-                'X', Item.ingotIron,
-                'Y', Block.stone
+                'X', Items.iron_ingot,
+                'Y', Blocks.stone
         }));
 
         GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeItems.itemUpgrade, 1, 5), new Object[]{
                 "   ",
                 "XXX",
                 " Y ",
-                'X', Block.fenceIron,
-                'Y', Item.ingotIron
+                'X', Blocks.iron_bars,
+                'Y', Items.iron_ingot
         }));
 
         GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeItems.itemUpgrade, 1, 6), new Object[]{
                 "   ",
                 "YXY",
                 " X ",
-                'X', Item.leather,
-                'Y', Item.silk
+                'X', Items.leather,
+                'Y', Items.string
         }));
 
         GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeItems.itemUpgrade, 1, 7), new Object[]{
                 "   ",
                 "YXY",
                 " X ",
-                'X', Block.cloth,
-                'Y', Item.silk
+                'X', Blocks.wool,
+                'Y', Items.string
         }));
 
         GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeItems.itemUpgrade, 1, 8), new Object[]{
                 "   ",
                 "X X",
                 "Y Y",
-                'X', Item.leather,
-                'Y', Item.slimeBall
+                'X', Items.leather,
+                'Y', Items.slime_ball
         }));
 
         GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeItems.itemUpgrade, 1, 9), new Object[]{
                 " X ",
                 " Y ",
                 " Q ",
-                'Q', Item.bowlEmpty,
-                'Y', Item.slimeBall,
-                'X', new ItemStack(Item.dyePowder, 1, 15)
+                'Q', Items.bowl,
+                'Y', Items.slime_ball,
+                'X', new ItemStack(Items.dye, 1, 15)
         }));
 
         GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeItems.itemUpgrade, 1, 10), new Object[]{
                 "   ",
                 "YXQ",
                 " X ",
-                'X', Item.slimeBall,
-                'Y', Item.leather,
-                'Q', Item.silk
+                'X', Items.slime_ball,
+                'Y', Items.leather,
+                'Q', Items.string
         }));
 
         GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeItems.itemUpgrade, 1, 11), new Object[]{
                 " Q ",
                 " Y ",
                 " X ",
-                'Q', Item.silk,
-                'Y', Item.leather,
-                'X', Item.bucketEmpty
+                'Q', Items.string,
+                'Y', Items.leather,
+                'X', Items.bucket
         }));
 
         GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeItems.itemUpgrade, 1, 12), new Object[]{
                 " Q ",
                 "XYX",
                 " Z ",
-                'Y', Block.glass,
-                'X', Item.leather,
-                'Z', Item.ingotIron,
-                'Q', Item.silk
+                'Y', Blocks.glass,
+                'X', Items.leather,
+                'Z', Items.iron_ingot,
+                'Q', Items.string
         }));
     }
 
@@ -273,10 +281,10 @@ public class ArtificeRecipes
 
     private static void registerCoinSmelting()
     {
-        FurnaceRecipes.smelting().addSmelting(ArtificeItems.itemCoin.itemID, 0, new ItemStack(ArtificeItems.itemNugget, 1, 0), 0);
-        FurnaceRecipes.smelting().addSmelting(ArtificeItems.itemCoin.itemID, 1, new ItemStack(ArtificeItems.itemNugget, 1, 1), 0);
-        FurnaceRecipes.smelting().addSmelting(ArtificeItems.itemCoin.itemID, 2, new ItemStack(Item.goldNugget, 1, 0), 0);
-        FurnaceRecipes.smelting().addSmelting(ArtificeItems.itemCoin.itemID, 3, new ItemStack(ArtificeItems.itemNugget, 1, 2), 0);
+        FurnaceRecipes.smelting().func_151394_a(new ItemStack(ArtificeItems.itemCoin, 1, 0), new ItemStack(ArtificeItems.itemNugget, 1, 0), 0);
+        FurnaceRecipes.smelting().func_151394_a(new ItemStack(ArtificeItems.itemCoin, 1, 1), new ItemStack(ArtificeItems.itemNugget, 1, 1), 0);
+        FurnaceRecipes.smelting().func_151394_a(new ItemStack(ArtificeItems.itemCoin, 1, 2), new ItemStack(Items.gold_nugget, 1, 0), 0);
+        FurnaceRecipes.smelting().func_151394_a(new ItemStack(ArtificeItems.itemCoin, 1, 3), new ItemStack(ArtificeItems.itemNugget, 1, 2), 0);
     }
 
     private static void registerSickleRecipes()
@@ -292,28 +300,28 @@ public class ArtificeRecipes
                 "X ",
                 " X",
                 "Y ",
-                'X', Block.cobblestone,
+                'X', Blocks.cobblestone,
                 'Y', "stickWood"}));
 
         GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeItems.itemSickleIron, 1, 0), new Object[]{
                 "X ",
                 " X",
                 "Y ",
-                'X', Item.ingotIron,
+                'X', Items.iron_ingot,
                 'Y', "stickWood"}));
 
         GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeItems.itemSickleGold, 1, 0), new Object[]{
                 "X ",
                 " X",
                 "Y ",
-                'X', Item.ingotGold,
+                'X', Items.gold_ingot,
                 'Y', "stickWood"}));
 
         GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeItems.itemSickleDiamond, 1, 0), new Object[]{
                 "X ",
                 " X",
                 "Y ",
-                'X', Item.diamond,
+                'X', Items.diamond,
                 'Y', "stickWood"}));
     }
 
@@ -338,7 +346,7 @@ public class ArtificeRecipes
                 " X ",
                 " Y ",
                 'X', new ItemStack(ArtificeBlocks.blockFrame, 1, 2),
-                'Y', new ItemStack(Item.ingotIron.itemID, 1, 0)}));
+                'Y', new ItemStack(Items.iron_ingot, 1, 0)}));
 
         GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeBlocks.blockScaffold, 8, 3), new Object[]{
                 " Y ",
@@ -356,32 +364,32 @@ public class ArtificeRecipes
                 " X ",
                 " Z ",
                 'X', new ItemStack(ArtificeBlocks.blockFrame, 1, 0),
-                'Y', Block.thinGlass,
-                'Z', Item.clay}));
+                'Y', Blocks.glass_pane,
+                'Z', Items.clay_ball}));
 
         GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeBlocks.blockGlassWall, 2, 1), new Object[]{
                 "YYY",
                 " X ",
                 " Z ",
                 'X', new ItemStack(ArtificeBlocks.blockFrame, 1, 1),
-                'Z', Item.clay,
-                'Y', Block.glass}));
+                'Z', Items.clay_ball,
+                'Y', Blocks.glass}));
 
         GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeBlocks.blockGlassWall, 4, 2), new Object[]{
                 "QQQ",
                 "YXY",
                 " Z ",
                 'X', new ItemStack(ArtificeBlocks.blockFrame, 1, 2),
-                'Q', Block.glass,
-                'Y', Block.obsidian,
-                'Z', Item.bucketLava}));
+                'Q', Blocks.glass,
+                'Y', Blocks.obsidian,
+                'Z', Items.lava_bucket}));
 
         GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeBlocks.blockGlassWall, 4, 3), new Object[]{
                 "YYY",
                 "QXQ",
                 "YYY",
                 'X', new ItemStack(ArtificeBlocks.blockFrame, 1, 3),
-                'Q', Block.glass,
+                'Q', Blocks.glass,
                 'Y', "ingotSteel"}));
     }
 
@@ -392,24 +400,24 @@ public class ArtificeRecipes
                 "YXY",
                 " Z ",
                 'X', new ItemStack(ArtificeBlocks.blockFrame, 1, 0),
-                'Y', Block.stoneBrick,
-                'Z', Item.clay}));
+                'Y', Blocks.stonebrick,
+                'Z', Items.clay_ball}));
 
         GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeBlocks.blockReinforced, 2, 1), new Object[]{
                 "   ",
                 "YXY",
                 " Z ",
                 'X', new ItemStack(ArtificeBlocks.blockFrame, 1, 1),
-                'Y', Block.brick,
-                'Z', Item.clay}));
+                'Y', Blocks.brick_block,
+                'Z', Items.clay_ball}));
 
         GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeBlocks.blockReinforced, 4, 2), new Object[]{
                 "   ",
                 "YXY",
                 " Z ",
                 'X', new ItemStack(ArtificeBlocks.blockFrame, 1, 2),
-                'Y', Block.obsidian,
-                'Z', Item.bucketLava}));
+                'Y', Blocks.obsidian,
+                'Z', Items.lava_bucket}));
 
         GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeBlocks.blockReinforced, 4, 3), new Object[]{
                 "YYY",
@@ -421,7 +429,7 @@ public class ArtificeRecipes
 
     private static void registerSteelRecipes()
     {
-        GameRegistry.addSmelting(Item.ingotIron.itemID, new ItemStack(ArtificeItems.itemSteelIngot, 1, 0), 1.0F);
+        GameRegistry.addSmelting(Items.iron_ingot, new ItemStack(ArtificeItems.itemSteelIngot, 1, 0), 1.0F);
 
         GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeBlocks.blockSteel, 1, 0), new Object[]{
                 "XXX",
@@ -446,14 +454,14 @@ public class ArtificeRecipes
                 "YYY",
                 "XYX",
                 'X', "plankWood",
-                'Y', new ItemStack(Item.ingotIron.itemID, 1, 0)}));
+                'Y', new ItemStack(Items.iron_ingot, 1, 0)}));
 
         GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeBlocks.blockFrame, 16, 2), new Object[]{
                 "X X",
                 " Y ",
                 "X X",
-                'X', new ItemStack(Item.ingotIron.itemID, 1, 0),
-                'Y', new ItemStack(Block.blockIron.blockID, 1, 0)}));
+                'X', new ItemStack(Items.iron_ingot, 1, 0),
+                'Y', new ItemStack(Blocks.iron_block, 1, 0)}));
 
         GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeBlocks.blockFrame, 16, 3), new Object[]{
                 "X X",
@@ -465,169 +473,169 @@ public class ArtificeRecipes
 
     private static void registerSledgeRecipes()
     {
-        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeItems.itemSledgeWood.itemID, 1, 0), new Object[]{
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeItems.itemSledgeWood, 1, 0), new Object[]{
                 " YX",
                 " XY",
                 "X  ",
                 'X', "stickWood",
                 'Y', "plankWood"}));
 
-        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeItems.itemSledgeStone.itemID, 1, 0), new Object[]{
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeItems.itemSledgeStone, 1, 0), new Object[]{
                 " YX",
                 " XY",
                 "X  ",
                 'X', "stickWood",
-                'Y', new ItemStack(Block.cobblestone.blockID, 1, 0)}));
+                'Y', new ItemStack(Blocks.cobblestone, 1, 0)}));
 
-        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeItems.itemSledgeIron.itemID, 1, 0), new Object[]{
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeItems.itemSledgeIron, 1, 0), new Object[]{
                 " YX",
                 " XY",
                 "X  ",
                 'X', "stickWood",
-                'Y', new ItemStack(Item.ingotIron.itemID, 1, 0)}));
+                'Y', new ItemStack(Items.iron_ingot, 1, 0)}));
 
-        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeItems.itemSledgeGold.itemID, 1, 0), new Object[]{
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeItems.itemSledgeGold, 1, 0), new Object[]{
                 " YX",
                 " XY",
                 "X  ",
                 'X', "stickWood",
-                'Y', new ItemStack(Item.ingotGold.itemID, 1, 0)}));
+                'Y', new ItemStack(Items.gold_ingot, 1, 0)}));
 
-        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeItems.itemSledgeDiamond.itemID, 1, 0), new Object[]{
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeItems.itemSledgeDiamond, 1, 0), new Object[]{
                 " YX",
                 " XY",
                 "X  ",
                 'X', "stickWood",
-                'Y', new ItemStack(Item.diamond.itemID, 1, 0)}));
+                'Y', new ItemStack(Items.diamond, 1, 0)}));
     }
 
     private static void registerDyeRecipes()
     {
         // Black flower
-        GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ArtificeItems.itemDye.itemID, 2, 1), new ItemStack(ArtificeBlocks.blockFlora.blockID, 1, 1)));
+        GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ArtificeItems.itemDye, 2, 1), new ItemStack(ArtificeBlocks.blockFlora, 1, 1)));
 
         // Yellow + blue = green
-        GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(Item.dyePowder.itemID, 2, 2), "dyeBlue", "dyeYellow"));
+        GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(Items.dye, 2, 2), "dyeBlue", "dyeYellow"));
 
         // Brown flower
-        GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ArtificeItems.itemDye.itemID, 2, 2), new ItemStack(ArtificeBlocks.blockFlora.blockID, 1, 2)));
+        GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ArtificeItems.itemDye, 2, 2), new ItemStack(ArtificeBlocks.blockFlora, 1, 2)));
 
         // Blue flower
-        GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ArtificeItems.itemDye.itemID, 2, 0), new ItemStack(ArtificeBlocks.blockFlora.blockID, 1, 0)));
+        GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ArtificeItems.itemDye, 2, 0), new ItemStack(ArtificeBlocks.blockFlora, 1, 0)));
 
         // White flower
-        GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ArtificeItems.itemDye.itemID, 2, 3), new ItemStack(ArtificeBlocks.blockFlora.blockID, 1, 3)));
+        GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ArtificeItems.itemDye, 2, 3), new ItemStack(ArtificeBlocks.blockFlora, 1, 3)));
     }
 
     private static void registerBasaltRecipes()
     {
-        FurnaceRecipes.smelting().addSmelting(ArtificeBlocks.blockBasalt.blockID, 1, new ItemStack(ArtificeBlocks.blockBasalt.blockID, 1, 0), 0.1F);
+        FurnaceRecipes.smelting().func_151394_a(new ItemStack(ArtificeBlocks.blockBasalt, 1, 1), new ItemStack(ArtificeBlocks.blockBasalt, 1, 0), 0.1F);
 
-        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeBlocks.blockBasalt.blockID, 4, 2), new Object[]{
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeBlocks.blockBasalt, 4, 2), new Object[]{
                 "XX",
                 "XX",
                 'X', new ItemStack(ArtificeBlocks.blockBasalt, 1, 0)}));
 
-        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeBlocks.blockBasalt.blockID, 4, 3), new Object[]{
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeBlocks.blockBasalt, 4, 3), new Object[]{
                 "XX",
                 "XX",
                 'X', new ItemStack(ArtificeBlocks.blockBasalt, 1, 2)}));
 
-        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeBlocks.blockBasalt.blockID, 2, 5), new Object[]{
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeBlocks.blockBasalt, 2, 5), new Object[]{
                 "X",
                 "X",
                 'X', new ItemStack(ArtificeBlocks.blockBasalt, 1, 2)}));
 
-        GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ArtificeBlocks.blockBasalt.blockID, 1, 4), new ItemStack(ArtificeBlocks.blockBasalt.blockID, 1, 3)));
+        GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ArtificeBlocks.blockBasalt, 1, 4), new ItemStack(ArtificeBlocks.blockBasalt, 1, 3)));
 
-        GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ArtificeBlocks.blockBasalt.blockID, 1, 3), new ItemStack(ArtificeBlocks.blockBasalt.blockID, 1, 4)));
+        GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ArtificeBlocks.blockBasalt, 1, 3), new ItemStack(ArtificeBlocks.blockBasalt, 1, 4)));
 
         GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeBlocks.blockBasaltBrickStairs, 4, 0), new Object[]{
                 "X  ",
                 "XX ",
                 "XXX",
-                'X', new ItemStack(ArtificeBlocks.blockBasalt.blockID, 1, 2)}));
+                'X', new ItemStack(ArtificeBlocks.blockBasalt, 1, 2)}));
 
-        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeBlocks.blockBasaltCobbleStairs.blockID, 4, 0), new Object[]{
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeBlocks.blockBasaltCobbleStairs, 4, 0), new Object[]{
                 "X  ",
                 "XX ",
                 "XXX",
-                'X', new ItemStack(ArtificeBlocks.blockBasalt.blockID, 1, 1)}));
+                'X', new ItemStack(ArtificeBlocks.blockBasalt, 1, 1)}));
 
-        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeBlocks.blockBasaltSlab.blockID, 6, 0), new Object[]{
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeBlocks.blockBasaltSlab, 6, 0), new Object[]{
                 "XXX",
-                'X', new ItemStack(ArtificeBlocks.blockBasalt.blockID, 1, 2)}));
+                'X', new ItemStack(ArtificeBlocks.blockBasalt, 1, 2)}));
 
-        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeBlocks.blockBasaltSlab.blockID, 6, 1), new Object[]{
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeBlocks.blockBasaltSlab, 6, 1), new Object[]{
                 "XXX",
-                'X', new ItemStack(ArtificeBlocks.blockBasalt.blockID, 1, 1)}));
+                'X', new ItemStack(ArtificeBlocks.blockBasalt, 1, 1)}));
 
-        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeBlocks.blockBasaltSlab.blockID, 6, 2), new Object[]{
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeBlocks.blockBasaltSlab, 6, 2), new Object[]{
                 "XXX",
-                'X', new ItemStack(ArtificeBlocks.blockBasalt.blockID, 1, 3)}));
+                'X', new ItemStack(ArtificeBlocks.blockBasalt, 1, 3)}));
 
-        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeBlocks.blockBasaltSlab.blockID, 6, 3), new Object[]{
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeBlocks.blockBasaltSlab, 6, 3), new Object[]{
                 "XXX",
-                'X', new ItemStack(ArtificeBlocks.blockBasalt.blockID, 1, 4)}));
+                'X', new ItemStack(ArtificeBlocks.blockBasalt, 1, 4)}));
 
-        GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ArtificeBlocks.blockBasaltSlab.blockID, 1, 2), new ItemStack(ArtificeBlocks.blockBasaltSlab.blockID, 1, 3)));
+        GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ArtificeBlocks.blockBasaltSlab, 1, 2), new ItemStack(ArtificeBlocks.blockBasaltSlab, 1, 3)));
 
-        GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ArtificeBlocks.blockBasaltSlab.blockID, 1, 3), new ItemStack(ArtificeBlocks.blockBasaltSlab.blockID, 1, 2)));
+        GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ArtificeBlocks.blockBasaltSlab, 1, 3), new ItemStack(ArtificeBlocks.blockBasaltSlab, 1, 2)));
     }
 
     private static void registerMarbleRecipes()
     {
-        FurnaceRecipes.smelting().addSmelting(ArtificeBlocks.blockMarble.blockID, 1, new ItemStack(ArtificeBlocks.blockMarble.blockID, 1, 0), 0.1F);
+        FurnaceRecipes.smelting().func_151394_a(new ItemStack(ArtificeBlocks.blockMarble, 1, 1), new ItemStack(ArtificeBlocks.blockMarble, 1, 0), 0.1F);
 
-        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeBlocks.blockMarble.blockID, 4, 2), new Object[]{
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeBlocks.blockMarble, 4, 2), new Object[]{
                 "XX",
                 "XX",
                 'X', new ItemStack(ArtificeBlocks.blockMarble, 1, 0)}));
 
-        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeBlocks.blockMarble.blockID, 4, 3), new Object[]{
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeBlocks.blockMarble, 4, 3), new Object[]{
                 "XX",
                 "XX",
                 'X', new ItemStack(ArtificeBlocks.blockMarble, 1, 2)}));
 
-        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeBlocks.blockMarble.blockID, 2, 5), new Object[]{
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeBlocks.blockMarble, 2, 5), new Object[]{
                 "X",
                 "X",
                 'X', new ItemStack(ArtificeBlocks.blockMarble, 1, 2)}));
 
-        GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ArtificeBlocks.blockMarble.blockID, 1, 4), new ItemStack(ArtificeBlocks.blockMarble.blockID, 1, 3)));
+        GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ArtificeBlocks.blockMarble, 1, 4), new ItemStack(ArtificeBlocks.blockMarble, 1, 3)));
 
-        GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ArtificeBlocks.blockMarble.blockID, 1, 3), new ItemStack(ArtificeBlocks.blockMarble.blockID, 1, 4)));
+        GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ArtificeBlocks.blockMarble, 1, 3), new ItemStack(ArtificeBlocks.blockMarble, 1, 4)));
 
         GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeBlocks.blockMarbleBrickStairs, 4, 0), new Object[]{
                 "X  ",
                 "XX ",
                 "XXX",
-                'X', new ItemStack(ArtificeBlocks.blockMarble.blockID, 1, 2)}));
+                'X', new ItemStack(ArtificeBlocks.blockMarble, 1, 2)}));
 
-        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeBlocks.blockMarbleCobbleStairs.blockID, 4, 0), new Object[]{
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeBlocks.blockMarbleCobbleStairs, 4, 0), new Object[]{
                 "X  ",
                 "XX ",
                 "XXX",
-                'X', new ItemStack(ArtificeBlocks.blockMarble.blockID, 1, 1)}));
+                'X', new ItemStack(ArtificeBlocks.blockMarble, 1, 1)}));
 
-        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeBlocks.blockMarbleSlab.blockID, 6, 0), new Object[]{
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeBlocks.blockMarbleSlab, 6, 0), new Object[]{
                 "XXX",
-                'X', new ItemStack(ArtificeBlocks.blockMarble.blockID, 1, 2)}));
+                'X', new ItemStack(ArtificeBlocks.blockMarble, 1, 2)}));
 
-        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeBlocks.blockMarbleSlab.blockID, 6, 1), new Object[]{
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeBlocks.blockMarbleSlab, 6, 1), new Object[]{
                 "XXX",
-                'X', new ItemStack(ArtificeBlocks.blockMarble.blockID, 1, 1)}));
+                'X', new ItemStack(ArtificeBlocks.blockMarble, 1, 1)}));
 
-        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeBlocks.blockMarbleSlab.blockID, 6, 2), new Object[]{
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeBlocks.blockMarbleSlab, 6, 2), new Object[]{
                 "XXX",
-                'X', new ItemStack(ArtificeBlocks.blockMarble.blockID, 1, 3)}));
+                'X', new ItemStack(ArtificeBlocks.blockMarble, 1, 3)}));
 
-        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeBlocks.blockMarbleSlab.blockID, 6, 3), new Object[]{
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeBlocks.blockMarbleSlab, 6, 3), new Object[]{
                 "XXX",
-                'X', new ItemStack(ArtificeBlocks.blockMarble.blockID, 1, 4)}));
+                'X', new ItemStack(ArtificeBlocks.blockMarble, 1, 4)}));
 
-        GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ArtificeBlocks.blockMarbleSlab.blockID, 1, 2), new ItemStack(ArtificeBlocks.blockMarbleSlab.blockID, 1, 3)));
+        GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ArtificeBlocks.blockMarbleSlab, 1, 2), new ItemStack(ArtificeBlocks.blockMarbleSlab, 1, 3)));
 
-        GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ArtificeBlocks.blockMarbleSlab.blockID, 1, 3), new ItemStack(ArtificeBlocks.blockMarbleSlab.blockID, 1, 2)));
+        GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ArtificeBlocks.blockMarbleSlab, 1, 3), new ItemStack(ArtificeBlocks.blockMarbleSlab, 1, 2)));
     }
 }

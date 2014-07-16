@@ -7,6 +7,10 @@ Adds a variety of new things to Minecraft.
 Feel free to submit pull requests, and please use the issue tracker located at https://github.com/Shukaro/Artifice/issues
 to report any issues.
 
+###Builds
+
+Builds are run at http://build.technicpack.net/job/Artifice/ instead of yelling at me when shit breaks in a non-stable build throw it on the issue tracker.
+
 ### License
 
 You are free to do whatever you wish with this mod and this source code, provided that you provide proper attribution.

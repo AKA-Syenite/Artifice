@@ -2,6 +2,7 @@ package shukaro.artifice.item;
 
 import net.minecraft.dispenser.BehaviorDefaultDispenseItem;
 import net.minecraft.dispenser.IBlockSource;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntityDispenser;
@@ -17,7 +18,7 @@ public class DispenserBehaviorBox extends BehaviorDefaultDispenseItem
         if (tag != null)
         {
             // The thing in the boxes
-            ItemStack thing = new ItemStack(tag.getInteger("id"), stack.getItemDamage(), tag.getInteger("meta"));
+            ItemStack thing = new ItemStack(Item.getItemById(tag.getInteger("id")), stack.getItemDamage(), tag.getInteger("meta"));
             if (!tag.getCompoundTag("nbt").hasNoTags())
                 thing.setTagCompound(tag.getCompoundTag("nbt"));
 
@@ -53,7 +54,7 @@ public class DispenserBehaviorBox extends BehaviorDefaultDispenseItem
             TileEntityDispenser d = (TileEntityDispenser) dispenser.getBlockTileEntity();
             // Give the dispenser the leftover boxes
             // If they won't fit dispense them
-            if (extra != null && d.addItem(extra) == -1)
+            if (extra != null && d.func_146019_a(extra) == -1)
                 defaultDispense.dispense(dispenser, extra);
         }
         return stack;

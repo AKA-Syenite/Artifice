@@ -1,16 +1,17 @@
 package shukaro.artifice.block.frame;
 
-import cpw.mods.fml.common.network.PacketDispatcher;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.block.Block;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.Entity;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-import net.minecraftforge.common.ForgeDirection;
+import net.minecraftforge.common.util.ForgeDirection;
 import shukaro.artifice.ArtificeConfig;
 import shukaro.artifice.ArtificeCore;
+import shukaro.artifice.net.PacketSender;
 import shukaro.artifice.net.Packets;
 import shukaro.artifice.render.TextureHandler;
 import shukaro.artifice.render.connectedtexture.ConnectedTextureBase;
@@ -18,7 +19,6 @@ import shukaro.artifice.render.connectedtexture.ConnectedTextures;
 import shukaro.artifice.render.connectedtexture.schemes.TransparentConnectedTexture;
 import shukaro.artifice.util.BlockCoord;
 import shukaro.artifice.util.ChunkCoord;
-import shukaro.artifice.util.PacketWrapper;
 
 public class BlockFrameGlassWall extends BlockFrame
 {
@@ -27,10 +27,10 @@ public class BlockFrameGlassWall extends BlockFrame
     private ConnectedTextureBase industrial = new TransparentConnectedTexture(ConnectedTextures.IndustrialGlassWall);
     private ConnectedTextureBase advanced = new TransparentConnectedTexture(ConnectedTextures.AdvancedGlassWall);
 
-    public BlockFrameGlassWall(int id)
+    public BlockFrameGlassWall()
     {
-        super(id);
-        setUnlocalizedName("artifice.glasswall");
+        super();
+        setBlockName("artifice.glasswall");
     }
 
     @Override
@@ -65,14 +65,14 @@ public class BlockFrameGlassWall extends BlockFrame
 
     @Override
     @SideOnly(Side.CLIENT)
-    public void registerIcons(IconRegister reg)
+    public void registerBlockIcons(IIconRegister reg)
     {
         ArtificeConfig.registerConnectedTextures(reg);
     }
 
     @Override
     @SideOnly(Side.CLIENT)
-    public Icon getIcon(int side, int meta)
+    public IIcon getIcon(int side, int meta)
     {
         if (meta >= ArtificeCore.tiers.length)
             meta = 0;
@@ -93,7 +93,7 @@ public class BlockFrameGlassWall extends BlockFrame
 
     @Override
     @SideOnly(Side.CLIENT)
-    public Icon getBlockTexture(IBlockAccess access, int x, int y, int z, int side)
+    public IIcon getIcon(IBlockAccess access, int x, int y, int z, int side)
     {
         int meta = access.getBlockMetadata(x, y, z);
         if (meta > ArtificeCore.tiers.length)
@@ -115,17 +115,14 @@ public class BlockFrameGlassWall extends BlockFrame
     }
 
     @Override
-    public void onNeighborBlockChange(World world, int x, int y, int z, int neighborID)
+    public void onNeighborBlockChange(World world, int x, int y, int z, Block neighbor)
     {
         if (!world.isRemote)
-        {
-            BlockCoord c = new BlockCoord(x, y, z);
-            PacketDispatcher.sendPacketToAllAround(c.x, c.y, c.z, 192, world.provider.dimensionId, PacketWrapper.createPacket(ArtificeCore.modChannel, Packets.TEXTUREUPDATE, new Object[]{c.x, c.y, c.z}));
-        }
+        	PacketSender.sendTextureUpdatePacket(world, x, y, z);
     }
 
     @Override
-    public boolean isBlockSolidOnSide(World world, int x, int y, int z, ForgeDirection side)
+    public boolean isBlockSolid(IBlockAccess world, int x, int y, int z, int side)
     {
         return false;
     }
@@ -141,7 +138,7 @@ public class BlockFrameGlassWall extends BlockFrame
     @SideOnly(Side.CLIENT)
     public boolean shouldSideBeRendered(IBlockAccess par1IBlockAccess, int par2, int par3, int par4, int par5)
     {
-        int i1 = par1IBlockAccess.getBlockId(par2, par3, par4);
-        return i1 != this.blockID && super.shouldSideBeRendered(par1IBlockAccess, par2, par3, par4, par5);
+        Block i1 = par1IBlockAccess.getBlock(par2, par3, par4);
+        return i1 != this && super.shouldSideBeRendered(par1IBlockAccess, par2, par3, par4, par5);
     }
 }

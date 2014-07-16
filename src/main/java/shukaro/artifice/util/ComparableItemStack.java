@@ -14,7 +14,7 @@ import net.minecraftforge.oredict.OreDictionary;
 public class ComparableItemStack
 {
 
-    public int itemID = -1;
+    public Item item;
     public int metadata = -1;
     public int stackSize = -1;
     public int oreID = -1;
@@ -24,17 +24,17 @@ public class ComparableItemStack
 
         if (stack != null)
         {
-            itemID = stack.itemID;
+            item = stack.getItem();
             metadata = stack.getItemDamage();
             stackSize = stack.stackSize;
             oreID = OreDictionary.getOreID(stack);
         }
     }
 
-    public ComparableItemStack(int itemID, int damage, int stackSize)
+    public ComparableItemStack(Item item, int damage, int stackSize)
     {
 
-        this.itemID = itemID;
+        this.item = item;
         this.metadata = damage;
         this.stackSize = stackSize;
         this.oreID = OreDictionary.getOreID(this.toItemStack());
@@ -43,7 +43,7 @@ public class ComparableItemStack
     public ComparableItemStack(ComparableItemStack stack)
     {
 
-        this.itemID = stack.itemID;
+        this.item = stack.getItem();
         this.metadata = stack.metadata;
         this.stackSize = stack.stackSize;
         this.oreID = stack.oreID;
@@ -55,7 +55,7 @@ public class ComparableItemStack
         if (!OreDictionary.getOres(oreName).isEmpty())
         {
             ItemStack ore = OreDictionary.getOres(oreName).get(0);
-            itemID = ore.itemID;
+            item = ore.getItem();
             metadata = ore.getItemDamage();
             stackSize = 1;
             oreID = OreDictionary.getOreID(oreName);
@@ -65,7 +65,7 @@ public class ComparableItemStack
     public boolean isItemEqual(ComparableItemStack other)
     {
 
-        return other != null && (oreID != -1 && oreID == other.oreID || itemID == other.itemID && metadata == other.metadata);
+        return other != null && (oreID != -1 && oreID == other.oreID || item.equals(other.getItem()) && metadata == other.metadata);
     }
 
     public boolean isStackEqual(ComparableItemStack other)
@@ -76,34 +76,30 @@ public class ComparableItemStack
 
     public boolean isStackValid()
     {
-
-        return getItem() != null;
+        return item != null;
     }
 
+    @Deprecated
     public Item getItem()
     {
-
-        return itemID < 0 || itemID >= 32000 ? null : Item.itemsList[itemID];
+    	return item;
     }
 
     public ItemStack toItemStack()
     {
-
-        return itemID < 0 || itemID >= 32000 ? null : new ItemStack(itemID, stackSize, metadata);
+    	return isStackValid() ? new ItemStack(item, stackSize, metadata) : null;
     }
 
     @Override
     public ComparableItemStack clone()
     {
-
         return new ComparableItemStack(this);
     }
 
     @Override
     public int hashCode()
     {
-
-        return oreID != -1 ? oreID : metadata | itemID << 16;
+        return oreID != -1 ? oreID : metadata | (Item.getIdFromItem(item) << 16);
     }
 
     @Override

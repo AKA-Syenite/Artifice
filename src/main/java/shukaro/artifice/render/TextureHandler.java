@@ -2,7 +2,7 @@ package shukaro.artifice.render;
 
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 import shukaro.artifice.ArtificeCore;
 import shukaro.artifice.render.connectedtexture.ConnectedTextures;
@@ -18,7 +18,7 @@ public class TextureHandler
     {
         World world = Minecraft.getMinecraft().theWorld;
 
-        if (world != null && c.getBlock(world) != null && !c.getBlock(world).isAirBlock(world, c.x, c.y, c.z))
+        if (world != null && c.getBlock(world) != null && !c.getBlock(world).isAir(world, c.x, c.y, c.z))
         {
             if (!ArtificeCore.textureCache.containsKey(new ChunkCoord(c)))
                 ArtificeCore.textureCache.put(new ChunkCoord(c), new ConcurrentHashMap<BlockCoord, int[]>());
@@ -44,12 +44,12 @@ public class TextureHandler
             if (updated && ArtificeCore.textureCache.containsKey(new ChunkCoord(c)))
             {
                 ArtificeCore.textureCache.get(new ChunkCoord(c)).put(c, indices);
-                world.markBlockForRenderUpdate(c.x, c.y, c.z);
+                world.markBlockRangeForRenderUpdate(c.x, c.y, c.z, c.x, c.y, c.z);
             }
         }
     }
 
-    public static ConnectedTextures getConnectedTexture(Icon icon)
+    public static ConnectedTextures getConnectedTexture(IIcon icon)
     {
         if (icon != null && icon.getIconName() != null)
         {

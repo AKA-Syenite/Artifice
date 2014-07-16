@@ -2,34 +2,35 @@ package shukaro.artifice.item;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumRarity;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 import shukaro.artifice.ArtificeConfig;
+import shukaro.artifice.ArtificeRegistry;
 import shukaro.artifice.ArtificeTooltips;
-import shukaro.artifice.compat.ArtificeRegistry;
 import shukaro.artifice.render.IconHandler;
 import shukaro.artifice.util.FormatCodes;
-import shukaro.artifice.util.IdMetaPair;
+import shukaro.artifice.util.ItemMetaPair;
 
 import java.util.List;
 
 public class ItemBox extends ItemArtifice
 {
-    private Icon icon;
+    private IIcon icon;
 
-    public ItemBox(int id)
+    public ItemBox()
     {
-        super(id);
+        super();
         this.setUnlocalizedName("artifice.box");
     }
 
@@ -40,21 +41,21 @@ public class ItemBox extends ItemArtifice
     }
 
     @Override
-    public void getSubItems(int id, CreativeTabs tab, List list)
+    public void getSubItems(Item id, CreativeTabs tab, List list)
     {
         list.add(new ItemStack(id, 1, 0));
     }
 
     @Override
     @SideOnly(Side.CLIENT)
-    public Icon getIconFromDamage(int meta)
+    public IIcon getIconFromDamage(int meta)
     {
         return icon;
     }
 
     @Override
     @SideOnly(Side.CLIENT)
-    public void registerIcons(IconRegister reg)
+    public void registerIcons(IIconRegister reg)
     {
         this.icon = IconHandler.registerSingle(reg, "box", "box");
     }
@@ -98,7 +99,7 @@ public class ItemBox extends ItemArtifice
         if (tag != null)
         {
             // The thing in the boxes
-            ItemStack thing = new ItemStack(tag.getInteger("id"), stack.getItemDamage(), tag.getInteger("meta"));
+            ItemStack thing = new ItemStack(Item.getItemById(tag.getInteger("id")), stack.getItemDamage(), tag.getInteger("meta"));
             if (!tag.getCompoundTag("nbt").hasNoTags())
                 thing.setTagCompound(tag.getCompoundTag("nbt"));
 
@@ -182,7 +183,7 @@ public class ItemBox extends ItemArtifice
     {
         if (ArtificeConfig.tooltips.getBoolean(true))
         {
-            IdMetaPair pair = new IdMetaPair(stack.itemID, 0);
+            ItemMetaPair pair = new ItemMetaPair(stack.getItem(), 0);
             if (ArtificeRegistry.getTooltipMap().get(pair) != null)
             {
                 for (String s : ArtificeRegistry.getTooltipMap().get(pair))
@@ -196,15 +197,16 @@ public class ItemBox extends ItemArtifice
         NBTTagCompound tag = stack.getTagCompound();
         if (tag != null)
         {
-            infoList.add(FormatCodes.Italic.code + StatCollector.translateToLocal("tooltip.artifice.box.contains") + " " + FormatCodes.Reset.code + FormatCodes.Aqua.code + new ItemStack(tag.getInteger("id"), 1, tag.getInteger("meta")).getDisplayName());
+        	if(Item.getItemById(tag.getInteger("id")) == null) return;
+            infoList.add(FormatCodes.Italic.code + StatCollector.translateToLocal("tooltip.artifice.box.contains") + " " + FormatCodes.Reset.code + FormatCodes.Aqua.code + new ItemStack(Item.getItemById(tag.getInteger("id")), 1, tag.getInteger("meta")).getDisplayName());
             infoList.add(FormatCodes.Italic.code + StatCollector.translateToLocal("tooltip.artifice.box.amount") + " " + FormatCodes.Reset.code + FormatCodes.Aqua.code + stack.getItemDamage());
             NBTTagList enchants = tag.getCompoundTag("nbt").getTag("ench") != null ? (NBTTagList) tag.getCompoundTag("nbt").getTag("ench") : (NBTTagList) tag.getCompoundTag("nbt").getTag("StoredEnchantments");
             if (enchants != null)
             {
                 for (int i = 0; i < enchants.tagCount(); i++)
                 {
-                    short id = ((NBTTagCompound) enchants.tagAt(i)).getShort("id");
-                    short lvl = ((NBTTagCompound) enchants.tagAt(i)).getShort("lvl");
+                    short id = ((NBTTagCompound) enchants.getCompoundTagAt(i)).getShort("id");
+                    short lvl = ((NBTTagCompound) enchants.getCompoundTagAt(i)).getShort("lvl");
                     if (Enchantment.enchantmentsList[id] != null)
                     {
                         infoList.add(FormatCodes.Yellow.code + Enchantment.enchantmentsList[id].getTranslatedName(lvl));
@@ -214,7 +216,7 @@ public class ItemBox extends ItemArtifice
         }
         if (ArtificeConfig.tooltips.getBoolean(true))
         {
-            IdMetaPair pair = new IdMetaPair(stack.itemID, 0);
+            ItemMetaPair pair = new ItemMetaPair(stack.getItem(), 0);
             if (ArtificeRegistry.getTooltipMap().get(pair) != null)
             {
                 for (String s : ArtificeRegistry.getTooltipMap().get(pair))

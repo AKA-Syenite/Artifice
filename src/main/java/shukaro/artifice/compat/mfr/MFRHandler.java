@@ -6,6 +6,6 @@ public class MFRHandler
 {
     public static void handle()
     {
-        FactoryRegistry.registerHarvestable(new FactoryFlora());
+        FactoryRegistry.sendMessage("registerHarvestable",new FactoryFlora());
     }
 }

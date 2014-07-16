@@ -2,10 +2,11 @@ package shukaro.artifice.item;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 import shukaro.artifice.render.IconHandler;
 
 import java.util.List;
@@ -13,25 +14,25 @@ import java.util.Locale;
 
 public class ItemNugget extends ItemArtifice
 {
-    private Icon[] icons = new Icon[3];
+    private IIcon[] icons = new IIcon[3];
     private String[] nuggetTypes = {"Copper", "Silver", "Platinum"};
 
-    public ItemNugget(int id)
+    public ItemNugget()
     {
-        super(id);
+        super();
         this.setUnlocalizedName("artifice.nugget");
     }
 
     @Override
     @SideOnly(Side.CLIENT)
-    public Icon getIconFromDamage(int meta)
+    public IIcon getIconFromDamage(int meta)
     {
         return icons[meta];
     }
 
     @Override
     @SideOnly(Side.CLIENT)
-    public void registerIcons(IconRegister reg)
+    public void registerIcons(IIconRegister reg)
     {
         for (int i = 0; i < nuggetTypes.length; i++)
         {
@@ -41,7 +42,7 @@ public class ItemNugget extends ItemArtifice
 
     @Override
     @SideOnly(Side.CLIENT)
-    public void getSubItems(int id, CreativeTabs tab, List list)
+    public void getSubItems(Item id, CreativeTabs tab, List list)
     {
         for (int i = 0; i < nuggetTypes.length; i++)
             list.add(new ItemStack(id, 1, i));

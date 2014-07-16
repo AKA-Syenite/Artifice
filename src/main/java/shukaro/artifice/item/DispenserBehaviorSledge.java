@@ -8,9 +8,9 @@ import net.minecraft.entity.item.EntityItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.world.World;
-import shukaro.artifice.compat.ArtificeRegistry;
+import shukaro.artifice.ArtificeRegistry;
 import shukaro.artifice.util.BlockCoord;
-import shukaro.artifice.util.IdMetaPair;
+import shukaro.artifice.util.ItemMetaPair;
 
 import java.util.Random;
 
@@ -23,11 +23,11 @@ public class DispenserBehaviorSledge extends BehaviorDefaultDispenseItem
     {
         World world = dispenser.getWorld();
         Random rand = world.rand;
-        IPosition pos = BlockDispenser.getIPositionFromBlockSource(dispenser);
-        EnumFacing face = BlockDispenser.getFacing(dispenser.getBlockMetadata());
+        IPosition pos = BlockDispenser.func_149939_a(dispenser);
+        EnumFacing face = BlockDispenser.func_149937_b(dispenser.getBlockMetadata());
         BlockCoord target = new BlockCoord(dispenser.getXInt(), dispenser.getYInt(), dispenser.getZInt());
         target.offset(face.ordinal());
-        IdMetaPair pair = new IdMetaPair(target.getBlockID(world), target.getMeta(world));
+        ItemMetaPair pair = new ItemMetaPair(target.getBlock(world), target.getMeta(world));
         if (ArtificeRegistry.getSledgeBlocks().containsKey(pair))
         {
             world.setBlockToAir(target.x, target.y, target.z);
@@ -41,11 +41,11 @@ public class DispenserBehaviorSledge extends BehaviorDefaultDispenseItem
                 world.spawnEntityInWorld(item);
             }
         }
-        else if (ArtificeRegistry.getWildSledgeBlocks().containsKey(target.getBlockID(world)))
+        else if (ArtificeRegistry.getWildSledgeBlocks().containsKey(target.getBlock(world)))
         {
             world.setBlockToAir(target.x, target.y, target.z);
             stack.setItemDamage(stack.getItemDamage() + 1);
-            for (ItemStack drop : ArtificeRegistry.getWildSledgeBlocks().get(target.getBlockID(world)))
+            for (ItemStack drop : ArtificeRegistry.getWildSledgeBlocks().get(target.getBlock(world)))
             {
                 EntityItem item = new EntityItem(world, target.x + 0.5, target.y + 0.5, target.z + 0.5, drop.copy());
                 double xVel = -0.1 + (0.1 - -0.1) * rand.nextDouble();

@@ -1,5 +1,6 @@
 package shukaro.artifice.compat.mfr;
 
+import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import powercrystals.minefactoryreloaded.api.HarvestType;
@@ -13,9 +14,9 @@ import java.util.Random;
 public class FactoryFlora implements IFactoryHarvestable
 {
     @Override
-    public int getPlantId()
+    public Block getPlant()
     {
-        return ArtificeBlocks.blockFlora.blockID;
+        return ArtificeBlocks.blockFlora;
     }
 
     @Override
@@ -39,7 +40,7 @@ public class FactoryFlora implements IFactoryHarvestable
     @Override
     public List<ItemStack> getDrops(World world, Random rand, Map<String, Boolean> harvesterSettings, int x, int y, int z)
     {
-        return ArtificeBlocks.blockFlora.getBlockDropped(world, x, y, z, world.getBlockMetadata(x, y, z), 0);
+        return ArtificeBlocks.blockFlora.getDrops(world, x, y, z, world.getBlockMetadata(x, y, z), 0);
     }
 
     @Override

@@ -1,7 +1,8 @@
 package shukaro.artifice.world;
 
+import net.minecraft.block.Block;
 import net.minecraft.world.World;
-import shukaro.artifice.compat.ArtificeRegistry;
+import shukaro.artifice.ArtificeRegistry;
 import shukaro.artifice.util.XSRandom;
 
 import java.util.Random;
@@ -13,18 +14,18 @@ public class WorldGenLayer
     private Random rand;
     private int minHeight;
     private int maxHeight;
-    private int id;
-    private Set<Integer> replaced;
+    private Block block;
+    private Set<Block> replaced;
 
-    public WorldGenLayer(World world, int id, int minHeight, int maxHeight)
+    public WorldGenLayer(World world, Block block, int minHeight, int maxHeight)
     {
-        this(world, id, minHeight, maxHeight, ArtificeRegistry.getStoneTypes());
+        this(world, block, minHeight, maxHeight, ArtificeRegistry.getStoneTypes());
     }
 
-    public WorldGenLayer(World world, int id, int minHeight, int maxHeight, Set<Integer> replaced)
+    public WorldGenLayer(World world, Block block, int minHeight, int maxHeight, Set<Block> replaced)
     {
-        this.world = world;
-        this.id = id;
+    	this.world = world;
+        this.block = block;
         this.minHeight = minHeight;
         this.maxHeight = maxHeight;
         this.replaced = replaced;
@@ -52,8 +53,8 @@ public class WorldGenLayer
                     max = 256;
                 for (int t = min; t < max; t++)
                 {
-                    if (replaced.contains(world.getBlockId(i, t, j)))
-                        world.setBlock(i, t, j, this.id, 0, 0);
+                    if (replaced.contains(world.getBlock(i, t, j)))
+                        world.setBlock(i, t, j, this.block, 0, 0);
                 }
             }
         }

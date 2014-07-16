@@ -1,29 +1,29 @@
 package shukaro.artifice.block.frame;
 
-import cpw.mods.fml.common.network.PacketDispatcher;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.block.Block;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.Entity;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-import net.minecraftforge.common.ForgeDirection;
+import net.minecraftforge.common.util.ForgeDirection;
 import shukaro.artifice.ArtificeConfig;
 import shukaro.artifice.ArtificeCore;
+import shukaro.artifice.net.PacketSender;
 import shukaro.artifice.net.Packets;
 import shukaro.artifice.render.TextureHandler;
 import shukaro.artifice.render.connectedtexture.ConnectedTextures;
 import shukaro.artifice.util.BlockCoord;
 import shukaro.artifice.util.ChunkCoord;
-import shukaro.artifice.util.PacketWrapper;
 
 public class BlockFrameBlastWall extends BlockFrame
 {
-    public BlockFrameBlastWall(int id)
+    public BlockFrameBlastWall()
     {
-        super(id);
-        setUnlocalizedName("artifice.reinforced");
+        super();
+        setBlockName("artifice.reinforced");
     }
 
     @Override
@@ -64,14 +64,14 @@ public class BlockFrameBlastWall extends BlockFrame
 
     @Override
     @SideOnly(Side.CLIENT)
-    public void registerIcons(IconRegister reg)
+    public void registerBlockIcons(IIconRegister reg)
     {
         ArtificeConfig.registerConnectedTextures(reg);
     }
 
     @Override
     @SideOnly(Side.CLIENT)
-    public Icon getIcon(int side, int meta)
+    public IIcon getIcon(int side, int meta)
     {
         if (meta >= ArtificeCore.tiers.length)
             meta = 0;
@@ -92,7 +92,7 @@ public class BlockFrameBlastWall extends BlockFrame
 
     @Override
     @SideOnly(Side.CLIENT)
-    public Icon getBlockTexture(IBlockAccess access, int x, int y, int z, int side)
+    public IIcon getIcon(IBlockAccess access, int x, int y, int z, int side)
     {
         int meta = access.getBlockMetadata(x, y, z);
         if (meta > ArtificeCore.tiers.length)
@@ -114,17 +114,14 @@ public class BlockFrameBlastWall extends BlockFrame
     }
 
     @Override
-    public void onNeighborBlockChange(World world, int x, int y, int z, int neighborID)
+    public void onNeighborBlockChange(World world, int x, int y, int z, Block neighbor)
     {
         if (!world.isRemote)
-        {
-            BlockCoord c = new BlockCoord(x, y, z);
-            PacketDispatcher.sendPacketToAllAround(c.x, c.y, c.z, 192, world.provider.dimensionId, PacketWrapper.createPacket(ArtificeCore.modChannel, Packets.TEXTUREUPDATE, new Object[]{c.x, c.y, c.z}));
-        }
+            PacketSender.sendTextureUpdatePacket(world, x, y, z);
     }
 
     @Override
-    public boolean isBlockSolidOnSide(World world, int x, int y, int z, ForgeDirection side)
+    public boolean isBlockSolid(IBlockAccess world, int x, int y, int z, int side)
     {
         return true;
     }

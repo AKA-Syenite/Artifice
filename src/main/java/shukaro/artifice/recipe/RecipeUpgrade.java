@@ -28,7 +28,7 @@ public class RecipeUpgrade implements IRecipe
             if (stack == null)
                 continue;
             // If it isn't a tool and it's not an upgrade, false
-            if (!stack.getItem().isItemTool(stack) && stack.itemID != ArtificeItems.itemUpgrade.itemID)
+            if (!stack.getItem().isItemTool(stack) && !stack.getItem().equals(ArtificeItems.itemUpgrade))
                 return false;
             else if (stack.getItem().isItemTool(stack))
                 numTools++;
@@ -48,7 +48,7 @@ public class RecipeUpgrade implements IRecipe
         for (int i = 0; i < craft.getSizeInventory(); i++)
         {
             ItemStack stack = craft.getStackInSlot(i);
-            if (stack != null && stack.itemID == ArtificeItems.itemUpgrade.itemID)
+            if (stack != null && stack.getItem().equals(ArtificeItems.itemUpgrade))
                 numUpgrades++;
         }
         if (numUpgrades == 0)
@@ -61,7 +61,7 @@ public class RecipeUpgrade implements IRecipe
         for (int i = 0; i < craft.getSizeInventory(); i++)
         {
             ItemStack stack = craft.getStackInSlot(i);
-            if (stack != null && stack.itemID == ArtificeItems.itemUpgrade.itemID)
+            if (stack != null && stack.getItem().equals(ArtificeItems.itemUpgrade))
             {
                 Enchantment enchant;
                 int maxLevel = 0;
@@ -120,7 +120,7 @@ public class RecipeUpgrade implements IRecipe
                                 {
                                     for (int k = 0; k < enchants.tagCount(); k++)
                                     {
-                                        NBTTagCompound tag = (NBTTagCompound) enchants.tagAt(k);
+                                        NBTTagCompound tag = (NBTTagCompound) enchants.getCompoundTagAt(k);
                                         Enchantment other = Enchantment.enchantmentsList[tag.getShort("id")];
                                         if (!enchant.canApplyTogether(other))
                                             return false;
@@ -134,7 +134,7 @@ public class RecipeUpgrade implements IRecipe
                             NBTTagList enchants = (NBTTagList) this.output.stackTagCompound.getTag("ench");
                             for (int j = 0; j < enchants.tagCount(); j++)
                             {
-                                NBTTagCompound tag = (NBTTagCompound) enchants.tagAt(j);
+                                NBTTagCompound tag = (NBTTagCompound) enchants.getCompoundTagAt(j);
                                 if (tag.getShort("id") == enchant.effectId)
                                     tag.setShort("lvl", (short) (tag.getShort("lvl") + 1));
                             }

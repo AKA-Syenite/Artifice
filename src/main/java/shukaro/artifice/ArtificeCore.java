@@ -49,7 +49,7 @@ public class ArtificeCore
     public static final String modID = "Artifice";
     public static final String modName = "Artifice";
     public static final String modChannel = "Artifice";
-    public static final String modVersion = "1.6.4R1.1.3";
+    public static final String modVersion = "1.7.10R1.1.4";
 
     public static ArtificeWorldGen worldGen;
     public static Logger logger;

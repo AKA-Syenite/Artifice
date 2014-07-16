@@ -3,6 +3,11 @@ package shukaro.artifice;
 import java.util.concurrent.ConcurrentHashMap;
 
 import cpw.mods.fml.client.registry.RenderingRegistry;
+import net.minecraft.client.Minecraft;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.network.INetHandler;
+import net.minecraft.network.NetHandlerPlayServer;
+import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
 import shukaro.artifice.event.ArtificeBoxEventHandler;
 import shukaro.artifice.event.ArtificeClientEventHandler;
@@ -23,5 +28,18 @@ public class ClientProxy extends CommonProxy {
         RenderingRegistry.registerBlockHandler(ArtificeConfig.frameRenderID, new FrameRenderer());
         
     	ArtificeCore.textureCache = new ConcurrentHashMap<ChunkCoord, ConcurrentHashMap<BlockCoord, int[]>>();
+	}
+	
+	@Override
+	public void handlePacket(MessageHandlerBase client, MessageHandlerBase server, Packet packet, INetHandler handler) {
+        switch (FMLCommonHandler.instance().getEffectiveSide()) {
+	        case CLIENT:
+	            if(client != null)
+	            	client.onMessage(packet, handler, (EntityPlayer)Minecraft.getMinecraft().thePlayer);
+	            break;
+	        case SERVER:
+	        	super.handlePacket(client, server, packet, handler);
+	        	break;
+	    }
 	}
 }

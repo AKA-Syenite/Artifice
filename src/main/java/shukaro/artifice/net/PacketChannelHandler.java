@@ -1,8 +1,6 @@
 package shukaro.artifice.net;
 
-package pl.asie.lib.network;
-
-import shukaro.artifice.Artifice;
+import shukaro.artifice.ArtificeCore;
 import net.minecraft.network.INetHandler;
 import net.minecraft.network.NetHandlerPlayServer;
 import cpw.mods.fml.common.FMLCommonHandler;
@@ -29,6 +27,6 @@ public class PacketChannelHandler extends FMLIndexedMessageToMessageCodec<Packet
     public void decodeInto(ChannelHandlerContext ctx, ByteBuf data, Packet packet) {
         packet.fromBytes(data);
         INetHandler netHandler = ctx.channel().attr(NetworkRegistry.NET_HANDLER).get();
-        Artifice.proxy.handlePacket(handlerClient, handlerServer, packet, netHandler);
+        ArtificeCore.proxy.handlePacket(handlerClient, handlerServer, packet, netHandler);
     }
 }

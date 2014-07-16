@@ -36,7 +36,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 import org.apache.logging.log4j.Logger;
 
-import pl.asie.lib.network.PacketHandler;
+import shukaro.artifice.net.PacketHandler;
 
 @Mod(modid = ArtificeCore.modID, name = ArtificeCore.modName, version = ArtificeCore.modVersion,
 dependencies="required-after:asielib;after:BuildCraft|Core;after:EE3;after:Forestry;after:MineFactoryReloaded;after:Thaumcraft")

@@ -1,4 +1,4 @@
-package pl.asie.lib.network;
+package shukaro.artifice.net;
 
 import java.io.IOException;
 

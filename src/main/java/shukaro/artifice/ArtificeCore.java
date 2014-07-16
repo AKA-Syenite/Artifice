@@ -12,6 +12,7 @@ import cpw.mods.fml.common.event.FMLServerStartingEvent;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraft.network.NetHandlerPlayServer;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraftforge.common.MinecraftForge;
 import shukaro.artifice.compat.Buildcraft;
@@ -75,6 +76,12 @@ public class ArtificeCore
     @EventHandler
     public void preInit(FMLPreInitializationEvent evt)
     {
+    	// init reflection
+    	try {
+    		NetHandlerPlayServer.class.getDeclaredField("floatingTickCount").setAccessible(true);
+    	} catch(Exception e) {
+    		e.printStackTrace();
+    	}
     	compats.add(new Buildcraft());
     	compats.add(new EE3());
     	compats.add(new FMP());

@@ -40,7 +40,7 @@ import org.apache.logging.log4j.Logger;
 import shukaro.artifice.net.PacketHandler;
 
 @Mod(modid = ArtificeCore.modID, name = ArtificeCore.modName, version = ArtificeCore.modVersion,
-dependencies="required-after:asielib;after:BuildCraft|Core;after:EE3;after:Forestry;after:MineFactoryReloaded;after:Thaumcraft")
+dependencies="after:BuildCraft|Core;after:EE3;after:Forestry;after:MineFactoryReloaded;after:Thaumcraft")
 public class ArtificeCore
 {
 	@SidedProxy(clientSide="shukaro.artifice.ClientProxy", serverSide="shukaro.artifice.CommonProxy")	

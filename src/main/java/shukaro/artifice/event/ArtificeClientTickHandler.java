@@ -13,7 +13,7 @@ import cpw.mods.fml.common.gameevent.TickEvent.ClientTickEvent;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ArtificeSneakEventHandler
+public class ArtificeClientTickHandler
 {
     @SubscribeEvent
     @SideOnly(Side.CLIENT)
@@ -26,13 +26,11 @@ public class ArtificeSneakEventHandler
         Integer playerID = mc.thePlayer.getEntityId();
         if (Keyboard.isKeyDown(mc.gameSettings.keyBindSneak.getKeyCode()) && !PlayerTracking.sneaks.contains(playerID))
         {
-            ArtificeCore.logger.info("sneaking");
             PlayerTracking.sneaks.add(playerID);
             PacketSender.sendSneakEvent(playerID, true);
         }
         else if (!Keyboard.isKeyDown(mc.gameSettings.keyBindSneak.getKeyCode()) && PlayerTracking.sneaks.contains(playerID))
         {
-            ArtificeCore.logger.info("not sneaking");
             PlayerTracking.sneaks.remove(Integer.valueOf(playerID));
             PacketSender.sendSneakEvent(playerID, false);
         }

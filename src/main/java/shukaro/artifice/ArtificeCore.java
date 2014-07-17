@@ -1,5 +1,6 @@
 package shukaro.artifice;
 
+import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
@@ -24,6 +25,7 @@ import shukaro.artifice.compat.MFR;
 import shukaro.artifice.compat.Thaumcraft;
 import shukaro.artifice.compat.Vanilla;
 import shukaro.artifice.event.ArtificeEventHandler;
+import shukaro.artifice.event.ArtificeTickHandler;
 import shukaro.artifice.net.ClientPacketHandler;
 import shukaro.artifice.net.ServerPacketHandler;
 import shukaro.artifice.recipe.ArtificeRecipes;
@@ -54,6 +56,7 @@ public class ArtificeCore
     public static ArtificeWorldGen worldGen;
     public static Logger logger;
     public static ArtificeEventHandler eventHandler;
+    public static ArtificeTickHandler tickHandler;
     public static PacketHandler packet;
     
     public static final String[] tiers = {"Basic", "Reinforced", "Industrial", "Advanced"};
@@ -96,8 +99,9 @@ public class ArtificeCore
         ArtificeConfig.initCommon(evt);
 
         packet = new PacketHandler(modID, new ClientPacketHandler(), new ServerPacketHandler());
-        ArtificeCore.eventHandler = new ArtificeEventHandler();
-        MinecraftForge.EVENT_BUS.register(ArtificeCore.eventHandler);
+        MinecraftForge.EVENT_BUS.register(eventHandler = new ArtificeEventHandler());
+        FMLCommonHandler.instance().bus().register(tickHandler = new ArtificeTickHandler());
+
 
         ArtificeBlocks.initBlocks();
         ArtificeItems.initItems();

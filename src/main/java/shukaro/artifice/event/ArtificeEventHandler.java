@@ -35,33 +35,6 @@ import org.lwjgl.input.Keyboard;
 public class ArtificeEventHandler
 {
     private List<Integer> dimBlacklist;
-    
-    public static HashMap chunksToGen = new HashMap();
-    private int chunkCount = 0;
-    
-    @SubscribeEvent
-    public void worldTicker(WorldTickEvent wte) {
-    	if(wte.phase != TickEvent.Phase.END) return;
-        World world = wte.world;
-        int dim = world.provider.dimensionId;
-
-        ArrayList chunks = (ArrayList) chunksToGen.get(Integer.valueOf(dim));
-
-        if ((chunks != null) && (chunks.size() > 0))
-        {
-            chunkCount++;
-            ChunkCoord c = (ChunkCoord) chunks.get(0);
-            long worldSeed = world.getSeed();
-            Random rand = new Random(worldSeed);
-            long xSeed = rand.nextLong() >> 3;
-            long zSeed = rand.nextLong() >> 3;
-            rand.setSeed(xSeed * c.chunkX + zSeed * c.chunkZ ^ worldSeed);
-            ArtificeCore.worldGen.generateWorld(rand, c.chunkX, c.chunkZ, world, false);
-            chunks.remove(0);
-            chunksToGen.put(dim, chunks);
-            ArtificeCore.logger.info("Regenerated " + chunkCount + " chunks. " + Math.max(0, chunks.size()) + " chunks left");
-        }
-    }
 
     @SubscribeEvent
     public void chunkSave(ChunkDataEvent.Save e)
@@ -87,16 +60,16 @@ public class ArtificeEventHandler
         if ((!e.getData().getString("Artifice").equals(ArtificeConfig.regenKey.getString())) && (ArtificeConfig.regenLotus.getBoolean(false) || ArtificeConfig.regenFlora.getBoolean(false) || ArtificeConfig.regenBasaltLayer.getBoolean(false) || ArtificeConfig.regenMarbleLayer.getBoolean(false) || ArtificeConfig.regenBasaltClusters.getBoolean(false) || ArtificeConfig.regenMarbleClusters.getBoolean(false) || ArtificeConfig.regenBasaltCaves.getBoolean(false) || ArtificeConfig.regenMarbleCaves.getBoolean(false)))
         {
             ArtificeCore.logger.warn("World gen was never run for chunk at " + e.getChunk().getChunkCoordIntPair() + ". Adding to queue for regeneration.");
-            ArrayList chunks = (ArrayList)chunksToGen.get(Integer.valueOf(dim));
+            ArrayList chunks = (ArrayList)ArtificeTickHandler.chunksToGen.get(Integer.valueOf(dim));
             if (chunks == null)
             {
-                chunksToGen.put(dim, new ArrayList());
-                chunks = (ArrayList)chunksToGen.get(Integer.valueOf(dim));
+                ArtificeTickHandler.chunksToGen.put(dim, new ArrayList());
+                chunks = (ArrayList)ArtificeTickHandler.chunksToGen.get(Integer.valueOf(dim));
             }
             if (chunks != null)
             {
                 chunks.add(new ChunkCoord(c.chunkXPos, c.chunkZPos));
-                chunksToGen.put(dim, chunks);
+                ArtificeTickHandler.chunksToGen.put(dim, chunks);
             }
         }
     }

@@ -11,3 +11,8 @@ eclipse/
 *.DS_Store
 _MACOSX
 Thumbs.db
+
+# Ignore IntelliJ files
+*.ipr
+*.iml
+*.iws

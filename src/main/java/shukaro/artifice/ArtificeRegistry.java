@@ -142,6 +142,11 @@ public abstract class ArtificeRegistry
 
     public static void registerSledgeBlock(Block block, int meta, ArrayList<ItemStack> drops)
     {
+        if (block == null)
+        {
+            ArtificeCore.logger.warn("Tried to register null block in the sledge blocks list!");
+            return;
+        }
         ItemMetaPair pair = new ItemMetaPair(block, meta);
         if (!pair.isValidBlock())
             ArtificeCore.logger.warn("Tried to register non-block id-meta pair in the sledgeBlock map: " + pair.toString());
@@ -154,9 +159,14 @@ public abstract class ArtificeRegistry
 
     public static void registerWildSledgeBlock(Block block, ArrayList<ItemStack> drops)
     {
+        if (block == null)
+        {
+            ArtificeCore.logger.warn("Tried to register null block in the non-meta'd sledge blocks list!");
+            return;
+        }
         if (wildSledgeBlocks.get(block) == null)
         {
-            ArtificeCore.logger.info( "Registering non-meta'd sledgeable block with name " + Item.itemRegistry.getNameForObject(block));
+            ArtificeCore.logger.info( "Registering non-meta'd sledgeable block with name " + block.getUnlocalizedName());
             wildSledgeBlocks.put(block, drops);
         }
     }

@@ -5,15 +5,18 @@ import net.minecraft.item.Item;
 
 public class ItemMetaPair {
 	private Item item;
+    private int id;
 	private int meta;
-	
+
 	public ItemMetaPair(Item item, int meta) {
-		this.item = item;
+        this.item = item;
 		this.meta = meta;
 	}
 	
 	public ItemMetaPair(Block block, int meta) {
 		this(Item.getItemFromBlock(block), meta);
+        if (this.item == null)
+            this.id = Block.getIdFromBlock(block);
 	}
 	
 	public Block getBlock() { return Block.getBlockFromItem(item); }
@@ -31,6 +34,16 @@ public class ItemMetaPair {
 		ItemMetaPair imp = (ItemMetaPair)o;
 		if(this.item != null && imp.item == null || this.item == null && imp.item != null) return false;
 		if(this.item == null && imp.item == null) return true;
-		return this.meta == imp.meta && this.item.equals(imp.item);
+		return this.meta == imp.meta && this.item.equals(imp.item) && this.id == imp.id;
 	}
+
+    public String toString()
+    {
+        if (this.item != null && this.item.getUnlocalizedName() != null)
+            return this.item.getUnlocalizedName() + "|" + this.meta;
+        else if (Block.getBlockById(this.id).getUnlocalizedName() != null)
+            return Block.getBlockById(this.id).getUnlocalizedName() + "|" + this.meta;
+        else
+            return this.id + "|" + this.meta;
+    }
 }

@@ -1,24 +1,21 @@
+[
 {
-"modinfoversion": 2,
-"modlist":
-    [
-        {
-          "modid": "Artifice",
-          "name": "Artifice",
-          "description": "Practical solutions",
-          "version": "${version}",
-          "mcversion": "${mcversion}",
-          "url": "http://www.minecraftforum.net/topic/1860869-",
-          "updateUrl": "",
-          "authorList": [
-            "Shukaro"
-          ],
-          "credits": "All the contributors",
-          "logoFile": "",
-          "screenshots": [
-          ],
-          "parent":"",
-          "dependencies": [ "Forge" ]
-        }
-    ]
+  "modid": "Artifice",
+  "name": "Artifice",
+  "description": "Practical solutions",
+  "version": "${version}",
+  "mcversion"": "${mcversion}",
+  "url": "http://www.minecraftforum.net/topic/1860869-",
+  "updateUrl": "",
+  "authorList": [
+    "Shukaro"
+  ],
+  "credits": "All the contributors",
+  "logoFile": "",
+  "screenshots": [
+  ],
+  "parent":"",
+  "dependencies": [
+  ]
 }
+]

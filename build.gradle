@@ -17,11 +17,9 @@ buildscript {
 
 apply plugin: 'forge'
 
-if(build_number) {
-    version = mc_version + "-" + mod_version + "-" + build_number
-} else {
-    version = mc_version + "-" + mod_version
-}
+build_number = System.getenv("BUILD_NUMBER");
+version = mc_version + "-" + mod_version + "-" + build_number
+
 group = "com.shukaro.artifice"
 archivesBaseName = "Artifice"
 

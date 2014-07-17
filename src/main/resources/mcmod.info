@@ -4,17 +4,17 @@
   "name": "Artifice",
   "description": "Practical solutions",
   "version": "${version}",
-  "mcversion"": "${mcversion}",
+  "mcversion": "${mcversion}",
   "url": "http://www.minecraftforum.net/topic/1860869-",
   "updateUrl": "",
-  "authorList": [
+  "authors": [
     "Shukaro"
   ],
   "credits": "All the contributors",
   "logoFile": "",
   "screenshots": [
   ],
-  "parent":"",
+  "parent": "",
   "dependencies": [
   ]
 }

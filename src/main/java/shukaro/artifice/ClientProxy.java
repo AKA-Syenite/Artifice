@@ -8,7 +8,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.network.INetHandler;
 import net.minecraftforge.common.MinecraftForge;
-import shukaro.artifice.event.ArtificeSneakEventHandler;
+import shukaro.artifice.event.ArtificeClientTickHandler;
 import shukaro.artifice.event.ArtificeClientEventHandler;
 import shukaro.artifice.render.FrameRenderer;
 import shukaro.artifice.render.LotusRenderer;
@@ -21,7 +21,7 @@ public class ClientProxy extends CommonProxy {
 	public void init() {
     	MinecraftForge.EVENT_BUS.register(new ArtificeClientEventHandler());
     	if(ArtificeConfig.enableBoxes.getBoolean(true) || ArtificeConfig.enableFrames.getBoolean(true))
-            FMLCommonHandler.instance().bus().register(new ArtificeSneakEventHandler());
+            FMLCommonHandler.instance().bus().register(new ArtificeClientTickHandler());
     	
         ArtificeConfig.lotusRenderID = RenderingRegistry.getNextAvailableRenderId();
         RenderingRegistry.registerBlockHandler(ArtificeConfig.lotusRenderID, new LotusRenderer());

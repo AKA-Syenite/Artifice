@@ -82,12 +82,12 @@ public class ComparableItemStack
     @Deprecated
     public Item getItem()
     {
-    	return item;
+        return item;
     }
 
     public ItemStack toItemStack()
     {
-    	return isStackValid() ? new ItemStack(item, stackSize, metadata) : null;
+        return isStackValid() ? new ItemStack(item, stackSize, metadata) : null;
     }
 
     @Override

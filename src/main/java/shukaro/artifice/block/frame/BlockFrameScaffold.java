@@ -16,7 +16,6 @@ import net.minecraftforge.common.util.ForgeDirection;
 import shukaro.artifice.ArtificeConfig;
 import shukaro.artifice.ArtificeCore;
 import shukaro.artifice.net.PacketSender;
-import shukaro.artifice.net.Packets;
 import shukaro.artifice.net.PlayerTracking;
 import shukaro.artifice.render.IconHandler;
 import shukaro.artifice.render.TextureHandler;
@@ -48,14 +47,18 @@ public class BlockFrameScaffold extends BlockFrame
     @Override
     public void onEntityCollidedWithBlock(World world, int x, int y, int z, Entity entity)
     {
-    	if (entity instanceof EntityPlayerMP) {
-    		NetHandlerPlayServer nhps = ((EntityPlayerMP)entity).playerNetServerHandler;
-        	try {
-        		NetHandlerPlayServer.class.getDeclaredField("floatingTickCount").setInt(nhps, 0);
-        	} catch(Exception e) {
-        		e.printStackTrace();
-        	}
-    	}
+        if (entity instanceof EntityPlayerMP)
+        {
+            NetHandlerPlayServer nhps = ((EntityPlayerMP) entity).playerNetServerHandler;
+            try
+            {
+                NetHandlerPlayServer.class.getDeclaredField("floatingTickCount").setInt(nhps, 0);
+            }
+            catch (Exception e)
+            {
+                e.printStackTrace();
+            }
+        }
         entity.fallDistance = 0;
         if (entity.isCollidedHorizontally)
         {

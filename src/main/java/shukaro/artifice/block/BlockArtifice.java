@@ -18,7 +18,7 @@ public abstract class BlockArtifice extends Block
 {
     protected BlockArtifice(Material mat)
     {
-        super( mat);
+        super(mat);
         setCreativeTab(ArtificeCreativeTab.main);
     }
 

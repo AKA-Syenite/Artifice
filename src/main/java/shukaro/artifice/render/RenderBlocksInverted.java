@@ -931,11 +931,12 @@ public class RenderBlocksInverted
     }
 
     private float getAmbientOcclusionLightValue(IBlockAccess blockAccess,
-			int par2, int par3, int par4) {
-		return blockAccess.getBlock(par2, par3, par4).getAmbientOcclusionLightValue();
-	}
+                                                int par2, int par3, int par4)
+    {
+        return blockAccess.getBlock(par2, par3, par4).getAmbientOcclusionLightValue();
+    }
 
-	public boolean renderStandardBlockWithAmbientOcclusion(RenderBlocks renderer, Block par1Block, int par2, int par3, int par4, float par5, float par6,
+    public boolean renderStandardBlockWithAmbientOcclusion(RenderBlocks renderer, Block par1Block, int par2, int par3, int par4, float par5, float par6,
                                                            float par7)
     {
         renderer.enableAO = true;

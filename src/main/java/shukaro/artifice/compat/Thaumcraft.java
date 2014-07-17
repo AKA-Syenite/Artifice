@@ -1,9 +1,6 @@
 package shukaro.artifice.compat;
 
 import cpw.mods.fml.common.FMLLog;
-import cpw.mods.fml.common.Loader;
-import cpw.mods.fml.common.Mod;
-import cpw.mods.fml.common.event.FMLInitializationEvent;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -11,12 +8,10 @@ import net.minecraft.nbt.NBTBase;
 import shukaro.artifice.ArtificeBlocks;
 import shukaro.artifice.ArtificeCore;
 import shukaro.artifice.ArtificeItems;
-import shukaro.artifice.block.decorative.BlockBasaltSlab;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
 import java.util.LinkedHashMap;
-import java.util.logging.Level;
 
 public class Thaumcraft implements ICompat
 {
@@ -27,13 +22,17 @@ public class Thaumcraft implements ICompat
     private static Constructor<?> newAspectList = null;
     private static Method addAspect = null;
 
-    public String getModID() { return "Thaumcraft"; }
+    public String getModID()
+    {
+        return "Thaumcraft";
+    }
+
     public void load()
     {
         try
         {
             Class<?> Aspect = Class.forName("thaumcraft.api.aspects.Aspect");
-            aspects = (LinkedHashMap<String, ? extends Object>)Aspect.getDeclaredField("aspects").get(null);
+            aspects = (LinkedHashMap<String, ? extends Object>) Aspect.getDeclaredField("aspects").get(null);
             Class<?> ThaumcraftApi = Class.forName("thaumcraft.api.ThaumcraftApi");
             AspectList = Class.forName("thaumcraft.api.aspects.AspectList");
             registerItem = ThaumcraftApi.getDeclaredMethod("registerObjectTag", int.class, int.class, AspectList);
@@ -60,7 +59,7 @@ public class Thaumcraft implements ICompat
             aspectList = newAspectList.newInstance(item.getItem(), item.getItemDamage());
         else
             aspectList = AspectList.newInstance();
-        for (int i = list.length; i --> 0; )
+        for (int i = list.length; i-- > 0; )
         {
             String[] temp = list[i].trim().split(" ");
             temp[1] = temp[1].toLowerCase();
@@ -76,7 +75,7 @@ public class Thaumcraft implements ICompat
     {
         String[] list = toadd.split(",");
         Object aspectList = AspectList.newInstance();
-        for (int i = list.length; i --> 0; )
+        for (int i = list.length; i-- > 0; )
         {
             String[] temp = list[i].trim().split(" ");
             temp[1] = temp[1].toLowerCase();

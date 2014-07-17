@@ -9,7 +9,6 @@ import net.minecraftforge.oredict.ShapelessOreRecipe;
 import shukaro.artifice.util.ItemMetaPair;
 
 import java.util.*;
-import java.util.logging.Level;
 
 public abstract class ArtificeRegistry
 {
@@ -24,7 +23,7 @@ public abstract class ArtificeRegistry
 
     public static void registerMarbleType(Block block, int meta)
     {
-        ArtificeCore.logger.info( "Registering marble type " + Block.blockRegistry.getNameForObject(block) + ":" + meta);
+        ArtificeCore.logger.info("Registering marble type " + Block.blockRegistry.getNameForObject(block) + ":" + meta);
         ItemStack stack = new ItemStack(block, 1, meta);
         if (marbleTypes.isEmpty())
             marbleTypes.add(stack);
@@ -54,7 +53,7 @@ public abstract class ArtificeRegistry
                         ArrayList<Object> input = ((ShapelessOreRecipe) o).getInput();
                         if (input.size() > 1)
                             continue;
-                        else if (input.get(0) instanceof ItemStack && ((ItemStack)input.get(0)).isItemEqual(marbleTypes.get(marbleTypes.size() - 2)))
+                        else if (input.get(0) instanceof ItemStack && ((ItemStack) input.get(0)).isItemEqual(marbleTypes.get(marbleTypes.size() - 2)))
                             CraftingManager.getInstance().getRecipeList().remove(o);
                     }
                 }
@@ -71,7 +70,7 @@ public abstract class ArtificeRegistry
 
     public static void registerBasaltType(Block block, int meta)
     {
-        ArtificeCore.logger.info( "Registering basalt type " + Block.blockRegistry.getNameForObject(block) + ":" + meta);
+        ArtificeCore.logger.info("Registering basalt type " + Block.blockRegistry.getNameForObject(block) + ":" + meta);
         ItemStack stack = new ItemStack(block, 1, meta);
         if (basaltTypes.isEmpty())
             basaltTypes.add(stack);
@@ -101,7 +100,7 @@ public abstract class ArtificeRegistry
                         ArrayList<Object> input = ((ShapelessOreRecipe) o).getInput();
                         if (input.size() > 1)
                             continue;
-                        else if ((input.get(0) instanceof ItemStack) && ((ItemStack)input.get(0)).isItemEqual(basaltTypes.get(basaltTypes.size() - 2)))
+                        else if ((input.get(0) instanceof ItemStack) && ((ItemStack) input.get(0)).isItemEqual(basaltTypes.get(basaltTypes.size() - 2)))
                             CraftingManager.getInstance().getRecipeList().remove(o);
                     }
                 }
@@ -130,9 +129,10 @@ public abstract class ArtificeRegistry
             tooltipMap.get(pair).add(line);
         }
     }
-    
-    public static void registerTooltip(Block block, int meta, String line) {
-    	registerTooltip(Item.getItemFromBlock(block), meta, line);
+
+    public static void registerTooltip(Block block, int meta, String line)
+    {
+        registerTooltip(Item.getItemFromBlock(block), meta, line);
     }
 
     public static Map<ItemMetaPair, List<String>> getTooltipMap()
@@ -152,7 +152,7 @@ public abstract class ArtificeRegistry
             ArtificeCore.logger.warn("Tried to register non-block id-meta pair in the sledgeBlock map: " + pair.toString());
         else if (sledgeBlocks.get(pair) == null)
         {
-            ArtificeCore.logger.info( "Registering sledgeable block " + pair);
+            ArtificeCore.logger.info("Registering sledgeable block " + pair);
             sledgeBlocks.put(pair, drops);
         }
     }
@@ -166,7 +166,7 @@ public abstract class ArtificeRegistry
         }
         if (wildSledgeBlocks.get(block) == null)
         {
-            ArtificeCore.logger.info( "Registering non-meta'd sledgeable block with name " + block.getUnlocalizedName());
+            ArtificeCore.logger.info("Registering non-meta'd sledgeable block with name " + block.getUnlocalizedName());
             wildSledgeBlocks.put(block, drops);
         }
     }
@@ -199,7 +199,7 @@ public abstract class ArtificeRegistry
     {
         if (!stoneTypes.contains(stone))
         {
-            ArtificeCore.logger.info( "Registering stone type with name " + Block.blockRegistry.getNameForObject(stone));
+            ArtificeCore.logger.info("Registering stone type with name " + Block.blockRegistry.getNameForObject(stone));
             stoneTypes.add(stone);
         }
     }
@@ -213,7 +213,7 @@ public abstract class ArtificeRegistry
     {
         if (!worldTypeBlacklist.contains(type))
         {
-            ArtificeCore.logger.info( "Registering " + type + " to world type blacklist");
+            ArtificeCore.logger.info("Registering " + type + " to world type blacklist");
             worldTypeBlacklist.add(type);
         }
     }

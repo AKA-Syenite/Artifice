@@ -21,17 +21,19 @@ public class ItemBlockSlabArtifice extends ItemSlab
     {
         super(block, getHalfSlab(block), getDoubleSlab(block), block.isOpaqueCube());
     }
-    
-    private static BlockSlab getHalfSlab(Block block) {
-    	if(block instanceof BlockBasaltSlab) return ArtificeBlocks.blockBasaltSlab;
-    	else return ArtificeBlocks.blockMarbleSlab;
+
+    private static BlockSlab getHalfSlab(Block block)
+    {
+        if (block instanceof BlockBasaltSlab) return ArtificeBlocks.blockBasaltSlab;
+        else return ArtificeBlocks.blockMarbleSlab;
     }
 
-    private static BlockSlab getDoubleSlab(Block block) {
-    	if(block instanceof BlockBasaltSlab) return ArtificeBlocks.blockBasaltDoubleSlab;
-    	else return ArtificeBlocks.blockMarbleDoubleSlab;
+    private static BlockSlab getDoubleSlab(Block block)
+    {
+        if (block instanceof BlockBasaltSlab) return ArtificeBlocks.blockBasaltDoubleSlab;
+        else return ArtificeBlocks.blockMarbleDoubleSlab;
     }
-    
+
     @Override
     @SideOnly(Side.CLIENT)
     public void addInformation(ItemStack stack, EntityPlayer player, List infoList, boolean advancedTooltips)

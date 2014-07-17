@@ -1,39 +1,35 @@
 package shukaro.artifice.net;
 
-import io.netty.channel.ChannelFutureListener;
-
-import java.io.IOException;
-import java.util.EnumMap;
-
 import cpw.mods.fml.common.network.FMLEmbeddedChannel;
 import cpw.mods.fml.common.network.FMLOutboundHandler;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.network.NetworkRegistry.TargetPoint;
-import cpw.mods.fml.common.network.simpleimpl.IMessageHandler;
-import cpw.mods.fml.common.network.simpleimpl.SimpleChannelHandlerWrapper;
-import cpw.mods.fml.common.network.simpleimpl.SimpleIndexedCodec;
-import cpw.mods.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import cpw.mods.fml.relauncher.Side;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayerMP;
-import net.minecraft.network.INetHandler;
-import net.minecraft.server.MinecraftServer;
 import net.minecraft.tileentity.TileEntity;
 
-public class PacketHandler {
-    private EnumMap<Side, FMLEmbeddedChannel> channels;
-    
-	public PacketHandler(String channelName, MessageHandlerBase client, MessageHandlerBase server) {
-        channels = NetworkRegistry.INSTANCE.newChannel(channelName, new PacketChannelHandler(client, server));
-	}
+import java.io.IOException;
+import java.util.EnumMap;
 
-	public Packet create() {
-		return new Packet();
-	}
-	
-	public Packet create(int prefix) throws IOException {
-		return new Packet().writeShort((short)prefix);
-	}
+public class PacketHandler
+{
+    private EnumMap<Side, FMLEmbeddedChannel> channels;
+
+    public PacketHandler(String channelName, MessageHandlerBase client, MessageHandlerBase server)
+    {
+        channels = NetworkRegistry.INSTANCE.newChannel(channelName, new PacketChannelHandler(client, server));
+    }
+
+    public Packet create()
+    {
+        return new Packet();
+    }
+
+    public Packet create(int prefix) throws IOException
+    {
+        return new Packet().writeShort((short) prefix);
+    }
 
     public net.minecraft.network.Packet getPacketFrom(Packet message)
     {
@@ -72,14 +68,16 @@ public class PacketHandler {
         channels.get(Side.CLIENT).attr(FMLOutboundHandler.FML_MESSAGETARGET).set(FMLOutboundHandler.OutboundTarget.TOSERVER);
         channels.get(Side.CLIENT).writeOutbound(message);
     }
-    
-	public void sendToAllAround(Packet packet, TileEntity entity,
-			double d) {
-		this.sendToAllAround(packet, new TargetPoint(entity.getWorldObj().provider.dimensionId, entity.xCoord, entity.yCoord, entity.zCoord, d));
-	}
-	
-	public void sendToAllAround(Packet packet, Entity entity,
-			double d) {
-		this.sendToAllAround(packet, new TargetPoint(entity.dimension, entity.posX, entity.posY, entity.posZ, d));
-	}
+
+    public void sendToAllAround(Packet packet, TileEntity entity,
+                                double d)
+    {
+        this.sendToAllAround(packet, new TargetPoint(entity.getWorldObj().provider.dimensionId, entity.xCoord, entity.yCoord, entity.zCoord, d));
+    }
+
+    public void sendToAllAround(Packet packet, Entity entity,
+                                double d)
+    {
+        this.sendToAllAround(packet, new TargetPoint(entity.dimension, entity.posX, entity.posY, entity.posZ, d));
+    }
 }

@@ -24,7 +24,7 @@ public class WorldGenLayer
 
     public WorldGenLayer(World world, Block block, int minHeight, int maxHeight, Set<Block> replaced)
     {
-    	this.world = world;
+        this.world = world;
         this.block = block;
         this.minHeight = minHeight;
         this.maxHeight = maxHeight;

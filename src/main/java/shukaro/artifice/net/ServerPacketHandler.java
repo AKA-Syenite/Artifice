@@ -2,6 +2,7 @@ package shukaro.artifice.net;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.network.INetHandler;
+import shukaro.artifice.ArtificeCore;
 import shukaro.artifice.render.TextureHandler;
 import shukaro.artifice.util.BlockCoord;
 
@@ -16,12 +17,13 @@ public class ServerPacketHandler extends MessageHandlerBase
 			int command) throws IOException {
 		switch(command) {
 		case Packets.SNEAKEVENT: {
+            ArtificeCore.logger.info("got sneak packet");
 			int entityId = packet.readInt();
 			boolean doAdd = packet.readByte() != 0;
 			if(doAdd) {
 				PlayerTracking.sneaks.add(entityId);
 			} else {
-				PlayerTracking.sneaks.remove(entityId);
+				PlayerTracking.sneaks.remove(Integer.valueOf(entityId));
 			}
 		} return;
 		}

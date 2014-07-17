@@ -94,6 +94,11 @@ public class ItemSledge extends ItemTool
     {
         if (ArtificeRegistry.getWildSledgeBlocks().get(block) != null)
             return this.toolMaterial.getEfficiencyOnProperMaterial();
+        for (int i = 0; i < 16; i++)
+        {
+            if (ArtificeRegistry.getSledgeBlocks().get(new ItemMetaPair(block, i)) != null)
+                return this.toolMaterial.getEfficiencyOnProperMaterial();
+        }
         return 1.0F;
     }
 

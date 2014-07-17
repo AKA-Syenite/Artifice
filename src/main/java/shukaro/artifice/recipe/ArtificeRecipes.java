@@ -1,10 +1,8 @@
 package shukaro.artifice.recipe;
 
 import cpw.mods.fml.common.registry.GameRegistry;
-import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraftforge.common.MinecraftForge;
@@ -60,7 +58,7 @@ public class ArtificeRecipes
 
             GameRegistry.addRecipe(new RecipeBox());
             RecipeSorter.register("artifice:box", RecipeBox.class, Category.SHAPED, "after:minecraft:shaped before:minecraft:shapeless");
-            
+
             MinecraftForge.EVENT_BUS.register(new BoxCraftingHandler());
         }
         if (ArtificeConfig.sickleRecipes.getBoolean(true))

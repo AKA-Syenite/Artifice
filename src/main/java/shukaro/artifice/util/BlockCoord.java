@@ -361,7 +361,7 @@ public class BlockCoord implements Comparable
 
     public boolean blockEquals(World world, BlockCoord c)
     {
-        return c.getBlock(world) == null && this.getBlock(world) == null || !(c.getBlock(world) == null ^ this.getBlock(world) == null) && ( c.getBlock(world).equals(this.getBlock(world)) && c.getMeta(world) == this.getMeta(world));
+        return c.getBlock(world) == null && this.getBlock(world) == null || !(c.getBlock(world) == null ^ this.getBlock(world) == null) && (c.getBlock(world).equals(this.getBlock(world)) && c.getMeta(world) == this.getMeta(world));
     }
 
     public boolean blockEquals(World world, Block block, int meta)

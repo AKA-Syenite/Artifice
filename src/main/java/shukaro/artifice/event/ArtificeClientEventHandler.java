@@ -1,25 +1,19 @@
 package shukaro.artifice.event;
 
-import org.lwjgl.input.Keyboard;
-
-import net.minecraft.client.Minecraft;
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraftforge.client.event.TextureStitchEvent;
 import net.minecraftforge.event.world.ChunkWatchEvent;
 import net.minecraftforge.event.world.WorldEvent;
 import shukaro.artifice.ArtificeConfig;
 import shukaro.artifice.ArtificeCore;
-import shukaro.artifice.net.PacketSender;
-import shukaro.artifice.net.PlayerTracking;
 import shukaro.artifice.util.BlockCoord;
 import shukaro.artifice.util.ChunkCoord;
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
-import cpw.mods.fml.common.gameevent.TickEvent;
-import cpw.mods.fml.common.gameevent.TickEvent.ClientTickEvent;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
-public class ArtificeClientEventHandler {
-	@SubscribeEvent
+public class ArtificeClientEventHandler
+{
+    @SubscribeEvent
     @SideOnly(Side.CLIENT)
     public void preTextureStitch(TextureStitchEvent.Pre e)
     {
@@ -47,7 +41,7 @@ public class ArtificeClientEventHandler {
                 {
                     if (c.x == (chunk.chunkX << 4) - 1 || c.x == (chunk.chunkX << 4) + 16)
                     {
-                        if (c.z < (chunk.chunkZ << 4) + 16 && c.z > (chunk.chunkZ <<4) - 1)
+                        if (c.z < (chunk.chunkZ << 4) + 16 && c.z > (chunk.chunkZ << 4) - 1)
                         {
                             ArtificeCore.textureCache.get(sector).remove(c);
                             e.player.worldObj.markBlockRangeForRenderUpdate(c.x, c.y, c.z, c.x, c.y, c.z);
@@ -55,7 +49,7 @@ public class ArtificeClientEventHandler {
                     }
                     if (c.z == (chunk.chunkZ << 4) - 1 || c.z == (chunk.chunkZ << 4) + 16)
                     {
-                        if (c.x > (chunk.chunkX << 4) - 1 && c.x < (chunk.chunkX <<4) + 16)
+                        if (c.x > (chunk.chunkX << 4) - 1 && c.x < (chunk.chunkX << 4) + 16)
                         {
                             ArtificeCore.textureCache.get(sector).remove(c);
                             e.player.worldObj.markBlockRangeForRenderUpdate(c.x, c.y, c.z, c.x, c.y, c.z);

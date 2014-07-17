@@ -16,8 +16,9 @@ public class ArtificeTickHandler
     private int chunkCount = 0;
 
     @SubscribeEvent
-    public void worldTicker(TickEvent.WorldTickEvent wte) {
-        if(wte.phase != TickEvent.Phase.END) return;
+    public void worldTicker(TickEvent.WorldTickEvent wte)
+    {
+        if (wte.phase != TickEvent.Phase.END) return;
         World world = wte.world;
         int dim = world.provider.dimensionId;
 

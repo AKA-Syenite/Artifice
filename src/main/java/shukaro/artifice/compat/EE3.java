@@ -1,11 +1,6 @@
 package shukaro.artifice.compat;
 
-import cpw.mods.fml.common.Loader;
-import cpw.mods.fml.common.Mod;
-import cpw.mods.fml.common.Mod.EventHandler;
-import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.registry.GameRegistry;
-import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import shukaro.artifice.ArtificeBlocks;
@@ -13,11 +8,14 @@ import shukaro.artifice.ArtificeConfig;
 import shukaro.artifice.ArtificeCore;
 
 import java.util.List;
-import java.util.logging.Level;
 
 public class EE3 implements ICompat
 {
-	public String getModID() { return "EE3"; }
+    public String getModID()
+    {
+        return "EE3";
+    }
+
     public void load()
     {
         try

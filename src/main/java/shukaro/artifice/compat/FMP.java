@@ -1,18 +1,17 @@
 package shukaro.artifice.compat;
 
-import cpw.mods.fml.common.Loader;
-import cpw.mods.fml.common.Mod;
-import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLInterModComms;
 import net.minecraft.item.ItemStack;
 import shukaro.artifice.ArtificeBlocks;
 import shukaro.artifice.ArtificeCore;
 
-import java.util.logging.Level;
-
 public class FMP implements ICompat
 {
-	public String getModID() { return "ForgeMicroblock"; }
+    public String getModID()
+    {
+        return "ForgeMicroblock";
+    }
+
     public void load()
     {
         try

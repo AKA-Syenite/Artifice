@@ -17,8 +17,8 @@ public class BoxCraftingHandler
     @SubscribeEvent
     public void onCrafting(PlayerEvent.ItemCraftedEvent event)
     {
-    	IInventory craft = event.craftMatrix;
-    	EntityPlayer player = event.player;
+        IInventory craft = event.craftMatrix;
+        EntityPlayer player = event.player;
         for (int i = 0; i < craft.getSizeInventory(); i++)
         {
             // Is the item in the grid a box?

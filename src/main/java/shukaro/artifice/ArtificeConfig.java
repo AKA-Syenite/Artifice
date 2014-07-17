@@ -3,16 +3,12 @@ package shukaro.artifice;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import shukaro.artifice.render.IconHandler;
-import shukaro.artifice.render.connectedtexture.ConnectedTextures;
-
-import java.util.logging.Level;
-
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.texture.IIconRegister;
-import net.minecraft.item.Item;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.common.config.Property;
+import shukaro.artifice.render.IconHandler;
+import shukaro.artifice.render.connectedtexture.ConnectedTextures;
 
 public class ArtificeConfig
 {
@@ -388,9 +384,9 @@ public class ArtificeConfig
                 String itemName = pair.split(";")[0];
                 Integer meta = Integer.parseInt(pair.split(";")[1]);
                 if (isMarble)
-                    ArtificeRegistry.registerMarbleType((Block)Block.blockRegistry.getObject(itemName), meta);
+                    ArtificeRegistry.registerMarbleType((Block) Block.blockRegistry.getObject(itemName), meta);
                 else
-                    ArtificeRegistry.registerBasaltType((Block)Block.blockRegistry.getObject(itemName), meta);
+                    ArtificeRegistry.registerBasaltType((Block) Block.blockRegistry.getObject(itemName), meta);
             }
             catch (Exception e)
             {

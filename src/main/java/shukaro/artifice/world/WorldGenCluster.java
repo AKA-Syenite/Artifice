@@ -1,7 +1,6 @@
 package shukaro.artifice.world;
 
 import net.minecraft.block.Block;
-import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
 import shukaro.artifice.ArtificeRegistry;
 import shukaro.artifice.util.BlockCoord;

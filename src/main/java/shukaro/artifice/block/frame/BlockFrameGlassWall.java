@@ -8,11 +8,9 @@ import net.minecraft.entity.Entity;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-import net.minecraftforge.common.util.ForgeDirection;
 import shukaro.artifice.ArtificeConfig;
 import shukaro.artifice.ArtificeCore;
 import shukaro.artifice.net.PacketSender;
-import shukaro.artifice.net.Packets;
 import shukaro.artifice.render.TextureHandler;
 import shukaro.artifice.render.connectedtexture.ConnectedTextureBase;
 import shukaro.artifice.render.connectedtexture.ConnectedTextures;
@@ -118,7 +116,7 @@ public class BlockFrameGlassWall extends BlockFrame
     public void onNeighborBlockChange(World world, int x, int y, int z, Block neighbor)
     {
         if (!world.isRemote)
-        	PacketSender.sendTextureUpdatePacket(world, x, y, z);
+            PacketSender.sendTextureUpdatePacket(world, x, y, z);
     }
 
     @Override

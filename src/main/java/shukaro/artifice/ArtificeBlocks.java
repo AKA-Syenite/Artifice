@@ -2,9 +2,7 @@ package shukaro.artifice;
 
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.block.BlockSlab;
-import net.minecraft.item.Item;
 import net.minecraftforge.oredict.OreDictionary;
-import shukaro.artifice.block.decorative.BlockSteel;
 import shukaro.artifice.block.ItemBlockArtifice;
 import shukaro.artifice.block.decorative.*;
 import shukaro.artifice.block.frame.*;
@@ -50,7 +48,7 @@ public class ArtificeBlocks
             GameRegistry.registerBlock(blockBasaltDoubleSlab, ItemBlockSlabArtifice.class, blockBasalt.getUnlocalizedName() + "_double_slab");
             GameRegistry.registerBlock(blockMarbleSlab, ItemBlockSlabArtifice.class, blockMarble.getUnlocalizedName() + "_slab");
             GameRegistry.registerBlock(blockMarbleDoubleSlab, ItemBlockSlabArtifice.class, blockMarble.getUnlocalizedName() + "_dobule_slab");
- 
+
             GameRegistry.registerBlock(blockFlora, ItemBlockFlora.class, blockFlora.getUnlocalizedName());
             GameRegistry.registerBlock(blockLotus, ItemBlockLotus.class, blockLotus.getUnlocalizedName());
             GameRegistry.registerBlock(blockBasalt, ItemBlockBasalt.class, blockBasalt.getUnlocalizedName());

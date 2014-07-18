@@ -15,7 +15,7 @@ import shukaro.artifice.ArtificeConfig;
 import shukaro.artifice.ArtificeCore;
 import shukaro.artifice.block.BlockArtifice;
 import shukaro.artifice.gui.ArtificeCreativeTab;
-import shukaro.artifice.net.PacketSender;
+import shukaro.artifice.net.PacketDispatcher;
 import shukaro.artifice.render.IconHandler;
 import shukaro.artifice.render.TextureHandler;
 import shukaro.artifice.render.connectedtexture.ConnectedTextures;
@@ -113,7 +113,7 @@ public class BlockMarble extends BlockArtifice
             int meta = world.getBlockMetadata(x, y, z);
             BlockCoord c = new BlockCoord(x, y, z);
             if (c.getBlock(world) != null && (meta == 3 || meta == 4))
-                PacketSender.sendTextureUpdatePacket(world, x, y, z);
+                PacketDispatcher.sendTextureUpdatePacket(world, x, y, z);
         }
     }
 }

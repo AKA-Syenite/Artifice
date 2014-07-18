@@ -10,7 +10,7 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import shukaro.artifice.ArtificeConfig;
 import shukaro.artifice.ArtificeCore;
-import shukaro.artifice.net.PacketSender;
+import shukaro.artifice.net.PacketDispatcher;
 import shukaro.artifice.render.TextureHandler;
 import shukaro.artifice.render.connectedtexture.ConnectedTextures;
 import shukaro.artifice.util.BlockCoord;
@@ -115,7 +115,7 @@ public class BlockFrameBlastWall extends BlockFrame
     public void onNeighborBlockChange(World world, int x, int y, int z, Block neighbor)
     {
         if (!world.isRemote)
-            PacketSender.sendTextureUpdatePacket(world, x, y, z);
+            PacketDispatcher.sendTextureUpdatePacket(world, x, y, z);
     }
 
     @Override

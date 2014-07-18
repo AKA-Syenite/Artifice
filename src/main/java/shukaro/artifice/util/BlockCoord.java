@@ -16,12 +16,14 @@ public class BlockCoord implements Comparable
     public int y;
     public int z;
     private static final BlockCoord[] sideOffsets =
-            {new BlockCoord(0, -1, 0), new BlockCoord(0, 1, 0),
+            {
+                    new BlockCoord(0, -1, 0), new BlockCoord(0, 1, 0),
                     new BlockCoord(0, 0, -1), new BlockCoord(0, 0, 1),
                     new BlockCoord(-1, 0, 0), new BlockCoord(1, 0, 0)};
 
     private static final BlockCoord[] nearbyOffsets =
-            {new BlockCoord(-1, 1, 1), new BlockCoord(0, 1, 1),
+            {
+                    new BlockCoord(-1, 1, 1), new BlockCoord(0, 1, 1),
                     new BlockCoord(1, 1, 1), new BlockCoord(-1, 0, 1),
                     new BlockCoord(0, 0, 1), new BlockCoord(1, 0, 1),
                     new BlockCoord(-1, -1, 1), new BlockCoord(0, -1, 1),

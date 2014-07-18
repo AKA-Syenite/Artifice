@@ -16,7 +16,6 @@ public class ServerPacketHandler extends MessageHandlerBase
         {
             case Packets.SNEAKEVENT:
             {
-                ArtificeCore.logger.info("got sneak packet");
                 int entityId = packet.readInt();
                 boolean doAdd = packet.readByte() != 0;
                 if (doAdd)

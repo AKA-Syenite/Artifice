@@ -56,6 +56,4 @@ Villager chatter
 Robotic shopkeepers
 Seed bags
 Sign tools
-
-Thaumcraft compat
 API (with IMC)

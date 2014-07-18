@@ -6,7 +6,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.world.World;
 import shukaro.artifice.ArtificeCore;
 
-public class PacketSender
+public class PacketDispatcher
 {
     public static void sendTextureUpdatePacket(World world, int x, int y, int z)
     {

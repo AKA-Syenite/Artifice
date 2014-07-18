@@ -10,8 +10,7 @@ import java.io.IOException;
 public class ClientPacketHandler extends MessageHandlerBase
 {
     @Override
-    public void onMessage(Packet packet, INetHandler handler, EntityPlayer player,
-                          int command) throws IOException
+    public void onMessage(Packet packet, INetHandler handler, EntityPlayer player, int command) throws IOException
     {
         switch (command)
         {

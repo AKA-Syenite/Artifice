@@ -15,7 +15,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
 import shukaro.artifice.ArtificeConfig;
 import shukaro.artifice.ArtificeCore;
-import shukaro.artifice.net.PacketSender;
+import shukaro.artifice.net.PacketDispatcher;
 import shukaro.artifice.net.PlayerTracking;
 import shukaro.artifice.render.IconHandler;
 import shukaro.artifice.render.TextureHandler;
@@ -179,7 +179,7 @@ public class BlockFrameScaffold extends BlockFrame
     public void onNeighborBlockChange(World world, int x, int y, int z, Block neighbor)
     {
         if (!world.isRemote)
-            PacketSender.sendTextureUpdatePacket(world, x, y, z);
+            PacketDispatcher.sendTextureUpdatePacket(world, x, y, z);
 
         if (!canBlockStay(world, x, y, z))
         {

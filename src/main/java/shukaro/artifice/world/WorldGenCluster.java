@@ -71,7 +71,7 @@ public class WorldGenCluster
                 break;
             c.set(blocks.get(rand.nextInt(blocks.size())));
             blocks.remove(c);
-            world.setBlockToAir(c.x, c.y, c.z);
+            world.setBlock(c.x, c.y, c.z, block);
             genned++;
             while (blocks.size() > threshold && genned < size)
             {
@@ -79,7 +79,7 @@ public class WorldGenCluster
                     break;
                 c.set(blocks.get(rand.nextInt(blocks.size())));
                 blocks.remove(c);
-                world.setBlockToAir(c.x, c.y, c.z);
+                world.setBlock(c.x, c.y, c.z, block);
                 genned++;
             }
         }

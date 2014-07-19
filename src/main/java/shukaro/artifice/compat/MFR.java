@@ -1,7 +1,9 @@
 package shukaro.artifice.compat;
 
+import cpw.mods.fml.common.event.FMLInterModComms;
+import powercrystals.minefactoryreloaded.api.FactoryRegistry;
 import shukaro.artifice.ArtificeCore;
-import shukaro.artifice.compat.mfr.MFRHandler;
+import shukaro.artifice.compat.mfr.FactoryFlora;
 
 public class MFR implements ICompat
 {
@@ -14,7 +16,7 @@ public class MFR implements ICompat
     {
         try
         {
-            MFRHandler.handle();
+            FactoryRegistry.sendMessage("registerHarvestable", new FactoryFlora());
             ArtificeCore.logger.info("MineFactoryReloaded Compat Initialized");
         }
         catch (Throwable ex)

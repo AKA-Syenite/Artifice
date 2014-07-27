@@ -20,7 +20,7 @@ import shukaro.artifice.ArtificeRegistry;
 import shukaro.artifice.ArtificeTooltips;
 import shukaro.artifice.render.IconHandler;
 import shukaro.artifice.util.FormatCodes;
-import shukaro.artifice.util.IDMetaPair;
+import shukaro.artifice.util.NameMetaPair;
 
 import java.util.List;
 
@@ -183,7 +183,7 @@ public class ItemBox extends ItemArtifice
     {
         if (ArtificeConfig.tooltips.getBoolean(true))
         {
-            IDMetaPair pair = new IDMetaPair(stack.getItem(), 0);
+            NameMetaPair pair = new NameMetaPair(stack.getItem(), 0);
             if (ArtificeRegistry.getTooltipMap().get(pair) != null)
             {
                 for (String s : ArtificeRegistry.getTooltipMap().get(pair))
@@ -216,7 +216,7 @@ public class ItemBox extends ItemArtifice
         }
         if (ArtificeConfig.tooltips.getBoolean(true))
         {
-            IDMetaPair pair = new IDMetaPair(stack.getItem(), 0);
+            NameMetaPair pair = new NameMetaPair(stack.getItem(), 0);
             if (ArtificeRegistry.getTooltipMap().get(pair) != null)
             {
                 for (String s : ArtificeRegistry.getTooltipMap().get(pair))

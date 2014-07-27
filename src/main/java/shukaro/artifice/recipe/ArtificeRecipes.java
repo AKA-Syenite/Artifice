@@ -83,6 +83,8 @@ public class ArtificeRecipes
         {
             registerConvenienceRecipes();
         }
+        if (ArtificeConfig.lampRecipes.getBoolean(true))
+            registerLampRecipes();
     }
 
     private static void registerConvenienceRecipes()
@@ -642,5 +644,31 @@ public class ArtificeRecipes
         GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ArtificeBlocks.blockMarbleSlab, 1, 2), new ItemStack(ArtificeBlocks.blockMarbleSlab, 1, 3)));
 
         GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ArtificeBlocks.blockMarbleSlab, 1, 3), new ItemStack(ArtificeBlocks.blockMarbleSlab, 1, 2)));
+    }
+
+    private static void registerLampRecipes()
+    {
+        GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ArtificeBlocks.blockLamps[0], 1, 0), "blockGlass", "dustRedstone", "dustGlowstone", "dustGlowstone", "dyeWhite"));
+        GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ArtificeBlocks.blockLamps[1], 1, 0), "blockGlass", "dustRedstone", "dustGlowstone", "dustGlowstone", "dyeOrange"));
+        GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ArtificeBlocks.blockLamps[2], 1, 0), "blockGlass", "dustRedstone", "dustGlowstone", "dustGlowstone", "dyeMagenta"));
+        GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ArtificeBlocks.blockLamps[3], 1, 0), "blockGlass", "dustRedstone", "dustGlowstone", "dustGlowstone", "dyeLightBlue"));
+        GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ArtificeBlocks.blockLamps[4], 1, 0), "blockGlass", "dustRedstone", "dustGlowstone", "dustGlowstone", "dyeYellow"));
+        GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ArtificeBlocks.blockLamps[5], 1, 0), "blockGlass", "dustRedstone", "dustGlowstone", "dustGlowstone", "dyeLime"));
+        GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ArtificeBlocks.blockLamps[6], 1, 0), "blockGlass", "dustRedstone", "dustGlowstone", "dustGlowstone", "dyePink"));
+        GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ArtificeBlocks.blockLamps[7], 1, 0), "blockGlass", "dustRedstone", "dustGlowstone", "dustGlowstone", "dyeGray"));
+        GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ArtificeBlocks.blockLamps[8], 1, 0), "blockGlass", "dustRedstone", "dustGlowstone", "dustGlowstone", "dyeLightGray"));
+        GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ArtificeBlocks.blockLamps[9], 1, 0), "blockGlass", "dustRedstone", "dustGlowstone", "dustGlowstone", "dyeCyan"));
+        GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ArtificeBlocks.blockLamps[10], 1, 0), "blockGlass", "dustRedstone", "dustGlowstone", "dustGlowstone", "dyePurple"));
+        GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ArtificeBlocks.blockLamps[11], 1, 0), "blockGlass", "dustRedstone", "dustGlowstone", "dustGlowstone", "dyeBlue"));
+        GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ArtificeBlocks.blockLamps[12], 1, 0), "blockGlass", "dustRedstone", "dustGlowstone", "dustGlowstone", "dyeBrown"));
+        GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ArtificeBlocks.blockLamps[13], 1, 0), "blockGlass", "dustRedstone", "dustGlowstone", "dustGlowstone", "dyeGreen"));
+        GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ArtificeBlocks.blockLamps[14], 1, 0), "blockGlass", "dustRedstone", "dustGlowstone", "dustGlowstone", "dyeRed"));
+        GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ArtificeBlocks.blockLamps[15], 1, 0), "blockGlass", "dustRedstone", "dustGlowstone", "dustGlowstone", "dyeBlack"));
+
+        for (int i=0; i<16; i++)
+        {
+            GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ArtificeBlocks.blockLampsInverted[i], 1, 0), ArtificeBlocks.blockLamps[i]));
+            GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ArtificeBlocks.blockLamps[i], 1, 0), ArtificeBlocks.blockLampsInverted[i]));
+        }
     }
 }

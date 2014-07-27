@@ -64,6 +64,40 @@ tile.artifice.detector.name=Detector
 
 tile.artifice.steel.name=Block of Steel
 
+tile.artifice.lamp.white.name=White Lamp
+tile.artifice.lamp.orange.name=Orange Lamp
+tile.artifice.lamp.magenta.name=Magenta Lamp
+tile.artifice.lamp.lightblue.name=Light Blue Lamp
+tile.artifice.lamp.yellow.name=Yellow Lamp
+tile.artifice.lamp.lime.name=Lime Lamp
+tile.artifice.lamp.pink.name=Pink Lamp
+tile.artifice.lamp.gray.name=Gray Lamp
+tile.artifice.lamp.lightgray.name=Light Gray Lamp
+tile.artifice.lamp.cyan.name=Cyan Lamp
+tile.artifice.lamp.purple.name=Purple Lamp
+tile.artifice.lamp.blue.name=Blue Lamp
+tile.artifice.lamp.brown.name=Brown Lamp
+tile.artifice.lamp.green.name=Green Lamp
+tile.artifice.lamp.red.name=Red Lamp
+tile.artifice.lamp.black.name=Black Lamp
+
+tile.artifice.lampinverted.white.name=Inverted White Lamp
+tile.artifice.lampinverted.orange.name=Inverted Orange Lamp
+tile.artifice.lampinverted.magenta.name=Inverted Magenta Lamp
+tile.artifice.lampinverted.lightblue.name=Inverted Light Blue Lamp
+tile.artifice.lampinverted.yellow.name=Inverted Yellow Lamp
+tile.artifice.lampinverted.lime.name=Inverted Lime Lamp
+tile.artifice.lampinverted.pink.name=Inverted Pink Lamp
+tile.artifice.lampinverted.gray.name=Inverted Gray Lamp
+tile.artifice.lampinverted.lightgray.name=Inverted Light Gray Lamp
+tile.artifice.lampinverted.cyan.name=Inverted Cyan Lamp
+tile.artifice.lampinverted.purple.name=Inverted Purple Lamp
+tile.artifice.lampinverted.blue.name=Inverted Blue Lamp
+tile.artifice.lampinverted.brown.name=Inverted Brown Lamp
+tile.artifice.lampinverted.green.name=Inverted Green Lamp
+tile.artifice.lampinverted.red.name=Inverted Red Lamp
+tile.artifice.lampinverted.black.name=Inverted Black Lamp
+
 # Item Names
 item.artifice.sledge.wood.name=Wooden Sledge
 item.artifice.sledge.stone.name=Stone Sledge
@@ -235,3 +269,5 @@ tooltip.artifice.coin.gold=Gold Coin
 tooltip.artifice.coin.gold.flavor=Coin of the realm
 tooltip.artifice.coin.platinum=Platinum Coin
 tooltip.artifice.coin.platinum.flavor=A dollar saved...
+tooltip.artifice.lamp=Colored Light
+tooltip.artifice.lamp.flavor=Simple fluorescence

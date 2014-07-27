@@ -51,6 +51,6 @@ public class ItemCoin extends ItemArtifice
     @Override
     public String getUnlocalizedName(ItemStack stack)
     {
-        return "item.artifice.coin." + coinTypes[stack.getItemDamage()].toLowerCase();
+        return "item.artifice.coin." + coinTypes[stack.getItemDamage()].toLowerCase(Locale.ENGLISH);
     }
 }

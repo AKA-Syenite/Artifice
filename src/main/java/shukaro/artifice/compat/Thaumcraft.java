@@ -12,6 +12,7 @@ import shukaro.artifice.ArtificeItems;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
 import java.util.LinkedHashMap;
+import java.util.Locale;
 
 public class Thaumcraft implements ICompat
 {
@@ -62,7 +63,7 @@ public class Thaumcraft implements ICompat
         for (int i = list.length; i-- > 0; )
         {
             String[] temp = list[i].trim().split(" ");
-            temp[1] = temp[1].toLowerCase();
+            temp[1] = temp[1].toLowerCase(Locale.ENGLISH);
             if (aspects.containsKey(temp[1]))
                 addAspect.invoke(aspectList, aspects.get(temp[1]), Integer.parseInt(temp[0], 10));
             else
@@ -78,7 +79,7 @@ public class Thaumcraft implements ICompat
         for (int i = list.length; i-- > 0; )
         {
             String[] temp = list[i].trim().split(" ");
-            temp[1] = temp[1].toLowerCase();
+            temp[1] = temp[1].toLowerCase(Locale.ENGLISH);
             if (aspects.containsKey(temp[1]))
                 addAspect.invoke(aspectList, aspects.get(temp[1]), Integer.parseInt(temp[0], 10));
         }

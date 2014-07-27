@@ -1,6 +1,7 @@
 package shukaro.artifice;
 
 import net.minecraft.enchantment.Enchantment;
+import net.minecraft.item.Item;
 import net.minecraft.util.StatCollector;
 import shukaro.artifice.recipe.EnumUpgrades;
 import shukaro.artifice.util.FormatCodes;
@@ -90,6 +91,27 @@ public class ArtificeTooltips
             ArtificeRegistry.registerTooltip(ArtificeItems.itemSteelIngot, 0, localizeTooltip("steel.ingot", true));
             ArtificeRegistry.registerTooltip(ArtificeItems.itemSteelIngot, 1, localizeTooltip("steel.dust", false));
             ArtificeRegistry.registerTooltip(ArtificeItems.itemSteelIngot, 1, localizeTooltip("steel.dust", true));
+        }
+
+        if (ArtificeConfig.enableCoins.getBoolean(true))
+        {
+            ArtificeRegistry.registerTooltip(ArtificeItems.itemNugget, 0, localizeTooltip("nugget.copper", true));
+
+            ArtificeRegistry.registerTooltip(ArtificeItems.itemNugget, 1, localizeTooltip("nugget.silver", true));
+
+            ArtificeRegistry.registerTooltip(ArtificeItems.itemNugget, 2, localizeTooltip("nugget.platinum", true));
+
+            ArtificeRegistry.registerTooltip(ArtificeItems.itemCoin, 0, localizeTooltip("coin.copper", false));
+            ArtificeRegistry.registerTooltip(ArtificeItems.itemCoin, 0, localizeTooltip("coin.copper", true));
+
+            ArtificeRegistry.registerTooltip(ArtificeItems.itemCoin, 1, localizeTooltip("coin.silver", false));
+            ArtificeRegistry.registerTooltip(ArtificeItems.itemCoin, 1, localizeTooltip("coin.silver", true));
+
+            ArtificeRegistry.registerTooltip(ArtificeItems.itemCoin, 2, localizeTooltip("coin.gold", false));
+            ArtificeRegistry.registerTooltip(ArtificeItems.itemCoin, 2, localizeTooltip("coin.gold", true));
+
+            ArtificeRegistry.registerTooltip(ArtificeItems.itemCoin, 3, localizeTooltip("coin.platinum", false));
+            ArtificeRegistry.registerTooltip(ArtificeItems.itemCoin, 3, localizeTooltip("coin.platinum", true));
         }
 
         if (ArtificeConfig.enableBoxes.getBoolean(true))
@@ -322,25 +344,16 @@ public class ArtificeTooltips
             ArtificeRegistry.registerTooltip(ArtificeBlocks.blockSteel, 0, localizeTooltip("steel.ingot", true));
         }
 
-        if (ArtificeConfig.enableCoins.getBoolean(true))
+        if (ArtificeConfig.enableLamps.getBoolean(true))
         {
-            ArtificeRegistry.registerTooltip(ArtificeItems.itemNugget, 0, localizeTooltip("nugget.copper", true));
+            for (int i=0; i<16; i++)
+            {
+                ArtificeRegistry.registerTooltip(ArtificeBlocks.blockLamps[i], 0, localizeTooltip("lamp", false));
+                ArtificeRegistry.registerTooltip(ArtificeBlocks.blockLamps[i], 0, localizeTooltip("lamp", true));
 
-            ArtificeRegistry.registerTooltip(ArtificeItems.itemNugget, 1, localizeTooltip("nugget.silver", true));
-
-            ArtificeRegistry.registerTooltip(ArtificeItems.itemNugget, 2, localizeTooltip("nugget.platinum", true));
-
-            ArtificeRegistry.registerTooltip(ArtificeItems.itemCoin, 0, localizeTooltip("coin.copper", false));
-            ArtificeRegistry.registerTooltip(ArtificeItems.itemCoin, 0, localizeTooltip("coin.copper", true));
-
-            ArtificeRegistry.registerTooltip(ArtificeItems.itemCoin, 1, localizeTooltip("coin.silver", false));
-            ArtificeRegistry.registerTooltip(ArtificeItems.itemCoin, 1, localizeTooltip("coin.silver", true));
-
-            ArtificeRegistry.registerTooltip(ArtificeItems.itemCoin, 2, localizeTooltip("coin.gold", false));
-            ArtificeRegistry.registerTooltip(ArtificeItems.itemCoin, 2, localizeTooltip("coin.gold", true));
-
-            ArtificeRegistry.registerTooltip(ArtificeItems.itemCoin, 3, localizeTooltip("coin.platinum", false));
-            ArtificeRegistry.registerTooltip(ArtificeItems.itemCoin, 3, localizeTooltip("coin.platinum", true));
+                ArtificeRegistry.registerTooltip(ArtificeBlocks.blockLampsInverted[i], 0, localizeTooltip("lamp", false));
+                ArtificeRegistry.registerTooltip(ArtificeBlocks.blockLampsInverted[i], 0, localizeTooltip("lamp", true));
+            }
         }
     }
 }

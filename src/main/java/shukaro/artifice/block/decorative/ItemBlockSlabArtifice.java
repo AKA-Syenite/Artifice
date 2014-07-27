@@ -11,7 +11,7 @@ import shukaro.artifice.ArtificeBlocks;
 import shukaro.artifice.ArtificeConfig;
 import shukaro.artifice.ArtificeRegistry;
 import shukaro.artifice.ArtificeTooltips;
-import shukaro.artifice.util.IDMetaPair;
+import shukaro.artifice.util.NameMetaPair;
 
 import java.util.List;
 
@@ -40,7 +40,7 @@ public class ItemBlockSlabArtifice extends ItemSlab
     {
         if (!ArtificeConfig.tooltips.getBoolean(true))
             return;
-        IDMetaPair pair = new IDMetaPair(stack.getItem(), stack.getItemDamage());
+        NameMetaPair pair = new NameMetaPair(stack.getItem(), stack.getItemDamage());
         if (ArtificeRegistry.getTooltipMap().get(pair) != null)
         {
             for (String s : ArtificeRegistry.getTooltipMap().get(pair))

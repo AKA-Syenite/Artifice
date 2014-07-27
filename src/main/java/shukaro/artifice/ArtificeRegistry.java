@@ -7,7 +7,7 @@ import net.minecraft.item.crafting.CraftingManager;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraftforge.oredict.ShapelessOreRecipe;
 import shukaro.artifice.util.BlockMetaPair;
-import shukaro.artifice.util.IDMetaPair;
+import shukaro.artifice.util.NameMetaPair;
 
 import java.util.*;
 
@@ -18,7 +18,7 @@ public abstract class ArtificeRegistry
     private static final List<String> worldTypeBlacklist = new ArrayList<String>();
     private static final Map<BlockMetaPair, ArrayList<ItemStack>> sledgeBlocks = new HashMap<BlockMetaPair, ArrayList<ItemStack>>();
     private static final Map<Block, ArrayList<ItemStack>> wildSledgeBlocks = new HashMap<Block, ArrayList<ItemStack>>();
-    private static final Map<IDMetaPair, List<String>> tooltipMap = new HashMap<IDMetaPair, List<String>>();
+    private static final Map<NameMetaPair, List<String>> tooltipMap = new HashMap<NameMetaPair, List<String>>();
     private static final List<ItemStack> marbleTypes = new ArrayList<ItemStack>();
     private static final List<ItemStack> basaltTypes = new ArrayList<ItemStack>();
 
@@ -118,7 +118,7 @@ public abstract class ArtificeRegistry
 
     public static void registerTooltip(Item item, int meta, String line)
     {
-        IDMetaPair pair = new IDMetaPair(item, meta);
+        NameMetaPair pair = new NameMetaPair(item, meta);
         if (tooltipMap.get(pair) == null)
         {
             List<String> temp = new ArrayList<String>();
@@ -136,7 +136,7 @@ public abstract class ArtificeRegistry
         registerTooltip(Item.getItemFromBlock(block), meta, line);
     }
 
-    public static Map<IDMetaPair, List<String>> getTooltipMap()
+    public static Map<NameMetaPair, List<String>> getTooltipMap()
     {
         return tooltipMap;
     }

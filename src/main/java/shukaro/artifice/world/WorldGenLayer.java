@@ -3,6 +3,7 @@ package shukaro.artifice.world;
 import net.minecraft.block.Block;
 import net.minecraft.world.World;
 import shukaro.artifice.ArtificeRegistry;
+import shukaro.artifice.util.NameMetaPair;
 import shukaro.artifice.util.XSRandom;
 
 import java.util.Random;
@@ -15,14 +16,14 @@ public class WorldGenLayer
     private int minHeight;
     private int maxHeight;
     private Block block;
-    private Set<Block> replaced;
+    private Set<NameMetaPair> replaced;
 
     public WorldGenLayer(World world, Block block, int minHeight, int maxHeight)
     {
         this(world, block, minHeight, maxHeight, ArtificeRegistry.getStoneTypes());
     }
 
-    public WorldGenLayer(World world, Block block, int minHeight, int maxHeight, Set<Block> replaced)
+    public WorldGenLayer(World world, Block block, int minHeight, int maxHeight, Set<NameMetaPair> replaced)
     {
         this.world = world;
         this.block = block;
@@ -53,7 +54,7 @@ public class WorldGenLayer
                     max = 256;
                 for (int t = min; t < max; t++)
                 {
-                    if (replaced.contains(world.getBlock(i, t, j)))
+                    if (replaced.contains(new NameMetaPair(world.getBlock(i, t, j), world.getBlockMetadata(i, t, j))))
                         world.setBlock(i, t, j, this.block, 0, 0);
                 }
             }

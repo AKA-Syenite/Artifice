@@ -24,9 +24,13 @@ public class NameMetaPair
         this.meta = meta;
     }
 
+    public String getName() { return this.name; }
+
+    public void setName(String name) { this.name = name; }
+
     public Block getBlock()
     {
-        return Block.getBlockFromName(name);
+        return (Block)Block.blockRegistry.getObject(name);
     }
 
     public Item getItem()
@@ -38,6 +42,8 @@ public class NameMetaPair
     {
         return meta;
     }
+
+    public void setMeta(int meta) { this.meta = meta; }
 
     public boolean isValidBlock()
     {
@@ -60,6 +66,6 @@ public class NameMetaPair
 
     public String toString()
     {
-        return isValidItem() ? getItem().getUnlocalizedName() + "|" + this.meta : (isValidBlock() ? getBlock().getUnlocalizedName() + "|" + this.meta : this.name + "|" + this.meta);
+        return this.name + "|" + this.meta;
     }
 }

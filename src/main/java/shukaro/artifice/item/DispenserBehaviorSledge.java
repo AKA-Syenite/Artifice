@@ -11,7 +11,7 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.world.World;
 import shukaro.artifice.ArtificeRegistry;
 import shukaro.artifice.util.BlockCoord;
-import shukaro.artifice.util.BlockMetaPair;
+import shukaro.artifice.util.NameMetaPair;
 
 import java.util.Random;
 
@@ -28,7 +28,7 @@ public class DispenserBehaviorSledge extends BehaviorDefaultDispenseItem
         EnumFacing face = BlockDispenser.func_149937_b(dispenser.getBlockMetadata());
         BlockCoord target = new BlockCoord(dispenser.getXInt(), dispenser.getYInt(), dispenser.getZInt());
         target.offset(face.ordinal());
-        BlockMetaPair pair = new BlockMetaPair(target.getBlock(world), target.getMeta(world));
+        NameMetaPair pair = new NameMetaPair(target.getBlock(world), target.getMeta(world));
         if (ArtificeRegistry.getSledgeBlocks().containsKey(pair))
         {
             world.setBlockToAir(target.x, target.y, target.z);

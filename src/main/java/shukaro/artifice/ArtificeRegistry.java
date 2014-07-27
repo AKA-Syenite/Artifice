@@ -6,7 +6,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.CraftingManager;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraftforge.oredict.ShapelessOreRecipe;
-import shukaro.artifice.util.BlockMetaPair;
 import shukaro.artifice.util.NameMetaPair;
 
 import java.util.*;
@@ -14,9 +13,9 @@ import java.util.*;
 public abstract class ArtificeRegistry
 {
     private static final List<Integer> dimensionBlacklist = new ArrayList<Integer>();
-    private static final Set<Block> stoneTypes = new HashSet<Block>();
+    private static final Set<NameMetaPair> stoneTypes = new HashSet<NameMetaPair>();
     private static final List<String> worldTypeBlacklist = new ArrayList<String>();
-    private static final Map<BlockMetaPair, ArrayList<ItemStack>> sledgeBlocks = new HashMap<BlockMetaPair, ArrayList<ItemStack>>();
+    private static final Map<NameMetaPair, ArrayList<ItemStack>> sledgeBlocks = new HashMap<NameMetaPair, ArrayList<ItemStack>>();
     private static final Map<Block, ArrayList<ItemStack>> wildSledgeBlocks = new HashMap<Block, ArrayList<ItemStack>>();
     private static final Map<NameMetaPair, List<String>> tooltipMap = new HashMap<NameMetaPair, List<String>>();
     private static final List<ItemStack> marbleTypes = new ArrayList<ItemStack>();
@@ -24,7 +23,7 @@ public abstract class ArtificeRegistry
 
     public static void registerMarbleType(Block block, int meta)
     {
-        ArtificeCore.logger.info("Registering marble type " + Block.blockRegistry.getNameForObject(block) + ":" + meta);
+        ArtificeCore.logger.info("Registering marble type " + new NameMetaPair(block, meta).toString());
         ItemStack stack = new ItemStack(block, 1, meta);
         if (marbleTypes.isEmpty())
             marbleTypes.add(stack);
@@ -71,7 +70,7 @@ public abstract class ArtificeRegistry
 
     public static void registerBasaltType(Block block, int meta)
     {
-        ArtificeCore.logger.info("Registering basalt type " + Block.blockRegistry.getNameForObject(block) + ":" + meta);
+        ArtificeCore.logger.info("Registering basalt type " + new NameMetaPair(block, meta).toString());
         ItemStack stack = new ItemStack(block, 1, meta);
         if (basaltTypes.isEmpty())
             basaltTypes.add(stack);
@@ -148,12 +147,12 @@ public abstract class ArtificeRegistry
             ArtificeCore.logger.warn("Tried to register null block in the sledge blocks list!");
             return;
         }
-        BlockMetaPair pair = new BlockMetaPair(block, meta);
-        if (!pair.isValid())
+        NameMetaPair pair = new NameMetaPair(block, meta);
+        if (!pair.isValidBlock())
             ArtificeCore.logger.warn("Tried to register non-block id-meta pair in the sledgeBlock map: " + pair.toString());
         else if (sledgeBlocks.get(pair) == null)
         {
-            ArtificeCore.logger.info("Registering sledgeable block " + pair);
+            ArtificeCore.logger.info("Registering sledgeable block " + pair.toString());
             sledgeBlocks.put(pair, drops);
         }
     }
@@ -177,7 +176,7 @@ public abstract class ArtificeRegistry
         return wildSledgeBlocks;
     }
 
-    public static Map<BlockMetaPair, ArrayList<ItemStack>> getSledgeBlocks()
+    public static Map<NameMetaPair, ArrayList<ItemStack>> getSledgeBlocks()
     {
         return sledgeBlocks;
     }
@@ -196,16 +195,17 @@ public abstract class ArtificeRegistry
         return dimensionBlacklist;
     }
 
-    public static void registerStoneType(Block stone)
+    public static void registerStoneType(Block stone, int meta)
     {
-        if (!stoneTypes.contains(stone))
+        NameMetaPair pair = new NameMetaPair(stone, meta);
+        if (!stoneTypes.contains(pair))
         {
-            ArtificeCore.logger.info("Registering stone type with name " + Block.blockRegistry.getNameForObject(stone));
-            stoneTypes.add(stone);
+            ArtificeCore.logger.info("Registering stone type " + pair.toString());
+            stoneTypes.add(pair);
         }
     }
 
-    public static Set<Block> getStoneTypes()
+    public static Set<NameMetaPair> getStoneTypes()
     {
         return stoneTypes;
     }

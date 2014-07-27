@@ -52,4 +52,3 @@ Villager chatter
 Robotic shopkeepers
 Seed bags
 Sign tools
-API (with IMC)

@@ -4,6 +4,7 @@ import net.minecraft.block.Block;
 import net.minecraft.world.World;
 import shukaro.artifice.ArtificeRegistry;
 import shukaro.artifice.util.BlockCoord;
+import shukaro.artifice.util.NameMetaPair;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +21,7 @@ public class WorldGenCave
     private int size;
     private int adherence;
     private int frequency;
-    private Set<Block> replaced;
+    private Set<NameMetaPair> replaced;
     private BlockCoord coord;
     private List<BlockCoord> lining;
     private List<BlockCoord> extra;
@@ -30,7 +31,7 @@ public class WorldGenCave
         this(world, rand, block, 0, maxHeight, size, adherence, ArtificeRegistry.getStoneTypes());
     }
 
-    public WorldGenCave(World world, Random rand, Block block, int meta, int maxHeight, int size, int adherence, Set<Block> replaced)
+    public WorldGenCave(World world, Random rand, Block block, int meta, int maxHeight, int size, int adherence, Set<NameMetaPair> replaced)
     {
         this.world = world;
         this.rand = rand;
@@ -105,7 +106,7 @@ public class WorldGenCave
 
     private boolean canGenHere(World world, BlockCoord c, boolean strict)
     {
-        if (c.getBlock(world) != null && replaced.contains(c.getBlock(world)))
+        if (c.getBlock(world) != null && replaced.contains(new NameMetaPair(c.getBlock(world), c.getMeta(world))))
         {
             for (BlockCoord n : c.getNearby())
             {

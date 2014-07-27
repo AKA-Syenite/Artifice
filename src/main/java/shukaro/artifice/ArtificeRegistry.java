@@ -6,7 +6,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.CraftingManager;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraftforge.oredict.ShapelessOreRecipe;
-import shukaro.artifice.util.ItemMetaPair;
+import shukaro.artifice.util.BlockMetaPair;
+import shukaro.artifice.util.IDMetaPair;
 
 import java.util.*;
 
@@ -15,9 +16,9 @@ public abstract class ArtificeRegistry
     private static final List<Integer> dimensionBlacklist = new ArrayList<Integer>();
     private static final Set<Block> stoneTypes = new HashSet<Block>();
     private static final List<String> worldTypeBlacklist = new ArrayList<String>();
-    private static final Map<ItemMetaPair, ArrayList<ItemStack>> sledgeBlocks = new HashMap<ItemMetaPair, ArrayList<ItemStack>>();
+    private static final Map<BlockMetaPair, ArrayList<ItemStack>> sledgeBlocks = new HashMap<BlockMetaPair, ArrayList<ItemStack>>();
     private static final Map<Block, ArrayList<ItemStack>> wildSledgeBlocks = new HashMap<Block, ArrayList<ItemStack>>();
-    private static final Map<ItemMetaPair, List<String>> tooltipMap = new HashMap<ItemMetaPair, List<String>>();
+    private static final Map<IDMetaPair, List<String>> tooltipMap = new HashMap<IDMetaPair, List<String>>();
     private static final List<ItemStack> marbleTypes = new ArrayList<ItemStack>();
     private static final List<ItemStack> basaltTypes = new ArrayList<ItemStack>();
 
@@ -117,7 +118,7 @@ public abstract class ArtificeRegistry
 
     public static void registerTooltip(Item item, int meta, String line)
     {
-        ItemMetaPair pair = new ItemMetaPair(item, meta);
+        IDMetaPair pair = new IDMetaPair(item, meta);
         if (tooltipMap.get(pair) == null)
         {
             List<String> temp = new ArrayList<String>();
@@ -135,7 +136,7 @@ public abstract class ArtificeRegistry
         registerTooltip(Item.getItemFromBlock(block), meta, line);
     }
 
-    public static Map<ItemMetaPair, List<String>> getTooltipMap()
+    public static Map<IDMetaPair, List<String>> getTooltipMap()
     {
         return tooltipMap;
     }
@@ -147,8 +148,8 @@ public abstract class ArtificeRegistry
             ArtificeCore.logger.warn("Tried to register null block in the sledge blocks list!");
             return;
         }
-        ItemMetaPair pair = new ItemMetaPair(block, meta);
-        if (!pair.isValidBlock())
+        BlockMetaPair pair = new BlockMetaPair(block, meta);
+        if (!pair.isValid())
             ArtificeCore.logger.warn("Tried to register non-block id-meta pair in the sledgeBlock map: " + pair.toString());
         else if (sledgeBlocks.get(pair) == null)
         {
@@ -176,7 +177,7 @@ public abstract class ArtificeRegistry
         return wildSledgeBlocks;
     }
 
-    public static Map<ItemMetaPair, ArrayList<ItemStack>> getSledgeBlocks()
+    public static Map<BlockMetaPair, ArrayList<ItemStack>> getSledgeBlocks()
     {
         return sledgeBlocks;
     }

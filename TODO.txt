@@ -49,7 +49,6 @@ Analog Detectors
 Lightning strike effects
 Lightning rods
 Visual area markers
-Light blocking glass
 Geographic features
 Alchemy system
 Villager chatter

@@ -356,7 +356,6 @@ public class ArtificeRecipes
 
     private static void registerGlassWallRecipes()
     {
-        // to-do: add recipes that make sense
         GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeBlocks.blockGlassWall, 2, 0), new Object[]{
                 "YYY",
                 " X ",
@@ -365,6 +364,8 @@ public class ArtificeRecipes
                 'Y', Blocks.glass_pane,
                 'Z', Items.clay_ball}));
 
+        GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ArtificeBlocks.blockGlassWallDark, 1, 0), new ItemStack(ArtificeBlocks.blockGlassWall, 1, 0), "dyeBlack"));
+
         GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeBlocks.blockGlassWall, 2, 1), new Object[]{
                 "YYY",
                 " X ",
@@ -372,6 +373,8 @@ public class ArtificeRecipes
                 'X', new ItemStack(ArtificeBlocks.blockFrame, 1, 1),
                 'Z', Items.clay_ball,
                 'Y', Blocks.glass}));
+
+        GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ArtificeBlocks.blockGlassWallDark, 1, 1), new ItemStack(ArtificeBlocks.blockGlassWall, 1, 1), "dyeBlack"));
 
         GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeBlocks.blockGlassWall, 4, 2), new Object[]{
                 "QQQ",
@@ -382,6 +385,8 @@ public class ArtificeRecipes
                 'Y', Blocks.obsidian,
                 'Z', Items.lava_bucket}));
 
+        GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ArtificeBlocks.blockGlassWallDark, 1, 2), new ItemStack(ArtificeBlocks.blockGlassWall, 1, 2), "dyeBlack"));
+
         GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeBlocks.blockGlassWall, 4, 3), new Object[]{
                 "YYY",
                 "QXQ",
@@ -389,6 +394,8 @@ public class ArtificeRecipes
                 'X', new ItemStack(ArtificeBlocks.blockFrame, 1, 3),
                 'Q', Blocks.glass,
                 'Y', "ingotSteel"}));
+
+        GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ArtificeBlocks.blockGlassWallDark, 1, 3), new ItemStack(ArtificeBlocks.blockGlassWall, 1, 3), "dyeBlack"));
     }
 
     private static void registerBlastWallRecipes()

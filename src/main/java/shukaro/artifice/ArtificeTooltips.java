@@ -267,6 +267,22 @@ public class ArtificeTooltips
             ArtificeRegistry.registerTooltip(ArtificeBlocks.blockGlassWall, 3, FormatCodes.Italic.code + localizeTooltip("resistance", false) + " " + FormatCodes.Reset.code + FormatCodes.Aqua.code + (int) ArtificeBlocks.blockGlassWall.getResistance(3));
             ArtificeRegistry.registerTooltip(ArtificeBlocks.blockGlassWall, 3, localizeTooltip("glasswall.advanced", true));
 
+            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockGlassWallDark, 0, localizeTooltip("glasswall.basic", false));
+            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockGlassWallDark, 0, FormatCodes.Italic.code + localizeTooltip("resistance", false) + " " + FormatCodes.Reset.code + FormatCodes.Aqua.code + (int) ArtificeBlocks.blockGlassWall.getResistance(0));
+            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockGlassWallDark, 0, localizeTooltip("glasswall.basic", true));
+
+            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockGlassWallDark, 1, localizeTooltip("glasswall.reinforced", false));
+            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockGlassWallDark, 1, FormatCodes.Italic.code + localizeTooltip("resistance", false) + " " + FormatCodes.Reset.code + FormatCodes.Aqua.code + (int) ArtificeBlocks.blockGlassWall.getResistance(1));
+            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockGlassWallDark, 1, localizeTooltip("glasswall.reinforced", true));
+
+            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockGlassWallDark, 2, localizeTooltip("glasswall.industrial", false));
+            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockGlassWallDark, 2, FormatCodes.Italic.code + localizeTooltip("resistance", false) + " " + FormatCodes.Reset.code + FormatCodes.Aqua.code + (int) ArtificeBlocks.blockGlassWall.getResistance(2));
+            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockGlassWallDark, 2, localizeTooltip("glasswall.industrial", true));
+
+            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockGlassWallDark, 3, localizeTooltip("glasswall.advanced", false));
+            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockGlassWallDark, 3, FormatCodes.Italic.code + localizeTooltip("resistance", false) + " " + FormatCodes.Reset.code + FormatCodes.Aqua.code + (int) ArtificeBlocks.blockGlassWall.getResistance(3));
+            ArtificeRegistry.registerTooltip(ArtificeBlocks.blockGlassWallDark, 3, localizeTooltip("glasswall.advanced", true));
+
             ArtificeRegistry.registerTooltip(ArtificeBlocks.blockReinforced, 0, localizeTooltip("blastwall.basic", false));
             ArtificeRegistry.registerTooltip(ArtificeBlocks.blockReinforced, 0, FormatCodes.Italic.code + localizeTooltip("resistance", false) + " " + FormatCodes.Reset.code + FormatCodes.Aqua.code + (int) ArtificeBlocks.blockReinforced.getResistance(0));
             ArtificeRegistry.registerTooltip(ArtificeBlocks.blockReinforced, 0, localizeTooltip("blastwall.basic", true));

@@ -26,6 +26,7 @@ public class ArtificeBlocks
     public static BlockSteel blockSteel;
     public static BlockFrameBlastWall blockReinforced;
     public static BlockFrameGlassWall blockGlassWall;
+    public static BlockFrameGlassWall blockGlassWallDark;
     public static BlockFrameScaffold blockScaffold;
 
     public static void initBlocks()
@@ -70,12 +71,14 @@ public class ArtificeBlocks
             blockFrame = new BlockFrameBase();
             blockDetector = new BlockFrameDetector();
             blockReinforced = new BlockFrameBlastWall();
-            blockGlassWall = new BlockFrameGlassWall();
+            blockGlassWall = new BlockFrameGlassWall(false);
+            blockGlassWallDark = new BlockFrameGlassWall(true);
             blockScaffold = new BlockFrameScaffold();
             GameRegistry.registerBlock(blockFrame, ItemBlockFrame.class, blockFrame.getUnlocalizedName());
             GameRegistry.registerBlock(blockDetector, ItemBlockArtifice.class, blockDetector.getUnlocalizedName());
             GameRegistry.registerBlock(blockReinforced, ItemBlockFrame.class, blockReinforced.getUnlocalizedName());
             GameRegistry.registerBlock(blockGlassWall, ItemBlockFrame.class, blockGlassWall.getUnlocalizedName());
+            GameRegistry.registerBlock(blockGlassWallDark, ItemBlockFrame.class, blockGlassWallDark.getUnlocalizedName());
             GameRegistry.registerBlock(blockScaffold, ItemBlockFrame.class, blockScaffold.getUnlocalizedName());
         }
 

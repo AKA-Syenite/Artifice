@@ -32,10 +32,6 @@ public class BlockFrameScaffold extends BlockFrame
     private static final ForgeDirection[] sides = new ForgeDirection[]{ForgeDirection.NORTH, ForgeDirection.SOUTH, ForgeDirection.EAST, ForgeDirection.WEST, ForgeDirection.DOWN};
 
     private IIcon[] sideIcons = new IIcon[ArtificeCore.tiers.length];
-    private ConnectedTextureBase basic = new SolidConnectedTexture(ConnectedTextures.BasicScaffold);
-    private ConnectedTextureBase reinforced = new SolidConnectedTexture(ConnectedTextures.ReinforcedScaffold);
-    private ConnectedTextureBase industrial = new SolidConnectedTexture(ConnectedTextures.IndustrialScaffold);
-    private ConnectedTextureBase advanced = new SolidConnectedTexture(ConnectedTextures.AdvancedScaffold);
 
     public BlockFrameScaffold()
     {

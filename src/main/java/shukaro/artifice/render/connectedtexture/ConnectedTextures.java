@@ -25,7 +25,8 @@ public enum ConnectedTextures
     BasicGlassWall("glasswall_basic", false),
     ReinforcedGlassWall("glasswall_reinforced", false),
     IndustrialGlassWall("glasswall_industrial", false),
-    AdvancedGlassWall("glasswall_advanced", false);
+    AdvancedGlassWall("glasswall_advanced", false),
+    Lamp("lamp", true);
 
     public String name;
     public IIcon[] textureList;

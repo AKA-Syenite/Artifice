@@ -15,8 +15,6 @@ public class ArtificeConfig
     public static int frameRenderID;
     public static int lotusRenderID;
 
-    private static Property idStart;
-
     public static Property sledgeRecipes;
     public static Property frameRecipes;
     public static Property detectorRecipe;
@@ -34,6 +32,7 @@ public class ArtificeConfig
     public static Property coinSmelting;
     public static Property upgradeRecipes;
     public static Property convenienceRecipes;
+    public static Property lampRecipes;
 
     public static Property enableFrames;
     public static Property enableSledges;
@@ -43,6 +42,7 @@ public class ArtificeConfig
     public static Property enableSickles;
     public static Property enableCoins;
     public static Property enableUpgrades;
+    public static Property enableLamps;
     public static Property limitUpgrades;
     private static Property marbleList;
     private static Property basaltList;
@@ -218,6 +218,7 @@ public class ArtificeConfig
             upgradeRecipes = c.get("Recipes", "Upgrade Recipes", true);
             convenienceRecipes = c.get("Recipes", "Convenience Recipes", true);
             convenienceRecipes.comment = "Set to false to prevent convenience crafting (Smelt stone bricks to cracked variant, craft mossy brick/cobble variants with water bucket, craft 2 chiseled brick from 2 normal).";
+            lampRecipes = c.get("Recipes", "Lamp Recipes", true);
             c.addCustomCategoryComment("Recipes", "Controls whether or not to make recipes available for use");
 
             dimensionBlacklist = c.get("Compatibility", "Dimension Blacklist", "");
@@ -304,6 +305,11 @@ public class ArtificeConfig
             if (!enableUpgrades.getBoolean(true))
             {
                 upgradeRecipes.set(false);
+            }
+            enableLamps = c.get("General", "Enable Lamps", true);
+            if (!enableLamps.getBoolean(true))
+            {
+                lampRecipes.set(false);
             }
             c.addCustomCategoryComment("General", "Enable or disable mod features completely");
         }
@@ -427,6 +433,8 @@ public class ArtificeConfig
             IconHandler.registerConnectedTexture(reg, ConnectedTextures.MarbleAntipaver, "marble/antipaver");
             IconHandler.registerConnectedTexture(reg, ConnectedTextures.BasaltPaver, "basalt/paver");
             IconHandler.registerConnectedTexture(reg, ConnectedTextures.BasaltAntipaver, "basalt/antipaver");
+
+            IconHandler.registerConnectedTexture(reg, ConnectedTextures.Lamp, "lamp");
 
             ArtificeConfig.connectedTexturesRegistered = true;
         }

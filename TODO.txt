@@ -1,4 +1,3 @@
-Lamps - Connected textured colored lights
 Text Commands
 Pyrolysis Chamber - Wood > Charcoal, Coal > Coke, Biomass > Biofuel, Charcoal > Crude Gas, etc
 Crucible - Ores > Liquid Metal + Slag, Alloys, etc
@@ -28,7 +27,6 @@ Generators - Mechanical power > electricity
 Smoker - Meat cooking, hunger, whatever
 Block extruder
 Vanilla stone pavers
-Means to get cracked/mossy/etc stone
 Parallel bee/tree breeding
 More plants and trees
 Cave world type
@@ -41,7 +39,6 @@ Soundproofing
 Steel piston
 Electromagnets
 Steel hoppers
-Coremod connected textures
 Additional enchantments
 Tool/weapon oils/poisons
 Instruments

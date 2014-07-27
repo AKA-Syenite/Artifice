@@ -18,7 +18,7 @@ import shukaro.artifice.ArtificeTooltips;
 import shukaro.artifice.gui.ArtificeCreativeTab;
 import shukaro.artifice.render.IconHandler;
 import shukaro.artifice.util.BlockMetaPair;
-import shukaro.artifice.util.IDMetaPair;
+import shukaro.artifice.util.NameMetaPair;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -63,7 +63,7 @@ public class ItemSledge extends ItemTool
     {
         if (!ArtificeConfig.tooltips.getBoolean(true))
             return;
-        IDMetaPair pair = new IDMetaPair(stack.getItem(), 0);
+        NameMetaPair pair = new NameMetaPair(stack.getItem(), 0);
         if (ArtificeRegistry.getTooltipMap().get(pair) != null)
         {
             for (String s : ArtificeRegistry.getTooltipMap().get(pair))

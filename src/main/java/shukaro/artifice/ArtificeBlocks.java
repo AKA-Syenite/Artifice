@@ -6,6 +6,7 @@ import net.minecraftforge.oredict.OreDictionary;
 import shukaro.artifice.block.ItemBlockArtifice;
 import shukaro.artifice.block.decorative.*;
 import shukaro.artifice.block.frame.*;
+import shukaro.artifice.util.MinecraftColors;
 
 public class ArtificeBlocks
 {
@@ -28,6 +29,8 @@ public class ArtificeBlocks
     public static BlockFrameGlassWall blockGlassWall;
     public static BlockFrameGlassWall blockGlassWallDark;
     public static BlockFrameScaffold blockScaffold;
+    public static BlockLamp[] blockLamps = new BlockLamp[16];
+    public static BlockLamp[] blockLampsInverted = new BlockLamp[16];
 
     public static void initBlocks()
     {
@@ -87,6 +90,17 @@ public class ArtificeBlocks
             blockSteel = new BlockSteel();
             GameRegistry.registerBlock(blockSteel, ItemBlockArtifice.class, blockSteel.getUnlocalizedName());
             OreDictionary.registerOre("blockSteel", blockSteel);
+        }
+
+        if (ArtificeConfig.enableLamps.getBoolean(true))
+        {
+            for (int i=0; i<16; i++)
+            {
+                blockLamps[i] = new BlockLamp(MinecraftColors.values()[i], false);
+                blockLampsInverted[i] = new BlockLamp(MinecraftColors.values()[i], true);
+                GameRegistry.registerBlock(blockLamps[i], ItemBlockArtifice.class, blockLamps[i].getUnlocalizedName());
+                GameRegistry.registerBlock(blockLampsInverted[i], ItemBlockArtifice.class, blockLampsInverted[i].getUnlocalizedName());
+            }
         }
     }
 }

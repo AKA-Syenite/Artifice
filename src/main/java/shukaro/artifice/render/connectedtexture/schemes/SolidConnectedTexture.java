@@ -1,6 +1,7 @@
 package shukaro.artifice.render.connectedtexture.schemes;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockSlab;
 import net.minecraft.world.IBlockAccess;
 import shukaro.artifice.render.connectedtexture.ConnectedTextureBase;
 import shukaro.artifice.render.connectedtexture.ConnectedTextures;
@@ -28,10 +29,14 @@ public class SolidConnectedTexture extends ConnectedTextureBase
         Block neighbor = coord.copy().offset(side).getBlock(blockAccess);
         Block cover = coord.copy().offset(side).offset(face).getBlock(blockAccess);
 
+        // Temporary
+        if (self instanceof BlockSlab != neighbor instanceof BlockSlab)
+            return false;
+
         if (self != null && neighbor != null && cover != null)
-            return !cover.isOpaqueCube() && self.getIcon(face, meta) != null && neighbor.getIcon(face, neighborMeta) != null && self.getIcon(face, meta).getIconName().equals(neighbor.getIcon(face, neighborMeta).getIconName()) && (self == neighbor && meta == neighborMeta);
+            return !cover.isOpaqueCube() && self.getIcon(face, meta) != null && neighbor.getIcon(face, neighborMeta) != null && self.getIcon(face, meta).getIconName().equals(neighbor.getIcon(face, neighborMeta).getIconName());
         else if (self != null && neighbor != null)
-            return self.getIcon(face, meta) != null && neighbor.getIcon(face, neighborMeta) != null && self.getIcon(face, meta).getIconName().equals(neighbor.getIcon(face, neighborMeta).getIconName()) && (self == neighbor && meta == neighborMeta);
+            return self.getIcon(face, meta) != null && neighbor.getIcon(face, neighborMeta) != null && self.getIcon(face, meta).getIconName().equals(neighbor.getIcon(face, neighborMeta).getIconName());
         return false;
     }
 }

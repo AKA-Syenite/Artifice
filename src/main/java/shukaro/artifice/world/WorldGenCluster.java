@@ -5,6 +5,7 @@ import net.minecraft.world.World;
 import shukaro.artifice.ArtificeRegistry;
 import shukaro.artifice.util.BlockCoord;
 import shukaro.artifice.util.ChunkCoord;
+import shukaro.artifice.util.NameMetaPair;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +18,7 @@ public class WorldGenCluster
     private Random rand;
     private Block block;
     private int maxHeight;
-    private Set<Block> replaced;
+    private Set<NameMetaPair> replaced;
     private BlockCoord c;
     private List<BlockCoord> blocks;
 
@@ -26,7 +27,7 @@ public class WorldGenCluster
         this(world, rand, block, maxHeight, ArtificeRegistry.getStoneTypes());
     }
 
-    public WorldGenCluster(World world, Random rand, Block block, int maxHeight, Set<Block> replaced)
+    public WorldGenCluster(World world, Random rand, Block block, int maxHeight, Set<NameMetaPair> replaced)
     {
         this.world = world;
         this.rand = rand;
@@ -89,6 +90,6 @@ public class WorldGenCluster
 
     public boolean canGenHere(World world, ChunkCoord c, BlockCoord b)
     {
-        return c.contains(b) && b.getBlock(world) != null && replaced.contains(b.getBlock(world));
+        return c.contains(b) && b.getBlock(world) != null && replaced.contains(new NameMetaPair(b.getBlock(world), b.getMeta(world)));
     }
 }

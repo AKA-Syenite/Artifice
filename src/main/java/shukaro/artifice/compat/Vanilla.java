@@ -20,7 +20,7 @@ public class Vanilla implements ICompat
         ArtificeRegistry.registerDimensionBlacklist(1);
         ArtificeRegistry.registerDimensionBlacklist(-1);
 
-        ArtificeRegistry.registerStoneType(Blocks.stone);
+        ArtificeRegistry.registerStoneType(Blocks.stone, 0);
 
         ArtificeRegistry.registerWorldTypeBlacklist("flat");
 

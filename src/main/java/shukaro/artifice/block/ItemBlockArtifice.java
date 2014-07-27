@@ -9,7 +9,7 @@ import net.minecraft.item.ItemStack;
 import shukaro.artifice.ArtificeConfig;
 import shukaro.artifice.ArtificeRegistry;
 import shukaro.artifice.ArtificeTooltips;
-import shukaro.artifice.util.ItemMetaPair;
+import shukaro.artifice.util.IDMetaPair;
 
 import java.util.List;
 
@@ -34,8 +34,8 @@ public class ItemBlockArtifice extends ItemBlock
     {
         if (!ArtificeConfig.tooltips.getBoolean(true))
             return;
-        ItemMetaPair pair = new ItemMetaPair(stack.getItem(), stack.getItemDamage());
-        if (ArtificeRegistry.getTooltipMap().get(pair) != null)
+        IDMetaPair pair = new IDMetaPair(stack.getItem(), stack.getItemDamage());
+        if (ArtificeRegistry.getTooltipMap().containsKey(pair))
         {
             for (String s : ArtificeRegistry.getTooltipMap().get(pair))
             {

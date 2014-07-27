@@ -50,6 +50,11 @@ tile.artifice.glasswall.reinforced.name=Reinforced Glass Wall
 tile.artifice.glasswall.industrial.name=Industrial Glass Wall
 tile.artifice.glasswall.advanced.name=Advanced Glass Wall
 
+tile.artifice.glasswalldark.basic.name=Dark Basic Glass Wall
+tile.artifice.glasswalldark.reinforced.name=Dark Reinforced Glass Wall
+tile.artifice.glasswalldark.industrial.name=Dark Industrial Glass Wall
+tile.artifice.glasswalldark.advanced.name=Dark Advanced Glass Wall
+
 tile.artifice.scaffold.basic.name=Basic Scaffolding
 tile.artifice.scaffold.reinforced.name=Reinforced Scaffolding
 tile.artifice.scaffold.industrial.name=Industrial Scaffolding

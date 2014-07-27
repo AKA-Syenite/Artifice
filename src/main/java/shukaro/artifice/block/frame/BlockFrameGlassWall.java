@@ -20,15 +20,19 @@ import shukaro.artifice.util.ChunkCoord;
 
 public class BlockFrameGlassWall extends BlockFrame
 {
-    private ConnectedTextureBase basic = new TransparentConnectedTexture(ConnectedTextures.BasicGlassWall);
-    private ConnectedTextureBase reinforced = new TransparentConnectedTexture(ConnectedTextures.ReinforcedGlassWall);
-    private ConnectedTextureBase industrial = new TransparentConnectedTexture(ConnectedTextures.IndustrialGlassWall);
-    private ConnectedTextureBase advanced = new TransparentConnectedTexture(ConnectedTextures.AdvancedGlassWall);
+    boolean isDark;
 
-    public BlockFrameGlassWall()
+    public BlockFrameGlassWall(boolean isDark)
     {
         super();
-        setBlockName("artifice.glasswall");
+        this.isDark = isDark;
+        if (isDark)
+        {
+            setBlockName("artifice.glasswalldark");
+            setLightOpacity(15);
+        }
+        else
+            setBlockName("artifice.glasswall");
     }
 
     @Override

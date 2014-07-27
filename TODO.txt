@@ -38,7 +38,7 @@ Steel gear
 Piggybanks
 Coinsleeves
 Soundproofing
-Additional pistons
+Steel piston
 Electromagnets
 Steel hoppers
 Coremod connected textures

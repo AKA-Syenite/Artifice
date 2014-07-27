@@ -1,2 +1,0 @@
-gradle setupDecompWorkspace 
-gradle eclipse

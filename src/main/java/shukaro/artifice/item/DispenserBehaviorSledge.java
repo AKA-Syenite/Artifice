@@ -1,5 +1,6 @@
 package shukaro.artifice.item;
 
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockDispenser;
 import net.minecraft.dispenser.BehaviorDefaultDispenseItem;
 import net.minecraft.dispenser.IBlockSource;
@@ -10,7 +11,7 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.world.World;
 import shukaro.artifice.ArtificeRegistry;
 import shukaro.artifice.util.BlockCoord;
-import shukaro.artifice.util.ItemMetaPair;
+import shukaro.artifice.util.BlockMetaPair;
 
 import java.util.Random;
 
@@ -27,7 +28,7 @@ public class DispenserBehaviorSledge extends BehaviorDefaultDispenseItem
         EnumFacing face = BlockDispenser.func_149937_b(dispenser.getBlockMetadata());
         BlockCoord target = new BlockCoord(dispenser.getXInt(), dispenser.getYInt(), dispenser.getZInt());
         target.offset(face.ordinal());
-        ItemMetaPair pair = new ItemMetaPair(target.getBlock(world), target.getMeta(world));
+        BlockMetaPair pair = new BlockMetaPair(target.getBlock(world), target.getMeta(world));
         if (ArtificeRegistry.getSledgeBlocks().containsKey(pair))
         {
             world.setBlockToAir(target.x, target.y, target.z);
@@ -43,9 +44,10 @@ public class DispenserBehaviorSledge extends BehaviorDefaultDispenseItem
         }
         else if (ArtificeRegistry.getWildSledgeBlocks().containsKey(target.getBlock(world)))
         {
+            Block block = target.getBlock(world);
             world.setBlockToAir(target.x, target.y, target.z);
             stack.setItemDamage(stack.getItemDamage() + 1);
-            for (ItemStack drop : ArtificeRegistry.getWildSledgeBlocks().get(target.getBlock(world)))
+            for (ItemStack drop : ArtificeRegistry.getWildSledgeBlocks().get(block))
             {
                 EntityItem item = new EntityItem(world, target.x + 0.5, target.y + 0.5, target.z + 0.5, drop.copy());
                 double xVel = -0.1 + (0.1 - -0.1) * rand.nextDouble();

@@ -2,6 +2,7 @@
 bin/
 build/
 eclipse/
+minecraft/
 .classpath
 .gradle/
 .project

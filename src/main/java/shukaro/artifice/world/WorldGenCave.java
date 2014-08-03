@@ -54,7 +54,7 @@ public class WorldGenCave implements IFeatureGenerator
         {
             for (BlockCoord n : c.getNearby())
             {
-                if (world.blockExists(n.x, n.y, n.z) && n.isAir(world))
+                if (world.blockExists(n.x, n.y, n.z) && (n.isAir(world) || !n.getBlock(world).isOpaqueCube()))
                     return true;
             }
         }

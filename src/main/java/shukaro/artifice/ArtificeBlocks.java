@@ -97,7 +97,7 @@ public class ArtificeBlocks
             ArtificeRegistry.registerMarbleType(ArtificeBlocks.blockMarble, 0);
 
             OreDictionary.registerOre("blockMarble", new ItemStack(blockMarble));
-            OreDictionary.registerOre("blockMarble", new ItemStack(blockMarble));
+            OreDictionary.registerOre("blockBasalt", new ItemStack(blockBasalt));
             for (int i=0; i<blockLimestones.length; i++)
                 OreDictionary.registerOre("blockLimestone", new ItemStack(blockLimestones[i]));
         }

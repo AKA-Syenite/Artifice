@@ -23,6 +23,8 @@ public class ArtificeRecipes
             registerBasaltRecipes();
         if (ArtificeConfig.marbleRecipes.getBoolean(true))
             registerMarbleRecipes();
+        if (ArtificeConfig.limestoneRecipes.getBoolean(true))
+            registerLimestoneRecipes();
         if (ArtificeConfig.floraRecipes.getBoolean(true))
             registerDyeRecipes();
         if (ArtificeConfig.sledgeRecipes.getBoolean(true))
@@ -644,6 +646,65 @@ public class ArtificeRecipes
         GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ArtificeBlocks.blockMarbleSlab, 1, 2), new ItemStack(ArtificeBlocks.blockMarbleSlab, 1, 3)));
 
         GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ArtificeBlocks.blockMarbleSlab, 1, 3), new ItemStack(ArtificeBlocks.blockMarbleSlab, 1, 2)));
+    }
+
+    private static void registerLimestoneRecipes()
+    {
+        for (int i=0; i<ArtificeBlocks.blockLimestones.length; i++)
+        {
+            FurnaceRecipes.smelting().func_151394_a(new ItemStack(ArtificeBlocks.blockLimestones[i], 1, 1), new ItemStack(ArtificeBlocks.blockLimestones[i], 1, 0), 0.1F);
+
+            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeBlocks.blockLimestones[i], 4, 2), new Object[]{
+                    "XX",
+                    "XX",
+                    'X', new ItemStack(ArtificeBlocks.blockLimestones[i], 1, 0)}));
+
+            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeBlocks.blockLimestones[i], 4, 3), new Object[]{
+                    "XX",
+                    "XX",
+                    'X', new ItemStack(ArtificeBlocks.blockLimestones[i], 1, 2)}));
+
+            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeBlocks.blockLimestones[i], 2, 5), new Object[]{
+                    "X",
+                    "X",
+                    'X', new ItemStack(ArtificeBlocks.blockLimestones[i], 1, 2)}));
+
+            GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ArtificeBlocks.blockLimestones[i], 1, 4), new ItemStack(ArtificeBlocks.blockLimestones[i], 1, 3)));
+
+            GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ArtificeBlocks.blockLimestones[i], 1, 3), new ItemStack(ArtificeBlocks.blockLimestones[i], 1, 4)));
+
+            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeBlocks.blockLimestoneBrickStairs[i], 4, 0), new Object[]{
+                    "X  ",
+                    "XX ",
+                    "XXX",
+                    'X', new ItemStack(ArtificeBlocks.blockLimestones[i], 1, 2)}));
+
+            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeBlocks.blockLimestoneCobbleStairs[i], 4, 0), new Object[]{
+                    "X  ",
+                    "XX ",
+                    "XXX",
+                    'X', new ItemStack(ArtificeBlocks.blockLimestones[i], 1, 1)}));
+
+            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeBlocks.blockLimestoneSlabs[i], 6, 0), new Object[]{
+                    "XXX",
+                    'X', new ItemStack(ArtificeBlocks.blockLimestones[i], 1, 2)}));
+
+            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeBlocks.blockLimestoneSlabs[i], 6, 1), new Object[]{
+                    "XXX",
+                    'X', new ItemStack(ArtificeBlocks.blockLimestones[i], 1, 1)}));
+
+            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeBlocks.blockLimestoneSlabs[i], 6, 2), new Object[]{
+                    "XXX",
+                    'X', new ItemStack(ArtificeBlocks.blockLimestones[i], 1, 3)}));
+
+            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeBlocks.blockLimestoneSlabs[i], 6, 3), new Object[]{
+                    "XXX",
+                    'X', new ItemStack(ArtificeBlocks.blockLimestones[i], 1, 4)}));
+
+            GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ArtificeBlocks.blockLimestoneSlabs[i], 1, 2), new ItemStack(ArtificeBlocks.blockLimestoneSlabs[i], 1, 3)));
+
+            GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ArtificeBlocks.blockLimestoneSlabs[i], 1, 3), new ItemStack(ArtificeBlocks.blockLimestoneSlabs[i], 1, 2)));
+        }
     }
 
     private static void registerLampRecipes()

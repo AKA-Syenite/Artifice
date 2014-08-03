@@ -24,7 +24,8 @@ public class ServerPacketHandler extends MessageHandlerBase
                 {
                     PlayerTracking.sneaks.remove(Integer.valueOf(entityId));
                 }
-            } return;
+            }
+            return;
         }
     }
 }

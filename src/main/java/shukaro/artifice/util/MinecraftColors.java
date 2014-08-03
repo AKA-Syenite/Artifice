@@ -32,19 +32,19 @@ public enum MinecraftColors
         return Integer.parseInt(this.hex, 16);
     }
 
-    public int toAdjusted(int meta)
+    public int toAdjusted(int amount)
     {
-        int r = Integer.parseInt(hex.substring(0, 2), 16) + (2 * meta);
+        int r = Integer.parseInt(hex.substring(0, 2), 16) + (2 * amount);
         if (r > 255)
             r = 255;
         if (r < 0)
             r = 0;
-        int g = Integer.parseInt(hex.substring(2, 4), 16) + (2 * meta);
+        int g = Integer.parseInt(hex.substring(2, 4), 16) + (2 * amount);
         if (g > 255)
             g = 255;
         if (g < 0)
             g = 0;
-        int b = Integer.parseInt(hex.substring(4, 6), 16) + (2 * meta);
+        int b = Integer.parseInt(hex.substring(4, 6), 16) + (2 * amount);
         if (b > 255)
             b = 255;
         if (b < 0)

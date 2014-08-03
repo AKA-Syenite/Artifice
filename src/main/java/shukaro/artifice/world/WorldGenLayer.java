@@ -1,7 +1,13 @@
 package shukaro.artifice.world;
 
+import cofh.api.world.IFeatureGenerator;
+import cofh.world.WorldHandler;
 import net.minecraft.block.Block;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
+import shukaro.artifice.ArtificeConfig;
+import shukaro.artifice.ArtificeCore;
 import shukaro.artifice.ArtificeRegistry;
 import shukaro.artifice.util.NameMetaPair;
 import shukaro.artifice.util.XSRandom;
@@ -9,31 +15,32 @@ import shukaro.artifice.util.XSRandom;
 import java.util.Random;
 import java.util.Set;
 
-public class WorldGenLayer
+public class WorldGenLayer implements IFeatureGenerator
 {
-    private World world;
-    private Random rand;
-    private int minHeight;
-    private int maxHeight;
     private Block block;
+    private int meta;
     private Set<NameMetaPair> replaced;
 
-    public WorldGenLayer(World world, Block block, int minHeight, int maxHeight)
-    {
-        this(world, block, minHeight, maxHeight, ArtificeRegistry.getStoneTypes());
-    }
+    private int minHeight;
+    private int maxHeight;
 
-    public WorldGenLayer(World world, Block block, int minHeight, int maxHeight, Set<NameMetaPair> replaced)
+    public WorldGenLayer(Block block, int meta, int minHeight, int maxHeight)
     {
-        this.world = world;
         this.block = block;
+        this.meta = meta;
+        this.replaced = ArtificeRegistry.getStoneTypes();
         this.minHeight = minHeight;
         this.maxHeight = maxHeight;
-        this.replaced = replaced;
-        this.rand = new XSRandom(world.getSeed());
     }
 
-    public boolean generate(int chunkX, int chunkZ)
+    @Override
+    public String getFeatureName()
+    {
+        return ArtificeCore.modName + ": " + new ItemStack(block, 1, meta).getDisplayName() + " Layer";
+    }
+
+    @Override
+    public boolean generateFeature(Random rand, int chunkX, int chunkZ, World world, boolean newGen)
     {
         int x = chunkX * 16;
         int z = chunkZ * 16;
@@ -46,8 +53,8 @@ public class WorldGenLayer
         {
             for (int j = z; j < zMax; j++)
             {
-                min = this.minHeight + rand.nextInt(2) - rand.nextInt(2);
-                max = this.maxHeight + rand.nextInt(2) - rand.nextInt(2);
+                min = this.minHeight + (rand.nextInt(3) - rand.nextInt(3));
+                max = this.maxHeight + (rand.nextInt(3) - rand.nextInt(3));
                 if (min < 0)
                     min = 0;
                 if (max > 256)
@@ -55,7 +62,7 @@ public class WorldGenLayer
                 for (int t = min; t < max; t++)
                 {
                     if (replaced.contains(new NameMetaPair(world.getBlock(i, t, j), world.getBlockMetadata(i, t, j))))
-                        world.setBlock(i, t, j, this.block, 0, 0);
+                        world.setBlock(i, t, j, block, meta, 0);
                 }
             }
         }

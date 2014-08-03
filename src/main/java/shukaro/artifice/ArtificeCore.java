@@ -1,5 +1,6 @@
 package shukaro.artifice;
 
+import cofh.world.WorldHandler;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.Mod;
@@ -7,7 +8,6 @@ import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
 import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.*;
-import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.network.NetHandlerPlayServer;
@@ -23,13 +23,13 @@ import shukaro.artifice.net.ServerPacketHandler;
 import shukaro.artifice.recipe.ArtificeRecipes;
 import shukaro.artifice.util.BlockCoord;
 import shukaro.artifice.util.ChunkCoord;
-import shukaro.artifice.world.ArtificeWorldGen;
+import shukaro.artifice.world.*;
 
 import java.util.ArrayList;
 import java.util.concurrent.ConcurrentHashMap;
 
 @Mod(modid = ArtificeCore.modID, name = ArtificeCore.modName, version = ArtificeCore.modVersion,
-        dependencies = "after:BuildCraft|Core;after:EE3;after:Forestry;after:MineFactoryReloaded;after:Thaumcraft")
+        dependencies = "required-after:CoFHCore;after:BuildCraft|Core;after:EE3;after:Forestry;after:MineFactoryReloaded;after:Thaumcraft")
 public class ArtificeCore
 {
     @SidedProxy(clientSide = "shukaro.artifice.ClientProxy", serverSide = "shukaro.artifice.CommonProxy")
@@ -39,7 +39,6 @@ public class ArtificeCore
     public static final String modName = "Artifice";
     public static final String modVersion = "1.7.10R1.1.4";
 
-    public static ArtificeWorldGen worldGen;
     public static Logger logger;
     public static ArtificeEventHandler eventHandler;
     public static ArtificeTickHandler tickHandler;
@@ -74,6 +73,7 @@ public class ArtificeCore
         {
             e.printStackTrace();
         }
+
         compats.add(new Buildcraft());
         compats.add(new EE3());
         compats.add(new FMP());
@@ -84,19 +84,32 @@ public class ArtificeCore
 
         logger = evt.getModLog();
 
-        ArtificeConfig.initClient(evt);
-        ArtificeConfig.initCommon(evt);
-
         packet = new PacketHandler(modID, new ClientPacketHandler(), new ServerPacketHandler());
         MinecraftForge.EVENT_BUS.register(eventHandler = new ArtificeEventHandler());
         FMLCommonHandler.instance().bus().register(tickHandler = new ArtificeTickHandler());
 
+        ArtificeConfig.initClient(evt);
+        ArtificeConfig.initCommon(evt);
 
         ArtificeBlocks.initBlocks();
         ArtificeItems.initItems();
 
-        if (ArtificeConfig.enableWorldGen.getBoolean(true))
-            GameRegistry.registerWorldGenerator(ArtificeCore.worldGen = new ArtificeWorldGen(), 100);
+        for (int i=0; i<ArtificeConfig.rockNames.length; i++)
+        {
+            if (ArtificeConfig.rockLayersGen[i].getBoolean())
+                WorldHandler.addFeature(new WorldGenLayer(ArtificeBlocks.rockBlocks[i], 0, ArtificeConfig.rockLayersMinHeight[i].getInt(), ArtificeConfig.rockLayersMaxHeight[i].getInt()));
+        }
+        for (int i=0; i<3; i++)
+        {
+            if (ArtificeConfig.rockClustersGen[i].getBoolean())
+                WorldHandler.addFeature(new WorldGenCluster(ArtificeBlocks.rockBlocks[i], 0, ArtificeConfig.rockClustersMinHeight[i].getInt(), ArtificeConfig.rockClustersMaxHeight[i].getInt(), ArtificeConfig.rockClustersSize[i].getInt(), ArtificeConfig.rockClustersFrequency[i].getInt()));
+            if (ArtificeConfig.rockCavesGen[i].getBoolean())
+                WorldHandler.addFeature(new WorldGenCave(ArtificeBlocks.rockBlocks[i], 0, ArtificeConfig.rockCavesMinHeight[i].getInt(), ArtificeConfig.rockCavesMaxHeight[i].getInt(), ArtificeConfig.rockCavesSize[i].getInt(), ArtificeConfig.rockCavesFrequency[i].getInt()));
+        }
+        if (ArtificeConfig.floraWorldGen.getBoolean())
+            WorldHandler.addFeature(new WorldGenFlowers());
+        if (ArtificeConfig.lotusWorldGen.getBoolean())
+            WorldHandler.addFeature(new WorldGenLily());
     }
 
     @EventHandler

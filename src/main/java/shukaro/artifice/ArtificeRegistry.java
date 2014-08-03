@@ -115,9 +115,9 @@ public abstract class ArtificeRegistry
         return basaltTypes;
     }
 
-    public static void registerTooltip(Item item, int meta, String line)
+    public static void registerTooltip(ItemStack stack, String line)
     {
-        NameMetaPair pair = new NameMetaPair(item, meta);
+        NameMetaPair pair = new NameMetaPair(stack.getUnlocalizedName(), stack.getItemDamage());
         if (tooltipMap.get(pair) == null)
         {
             List<String> temp = new ArrayList<String>();
@@ -128,11 +128,6 @@ public abstract class ArtificeRegistry
         {
             tooltipMap.get(pair).add(line);
         }
-    }
-
-    public static void registerTooltip(Block block, int meta, String line)
-    {
-        registerTooltip(Item.getItemFromBlock(block), meta, line);
     }
 
     public static Map<NameMetaPair, List<String>> getTooltipMap()

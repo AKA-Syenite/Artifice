@@ -34,7 +34,7 @@ public class ItemBlockArtifice extends ItemBlock
     {
         if (!ArtificeConfig.tooltips.getBoolean(true))
             return;
-        NameMetaPair pair = new NameMetaPair(stack.getItem(), stack.getItemDamage());
+        NameMetaPair pair = new NameMetaPair(stack.getUnlocalizedName(), stack.getItemDamage());
         if (ArtificeRegistry.getTooltipMap().containsKey(pair))
         {
             for (String s : ArtificeRegistry.getTooltipMap().get(pair))

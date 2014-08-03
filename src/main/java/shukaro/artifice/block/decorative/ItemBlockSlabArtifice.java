@@ -24,14 +24,52 @@ public class ItemBlockSlabArtifice extends ItemSlab
 
     private static BlockSlab getHalfSlab(Block block)
     {
-        if (block instanceof BlockBasaltSlab) return ArtificeBlocks.blockBasaltSlab;
-        else return ArtificeBlocks.blockMarbleSlab;
+        if (block instanceof BlockRockSlab && block.getUnlocalizedName().contains("basalt"))
+            return ArtificeBlocks.blockBasaltSlab;
+        else if (block instanceof BlockRockSlab && block.getUnlocalizedName().contains("marble"))
+            return ArtificeBlocks.blockMarbleSlab;
+        else
+        {
+            if (block.getUnlocalizedName().contains("lightgray"))
+                return ArtificeBlocks.blockLimestoneSlabs[1];
+            if (block.getUnlocalizedName().contains("gray"))
+                return ArtificeBlocks.blockLimestoneSlabs[0];
+            if (block.getUnlocalizedName().contains("brown"))
+                return ArtificeBlocks.blockLimestoneSlabs[2];
+            if (block.getUnlocalizedName().contains("tan"))
+                return ArtificeBlocks.blockLimestoneSlabs[3];
+            if (block.getUnlocalizedName().contains("reddish"))
+                return ArtificeBlocks.blockLimestoneSlabs[4];
+            if (block.getUnlocalizedName().contains("bluish"))
+                return ArtificeBlocks.blockLimestoneSlabs[5];
+            else
+                return ArtificeBlocks.blockLimestoneSlabs[6];
+        }
     }
 
     private static BlockSlab getDoubleSlab(Block block)
     {
-        if (block instanceof BlockBasaltSlab) return ArtificeBlocks.blockBasaltDoubleSlab;
-        else return ArtificeBlocks.blockMarbleDoubleSlab;
+        if (block instanceof BlockRockSlab && block.getUnlocalizedName().contains("basalt"))
+            return ArtificeBlocks.blockBasaltDoubleSlab;
+        else if (block instanceof BlockRockSlab && block.getUnlocalizedName().contains("marble"))
+            return ArtificeBlocks.blockMarbleDoubleSlab;
+        else
+        {
+            if (block.getUnlocalizedName().contains("lightgray"))
+                return ArtificeBlocks.blockLimestoneDoubleSlabs[1];
+            if (block.getUnlocalizedName().contains("gray"))
+                return ArtificeBlocks.blockLimestoneDoubleSlabs[0];
+            if (block.getUnlocalizedName().contains("brown"))
+                return ArtificeBlocks.blockLimestoneDoubleSlabs[2];
+            if (block.getUnlocalizedName().contains("tan"))
+                return ArtificeBlocks.blockLimestoneDoubleSlabs[3];
+            if (block.getUnlocalizedName().contains("reddish"))
+                return ArtificeBlocks.blockLimestoneDoubleSlabs[4];
+            if (block.getUnlocalizedName().contains("bluish"))
+                return ArtificeBlocks.blockLimestoneDoubleSlabs[5];
+            else
+                return ArtificeBlocks.blockLimestoneDoubleSlabs[6];
+        }
     }
 
     @Override
@@ -40,7 +78,7 @@ public class ItemBlockSlabArtifice extends ItemSlab
     {
         if (!ArtificeConfig.tooltips.getBoolean(true))
             return;
-        NameMetaPair pair = new NameMetaPair(stack.getItem(), stack.getItemDamage());
+        NameMetaPair pair = new NameMetaPair(stack.getUnlocalizedName(), stack.getItemDamage());
         if (ArtificeRegistry.getTooltipMap().get(pair) != null)
         {
             for (String s : ArtificeRegistry.getTooltipMap().get(pair))

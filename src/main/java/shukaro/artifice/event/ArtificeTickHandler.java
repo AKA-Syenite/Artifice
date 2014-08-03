@@ -2,41 +2,44 @@ package shukaro.artifice.event;
 
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.TickEvent;
+import cpw.mods.fml.relauncher.Side;
+import gnu.trove.map.TMap;
+import gnu.trove.map.hash.THashMap;
 import net.minecraft.world.World;
-import shukaro.artifice.ArtificeCore;
 import shukaro.artifice.util.ChunkCoord;
+import shukaro.artifice.world.ISuspendableGen;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Random;
+import java.util.ArrayDeque;
 
 public class ArtificeTickHandler
 {
-    public static HashMap chunksToGen = new HashMap();
-    private int chunkCount = 0;
+    public static TMap<Integer, ArrayDeque<ISuspendableGen>> toGen = new THashMap<Integer, ArrayDeque<ISuspendableGen>>();
 
     @SubscribeEvent
-    public void worldTicker(TickEvent.WorldTickEvent wte)
+    public void tickEnd(TickEvent.WorldTickEvent event)
     {
-        if (wte.phase != TickEvent.Phase.END) return;
-        World world = wte.world;
+        if (event.phase != TickEvent.Phase.END | event.side != Side.SERVER)
+            return;
+
+        World world = event.world;
         int dim = world.provider.dimensionId;
+        ArrayDeque<ISuspendableGen> generators = toGen.get(Integer.valueOf(dim));
 
-        ArrayList chunks = (ArrayList) chunksToGen.get(Integer.valueOf(dim));
-
-        if ((chunks != null) && (chunks.size() > 0))
+        if (generators != null && generators.size() > 0)
         {
-            chunkCount++;
-            ChunkCoord c = (ChunkCoord) chunks.get(0);
-            long worldSeed = world.getSeed();
-            Random rand = new Random(worldSeed);
-            long xSeed = rand.nextLong() >> 3;
-            long zSeed = rand.nextLong() >> 3;
-            rand.setSeed(xSeed * c.chunkX + zSeed * c.chunkZ ^ worldSeed);
-            ArtificeCore.worldGen.generateWorld(rand, c.chunkX, c.chunkZ, world, false);
-            chunks.remove(0);
-            chunksToGen.put(dim, chunks);
-            ArtificeCore.logger.info("Regenerated " + chunkCount + " chunks. " + Math.max(0, chunks.size()) + " chunks left");
+            for (ISuspendableGen gen : generators)
+            {
+                for (ChunkCoord c : gen.getChunksToGen())
+                {
+                    if (world.blockExists(c.chunkX << 4, 0, c.chunkZ << 4))
+                    {
+                        gen.doGeneration(c.chunkX, c.chunkZ);
+                        if (gen.getChunksToGen().size() == 0)
+                            toGen.get(Integer.valueOf(dim)).removeFirst();
+                        return;
+                    }
+                }
+            }
         }
     }
 }

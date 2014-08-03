@@ -334,7 +334,7 @@ public class BlockCoord implements Comparable
         return matches;
     }
 
-    public List<BlockCoord> getRadiusBlocks(World world, int radius)
+    public List<BlockCoord> getRadiusBlocks(int radius)
     {
         List<BlockCoord> matches = new ArrayList<BlockCoord>();
         BlockCoord c = this.copy();
@@ -447,6 +447,8 @@ public class BlockCoord implements Comparable
     {
         return world.getTileEntity(this.x, this.y, this.z);
     }
+
+    public boolean isAir(IBlockAccess access) { return access.isAirBlock(this.x, this.y, this.z); }
 
     @Override
     public String toString()

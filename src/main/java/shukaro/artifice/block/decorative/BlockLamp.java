@@ -41,6 +41,8 @@ public class BlockLamp extends BlockArtifice implements IRedNetConnection
         super(Material.glass);
         this.color = color;
         this.inverted = inverted;
+        setHardness(0.3F);
+        setStepSound(soundTypeGlass);
         if (inverted)
             setBlockName("artifice.lampinverted." + color.name().toLowerCase(Locale.ENGLISH));
         else
@@ -51,7 +53,7 @@ public class BlockLamp extends BlockArtifice implements IRedNetConnection
     public void registerBlockIcons(IIconRegister reg)
     {
         ArtificeConfig.registerConnectedTextures(reg);
-        this.icon = IconHandler.registerSingle(reg, "lamp_00", "lamp");
+        this.icon = IconHandler.registerSingle(reg, "lamp_normal_00", "lamp/normal");
     }
 
     @Override

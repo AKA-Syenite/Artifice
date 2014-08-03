@@ -143,6 +143,9 @@ public class BlockRock extends BlockArtifice
     }
 
     @Override
+    public boolean isOpaqueCube() { return true; }
+
+    @Override
     @SideOnly(Side.CLIENT)
     public int getRenderColor(int meta)
     {

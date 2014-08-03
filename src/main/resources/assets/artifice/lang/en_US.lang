@@ -13,27 +13,27 @@ tile.artifice.marble.paver.name=Marble Paver
 tile.artifice.marble.antipaver.name=Marble Antipaver
 tile.artifice.marble.chiseled.name=Chiseled Marble
 
+tile.artifice.basalt.stairs.brick.name=Basalt Brick Stairs
+tile.artifice.basalt.stairs.cobblestone.name=Basalt Cobblestone Stairs
+
+tile.artifice.marble.stairs.brick.name=Marble Brick Stairs
+tile.artifice.marble.stairs.cobblestone.name=Marble Cobblestone Stairs
+
 tile.artifice.flora.bluebell.name=Bluebell
 tile.artifice.flora.orchid.name=Orchid
 tile.artifice.flora.iris.name=Iris
 tile.artifice.flora.lotus.name=Lotus
 tile.artifice.flora.lily.open.name=Lotus Lily
 
-tile.artifice.slab.marblebrick.name=Marble Brick Slab
-tile.artifice.slab.marblecobble.name=Marble Cobblestone Slab
-tile.artifice.slab.marblepaver.name=Marble Paver Slab
-tile.artifice.slab.marbleantipaver.name=Marble Antipaver Slab
+tile.artifice.marble.slab.brick.name=Marble Brick Slab
+tile.artifice.marble.slab.cobble.name=Marble Cobblestone Slab
+tile.artifice.marble.slab.paver.name=Marble Paver Slab
+tile.artifice.marble.slab.antipaver.name=Marble Antipaver Slab
 
-tile.artifice.slab.basaltbrick.name=Basalt Brick Slab
-tile.artifice.slab.basaltcobble.name=Basalt Cobblestone Slab
-tile.artifice.slab.basaltpaver.name=Basalt Paver Slab
-tile.artifice.slab.basaltantipaver.name=Basalt Antipaver Slab
-
-tile.artifice.basalt.stairs.brick.name=Basalt Brick Stairs
-tile.artifice.basalt.stairs.cobblestone.name=Basalt Cobblestone Stairs
-
-tile.artifice.marble.stairs.brick.name=Marble Brick Stairs
-tile.artifice.marble.stairs.cobblestone.name=Marble Cobblestone Stairs
+tile.artifice.basalt.slab.brick.name=Basalt Brick Slab
+tile.artifice.basalt.slab.cobble.name=Basalt Cobblestone Slab
+tile.artifice.basalt.slab.paver.name=Basalt Paver Slab
+tile.artifice.basalt.slab.antipaver.name=Basalt Antipaver Slab
 
 tile.artifice.frame.basic.name=Basic Frame
 tile.artifice.frame.reinforced.name=Reinforced Frame
@@ -97,6 +97,102 @@ tile.artifice.lampinverted.brown.name=Inverted Brown Lamp
 tile.artifice.lampinverted.green.name=Inverted Green Lamp
 tile.artifice.lampinverted.red.name=Inverted Red Lamp
 tile.artifice.lampinverted.black.name=Inverted Black Lamp
+
+tile.artifice.limestone.gray.name=Gray Limestone
+tile.artifice.limestone.lightgray.name=Light Gray Limestone
+tile.artifice.limestone.brown.name=Brown Limestone
+tile.artifice.limestone.tan.name=Tan Limestone
+tile.artifice.limestone.reddish.name=Red Limestone
+tile.artifice.limestone.bluish.name=Blue Limestone
+tile.artifice.limestone.greenish.name=Green Limestone
+
+tile.artifice.limestone.gray.cobblestone.name=Gray Limestone Cobblestone
+tile.artifice.limestone.lightgray.cobblestone.name=Light Gray Limestone Cobblestone
+tile.artifice.limestone.brown.cobblestone.name=Brown Limestone Cobblestone
+tile.artifice.limestone.tan.cobblestone.name=Tan Limestone Cobblestone
+tile.artifice.limestone.reddish.cobblestone.name=Red Limestone Cobblestone
+tile.artifice.limestone.bluish.cobblestone.name=Blue Limestone Cobblestone
+tile.artifice.limestone.greenish.cobblestone.name=Green Limestone Cobblestone
+
+tile.artifice.limestone.gray.brick.name=Gray Limestone Brick
+tile.artifice.limestone.lightgray.brick.name=Light Gray Limestone Brick
+tile.artifice.limestone.brown.brick.name=Brown Limestone Brick
+tile.artifice.limestone.tan.brick.name=Tan Limestone Brick
+tile.artifice.limestone.reddish.brick.name=Red Limestone Brick
+tile.artifice.limestone.bluish.brick.name=Blue Limestone Brick
+tile.artifice.limestone.greenish.brick.name=Green Limestone Brick
+
+tile.artifice.limestone.gray.paver.name=Gray Limestone Paver
+tile.artifice.limestone.lightgray.paver.name=Light Gray Limestone Paver
+tile.artifice.limestone.brown.paver.name=Brown Limestone Paver
+tile.artifice.limestone.tan.paver.name=Tan Limestone Paver
+tile.artifice.limestone.reddish.paver.name=Red Limestone Paver
+tile.artifice.limestone.bluish.paver.name=Blue Limestone Paver
+tile.artifice.limestone.greenish.paver.name=Green Limestone Paver
+
+tile.artifice.limestone.gray.antipaver.name=Gray Limestone Antipaver
+tile.artifice.limestone.lightgray.antipaver.name=Light Gray Limestone Antipaver
+tile.artifice.limestone.brown.antipaver.name=Brown Limestone Antipaver
+tile.artifice.limestone.tan.antipaver.name=Tan Limestone Antipaver
+tile.artifice.limestone.reddish.antipaver.name=Red Limestone Antipaver
+tile.artifice.limestone.bluish.antipaver.name=Blue Limestone Antipaver
+tile.artifice.limestone.greenish.antipaver.name=Green Limestone Antipaver
+
+tile.artifice.limestone.gray.chiseled.name=Chiseled Gray Limestone
+tile.artifice.limestone.lightgray.chiseled.name=Chiseled Light Gray Limestone
+tile.artifice.limestone.brown.chiseled.name=Chiseled Brown Limestone
+tile.artifice.limestone.tan.chiseled.name=Chiseled Tan Limestone
+tile.artifice.limestone.reddish.chiseled.name=Chiseled Red Limestone
+tile.artifice.limestone.bluish.chiseled.name=Chiseled Blue Limestone
+tile.artifice.limestone.greenish.chiseled.name=Chiseled Green Limestone
+
+tile.artifice.limestone.gray.slab.brick.name=Gray Limestone Brick Slab
+tile.artifice.limestone.lightgray.slab.brick.name=Light Gray Limestone Brick Slab
+tile.artifice.limestone.brown.slab.brick.name=Brown Limestone Brick Slab
+tile.artifice.limestone.tan.slab.brick.name=Tan Limestone Brick Slab
+tile.artifice.limestone.reddish.slab.brick.name=Red Limestone Brick Slab
+tile.artifice.limestone.bluish.slab.brick.name=Blue Limestone Brick Slab
+tile.artifice.limestone.greenish.slab.brick.name=Green Limestone Brick Slab
+
+tile.artifice.limestone.gray.slab.cobble.name=Gray Limestone Cobblestone Slab
+tile.artifice.limestone.lightgray.slab.cobble.name=Light Gray Limestone Cobblestone Slab
+tile.artifice.limestone.brown.slab.cobble.name=Brown Limestone Cobblestone Slab
+tile.artifice.limestone.tan.slab.cobble.name=Tan Limestone Cobblestone Slab
+tile.artifice.limestone.reddish.slab.cobble.name=Red Limestone Cobblestone Slab
+tile.artifice.limestone.bluish.slab.cobble.name=Blue Limestone Cobblestone Slab
+tile.artifice.limestone.greenish.slab.cobble.name=Green Limestone Cobblestone Slab
+
+tile.artifice.limestone.gray.slab.paver.name=Gray Limestone Paver Slab
+tile.artifice.limestone.lightgray.slab.paver.name=Light Gray Limestone Paver Slab
+tile.artifice.limestone.brown.slab.paver.name=Brown Limestone Paver Slab
+tile.artifice.limestone.tan.slab.paver.name=Tan Limestone Paver Slab
+tile.artifice.limestone.reddish.slab.paver.name=Red Limestone Paver Slab
+tile.artifice.limestone.bluish.slab.paver.name=Blue Limestone Paver Slab
+tile.artifice.limestone.greenish.slab.paver.name=Green Limestone Paver Slab
+
+tile.artifice.limestone.gray.slab.antipaver.name=Gray Limestone Antipaver Slab
+tile.artifice.limestone.lightgray.slab.antipaver.name=Light Gray Limestone Antipaver Slab
+tile.artifice.limestone.brown.slab.antipaver.name=Brown Limestone Antipaver Slab
+tile.artifice.limestone.tan.slab.antipaver.name=Tan Limestone Antipaver Slab
+tile.artifice.limestone.reddish.slab.antipaver.name=Red Limestone Antipaver Slab
+tile.artifice.limestone.bluish.slab.antipaver.name=Blue Limestone Antipaver Slab
+tile.artifice.limestone.greenish.slab.antipaver.name=Green Limestone Antipaver Slab
+
+tile.artifice.limestone.gray.stairs.brick.name=Gray Limestone Brick Stairs
+tile.artifice.limestone.lightgray.stairs.brick.name=Light Gray Limestone Brick Stairs
+tile.artifice.limestone.brown.stairs.brick.name=Brown Limestone Brick Stairs
+tile.artifice.limestone.tan.stairs.brick.name=Tan Limestone Brick Stairs
+tile.artifice.limestone.reddish.stairs.brick.name=Red Limestone Brick Stairs
+tile.artifice.limestone.bluish.stairs.brick.name=Blue Limestone Brick Stairs
+tile.artifice.limestone.greenish.stairs.brick.name=Green Limestone Brick Stairs
+
+tile.artifice.limestone.gray.stairs.cobblestone.name=Gray Limestone Cobblestone Stairs
+tile.artifice.limestone.lightgray.stairs.cobblestone.name=Light Gray Limestone Cobblestone Stairs
+tile.artifice.limestone.brown.stairs.cobblestone.name=Brown Limestone Cobblestone Stairs
+tile.artifice.limestone.tan.stairs.cobblestone.name=Tan Limestone Cobblestone Stairs
+tile.artifice.limestone.reddish.stairs.cobblestone.name=Red Limestone Cobblestone Stairs
+tile.artifice.limestone.bluish.stairs.cobblestone.name=Blue Limestone Cobblestone Stairs
+tile.artifice.limestone.greenish.stairs.cobblestone.name=Green Limestone Cobblestone Stairs
 
 # Item Names
 item.artifice.sledge.wood.name=Wooden Sledge
@@ -204,24 +300,9 @@ tooltip.artifice.lily.flavor=Reminiscent of candles on the water
 tooltip.artifice.connected=Connected Textured
 tooltip.artifice.connected.snug.flavor=The trick is snug surfaces
 tooltip.artifice.connected.carving.flavor=The secret is carerful carving
-tooltip.artifice.volcanic=Volcanic stone
-tooltip.artifice.metamorphic=Metamorphic stone
-tooltip.artifice.basalt.smooth.flavor=You can see shiny specks on the surface
-tooltip.artifice.basalt.cobble.flavor=Covered in jagged edges
-tooltip.artifice.basalt.brick.flavor=Basalt lends itself well to smooth surfaces
-tooltip.artifice.basalt.chiseled.flavor=Precise edges define geometric patterns
-tooltip.artifice.marble.smooth.flavor=Filled with interesting patterns
-tooltip.artifice.marble.cobble.flavor=As it turns out, rather soft
-tooltip.artifice.marble.brick.flavor=Polishing really brings out the glow
-tooltip.artifice.marble.chiseled.flavor=There's a reason marble is prized
-tooltip.artifice.basalt.brick.stairs.flavor=The pieces slot easily into place
-tooltip.artifice.marble.brick.stairs.flavor=Marble wears easily
-tooltip.artifice.basalt.cobble.stairs.flavor=It can be tricky to get the desired angles
-tooltip.artifice.marble.cobble.stairs.flavor=Lends a rustic air
-tooltip.artifice.basalt.brick.slab.flavor=Thin layers of basalt can fracture easily
-tooltip.artifice.marble.brick.slab.flavor=Marble is often used as a facade
-tooltip.artifice.basalt.cobble.slab.flavor=Basalt easily shears apart
-tooltip.artifice.marble.cobble.slab.flavor=Cutting marble generates a lot of dust
+tooltip.artifice.volcanic=Igneous Stone
+tooltip.artifice.metamorphic=Metamorphic Stone
+tooltip.artifice.sedimentary=Sedimentary Stone
 tooltip.artifice.detector=Pulses on adjacent block updates
 tooltip.artifice.detector.flavor=A rather delicate contraption
 tooltip.artifice.frame.basic=Sturdy wooden frame

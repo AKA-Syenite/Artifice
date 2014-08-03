@@ -20,7 +20,8 @@ public class ClientPacketHandler extends MessageHandlerBase
                 TextureHandler.updateTexture(coord);
                 for (BlockCoord n : coord.getNearby())
                     TextureHandler.updateTexture(n);
-            } return;
+            }
+            return;
         }
     }
 }

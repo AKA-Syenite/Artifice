@@ -31,6 +31,10 @@ public class TransparentConnectedTexture extends ConnectedTextureBase
         // Temporary
         if (self instanceof BlockSlab != neighbor instanceof BlockSlab)
             return false;
+        if (self.getUnlocalizedName().contains("double") != neighbor.getUnlocalizedName().contains("double"))
+            return false;
+        if(self.colorMultiplier(blockAccess, coord.x, coord.y, coord.z) != neighbor.colorMultiplier(blockAccess, coord.x, coord.y, coord.z))
+            return false;
 
         if (self != null && neighbor != null)
             return self.getIcon(face, meta) != null && neighbor.getIcon(face, neighborMeta) != null && self.getIcon(face, meta).getIconName().equals(neighbor.getIcon(face, neighborMeta).getIconName());

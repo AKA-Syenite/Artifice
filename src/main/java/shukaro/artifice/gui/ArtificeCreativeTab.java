@@ -9,7 +9,6 @@ import shukaro.artifice.ArtificeItems;
 public class ArtificeCreativeTab extends CreativeTabs
 {
     public static final ArtificeCreativeTab main = new ArtificeCreativeTab("Artifice");
-    //public static final ArtificeCreativeTab documents = new ArtificeCreativeTab("Documents");
 
     private ArtificeCreativeTab(String label)
     {

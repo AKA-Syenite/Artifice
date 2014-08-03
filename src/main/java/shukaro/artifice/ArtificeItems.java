@@ -1,5 +1,6 @@
 package shukaro.artifice;
 
+import cofh.util.oredict.OreDictionaryArbiter;
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.block.BlockDispenser;
 import net.minecraft.init.Items;
@@ -37,11 +38,13 @@ public class ArtificeItems
             itemSledgeIron = new ItemSledge(Item.ToolMaterial.IRON);
             itemSledgeGold = new ItemSledge(Item.ToolMaterial.GOLD);
             itemSledgeDiamond = new ItemSledge(Item.ToolMaterial.EMERALD);
+
             GameRegistry.registerItem(itemSledgeWood, itemSledgeWood.getUnlocalizedName());
             GameRegistry.registerItem(itemSledgeStone, itemSledgeStone.getUnlocalizedName());
             GameRegistry.registerItem(itemSledgeIron, itemSledgeIron.getUnlocalizedName());
             GameRegistry.registerItem(itemSledgeGold, itemSledgeGold.getUnlocalizedName());
             GameRegistry.registerItem(itemSledgeDiamond, itemSledgeDiamond.getUnlocalizedName());
+
             BlockDispenser.dispenseBehaviorRegistry.putObject(itemSledgeWood, new DispenserBehaviorSledge());
             BlockDispenser.dispenseBehaviorRegistry.putObject(itemSledgeStone, new DispenserBehaviorSledge());
             BlockDispenser.dispenseBehaviorRegistry.putObject(itemSledgeIron, new DispenserBehaviorSledge());
@@ -52,26 +55,32 @@ public class ArtificeItems
         if (ArtificeConfig.enableSteel.getBoolean(true))
         {
             itemSteelIngot = new ItemSteel();
+
             GameRegistry.registerItem(itemSteelIngot, itemSteelIngot.getUnlocalizedName());
-            OreDictionary.registerOre("ingotSteel", new ItemStack(itemSteelIngot, 1, 0));
-            OreDictionary.registerOre("dustSteel", new ItemStack(itemSteelIngot, 1, 1));
+
+            OreDictionaryArbiter.registerOreDictionaryEntry(new ItemStack(itemSteelIngot, 1, 0), "ingotSteel");
+            OreDictionaryArbiter.registerOreDictionaryEntry(new ItemStack(itemSteelIngot, 1, 1), "dustSteel");
         }
 
         if (ArtificeConfig.enableBoxes.getBoolean(true))
         {
             itemBox = new ItemBox();
+
             GameRegistry.registerItem(itemBox, itemBox.getUnlocalizedName());
+
             BlockDispenser.dispenseBehaviorRegistry.putObject(itemBox, new DispenserBehaviorBox());
         }
 
         if (ArtificeConfig.enableWorldGen.getBoolean(true))
         {
             itemDye = new ItemDye();
+
             GameRegistry.registerItem(itemDye, itemDye.getUnlocalizedName());
-            OreDictionary.registerOre("dyeBlue", new ItemStack(itemDye, 1, 0));
-            OreDictionary.registerOre("dyeBlack", new ItemStack(itemDye, 1, 1));
-            OreDictionary.registerOre("dyeBrown", new ItemStack(itemDye, 1, 2));
-            OreDictionary.registerOre("dyeWhite", new ItemStack(itemDye, 1, 3));
+
+            OreDictionaryArbiter.registerOreDictionaryEntry(new ItemStack(itemDye, 1, 0), "dyeBlue");
+            OreDictionaryArbiter.registerOreDictionaryEntry(new ItemStack(itemDye, 1, 1), "dyeBlack");
+            OreDictionaryArbiter.registerOreDictionaryEntry(new ItemStack(itemDye, 1, 2), "dyeBrown");
+            OreDictionaryArbiter.registerOreDictionaryEntry(new ItemStack(itemDye, 1, 3), "dyeWhite");
         }
 
         if (ArtificeConfig.enableSickles.getBoolean(true))
@@ -81,6 +90,7 @@ public class ArtificeItems
             itemSickleIron = new ItemSickle(Item.ToolMaterial.IRON);
             itemSickleGold = new ItemSickle(Item.ToolMaterial.GOLD);
             itemSickleDiamond = new ItemSickle(Item.ToolMaterial.EMERALD);
+
             GameRegistry.registerItem(itemSickleWood, itemSickleWood.getUnlocalizedName());
             GameRegistry.registerItem(itemSickleStone, itemSickleStone.getUnlocalizedName());
             GameRegistry.registerItem(itemSickleIron, itemSickleIron.getUnlocalizedName());
@@ -92,21 +102,24 @@ public class ArtificeItems
         {
             itemNugget = new ItemNugget();
             itemCoin = new ItemCoin();
+
             GameRegistry.registerItem(itemNugget, itemNugget.getUnlocalizedName());
             GameRegistry.registerItem(itemCoin, itemCoin.getUnlocalizedName());
-            OreDictionary.registerOre("nuggetCopper", new ItemStack(itemNugget, 1, 0));
-            OreDictionary.registerOre("nuggetSilver", new ItemStack(itemNugget, 1, 1));
-            OreDictionary.registerOre("nuggetGold", new ItemStack(Items.gold_nugget, 1, 0));
-            OreDictionary.registerOre("nuggetPlatinum", new ItemStack(itemNugget, 1, 2));
-            OreDictionary.registerOre("coinCopper", new ItemStack(itemCoin, 1, 0));
-            OreDictionary.registerOre("coinSilver", new ItemStack(itemCoin, 1, 1));
-            OreDictionary.registerOre("coinGold", new ItemStack(itemCoin, 1, 2));
-            OreDictionary.registerOre("coinPlatinum", new ItemStack(itemCoin, 1, 3));
+
+            OreDictionaryArbiter.registerOreDictionaryEntry(new ItemStack(itemNugget, 1, 0), "nuggetCopper");
+            OreDictionaryArbiter.registerOreDictionaryEntry(new ItemStack(itemNugget, 1, 1), "nuggetSilver");
+            OreDictionaryArbiter.registerOreDictionaryEntry(new ItemStack(Items.gold_nugget, 1, 0), "nuggetGold");
+            OreDictionaryArbiter.registerOreDictionaryEntry(new ItemStack(itemNugget, 1, 2), "nuggetPlatinum");
+            OreDictionaryArbiter.registerOreDictionaryEntry(new ItemStack(itemCoin, 1, 0), "coinCopper");
+            OreDictionaryArbiter.registerOreDictionaryEntry(new ItemStack(itemCoin, 1, 1), "coinSilver");
+            OreDictionaryArbiter.registerOreDictionaryEntry(new ItemStack(itemCoin, 1, 2), "coinGold");
+            OreDictionaryArbiter.registerOreDictionaryEntry(new ItemStack(itemCoin, 1, 3), "coinPlatinum");
         }
 
         if (ArtificeConfig.enableUpgrades.getBoolean(true))
         {
             itemUpgrade = new ItemUpgrade();
+
             GameRegistry.registerItem(itemUpgrade, itemUpgrade.getUnlocalizedName());
         }
     }

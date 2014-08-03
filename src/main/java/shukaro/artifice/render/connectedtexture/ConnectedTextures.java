@@ -26,7 +26,10 @@ public enum ConnectedTextures
     ReinforcedGlassWall("glasswall_reinforced", false),
     IndustrialGlassWall("glasswall_industrial", false),
     AdvancedGlassWall("glasswall_advanced", false),
-    Lamp("lamp", true);
+    LimestonePaver("limestone_paver", true),
+    LimestoneAntipaver("limestone_antipaver", true),
+    LampNormal("lamp_normal", true),
+    LampInverted("lamp_inverted", true);
 
     public String name;
     public IIcon[] textureList;

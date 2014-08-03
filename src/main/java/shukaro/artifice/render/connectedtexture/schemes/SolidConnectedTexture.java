@@ -3,6 +3,7 @@ package shukaro.artifice.render.connectedtexture.schemes;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockSlab;
 import net.minecraft.world.IBlockAccess;
+import shukaro.artifice.block.decorative.BlockRockSlab;
 import shukaro.artifice.render.connectedtexture.ConnectedTextureBase;
 import shukaro.artifice.render.connectedtexture.ConnectedTextures;
 import shukaro.artifice.util.BlockCoord;
@@ -31,6 +32,10 @@ public class SolidConnectedTexture extends ConnectedTextureBase
 
         // Temporary
         if (self instanceof BlockSlab != neighbor instanceof BlockSlab)
+            return false;
+        if (self.getUnlocalizedName().contains("double") != neighbor.getUnlocalizedName().contains("double"))
+            return false;
+        if(self.colorMultiplier(blockAccess, coord.x, coord.y, coord.z) != neighbor.colorMultiplier(blockAccess, coord.x, coord.y, coord.z))
             return false;
 
         if (self != null && neighbor != null && cover != null)

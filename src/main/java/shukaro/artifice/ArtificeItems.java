@@ -58,8 +58,8 @@ public class ArtificeItems
 
             GameRegistry.registerItem(itemSteelIngot, itemSteelIngot.getUnlocalizedName());
 
-            OreDictionaryArbiter.registerOreDictionaryEntry(new ItemStack(itemSteelIngot, 1, 0), "ingotSteel");
-            OreDictionaryArbiter.registerOreDictionaryEntry(new ItemStack(itemSteelIngot, 1, 1), "dustSteel");
+            OreDictionary.registerOre("ingotSteel", new ItemStack(itemSteelIngot, 1, 0));
+            OreDictionary.registerOre("dustSteel", new ItemStack(itemSteelIngot, 1, 1));
         }
 
         if (ArtificeConfig.enableBoxes.getBoolean(true))
@@ -77,10 +77,10 @@ public class ArtificeItems
 
             GameRegistry.registerItem(itemDye, itemDye.getUnlocalizedName());
 
-            OreDictionaryArbiter.registerOreDictionaryEntry(new ItemStack(itemDye, 1, 0), "dyeBlue");
-            OreDictionaryArbiter.registerOreDictionaryEntry(new ItemStack(itemDye, 1, 1), "dyeBlack");
-            OreDictionaryArbiter.registerOreDictionaryEntry(new ItemStack(itemDye, 1, 2), "dyeBrown");
-            OreDictionaryArbiter.registerOreDictionaryEntry(new ItemStack(itemDye, 1, 3), "dyeWhite");
+            OreDictionary.registerOre("dyeBlue", new ItemStack(itemDye, 1, 0));
+            OreDictionary.registerOre("dyeBlack", new ItemStack(itemDye, 1, 1));
+            OreDictionary.registerOre("dyeBrown", new ItemStack(itemDye, 1, 2));
+            OreDictionary.registerOre("dyeWhite", new ItemStack(itemDye, 1, 3));
         }
 
         if (ArtificeConfig.enableSickles.getBoolean(true))
@@ -106,14 +106,14 @@ public class ArtificeItems
             GameRegistry.registerItem(itemNugget, itemNugget.getUnlocalizedName());
             GameRegistry.registerItem(itemCoin, itemCoin.getUnlocalizedName());
 
-            OreDictionaryArbiter.registerOreDictionaryEntry(new ItemStack(itemNugget, 1, 0), "nuggetCopper");
-            OreDictionaryArbiter.registerOreDictionaryEntry(new ItemStack(itemNugget, 1, 1), "nuggetSilver");
-            OreDictionaryArbiter.registerOreDictionaryEntry(new ItemStack(Items.gold_nugget, 1, 0), "nuggetGold");
-            OreDictionaryArbiter.registerOreDictionaryEntry(new ItemStack(itemNugget, 1, 2), "nuggetPlatinum");
-            OreDictionaryArbiter.registerOreDictionaryEntry(new ItemStack(itemCoin, 1, 0), "coinCopper");
-            OreDictionaryArbiter.registerOreDictionaryEntry(new ItemStack(itemCoin, 1, 1), "coinSilver");
-            OreDictionaryArbiter.registerOreDictionaryEntry(new ItemStack(itemCoin, 1, 2), "coinGold");
-            OreDictionaryArbiter.registerOreDictionaryEntry(new ItemStack(itemCoin, 1, 3), "coinPlatinum");
+            OreDictionary.registerOre("nuggetCopper", new ItemStack(itemNugget, 1, 0));
+            OreDictionary.registerOre("nuggetSilver", new ItemStack(itemNugget, 1, 1));
+            OreDictionary.registerOre("nuggetGold", new ItemStack(Items.gold_nugget, 1, 0));
+            OreDictionary.registerOre("nuggetPlatinum", new ItemStack(itemNugget, 1, 2));
+            OreDictionary.registerOre("coinCopper", new ItemStack(itemCoin, 1, 0));
+            OreDictionary.registerOre("coinSilver", new ItemStack(itemCoin, 1, 1));
+            OreDictionary.registerOre("coinGold", new ItemStack(itemCoin, 1, 2));
+            OreDictionary.registerOre("coinPlatinum", new ItemStack(itemCoin, 1, 3));
         }
 
         if (ArtificeConfig.enableUpgrades.getBoolean(true))

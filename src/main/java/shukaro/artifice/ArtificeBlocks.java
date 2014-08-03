@@ -96,10 +96,10 @@ public class ArtificeBlocks
             ArtificeRegistry.registerBasaltType(ArtificeBlocks.blockBasalt, 0);
             ArtificeRegistry.registerMarbleType(ArtificeBlocks.blockMarble, 0);
 
-            OreDictionaryArbiter.registerOreDictionaryEntry(new ItemStack(blockBasalt), "blockBasalt");
-            OreDictionaryArbiter.registerOreDictionaryEntry(new ItemStack(blockMarble), "blockMarble");
+            OreDictionary.registerOre("blockMarble", new ItemStack(blockMarble));
+            OreDictionary.registerOre("blockMarble", new ItemStack(blockMarble));
             for (int i=0; i<blockLimestones.length; i++)
-                OreDictionaryArbiter.registerOreDictionaryEntry(new ItemStack(blockLimestones[i]), "blockLimestone");
+                OreDictionary.registerOre("blockLimestone", new ItemStack(blockLimestones[i]));
         }
 
         if (ArtificeConfig.enableFrames.getBoolean(true))
@@ -120,8 +120,8 @@ public class ArtificeBlocks
 
             for (int i=0; i<ArtificeCore.tiers.length; i++)
             {
-                OreDictionaryArbiter.registerOreDictionaryEntry(new ItemStack(blockGlassWall, 1, i), "blockGlass");
-                OreDictionaryArbiter.registerOreDictionaryEntry(new ItemStack(blockGlassWallDark, 1, i), "blockGlass");
+                OreDictionary.registerOre("blockGlass", new ItemStack(blockGlassWall, 1, i));
+                OreDictionary.registerOre("blockGlass", new ItemStack(blockGlassWallDark, 1, i));
             }
         }
 
@@ -131,7 +131,7 @@ public class ArtificeBlocks
 
             GameRegistry.registerBlock(blockSteel, ItemBlockArtifice.class, blockSteel.getUnlocalizedName());
 
-            OreDictionaryArbiter.registerOreDictionaryEntry(new ItemStack(blockSteel), "blockSteel");
+            OreDictionary.registerOre("blockSteel", new ItemStack(blockSteel));
         }
 
         if (ArtificeConfig.enableLamps.getBoolean(true))

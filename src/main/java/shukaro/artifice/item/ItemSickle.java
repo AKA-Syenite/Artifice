@@ -129,7 +129,7 @@ public class ItemSickle extends ItemTool
         else if (block != null && block.isLeaves(world, x, y, z))
         {
             int count = 0;
-            for (BlockCoord c : coord.getRadiusBlocks(world, radius))
+            for (BlockCoord c : coord.getRadiusBlocks(radius))
             {
                 Block b = world.getBlock(c.x, c.y, c.z);
                 int meta = world.getBlockMetadata(c.x, c.y, c.z);

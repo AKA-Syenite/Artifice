@@ -6,7 +6,6 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockStairs;
 import net.minecraft.world.IBlockAccess;
 import shukaro.artifice.ArtificeCore;
-import shukaro.artifice.gui.ArtificeCreativeTab;
 
 import java.util.Locale;
 

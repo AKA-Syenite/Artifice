@@ -1,7 +1,6 @@
 package shukaro.artifice;
 
 import net.minecraft.enchantment.Enchantment;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.StatCollector;
 import shukaro.artifice.recipe.EnumUpgrades;

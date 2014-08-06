@@ -23,9 +23,6 @@ import shukaro.artifice.compat.*;
 import shukaro.artifice.event.ArtificeEventHandler;
 import shukaro.artifice.event.ArtificeTickHandler;
 import shukaro.artifice.gui.ArtificeCreativeTab;
-import shukaro.artifice.net.ClientPacketHandler;
-import shukaro.artifice.net.PacketHandler;
-import shukaro.artifice.net.ServerPacketHandler;
 import shukaro.artifice.recipe.ArtificeRecipes;
 import shukaro.artifice.util.BlockCoord;
 import shukaro.artifice.util.ChunkCoord;
@@ -44,12 +41,12 @@ public class ArtificeCore
 
     public static final String modID = "Artifice";
     public static final String modName = "Artifice";
+    public static final String modChannel = "Artifice";
     public static final String modVersion = "1.7.10R1.1.4";
 
     public static Logger logger;
     public static ArtificeEventHandler eventHandler;
     public static ArtificeTickHandler tickHandler;
-    public static PacketHandler packet;
 
     public static final String[] tiers = {"Basic", "Reinforced", "Industrial", "Advanced"};
     public static final String[] flora = {"Bluebell", "Orchid", "Iris", "Lotus", "LotusClosed"};
@@ -94,7 +91,6 @@ public class ArtificeCore
 
         logger = evt.getModLog();
 
-        packet = new PacketHandler(modID, new ClientPacketHandler(), new ServerPacketHandler());
         MinecraftForge.EVENT_BUS.register(eventHandler = new ArtificeEventHandler());
         FMLCommonHandler.instance().bus().register(tickHandler = new ArtificeTickHandler());
 

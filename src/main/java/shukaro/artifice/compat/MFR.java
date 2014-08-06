@@ -1,6 +1,5 @@
 package shukaro.artifice.compat;
 
-import cpw.mods.fml.common.event.FMLInterModComms;
 import powercrystals.minefactoryreloaded.api.FactoryRegistry;
 import shukaro.artifice.ArtificeCore;
 import shukaro.artifice.compat.mfr.FactoryFlora;

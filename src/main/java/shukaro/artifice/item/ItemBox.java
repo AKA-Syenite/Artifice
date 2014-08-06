@@ -205,8 +205,8 @@ public class ItemBox extends ItemArtifice
             {
                 for (int i = 0; i < enchants.tagCount(); i++)
                 {
-                    short id = ((NBTTagCompound) enchants.getCompoundTagAt(i)).getShort("id");
-                    short lvl = ((NBTTagCompound) enchants.getCompoundTagAt(i)).getShort("lvl");
+                    short id = enchants.getCompoundTagAt(i).getShort("id");
+                    short lvl = enchants.getCompoundTagAt(i).getShort("lvl");
                     if (Enchantment.enchantmentsList[id] != null)
                     {
                         infoList.add(FormatCodes.Yellow.code + Enchantment.enchantmentsList[id].getTranslatedName(lvl));

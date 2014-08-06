@@ -16,7 +16,6 @@ import org.apache.commons.lang3.text.WordUtils;
 import shukaro.artifice.ArtificeBlocks;
 import shukaro.artifice.ArtificeConfig;
 import shukaro.artifice.ArtificeCore;
-import shukaro.artifice.gui.ArtificeCreativeTab;
 import shukaro.artifice.net.PacketDispatcher;
 import shukaro.artifice.render.IconHandler;
 import shukaro.artifice.render.TextureHandler;
@@ -25,7 +24,6 @@ import shukaro.artifice.util.BlockCoord;
 import shukaro.artifice.util.ChunkCoord;
 
 import java.util.List;
-import java.util.Locale;
 import java.util.Random;
 
 public class BlockRockSlab extends BlockSlab

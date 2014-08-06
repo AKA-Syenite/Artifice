@@ -19,9 +19,7 @@ import shukaro.artifice.net.PacketDispatcher;
 import shukaro.artifice.net.PlayerTracking;
 import shukaro.artifice.render.IconHandler;
 import shukaro.artifice.render.TextureHandler;
-import shukaro.artifice.render.connectedtexture.ConnectedTextureBase;
 import shukaro.artifice.render.connectedtexture.ConnectedTextures;
-import shukaro.artifice.render.connectedtexture.schemes.SolidConnectedTexture;
 import shukaro.artifice.util.BlockCoord;
 import shukaro.artifice.util.ChunkCoord;
 
@@ -52,7 +50,6 @@ public class BlockFrameScaffold extends BlockFrame
             }
             catch (Exception e)
             {
-                e.printStackTrace();
             }
         }
         entity.fallDistance = 0;

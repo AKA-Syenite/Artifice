@@ -1,6 +1,7 @@
 package shukaro.artifice.util;
 
 import net.minecraft.block.Block;
+import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
@@ -449,6 +450,8 @@ public class BlockCoord implements Comparable
     }
 
     public boolean isAir(IBlockAccess access) { return access.isAirBlock(this.x, this.y, this.z); }
+
+    public ItemStack getStack(IBlockAccess access) { return new ItemStack(access.getBlock(this.x, this.y, this.z), 1, access.getBlockMetadata(this.x, this.y, this.z)); }
 
     @Override
     public String toString()

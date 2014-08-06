@@ -18,7 +18,7 @@ public class BlockStairsArtifice extends BlockStairs
     {
         super(block, meta);
         setLightOpacity(0);
-        setCreativeTab(ArtificeCreativeTab.main);
+        setCreativeTab(ArtificeCore.worldTab);
         String name = block.getUnlocalizedName() + ".stairs." + ArtificeCore.rocks[meta].toLowerCase(Locale.ENGLISH);
         name = name.replace("tile.", "");
         setBlockName(name);
@@ -26,12 +26,7 @@ public class BlockStairsArtifice extends BlockStairs
 
     public BlockStairsArtifice(Block block, int meta, int color)
     {
-        super(block, meta);
-        setLightOpacity(0);
-        setCreativeTab(ArtificeCreativeTab.main);
-        String name = block.getUnlocalizedName() + ".stairs." + ArtificeCore.rocks[meta].toLowerCase(Locale.ENGLISH);
-        name = name.replace("tile.", "");
-        setBlockName(name);
+        this(block, meta);
         this.color = color;
     }
 

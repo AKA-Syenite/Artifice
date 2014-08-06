@@ -6,6 +6,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.util.IIcon;
+import shukaro.artifice.ArtificeCore;
 import shukaro.artifice.gui.ArtificeCreativeTab;
 import shukaro.artifice.render.IconHandler;
 
@@ -16,7 +17,7 @@ public class BlockSteel extends Block
     public BlockSteel()
     {
         super(Material.iron);
-        this.setCreativeTab(ArtificeCreativeTab.main);
+        this.setCreativeTab(ArtificeCore.mainTab);
         this.setHardness(3.0F);
         this.setBlockName("artifice.steel");
     }

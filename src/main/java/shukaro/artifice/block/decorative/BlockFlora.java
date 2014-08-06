@@ -25,7 +25,7 @@ public class BlockFlora extends BlockFlower
     {
         super(0);
         this.setTickRandomly(true);
-        setCreativeTab(ArtificeCreativeTab.main);
+        setCreativeTab(ArtificeCore.worldTab);
         setHardness(0.0F);
         setStepSound(soundTypeGrass);
         setBlockName("artifice.flora");

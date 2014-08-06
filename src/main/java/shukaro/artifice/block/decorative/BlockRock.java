@@ -36,15 +36,13 @@ public class BlockRock extends BlockArtifice
         setHardness(1.5F);
         setResistance(10.0F);
         setBlockName("artifice." + name);
+        setCreativeTab(ArtificeCore.worldTab);
         this.name = name;
     }
 
     public BlockRock(String name, int color)
     {
-        super(Material.rock);
-        setHardness(1.5F);
-        setResistance(10.0F);
-        setBlockName("artifice." + name);
+        this(name);
         this.name = name.split("[.]")[0];
         this.color = color;
     }

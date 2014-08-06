@@ -8,6 +8,7 @@ import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import shukaro.artifice.ArtificeConfig;
+import shukaro.artifice.ArtificeCore;
 import shukaro.artifice.gui.ArtificeCreativeTab;
 import shukaro.artifice.render.IconHandler;
 
@@ -21,8 +22,8 @@ public class BlockLotus extends BlockLilyPad
     public BlockLotus()
     {
         super();
-        this.setCreativeTab(ArtificeCreativeTab.main);
-        this.setBlockName("artifice.flora.lily");
+        setCreativeTab(ArtificeCore.worldTab);
+        setBlockName("artifice.flora.lily");
     }
 
     @Override

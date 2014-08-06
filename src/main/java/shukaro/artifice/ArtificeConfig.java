@@ -15,6 +15,7 @@ public class ArtificeConfig
     public static int frameRenderID;
     public static int lotusRenderID;
     public static int rockRenderID;
+    public static int oreRenderID;
 
     public static Property sledgeRecipes;
     public static Property frameRecipes;
@@ -89,6 +90,7 @@ public class ArtificeConfig
     public static Property floraRecipes;
     public static Property basaltRecipes;
     public static Property marbleRecipes;
+    public static Property oreRecipes;
     public static Property limestoneRecipes;
     public static Property floraBoneMeal;
 
@@ -176,6 +178,7 @@ public class ArtificeConfig
             basaltRecipes = c.get("Recipes", "Basalt Recipes", true);
             marbleRecipes = c.get("Recipes", "Marble Recipes", true);
             limestoneRecipes = c.get("Recipes", "Limestone Recipes", true);
+            oreRecipes = c.get("Recipes", "Ore Recipes", true);
             sledgeRecipes = c.get("Recipes", "Sledge Recipes", true);
             frameRecipes = c.get("Recipes", "Frame Recipes", true);
             detectorRecipe = c.get("Recipes", "Detector Recipe", true);

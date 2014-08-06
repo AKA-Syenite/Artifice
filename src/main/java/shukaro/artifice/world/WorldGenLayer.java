@@ -6,9 +6,11 @@ import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
+import shukaro.artifice.ArtificeBlocks;
 import shukaro.artifice.ArtificeConfig;
 import shukaro.artifice.ArtificeCore;
 import shukaro.artifice.ArtificeRegistry;
+import shukaro.artifice.block.decorative.BlockOre;
 import shukaro.artifice.util.NameMetaPair;
 import shukaro.artifice.util.XSRandom;
 
@@ -61,8 +63,19 @@ public class WorldGenLayer implements IFeatureGenerator
                     max = 256;
                 for (int t = min; t < max; t++)
                 {
-                    if (replaced.contains(new NameMetaPair(world.getBlock(i, t, j), world.getBlockMetadata(i, t, j))))
-                        world.setBlock(i, t, j, block, meta, 0);
+                    NameMetaPair pair = new NameMetaPair(world.getBlock(i, t, j), world.getBlockMetadata(i, t, j));
+                    if (replaced.contains(pair) || ArtificeBlocks.oreSet.contains(pair))
+                    {
+                        NameMetaPair ore = new NameMetaPair(world.getBlock(i, t, j), world.getBlockMetadata(i, t, j));
+                        if (replaced.contains(ore))
+                            world.setBlock(i, t, j, block, meta, 0);
+                        else if (ArtificeBlocks.oreSet.contains(ore))
+                        {
+                            NameMetaPair newOre = BlockOre.getOre(ore, block);
+                            if (newOre != null)
+                                world.setBlock(i, t, j, newOre.getBlock(), newOre.getMetadata(), 0);
+                        }
+                    }
                 }
             }
         }

@@ -1,5 +1,6 @@
 package shukaro.artifice.recipe;
 
+import cofh.util.ItemHelper;
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -25,6 +26,8 @@ public class ArtificeRecipes
             registerMarbleRecipes();
         if (ArtificeConfig.limestoneRecipes.getBoolean(true))
             registerLimestoneRecipes();
+        if (ArtificeConfig.oreRecipes.getBoolean(true))
+            registerOreRecipes();
         if (ArtificeConfig.floraRecipes.getBoolean(true))
             registerDyeRecipes();
         if (ArtificeConfig.sledgeRecipes.getBoolean(true))
@@ -730,6 +733,31 @@ public class ArtificeRecipes
         {
             GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ArtificeBlocks.blockLampsInverted[i], 1, 0), ArtificeBlocks.blockLamps[i]));
             GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ArtificeBlocks.blockLamps[i], 1, 0), ArtificeBlocks.blockLampsInverted[i]));
+        }
+    }
+
+    private static void registerOreRecipes()
+    {
+        for (int i=0; i<ArtificeBlocks.blockOres.length; i++)
+        {
+            for (int j=0; j<ArtificeBlocks.rockBlocks.length; j++)
+            {
+                ItemStack stack = new ItemStack(ArtificeBlocks.blockOres[i], 1, j);
+                if (ItemHelper.getOreName(stack).equals("oreCoal"))
+                    ItemHelper.addSmelting(new ItemStack(Items.coal), stack, 0.1f);
+                else if (ItemHelper.getOreName(stack).equals("oreIron"))
+                    ItemHelper.addSmelting(new ItemStack(Items.iron_ingot), stack, 0.7f);
+                else if (ItemHelper.getOreName(stack).equals("oreLapis"))
+                    ItemHelper.addSmelting(new ItemStack(Items.dye, 1, 4), stack, 0.2f);
+                else if (ItemHelper.getOreName(stack).equals("oreGold"))
+                    ItemHelper.addSmelting(new ItemStack(Items.gold_ingot), stack, 1.0f);
+                else if (ItemHelper.getOreName(stack).equals("oreDiamond"))
+                    ItemHelper.addSmelting(new ItemStack(Items.diamond), stack, 1.0f);
+                else if (ItemHelper.getOreName(stack).equals("oreRedstone"))
+                    ItemHelper.addSmelting(new ItemStack(Items.redstone), stack, 0.7f);
+                else if (ItemHelper.getOreName(stack).equals("oreEmerald"))
+                    ItemHelper.addSmelting(new ItemStack(Items.emerald), stack, 1.0f);
+            }
         }
     }
 }

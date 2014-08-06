@@ -10,6 +10,7 @@ import net.minecraft.item.Item;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import shukaro.artifice.ArtificeCore;
 import shukaro.artifice.gui.ArtificeCreativeTab;
 
 import java.util.List;
@@ -19,7 +20,7 @@ public abstract class BlockArtifice extends Block
     protected BlockArtifice(Material mat)
     {
         super(mat);
-        setCreativeTab(ArtificeCreativeTab.main);
+        setCreativeTab(ArtificeCore.mainTab);
     }
 
     @Override

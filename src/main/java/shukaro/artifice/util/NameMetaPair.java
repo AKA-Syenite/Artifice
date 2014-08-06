@@ -2,6 +2,7 @@ package shukaro.artifice.util;
 
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 
 public class NameMetaPair
 {
@@ -10,12 +11,12 @@ public class NameMetaPair
 
     public NameMetaPair(Item item, int meta)
     {
-        this(item.getUnlocalizedName(), meta);
+        this(Item.itemRegistry.getNameForObject(item), meta);
     }
 
     public NameMetaPair(Block block, int meta)
     {
-        this(block.getUnlocalizedName(), meta);
+        this(Block.blockRegistry.getNameForObject(block), meta);
     }
 
     public NameMetaPair(String name, int meta)
@@ -45,6 +46,16 @@ public class NameMetaPair
 
     public void setMeta(int meta) { this.meta = meta; }
 
+    public ItemStack getStack()
+    {
+        if (isValidBlock())
+            return new ItemStack(getBlock(), 1, getMetadata());
+        else if (isValidItem())
+            return new ItemStack(getItem(), 1, getMetadata());
+        else
+            return null;
+    }
+
     public boolean isValidBlock()
     {
         return getBlock() != null && (meta >= 0 && meta < 65536);
@@ -66,6 +77,6 @@ public class NameMetaPair
 
     public String toString()
     {
-        return this.name + "|" + this.meta;
+        return this.name + "@" + this.meta;
     }
 }

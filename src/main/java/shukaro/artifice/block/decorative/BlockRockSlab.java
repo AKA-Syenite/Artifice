@@ -41,7 +41,7 @@ public class BlockRockSlab extends BlockSlab
     public BlockRockSlab(String name, boolean isDouble)
     {
         super(isDouble, Material.rock);
-        setCreativeTab(ArtificeCreativeTab.main);
+        setCreativeTab(ArtificeCore.worldTab);
         setLightOpacity(0);
         setHardness(1.5F);
         setResistance(10.0F);
@@ -52,15 +52,8 @@ public class BlockRockSlab extends BlockSlab
 
     public BlockRockSlab(String name, int color, boolean isDouble)
     {
-        super(isDouble, Material.rock);
-        setCreativeTab(ArtificeCreativeTab.main);
-        setLightOpacity(0);
-        setHardness(1.5F);
-        setResistance(10.0F);
-        setBlockName("artifice." + name + (isDouble ? ".doubleslab" : ".slab"));
-        this.name = name;
+        this(name, isDouble);
         this.color = color;
-        this.isDouble = isDouble;
     }
 
     @Override

@@ -9,6 +9,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import shukaro.artifice.ArtificeConfig;
+import shukaro.artifice.ArtificeCore;
 import shukaro.artifice.ArtificeRegistry;
 import shukaro.artifice.ArtificeTooltips;
 import shukaro.artifice.gui.ArtificeCreativeTab;
@@ -22,7 +23,7 @@ public abstract class ItemArtifice extends Item
     {
         super();
         this.setHasSubtypes(true);
-        this.setCreativeTab(ArtificeCreativeTab.main);
+        this.setCreativeTab(ArtificeCore.mainTab);
     }
 
     @Override

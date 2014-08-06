@@ -12,6 +12,7 @@ import net.minecraft.item.ItemTool;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 import shukaro.artifice.ArtificeConfig;
+import shukaro.artifice.ArtificeCore;
 import shukaro.artifice.ArtificeRegistry;
 import shukaro.artifice.ArtificeTooltips;
 import shukaro.artifice.gui.ArtificeCreativeTab;
@@ -30,7 +31,7 @@ public class ItemSickle extends ItemTool
     public ItemSickle(Item.ToolMaterial mat)
     {
         super(3, mat, null);
-        this.setCreativeTab(ArtificeCreativeTab.main);
+        this.setCreativeTab(ArtificeCore.mainTab);
         this.setMaxDamage(mat.getMaxUses() / 2);
         this.setUnlocalizedName("artifice.sickle." + this.toolMaterial.toString().toLowerCase(Locale.ENGLISH));
         this.radius = getRadius(mat);

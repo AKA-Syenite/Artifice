@@ -194,6 +194,126 @@ tile.artifice.limestone.reddish.stairs.cobblestone.name=Red Limestone Cobbleston
 tile.artifice.limestone.bluish.stairs.cobblestone.name=Blue Limestone Cobblestone Stairs
 tile.artifice.limestone.greenish.stairs.cobblestone.name=Green Limestone Cobblestone Stairs
 
+tile.artifice.orecoal.basalt.name=Coal Ore
+tile.artifice.orecoal.marble.name=Coal Ore
+tile.artifice.orecoal.limestone.gray.name=Coal Ore
+tile.artifice.orecoal.limestone.lightgray.name=Coal Ore
+tile.artifice.orecoal.limestone.brown.name=Coal Ore
+tile.artifice.orecoal.limestone.tan.name=Coal Ore
+tile.artifice.orecoal.limestone.reddish.name=Coal Ore
+tile.artifice.orecoal.limestone.bluish.name=Coal Ore
+tile.artifice.orecoal.limestone.greenish.name=Coal Ore
+
+tile.artifice.oreiron.basalt.name=Iron Ore
+tile.artifice.oreiron.marble.name=Iron Ore
+tile.artifice.oreiron.limestone.gray.name=Iron Ore
+tile.artifice.oreiron.limestone.lightgray.name=Iron Ore
+tile.artifice.oreiron.limestone.brown.name=Iron Ore
+tile.artifice.oreiron.limestone.tan.name=Iron Ore
+tile.artifice.oreiron.limestone.reddish.name=Iron Ore
+tile.artifice.oreiron.limestone.bluish.name=Iron Ore
+tile.artifice.oreiron.limestone.greenish.name=Iron Ore
+
+tile.artifice.orelapis.basalt.name=Lapis Lazuli Ore
+tile.artifice.orelapis.marble.name=Lapis Lazuli Ore
+tile.artifice.orelapis.limestone.gray.name=Lapis Lazuli Ore
+tile.artifice.orelapis.limestone.lightgray.name=Lapis Lazuli Ore
+tile.artifice.orelapis.limestone.brown.name=Lapis Lazuli Ore
+tile.artifice.orelapis.limestone.tan.name=Lapis Lazuli Ore
+tile.artifice.orelapis.limestone.reddish.name=Lapis Lazuli Ore
+tile.artifice.orelapis.limestone.bluish.name=Lapis Lazuli Ore
+tile.artifice.orelapis.limestone.greenish.name=Lapis Lazuli Ore
+
+tile.artifice.oregold.basalt.name=Gold Ore
+tile.artifice.oregold.marble.name=Gold Ore
+tile.artifice.oregold.limestone.gray.name=Gold Ore
+tile.artifice.oregold.limestone.lightgray.name=Gold Ore
+tile.artifice.oregold.limestone.brown.name=Gold Ore
+tile.artifice.oregold.limestone.tan.name=Gold Ore
+tile.artifice.oregold.limestone.reddish.name=Gold Ore
+tile.artifice.oregold.limestone.bluish.name=Gold Ore
+tile.artifice.oregold.limestone.greenish.name=Gold Ore
+
+tile.artifice.orediamond.basalt.name=Diamond Ore
+tile.artifice.orediamond.marble.name=Diamond Ore
+tile.artifice.orediamond.limestone.gray.name=Diamond Ore
+tile.artifice.orediamond.limestone.lightgray.name=Diamond Ore
+tile.artifice.orediamond.limestone.brown.name=Diamond Ore
+tile.artifice.orediamond.limestone.tan.name=Diamond Ore
+tile.artifice.orediamond.limestone.reddish.name=Diamond Ore
+tile.artifice.orediamond.limestone.bluish.name=Diamond Ore
+tile.artifice.orediamond.limestone.greenish.name=Diamond Ore
+
+tile.artifice.oreredstone.basalt.name=Redstone Ore
+tile.artifice.oreredstone.marble.name=Redstone Ore
+tile.artifice.oreredstone.limestone.gray.name=Redstone Ore
+tile.artifice.oreredstone.limestone.lightgray.name=Redstone Ore
+tile.artifice.oreredstone.limestone.brown.name=Redstone Ore
+tile.artifice.oreredstone.limestone.tan.name=Redstone Ore
+tile.artifice.oreredstone.limestone.reddish.name=Redstone Ore
+tile.artifice.oreredstone.limestone.bluish.name=Redstone Ore
+tile.artifice.oreredstone.limestone.greenish.name=Redstone Ore
+
+tile.artifice.oreemerald.basalt.name=Emerald Ore
+tile.artifice.oreemerald.marble.name=Emerald Ore
+tile.artifice.oreemerald.limestone.gray.name=Emerald Ore
+tile.artifice.oreemerald.limestone.lightgray.name=Emerald Ore
+tile.artifice.oreemerald.limestone.brown.name=Emerald Ore
+tile.artifice.oreemerald.limestone.tan.name=Emerald Ore
+tile.artifice.oreemerald.limestone.reddish.name=Emerald Ore
+tile.artifice.oreemerald.limestone.bluish.name=Emerald Ore
+tile.artifice.oreemerald.limestone.greenish.name=Emerald Ore
+
+tile.artifice.orecopper.basalt.name=Copper Ore
+tile.artifice.orecopper.marble.name=Copper Ore
+tile.artifice.orecopper.limestone.gray.name=Copper Ore
+tile.artifice.orecopper.limestone.lightgray.name=Copper Ore
+tile.artifice.orecopper.limestone.brown.name=Copper Ore
+tile.artifice.orecopper.limestone.tan.name=Copper Ore
+tile.artifice.orecopper.limestone.reddish.name=Copper Ore
+tile.artifice.orecopper.limestone.bluish.name=Copper Ore
+tile.artifice.orecopper.limestone.greenish.name=Copper Ore
+
+tile.artifice.oretin.basalt.name=Tin Ore
+tile.artifice.oretin.marble.name=Tin Ore
+tile.artifice.oretin.limestone.gray.name=Tin Ore
+tile.artifice.oretin.limestone.lightgray.name=Tin Ore
+tile.artifice.oretin.limestone.brown.name=Tin Ore
+tile.artifice.oretin.limestone.tan.name=Tin Ore
+tile.artifice.oretin.limestone.reddish.name=Tin Ore
+tile.artifice.oretin.limestone.bluish.name=Tin Ore
+tile.artifice.oretin.limestone.greenish.name=Tin Ore
+
+tile.artifice.oresilver.basalt.name=Silver Ore
+tile.artifice.oresilver.marble.name=Silver Ore
+tile.artifice.oresilver.limestone.gray.name=Silver Ore
+tile.artifice.oresilver.limestone.lightgray.name=Silver Ore
+tile.artifice.oresilver.limestone.brown.name=Silver Ore
+tile.artifice.oresilver.limestone.tan.name=Silver Ore
+tile.artifice.oresilver.limestone.reddish.name=Silver Ore
+tile.artifice.oresilver.limestone.bluish.name=Silver Ore
+tile.artifice.oresilver.limestone.greenish.name=Silver Ore
+
+tile.artifice.orelead.basalt.name=Lead Ore
+tile.artifice.orelead.marble.name=Lead Ore
+tile.artifice.orelead.limestone.gray.name=Lead Ore
+tile.artifice.orelead.limestone.lightgray.name=Lead Ore
+tile.artifice.orelead.limestone.brown.name=Lead Ore
+tile.artifice.orelead.limestone.tan.name=Lead Ore
+tile.artifice.orelead.limestone.reddish.name=Lead Ore
+tile.artifice.orelead.limestone.bluish.name=Lead Ore
+tile.artifice.orelead.limestone.greenish.name=Lead Ore
+
+tile.artifice.orenickel.basalt.name=Nickel Ore
+tile.artifice.orenickel.marble.name=Nickel Ore
+tile.artifice.orenickel.limestone.gray.name=Nickel Ore
+tile.artifice.orenickel.limestone.lightgray.name=Nickel Ore
+tile.artifice.orenickel.limestone.brown.name=Nickel Ore
+tile.artifice.orenickel.limestone.tan.name=Nickel Ore
+tile.artifice.orenickel.limestone.reddish.name=Nickel Ore
+tile.artifice.orenickel.limestone.bluish.name=Nickel Ore
+tile.artifice.orenickel.limestone.greenish.name=Nickel Ore
+
 # Item Names
 item.artifice.sledge.wood.name=Wooden Sledge
 item.artifice.sledge.stone.name=Stone Sledge

@@ -12,6 +12,7 @@ import shukaro.artifice.net.MessageHandlerBase;
 import shukaro.artifice.net.Packet;
 import shukaro.artifice.render.FrameRenderer;
 import shukaro.artifice.render.LotusRenderer;
+import shukaro.artifice.render.OreRenderer;
 import shukaro.artifice.render.RockRenderer;
 import shukaro.artifice.util.BlockCoord;
 import shukaro.artifice.util.ChunkCoord;
@@ -20,6 +21,8 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class ClientProxy extends CommonProxy
 {
+    public static int renderPass;
+
     public void init()
     {
         MinecraftForge.EVENT_BUS.register(new ArtificeClientEventHandler());
@@ -32,6 +35,8 @@ public class ClientProxy extends CommonProxy
         RenderingRegistry.registerBlockHandler(ArtificeConfig.frameRenderID, new FrameRenderer());
         ArtificeConfig.rockRenderID = RenderingRegistry.getNextAvailableRenderId();
         RenderingRegistry.registerBlockHandler(ArtificeConfig.rockRenderID, new RockRenderer());
+        ArtificeConfig.oreRenderID = RenderingRegistry.getNextAvailableRenderId();
+        RenderingRegistry.registerBlockHandler(ArtificeConfig.oreRenderID, new OreRenderer());
 
         ArtificeCore.textureCache = new ConcurrentHashMap<ChunkCoord, ConcurrentHashMap<BlockCoord, int[]>>();
     }

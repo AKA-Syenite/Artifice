@@ -1,5 +1,6 @@
 package shukaro.artifice;
 
+import cofh.util.oredict.OreDictionaryArbiter;
 import cofh.world.WorldHandler;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Loader;
@@ -10,6 +11,10 @@ import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.*;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import gnu.trove.map.hash.THashMap;
+import gnu.trove.set.hash.THashSet;
+import net.minecraft.block.Block;
+import net.minecraft.item.ItemStack;
 import net.minecraft.network.NetHandlerPlayServer;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraftforge.common.MinecraftForge;
@@ -17,12 +22,14 @@ import org.apache.logging.log4j.Logger;
 import shukaro.artifice.compat.*;
 import shukaro.artifice.event.ArtificeEventHandler;
 import shukaro.artifice.event.ArtificeTickHandler;
+import shukaro.artifice.gui.ArtificeCreativeTab;
 import shukaro.artifice.net.ClientPacketHandler;
 import shukaro.artifice.net.PacketHandler;
 import shukaro.artifice.net.ServerPacketHandler;
 import shukaro.artifice.recipe.ArtificeRecipes;
 import shukaro.artifice.util.BlockCoord;
 import shukaro.artifice.util.ChunkCoord;
+import shukaro.artifice.util.NameMetaPair;
 import shukaro.artifice.world.*;
 
 import java.util.ArrayList;
@@ -47,6 +54,9 @@ public class ArtificeCore
     public static final String[] tiers = {"Basic", "Reinforced", "Industrial", "Advanced"};
     public static final String[] flora = {"Bluebell", "Orchid", "Iris", "Lotus", "LotusClosed"};
     public static final String[] rocks = {"", "Cobblestone", "Brick", "Paver", "Antipaver", "Chiseled"};
+
+    public static final ArtificeCreativeTab mainTab = new ArtificeCreativeTab("Artifice");
+    public static final ArtificeCreativeTab worldTab = new ArtificeCreativeTab("Artifice Worldgen");
 
     @SideOnly(Side.CLIENT)
     public static ConcurrentHashMap<ChunkCoord, ConcurrentHashMap<BlockCoord, int[]>> textureCache;
@@ -133,6 +143,17 @@ public class ArtificeCore
     @EventHandler
     public void postInit(FMLPostInitializationEvent evt)
     {
+        ArtificeBlocks.oreMappings = new THashMap<String, Block>();
+        for (int j=0; j<ArtificeBlocks.oreNames.length; j++)
+            ArtificeBlocks.oreMappings.put(ArtificeBlocks.oreNames[j], ArtificeBlocks.blockOres[j]);
+
+        ArtificeBlocks.oreSet = new THashSet<NameMetaPair>();
+        for (String s : ArtificeBlocks.oreNames)
+        {
+            for (ItemStack stack : OreDictionaryArbiter.getOres(s))
+                ArtificeBlocks.oreSet.add(new NameMetaPair(stack.getItem(), stack.getItemDamage()));
+        }
+
         if (ArtificeConfig.floraBoneMeal.getBoolean(true) && ArtificeConfig.enableWorldGen.getBoolean(true))
         {
             for (BiomeGenBase biome : BiomeGenBase.getBiomeGenArray())

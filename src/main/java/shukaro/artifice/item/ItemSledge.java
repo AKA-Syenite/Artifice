@@ -13,6 +13,7 @@ import net.minecraft.item.ItemTool;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 import shukaro.artifice.ArtificeConfig;
+import shukaro.artifice.ArtificeCore;
 import shukaro.artifice.ArtificeRegistry;
 import shukaro.artifice.ArtificeTooltips;
 import shukaro.artifice.gui.ArtificeCreativeTab;
@@ -31,7 +32,7 @@ public class ItemSledge extends ItemTool
     public ItemSledge(Item.ToolMaterial mat)
     {
         super(2, mat, null);
-        this.setCreativeTab(ArtificeCreativeTab.main);
+        this.setCreativeTab(ArtificeCore.mainTab);
         this.setMaxDamage(mat.getMaxUses() / 4);
         this.setUnlocalizedName("artifice.sledge." + this.toolMaterial.toString().toLowerCase(Locale.ENGLISH));
         this.lossChance = getLossChance(mat);

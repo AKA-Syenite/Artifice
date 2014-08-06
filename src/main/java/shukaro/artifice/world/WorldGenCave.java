@@ -11,15 +11,13 @@ import net.minecraftforge.common.BiomeDictionary;
 import shukaro.artifice.ArtificeBlocks;
 import shukaro.artifice.ArtificeCore;
 import shukaro.artifice.ArtificeRegistry;
+import shukaro.artifice.block.decorative.BlockOre;
 import shukaro.artifice.event.ArtificeTickHandler;
 import shukaro.artifice.util.BlockCoord;
 import shukaro.artifice.util.ChunkCoord;
 import shukaro.artifice.util.NameMetaPair;
 
-import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.Random;
-import java.util.Set;
+import java.util.*;
 
 public class WorldGenCave implements IFeatureGenerator
 {
@@ -50,7 +48,8 @@ public class WorldGenCave implements IFeatureGenerator
 
     protected boolean canGenHere(World world, BlockCoord c)
     {
-        if (!c.isAir(world) && replaced.contains(new NameMetaPair(c.getBlock(world), c.getMeta(world))))
+        NameMetaPair pair = new NameMetaPair(c.getBlock(world), c.getMeta(world));
+        if (!c.isAir(world) && (replaced.contains(pair) || ArtificeBlocks.oreSet.contains(pair)))
         {
             for (BlockCoord n : c.getNearby())
             {
@@ -176,7 +175,17 @@ public class WorldGenCave implements IFeatureGenerator
                     break;
                 coord.set(toGen.get(chunk).get(rand.nextInt(toGen.get(chunk).size())));
                 toGen.get(chunk).remove(coord);
-                world.setBlock(coord.x, coord.y, coord.z, block, meta, 0);
+
+                NameMetaPair ore = new NameMetaPair(coord.getBlock(world), coord.getMeta(world));
+                if (replaced.contains(ore))
+                    world.setBlock(coord.x, coord.y, coord.z, block, meta, 0);
+                else if (ArtificeBlocks.oreSet.contains(ore))
+                {
+                    NameMetaPair newOre = BlockOre.getOre(ore, block);
+                    if (newOre != null)
+                        world.setBlock(coord.x, coord.y, coord.z, newOre.getBlock(), newOre.getMetadata(), 0);
+                }
+
                 genned++;
                 while (toGen.get(chunk).size() > threshold && genned < size)
                 {
@@ -184,7 +193,17 @@ public class WorldGenCave implements IFeatureGenerator
                         break;
                     coord.set(toGen.get(chunk).get(rand.nextInt(toGen.get(chunk).size())));
                     toGen.get(chunk).remove(coord);
-                    world.setBlock(coord.x, coord.y, coord.z, block);
+
+                    ore = new NameMetaPair(coord.getBlock(world), coord.getMeta(world));
+                    if (replaced.contains(ore))
+                        world.setBlock(coord.x, coord.y, coord.z, block, meta, 0);
+                    else if (ArtificeBlocks.oreSet.contains(ore))
+                    {
+                        NameMetaPair newOre = BlockOre.getOre(ore, block);
+                        if (newOre != null)
+                            world.setBlock(coord.x, coord.y, coord.z, newOre.getBlock(), newOre.getMetadata(), 0);
+                    }
+
                     genned++;
                 }
             }

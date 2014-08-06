@@ -3,6 +3,7 @@ package shukaro.artifice;
 import cofh.util.ItemHelper;
 import cofh.util.oredict.OreDictionaryArbiter;
 import cpw.mods.fml.common.registry.GameRegistry;
+import gnu.trove.map.TMap;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
@@ -10,6 +11,11 @@ import shukaro.artifice.block.ItemBlockArtifice;
 import shukaro.artifice.block.decorative.*;
 import shukaro.artifice.block.frame.*;
 import shukaro.artifice.util.MinecraftColors;
+import shukaro.artifice.util.NameMetaPair;
+
+import java.util.Set;
+
+import static shukaro.artifice.block.decorative.BlockOre.*;
 
 public class ArtificeBlocks
 {
@@ -39,10 +45,16 @@ public class ArtificeBlocks
     public static BlockRockSlab[] blockLimestoneDoubleSlabs = new BlockRockSlab[7];
     public static BlockStairsArtifice[] blockLimestoneBrickStairs = new BlockStairsArtifice[7];
     public static BlockStairsArtifice[] blockLimestoneCobbleStairs = new BlockStairsArtifice[7];
+    public static String[] oreNames = { "oreCoal", "oreIron", "oreLapis", "oreGold", "oreDiamond", "oreRedstone", "oreEmerald", "oreCopper", "oreTin", "oreSilver", "oreLead", "oreNickel" };
+    public static BlockOre[] blockOres = new BlockOre[oreNames.length];
 
     public static String[] rockColorNames = { "gray",   "lightgray", "brown",  "tan",    "reddish", "bluish", "greenish" };
     public static int[] rockColors =        { 11579568, 16777215,    12362119, 15853509, 11706528,  10526898, 10531488 };
     public static Block[] rockBlocks = new Block[9];
+    public static String[] rockBlockNames = { "basalt", "marble", "limestone.gray", "limestone.lightgray", "limestone.brown", "limestone.tan", "limestone.reddish", "limestone.bluish", "limestone.greenish" };
+    public static Block blockDummy;
+    public static TMap<String, Block> oreMappings;
+    public static Set<NameMetaPair> oreSet;
 
     public static void initBlocks()
     {
@@ -71,6 +83,9 @@ public class ArtificeBlocks
                 blockLimestoneBrickStairs[i] = new BlockStairsArtifice(blockLimestones[i], 2, rockColors[i]);
                 blockLimestoneCobbleStairs[i] = new BlockStairsArtifice(blockLimestones[i], 1, rockColors[i]);
             }
+            for (int i=0; i<oreNames.length; i++)
+                blockOres[i] = new BlockOre(oreNames[i]);
+            blockDummy = new BlockOre.BlockOreDummy();
 
             GameRegistry.registerBlock(blockBasaltSlab, ItemBlockSlabArtifice.class, blockBasalt.getUnlocalizedName() + ".slab");
             GameRegistry.registerBlock(blockBasaltDoubleSlab, ItemBlockSlabArtifice.class, blockBasalt.getUnlocalizedName() + ".doubleslab");
@@ -92,6 +107,8 @@ public class ArtificeBlocks
                 GameRegistry.registerBlock(blockLimestoneBrickStairs[i], ItemBlockArtifice.class, blockLimestoneBrickStairs[i].getUnlocalizedName());
                 GameRegistry.registerBlock(blockLimestoneCobbleStairs[i], ItemBlockArtifice.class, blockLimestoneCobbleStairs[i].getUnlocalizedName());
             }
+            for (int i=0; i<oreNames.length; i++)
+                GameRegistry.registerBlock(blockOres[i], ItemBlockOre.class, blockOres[i].getUnlocalizedName());
 
             ArtificeRegistry.registerBasaltType(ArtificeBlocks.blockBasalt, 0);
             ArtificeRegistry.registerMarbleType(ArtificeBlocks.blockMarble, 0);
@@ -100,6 +117,11 @@ public class ArtificeBlocks
             OreDictionary.registerOre("blockBasalt", new ItemStack(blockBasalt));
             for (int i=0; i<blockLimestones.length; i++)
                 OreDictionary.registerOre("blockLimestone", new ItemStack(blockLimestones[i]));
+            for (int i=0; i<oreNames.length; i++)
+            {
+                for (int j=0; j<rockBlocks.length; j++)
+                    OreDictionary.registerOre(oreNames[i], new ItemStack(blockOres[i], 1, j));
+            }
         }
 
         if (ArtificeConfig.enableFrames.getBoolean(true))

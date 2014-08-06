@@ -4,13 +4,12 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import shukaro.artifice.ArtificeBlocks;
 import shukaro.artifice.ArtificeConfig;
+import shukaro.artifice.ArtificeCore;
 import shukaro.artifice.ArtificeItems;
 
 public class ArtificeCreativeTab extends CreativeTabs
 {
-    public static final ArtificeCreativeTab main = new ArtificeCreativeTab("Artifice");
-
-    private ArtificeCreativeTab(String label)
+    public ArtificeCreativeTab(String label)
     {
         super(label);
     }
@@ -18,18 +17,10 @@ public class ArtificeCreativeTab extends CreativeTabs
     @Override
     public Item getTabIconItem()
     {
-        /*
-        if (this.getTabLabel() == documents.getTabLabel())
-    	{
-    		return new ItemStack(Item.writtenBook);
-    	}
-    	*/
-        if (this.getTabLabel().equals(main.getTabLabel()))
+        if (this.getTabLabel().equals(ArtificeCore.mainTab.getTabLabel()))
         {
             if (ArtificeConfig.enableFrames.getBoolean(true))
                 return Item.getItemFromBlock(ArtificeBlocks.blockFrame);
-            if (ArtificeConfig.enableWorldGen.getBoolean(true))
-                return Item.getItemFromBlock(ArtificeBlocks.blockBasalt);
             if (ArtificeConfig.enableUpgrades.getBoolean(true))
                 return ArtificeItems.itemUpgrade;
             if (ArtificeConfig.enableSledges.getBoolean(true))
@@ -42,8 +33,12 @@ public class ArtificeCreativeTab extends CreativeTabs
                 return ArtificeItems.itemSteelIngot;
             return null;
         }
-        else
-            return null;
+        else if (this.getTabLabel().equals(ArtificeCore.worldTab.getTabLabel()))
+        {
+            if (ArtificeConfig.enableWorldGen.getBoolean(true))
+                return Item.getItemFromBlock(ArtificeBlocks.blockBasalt);
+        }
+        return null;
     }
 
     @Override

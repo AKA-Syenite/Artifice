@@ -3,7 +3,6 @@ package shukaro.artifice.world;
 import cofh.api.world.IFeatureGenerator;
 import gnu.trove.map.TMap;
 import gnu.trove.map.hash.THashMap;
-import gnu.trove.set.hash.THashSet;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
@@ -18,7 +17,6 @@ import shukaro.artifice.util.BlockCoord;
 import shukaro.artifice.util.ChunkCoord;
 import shukaro.artifice.util.NameMetaPair;
 
-import javax.lang.model.element.Name;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Random;

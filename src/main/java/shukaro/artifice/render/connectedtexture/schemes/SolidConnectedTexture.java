@@ -3,7 +3,6 @@ package shukaro.artifice.render.connectedtexture.schemes;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockSlab;
 import net.minecraft.world.IBlockAccess;
-import shukaro.artifice.block.decorative.BlockRockSlab;
 import shukaro.artifice.render.connectedtexture.ConnectedTextureBase;
 import shukaro.artifice.render.connectedtexture.ConnectedTextures;
 import shukaro.artifice.util.BlockCoord;

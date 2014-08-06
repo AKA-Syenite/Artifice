@@ -1,6 +1,5 @@
 package shukaro.artifice;
 
-import cofh.util.oredict.OreDictionaryArbiter;
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.block.BlockDispenser;
 import net.minecraft.init.Items;

@@ -1,18 +1,14 @@
 package shukaro.artifice.world;
 
 import cofh.api.world.IFeatureGenerator;
-import cofh.world.WorldHandler;
 import net.minecraft.block.Block;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import shukaro.artifice.ArtificeBlocks;
-import shukaro.artifice.ArtificeConfig;
 import shukaro.artifice.ArtificeCore;
 import shukaro.artifice.ArtificeRegistry;
 import shukaro.artifice.block.decorative.BlockOre;
 import shukaro.artifice.util.NameMetaPair;
-import shukaro.artifice.util.XSRandom;
 
 import java.util.Random;
 import java.util.Set;

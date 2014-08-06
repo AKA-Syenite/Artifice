@@ -13,7 +13,6 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
-import net.minecraftforge.oredict.OreDictionary;
 import shukaro.artifice.ArtificeBlocks;
 import shukaro.artifice.ArtificeConfig;
 import shukaro.artifice.ArtificeCore;
@@ -137,7 +136,7 @@ public class BlockOre extends BlockArtifice
     public static NameMetaPair getOre(NameMetaPair ore, Block rock)
     {
         String oreName = ItemHelper.getOreName(ore.getStack());
-        if (oreName != OreDictionaryArbiter.UNKNOWN)
+        if (!oreName.equals(OreDictionaryArbiter.UNKNOWN))
         {
             for (int i=0; i<ArtificeBlocks.rockBlocks.length; i++)
             {

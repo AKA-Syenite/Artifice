@@ -1,7 +1,5 @@
 package shukaro.artifice;
 
-import cofh.util.ItemHelper;
-import cofh.util.oredict.OreDictionaryArbiter;
 import cpw.mods.fml.common.registry.GameRegistry;
 import gnu.trove.map.TMap;
 import net.minecraft.block.Block;
@@ -14,8 +12,6 @@ import shukaro.artifice.util.MinecraftColors;
 import shukaro.artifice.util.NameMetaPair;
 
 import java.util.Set;
-
-import static shukaro.artifice.block.decorative.BlockOre.*;
 
 public class ArtificeBlocks
 {

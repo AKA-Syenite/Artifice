@@ -11,7 +11,6 @@ import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import shukaro.artifice.ArtificeCore;
-import shukaro.artifice.gui.ArtificeCreativeTab;
 
 import java.util.List;
 

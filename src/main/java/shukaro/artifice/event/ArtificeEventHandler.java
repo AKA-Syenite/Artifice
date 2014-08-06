@@ -1,14 +1,10 @@
 package shukaro.artifice.event;
 
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
-import net.minecraft.world.ChunkCoordIntPair;
 import net.minecraftforge.event.world.ChunkDataEvent;
 import shukaro.artifice.ArtificeConfig;
-import shukaro.artifice.ArtificeCore;
 import shukaro.artifice.ArtificeRegistry;
-import shukaro.artifice.util.ChunkCoord;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class ArtificeEventHandler

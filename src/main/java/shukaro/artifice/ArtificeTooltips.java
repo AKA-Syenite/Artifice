@@ -27,6 +27,7 @@ public class ArtificeTooltips
         if (ArtificeConfig.enableWorldGen.getBoolean(true))
         {
             ArtificeRegistry.registerTooltip(new ItemStack(ArtificeItems.itemResource, 1, 0), localizeTooltip("sulfur", false));
+            ArtificeRegistry.registerTooltip(new ItemStack(ArtificeItems.itemResource, 1, 1), localizeTooltip("niter", false));
 
             ArtificeRegistry.registerTooltip(new ItemStack(ArtificeItems.itemDye, 1, 0), localizeTooltip("dye.blue", false));
             ArtificeRegistry.registerTooltip(new ItemStack(ArtificeItems.itemDye, 1, 0), localizeTooltip("dye.blue", true));
@@ -184,6 +185,7 @@ public class ArtificeTooltips
         if (ArtificeConfig.enableWorldGen.getBoolean(true))
         {
             ArtificeRegistry.registerTooltip(new ItemStack(ArtificeBlocks.blockSulfur, 1, 1), localizeTooltip("sulfur", false));
+            ArtificeRegistry.registerTooltip(new ItemStack(ArtificeBlocks.blockNiter, 1, 1), localizeTooltip("niter", false));
 
             ArtificeRegistry.registerTooltip(new ItemStack(ArtificeBlocks.blockFlora, 1, 3), localizeTooltip("lotus", false));
             ArtificeRegistry.registerTooltip(new ItemStack(ArtificeBlocks.blockFlora, 1, 3), localizeTooltip("lotus.close", false));

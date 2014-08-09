@@ -45,6 +45,7 @@ public class ArtificeBlocks
     public static String[] oreNames = { "oreCoal", "oreIron", "oreLapis", "oreGold", "oreDiamond", "oreRedstone", "oreEmerald", "oreCopper", "oreTin", "oreSilver", "oreLead", "oreNickel", "oreSulfur" };
     public static BlockOre[] blockOres = new BlockOre[oreNames.length];
     public static BlockSulfur blockSulfur;
+    public static BlockNiter blockNiter;
 
     public static String[] rockColorNames = { "gray",   "lightgray", "brown",  "tan",    "reddish", "bluish", "greenish" };
     public static int[] rockColors =        { 11579568, 16777215,    12362119, 15853509, 11706528,  10526898, 10531488 };
@@ -85,6 +86,7 @@ public class ArtificeBlocks
                 blockOres[i] = new BlockOre(oreNames[i]);
             blockDummy = new BlockOre.BlockOreDummy();
             blockSulfur = new BlockSulfur();
+            blockNiter = new BlockNiter();
 
             GameRegistry.registerBlock(blockBasaltSlab, ItemBlockSlabArtifice.class, blockBasalt.getUnlocalizedName() + ".slab");
             GameRegistry.registerBlock(blockBasaltDoubleSlab, ItemBlockSlabArtifice.class, blockBasalt.getUnlocalizedName() + ".doubleslab");
@@ -109,6 +111,7 @@ public class ArtificeBlocks
             for (int i=0; i<oreNames.length; i++)
                 GameRegistry.registerBlock(blockOres[i], ItemBlockOre.class, blockOres[i].getUnlocalizedName());
             GameRegistry.registerBlock(blockSulfur, ItemBlockSulfur.class, blockSulfur.getUnlocalizedName());
+            GameRegistry.registerBlock(blockNiter, ItemBlockNiter.class, blockNiter.getLocalizedName());
 
             ArtificeRegistry.registerBasaltType(ArtificeBlocks.blockBasalt, 0);
             ArtificeRegistry.registerMarbleType(ArtificeBlocks.blockMarble, 0);
@@ -123,6 +126,7 @@ public class ArtificeBlocks
                     OreDictionary.registerOre(oreNames[i], new ItemStack(blockOres[i], 1, j));
             }
             OreDictionary.registerOre("oreSulfur", new ItemStack(blockSulfur, 1, 0));
+            OreDictionary.registerOre("oreSaltpeter", new ItemStack(blockNiter, 1, 1));
         }
 
         if (ArtificeConfig.enableFrames.getBoolean(true))

@@ -1,7 +1,7 @@
 package shukaro.artifice.block.world;
 
 import cofh.util.ItemHelper;
-import cofh.util.oredict.OreDictionaryArbiter;
+import cofh.core.util.oredict.OreDictionaryArbiter;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;

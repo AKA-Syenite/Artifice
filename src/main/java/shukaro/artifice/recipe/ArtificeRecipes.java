@@ -28,6 +28,8 @@ public class ArtificeRecipes
             registerLimestoneRecipes();
         if (ArtificeConfig.oreRecipes.getBoolean(true))
             registerOreRecipes();
+        if (ArtificeConfig.resourceRecipes.getBoolean(true))
+            registerResourceRecipes();
         if (ArtificeConfig.floraRecipes.getBoolean(true))
             registerDyeRecipes();
         if (ArtificeConfig.sledgeRecipes.getBoolean(true))
@@ -670,5 +672,14 @@ public class ArtificeRecipes
                     ItemHelper.addSmelting(new ItemStack(Items.emerald), stack, 1.0f);
             }
         }
+    }
+
+    private static void registerResourceRecipes()
+    {
+        ItemHelper.addStorageRecipe(new ItemStack(ArtificeBlocks.blockSulfur, 1, 1), new ItemStack(ArtificeItems.itemResource, 1, 0));
+        ItemHelper.addReverseStorageRecipe(new ItemStack(ArtificeItems.itemResource, 1, 0), new ItemStack(ArtificeBlocks.blockSulfur, 1, 1));
+        ItemHelper.addSmelting(new ItemStack(ArtificeItems.itemResource, 1, 0), new ItemStack(ArtificeBlocks.blockSulfur, 1, 0), 0.7f);
+        for (int i=0; i<ArtificeBlocks.rockBlocks.length; i++)
+            ItemHelper.addSmelting(new ItemStack(ArtificeItems.itemResource, 1, 0), new ItemStack(ArtificeBlocks.blockOres[12], 1, i), 0.7f);
     }
 }

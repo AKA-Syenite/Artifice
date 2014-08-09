@@ -1,4 +1,4 @@
-package shukaro.artifice.block.decorative;
+package shukaro.artifice.block.world;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -7,6 +7,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import shukaro.artifice.ArtificeCore;
 import shukaro.artifice.block.ItemBlockArtifice;
+import shukaro.artifice.block.world.BlockFlora;
 
 import java.util.Locale;
 

@@ -69,6 +69,12 @@ public class ArtificeConfig
     public static Property lotusWorldGen;
     public static Property lotusFrequency;
 
+    public static Property sulfurGen;
+    public static Property sulfurMinHeight;
+    public static Property sulfurMaxHeight;
+    public static Property sulfurSize;
+    public static Property sulfurFrequency;
+
     public static String[] rockNames = { "Basalt", "Marble", "Gray Limestone", "Light Gray Limestone", "Brown Limestone", "Tan Limestone", "Red Limestone", "Blue Limestone", "Green Limestone" };
 
     public static Property[] rockLayersGen = new Property[rockNames.length];
@@ -92,6 +98,7 @@ public class ArtificeConfig
     public static Property marbleRecipes;
     public static Property oreRecipes;
     public static Property limestoneRecipes;
+    public static Property resourceRecipes;
     public static Property floraBoneMeal;
 
     public static Property flavorText;
@@ -113,6 +120,12 @@ public class ArtificeConfig
 
             lotusWorldGen = c.get("Plant Generation", "Generate Lotus Lilies", true);
             lotusFrequency = c.get("Plant Generation", "Percentage Lotus Lily Frequency", 100);
+
+            sulfurGen = c.get("Resource Generation", "Generate Sulfur", true);
+            sulfurFrequency = c.get("Resource Generation", "Percentage Sulfur Frequency", 100);
+            sulfurMinHeight = c.get("Resource Generation", "Sulfur Minimum Height", 0);
+            sulfurMaxHeight = c.get("Resource Generation", "Sulfur Maximum Height", 128);
+            sulfurSize = c.get("Resource Generation", "Sulfur Deposit Size", 16);
 
             for (int i=0; i< rockNames.length; i++)
             {
@@ -179,6 +192,7 @@ public class ArtificeConfig
             marbleRecipes = c.get("Recipes", "Marble Recipes", true);
             limestoneRecipes = c.get("Recipes", "Limestone Recipes", true);
             oreRecipes = c.get("Recipes", "Ore Recipes", true);
+            resourceRecipes = c.get("Recipes", "Resource Recipes", true);
             sledgeRecipes = c.get("Recipes", "Sledge Recipes", true);
             frameRecipes = c.get("Recipes", "Frame Recipes", true);
             detectorRecipe = c.get("Recipes", "Detector Recipe", true);
@@ -268,6 +282,7 @@ public class ArtificeConfig
                 floraRecipes.set(false);
                 basaltRecipes.set(false);
                 marbleRecipes.set(false);
+                resourceRecipes.set(false);
                 floraBoneMeal.set(false);
             }
             enableBoxes = c.get("General", "Enable Boxes", true);

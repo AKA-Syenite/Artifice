@@ -11,7 +11,7 @@ import net.minecraftforge.common.BiomeDictionary;
 import shukaro.artifice.ArtificeBlocks;
 import shukaro.artifice.ArtificeCore;
 import shukaro.artifice.ArtificeRegistry;
-import shukaro.artifice.block.decorative.BlockOre;
+import shukaro.artifice.block.world.BlockOre;
 import shukaro.artifice.event.ArtificeTickHandler;
 import shukaro.artifice.util.BlockCoord;
 import shukaro.artifice.util.ChunkCoord;

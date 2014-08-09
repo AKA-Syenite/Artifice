@@ -27,6 +27,7 @@ public class ArtificeItems
     public static ItemNugget itemNugget;
     public static ItemCoin itemCoin;
     public static ItemUpgrade itemUpgrade;
+    public static ItemResource itemResource;
 
     public static void initItems()
     {
@@ -73,13 +74,16 @@ public class ArtificeItems
         if (ArtificeConfig.enableWorldGen.getBoolean(true))
         {
             itemDye = new ItemDye();
+            itemResource = new ItemResource();
 
             GameRegistry.registerItem(itemDye, itemDye.getUnlocalizedName());
+            GameRegistry.registerItem(itemResource, itemResource.getUnlocalizedName());
 
             OreDictionary.registerOre("dyeBlue", new ItemStack(itemDye, 1, 0));
             OreDictionary.registerOre("dyeBlack", new ItemStack(itemDye, 1, 1));
             OreDictionary.registerOre("dyeBrown", new ItemStack(itemDye, 1, 2));
             OreDictionary.registerOre("dyeWhite", new ItemStack(itemDye, 1, 3));
+            OreDictionary.registerOre("dustSulfer", new ItemStack(itemResource, 1, 0));
         }
 
         if (ArtificeConfig.enableSickles.getBoolean(true))

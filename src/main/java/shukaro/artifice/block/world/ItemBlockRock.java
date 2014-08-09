@@ -1,4 +1,4 @@
-package shukaro.artifice.block.decorative;
+package shukaro.artifice.block.world;
 
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;

@@ -95,8 +95,10 @@ public class BlockOre extends BlockArtifice
     {
         if (name.equals("oreLapis"))
             return Blocks.lapis_ore.damageDropped(meta);
-        else
+        else if (name.equals("oreCoal") || name.equals("oreIron") || name.equals("oreGold") || name.equals("oreDiamond") || name.equals("oreRedstone") || name.equals("oreEmerald") || name.equals("oreSulfur"))
             return 0;
+        else
+            return ItemHelper.getOre(name).getItemDamage();
     }
 
     @Override

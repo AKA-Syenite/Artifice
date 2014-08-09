@@ -70,10 +70,12 @@ public class ArtificeConfig
     public static Property lotusFrequency;
 
     public static Property sulfurGen;
-    public static Property sulfurMinHeight;
-    public static Property sulfurMaxHeight;
     public static Property sulfurSize;
     public static Property sulfurFrequency;
+
+    public static Property niterGen;
+    public static Property niterSize;
+    public static Property niterFrequency;
 
     public static String[] rockNames = { "Basalt", "Marble", "Gray Limestone", "Light Gray Limestone", "Brown Limestone", "Tan Limestone", "Red Limestone", "Blue Limestone", "Green Limestone" };
 
@@ -123,9 +125,11 @@ public class ArtificeConfig
 
             sulfurGen = c.get("Resource Generation", "Generate Sulfur", true);
             sulfurFrequency = c.get("Resource Generation", "Percentage Sulfur Frequency", 100);
-            sulfurMinHeight = c.get("Resource Generation", "Sulfur Minimum Height", 0);
-            sulfurMaxHeight = c.get("Resource Generation", "Sulfur Maximum Height", 128);
-            sulfurSize = c.get("Resource Generation", "Sulfur Deposit Size", 16);
+            sulfurSize = c.get("Resource Generation", "Sulfur Deposit Size", 64);
+
+            niterGen = c.get("Resource Generation", "Generate Niter", true);
+            niterFrequency = c.get("Resource Generation", "Percentage Niter Frequency", 100);
+            niterSize = c.get("Resource Generation", "Niter Deposit Size", 64);
 
             for (int i=0; i< rockNames.length; i++)
             {

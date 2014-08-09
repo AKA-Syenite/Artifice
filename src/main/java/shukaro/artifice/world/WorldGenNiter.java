@@ -3,6 +3,7 @@ package shukaro.artifice.world;
 import cofh.api.world.IFeatureGenerator;
 import gnu.trove.map.TMap;
 import gnu.trove.map.hash.THashMap;
+import gnu.trove.set.hash.THashSet;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
@@ -23,7 +24,7 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.Set;
 
-public class WorldGenSulfur implements IFeatureGenerator
+public class WorldGenNiter implements IFeatureGenerator
 {
     protected Block block;
     protected int meta;
@@ -31,19 +32,20 @@ public class WorldGenSulfur implements IFeatureGenerator
     private int frequency;
     protected Set<NameMetaPair> replaced;
 
-    public WorldGenSulfur(Block block, int meta, int size, int frequency)
+    public WorldGenNiter(Block block, int meta, int size, int frequency)
     {
         this.block = block;
         this.meta = meta;
         this.size = size;
         this.frequency = frequency;
-        this.replaced = ArtificeRegistry.getStoneTypes();
+        this.replaced = new THashSet<NameMetaPair>();
+        this.replaced.add(new NameMetaPair(Blocks.sand, 0));
     }
 
     @Override
     public String getFeatureName()
     {
-        return ArtificeCore.modName + ": Sulfur";
+        return ArtificeCore.modName + ": Niter";
     }
 
     @Override
@@ -78,12 +80,12 @@ public class WorldGenSulfur implements IFeatureGenerator
                 return false;
 
             int num = rand.nextInt((int) (size * 1.5) - (int) (size * 0.5) + 1) + (int) (size * 0.5);
-            SulferGen sulfur = new SulferGen(world, rand, b, num);
-            sulfur.doGeneration(chunkX, chunkZ);
+            NiterGen niter = new NiterGen(world, rand, b, num);
+            niter.doGeneration(chunkX, chunkZ);
             if (!ArtificeTickHandler.toGen.containsKey(Integer.valueOf(dim)))
                 ArtificeTickHandler.toGen.put(dim, new ArrayDeque<ISuspendableGen>());
-            if (sulfur.getChunksToGen().size() > 0)
-                ArtificeTickHandler.toGen.get(Integer.valueOf(dim)).add(sulfur);
+            if (niter.getChunksToGen().size() > 0)
+                ArtificeTickHandler.toGen.get(Integer.valueOf(dim)).add(niter);
         }
         return true;
     }
@@ -92,17 +94,11 @@ public class WorldGenSulfur implements IFeatureGenerator
     {
         NameMetaPair pair = new NameMetaPair(b.getBlock(world), b.getMeta(world));
         if (!b.isAir(world) && replaced.contains(pair))
-        {
-            for (BlockCoord n : b.getNearby())
-            {
-                if (n.getBlock(world).equals(Blocks.lava) || n.getBlock(world).equals(Blocks.flowing_lava) || n.getBlock(world).equals(block))
-                    return true;
-            }
-        }
+            return true;
         return false;
     }
 
-    private class SulferGen implements ISuspendableGen
+    private class NiterGen implements ISuspendableGen
     {
         private World world;
         private Random rand;
@@ -110,7 +106,7 @@ public class WorldGenSulfur implements IFeatureGenerator
         private TMap<ChunkCoord, ArrayList<BlockCoord>> toGen;
         private int size;
 
-        public SulferGen(World world, Random rand, BlockCoord start, int size)
+        public NiterGen(World world, Random rand, BlockCoord start, int size)
         {
             this.world = world;
             this.rand = rand;

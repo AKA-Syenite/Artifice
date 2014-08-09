@@ -13,8 +13,8 @@ import java.util.Locale;
 
 public class ItemResource extends ItemArtifice
 {
-    private IIcon[] icons = new IIcon[1];
-    private String[] names = { "sulfur" };
+    private String[] names = { "sulfur", "niter" };
+    private IIcon[] icons = new IIcon[names.length];
 
     public ItemResource()
     {
@@ -50,6 +50,7 @@ public class ItemResource extends ItemArtifice
     @Override
     public void registerIcons(IIconRegister reg)
     {
-        this.icons[0] = IconHandler.registerSingle(reg, "sulfur", "resources");
+        for (int i=0; i<names.length; i++)
+            this.icons[i] = IconHandler.registerSingle(reg, names[i], "resources");
     }
 }

@@ -327,6 +327,9 @@ tile.artifice.oresulfur.limestone.greenish.name=Sulfur Ore
 tile.artifice.sulfur.ore.name=Sulfur Ore
 tile.artifice.sulfur.block.name=Sulfur Block
 
+tile.artifice.niter.ore.name=Niter Sand
+tile.artifice.niter.block.name=Niter Block
+
 # Item Names
 item.artifice.sledge.wood.name=Wooden Sledge
 item.artifice.sledge.stone.name=Stone Sledge
@@ -344,6 +347,7 @@ item.artifice.steel.ingot.name=Steel Ingot
 item.artifice.steel.dust.name=Steel Dust
 
 item.artifice.resource.sulfur.name=Sulfur
+item.artifice.resource.niter.name=Niter
 
 item.artifice.box.name=Box
 
@@ -377,6 +381,7 @@ item.artifice.upgrade.divekit.name=Dive Kit
 
 # Tooltips
 tooltip.artifice.sulfur=Carries a strong odor
+tooltip.artifice.niter=Also known as saltpeter
 tooltip.artifice.dye.blue=Blue Dye
 tooltip.artifice.dye.blue.flavor=Well, some seas
 tooltip.artifice.dye.black=Black Dye

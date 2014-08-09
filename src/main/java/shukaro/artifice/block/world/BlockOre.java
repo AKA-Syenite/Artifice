@@ -49,27 +49,22 @@ public class BlockOre extends BlockArtifice
     }
 
     @Override
-    public int quantityDropped(Random rand)
+    public int quantityDropped(int meta, int fortune, Random rand)
     {
-        if (name.equals("oreLapis"))
-            return Blocks.lapis_ore.quantityDropped(rand);
+        if (name.equals("oreCoal"))
+            return Blocks.coal_ore.quantityDropped(0, fortune, rand);
+        else if (name.equals("oreLapis"))
+            return Blocks.lapis_ore.quantityDropped(0, fortune, rand);
+        else if (name.equals("oreDiamond"))
+            return Blocks.diamond_ore.quantityDropped(0, fortune, rand);
         else if (name.equals("oreRedstone"))
-            return Blocks.redstone_ore.quantityDropped(rand);
+            return Blocks.redstone_ore.quantityDropped(0, fortune, rand);
+        else if (name.equals("oreEmerald"))
+            return Blocks.emerald_ore.quantityDropped(0, fortune, rand);
         else if (name.equals("oreSulfur"))
-            return 4 + rand.nextInt(2);
-        return 1;
-    }
-
-    @Override
-    public int quantityDroppedWithBonus(int fortune, Random rand)
-    {
-        if (name.equals("oreLapis"))
-            return Blocks.lapis_ore.quantityDropped(rand) + rand.nextInt(fortune + 1);
-        else if (name.equals("oreRedstone"))
-            return Blocks.redstone_ore.quantityDropped(rand) + rand.nextInt(fortune + 1);
-        else if (name.equals("oreSulfur"))
-            return this.quantityDropped(rand) + rand.nextInt(fortune + 1);
-        return this.quantityDropped(rand);
+            return ArtificeBlocks.blockSulfur.quantityDropped(0, fortune, rand);
+        else
+            return 1;
     }
 
     @Override
@@ -88,7 +83,7 @@ public class BlockOre extends BlockArtifice
         else if (name.equals("oreRedstone"))
             return Blocks.redstone_ore.getItemDropped(0, rand, fortune);
         else if (name.equals("oreEmerald"))
-            return Blocks.redstone_ore.getItemDropped(0, rand, fortune);
+            return Blocks.emerald_ore.getItemDropped(0, rand, fortune);
         else if (name.equals("oreSulfur"))
             return ArtificeBlocks.blockSulfur.getItemDropped(0, rand, fortune);
         else

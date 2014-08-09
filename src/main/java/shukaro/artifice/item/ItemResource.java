@@ -5,6 +5,7 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
+import shukaro.artifice.ArtificeCore;
 import shukaro.artifice.render.IconHandler;
 
 import java.util.List;
@@ -18,6 +19,7 @@ public class ItemResource extends ItemArtifice
     public ItemResource()
     {
         super();
+        this.setCreativeTab(ArtificeCore.worldTab);
         this.setUnlocalizedName("artifice.resource");
     }
 

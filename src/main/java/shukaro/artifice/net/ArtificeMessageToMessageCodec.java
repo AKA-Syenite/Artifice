@@ -21,12 +21,12 @@ public class ArtificeMessageToMessageCodec extends FMLIndexedMessageToMessageCod
     @Override
     public void encodeInto(ChannelHandlerContext ctx, ArtificePacket msg, ByteBuf target) throws Exception
     {
-
+        msg.writeBytes(target);
     }
 
     @Override
     public void decodeInto(ChannelHandlerContext ctx, ByteBuf source, ArtificePacket msg)
     {
-
+        msg.readBytes(source);
     }
 }

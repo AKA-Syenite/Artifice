@@ -23,7 +23,7 @@ public class PacketDispatcher
             channel.attr(FMLOutboundHandler.FML_MESSAGETARGET).set(FMLOutboundHandler.OutboundTarget.ALLAROUNDPOINT);
             channel.attr(FMLOutboundHandler.FML_MESSAGETARGETARGS).set(new TargetPoint(world.provider.dimensionId, x, y, z, 192));
 
-           channel.writeOutbound(packet);
+            channel.writeOutbound(packet);
         }
         catch (Exception e)
         {

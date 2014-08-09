@@ -1,6 +1,5 @@
 package shukaro.artifice.event;
 
-import cofh.key.CoFHKey;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.TickEvent;
 import cpw.mods.fml.common.gameevent.TickEvent.ClientTickEvent;

@@ -1,7 +1,7 @@
 package shukaro.artifice;
 
-import cofh.util.oredict.OreDictionaryArbiter;
-import cofh.world.WorldHandler;
+import cofh.core.util.oredict.OreDictionaryArbiter;
+import cofh.core.world.WorldHandler;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.Mod;

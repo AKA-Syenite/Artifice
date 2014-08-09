@@ -1,4 +1,4 @@
-package shukaro.artifice.block.decorative;
+package shukaro.artifice.block.world;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -26,7 +26,6 @@ public class BlockFlora extends BlockFlower
         this.setTickRandomly(true);
         setCreativeTab(ArtificeCore.worldTab);
         setHardness(0.0F);
-        setStepSound(soundTypeGrass);
         setBlockName("artifice.flora");
     }
 

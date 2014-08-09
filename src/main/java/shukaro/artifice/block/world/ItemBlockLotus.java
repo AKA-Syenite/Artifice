@@ -1,4 +1,4 @@
-package shukaro.artifice.block.decorative;
+package shukaro.artifice.block.world;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;

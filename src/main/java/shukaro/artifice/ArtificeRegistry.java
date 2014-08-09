@@ -116,7 +116,7 @@ public abstract class ArtificeRegistry
 
     public static void registerTooltip(ItemStack stack, String line)
     {
-        NameMetaPair pair = new NameMetaPair(stack.getUnlocalizedName(), stack.getItemDamage());
+        NameMetaPair pair = new NameMetaPair(stack.getItem(), stack.getItemDamage());
         if (tooltipMap.get(pair) == null)
         {
             List<String> temp = new ArrayList<String>();

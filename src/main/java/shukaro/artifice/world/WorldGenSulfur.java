@@ -4,6 +4,7 @@ import cofh.api.world.IFeatureGenerator;
 import gnu.trove.map.TMap;
 import gnu.trove.map.hash.THashMap;
 import net.minecraft.block.Block;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase;
@@ -22,7 +23,7 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.Set;
 
-public class WorldGenCluster implements IFeatureGenerator
+public class WorldGenSulfur implements IFeatureGenerator
 {
     protected Block block;
     protected int meta;
@@ -32,7 +33,7 @@ public class WorldGenCluster implements IFeatureGenerator
     private int frequency;
     protected Set<NameMetaPair> replaced;
 
-    public WorldGenCluster(Block block, int meta, int minHeight, int maxHeight, int size, int frequency)
+    public WorldGenSulfur(Block block, int meta, int minHeight, int maxHeight, int size, int frequency)
     {
         this.block = block;
         this.meta = meta;
@@ -46,7 +47,7 @@ public class WorldGenCluster implements IFeatureGenerator
     @Override
     public String getFeatureName()
     {
-        return ArtificeCore.modName + ": " + new ItemStack(block, 1, meta).getDisplayName() + " Cluster";
+        return ArtificeCore.modName + ": Sulfur";
     }
 
     @Override
@@ -57,13 +58,14 @@ public class WorldGenCluster implements IFeatureGenerator
             total = (rand.nextInt(100) < Math.abs(frequency % (int) Math.pow(10, (int) Math.log10(frequency)))) ? (frequency / 100) + 1 : (frequency / 100);
         else
             total = rand.nextInt(100) < frequency ? 0 : 1;
+        total += rand.nextInt(4);
         for (int j=0; j<total; j++)
         {
             boolean doGen = false;
             BlockCoord b = new BlockCoord();
             int dim = world.provider.dimensionId;
 
-            int tries = rand.nextInt(16) + 4;
+            int tries = rand.nextInt(16) + 10;
             for (int i = 0; i < tries; i++)
             {
                 int x = (chunkX << 4) + rand.nextInt(16);
@@ -79,37 +81,13 @@ public class WorldGenCluster implements IFeatureGenerator
             if (!doGen)
                 return false;
 
-            if (block.getUnlocalizedName().contains("limestone"))
-            {
-                BiomeGenBase biome = world.getBiomeGenForCoords(b.x, b.z);
-                if (BiomeDictionary.isBiomeOfType(biome, BiomeDictionary.Type.SANDY))
-                {
-                    if (b.y > world.getHeightValue(b.x, b.z) / 2)
-                        block = ArtificeBlocks.blockLimestones[3];
-                    else
-                        block = ArtificeBlocks.blockLimestones[2];
-                } else if (BiomeDictionary.isBiomeOfType(biome, BiomeDictionary.Type.WATER))
-                    block = ArtificeBlocks.blockLimestones[5];
-                else if (BiomeDictionary.isBiomeOfType(biome, BiomeDictionary.Type.JUNGLE) || BiomeDictionary.isBiomeOfType(biome, BiomeDictionary.Type.SWAMP))
-                    block = ArtificeBlocks.blockLimestones[6];
-                else if (BiomeDictionary.isBiomeOfType(biome, BiomeDictionary.Type.MESA) || BiomeDictionary.isBiomeOfType(biome, BiomeDictionary.Type.MOUNTAIN))
-                    block = ArtificeBlocks.blockLimestones[4];
-                else
-                {
-                    if (b.y > world.getHeightValue(b.x, b.z) / 2)
-                        block = ArtificeBlocks.blockLimestones[1];
-                    else
-                        block = ArtificeBlocks.blockLimestones[0];
-                }
-            }
-
             int num = rand.nextInt((int) (size * 1.5) - (int) (size * 0.5) + 1) + (int) (size * 0.5);
-            ClusterGen cluster = new ClusterGen(world, rand, b, num);
-            cluster.doGeneration(chunkX, chunkZ);
+            SulferGen sulfur = new SulferGen(world, rand, b, num);
+            sulfur.doGeneration(chunkX, chunkZ);
             if (!ArtificeTickHandler.toGen.containsKey(Integer.valueOf(dim)))
                 ArtificeTickHandler.toGen.put(dim, new ArrayDeque<ISuspendableGen>());
-            if (cluster.getChunksToGen().size() > 0)
-                ArtificeTickHandler.toGen.get(Integer.valueOf(dim)).add(cluster);
+            if (sulfur.getChunksToGen().size() > 0)
+                ArtificeTickHandler.toGen.get(Integer.valueOf(dim)).add(sulfur);
         }
         return true;
     }
@@ -117,10 +95,18 @@ public class WorldGenCluster implements IFeatureGenerator
     protected boolean canGenHere(World world, BlockCoord b)
     {
         NameMetaPair pair = new NameMetaPair(b.getBlock(world), b.getMeta(world));
-        return !b.isAir(world) && (replaced.contains(pair) || ArtificeBlocks.oreSet.contains(pair));
+        if (!b.isAir(world) && replaced.contains(pair))
+        {
+            for (BlockCoord n : b.getNearby())
+            {
+                if (n.getBlock(world).equals(Blocks.lava) || n.getBlock(world).equals(Blocks.flowing_lava) || n.getBlock(world).equals(block))
+                    return true;
+            }
+        }
+        return false;
     }
 
-    private class ClusterGen implements ISuspendableGen
+    private class SulferGen implements ISuspendableGen
     {
         private World world;
         private Random rand;
@@ -128,7 +114,7 @@ public class WorldGenCluster implements IFeatureGenerator
         private TMap<ChunkCoord, ArrayList<BlockCoord>> toGen;
         private int size;
 
-        public ClusterGen(World world, Random rand, BlockCoord start, int size)
+        public SulferGen(World world, Random rand, BlockCoord start, int size)
         {
             this.world = world;
             this.rand = rand;
@@ -170,15 +156,7 @@ public class WorldGenCluster implements IFeatureGenerator
                 coord.set(toGen.get(chunk).get(rand.nextInt(toGen.get(chunk).size())));
                 toGen.get(chunk).remove(coord);
 
-                NameMetaPair ore = new NameMetaPair(coord.getBlock(world), coord.getMeta(world));
-                if (replaced.contains(ore))
-                    world.setBlock(coord.x, coord.y, coord.z, block, meta, 0);
-                else if (ArtificeBlocks.oreSet.contains(ore))
-                {
-                    NameMetaPair newOre = BlockOre.getOre(ore, block);
-                    if (newOre != null)
-                        world.setBlock(coord.x, coord.y, coord.z, newOre.getBlock(), newOre.getMetadata(), 0);
-                }
+                world.setBlock(coord.x, coord.y, coord.z, block, meta, 0);
 
                 genned++;
                 while (toGen.get(chunk).size() > threshold && genned < size)
@@ -188,15 +166,7 @@ public class WorldGenCluster implements IFeatureGenerator
                     coord.set(toGen.get(chunk).get(rand.nextInt(toGen.get(chunk).size())));
                     toGen.get(chunk).remove(coord);
 
-                    ore = new NameMetaPair(coord.getBlock(world), coord.getMeta(world));
-                    if (replaced.contains(ore))
-                        world.setBlock(coord.x, coord.y, coord.z, block, meta, 0);
-                    else if (ArtificeBlocks.oreSet.contains(ore))
-                    {
-                        NameMetaPair newOre = BlockOre.getOre(ore, block);
-                        if (newOre != null)
-                            world.setBlock(coord.x, coord.y, coord.z, newOre.getBlock(), newOre.getMetadata(), 0);
-                    }
+                    world.setBlock(coord.x, coord.y, coord.z, block, meta, 0);
 
                     genned++;
                 }

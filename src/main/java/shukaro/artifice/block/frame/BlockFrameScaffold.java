@@ -15,6 +15,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
 import shukaro.artifice.ArtificeConfig;
 import shukaro.artifice.ArtificeCore;
+import shukaro.artifice.CommonProxy;
 import shukaro.artifice.net.PacketDispatcher;
 import shukaro.artifice.net.PlayerTracking;
 import shukaro.artifice.render.IconHandler;

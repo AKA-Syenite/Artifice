@@ -7,7 +7,7 @@ import net.minecraft.world.World;
 import shukaro.artifice.ArtificeBlocks;
 import shukaro.artifice.ArtificeCore;
 import shukaro.artifice.ArtificeRegistry;
-import shukaro.artifice.block.decorative.BlockOre;
+import shukaro.artifice.block.world.BlockOre;
 import shukaro.artifice.util.NameMetaPair;
 
 import java.util.Random;

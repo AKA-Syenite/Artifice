@@ -1,4 +1,4 @@
-package shukaro.artifice.block.decorative;
+package shukaro.artifice.block.world;
 
 import cofh.util.ItemHelper;
 import cofh.util.oredict.OreDictionaryArbiter;
@@ -40,7 +40,7 @@ public class BlockOre extends BlockArtifice
         this.name = name;
 
         setHarvestLevel("pickaxe", 2);
-        if (name.equals("oreCoal"))
+        if (name.equals("oreCoal") || name.equals("oreSulfur"))
             setHarvestLevel("pickaxe", 0);
         else if (name.equals("oreIron") || name.equals("oreLapis") || name.equals("oreCopper") || name.equals("oreTin"))
             setHarvestLevel("pickaxe", 1);
@@ -55,28 +55,42 @@ public class BlockOre extends BlockArtifice
             return Blocks.lapis_ore.quantityDropped(rand);
         else if (name.equals("oreRedstone"))
             return Blocks.redstone_ore.quantityDropped(rand);
+        else if (name.equals("oreSulfur"))
+            return 4 + rand.nextInt(2);
         return 1;
+    }
+
+    @Override
+    public int quantityDroppedWithBonus(int fortune, Random rand)
+    {
+        if (name.equals("oreLapis"))
+            return Blocks.lapis_ore.quantityDropped(rand) + rand.nextInt(fortune + 1);
+        else if (name.equals("oreRedstone"))
+            return Blocks.redstone_ore.quantityDropped(rand) + rand.nextInt(fortune + 1);
+        else if (name.equals("oreSulfur"))
+            return this.quantityDropped(rand) + rand.nextInt(fortune + 1);
+        return this.quantityDropped(rand);
     }
 
     @Override
     public Item getItemDropped(int meta, Random rand, int fortune)
     {
         if (name.equals("oreCoal"))
-            return Blocks.coal_ore.getItemDropped(meta, rand, fortune);
+            return Blocks.coal_ore.getItemDropped(0, rand, fortune);
         else if (name.equals("oreIron"))
-            return Blocks.iron_ore.getItemDropped(meta, rand, fortune);
+            return Blocks.iron_ore.getItemDropped(0, rand, fortune);
         else if (name.equals("oreLapis"))
-            return Blocks.lapis_ore.getItemDropped(meta, rand, fortune);
+            return Blocks.lapis_ore.getItemDropped(0, rand, fortune);
         else if (name.equals("oreGold"))
-            return Blocks.gold_ore.getItemDropped(meta, rand, fortune);
+            return Blocks.gold_ore.getItemDropped(0, rand, fortune);
         else if (name.equals("oreDiamond"))
-            return Blocks.diamond_ore.getItemDropped(meta, rand, fortune);
+            return Blocks.diamond_ore.getItemDropped(0, rand, fortune);
         else if (name.equals("oreRedstone"))
-            return Blocks.redstone_ore.getItemDropped(meta, rand, fortune);
+            return Blocks.redstone_ore.getItemDropped(0, rand, fortune);
         else if (name.equals("oreEmerald"))
-            return Blocks.redstone_ore.getItemDropped(meta, rand, fortune);
-        else if (Block.getBlockFromItem(ItemHelper.getOre(name).getItem()) != null)
-            return Block.getBlockFromItem(ItemHelper.getOre(name).getItem()).getItemDropped(meta, rand, fortune);
+            return Blocks.redstone_ore.getItemDropped(0, rand, fortune);
+        else if (name.equals("oreSulfur"))
+            return ArtificeBlocks.blockSulfur.getItemDropped(0, rand, fortune);
         else
             return ItemHelper.getOre(name).getItem();
     }
@@ -86,10 +100,8 @@ public class BlockOre extends BlockArtifice
     {
         if (name.equals("oreLapis"))
             return Blocks.lapis_ore.damageDropped(meta);
-        else if (Block.getBlockFromItem(ItemHelper.getOre(name).getItem()) != null)
-            return Block.getBlockFromItem(ItemHelper.getOre(name).getItem()).damageDropped(meta);
         else
-            return meta;
+            return 0;
     }
 
     @Override

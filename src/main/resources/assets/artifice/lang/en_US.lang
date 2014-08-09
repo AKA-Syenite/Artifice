@@ -314,6 +314,19 @@ tile.artifice.orenickel.limestone.reddish.name=Nickel Ore
 tile.artifice.orenickel.limestone.bluish.name=Nickel Ore
 tile.artifice.orenickel.limestone.greenish.name=Nickel Ore
 
+tile.artifice.oresulfur.basalt.name=Sulfur Ore
+tile.artifice.oresulfur.marble.name=Sulfur Ore
+tile.artifice.oresulfur.limestone.gray.name=Sulfur Ore
+tile.artifice.oresulfur.limestone.lightgray.name=Sulfur Ore
+tile.artifice.oresulfur.limestone.brown.name=Sulfur Ore
+tile.artifice.oresulfur.limestone.tan.name=Sulfur Ore
+tile.artifice.oresulfur.limestone.reddish.name=Sulfur Ore
+tile.artifice.oresulfur.limestone.bluish.name=Sulfur Ore
+tile.artifice.oresulfur.limestone.greenish.name=Sulfur Ore
+
+tile.artifice.sulfur.ore.name=Sulfur Ore
+tile.artifice.sulfur.block.name=Sulfur Block
+
 # Item Names
 item.artifice.sledge.wood.name=Wooden Sledge
 item.artifice.sledge.stone.name=Stone Sledge
@@ -329,6 +342,8 @@ item.artifice.sickle.emerald.name=Diamond Sickle
 
 item.artifice.steel.ingot.name=Steel Ingot
 item.artifice.steel.dust.name=Steel Dust
+
+item.artifice.resource.sulfur.name=Sulfur
 
 item.artifice.box.name=Box
 
@@ -361,6 +376,7 @@ item.artifice.upgrade.scubatank.name=Scuba Tank
 item.artifice.upgrade.divekit.name=Dive Kit
 
 # Tooltips
+tooltip.artifice.sulfur=Carries a strong odor
 tooltip.artifice.dye.blue=Blue Dye
 tooltip.artifice.dye.blue.flavor=Well, some seas
 tooltip.artifice.dye.black=Black Dye

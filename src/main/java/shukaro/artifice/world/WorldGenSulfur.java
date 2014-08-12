@@ -52,6 +52,9 @@ public class WorldGenSulfur implements IFeatureGenerator
         int dim = world.provider.dimensionId;
         if (ArtificeRegistry.getDimensionBlacklist().contains(Integer.valueOf(dim)))
             return false;
+        String worldType = world.provider.terrainType.getWorldTypeName();
+        if (ArtificeRegistry.getWorldTypeBlacklist().contains(worldType))
+            return false;
         int total;
         if (frequency >= 100)
             total = (rand.nextInt(100) < Math.abs(frequency % (int) Math.pow(10, (int) Math.log10(frequency)))) ? (frequency / 100) + 1 : (frequency / 100);

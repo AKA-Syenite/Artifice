@@ -120,11 +120,6 @@ public class ArtificeBlocks
             OreDictionary.registerOre("blockBasalt", new ItemStack(blockBasalt));
             for (int i=0; i<blockLimestones.length; i++)
                 OreDictionary.registerOre("blockLimestone", new ItemStack(blockLimestones[i]));
-            for (int i=0; i<oreNames.length; i++)
-            {
-                for (int j=0; j<rockBlocks.length; j++)
-                    OreDictionary.registerOre(oreNames[i], new ItemStack(blockOres[i], 1, j));
-            }
             OreDictionary.registerOre("oreSulfur", new ItemStack(blockSulfur, 1, 0));
             OreDictionary.registerOre("oreSaltpeter", new ItemStack(blockNiter, 1, 1));
         }

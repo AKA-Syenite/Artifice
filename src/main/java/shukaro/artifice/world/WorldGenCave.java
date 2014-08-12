@@ -6,6 +6,7 @@ import gnu.trove.map.hash.THashMap;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
+import net.minecraft.world.WorldType;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraftforge.common.BiomeDictionary;
 import shukaro.artifice.ArtificeBlocks;
@@ -65,6 +66,9 @@ public class WorldGenCave implements IFeatureGenerator
     {
         int dim = world.provider.dimensionId;
         if (ArtificeRegistry.getDimensionBlacklist().contains(Integer.valueOf(dim)))
+            return false;
+        String worldType = world.provider.terrainType.getWorldTypeName();
+        if (ArtificeRegistry.getWorldTypeBlacklist().contains(worldType))
             return false;
         int total;
         if (frequency >= 100)

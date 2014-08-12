@@ -8,6 +8,7 @@ import net.minecraftforge.common.BiomeDictionary.Type;
 import shukaro.artifice.ArtificeBlocks;
 import shukaro.artifice.ArtificeConfig;
 import shukaro.artifice.ArtificeCore;
+import shukaro.artifice.ArtificeRegistry;
 import shukaro.artifice.util.ChunkCoord;
 
 import java.util.Random;
@@ -30,6 +31,9 @@ public class WorldGenLily implements IFeatureGenerator
     @Override
     public boolean generateFeature(Random rand, int chunkX, int chunkZ, World world, boolean newGen)
     {
+        int dim = world.provider.dimensionId;
+        if (ArtificeRegistry.getDimensionBlacklist().contains(Integer.valueOf(dim)))
+            return false;
         int total;
         if (frequency >= 100)
             total = (rand.nextInt(100) < Math.abs(frequency % (int) Math.pow(10, (int) Math.log10(frequency)))) ? (frequency / 100) + 1 : (frequency / 100);

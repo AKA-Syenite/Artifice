@@ -4,6 +4,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockSlab;
 import net.minecraft.item.Item;
 import net.minecraft.world.IBlockAccess;
+import shukaro.artifice.block.decorative.BlockLamp;
 
 public class CTM
 {
@@ -286,23 +287,6 @@ public class CTM
                 break;
         }
 
-        if (world.getBlock(x, y, z) instanceof BlockSlab != block instanceof BlockSlab)
-            return false;
-        if (world.getBlock(x, y, z).colorMultiplier(world, x, y, z) != block.colorMultiplier(world, x, y, z))
-            return false;
-
-        if (world.getBlock(x, y, z).getIcon(0, world.getBlockMetadata(x, y, z)) != null && block.getIcon(0, meta) != null)
-        {
-            if (world.getBlock(x, y, z).getIcon(0, world.getBlockMetadata(x, y, z)).getIconName().equals(block.getIcon(0, meta).getIconName()))
-            {
-                if (world.getBlock(x2, y2, z2).getIcon(0, world.getBlockMetadata(x2, y2, z2)) != null)
-                {
-                    if (!world.getBlock(x2, y2, z2).getIcon(0, world.getBlockMetadata(x2, y2, z2)).getIconName().equals(block.getIcon(0, meta).getIconName()))
-                        return true;
-                }
-                return true;
-            }
-        }
-        return false;
+        return world.getBlock(x, y, z).equals(block) && !world.getBlock(x2, y2, z2).isOpaqueCube();
     }
 }

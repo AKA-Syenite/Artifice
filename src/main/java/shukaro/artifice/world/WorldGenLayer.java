@@ -40,6 +40,9 @@ public class WorldGenLayer implements IFeatureGenerator
     @Override
     public boolean generateFeature(Random rand, int chunkX, int chunkZ, World world, boolean newGen)
     {
+        int dim = world.provider.dimensionId;
+        if (ArtificeRegistry.getDimensionBlacklist().contains(Integer.valueOf(dim)))
+            return false;
         int x = chunkX * 16;
         int z = chunkZ * 16;
         int xMax = x + 16;

@@ -49,6 +49,9 @@ public class WorldGenSulfur implements IFeatureGenerator
     @Override
     public boolean generateFeature(Random rand, int chunkX, int chunkZ, World world, boolean newGen)
     {
+        int dim = world.provider.dimensionId;
+        if (ArtificeRegistry.getDimensionBlacklist().contains(Integer.valueOf(dim)))
+            return false;
         int total;
         if (frequency >= 100)
             total = (rand.nextInt(100) < Math.abs(frequency % (int) Math.pow(10, (int) Math.log10(frequency)))) ? (frequency / 100) + 1 : (frequency / 100);
@@ -59,7 +62,6 @@ public class WorldGenSulfur implements IFeatureGenerator
         {
             boolean doGen = false;
             BlockCoord b = new BlockCoord();
-            int dim = world.provider.dimensionId;
 
             int tries = rand.nextInt(16) + 10;
             for (int i = 0; i < tries; i++)

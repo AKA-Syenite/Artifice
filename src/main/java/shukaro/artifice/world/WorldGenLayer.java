@@ -43,6 +43,9 @@ public class WorldGenLayer implements IFeatureGenerator
         int dim = world.provider.dimensionId;
         if (ArtificeRegistry.getDimensionBlacklist().contains(Integer.valueOf(dim)))
             return false;
+        String worldType = world.provider.terrainType.getWorldTypeName();
+        if (ArtificeRegistry.getWorldTypeBlacklist().contains(worldType))
+            return false;
         int x = chunkX * 16;
         int z = chunkZ * 16;
         int xMax = x + 16;

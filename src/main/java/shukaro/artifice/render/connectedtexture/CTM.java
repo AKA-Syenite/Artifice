@@ -287,6 +287,8 @@ public class CTM
                 break;
         }
 
-        return world.getBlock(x, y, z).equals(block) && !world.getBlock(x2, y2, z2).isOpaqueCube();
+        if (block instanceof BlockLamp)
+            return world.getBlock(x, y, z).equals(block) && !world.getBlock(x2, y2, z2).isOpaqueCube();
+        return world.getBlock(x, y, z).equals(block) && world.getBlockMetadata(x, y, z) == meta && !world.getBlock(x2, y2, z2).isOpaqueCube();
     }
 }

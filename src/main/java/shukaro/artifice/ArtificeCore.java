@@ -18,6 +18,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.network.NetHandlerPlayServer;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.oredict.OreDictionary;
 import org.apache.logging.log4j.Logger;
 import shukaro.artifice.compat.*;
 import shukaro.artifice.event.ArtificeEventHandler;
@@ -149,6 +150,12 @@ public class ArtificeCore
         {
             for (ItemStack stack : OreDictionaryArbiter.getOres(s))
                 ArtificeBlocks.oreSet.add(new NameMetaPair(stack.getItem(), stack.getItemDamage()));
+        }
+
+        for (int i=0; i<ArtificeBlocks.oreNames.length; i++)
+        {
+            for (int j=0; j<ArtificeBlocks.rockBlocks.length; j++)
+                OreDictionary.registerOre(ArtificeBlocks.oreNames[i], new ItemStack(ArtificeBlocks.blockOres[i], 1, j));
         }
 
         if (ArtificeConfig.floraBoneMeal.getBoolean(true) && ArtificeConfig.enableWorldGen.getBoolean(true))

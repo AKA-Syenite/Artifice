@@ -271,9 +271,12 @@ public class ArtificeConfig
             {
                 floraWorldGen.set(false);
                 lotusWorldGen.set(false);
-                for (int i=0; i< rockNames.length; i++)
-                {
+                sulfurGen.set(false);
+                niterGen.set(false);
+                for (int i=0; i<rockNames.length; i++)
                     rockLayersGen[i].set(false);
+                for (int i=0; i<3; i++)
+                {
                     rockClustersGen[i].set(false);
                     rockCavesGen[i].set(false);
                 }

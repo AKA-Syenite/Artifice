@@ -2,6 +2,7 @@ package shukaro.artifice;
 
 import cofh.core.util.oredict.OreDictionaryArbiter;
 import cofh.core.world.WorldHandler;
+import cofh.util.ItemHelper;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.Mod;
@@ -141,21 +142,27 @@ public class ArtificeCore
     @EventHandler
     public void postInit(FMLPostInitializationEvent evt)
     {
-        ArtificeBlocks.oreMappings = new THashMap<String, Block>();
-        for (int j=0; j<ArtificeBlocks.oreNames.length; j++)
-            ArtificeBlocks.oreMappings.put(ArtificeBlocks.oreNames[j], ArtificeBlocks.blockOres[j]);
-
-        ArtificeBlocks.oreSet = new THashSet<NameMetaPair>();
-        for (String s : ArtificeBlocks.oreNames)
+        if (ArtificeConfig.enableWorldGen.getBoolean(true))
         {
-            for (ItemStack stack : OreDictionaryArbiter.getOres(s))
-                ArtificeBlocks.oreSet.add(new NameMetaPair(stack.getItem(), stack.getItemDamage()));
-        }
+            ArtificeBlocks.oreMappings = new THashMap<String, Block>();
+            for (int j = 0; j < ArtificeBlocks.oreNames.length; j++)
+                ArtificeBlocks.oreMappings.put(ArtificeBlocks.oreNames[j], ArtificeBlocks.blockOres[j]);
 
-        for (int i=0; i<ArtificeBlocks.oreNames.length; i++)
-        {
-            for (int j=0; j<ArtificeBlocks.rockBlocks.length; j++)
-                OreDictionary.registerOre(ArtificeBlocks.oreNames[i], new ItemStack(ArtificeBlocks.blockOres[i], 1, j));
+            ArtificeBlocks.oreSet = new THashSet<NameMetaPair>();
+            for (String s : ArtificeBlocks.oreNames)
+            {
+                if (OreDictionaryArbiter.getOres(s) != null)
+                {
+                    for (ItemStack stack : OreDictionaryArbiter.getOres(s))
+                        ArtificeBlocks.oreSet.add(new NameMetaPair(stack.getItem(), stack.getItemDamage()));
+                }
+            }
+
+            for (int i = 0; i < ArtificeBlocks.oreNames.length; i++)
+            {
+                for (int j = 0; j < ArtificeBlocks.rockBlocks.length; j++)
+                    OreDictionary.registerOre(ArtificeBlocks.oreNames[i], new ItemStack(ArtificeBlocks.blockOres[i], 1, j));
+            }
         }
 
         if (ArtificeConfig.floraBoneMeal.getBoolean(true) && ArtificeConfig.enableWorldGen.getBoolean(true))

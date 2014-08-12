@@ -18,7 +18,7 @@ import net.minecraft.world.World;
 import shukaro.artifice.ArtificeConfig;
 import shukaro.artifice.ArtificeRegistry;
 import shukaro.artifice.ArtificeTooltips;
-import shukaro.artifice.render.IconHandler;
+import shukaro.artifice.render.TextureHandler;
 import shukaro.artifice.util.FormatCodes;
 import shukaro.artifice.util.NameMetaPair;
 
@@ -57,7 +57,7 @@ public class ItemBox extends ItemArtifice
     @SideOnly(Side.CLIENT)
     public void registerIcons(IIconRegister reg)
     {
-        this.icon = IconHandler.registerSingle(reg, "box", "box");
+        this.icon = TextureHandler.registerIcon(reg, "box", "box");
     }
 
     @Override

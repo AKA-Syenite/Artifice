@@ -7,7 +7,7 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
-import shukaro.artifice.render.IconHandler;
+import shukaro.artifice.render.TextureHandler;
 
 import java.util.List;
 import java.util.Locale;
@@ -38,7 +38,7 @@ public class ItemDye extends ItemArtifice
     {
         for (int i = 0; i < names.length; i++)
         {
-            icons[i] = IconHandler.registerSingle(reg, names[i].toLowerCase(Locale.ENGLISH), "dye");
+            icons[i] = TextureHandler.registerIcon(reg, names[i].toLowerCase(Locale.ENGLISH), "dye");
         }
     }
 

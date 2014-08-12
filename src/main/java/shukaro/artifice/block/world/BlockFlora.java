@@ -10,7 +10,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 import shukaro.artifice.ArtificeCore;
-import shukaro.artifice.render.IconHandler;
+import shukaro.artifice.render.TextureHandler;
 
 import java.util.List;
 import java.util.Locale;
@@ -43,7 +43,7 @@ public class BlockFlora extends BlockFlower
     public void registerBlockIcons(IIconRegister reg)
     {
         for (int i = 0; i < ArtificeCore.flora.length; i++)
-            icons[i] = IconHandler.registerSingle(reg, ArtificeCore.flora[i].toLowerCase(Locale.ENGLISH), "flora");
+            icons[i] = TextureHandler.registerIcon(reg, ArtificeCore.flora[i].toLowerCase(Locale.ENGLISH), "flora");
     }
 
     @Override

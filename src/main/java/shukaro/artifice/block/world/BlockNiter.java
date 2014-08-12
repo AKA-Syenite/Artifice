@@ -12,7 +12,7 @@ import net.minecraft.world.World;
 import shukaro.artifice.ArtificeBlocks;
 import shukaro.artifice.ArtificeCore;
 import shukaro.artifice.ArtificeItems;
-import shukaro.artifice.render.IconHandler;
+import shukaro.artifice.render.TextureHandler;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,8 +33,8 @@ public class BlockNiter extends BlockFalling
     @Override
     public void registerBlockIcons(IIconRegister reg)
     {
-        this.icons[0] = IconHandler.registerSingle(reg, "oreNiter", "ores/niter");
-        this.icons[1] = IconHandler.registerSingle(reg, "blockNiter", "ores/niter");
+        this.icons[0] = TextureHandler.registerIcon(reg, "oreNiter", "ores/niter");
+        this.icons[1] = TextureHandler.registerIcon(reg, "blockNiter", "ores/niter");
     }
 
     @Override

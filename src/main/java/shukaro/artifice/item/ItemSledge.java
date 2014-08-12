@@ -16,7 +16,7 @@ import shukaro.artifice.ArtificeConfig;
 import shukaro.artifice.ArtificeCore;
 import shukaro.artifice.ArtificeRegistry;
 import shukaro.artifice.ArtificeTooltips;
-import shukaro.artifice.render.IconHandler;
+import shukaro.artifice.render.TextureHandler;
 import shukaro.artifice.util.NameMetaPair;
 
 import java.util.ArrayList;
@@ -113,7 +113,7 @@ public class ItemSledge extends ItemTool
     @SideOnly(Side.CLIENT)
     public void registerIcons(IIconRegister reg)
     {
-        this.icon = IconHandler.registerSingle(reg, "sledge_" + this.toolMaterial.toString().toLowerCase(Locale.ENGLISH), "sledge");
+        this.icon = TextureHandler.registerIcon(reg, "sledge_" + this.toolMaterial.toString().toLowerCase(Locale.ENGLISH), "sledge");
     }
 
     @Override

@@ -12,16 +12,12 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-import org.apache.commons.lang3.text.WordUtils;
 import shukaro.artifice.ArtificeBlocks;
 import shukaro.artifice.ArtificeConfig;
 import shukaro.artifice.ArtificeCore;
 import shukaro.artifice.net.PacketDispatcher;
-import shukaro.artifice.render.IconHandler;
 import shukaro.artifice.render.TextureHandler;
-import shukaro.artifice.render.connectedtexture.ConnectedTextures;
 import shukaro.artifice.util.BlockCoord;
-import shukaro.artifice.util.ChunkCoord;
 
 import java.util.List;
 import java.util.Random;
@@ -31,6 +27,7 @@ public class BlockRockSlab extends BlockSlab
     private static String[] types = {"brick", "cobble", "paver", "antipaver"};
 
     private IIcon paverSide;
+    private IIcon[] icons = new IIcon[types.length];
 
     private boolean isDouble;
     private String name;
@@ -84,8 +81,23 @@ public class BlockRockSlab extends BlockSlab
     @SideOnly(Side.CLIENT)
     public void registerBlockIcons(IIconRegister reg)
     {
-        ArtificeConfig.registerConnectedTextures(reg);
-        paverSide = IconHandler.registerSingle(reg, "paverside", name.split("[.]")[0]);
+        paverSide = TextureHandler.registerIcon(reg, "paverside", name.split("[.]")[0]);
+        for (int i=0; i<ArtificeBlocks.rockBlocks.length; i++)
+        {
+            if (ArtificeBlocks.rockBlocks[i].getUnlocalizedName().contains(name))
+            {
+                icons[2] = ArtificeBlocks.rockBlocks[i].getIcon(0, 3);
+                break;
+            }
+        }
+        for (int i=0; i<ArtificeBlocks.rockBlocks.length; i++)
+        {
+            if (ArtificeBlocks.rockBlocks[i].getUnlocalizedName().contains(name))
+            {
+                icons[3] = ArtificeBlocks.rockBlocks[i].getIcon(0, 4);
+                break;
+            }
+        }
     }
 
     @Override
@@ -95,28 +107,11 @@ public class BlockRockSlab extends BlockSlab
         meta = meta & 7;
         if (meta > types.length)
             meta = 0;
-        if (meta == 2)
+        if (meta == 2 || meta == 3)
         {
             if (side == 0 || side == 1)
             {
-                for (ConnectedTextures texture : ConnectedTextures.values())
-                {
-                    if (texture.name().equals(WordUtils.capitalize(name.split("[.]")[0]) + "Paver"))
-                        return texture.textureList[0];
-                }
-            }
-            else
-                return this.paverSide;
-        }
-        if (meta == 3)
-        {
-            if (side == 0 || side == 1)
-            {
-                for (ConnectedTextures texture : ConnectedTextures.values())
-                {
-                    if (texture.name().equals(WordUtils.capitalize(name.split("[.]")[0]) + "Antipaver"))
-                        return texture.textureList[0];
-                }
+                return this.icons[meta];
             }
             else
                 return this.paverSide;
@@ -136,47 +131,7 @@ public class BlockRockSlab extends BlockSlab
     public IIcon getIcon(IBlockAccess block, int x, int y, int z, int side)
     {
         int meta = block.getBlockMetadata(x, y, z) & 7;
-        if (meta == 2 || meta == 3)
-        {
-            if (side == 0 || side == 1)
-            {
-                BlockCoord coord = new BlockCoord(x, y, z);
-                boolean found = false;
-                for (ChunkCoord sector : ArtificeCore.textureCache.keySet())
-                {
-                    if (ArtificeCore.textureCache.get(sector).containsKey(coord))
-                        found = true;
-                }
-                if (!found)
-                    TextureHandler.updateTexture(coord);
-
-                if (TextureHandler.getConnectedTexture(this.getIcon(side, meta)) != null && ArtificeCore.textureCache.containsKey(new ChunkCoord(coord)) && ArtificeCore.textureCache.get(new ChunkCoord(coord)).get(coord) != null)
-                    return TextureHandler.getConnectedTexture(this.getIcon(side, meta)).textureList[ArtificeCore.textureCache.get(new ChunkCoord(coord)).get(coord)[side]];
-                return this.getIcon(side, meta);
-            }
-            else
-                return this.paverSide;
-        }
-        if (meta == 0)
-            meta = 2;
-        if (name.split("[.]")[0].equals("basalt"))
-            return ArtificeBlocks.blockBasalt.getIcon(side, meta);
-        else if (name.split("[.]")[0].equals("marble"))
-            return ArtificeBlocks.blockBasalt.getIcon(side, meta);
-        else
-            return ArtificeBlocks.blockLimestones[0].getIcon(side, meta);
-    }
-
-    @Override
-    public void onNeighborBlockChange(World world, int x, int y, int z, Block neighbor)
-    {
-        if (!world.isRemote)
-        {
-            int meta = world.getBlockMetadata(x, y, z) & 7;
-            BlockCoord c = new BlockCoord(x, y, z);
-            if (c.getBlock(world) != null && (meta == 2 || meta == 3))
-                PacketDispatcher.sendTextureUpdatePacket(world, x, y, z);
-        }
+        return this.getIcon(side, meta);
     }
 
     @Override

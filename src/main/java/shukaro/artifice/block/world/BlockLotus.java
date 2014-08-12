@@ -9,7 +9,7 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import shukaro.artifice.ArtificeConfig;
 import shukaro.artifice.ArtificeCore;
-import shukaro.artifice.render.IconHandler;
+import shukaro.artifice.render.TextureHandler;
 
 import java.util.Random;
 
@@ -54,8 +54,8 @@ public class BlockLotus extends BlockLilyPad
     @SideOnly(Side.CLIENT)
     public void registerBlockIcons(IIconRegister reg)
     {
-        lotus = IconHandler.registerSingle(reg, "waterlotus", "flora");
-        lotusClosed = IconHandler.registerSingle(reg, "waterlotusclosed", "flora");
+        lotus = TextureHandler.registerIcon(reg, "waterlotus", "flora");
+        lotusClosed = TextureHandler.registerIcon(reg, "waterlotusclosed", "flora");
     }
 
     @Override

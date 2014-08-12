@@ -7,7 +7,7 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
-import shukaro.artifice.render.IconHandler;
+import shukaro.artifice.render.TextureHandler;
 
 import java.util.List;
 import java.util.Locale;
@@ -36,7 +36,7 @@ public class ItemCoin extends ItemArtifice
     {
         for (int i = 0; i < coinTypes.length; i++)
         {
-            icons[i] = IconHandler.registerSingle(reg, coinTypes[i].toLowerCase(Locale.ENGLISH), "coin");
+            icons[i] = TextureHandler.registerIcon(reg, coinTypes[i].toLowerCase(Locale.ENGLISH), "coin");
         }
     }
 

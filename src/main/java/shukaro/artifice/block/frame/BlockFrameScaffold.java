@@ -15,14 +15,10 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
 import shukaro.artifice.ArtificeConfig;
 import shukaro.artifice.ArtificeCore;
-import shukaro.artifice.CommonProxy;
 import shukaro.artifice.net.PacketDispatcher;
 import shukaro.artifice.net.PlayerTracking;
-import shukaro.artifice.render.IconHandler;
 import shukaro.artifice.render.TextureHandler;
-import shukaro.artifice.render.connectedtexture.ConnectedTextures;
 import shukaro.artifice.util.BlockCoord;
-import shukaro.artifice.util.ChunkCoord;
 
 import java.util.Locale;
 
@@ -30,6 +26,7 @@ public class BlockFrameScaffold extends BlockFrame
 {
     private static final ForgeDirection[] sides = new ForgeDirection[]{ForgeDirection.NORTH, ForgeDirection.SOUTH, ForgeDirection.EAST, ForgeDirection.WEST, ForgeDirection.DOWN};
 
+    private IIcon[] icons = new IIcon[ArtificeCore.tiers.length];
     private IIcon[] sideIcons = new IIcon[ArtificeCore.tiers.length];
 
     public BlockFrameScaffold()
@@ -172,9 +169,6 @@ public class BlockFrameScaffold extends BlockFrame
     @Override
     public void onNeighborBlockChange(World world, int x, int y, int z, Block neighbor)
     {
-        if (!world.isRemote)
-            PacketDispatcher.sendTextureUpdatePacket(world, x, y, z);
-
         if (!canBlockStay(world, x, y, z))
         {
             dropBlockAsItem(world, x, y, z, world.getBlockMetadata(x, y, z), 0);
@@ -198,9 +192,20 @@ public class BlockFrameScaffold extends BlockFrame
     @SideOnly(Side.CLIENT)
     public void registerBlockIcons(IIconRegister reg)
     {
-        ArtificeConfig.registerConnectedTextures(reg);
+        TextureHandler.registerConnectedTexture(reg, this, 0, 0, "basic", "scaffold");
+        TextureHandler.registerConnectedTexture(reg, this, 0, 1, "basic", "scaffold");
+        icons[0] = TextureHandler.getConnectedTexture(this, 0, 1).icon;
+        TextureHandler.registerConnectedTexture(reg, this, 1, 0, "reinforced", "scaffold");
+        TextureHandler.registerConnectedTexture(reg, this, 1, 1, "reinforced", "scaffold");
+        icons[1] = TextureHandler.getConnectedTexture(this, 1, 1).icon;
+        TextureHandler.registerConnectedTexture(reg, this, 2, 0, "industrial", "scaffold");
+        TextureHandler.registerConnectedTexture(reg, this, 2, 1, "industrial", "scaffold");
+        icons[2] = TextureHandler.getConnectedTexture(this, 2, 1).icon;
+        TextureHandler.registerConnectedTexture(reg, this, 3, 0, "advanced", "scaffold");
+        TextureHandler.registerConnectedTexture(reg, this, 3, 1, "advanced", "scaffold");
+        icons[3] = TextureHandler.getConnectedTexture(this, 3, 1).icon;
         for (int i = 0; i < ArtificeCore.tiers.length; i++)
-            sideIcons[i] = IconHandler.registerSingle(reg, ArtificeCore.tiers[i].toLowerCase(Locale.ENGLISH), "scaffold/sides");
+            sideIcons[i] = TextureHandler.registerIcon(reg, ArtificeCore.tiers[i].toLowerCase(Locale.ENGLISH), "scaffold/sides");
     }
 
     @Override
@@ -211,19 +216,7 @@ public class BlockFrameScaffold extends BlockFrame
             meta = 0;
         if (side == 0 || side == 1)
         {
-            switch (meta)
-            {
-                case 0:
-                    return ConnectedTextures.BasicScaffold.textureList[0];
-                case 1:
-                    return ConnectedTextures.ReinforcedScaffold.textureList[0];
-                case 2:
-                    return ConnectedTextures.IndustrialScaffold.textureList[0];
-                case 3:
-                    return ConnectedTextures.AdvancedScaffold.textureList[0];
-                default:
-                    return ConnectedTextures.BasicScaffold.textureList[0];
-            }
+            return icons[meta];
         }
         return this.sideIcons[meta];
     }
@@ -235,29 +228,23 @@ public class BlockFrameScaffold extends BlockFrame
         int meta = access.getBlockMetadata(x, y, z);
         if (meta > ArtificeCore.tiers.length)
             meta = 0;
-
         if (side == 0 || side == 1)
         {
-            BlockCoord coord = new BlockCoord(x, y, z);
-            boolean found = false;
-            for (ChunkCoord sector : ArtificeCore.textureCache.keySet())
-            {
-                if (ArtificeCore.textureCache.get(sector).containsKey(coord))
-                    found = true;
-            }
-            if (!found)
-                TextureHandler.updateTexture(coord);
-
-            if (TextureHandler.getConnectedTexture(this.getIcon(side, meta)) != null && ArtificeCore.textureCache.containsKey(new ChunkCoord(coord)) && ArtificeCore.textureCache.get(new ChunkCoord(coord)).get(coord) != null)
-                return TextureHandler.getConnectedTexture(this.getIcon(side, meta)).textureList[ArtificeCore.textureCache.get(new ChunkCoord(coord)).get(coord)[side]];
             return this.getIcon(side, meta);
         }
         return this.sideIcons[access.getBlockMetadata(x, y, z)];
     }
 
     @Override
+    @SideOnly(Side.CLIENT)
+    public boolean shouldSideBeRendered(IBlockAccess par1IBlockAccess, int par2, int par3, int par4, int par5)
+    {
+        return true;
+    }
+
+    @Override
     public int getRenderType()
     {
-        return ArtificeConfig.frameRenderID;
+        return ArtificeConfig.ctmRenderID;
     }
 }

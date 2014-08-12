@@ -7,7 +7,7 @@ import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.util.IIcon;
 import shukaro.artifice.ArtificeCore;
-import shukaro.artifice.render.IconHandler;
+import shukaro.artifice.render.TextureHandler;
 
 public class BlockSteel extends Block
 {
@@ -25,7 +25,7 @@ public class BlockSteel extends Block
     @SideOnly(Side.CLIENT)
     public void registerBlockIcons(IIconRegister reg)
     {
-        this.icon = IconHandler.registerSingle(reg, "steel", "misc");
+        this.icon = TextureHandler.registerIcon(reg, "steel", "misc");
     }
 
     @Override

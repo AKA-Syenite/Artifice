@@ -8,7 +8,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import shukaro.artifice.ArtificeConfig;
-import shukaro.artifice.render.IconHandler;
+import shukaro.artifice.render.TextureHandler;
 
 import java.util.List;
 import java.util.Locale;
@@ -56,7 +56,7 @@ public class ItemSteel extends ItemArtifice
     @SideOnly(Side.CLIENT)
     public void registerIcons(IIconRegister reg)
     {
-        this.icon = IconHandler.registerSingle(reg, "ingot_steel", "steel");
-        this.dustIcon = IconHandler.registerSingle(reg, "dust_steel", "steel");
+        this.icon = TextureHandler.registerIcon(reg, "ingot_steel", "steel");
+        this.dustIcon = TextureHandler.registerIcon(reg, "dust_steel", "steel");
     }
 }

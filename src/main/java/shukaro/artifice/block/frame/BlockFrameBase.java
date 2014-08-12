@@ -7,7 +7,7 @@ import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
 import shukaro.artifice.ArtificeConfig;
 import shukaro.artifice.ArtificeCore;
-import shukaro.artifice.render.IconHandler;
+import shukaro.artifice.render.TextureHandler;
 
 import java.util.Locale;
 
@@ -33,7 +33,7 @@ public class BlockFrameBase extends BlockFrame
     public void registerBlockIcons(IIconRegister reg)
     {
         for (int i = 0; i < ArtificeCore.tiers.length; i++)
-            icons[i] = IconHandler.registerSingle(reg, ArtificeCore.tiers[i].toLowerCase(Locale.ENGLISH), "frame");
+            icons[i] = TextureHandler.registerIcon(reg, ArtificeCore.tiers[i].toLowerCase(Locale.ENGLISH), "frame");
     }
 
     @Override

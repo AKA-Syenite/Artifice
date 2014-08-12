@@ -55,9 +55,6 @@ public class ArtificeCore
     public static final ArtificeCreativeTab mainTab = new ArtificeCreativeTab("Artifice");
     public static final ArtificeCreativeTab worldTab = new ArtificeCreativeTab("Artifice Worldgen");
 
-    @SideOnly(Side.CLIENT)
-    public static ConcurrentHashMap<ChunkCoord, ConcurrentHashMap<BlockCoord, int[]>> textureCache;
-
     @Instance(modID)
     public static ArtificeCore instance;
 

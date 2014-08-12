@@ -10,7 +10,7 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
 import shukaro.artifice.ArtificeCore;
-import shukaro.artifice.render.IconHandler;
+import shukaro.artifice.render.TextureHandler;
 
 import java.util.Random;
 
@@ -104,7 +104,7 @@ public class BlockFrameDetector extends BlockFrame implements IRedNetConnection
     @Override
     public void registerBlockIcons(IIconRegister reg)
     {
-        this.icon = IconHandler.registerSingle(reg, "detector", "misc");
+        this.icon = TextureHandler.registerIcon(reg, "detector", "misc");
     }
 
     @Override

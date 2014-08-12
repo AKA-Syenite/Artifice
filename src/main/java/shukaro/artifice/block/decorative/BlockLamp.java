@@ -16,13 +16,8 @@ import net.minecraftforge.common.util.ForgeDirection;
 import powercrystals.minefactoryreloaded.api.rednet.connectivity.IRedNetConnection;
 import powercrystals.minefactoryreloaded.api.rednet.connectivity.RedNetConnectionType;
 import shukaro.artifice.ArtificeConfig;
-import shukaro.artifice.ArtificeCore;
 import shukaro.artifice.block.BlockArtifice;
-import shukaro.artifice.net.PacketDispatcher;
-import shukaro.artifice.render.IconHandler;
 import shukaro.artifice.render.TextureHandler;
-import shukaro.artifice.util.BlockCoord;
-import shukaro.artifice.util.ChunkCoord;
 import shukaro.artifice.util.MinecraftColors;
 
 import java.util.List;
@@ -52,8 +47,14 @@ public class BlockLamp extends BlockArtifice implements IRedNetConnection
     @Override
     public void registerBlockIcons(IIconRegister reg)
     {
-        ArtificeConfig.registerConnectedTextures(reg);
-        this.icon = IconHandler.registerSingle(reg, "lamp_normal_00", "lamp/normal");
+        for (int i=0; i<16; i++)
+        {
+            if (inverted)
+                TextureHandler.registerConnectedTexture(reg, this, i, "lampinverted", "lamp");
+            else
+                TextureHandler.registerConnectedTexture(reg, this, i, "lamp", "lamp");
+        }
+        this.icon = TextureHandler.getConnectedTexture(this, 0, 0).icon;
     }
 
     @Override
@@ -68,31 +69,7 @@ public class BlockLamp extends BlockArtifice implements IRedNetConnection
         int meta = block.getBlockMetadata(x, y, z);
         if (meta >= 16)
             meta = 0;
-        BlockCoord coord = new BlockCoord(x, y, z);
-        boolean found = false;
-        for (ChunkCoord sector : ArtificeCore.textureCache.keySet())
-        {
-            if (ArtificeCore.textureCache.get(sector).containsKey(coord))
-                found = true;
-        }
-        if (!found)
-            TextureHandler.updateTexture(coord);
-
-        if (TextureHandler.getConnectedTexture(this.getIcon(side, meta)) != null && ArtificeCore.textureCache.containsKey(new ChunkCoord(coord)) && ArtificeCore.textureCache.get(new ChunkCoord(coord)).get(coord) != null)
-            return TextureHandler.getConnectedTexture(this.getIcon(side, meta)).textureList[ArtificeCore.textureCache.get(new ChunkCoord(coord)).get(coord)[side]];
         return this.getIcon(side, meta);
-    }
-
-    @Override
-    public void onNeighborBlockChange(World world, int x, int y, int z, Block neighbor)
-    {
-        if (!world.isRemote)
-        {
-            world.scheduleBlockUpdate(x, y, z, this, 2);
-            BlockCoord c = new BlockCoord(x, y, z);
-            if (neighbor != null)
-                PacketDispatcher.sendTextureUpdatePacket(world, x, y, z);
-        }
     }
 
     @Override
@@ -112,6 +89,13 @@ public class BlockLamp extends BlockArtifice implements IRedNetConnection
     }
 
     @Override
+    public void onNeighborBlockChange(World world, int x, int y, int z, Block neighbor)
+    {
+        if (!world.isRemote)
+            world.scheduleBlockUpdate(x, y, z, this, 2);
+    }
+
+    @Override
     public void getSubBlocks(Item item, CreativeTabs tabs, List list)
     {
         list.add(new ItemStack(item, 1, 0));
@@ -127,6 +111,7 @@ public class BlockLamp extends BlockArtifice implements IRedNetConnection
     }
 
     @Override
+    @Optional.Method(modid = "MineFactoryReloaded")
     public RedNetConnectionType getConnectionType(World world, int x, int y, int z, ForgeDirection side)
     {
         return RedNetConnectionType.CableSingle;
@@ -158,4 +143,13 @@ public class BlockLamp extends BlockArtifice implements IRedNetConnection
         else
             return world.getBlockMetadata(x, y, z);
     }
+
+    @Override
+    public boolean renderAsNormalBlock()
+    {
+        return false;
+    }
+
+    @Override
+    public int getRenderType() { return ArtificeConfig.ctmRenderID; }
 }

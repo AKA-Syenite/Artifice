@@ -1,20 +1,16 @@
 package shukaro.artifice.block.world;
 
-import cofh.util.ItemHelper;
-import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
-import shukaro.artifice.ArtificeBlocks;
 import shukaro.artifice.ArtificeCore;
 import shukaro.artifice.ArtificeItems;
 import shukaro.artifice.block.BlockArtifice;
-import shukaro.artifice.render.IconHandler;
+import shukaro.artifice.render.TextureHandler;
 
 import java.util.List;
 import java.util.Random;
@@ -48,8 +44,8 @@ public class BlockSulfur extends BlockArtifice
     @Override
     public void registerBlockIcons(IIconRegister reg)
     {
-        this.icons[0] = IconHandler.registerSingle(reg, "oreSulfur", "ores/sulfur");
-        this.icons[1] = IconHandler.registerSingle(reg, "blockSulfur", "ores/sulfur");
+        this.icons[0] = TextureHandler.registerIcon(reg, "oreSulfur", "ores/sulfur");
+        this.icons[1] = TextureHandler.registerIcon(reg, "blockSulfur", "ores/sulfur");
     }
 
     @Override

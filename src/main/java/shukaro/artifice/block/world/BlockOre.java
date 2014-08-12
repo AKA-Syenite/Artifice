@@ -18,7 +18,7 @@ import shukaro.artifice.ArtificeConfig;
 import shukaro.artifice.ArtificeCore;
 import shukaro.artifice.ClientProxy;
 import shukaro.artifice.block.BlockArtifice;
-import shukaro.artifice.render.IconHandler;
+import shukaro.artifice.render.TextureHandler;
 import shukaro.artifice.util.NameMetaPair;
 
 import java.util.List;
@@ -104,7 +104,7 @@ public class BlockOre extends BlockArtifice
     @Override
     public void registerBlockIcons(IIconRegister reg)
     {
-        icon = IconHandler.registerSingle(reg, name, "ores");
+        icon = TextureHandler.registerIcon(reg, name, "ores");
     }
 
     @Override

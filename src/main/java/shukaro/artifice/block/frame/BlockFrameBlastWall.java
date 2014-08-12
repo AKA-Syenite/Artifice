@@ -12,12 +12,13 @@ import shukaro.artifice.ArtificeConfig;
 import shukaro.artifice.ArtificeCore;
 import shukaro.artifice.net.PacketDispatcher;
 import shukaro.artifice.render.TextureHandler;
-import shukaro.artifice.render.connectedtexture.ConnectedTextures;
 import shukaro.artifice.util.BlockCoord;
 import shukaro.artifice.util.ChunkCoord;
 
 public class BlockFrameBlastWall extends BlockFrame
 {
+    private IIcon[] icons = new IIcon[4];
+
     public BlockFrameBlastWall()
     {
         super();
@@ -64,7 +65,14 @@ public class BlockFrameBlastWall extends BlockFrame
     @SideOnly(Side.CLIENT)
     public void registerBlockIcons(IIconRegister reg)
     {
-        ArtificeConfig.registerConnectedTextures(reg);
+        TextureHandler.registerConnectedTexture(reg, this, 0, "basic", "blastwall");
+        icons[0] = TextureHandler.getConnectedTexture(this, 0, 0).icon;
+        TextureHandler.registerConnectedTexture(reg, this, 1, "reinforced", "blastwall");
+        icons[1] = TextureHandler.getConnectedTexture(this, 1, 0).icon;
+        TextureHandler.registerConnectedTexture(reg, this, 2, "industrial", "blastwall");
+        icons[2] = TextureHandler.getConnectedTexture(this, 2, 0).icon;
+        TextureHandler.registerConnectedTexture(reg, this, 3, "advanced", "blastwall");
+        icons[3] = TextureHandler.getConnectedTexture(this, 3, 0).icon;
     }
 
     @Override
@@ -73,19 +81,7 @@ public class BlockFrameBlastWall extends BlockFrame
     {
         if (meta >= ArtificeCore.tiers.length)
             meta = 0;
-        switch (meta)
-        {
-            case 0:
-                return ConnectedTextures.BasicBlastWall.textureList[0];
-            case 1:
-                return ConnectedTextures.ReinforcedBlastWall.textureList[0];
-            case 2:
-                return ConnectedTextures.IndustrialBlastWall.textureList[0];
-            case 3:
-                return ConnectedTextures.AdvancedBlastWall.textureList[0];
-            default:
-                return ConnectedTextures.BasicBlastWall.textureList[0];
-        }
+        return icons[meta];
     }
 
     @Override
@@ -95,27 +91,7 @@ public class BlockFrameBlastWall extends BlockFrame
         int meta = access.getBlockMetadata(x, y, z);
         if (meta > ArtificeCore.tiers.length)
             meta = 0;
-
-        BlockCoord coord = new BlockCoord(x, y, z);
-        boolean found = false;
-        for (ChunkCoord sector : ArtificeCore.textureCache.keySet())
-        {
-            if (ArtificeCore.textureCache.get(sector).containsKey(coord))
-                found = true;
-        }
-        if (!found)
-            TextureHandler.updateTexture(coord);
-
-        if (TextureHandler.getConnectedTexture(this.getIcon(side, meta)) != null && ArtificeCore.textureCache.containsKey(new ChunkCoord(coord)) && ArtificeCore.textureCache.get(new ChunkCoord(coord)).get(coord) != null)
-            return TextureHandler.getConnectedTexture(this.getIcon(side, meta)).textureList[ArtificeCore.textureCache.get(new ChunkCoord(coord)).get(coord)[side]];
         return this.getIcon(side, meta);
-    }
-
-    @Override
-    public void onNeighborBlockChange(World world, int x, int y, int z, Block neighbor)
-    {
-        if (!world.isRemote)
-            PacketDispatcher.sendTextureUpdatePacket(world, x, y, z);
     }
 
     @Override
@@ -123,4 +99,7 @@ public class BlockFrameBlastWall extends BlockFrame
     {
         return true;
     }
+
+    @Override
+    public int getRenderType() { return ArtificeConfig.ctmRenderID; }
 }

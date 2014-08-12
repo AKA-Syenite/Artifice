@@ -3,8 +3,6 @@ package shukaro.artifice.item;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockBush;
-import net.minecraft.block.BlockFlower;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
@@ -17,7 +15,7 @@ import shukaro.artifice.ArtificeConfig;
 import shukaro.artifice.ArtificeCore;
 import shukaro.artifice.ArtificeRegistry;
 import shukaro.artifice.ArtificeTooltips;
-import shukaro.artifice.render.IconHandler;
+import shukaro.artifice.render.TextureHandler;
 import shukaro.artifice.util.BlockCoord;
 import shukaro.artifice.util.NameMetaPair;
 
@@ -86,7 +84,7 @@ public class ItemSickle extends ItemTool
     @SideOnly(Side.CLIENT)
     public void registerIcons(IIconRegister reg)
     {
-        this.icon = IconHandler.registerSingle(reg, "sickle_" + this.toolMaterial.toString().toLowerCase(Locale.ENGLISH), "sickle");
+        this.icon = TextureHandler.registerIcon(reg, "sickle_" + this.toolMaterial.toString().toLowerCase(Locale.ENGLISH), "sickle");
     }
 
     // getStrVsBlock

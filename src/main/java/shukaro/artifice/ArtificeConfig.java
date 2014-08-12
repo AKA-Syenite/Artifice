@@ -1,14 +1,9 @@
 package shukaro.artifice;
 
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
-import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.common.config.Property;
-import shukaro.artifice.render.IconHandler;
-import shukaro.artifice.render.connectedtexture.ConnectedTextures;
 
 public class ArtificeConfig
 {
@@ -16,6 +11,7 @@ public class ArtificeConfig
     public static int lotusRenderID;
     public static int rockRenderID;
     public static int oreRenderID;
+    public static int ctmRenderID;
 
     public static Property sledgeRecipes;
     public static Property frameRecipes;
@@ -107,8 +103,6 @@ public class ArtificeConfig
     public static Property tooltips;
 
     private static Property dimensionBlacklist;
-
-    public static boolean connectedTexturesRegistered = false;
 
     public static void initCommon(FMLPreInitializationEvent evt)
     {
@@ -388,45 +382,6 @@ public class ArtificeConfig
                 else
                     ArtificeCore.logger.warn("Couldn't load the basalt list from string");
             }
-        }
-    }
-
-    @SideOnly(Side.CLIENT)
-    public static void registerConnectedTextures(IIconRegister reg)
-    {
-        if (!ArtificeConfig.connectedTexturesRegistered)
-        {
-            IconHandler.registerConnectedTexture(reg, ConnectedTextures.BasicFrame, "frame/basic");
-            IconHandler.registerConnectedTexture(reg, ConnectedTextures.ReinforcedFrame, "frame/reinforced");
-            IconHandler.registerConnectedTexture(reg, ConnectedTextures.IndustrialFrame, "frame/industrial");
-            IconHandler.registerConnectedTexture(reg, ConnectedTextures.AdvancedFrame, "frame/advanced");
-
-            IconHandler.registerConnectedTexture(reg, ConnectedTextures.BasicScaffold, "scaffold/basic");
-            IconHandler.registerConnectedTexture(reg, ConnectedTextures.ReinforcedScaffold, "scaffold/reinforced");
-            IconHandler.registerConnectedTexture(reg, ConnectedTextures.IndustrialScaffold, "scaffold/industrial");
-            IconHandler.registerConnectedTexture(reg, ConnectedTextures.AdvancedScaffold, "scaffold/advanced");
-
-            IconHandler.registerConnectedTexture(reg, ConnectedTextures.BasicBlastWall, "blastwall/basic");
-            IconHandler.registerConnectedTexture(reg, ConnectedTextures.ReinforcedBlastWall, "blastwall/reinforced");
-            IconHandler.registerConnectedTexture(reg, ConnectedTextures.IndustrialBlastWall, "blastwall/industrial");
-            IconHandler.registerConnectedTexture(reg, ConnectedTextures.AdvancedBlastWall, "blastwall/advanced");
-
-            IconHandler.registerConnectedTexture(reg, ConnectedTextures.BasicGlassWall, "glasswall/basic");
-            IconHandler.registerConnectedTexture(reg, ConnectedTextures.ReinforcedGlassWall, "glasswall/reinforced");
-            IconHandler.registerConnectedTexture(reg, ConnectedTextures.IndustrialGlassWall, "glasswall/industrial");
-            IconHandler.registerConnectedTexture(reg, ConnectedTextures.AdvancedGlassWall, "glasswall/advanced");
-
-            IconHandler.registerConnectedTexture(reg, ConnectedTextures.MarblePaver, "marble/paver");
-            IconHandler.registerConnectedTexture(reg, ConnectedTextures.MarbleAntipaver, "marble/antipaver");
-            IconHandler.registerConnectedTexture(reg, ConnectedTextures.BasaltPaver, "basalt/paver");
-            IconHandler.registerConnectedTexture(reg, ConnectedTextures.BasaltAntipaver, "basalt/antipaver");
-            IconHandler.registerConnectedTexture(reg, ConnectedTextures.LimestonePaver, "limestone/paver");
-            IconHandler.registerConnectedTexture(reg, ConnectedTextures.LimestoneAntipaver, "limestone/antipaver");
-
-            IconHandler.registerConnectedTexture(reg, ConnectedTextures.LampNormal, "lamp/normal");
-            IconHandler.registerConnectedTexture(reg, ConnectedTextures.LampInverted, "lamp/inverted");
-
-            ArtificeConfig.connectedTexturesRegistered = true;
         }
     }
 }

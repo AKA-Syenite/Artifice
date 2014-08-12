@@ -6,7 +6,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import shukaro.artifice.ArtificeCore;
-import shukaro.artifice.render.IconHandler;
+import shukaro.artifice.render.TextureHandler;
 
 import java.util.List;
 import java.util.Locale;
@@ -51,6 +51,6 @@ public class ItemResource extends ItemArtifice
     public void registerIcons(IIconRegister reg)
     {
         for (int i=0; i<names.length; i++)
-            this.icons[i] = IconHandler.registerSingle(reg, names[i], "resources");
+            this.icons[i] = TextureHandler.registerIcon(reg, names[i], "resources");
     }
 }

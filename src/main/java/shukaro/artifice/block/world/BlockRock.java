@@ -11,16 +11,12 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-import org.apache.commons.lang3.text.WordUtils;
 import shukaro.artifice.ArtificeConfig;
 import shukaro.artifice.ArtificeCore;
 import shukaro.artifice.block.BlockArtifice;
 import shukaro.artifice.net.PacketDispatcher;
-import shukaro.artifice.render.IconHandler;
 import shukaro.artifice.render.TextureHandler;
-import shukaro.artifice.render.connectedtexture.ConnectedTextures;
 import shukaro.artifice.util.BlockCoord;
-import shukaro.artifice.util.ChunkCoord;
 
 import java.util.List;
 
@@ -51,11 +47,14 @@ public class BlockRock extends BlockArtifice
     @SideOnly(Side.CLIENT)
     public void registerBlockIcons(IIconRegister reg)
     {
-        ArtificeConfig.registerConnectedTextures(reg);
-        icons[0] = IconHandler.registerSingle(reg, name, name);
-        icons[1] = IconHandler.registerSingle(reg, "cobblestone", name);
-        icons[2] = IconHandler.registerSingle(reg, "bricks", name);
-        icons[5] = IconHandler.registerSingle(reg, "chiseled", name);
+        icons[0] = TextureHandler.registerIcon(reg, name, name);
+        icons[1] = TextureHandler.registerIcon(reg, "cobblestone", name);
+        icons[2] = TextureHandler.registerIcon(reg, "bricks", name);
+        TextureHandler.registerConnectedTexture(reg, this, 3, "paver", name);
+        icons[3] = TextureHandler.getConnectedTexture(this, 3, 0).icon;
+        TextureHandler.registerConnectedTexture(reg, this, 4, "antipaver", name);
+        icons[4] = TextureHandler.getConnectedTexture(this, 3, 0).icon;
+        icons[5] = TextureHandler.registerIcon(reg, "chiseled", name);
     }
 
     @Override
@@ -64,24 +63,6 @@ public class BlockRock extends BlockArtifice
     {
         if (meta >= ArtificeCore.rocks.length)
             meta = 0;
-        if (meta == 3)
-        {
-            for (ConnectedTextures texture : ConnectedTextures.values())
-            {
-                if (texture.name().equals(WordUtils.capitalize(name) + "Paver"))
-                    return texture.textureList[0];
-            }
-        }
-        if (meta == 4)
-        {
-            {
-                for (ConnectedTextures texture : ConnectedTextures.values())
-                {
-                    if (texture.name().equals(WordUtils.capitalize(name) + "Antipaver"))
-                        return texture.textureList[0];
-                }
-            }
-        }
         return icons[meta];
     }
 
@@ -90,26 +71,7 @@ public class BlockRock extends BlockArtifice
     public IIcon getIcon(IBlockAccess block, int x, int y, int z, int side)
     {
         int meta = block.getBlockMetadata(x, y, z);
-        if (meta > ArtificeCore.rocks.length)
-            meta = 0;
-        if (meta == 3 || meta == 4)
-        {
-            BlockCoord coord = new BlockCoord(x, y, z);
-            boolean found = false;
-            for (ChunkCoord sector : ArtificeCore.textureCache.keySet())
-            {
-                if (ArtificeCore.textureCache.get(sector).containsKey(coord))
-                    found = true;
-            }
-            if (!found)
-                TextureHandler.updateTexture(coord);
-
-            if (TextureHandler.getConnectedTexture(this.getIcon(side, meta)) != null && ArtificeCore.textureCache.containsKey(new ChunkCoord(coord)) && ArtificeCore.textureCache.get(new ChunkCoord(coord)).get(coord) != null)
-                return TextureHandler.getConnectedTexture(this.getIcon(side, meta)).textureList[ArtificeCore.textureCache.get(new ChunkCoord(coord)).get(coord)[side]];
-            return this.getIcon(side, meta);
-        }
-        else
-            return icons[meta];
+        return this.getIcon(side, meta);
     }
 
     @Override
@@ -125,18 +87,6 @@ public class BlockRock extends BlockArtifice
         for (int j = 0; j < ArtificeCore.rocks.length; j++)
         {
             list.add(new ItemStack(i, 1, j));
-        }
-    }
-
-    @Override
-    public void onNeighborBlockChange(World world, int x, int y, int z, Block neighbor)
-    {
-        if (!world.isRemote)
-        {
-            int meta = world.getBlockMetadata(x, y, z);
-            BlockCoord c = new BlockCoord(x, y, z);
-            if (neighbor != null && (meta == 3 || meta == 4))
-                PacketDispatcher.sendTextureUpdatePacket(world, x, y, z);
         }
     }
 
@@ -158,5 +108,11 @@ public class BlockRock extends BlockArtifice
     }
 
     @Override
-    public int getRenderType() { return ArtificeConfig.rockRenderID; }
+    public boolean renderAsNormalBlock()
+    {
+        return false;
+    }
+
+    @Override
+    public int getRenderType() { return ArtificeConfig.ctmRenderID; }
 }

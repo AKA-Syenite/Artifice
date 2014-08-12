@@ -7,7 +7,7 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
-import shukaro.artifice.render.IconHandler;
+import shukaro.artifice.render.TextureHandler;
 
 import java.util.List;
 import java.util.Locale;
@@ -36,7 +36,7 @@ public class ItemNugget extends ItemArtifice
     {
         for (int i = 0; i < nuggetTypes.length; i++)
         {
-            icons[i] = IconHandler.registerSingle(reg, nuggetTypes[i].toLowerCase(Locale.ENGLISH), "nugget");
+            icons[i] = TextureHandler.registerIcon(reg, nuggetTypes[i].toLowerCase(Locale.ENGLISH), "nugget");
         }
     }
 

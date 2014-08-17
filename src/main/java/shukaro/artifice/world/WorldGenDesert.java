@@ -24,7 +24,7 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.Set;
 
-public class WorldGenNiter implements IFeatureGenerator
+public class WorldGenDesert implements IFeatureGenerator
 {
     protected Block block;
     protected int meta;
@@ -32,7 +32,7 @@ public class WorldGenNiter implements IFeatureGenerator
     private int frequency;
     protected Set<NameMetaPair> replaced;
 
-    public WorldGenNiter(Block block, int meta, int size, int frequency)
+    public WorldGenDesert(Block block, int meta, int size, int frequency)
     {
         this.block = block;
         this.meta = meta;

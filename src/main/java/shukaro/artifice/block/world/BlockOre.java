@@ -16,7 +16,7 @@ import net.minecraft.world.IBlockAccess;
 import shukaro.artifice.ArtificeBlocks;
 import shukaro.artifice.ArtificeConfig;
 import shukaro.artifice.ArtificeCore;
-import shukaro.artifice.ClientProxy;
+import shukaro.artifice.net.ClientProxy;
 import shukaro.artifice.block.BlockArtifice;
 import shukaro.artifice.render.TextureHandler;
 import shukaro.artifice.util.NameMetaPair;

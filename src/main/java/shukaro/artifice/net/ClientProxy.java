@@ -1,8 +1,9 @@
-package shukaro.artifice;
+package shukaro.artifice.net;
 
 import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.common.FMLCommonHandler;
 import net.minecraftforge.common.MinecraftForge;
+import shukaro.artifice.ArtificeConfig;
 import shukaro.artifice.event.ArtificeClientEventHandler;
 import shukaro.artifice.event.ArtificeClientTickHandler;
 import shukaro.artifice.render.FrameRenderer;
@@ -18,8 +19,7 @@ public class ClientProxy extends CommonProxy
     {
         super.init();
         MinecraftForge.EVENT_BUS.register(new ArtificeClientEventHandler());
-        if (ArtificeConfig.enableBoxes.getBoolean(true) || ArtificeConfig.enableFrames.getBoolean(true))
-            FMLCommonHandler.instance().bus().register(new ArtificeClientTickHandler());
+        FMLCommonHandler.instance().bus().register(new ArtificeClientTickHandler());
 
         ArtificeConfig.lotusRenderID = RenderingRegistry.getNextAvailableRenderId();
         RenderingRegistry.registerBlockHandler(ArtificeConfig.lotusRenderID, new LotusRenderer());

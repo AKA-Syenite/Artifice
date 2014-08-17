@@ -1,8 +1,9 @@
-package shukaro.artifice;
+package shukaro.artifice.net;
 
 import cpw.mods.fml.common.network.FMLEmbeddedChannel;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.relauncher.Side;
+import shukaro.artifice.ArtificeCore;
 import shukaro.artifice.net.ArtificeMessageToMessageCodec;
 import shukaro.artifice.net.handlers.SneakMessageHandler;
 

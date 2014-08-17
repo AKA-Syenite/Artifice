@@ -8,7 +8,7 @@ import net.minecraft.world.IBlockAccess;
 import org.lwjgl.opengl.GL11;
 import shukaro.artifice.ArtificeBlocks;
 import shukaro.artifice.ArtificeConfig;
-import shukaro.artifice.ClientProxy;
+import shukaro.artifice.net.ClientProxy;
 import shukaro.artifice.block.world.BlockOre;
 
 public class OreRenderer implements ISimpleBlockRenderingHandler

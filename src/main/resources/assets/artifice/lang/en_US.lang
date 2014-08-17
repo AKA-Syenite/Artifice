@@ -330,6 +330,11 @@ tile.artifice.sulfur.block.name=Sulfur Block
 tile.artifice.niter.ore.name=Niter Sand
 tile.artifice.niter.block.name=Niter Block
 
+tile.artifice.fluid.oil.name=Oil
+tile.artifice.fluid.bitumen.name=Bitumen
+tile.artifice.fluid.fuel.name=Fuel
+tile.artifice.fluid.creosote.name=Creosote
+
 # Item Names
 item.artifice.sledge.wood.name=Wooden Sledge
 item.artifice.sledge.stone.name=Stone Sledge
@@ -378,6 +383,11 @@ item.artifice.upgrade.firedamp.name=Firedamp
 item.artifice.upgrade.elasticlayering.name=Elastic Layering
 item.artifice.upgrade.scubatank.name=Scuba Tank
 item.artifice.upgrade.divekit.name=Dive Kit
+
+item.artifice.bucket.bucketOil.name=Oil Bucket
+item.artifice.bucket.bucketFuel.name=Fuel Bucket
+item.artifice.bucket.bucketCreosote.name=Creosote Bucket
+item.artifice.bucket.bucketBitumen.name=Bitumen Bucket
 
 # Tooltips
 tooltip.artifice.sulfur=Carries a strong odor
@@ -493,3 +503,9 @@ tooltip.artifice.coin.platinum=Platinum Coin
 tooltip.artifice.coin.platinum.flavor=A dollar saved...
 tooltip.artifice.lamp=Colored Light
 tooltip.artifice.lamp.flavor=Simple fluorescence
+tooltip.artifice.flammable=Flammable
+tooltip.artifice.explosive=Explosive
+tooltip.artifice.bucket.oil.flavor=Black gold
+tooltip.artifice.bucket.fuel.flavor=Light, but volatile
+tooltip.artifice.bucket.creosote.flavor=Reeks
+tooltip.artifice.bucket.bitumen.flavor=Extremely thick

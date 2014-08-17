@@ -21,12 +21,9 @@ public class Forestry implements ICompat
             Class<?> flowerClass = Class.forName("forestry.api.apiculture.FlowerManager");
             List<ItemStack> flowerList = (List<ItemStack>) flowerClass.getField("plainFlowers").get(null);
 
-            if (ArtificeConfig.enableWorldGen.getBoolean(true))
-            {
-                ArtificeCore.logger.info("Adding flowers to the Flower Manager");
-                for (int i = 0; i < 4; i++)
-                    flowerList.add(new ItemStack(ArtificeBlocks.blockFlora, 1, i));
-            }
+            ArtificeCore.logger.info("Adding flowers to the Flower Manager");
+            for (int i = 0; i < 4; i++)
+                flowerList.add(new ItemStack(ArtificeBlocks.blockFlora, 1, i));
 
             ArtificeCore.logger.info("Forestry Compat Initialized");
         }

@@ -18,26 +18,9 @@ public class ArtificeCreativeTab extends CreativeTabs
     public Item getTabIconItem()
     {
         if (this.getTabLabel().equals(ArtificeCore.mainTab.getTabLabel()))
-        {
-            if (ArtificeConfig.enableFrames.getBoolean(true))
-                return Item.getItemFromBlock(ArtificeBlocks.blockFrame);
-            if (ArtificeConfig.enableUpgrades.getBoolean(true))
-                return ArtificeItems.itemUpgrade;
-            if (ArtificeConfig.enableSledges.getBoolean(true))
-                return ArtificeItems.itemSledgeDiamond;
-            if (ArtificeConfig.enableCoins.getBoolean(true))
-                return ArtificeItems.itemCoin;
-            if (ArtificeConfig.enableBoxes.getBoolean(true))
-                return ArtificeItems.itemBox;
-            if (ArtificeConfig.enableSteel.getBoolean(true))
-                return ArtificeItems.itemSteelIngot;
-            return null;
-        }
+            return Item.getItemFromBlock(ArtificeBlocks.blockFrame);
         else if (this.getTabLabel().equals(ArtificeCore.worldTab.getTabLabel()))
-        {
-            if (ArtificeConfig.enableWorldGen.getBoolean(true))
-                return Item.getItemFromBlock(ArtificeBlocks.blockBasalt);
-        }
+            return Item.getItemFromBlock(ArtificeBlocks.blockBasalt);
         return null;
     }
 

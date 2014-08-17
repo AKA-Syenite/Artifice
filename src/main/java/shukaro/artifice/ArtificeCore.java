@@ -2,7 +2,6 @@ package shukaro.artifice;
 
 import cofh.core.util.oredict.OreDictionaryArbiter;
 import cofh.core.world.WorldHandler;
-import cofh.util.ItemHelper;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.Mod;
@@ -10,8 +9,6 @@ import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
 import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.*;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import gnu.trove.map.hash.THashMap;
 import gnu.trove.set.hash.THashSet;
 import net.minecraft.block.Block;
@@ -25,20 +22,18 @@ import shukaro.artifice.compat.*;
 import shukaro.artifice.event.ArtificeEventHandler;
 import shukaro.artifice.event.ArtificeTickHandler;
 import shukaro.artifice.gui.ArtificeCreativeTab;
+import shukaro.artifice.net.CommonProxy;
 import shukaro.artifice.recipe.ArtificeRecipes;
-import shukaro.artifice.util.BlockCoord;
-import shukaro.artifice.util.ChunkCoord;
 import shukaro.artifice.util.NameMetaPair;
 import shukaro.artifice.world.*;
 
 import java.util.ArrayList;
-import java.util.concurrent.ConcurrentHashMap;
 
 @Mod(modid = ArtificeCore.modID, name = ArtificeCore.modName, version = ArtificeCore.modVersion,
         dependencies = "required-after:CoFHCore;after:BuildCraft|Core;after:EE3;after:Forestry;after:MineFactoryReloaded;after:Thaumcraft")
 public class ArtificeCore
 {
-    @SidedProxy(clientSide = "shukaro.artifice.ClientProxy", serverSide = "shukaro.artifice.CommonProxy")
+    @SidedProxy(clientSide = "shukaro.artifice.net.ClientProxy", serverSide = "shukaro.artifice.net.CommonProxy")
     public static CommonProxy proxy;
 
     public static final String modID = "Artifice";
@@ -96,13 +91,16 @@ public class ArtificeCore
         ArtificeConfig.initClient(evt);
         ArtificeConfig.initCommon(evt);
 
+        ArtificeFluids.initFluids();
         ArtificeBlocks.initBlocks();
         ArtificeItems.initItems();
 
+        if (ArtificeConfig.oilLakeGen.getBoolean())
+            WorldHandler.addFeature(new WorldGenLake(ArtificeBlocks.blockOil, ArtificeConfig.oilLakeFrequency.getInt()));
         if (ArtificeConfig.sulfurGen.getBoolean())
             WorldHandler.addFeature(new WorldGenSulfur(ArtificeBlocks.blockSulfur, 0, ArtificeConfig.sulfurSize.getInt(), ArtificeConfig.sulfurFrequency.getInt()));
         if (ArtificeConfig.niterGen.getBoolean())
-            WorldHandler.addFeature(new WorldGenNiter(ArtificeBlocks.blockNiter, 0, ArtificeConfig.niterSize.getInt(), ArtificeConfig.niterFrequency.getInt()));
+            WorldHandler.addFeature(new WorldGenDesert(ArtificeBlocks.blockNiter, 0, ArtificeConfig.niterSize.getInt(), ArtificeConfig.niterFrequency.getInt()));
         for (int i=0; i<ArtificeConfig.rockNames.length; i++)
         {
             if (ArtificeConfig.rockLayersGen[i].getBoolean())
@@ -142,30 +140,27 @@ public class ArtificeCore
     @EventHandler
     public void postInit(FMLPostInitializationEvent evt)
     {
-        if (ArtificeConfig.enableWorldGen.getBoolean(true))
+        ArtificeBlocks.oreMappings = new THashMap<String, Block>();
+        for (int j = 0; j < ArtificeBlocks.oreNames.length; j++)
+            ArtificeBlocks.oreMappings.put(ArtificeBlocks.oreNames[j], ArtificeBlocks.blockOres[j]);
+
+        ArtificeBlocks.oreSet = new THashSet<NameMetaPair>();
+        for (String s : ArtificeBlocks.oreNames)
         {
-            ArtificeBlocks.oreMappings = new THashMap<String, Block>();
-            for (int j = 0; j < ArtificeBlocks.oreNames.length; j++)
-                ArtificeBlocks.oreMappings.put(ArtificeBlocks.oreNames[j], ArtificeBlocks.blockOres[j]);
-
-            ArtificeBlocks.oreSet = new THashSet<NameMetaPair>();
-            for (String s : ArtificeBlocks.oreNames)
+            if (OreDictionaryArbiter.getOres(s) != null)
             {
-                if (OreDictionaryArbiter.getOres(s) != null)
-                {
-                    for (ItemStack stack : OreDictionaryArbiter.getOres(s))
-                        ArtificeBlocks.oreSet.add(new NameMetaPair(stack.getItem(), stack.getItemDamage()));
-                }
-            }
-
-            for (int i = 0; i < ArtificeBlocks.oreNames.length; i++)
-            {
-                for (int j = 0; j < ArtificeBlocks.rockBlocks.length; j++)
-                    OreDictionary.registerOre(ArtificeBlocks.oreNames[i], new ItemStack(ArtificeBlocks.blockOres[i], 1, j));
+                for (ItemStack stack : OreDictionaryArbiter.getOres(s))
+                    ArtificeBlocks.oreSet.add(new NameMetaPair(stack.getItem(), stack.getItemDamage()));
             }
         }
 
-        if (ArtificeConfig.floraBoneMeal.getBoolean(true) && ArtificeConfig.enableWorldGen.getBoolean(true))
+        for (int i = 0; i < ArtificeBlocks.oreNames.length; i++)
+        {
+            for (int j = 0; j < ArtificeBlocks.rockBlocks.length; j++)
+                OreDictionary.registerOre(ArtificeBlocks.oreNames[i], new ItemStack(ArtificeBlocks.blockOres[i], 1, j));
+        }
+
+        if (ArtificeConfig.floraBoneMeal.getBoolean(true))
         {
             for (BiomeGenBase biome : BiomeGenBase.getBiomeGenArray())
             {

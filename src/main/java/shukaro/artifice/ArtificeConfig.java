@@ -9,7 +9,6 @@ public class ArtificeConfig
 {
     public static int frameRenderID;
     public static int lotusRenderID;
-    public static int rockRenderID;
     public static int oreRenderID;
     public static int ctmRenderID;
 
@@ -32,15 +31,6 @@ public class ArtificeConfig
     public static Property convenienceRecipes;
     public static Property lampRecipes;
 
-    public static Property enableFrames;
-    public static Property enableSledges;
-    public static Property enableSteel;
-    public static Property enableWorldGen;
-    public static Property enableBoxes;
-    public static Property enableSickles;
-    public static Property enableCoins;
-    public static Property enableUpgrades;
-    public static Property enableLamps;
     public static Property limitUpgrades;
     private static Property marbleList;
     private static Property basaltList;
@@ -72,6 +62,9 @@ public class ArtificeConfig
     public static Property niterGen;
     public static Property niterSize;
     public static Property niterFrequency;
+
+    public static Property oilLakeGen;
+    public static Property oilLakeFrequency;
 
     public static String[] rockNames = { "Basalt", "Marble", "Gray Limestone", "Light Gray Limestone", "Brown Limestone", "Tan Limestone", "Red Limestone", "Blue Limestone", "Green Limestone" };
 
@@ -124,6 +117,9 @@ public class ArtificeConfig
             niterGen = c.get("Resource Generation", "Generate Niter", true);
             niterFrequency = c.get("Resource Generation", "Percentage Niter Frequency", 100);
             niterSize = c.get("Resource Generation", "Niter Deposit Size", 64);
+
+            oilLakeGen = c.get("Resource Generation", "Generation Oil Lakes", true);
+            oilLakeFrequency = c.get("Resource Generation", "Percentage Oil lake Frequency", 100);
 
             for (int i=0; i< rockNames.length; i++)
             {
@@ -245,75 +241,6 @@ public class ArtificeConfig
             maxRespiration = c.get("Upgrades", "Max Respiration Level", 3);
             maxAquaAffinity = c.get("Upgrades", "Max Aqua Affinity Level", 1);
             c.addCustomCategoryComment("Upgrades", "Maximum level of enchantment allowed for each enchantment via upgrades");
-
-            enableFrames = c.get("General", "Enable Frames", true);
-            if (!enableFrames.getBoolean(true))
-            {
-                frameRecipes.set(false);
-                detectorRecipe.set(false);
-                blastWallRecipes.set(false);
-                glassWallRecipes.set(false);
-                scaffoldRecipes.set(false);
-            }
-            enableSledges = c.get("General", "Enable Sledges", true);
-            if (!enableSledges.getBoolean(true))
-            {
-                sledgeRecipes.set(false);
-            }
-            enableSteel = c.get("General", "Enable Steel", true);
-            if (!enableSteel.getBoolean(true))
-            {
-                steelSmelting.set(false);
-                alternateSteel.set(false);
-            }
-            enableWorldGen = c.get("General", "Enable Worldgen", true);
-            if (!enableWorldGen.getBoolean(true))
-            {
-                floraWorldGen.set(false);
-                lotusWorldGen.set(false);
-                sulfurGen.set(false);
-                niterGen.set(false);
-                for (int i=0; i<rockNames.length; i++)
-                    rockLayersGen[i].set(false);
-                for (int i=0; i<3; i++)
-                {
-                    rockClustersGen[i].set(false);
-                    rockCavesGen[i].set(false);
-                }
-                floraRecipes.set(false);
-                basaltRecipes.set(false);
-                marbleRecipes.set(false);
-                resourceRecipes.set(false);
-                floraBoneMeal.set(false);
-            }
-            enableBoxes = c.get("General", "Enable Boxes", true);
-            if (!enableBoxes.getBoolean(true))
-            {
-                boxRecipes.set(false);
-            }
-            enableSickles = c.get("General", "Enable Sickles", true);
-            if (!enableSickles.getBoolean(true))
-            {
-                sickleRecipes.set(false);
-            }
-            enableCoins = c.get("General", "Enable Coins", true);
-            if (!enableCoins.getBoolean(true))
-            {
-                coinMinting.set(false);
-                coinChanging.set(false);
-                coinSmelting.set(false);
-            }
-            enableUpgrades = c.get("General", "Enable Upgrades", true);
-            if (!enableUpgrades.getBoolean(true))
-            {
-                upgradeRecipes.set(false);
-            }
-            enableLamps = c.get("General", "Enable Lamps", true);
-            if (!enableLamps.getBoolean(true))
-            {
-                lampRecipes.set(false);
-            }
-            c.addCustomCategoryComment("General", "Enable or disable mod features completely");
         }
         catch (Exception e)
         {

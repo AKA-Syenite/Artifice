@@ -2,7 +2,6 @@ package shukaro.artifice.net;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import shukaro.artifice.ClientProxy;
 import shukaro.artifice.net.packets.ArtificePacketSneak;
 
 public class PacketDispatcher

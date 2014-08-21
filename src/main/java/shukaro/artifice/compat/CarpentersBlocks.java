@@ -21,7 +21,7 @@ public class CarpentersBlocks implements ICompat
     {
         try
         {
-            Class<?> featureClass = Class.forName("com.carpentersblocks.util.registry.FeatureRegistry");
+            Class<?> featureClass = Class.forName("carpentersblocks.util.registry.FeatureRegistry");
             ArrayList<String> coverExceptions = (ArrayList<String>) featureClass.getField("coverExceptions").get(null);
 
             for (int i = 0; i < ArtificeCore.tiers.length; i++)

@@ -128,6 +128,15 @@ public class ArtificeCore
         ArtificeRecipes.registerRecipes();
 
         proxy.init();
+
+        for (ICompat c : compats)
+        {
+            if (c.getModID() == null || Loader.isModLoaded(c.getModID()))
+            {
+                logger.debug("Loading compat " + c.getClass().getName());
+                c.load();
+            }
+        }
     }
 
     @EventHandler
@@ -159,15 +168,6 @@ public class ArtificeCore
             {
                 if (biome != null) for (int i = 0; i < 4; i++)
                     biome.addFlower(ArtificeBlocks.blockFlora, i, 10);
-            }
-        }
-
-        for (ICompat c : compats)
-        {
-            if (c.getModID() == null || Loader.isModLoaded(c.getModID()))
-            {
-                logger.debug("Loading compat " + c.getClass().getName());
-                c.load();
             }
         }
     }

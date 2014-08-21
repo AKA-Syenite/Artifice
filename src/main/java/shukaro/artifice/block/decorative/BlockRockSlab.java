@@ -121,7 +121,7 @@ public class BlockRockSlab extends BlockSlab
         if (name.split("[.]")[0].equals("basalt"))
             return ArtificeBlocks.blockBasalt.getIcon(side, meta);
         else if (name.split("[.]")[0].equals("marble"))
-            return ArtificeBlocks.blockBasalt.getIcon(side, meta);
+            return ArtificeBlocks.blockMarble.getIcon(side, meta);
         else
             return ArtificeBlocks.blockLimestones[0].getIcon(side, meta);
     }

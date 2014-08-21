@@ -80,7 +80,9 @@ public class ArtificeCore
         compats.add(new FMP());
         compats.add(new Forestry());
         compats.add(new MFR());
-        compats.add(new Thaumcraft());
+        //compats.add(new Thaumcraft());
+        compats.add(new Chisel());
+        compats.add(new CarpentersBlocks());
         compats.add(new Vanilla());
 
         logger = evt.getModLog();
@@ -122,15 +124,6 @@ public class ArtificeCore
     @EventHandler
     public void init(FMLInitializationEvent evt)
     {
-        for (ICompat c : compats)
-        {
-            if (c.getModID() == null || Loader.isModLoaded(c.getModID()))
-            {
-                logger.debug("Loading compat " + c.getClass().getName());
-                c.load();
-            }
-        }
-
         ArtificeTooltips.initTooltips();
         ArtificeRecipes.registerRecipes();
 
@@ -166,6 +159,15 @@ public class ArtificeCore
             {
                 if (biome != null) for (int i = 0; i < 4; i++)
                     biome.addFlower(ArtificeBlocks.blockFlora, i, 10);
+            }
+        }
+
+        for (ICompat c : compats)
+        {
+            if (c.getModID() == null || Loader.isModLoaded(c.getModID()))
+            {
+                logger.debug("Loading compat " + c.getClass().getName());
+                c.load();
             }
         }
     }

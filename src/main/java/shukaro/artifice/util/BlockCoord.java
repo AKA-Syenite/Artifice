@@ -186,16 +186,27 @@ public class BlockCoord implements Comparable
 
     public BlockCoord[] getAdjacent()
     {
-        return new BlockCoord[]
+        BlockCoord[] adjacent = new BlockCoord[6];
+        int i = 0;
+        for (BlockCoord c : sideOffsets)
         {
-            new BlockCoord(x + 1, y, z),
-            new BlockCoord(x - 1, y, z),
-            new BlockCoord(x, y + 1, z),
-            new BlockCoord(x, y - 1, z),
-            new BlockCoord(x, y, z + 1),
-            new BlockCoord(x, y, z - 1)
-        };
+            adjacent[i] = this.copy().add(c);
+            i++;
+        }
+        return adjacent;
     }
+// This causes a crash because ???
+//    {
+//        return new BlockCoord[]
+//        {
+//            new BlockCoord(x + 1, y, z),
+//            new BlockCoord(x - 1, y, z),
+//            new BlockCoord(x, y + 1, z),
+//            new BlockCoord(x, y - 1, z),
+//            new BlockCoord(x, y, z + 1),
+//            new BlockCoord(x, y, z - 1)
+//        };
+//    }
 
     public List<BlockCoord> getNearby()
     {
@@ -344,10 +355,17 @@ public class BlockCoord implements Comparable
         return (float) Math.sqrt(Math.pow(this.x - x, 2) + Math.pow(this.y - y, 2) + Math.pow(this.z - z, 2));
     }
 
+    public int getMeta(World world)
+    {
+        return world.getBlockMetadata(this.x, this.y, this.z);
+    }
+
     public int getMeta(IBlockAccess access)
     {
         return access.getBlockMetadata(this.x, this.y, this.z);
     }
+
+    public Block getBlock(World world) { return world.getBlock(this.x, this.y, this.z); }
 
     public Block getBlock(IBlockAccess access) { return access.getBlock(this.x, this.y, this.z); }
 

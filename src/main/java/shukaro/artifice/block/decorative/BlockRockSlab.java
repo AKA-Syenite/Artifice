@@ -86,15 +86,12 @@ public class BlockRockSlab extends BlockSlab
         {
             if (ArtificeBlocks.rockBlocks[i].getUnlocalizedName().contains(name))
             {
-                icons[2] = ArtificeBlocks.rockBlocks[i].getIcon(0, 3);
-                break;
-            }
-        }
-        for (int i=0; i<ArtificeBlocks.rockBlocks.length; i++)
-        {
-            if (ArtificeBlocks.rockBlocks[i].getUnlocalizedName().contains(name))
-            {
-                icons[3] = ArtificeBlocks.rockBlocks[i].getIcon(0, 4);
+                TextureHandler.registerConnectedTexture(reg, this, 2, 0, "paver", name.split("[.]")[0]);
+                TextureHandler.registerConnectedTexture(reg, this, 2, 1, "paver", name.split("[.]")[0]);
+                icons[2] = TextureHandler.getConnectedTexture(this, 2, 0).icon;
+                TextureHandler.registerConnectedTexture(reg, this, 3, 0, "antipaver", name.split("[.]")[0]);
+                TextureHandler.registerConnectedTexture(reg, this, 3, 1, "antipaver", name.split("[.]")[0]);
+                icons[3] = TextureHandler.getConnectedTexture(this, 3, 0).icon;
                 break;
             }
         }

@@ -1,6 +1,6 @@
 package shukaro.artifice.recipe;
 
-import cofh.util.ItemHelper;
+import cofh.lib.util.helpers.ItemHelper;
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;

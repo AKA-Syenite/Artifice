@@ -1,6 +1,6 @@
 package shukaro.artifice.block.world;
 
-import cofh.util.ItemHelper;
+import cofh.lib.util.helpers.ItemHelper;
 import cofh.core.util.oredict.OreDictionaryArbiter;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;

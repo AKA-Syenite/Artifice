@@ -1,3 +1,4 @@
+# Block Names
 tile.artifice.basalt.name=Базальт
 tile.artifice.basalt.cobblestone.name=Базальтовый булыжник
 tile.artifice.basalt.brick.name=Базальтовый кирпич
@@ -12,42 +13,47 @@ tile.artifice.marble.paver.name=Мраморная брусчатка
 tile.artifice.marble.antipaver.name=Мраморная противо-брусчатка
 tile.artifice.marble.chiseled.name=Резной мрамор
 
-tile.artifice.flora.bluebell.name=Колокольчик
-tile.artifice.flora.orchid.name=Орхидея
-tile.artifice.flora.iris.name=Ирис
-tile.artifice.flora.lotus.name=Лотос
-tile.artifice.flora.lily.open.name=Голубой лотос
-
-tile.artifice.slab.marblebrick.name=Плита из мраморного кирпича
-tile.artifice.slab.marblecobble.name=Плита из мраморного булыжника
-tile.artifice.slab.marblepaver.name=Плита из мраморной брусчатки
-tile.artifice.slab.marbleantipaver.name=Плита из мраморной противо-брусчатки
-
-tile.artifice.slab.basaltbrick.name=Плита из базальтового кирпича
-tile.artifice.slab.basaltcobble.name=Плита из базальтового булыжника
-tile.artifice.slab.basaltpaver.name=Плита из базальтовый брусчатки
-tile.artifice.slab.basaltantipaver.name=Плита из базальтовый противо-брусчатки
-
 tile.artifice.basalt.stairs.brick.name=Ступеньки из базальтового кирпича
 tile.artifice.basalt.stairs.cobblestone.name=Ступеньки из базальтового булыжника
 
 tile.artifice.marble.stairs.brick.name=Ступеньки из мраморного кирпича
 tile.artifice.marble.stairs.cobblestone.name=Ступеньки из мраморного булыжника
 
-tile.artifice.frame.basic.name=Обычный каркас
-tile.artifice.frame.reinforced.name=Усиленный каркас
-tile.artifice.frame.industrial.name=Промышленный каркас
-tile.artifice.frame.advanced.name=Продвинутый каркас
+tile.artifice.flora.bluebell.name=Колокольчик
+tile.artifice.flora.orchid.name=Орхидея
+tile.artifice.flora.iris.name=Ирис
+tile.artifice.flora.lotus.name=Лотос
+tile.artifice.flora.lily.open.name=Голубой лотос
 
-tile.artifice.reinforced.basic.name=Обычная взрывостойкая стена
-tile.artifice.reinforced.reinforced.name=Усиленная взрывостойкая стена
-tile.artifice.reinforced.industrial.name=Промышленная взрывостойкая стена
-tile.artifice.reinforced.advanced.name=Продвинутая взрывостойкая стена
+tile.artifice.marble.slab.brick.name=Плита из мраморного кирпича
+tile.artifice.marble.slab.cobble.name=Плита из мраморного булыжника
+tile.artifice.marble.slab.paver.name=Плита из мраморной брусчатки
+tile.artifice.marble.slab.antipaver.name=Плита из мраморной противо-брусчатки
+
+tile.artifice.basalt.slab.brick.name=Плита из базальтового кирпича
+tile.artifice.basalt.slab.cobble.name=Плита из базальтового булыжника
+tile.artifice.basalt.slab.paver.name=Плита из базальтовый брусчатки
+tile.artifice.basalt.slab.antipaver.name=Плита из базальтовый противо-брусчатки
+
+tile.artifice.frame.basic.name=Обычный корпус
+tile.artifice.frame.reinforced.name=Усиленный корпус
+tile.artifice.frame.industrial.name=Промышленный корпус
+tile.artifice.frame.advanced.name=Продвинутый корпус
+
+tile.artifice.reinforced.basic.name=Обычная взрывоустойчивая стена
+tile.artifice.reinforced.reinforced.name=Усиленная взрывоустойчивая стена
+tile.artifice.reinforced.industrial.name=Промышленная взрывоустойчивая стена
+tile.artifice.reinforced.advanced.name=Продвинутая взрывоустойчивая стена
 
 tile.artifice.glasswall.basic.name=Обычная стеклянная стена
 tile.artifice.glasswall.reinforced.name=Усиленная стеклянная стена
 tile.artifice.glasswall.industrial.name=Промышленная стеклянная стена
 tile.artifice.glasswall.advanced.name=Продвинутая стеклянная стена
+
+tile.artifice.glasswalldark.basic.name=Тёмная обычная стеклянная стена
+tile.artifice.glasswalldark.reinforced.name=Тёмная усиленная стеклянная стена
+tile.artifice.glasswalldark.industrial.name=Тёмная промышленная стеклянная стена
+tile.artifice.glasswalldark.advanced.name=Тёмная продвинутая стеклянная стена
 
 tile.artifice.scaffold.basic.name=Обычные строительные леса
 tile.artifice.scaffold.reinforced.name=Усиленные строительные леса
@@ -58,6 +64,278 @@ tile.artifice.detector.name=Детектор
 
 tile.artifice.steel.name=Стальной блок
 
+tile.artifice.lamp.white.name=Белый светильник
+tile.artifice.lamp.orange.name=Оранжевый светильник
+tile.artifice.lamp.magenta.name=Сиреневый светильник
+tile.artifice.lamp.lightblue.name=Светло-синий светильник
+tile.artifice.lamp.yellow.name=Жёлтый светильник
+tile.artifice.lamp.lime.name=Лаймовый светильник
+tile.artifice.lamp.pink.name=Розовый светильник
+tile.artifice.lamp.gray.name=Серый светильник
+tile.artifice.lamp.lightgray.name=Светло-серый светильник
+tile.artifice.lamp.cyan.name=Бирюзовый светильник
+tile.artifice.lamp.purple.name=Фиолетовый светильник
+tile.artifice.lamp.blue.name=Синий светильник
+tile.artifice.lamp.brown.name=Коричневый светильник
+tile.artifice.lamp.green.name=Зелёный светильник
+tile.artifice.lamp.red.name=Красный светильник
+tile.artifice.lamp.black.name=Чёрный светильник
+
+tile.artifice.lampinverted.white.name=Инвертированный белый светильник
+tile.artifice.lampinverted.orange.name=Инвертированный оранжевый светильник
+tile.artifice.lampinverted.magenta.name=Инвертированный сиреневый светильник
+tile.artifice.lampinverted.lightblue.name=Инвертированный светло-синий светильник
+tile.artifice.lampinverted.yellow.name=Инвертированный жёлтый светильник
+tile.artifice.lampinverted.lime.name=Инвертированный лаймовый светильник
+tile.artifice.lampinverted.pink.name=Инвертированный розовый светильник
+tile.artifice.lampinverted.gray.name=Инвертированный серый светильник
+tile.artifice.lampinverted.lightgray.name=Инвертированный светло-серый светильник
+tile.artifice.lampinverted.cyan.name=Инвертированный бирюзовый светильник
+tile.artifice.lampinverted.purple.name=Инвертированный фиолетовый светильник
+tile.artifice.lampinverted.blue.name=Инвертированный синий светильник
+tile.artifice.lampinverted.brown.name=Инвертированный коричневый светильник
+tile.artifice.lampinverted.green.name=Инвертированный зелёный светильник
+tile.artifice.lampinverted.red.name=Инвертированный красный светильник
+tile.artifice.lampinverted.black.name=Инвертированный чёрный светильник
+
+tile.artifice.limestone.gray.name=Серый известняк
+tile.artifice.limestone.lightgray.name=Светло-серый известняк
+tile.artifice.limestone.brown.name=Коричневый известняк
+tile.artifice.limestone.tan.name=Смуглый известняк
+tile.artifice.limestone.reddish.name=Красный известняк
+tile.artifice.limestone.bluish.name=Синий известняк
+tile.artifice.limestone.greenish.name=Зелёный известняк
+
+tile.artifice.limestone.gray.cobblestone.name=Серый известняковый булыжник
+tile.artifice.limestone.lightgray.cobblestone.name=Светло-серый известняковый булыжник
+tile.artifice.limestone.brown.cobblestone.name=Коричневый известняковый булыжник
+tile.artifice.limestone.tan.cobblestone.name=Смуглый известняковый булыжник
+tile.artifice.limestone.reddish.cobblestone.name=Красный известняковый булыжник
+tile.artifice.limestone.bluish.cobblestone.name=Синий известняковый булыжник
+tile.artifice.limestone.greenish.cobblestone.name=Зелёный известняковый булыжник
+
+tile.artifice.limestone.gray.brick.name=Серый известняковый кирпич
+tile.artifice.limestone.lightgray.brick.name=Светло-серый известняковый кирпич
+tile.artifice.limestone.brown.brick.name=Коричневый известняковый кирпич
+tile.artifice.limestone.tan.brick.name=Смуглый известняковый кирпич
+tile.artifice.limestone.reddish.brick.name=Красный известняковый кирпич
+tile.artifice.limestone.bluish.brick.name=Синий известняковый кирпич
+tile.artifice.limestone.greenish.brick.name=Зелёный известняковый кирпич
+
+tile.artifice.limestone.gray.paver.name=Серая известняковая брусчатка
+tile.artifice.limestone.lightgray.paver.name=Светло-серая известняковая брусчатка
+tile.artifice.limestone.brown.paver.name=Коричневая известняковая брусчатка
+tile.artifice.limestone.tan.paver.name=Смуглая известняковая брусчатка
+tile.artifice.limestone.reddish.paver.name=Красная известняковая брусчатка
+tile.artifice.limestone.bluish.paver.name=Синяя известняковая брусчатка
+tile.artifice.limestone.greenish.paver.name=Зелёная известняковая брусчатка
+
+tile.artifice.limestone.gray.antipaver.name=Серая известняковая противо-брусчатка
+tile.artifice.limestone.lightgray.antipaver.name=Светло-серая известняковая противо-брусчатка
+tile.artifice.limestone.brown.antipaver.name=Коричневая известняковая противо-брусчатка
+tile.artifice.limestone.tan.antipaver.name=Смуглая известняковая противо-брусчатка
+tile.artifice.limestone.reddish.antipaver.name=Красная известняковая противо-брусчатка
+tile.artifice.limestone.bluish.antipaver.name=Синяя известняковая противо-брусчатка
+tile.artifice.limestone.greenish.antipaver.name=Зелёная известняковая противо-брусчатка
+
+tile.artifice.limestone.gray.chiseled.name=Резной серый известняк
+tile.artifice.limestone.lightgray.chiseled.name=Резной светло-серый известняк
+tile.artifice.limestone.brown.chiseled.name=Резной коричневый известняк
+tile.artifice.limestone.tan.chiseled.name=Резной смуглый известняк
+tile.artifice.limestone.reddish.chiseled.name=Резной красный известняк
+tile.artifice.limestone.bluish.chiseled.name=Резной синий известняк
+tile.artifice.limestone.greenish.chiseled.name=Резной зелёный известняк
+
+tile.artifice.limestone.gray.slab.brick.name=Плита из серого известнякового кирпича
+tile.artifice.limestone.lightgray.slab.brick.name=Плита из светло-серого известнякового кирпича
+tile.artifice.limestone.brown.slab.brick.name=Плита из коричневого известнякового кирпича
+tile.artifice.limestone.tan.slab.brick.name=Плита из смуглого известнякового кирпича
+tile.artifice.limestone.reddish.slab.brick.name=Плита из красного известнякового кирпича
+tile.artifice.limestone.bluish.slab.brick.name=Плита из синего известнякового кирпича
+tile.artifice.limestone.greenish.slab.brick.name=Плита из зелёного известнякового кирпича
+
+tile.artifice.limestone.gray.slab.cobble.name=Плита из серого известнякового булыжника
+tile.artifice.limestone.lightgray.slab.cobble.name=Плита из светло-серого известнякового булыжника
+tile.artifice.limestone.brown.slab.cobble.name=Плита из коричневого известнякового булыжника
+tile.artifice.limestone.tan.slab.cobble.name=Плита из смуглого известнякового булыжника
+tile.artifice.limestone.reddish.slab.cobble.name=Плита из красного известнякового булыжника
+tile.artifice.limestone.bluish.slab.cobble.name=Плита из синего известнякового булыжника
+tile.artifice.limestone.greenish.slab.cobble.name=Плита из зелёного известнякового булыжника
+
+tile.artifice.limestone.gray.slab.paver.name=Плита из серой известняковой брусчатки
+tile.artifice.limestone.lightgray.slab.paver.name=Плита из светло-серой известняковой брусчатки
+tile.artifice.limestone.brown.slab.paver.name=Плита из коричневой известняковой брусчатки
+tile.artifice.limestone.tan.slab.paver.name=Плита из смуглой известняковой брусчатки
+tile.artifice.limestone.reddish.slab.paver.name=Плита из красной известняковой брусчатки
+tile.artifice.limestone.bluish.slab.paver.name=Плита из синей известняковой брусчатки
+tile.artifice.limestone.greenish.slab.paver.name=Плита из зелёной известняковой брусчатки
+
+tile.artifice.limestone.gray.slab.antipaver.name=Плита из серой известняковой противо-брусчатки
+tile.artifice.limestone.lightgray.slab.antipaver.name=Плита из светло-серой известняковой противо-брусчатки
+tile.artifice.limestone.brown.slab.antipaver.name=Плита из коричневой известняковой противо-брусчатки
+tile.artifice.limestone.tan.slab.antipaver.name=Плита из смуглой известняковой противо-брусчатки
+tile.artifice.limestone.reddish.slab.antipaver.name=Плита из красной известняковой противо-брусчатки
+tile.artifice.limestone.bluish.slab.antipaver.name=Плита из синей известняковой противо-брусчатки
+tile.artifice.limestone.greenish.slab.antipaver.name=Плита из зелёной известняковой противо-брусчатки
+
+tile.artifice.limestone.gray.stairs.brick.name=Ступеньки из серого известнякового кирпича
+tile.artifice.limestone.lightgray.stairs.brick.name=Ступеньки из светло-серого известнякового кирпича
+tile.artifice.limestone.brown.stairs.brick.name=Ступеньки из коричневого известнякового кирпича
+tile.artifice.limestone.tan.stairs.brick.name=Ступеньки из смуглого известнякового кирпича
+tile.artifice.limestone.reddish.stairs.brick.name=Ступеньки из красного известнякового кирпича
+tile.artifice.limestone.bluish.stairs.brick.name=Ступеньки из синего известнякового кирпича
+tile.artifice.limestone.greenish.stairs.brick.name=Ступеньки из зелёного известнякового кирпича
+
+tile.artifice.limestone.gray.stairs.cobblestone.name=Ступеньки из серого известнякового булыжника
+tile.artifice.limestone.lightgray.stairs.cobblestone.name=Ступеньки из светло-серого известнякового булыжника
+tile.artifice.limestone.brown.stairs.cobblestone.name=Ступеньки из коричневого известнякового булыжника
+tile.artifice.limestone.tan.stairs.cobblestone.name=Ступеньки из смуглого известнякового булыжника
+tile.artifice.limestone.reddish.stairs.cobblestone.name=Ступеньки из красного известнякового булыжника
+tile.artifice.limestone.bluish.stairs.cobblestone.name=Ступеньки из синего известнякового булыжника
+tile.artifice.limestone.greenish.stairs.cobblestone.name=Ступеньки из зелёного известнякового булыжника
+
+tile.artifice.orecoal.basalt.name=Угольная руда
+tile.artifice.orecoal.marble.name=Угольная руда
+tile.artifice.orecoal.limestone.gray.name=Угольная руда
+tile.artifice.orecoal.limestone.lightgray.name=Угольная руда
+tile.artifice.orecoal.limestone.brown.name=Угольная руда
+tile.artifice.orecoal.limestone.tan.name=Угольная руда
+tile.artifice.orecoal.limestone.reddish.name=Угольная руда
+tile.artifice.orecoal.limestone.bluish.name=Угольная руда
+tile.artifice.orecoal.limestone.greenish.name=Угольная руда
+
+tile.artifice.oreiron.basalt.name=Железная руда
+tile.artifice.oreiron.marble.name=Железная руда
+tile.artifice.oreiron.limestone.gray.name=Железная руда
+tile.artifice.oreiron.limestone.lightgray.name=Железная руда
+tile.artifice.oreiron.limestone.brown.name=Железная руда
+tile.artifice.oreiron.limestone.tan.name=Железная руда
+tile.artifice.oreiron.limestone.reddish.name=Железная руда
+tile.artifice.oreiron.limestone.bluish.name=Железная руда
+tile.artifice.oreiron.limestone.greenish.name=Железная руда
+
+tile.artifice.orelapis.basalt.name=Лазуритовая руда
+tile.artifice.orelapis.marble.name=Лазуритовая руда
+tile.artifice.orelapis.limestone.gray.name=Лазуритовая руда
+tile.artifice.orelapis.limestone.lightgray.name=Лазуритовая руда
+tile.artifice.orelapis.limestone.brown.name=Лазуритовая руда
+tile.artifice.orelapis.limestone.tan.name=Лазуритовая руда
+tile.artifice.orelapis.limestone.reddish.name=Лазуритовая руда
+tile.artifice.orelapis.limestone.bluish.name=Лазуритовая руда
+tile.artifice.orelapis.limestone.greenish.name=Лазуритовая руда
+
+tile.artifice.oregold.basalt.name=Золотая руда
+tile.artifice.oregold.marble.name=Золотая руда
+tile.artifice.oregold.limestone.gray.name=Золотая руда
+tile.artifice.oregold.limestone.lightgray.name=Золотая руда
+tile.artifice.oregold.limestone.brown.name=Золотая руда
+tile.artifice.oregold.limestone.tan.name=Золотая руда
+tile.artifice.oregold.limestone.reddish.name=Золотая руда
+tile.artifice.oregold.limestone.bluish.name=Золотая руда
+tile.artifice.oregold.limestone.greenish.name=Золотая руда
+
+tile.artifice.orediamond.basalt.name=Алмазная руда
+tile.artifice.orediamond.marble.name=Алмазная руда
+tile.artifice.orediamond.limestone.gray.name=Алмазная руда
+tile.artifice.orediamond.limestone.lightgray.name=Алмазная руда
+tile.artifice.orediamond.limestone.brown.name=Алмазная руда
+tile.artifice.orediamond.limestone.tan.name=Алмазная руда
+tile.artifice.orediamond.limestone.reddish.name=Алмазная руда
+tile.artifice.orediamond.limestone.bluish.name=Алмазная руда
+tile.artifice.orediamond.limestone.greenish.name=Алмазная руда
+
+tile.artifice.oreredstone.basalt.name=Красная руда
+tile.artifice.oreredstone.marble.name=Красная руда
+tile.artifice.oreredstone.limestone.gray.name=Красная руда
+tile.artifice.oreredstone.limestone.lightgray.name=Красная руда
+tile.artifice.oreredstone.limestone.brown.name=Красная руда
+tile.artifice.oreredstone.limestone.tan.name=Красная руда
+tile.artifice.oreredstone.limestone.reddish.name=Красная руда
+tile.artifice.oreredstone.limestone.bluish.name=Красная руда
+tile.artifice.oreredstone.limestone.greenish.name=Красная руда
+
+tile.artifice.oreemerald.basalt.name=Изумрудная руда
+tile.artifice.oreemerald.marble.name=Изумрудная руда
+tile.artifice.oreemerald.limestone.gray.name=Изумрудная руда
+tile.artifice.oreemerald.limestone.lightgray.name=Изумрудная руда
+tile.artifice.oreemerald.limestone.brown.name=Изумрудная руда
+tile.artifice.oreemerald.limestone.tan.name=Изумрудная руда
+tile.artifice.oreemerald.limestone.reddish.name=Изумрудная руда
+tile.artifice.oreemerald.limestone.bluish.name=Изумрудная руда
+tile.artifice.oreemerald.limestone.greenish.name=Изумрудная руда
+
+tile.artifice.orecopper.basalt.name=Медная руда
+tile.artifice.orecopper.marble.name=Медная руда
+tile.artifice.orecopper.limestone.gray.name=Медная руда
+tile.artifice.orecopper.limestone.lightgray.name=Медная руда
+tile.artifice.orecopper.limestone.brown.name=Медная руда
+tile.artifice.orecopper.limestone.tan.name=Медная руда
+tile.artifice.orecopper.limestone.reddish.name=Медная руда
+tile.artifice.orecopper.limestone.bluish.name=Медная руда
+tile.artifice.orecopper.limestone.greenish.name=Медная руда
+
+tile.artifice.oretin.basalt.name=Оловянная руда
+tile.artifice.oretin.marble.name=Оловянная руда
+tile.artifice.oretin.limestone.gray.name=Оловянная руда
+tile.artifice.oretin.limestone.lightgray.name=Оловянная руда
+tile.artifice.oretin.limestone.brown.name=Оловянная руда
+tile.artifice.oretin.limestone.tan.name=Оловянная руда
+tile.artifice.oretin.limestone.reddish.name=Оловянная руда
+tile.artifice.oretin.limestone.bluish.name=Оловянная руда
+tile.artifice.oretin.limestone.greenish.name=Оловянная руда
+
+tile.artifice.oresilver.basalt.name=Серебряная руда
+tile.artifice.oresilver.marble.name=Серебряная руда
+tile.artifice.oresilver.limestone.gray.name=Серебряная руда
+tile.artifice.oresilver.limestone.lightgray.name=Серебряная руда
+tile.artifice.oresilver.limestone.brown.name=Серебряная руда
+tile.artifice.oresilver.limestone.tan.name=Серебряная руда
+tile.artifice.oresilver.limestone.reddish.name=Серебряная руда
+tile.artifice.oresilver.limestone.bluish.name=Серебряная руда
+tile.artifice.oresilver.limestone.greenish.name=Серебряная руда
+
+tile.artifice.orelead.basalt.name=Свинцовая руда
+tile.artifice.orelead.marble.name=Свинцовая руда
+tile.artifice.orelead.limestone.gray.name=Свинцовая руда
+tile.artifice.orelead.limestone.lightgray.name=Свинцовая руда
+tile.artifice.orelead.limestone.brown.name=Свинцовая руда
+tile.artifice.orelead.limestone.tan.name=Свинцовая руда
+tile.artifice.orelead.limestone.reddish.name=Свинцовая руда
+tile.artifice.orelead.limestone.bluish.name=Свинцовая руда
+tile.artifice.orelead.limestone.greenish.name=Свинцовая руда
+
+tile.artifice.orenickel.basalt.name=Никелевая руда
+tile.artifice.orenickel.marble.name=Никелевая руда
+tile.artifice.orenickel.limestone.gray.name=Никелевая руда
+tile.artifice.orenickel.limestone.lightgray.name=Никелевая руда
+tile.artifice.orenickel.limestone.brown.name=Никелевая руда
+tile.artifice.orenickel.limestone.tan.name=Никелевая руда
+tile.artifice.orenickel.limestone.reddish.name=Никелевая руда
+tile.artifice.orenickel.limestone.bluish.name=Никелевая руда
+tile.artifice.orenickel.limestone.greenish.name=Никелевая руда
+
+tile.artifice.oresulfur.basalt.name=Серная руда
+tile.artifice.oresulfur.marble.name=Серная руда
+tile.artifice.oresulfur.limestone.gray.name=Серная руда
+tile.artifice.oresulfur.limestone.lightgray.name=Серная руда
+tile.artifice.oresulfur.limestone.brown.name=Серная руда
+tile.artifice.oresulfur.limestone.tan.name=Серная руда
+tile.artifice.oresulfur.limestone.reddish.name=Серная руда
+tile.artifice.oresulfur.limestone.bluish.name=Серная руда
+tile.artifice.oresulfur.limestone.greenish.name=Серная руда
+
+tile.artifice.sulfur.ore.name=Серная руда
+tile.artifice.sulfur.block.name=Серный блок
+
+tile.artifice.niter.ore.name=Селитровый песок
+tile.artifice.niter.block.name=Селитровый блок
+
+tile.artifice.fluid.oil.name=Нефть
+tile.artifice.fluid.bitumen.name=Битум
+tile.artifice.fluid.fuel.name=Топливо
+tile.artifice.fluid.creosote.name=Креозот
+
+# Item Names
 item.artifice.sledge.wood.name=Деревянная кувалда
 item.artifice.sledge.stone.name=Каменная кувалда
 item.artifice.sledge.iron.name=Железная кувалда
@@ -72,6 +350,9 @@ item.artifice.sickle.emerald.name=Алмазный серп
 
 item.artifice.steel.ingot.name=Стальной слиток
 item.artifice.steel.dust.name=Стальная пыль
+
+item.artifice.resource.sulfur.name=Сера
+item.artifice.resource.niter.name=Селитра
 
 item.artifice.box.name=Коробка
 
@@ -91,14 +372,140 @@ item.artifice.coin.platinum.name=Марка
 
 item.artifice.upgrade.sharpeningkit.name=Набор для заточки
 item.artifice.upgrade.reinforcement.name=Арматура
-item.artifice.upgrade.reinforcedlimbs.name=Reinforced Limbs
+item.artifice.upgrade.reinforcedlimbs.name=Укреплённые ветви
 item.artifice.upgrade.plaitedstring.name=Плетёная нить
 item.artifice.upgrade.counterweight.name=Противовес
 item.artifice.upgrade.armorspikes.name=Доспешные шипы
 item.artifice.upgrade.laminatedpadding.name=Ламинированные прокладки
 item.artifice.upgrade.quiltedcover.name=Стёганный покров
 item.artifice.upgrade.elasticsoles.name=Эластичные подошвы
-item.artifice.upgrade.firedamp.name=Firedamp
+item.artifice.upgrade.firedamp.name=Рудничный газ
 item.artifice.upgrade.elasticlayering.name=Эластичное расслоение
-item.artifice.upgrade.scubatank.name=Scuba Tank
+item.artifice.upgrade.scubatank.name=Акваланг
 item.artifice.upgrade.divekit.name=Набор для ныряния
+
+item.artifice.bucket.bucketOil.name=Ведро нефти
+item.artifice.bucket.bucketFuel.name=Ведро топлива
+item.artifice.bucket.bucketCreosote.name=Ведро креозота
+item.artifice.bucket.bucketBitumen.name=Ведро битума
+
+# Tooltips
+tooltip.artifice.sulfur=Имеет сильный запах
+tooltip.artifice.niter=Также известна как "saltpeter"
+tooltip.artifice.dye.blue=Синий краситель
+tooltip.artifice.dye.blue.flavor=Ну, некоторые моря
+tooltip.artifice.dye.black=Чёрный краситель
+tooltip.artifice.dye.black.flavor=Темнее сажи
+tooltip.artifice.dye.brown=Коричневый краситель
+tooltip.artifice.dye.brown.flavor=Почти красноватый
+tooltip.artifice.dye.white=Белый краситель
+tooltip.artifice.dye.white.flavor=Как белые кости
+tooltip.artifice.sledge=Ломает блоки в части
+tooltip.artifice.sledge.loss=Шанс потери:
+tooltip.artifice.sledge.flavor=Когда всё что у Вас есть это молоток...
+tooltip.artifice.sickle=Собирает растения и листву
+tooltip.artifice.sickle.radius=Радиус:
+tooltip.artifice.sickle.wood.flavor=Разрезает деревянные ветки...
+tooltip.artifice.sickle.stone.flavor=Умеренная эффективность
+tooltip.artifice.sickle.iron.flavor=Прочный и идеально подходит для садоводства
+tooltip.artifice.sickle.gold.flavor=Такой мягкий Вы почти разрубили их...
+tooltip.artifice.sickle.diamond.flavor=Максимум в борьбе с растениями
+tooltip.artifice.steel.ingot=Прочный сплав железа
+tooltip.artifice.steel.ingot.flavor=Сталь - это прогресс
+tooltip.artifice.steel.dust=Кучка угольной пыли и кусочков железа
+tooltip.artifice.steel.dust.flavor=Уголёк
+tooltip.artifice.box=Содержит предметы
+tooltip.artifice.box.flavor=Следите за обломками
+tooltip.artifice.box.contains=Содержит:
+tooltip.artifice.box.amount=Количество:
+tooltip.artifice.upgrade.type.toolweapon=Улучшение инструмента или оружия
+tooltip.artifice.upgrade.type.universal=Универсальное улучшение
+tooltip.artifice.upgrade.type.bow=Улучшение лука
+tooltip.artifice.upgrade.type.weapon=Улучшение оружия
+tooltip.artifice.upgrade.type.armor=Улучшение брони
+tooltip.artifice.upgrade.type.boot=Улучшение ботинок
+tooltip.artifice.upgrade.type.helmet=Улучшение шлема
+tooltip.artifice.upgrade.sharpener.flavor=Простой набор для заточки лезвий
+tooltip.artifice.upgrade.reinforcement.flavor=Совершенные материалы для укрепления слабых мест
+tooltip.artifice.upgrade.reinforcedlimbs.flavor=Возможность для более сильного натяжения
+tooltip.artifice.upgrade.plaited.flavor=Улучшает точность и стабильность
+tooltip.artifice.upgrade.counterweight.flavor=Улучшает баланс оружия
+tooltip.artifice.upgrade.spikes.flavor=Острые шипы сдерживают атаки
+tooltip.artifice.upgrade.lamination.flavor=Слоистые материалы улучшают защиту
+tooltip.artifice.upgrade.cover.flavor=Толстая ткань помогает блокировать стрелы
+tooltip.artifice.upgrade.soles.flavor=Слизь идеально смягчает падение
+tooltip.artifice.upgrade.firedamp.flavor=Плотный газ помогает снизить воспламеняемость
+tooltip.artifice.upgrade.layering.flavor=Полезно в сокращении воздействия
+tooltip.artifice.upgrade.tank.flavor=Необработанный, но эффективный баллон воздуха
+tooltip.artifice.upgrade.divekit.flavor=Возможность для более чёткого подводного зрения
+tooltip.artifice.lotus.close=Закрывается без света
+tooltip.artifice.lotus=Белый алебастр
+tooltip.artifice.lotus.flavor=Какой восхитительный цветок
+tooltip.artifice.bluebell=Красивый оттенок синего цвета
+tooltip.artifice.bluebell.flavor=Имеет приятный аромат
+tooltip.artifice.orchid=Роскошная темнота
+tooltip.artifice.orchid.flavor=Бархатное покрытие
+tooltip.artifice.iris=Земной и подавленный
+tooltip.artifice.iris.flavor=Стойкий цветок
+tooltip.artifice.lily.flavor=Напоминает свечи на воде
+tooltip.artifice.connected=Соединённые текстуры
+tooltip.artifice.connected.snug.flavor=Хитрость заключается в аккуратной поверхности
+tooltip.artifice.connected.carving.flavor=Секрет в осторожной резьбе
+tooltip.artifice.volcanic=Вулканический камень
+tooltip.artifice.metamorphic=Метаморфический камень
+tooltip.artifice.sedimentary=Осадочный камень
+tooltip.artifice.detector=Издаёт импульс при обновлении ближайших блоков
+tooltip.artifice.detector.flavor=Довольно хрупкая штуковина
+tooltip.artifice.frame.basic=Прочный деревянный корпус
+tooltip.artifice.frame.basic.flavor=Вы только поставили его здесь...
+tooltip.artifice.frame.reinforced=Прочный корпус, укреплённый железом
+tooltip.artifice.frame.reinforced.flavor=Немного изобретательности проходит долгий путь
+tooltip.artifice.frame.industrial=Крепкий железный корпус
+tooltip.artifice.frame.industrial.flavor=С прочным основанием...
+tooltip.artifice.frame.advanced=Очень крепкий стальной корпус
+tooltip.artifice.frame.advanced.flavor=...всё возможно
+tooltip.artifice.resistance=Сопротивление:
+tooltip.artifice.overhang=Max Overhang:
+tooltip.artifice.glasswall.basic=Укреплённое стекло
+tooltip.artifice.glasswall.basic.flavor=Укрепление стекла - хитрость
+tooltip.artifice.glasswall.reinforced=Керамическое стекло
+tooltip.artifice.glasswall.reinforced.flavor=Керамика заставит мир вращаться
+tooltip.artifice.glasswall.industrial=Каменное стекло
+tooltip.artifice.glasswall.industrial.flavor=Вулканическое стекло сильно от природы
+tooltip.artifice.glasswall.advanced=Пластичное стекло
+tooltip.artifice.glasswall.advanced.flavor=Заполнено тонкими стальными нитями
+tooltip.artifice.blastwall.basic=Укреплённый каменный кирпич
+tooltip.artifice.blastwall.basic.flavor=Хорошая первая попытка
+tooltip.artifice.blastwall.reinforced=Укреплённый кирпич
+tooltip.artifice.blastwall.reinforced.flavor=Затвердевшие кирпичи, а?
+tooltip.artifice.blastwall.industrial=Обсидиановый кирпич
+tooltip.artifice.blastwall.industrial.flavor=Прогресса всегда можно добиться...
+tooltip.artifice.blastwall.advanced=Стальное покрытие
+tooltip.artifice.blastwall.advanced.flavor=...и прогресс всегда даёт
+tooltip.artifice.scaffold.basic=Обычные леса
+tooltip.artifice.scaffold.basic.flavor=Удобно, если есть
+tooltip.artifice.scaffold.reinforced=Сложные леса
+tooltip.artifice.scaffold.reinforced.flavor=Немного шаткие
+tooltip.artifice.scaffold.industrial=Строительные леса
+tooltip.artifice.scaffold.industrial.flavor=100% безопасность
+tooltip.artifice.scaffold.advanced=Прочные леса
+tooltip.artifice.scaffold.advanced.flavor=Точно обработаны
+tooltip.artifice.nugget.copper.flavor=Немного тусклый
+tooltip.artifice.nugget.silver.flavor=Как капля ртути
+tooltip.artifice.nugget.platinum.flavor=Очень тяжёлый
+tooltip.artifice.coin.copper=Медная монетка
+tooltip.artifice.coin.copper.flavor=Надёжная
+tooltip.artifice.coin.silver=Серебряная монетка
+tooltip.artifice.coin.silver.flavor=Имеет зеркальную отделку
+tooltip.artifice.coin.gold=Золотая монетка
+tooltip.artifice.coin.gold.flavor=Монетка царства
+tooltip.artifice.coin.platinum=Платиновая монетка
+tooltip.artifice.coin.platinum.flavor=Доллар сохранён...
+tooltip.artifice.lamp=Цветной светильник
+tooltip.artifice.lamp.flavor=Простая флуоресценция
+tooltip.artifice.flammable=Огнеопасно
+tooltip.artifice.explosive=Взрывоопасно
+tooltip.artifice.bucket.oil.flavor=Чёрное золото
+tooltip.artifice.bucket.fuel.flavor=Светлое, но летучее
+tooltip.artifice.bucket.creosote.flavor=Воняет
+tooltip.artifice.bucket.bitumen.flavor=Очень густой

@@ -72,6 +72,8 @@ public class BlockFrameScaffold extends BlockFrame
     public void onBlockClicked(World world, int x, int y, int z, EntityPlayer player)
     {
         ItemStack held = player.inventory.mainInventory[player.inventory.currentItem];
+        if (held == null || held.getItem() == null || Block.getBlockFromItem(held.getItem()) == null)
+            return;
         Block hb = Block.getBlockFromItem(held.getItem());
         if (held != null && hb != null && hb.equals(this) && held.getItemDamage() == world.getBlockMetadata(x, y, z))
         {

@@ -123,7 +123,7 @@ public class BlockLamp extends BlockArtifice implements IRedNetConnection
     {
         if (inverted)
             return color.toAdjusted(5);
-        return color.toAdjusted(-5);
+        return color.toAdjusted(-40);
     }
 
     @Override
@@ -132,7 +132,7 @@ public class BlockLamp extends BlockArtifice implements IRedNetConnection
     {
         if (inverted)
             return color.toAdjusted(5 - block.getBlockMetadata(x, y, z));
-        return color.toAdjusted(block.getBlockMetadata(x, y, z) - 5);
+        return color.toAdjusted(block.getBlockMetadata(x, y, z) - 40);
     }
 
     @Override

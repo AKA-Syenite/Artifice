@@ -18,6 +18,7 @@ import shukaro.artifice.block.BlockArtifice;
 import shukaro.artifice.net.PacketDispatcher;
 import shukaro.artifice.render.TextureHandler;
 import shukaro.artifice.util.BlockCoord;
+import shukaro.artifice.util.MinecraftColors;
 
 import java.util.List;
 
@@ -42,6 +43,23 @@ public class BlockRock extends BlockArtifice
         this(name);
         this.name = name.split("[.]")[0];
         this.color = color;
+    }
+
+    @Override
+    public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int par6, float par7, float par8, float par9)
+    {
+        if (!world.isRemote)
+        {
+            ItemStack held = player.getHeldItem();
+            if (held == null && player.isSneaking())
+            {
+                if (world.getBlockMetadata(x, y, z) == 3)
+                    return world.setBlock(x, y, z, this, 4, 3);
+                else if (world.getBlockMetadata(x, y, z) == 4)
+                    return world.setBlock(x, y, z, this, 3, 3);
+            }
+        }
+        return false;
     }
 
     @Override

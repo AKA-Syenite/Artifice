@@ -7,6 +7,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
@@ -15,6 +16,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
 import powercrystals.minefactoryreloaded.api.rednet.connectivity.IRedNetConnection;
 import powercrystals.minefactoryreloaded.api.rednet.connectivity.RedNetConnectionType;
+import shukaro.artifice.ArtificeBlocks;
 import shukaro.artifice.ArtificeConfig;
 import shukaro.artifice.block.BlockArtifice;
 import shukaro.artifice.render.TextureHandler;
@@ -42,6 +44,37 @@ public class BlockLamp extends BlockArtifice implements IRedNetConnection
             setBlockName("artifice.lampinverted." + color.name().toLowerCase(Locale.ENGLISH));
         else
             setBlockName("artifice.lamp." + color.name().toLowerCase(Locale.ENGLISH));
+    }
+
+    @Override
+    public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int par6, float par7, float par8, float par9)
+    {
+        if (!world.isRemote)
+        {
+            ItemStack held = player.getHeldItem();
+            if (held == null && player.isSneaking())
+            {
+                if (this.inverted)
+                    return world.setBlock(x, y, z, ArtificeBlocks.blockLamps[getLampID(world, x, y, z)], 0, 3);
+                else
+                    return world.setBlock(x, y, z, ArtificeBlocks.blockLampsInverted[getLampID(world, x, y, z)], 0, 3);
+            }
+        }
+        return false;
+    }
+
+    private int getLampID(World world, int x, int y, int z)
+    {
+        if (!world.isAirBlock(x, y, z) && world.getBlock(x, y, z) instanceof BlockLamp)
+        {
+            MinecraftColors c = ((BlockLamp) world.getBlock(x, y, z)).color;
+            for (int i=0; i<16; i++)
+            {
+                if (c.equals(MinecraftColors.values()[i]))
+                    return i;
+            }
+        }
+        return -1;
     }
 
     @Override

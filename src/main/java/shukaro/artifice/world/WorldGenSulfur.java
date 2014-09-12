@@ -43,7 +43,7 @@ public class WorldGenSulfur implements IFeatureGenerator
     @Override
     public String getFeatureName()
     {
-        return ArtificeCore.modName + ": Sulfur";
+        return ArtificeCore.modName + ": " + this.block.getUnlocalizedName() + "@" + this.meta + " Lava Deposits";
     }
 
     @Override

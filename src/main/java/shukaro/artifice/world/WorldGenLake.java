@@ -30,7 +30,7 @@ public class WorldGenLake implements IFeatureGenerator
     @Override
     public String getFeatureName()
     {
-        return ArtificeCore.modName + ": " + new ItemStack(block, 1, 0).getDisplayName() + " Lake";
+        return ArtificeCore.modName + ": " + this.block.getUnlocalizedName() + " Lakes";
     }
 
     @Override

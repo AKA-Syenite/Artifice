@@ -45,7 +45,7 @@ public class WorldGenDesert implements IFeatureGenerator
     @Override
     public String getFeatureName()
     {
-        return ArtificeCore.modName + ": Niter";
+        return ArtificeCore.modName + ": " + this.block.getUnlocalizedName() + "@" + this.meta + " Desert Deposits";
     }
 
     @Override

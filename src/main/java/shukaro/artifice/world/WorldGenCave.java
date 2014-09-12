@@ -44,7 +44,7 @@ public class WorldGenCave implements IFeatureGenerator
     @Override
     public String getFeatureName()
     {
-        return ArtificeCore.modName + ": " + new ItemStack(block, 1, meta).getDisplayName() + " Cave";
+        return ArtificeCore.modName + ": " + this.block.getUnlocalizedName() + "@" + this.meta + " Caves";
     }
 
     protected boolean canGenHere(World world, BlockCoord c)

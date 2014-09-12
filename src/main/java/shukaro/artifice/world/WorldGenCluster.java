@@ -46,7 +46,7 @@ public class WorldGenCluster implements IFeatureGenerator
     @Override
     public String getFeatureName()
     {
-        return ArtificeCore.modName + ": " + new ItemStack(block, 1, meta).getDisplayName() + " Cluster";
+        return ArtificeCore.modName + ": " + this.block.getUnlocalizedName() + "@" + this.meta + " Clusters";
     }
 
     @Override

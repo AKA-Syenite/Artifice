@@ -83,7 +83,7 @@ public class WorldGenSulfur implements IFeatureGenerator
                 return false;
 
             int num = rand.nextInt((int) (size * 1.5) - (int) (size * 0.5) + 1) + (int) (size * 0.5);
-            SulferGen sulfur = new SulferGen(world, rand, b, num);
+            SulfurGen sulfur = new SulfurGen(world, rand, b, num);
             sulfur.doGeneration(chunkX, chunkZ);
             if (!ArtificeTickHandler.toGen.containsKey(Integer.valueOf(dim)))
                 ArtificeTickHandler.toGen.put(dim, new ArrayDeque<ISuspendableGen>());
@@ -107,7 +107,7 @@ public class WorldGenSulfur implements IFeatureGenerator
         return false;
     }
 
-    private class SulferGen implements ISuspendableGen
+    private class SulfurGen implements ISuspendableGen
     {
         private World world;
         private Random rand;
@@ -115,7 +115,7 @@ public class WorldGenSulfur implements IFeatureGenerator
         private TMap<ChunkCoord, ArrayList<BlockCoord>> toGen;
         private int size;
 
-        public SulferGen(World world, Random rand, BlockCoord start, int size)
+        public SulfurGen(World world, Random rand, BlockCoord start, int size)
         {
             this.world = world;
             this.rand = rand;

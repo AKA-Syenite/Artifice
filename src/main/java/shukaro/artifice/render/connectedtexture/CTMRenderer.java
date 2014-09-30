@@ -6,22 +6,13 @@ import net.minecraft.client.renderer.RenderBlocks;
 import net.minecraft.world.IBlockAccess;
 import org.lwjgl.opengl.GL11;
 import shukaro.artifice.ArtificeConfig;
-import shukaro.artifice.block.decorative.BlockRockSlab;
 import shukaro.artifice.block.world.BlockRock;
 import shukaro.artifice.render.TextureHandler;
-import shukaro.artifice.util.BlockCoord;
 import shukaro.artifice.util.Drawing;
-
-import java.util.Map;
-import java.util.Random;
-import java.util.concurrent.ConcurrentHashMap;
 
 public class CTMRenderer implements ISimpleBlockRenderingHandler
 {
     RenderBlocksCTM rendererCTM = new RenderBlocksCTM();
-
-    private static Map<BlockCoord, Integer> degrees = new ConcurrentHashMap<BlockCoord, Integer>();
-    private static Random rand = new Random();
 
     @Override
     public void renderInventoryBlock(Block block, int metadata, int modelId, RenderBlocks renderer)
@@ -63,15 +54,9 @@ public class CTMRenderer implements ISimpleBlockRenderingHandler
 
             if (block instanceof BlockRock && world.getBlockMetadata(x, y, z) == 0)
             {
-                BlockCoord c = new BlockCoord(x, y, z);
-                int degree;
-                if (degrees.containsKey(c))
-                    degree = degrees.get(c);
-                else
-                {
-                    degree = rand.nextInt(4);
-                    degrees.put(c, degree);
-                }
+                long hash = (long)(x * 3129871) ^ (long)z * 116129781L ^ (long)y;
+                int degree = (int)(hash & 0x03);
+
                 rendererOld.uvRotateBottom = degree;
                 rendererOld.uvRotateEast = degree;
                 rendererOld.uvRotateNorth = degree;

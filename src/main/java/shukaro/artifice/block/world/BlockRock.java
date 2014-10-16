@@ -134,4 +134,10 @@ public class BlockRock extends BlockArtifice
 
     @Override
     public int getRenderType() { return ArtificeConfig.ctmRenderID; }
+    
+    @Override
+	public boolean isReplaceableOreGen(World world, int x, int y, int z, Block target)
+	{
+		return target == this || target == Blocks.stone;
+	}
 }

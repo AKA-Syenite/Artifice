@@ -335,6 +335,8 @@ tile.artifice.fluid.bitumen.name=Bitumen
 tile.artifice.fluid.fuel.name=Fuel
 tile.artifice.fluid.creosote.name=Creosote
 
+tile.artifice.glowsand.name=Glowing Sand
+
 # Item Names
 item.artifice.sledge.wood.name=Wooden Sledge
 item.artifice.sledge.stone.name=Stone Sledge
@@ -509,3 +511,4 @@ tooltip.artifice.bucket.oil.flavor=Black gold
 tooltip.artifice.bucket.fuel.flavor=Light, but volatile
 tooltip.artifice.bucket.creosote.flavor=Reeks
 tooltip.artifice.bucket.bitumen.flavor=Extremely thick
+tooltip.artifice.glowsand.flavor=A bit eerie

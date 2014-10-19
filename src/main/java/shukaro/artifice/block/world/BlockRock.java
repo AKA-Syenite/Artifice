@@ -7,6 +7,7 @@ import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
@@ -15,10 +16,7 @@ import net.minecraft.world.World;
 import shukaro.artifice.ArtificeConfig;
 import shukaro.artifice.ArtificeCore;
 import shukaro.artifice.block.BlockArtifice;
-import shukaro.artifice.net.PacketDispatcher;
 import shukaro.artifice.render.TextureHandler;
-import shukaro.artifice.util.BlockCoord;
-import shukaro.artifice.util.MinecraftColors;
 
 import java.util.List;
 
@@ -134,10 +132,10 @@ public class BlockRock extends BlockArtifice
 
     @Override
     public int getRenderType() { return ArtificeConfig.ctmRenderID; }
-    
+
     @Override
-	public boolean isReplaceableOreGen(World world, int x, int y, int z, Block target)
-	{
-		return target == this || target == Blocks.stone;
-	}
+    public boolean isReplaceableOreGen(World world, int x, int y, int z, Block target)
+    {
+        return target == this || target == Blocks.stone;
+    }
 }

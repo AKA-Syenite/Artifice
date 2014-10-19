@@ -71,8 +71,13 @@ public class NameMetaPair
     public boolean equals(Object o)
     {
         if (o == null || !(o instanceof NameMetaPair)) return false;
-        NameMetaPair imp = (NameMetaPair) o;
+        NameMetaPair imp = (NameMetaPair)o;
         return this.name.equals(imp.name) && this.meta == imp.meta;
+    }
+
+    public boolean equals(NameMetaPair o)
+    {
+        return this.name.equals(o.name) && this.meta == o.meta;
     }
 
     public String toString()

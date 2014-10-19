@@ -1,5 +1,6 @@
 package shukaro.artifice.block.world;
 
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockFalling;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -25,6 +26,7 @@ public class BlockNiter extends BlockFalling
     public BlockNiter()
     {
         super(Material.sand);
+        setStepSound(Block.soundTypeSand);
         setBlockName("artifice.niter");
         setCreativeTab(ArtificeCore.worldTab);
         setHardness(0.5f);
@@ -78,6 +80,9 @@ public class BlockNiter extends BlockFalling
     {
         return meta == 0 ? ArtificeItems.itemResource : Item.getItemFromBlock(this);
     }
+
+    @Override
+    public int getDamageValue(World world, int x, int y, int z) { return world.getBlockMetadata(x, y, z); }
 
     @Override
     public int damageDropped(int meta)

@@ -335,6 +335,8 @@ tile.artifice.fluid.bitumen.name=Битум
 tile.artifice.fluid.fuel.name=Топливо
 tile.artifice.fluid.creosote.name=Креозот
 
+tile.artifice.glowsand.name=Светящийся песок
+
 # Item Names
 item.artifice.sledge.wood.name=Деревянная кувалда
 item.artifice.sledge.stone.name=Каменная кувалда
@@ -509,3 +511,4 @@ tooltip.artifice.bucket.oil.flavor=Чёрное золото
 tooltip.artifice.bucket.fuel.flavor=Светлое, но летучее
 tooltip.artifice.bucket.creosote.flavor=Воняет
 tooltip.artifice.bucket.bitumen.flavor=Очень густой
+tooltip.artifice.glowsand.flavor=Немного жуткий

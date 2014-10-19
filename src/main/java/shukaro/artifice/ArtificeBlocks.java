@@ -54,6 +54,7 @@ public class ArtificeBlocks
     public static BlockFluidFuel blockFuel;
     public static BlockFluidBitumen blockBitumen;
     public static BlockFluidCreosote blockCreosote;
+    public static BlockGlowSand blockGlowSand;
 
     public static String[] rockColorNames = { "gray",   "lightgray", "brown",  "tan",    "reddish", "bluish", "greenish" };
     public static int[] rockColors =        { 11579568, 16777215,    12362119, 15853509, 11706528,  10526898, 10531488 };
@@ -97,6 +98,7 @@ public class ArtificeBlocks
         blockFuel = new BlockFluidFuel();
         blockBitumen = new BlockFluidBitumen();
         blockCreosote = new BlockFluidCreosote();
+        blockGlowSand = new BlockGlowSand();
 
         GameRegistry.registerBlock(blockBasaltSlab, ItemBlockSlabArtifice.class, blockBasalt.getUnlocalizedName() + ".slab");
         GameRegistry.registerBlock(blockBasaltDoubleSlab, ItemBlockSlabArtifice.class, blockBasalt.getUnlocalizedName() + ".doubleslab");
@@ -126,6 +128,7 @@ public class ArtificeBlocks
         GameRegistry.registerBlock(blockFuel, ItemBlockArtifice.class, blockFuel.getUnlocalizedName());
         GameRegistry.registerBlock(blockBitumen, ItemBlockArtifice.class, blockBitumen.getUnlocalizedName());
         GameRegistry.registerBlock(blockCreosote, ItemBlockArtifice.class, blockCreosote.getUnlocalizedName());
+        GameRegistry.registerBlock(blockGlowSand, ItemBlockArtifice.class, blockGlowSand.getUnlocalizedName());
 
         ArtificeRegistry.registerBasaltType(ArtificeBlocks.blockBasalt, 0);
         ArtificeRegistry.registerMarbleType(ArtificeBlocks.blockMarble, 0);

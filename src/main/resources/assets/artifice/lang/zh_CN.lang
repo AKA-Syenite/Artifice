@@ -1,19 +1,17 @@
-#zh_CN
-
 # Block Names
 tile.artifice.basalt.name=玄武岩
 tile.artifice.basalt.cobblestone.name=玄武岩圆石
 tile.artifice.basalt.brick.name=玄武岩砖块
 tile.artifice.basalt.paver.name=玄武岩铺路石
 tile.artifice.basalt.antipaver.name=玄武岩逆向铺路石
-tile.artifice.basalt.chiseled.name=雕琢玄武岩
+tile.artifice.basalt.chiseled.name=錾制玄武岩
 
 tile.artifice.marble.name=大理石
 tile.artifice.marble.cobblestone.name=大理石圆石
 tile.artifice.marble.brick.name=大理石砖块
 tile.artifice.marble.paver.name=大理石铺路石
 tile.artifice.marble.antipaver.name=大理石逆向铺路石
-tile.artifice.marble.chiseled.name=雕琢大理石
+tile.artifice.marble.chiseled.name=錾制大理石
 
 tile.artifice.basalt.stairs.brick.name=玄武岩砖块楼梯
 tile.artifice.basalt.stairs.cobblestone.name=玄武岩圆石楼梯
@@ -83,22 +81,22 @@ tile.artifice.lamp.green.name=绿色灯
 tile.artifice.lamp.red.name=红色灯
 tile.artifice.lamp.black.name=黑色灯
 
-tile.artifice.lampinverted.white.name=反向白色灯
-tile.artifice.lampinverted.orange.name=反向橙色灯
-tile.artifice.lampinverted.magenta.name=反向品红色灯
-tile.artifice.lampinverted.lightblue.name=反向淡蓝色灯
-tile.artifice.lampinverted.yellow.name=反向黄色灯
-tile.artifice.lampinverted.lime.name=反向黄绿色灯
-tile.artifice.lampinverted.pink.name=反向粉色灯
-tile.artifice.lampinverted.gray.name=反向灰色灯
-tile.artifice.lampinverted.lightgray.name=反向淡灰色灯
-tile.artifice.lampinverted.cyan.name=反向青色灯
-tile.artifice.lampinverted.purple.name=反向紫色灯
-tile.artifice.lampinverted.blue.name=反向蓝色灯
-tile.artifice.lampinverted.brown.name=反向棕色灯
-tile.artifice.lampinverted.green.name=反向绿色灯
-tile.artifice.lampinverted.red.name=反向红色灯
-tile.artifice.lampinverted.black.name=反向黑色灯
+tile.artifice.lampinverted.white.name=反相白色灯
+tile.artifice.lampinverted.orange.name=反相橙色灯
+tile.artifice.lampinverted.magenta.name=反相品红色灯
+tile.artifice.lampinverted.lightblue.name=反相淡蓝色灯
+tile.artifice.lampinverted.yellow.name=反相黄色灯
+tile.artifice.lampinverted.lime.name=反相黄绿色灯
+tile.artifice.lampinverted.pink.name=反相粉色灯
+tile.artifice.lampinverted.gray.name=反相灰色灯
+tile.artifice.lampinverted.lightgray.name=反相淡灰色灯
+tile.artifice.lampinverted.cyan.name=反相青色灯
+tile.artifice.lampinverted.purple.name=反相紫色灯
+tile.artifice.lampinverted.blue.name=反相蓝色灯
+tile.artifice.lampinverted.brown.name=反相棕色灯
+tile.artifice.lampinverted.green.name=反相绿色灯
+tile.artifice.lampinverted.red.name=反相红色灯
+tile.artifice.lampinverted.black.name=反相黑色灯
 
 tile.artifice.limestone.gray.name=灰色石灰岩
 tile.artifice.limestone.lightgray.name=淡灰色石灰岩
@@ -337,6 +335,8 @@ tile.artifice.fluid.bitumen.name=柏油
 tile.artifice.fluid.fuel.name=燃油
 tile.artifice.fluid.creosote.name=木馏油
 
+tile.artifice.glowsand.name=荧沙
+
 # Item Names
 item.artifice.sledge.wood.name=木锤
 item.artifice.sledge.stone.name=石锤
@@ -392,8 +392,8 @@ item.artifice.bucket.bucketCreosote.name=桶装木馏油
 item.artifice.bucket.bucketBitumen.name=桶装柏油
 
 # Tooltips
-tooltip.artifice.sulfur=刺鼻的气味
-tooltip.artifice.niter=硝酸钾
+tooltip.artifice.sulfur=散发着刺鼻气味
+tooltip.artifice.niter=就是常说的硝酸钾
 tooltip.artifice.dye.blue=蓝色的染料
 tooltip.artifice.dye.blue.flavor=就像蔚蓝的大海
 tooltip.artifice.dye.black=黑色的染料
@@ -432,20 +432,20 @@ tooltip.artifice.upgrade.reinforcement.flavor=强化材料
 tooltip.artifice.upgrade.reinforcedlimbs.flavor=更好的强化材料
 tooltip.artifice.upgrade.plaited.flavor=提升精准性及稳定性
 tooltip.artifice.upgrade.counterweight.flavor=提升武器的比重平衡
-tooltip.artifice.upgrade.spikes.flavor=用来阻挡攻击的锋利尖刺
+tooltip.artifice.upgrade.spikes.flavor=锋利的尖刺让进攻者望而生畏
 tooltip.artifice.upgrade.lamination.flavor=提升防御力的复合材料
 tooltip.artifice.upgrade.cover.flavor=可以阻挡箭矢的厚实布匹
-tooltip.artifice.upgrade.soles.flavor=史莱姆可以有效地用来减免震击
+tooltip.artifice.upgrade.soles.flavor=史莱姆可以有效地吸收冲击
 tooltip.artifice.upgrade.firedamp.flavor=可以抵免燃烧的水泥浆
 tooltip.artifice.upgrade.layering.flavor=减免碰撞的好工具
 tooltip.artifice.upgrade.tank.flavor=简陋的, 但十分有用的氧气罐
 tooltip.artifice.upgrade.divekit.flavor=让你在水下获得更清晰的视野
 tooltip.artifice.lotus.close=在微光中沉眠
-tooltip.artifice.lotus=光滑的白色
+tooltip.artifice.lotus=纯洁的白色
 tooltip.artifice.lotus.flavor=多么惹人喜欢的花
-tooltip.artifice.bluebell=一丝深蓝色的阴影
-tooltip.artifice.bluebell.flavor=让人心旷神怡的芳香
-tooltip.artifice.orchid=豪华的黑色
+tooltip.artifice.bluebell=一缕深蓝的阴影
+tooltip.artifice.bluebell.flavor=沁人心脾的芬芳
+tooltip.artifice.orchid=尽显奢华的黑色
 tooltip.artifice.orchid.flavor=天鹅绒般的柔软
 tooltip.artifice.iris=朴实且柔和
 tooltip.artifice.iris.flavor=一种耐寒的花朵
@@ -511,3 +511,4 @@ tooltip.artifice.bucket.oil.flavor=黑色的黄金
 tooltip.artifice.bucket.fuel.flavor=轻便, 但十分不稳定
 tooltip.artifice.bucket.creosote.flavor=浓烈的臭气
 tooltip.artifice.bucket.bitumen.flavor=极其厚实
+tooltip.artifice.glowsand.flavor=有点可怕

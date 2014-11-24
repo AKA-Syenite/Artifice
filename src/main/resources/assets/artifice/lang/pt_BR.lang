@@ -1,0 +1,514 @@
+# Nome dos Blocos
+tile.artifice.basalt.name=Basalto
+tile.artifice.basalt.cobblestone.name=Pedregulho de Basalto
+tile.artifice.basalt.brick.name=Tijolos de Basalto
+tile.artifice.basalt.paver.name=Calçamento de Basalto
+tile.artifice.basalt.antipaver.name=Contrapiso de Basalto
+tile.artifice.basalt.chiseled.name=Basalto Talhado
+
+tile.artifice.marble.name=Mármore
+tile.artifice.marble.cobblestone.name=Pedregulho de Mármore
+tile.artifice.marble.brick.name=Tijolos de Mármore
+tile.artifice.marble.paver.name=Calçamento de Mármore
+tile.artifice.marble.antipaver.name=Contrapiso de Mármore
+tile.artifice.marble.chiseled.name=Mármore Talhado
+
+tile.artifice.basalt.stairs.brick.name=Escadas de Tijolos de Basalto
+tile.artifice.basalt.stairs.cobblestone.name=Escadas de Pedregulho de Basalto
+
+tile.artifice.marble.stairs.brick.name=Escadas de Tijolos de Mármore
+tile.artifice.marble.stairs.cobblestone.name=Escadas de Pedregulho de Mármore
+
+tile.artifice.flora.bluebell.name=Jitirana
+tile.artifice.flora.orchid.name=Orquídia
+tile.artifice.flora.iris.name=Iris
+tile.artifice.flora.lotus.name=Lotus
+tile.artifice.flora.lily.open.name=Lírio Lotus
+
+tile.artifice.marble.slab.brick.name=Laje de Tijolos de Mármore
+tile.artifice.marble.slab.cobble.name=Laje de Pedregulho de Mármore
+tile.artifice.marble.slab.paver.name=Laje de Calçamento de Mármore
+tile.artifice.marble.slab.antipaver.name=Laje de Contrapiso de Mármore
+
+tile.artifice.basalt.slab.brick.name=Laje de Tijolos de Basalto
+tile.artifice.basalt.slab.cobble.name=Laje de Pedregulho de Basalto
+tile.artifice.basalt.slab.paver.name=Laje de Calçamento de Basalto
+tile.artifice.basalt.slab.antipaver.name=Laje de Contrapiso de Basalto
+
+tile.artifice.frame.basic.name=Estrutura Básica
+tile.artifice.frame.reinforced.name=Estrutura Reforçada
+tile.artifice.frame.industrial.name=Estrutura Industrial
+tile.artifice.frame.advanced.name=Estrutura Avançada
+
+tile.artifice.reinforced.basic.name=Parede de Explosão Básica
+tile.artifice.reinforced.reinforced.name=Parede de Explosão Reforçada
+tile.artifice.reinforced.industrial.name=Parede de Explosão Industrial
+tile.artifice.reinforced.advanced.name=Parede de Explosão Avançada
+
+tile.artifice.glasswall.basic.name=Parede de Vidro Básica
+tile.artifice.glasswall.reinforced.name=Parede de Vidro Reforçada
+tile.artifice.glasswall.industrial.name=Parede de Vidro Industrial
+tile.artifice.glasswall.advanced.name=Parede de Vidro Avançada
+
+tile.artifice.glasswalldark.basic.name=Parede de Vidro Escuro Básica
+tile.artifice.glasswalldark.reinforced.name=Parede de Vidro Escuro Reforçada
+tile.artifice.glasswalldark.industrial.name=Parede de Vidro Escuro Industrial
+tile.artifice.glasswalldark.advanced.name=Parede de Vidro Escuro Avançada
+
+tile.artifice.scaffold.basic.name=Andaime Básico
+tile.artifice.scaffold.reinforced.name=Andaime Reforçado
+tile.artifice.scaffold.industrial.name=Andaime Industrial
+tile.artifice.scaffold.advanced.name=Andaime Avançado
+
+tile.artifice.detector.name=Detetor
+
+tile.artifice.steel.name=Bloco de Aço
+
+tile.artifice.lamp.white.name=Lâmpada Branca
+tile.artifice.lamp.orange.name=Lâmpada Laranja
+tile.artifice.lamp.magenta.name=Lâmpada Magenta
+tile.artifice.lamp.lightblue.name=Lâmpada Azul Claro
+tile.artifice.lamp.yellow.name=Lâmpada Amarela
+tile.artifice.lamp.lime.name=Lâmpada Verde Limão
+tile.artifice.lamp.pink.name=Lâmpada Rosa
+tile.artifice.lamp.gray.name=Lâmpada Cinza
+tile.artifice.lamp.lightgray.name=Lâmpada Cinza Claro
+tile.artifice.lamp.cyan.name=Lâmpada Ciano
+tile.artifice.lamp.purple.name=Lâmpada Lilás
+tile.artifice.lamp.blue.name=Lâmpada Azul
+tile.artifice.lamp.brown.name=Lâmpada Marrom
+tile.artifice.lamp.green.name=Lâmpada Verde
+tile.artifice.lamp.red.name=Lâmpada Vermelha
+tile.artifice.lamp.black.name=Lâmpada Preta
+
+tile.artifice.lampinverted.white.name=Lâmpada Invertida Branca
+tile.artifice.lampinverted.orange.name=Lâmpada Invertida Laranja
+tile.artifice.lampinverted.magenta.name=Lâmpada Invertida Magenta
+tile.artifice.lampinverted.lightblue.name=Lâmpada Invertida Azul Claro
+tile.artifice.lampinverted.yellow.name=Lâmpada Invertida Amarela
+tile.artifice.lampinverted.lime.name=Lâmpada Invertida Verde Limão
+tile.artifice.lampinverted.pink.name=Lâmpada Invertida Rosa
+tile.artifice.lampinverted.gray.name=Lâmpada Invertida Cinza
+tile.artifice.lampinverted.lightgray.name=Lâmpada Invertida Cinza Claro
+tile.artifice.lampinverted.cyan.name=Lâmpada Invertida Ciano
+tile.artifice.lampinverted.purple.name=Lâmpada Invertida Lilás
+tile.artifice.lampinverted.blue.name=Lâmpada Invertida Azul
+tile.artifice.lampinverted.brown.name=Lâmpada Invertida Marrom
+tile.artifice.lampinverted.green.name=Lâmpada Invertida Verde
+tile.artifice.lampinverted.red.name=Lâmpada Invertida Vermelha
+tile.artifice.lampinverted.black.name=Lâmpada Invertida Preta
+
+tile.artifice.limestone.gray.name=Calcário Cinzento
+tile.artifice.limestone.lightgray.name=Calcário Cinza Claro
+tile.artifice.limestone.brown.name=Calcário Castanho
+tile.artifice.limestone.tan.name=Calcário Canela
+tile.artifice.limestone.reddish.name=Calcário Encarnado
+tile.artifice.limestone.bluish.name=Calcário Azulado
+tile.artifice.limestone.greenish.name=Calcário Esverdeado
+
+tile.artifice.limestone.gray.cobblestone.name=Pedregulho de Calcário Cinzento
+tile.artifice.limestone.lightgray.cobblestone.name=Pedregulho de Calcário Cinza Claro
+tile.artifice.limestone.brown.cobblestone.name=Pedregulho de Calcário Castanho
+tile.artifice.limestone.tan.cobblestone.name=Pedregulho de Calcário Canela
+tile.artifice.limestone.reddish.cobblestone.name=Pedregulho de Calcário Encarnado
+tile.artifice.limestone.bluish.cobblestone.name=Pedregulho de Calcário Azulado
+tile.artifice.limestone.greenish.cobblestone.name=Pedregulho de Calcário Esverdeado
+
+tile.artifice.limestone.gray.brick.name=Tijolos de Calcário Cinzento
+tile.artifice.limestone.lightgray.brick.name=Tijolos de Calcário Cinzento Cinza Claro
+tile.artifice.limestone.brown.brick.name=Tijolos de Calcário Castanho
+tile.artifice.limestone.tan.brick.name=Tijolos de Calcário Canela
+tile.artifice.limestone.reddish.brick.name=Tijolos de Calcário Encarnado
+tile.artifice.limestone.bluish.brick.name=Tijolos de Calcário Azulado
+tile.artifice.limestone.greenish.brick.name=Tijolos de Calcário Esverdeado
+
+tile.artifice.limestone.gray.paver.name=Calçamento de Calcário Cinzento
+tile.artifice.limestone.lightgray.paver.name=Calçamento de Calcário Cinza Claro
+tile.artifice.limestone.brown.paver.name=Calçamento de Calcário Castanho
+tile.artifice.limestone.tan.paver.name=Calçamento de Calcário Canela
+tile.artifice.limestone.reddish.paver.name=Calçamento de Calcário Encarnado
+tile.artifice.limestone.bluish.paver.name=Calçamento de Calcário Azulado
+tile.artifice.limestone.greenish.paver.name=Calçamento de Calcário Esverdeado
+
+tile.artifice.limestone.gray.antipaver.name=Contrapiso de Calcário Cinzento
+tile.artifice.limestone.lightgray.antipaver.name=Calcário Contrapiso de Cinza Claro
+tile.artifice.limestone.brown.antipaver.name=Contrapiso de Calcário Castanho
+tile.artifice.limestone.tan.antipaver.name=Contrapiso de Calcário Canela
+tile.artifice.limestone.reddish.antipaver.name=Contrapiso de Calcário Encarnado
+tile.artifice.limestone.bluish.antipaver.name=Contrapiso de Calcário Azulado
+tile.artifice.limestone.greenish.antipaver.name=Contrapiso de Calcário Esverdeado
+
+tile.artifice.limestone.gray.chiseled.name=Calcário Cinzento Talhado
+tile.artifice.limestone.lightgray.chiseled.name=Calcário Cinza Claro Talhado
+tile.artifice.limestone.brown.chiseled.name=Calcário Castanho Talhado
+tile.artifice.limestone.tan.chiseled.name=Calcário Canela Talhado
+tile.artifice.limestone.reddish.chiseled.name=Calcário Vermelho Encarnado
+tile.artifice.limestone.bluish.chiseled.name=Calcário Azul Talhadoado
+tile.artifice.limestone.greenish.chiseled.name=Calcário Esverdeado Talhado
+
+tile.artifice.limestone.gray.slab.brick.name=Laje de Tijolos de Calcário Cinzento
+tile.artifice.limestone.lightgray.slab.brick.name=Laje de Tijolos de Calcário Cinza Claro
+tile.artifice.limestone.brown.slab.brick.name=Laje de Tijolos de Calcário Castanho
+tile.artifice.limestone.tan.slab.brick.name=Laje de Tijolos de Calcário Canela
+tile.artifice.limestone.reddish.slab.brick.name=Laje de Tijolos de Calcário Encarnado
+tile.artifice.limestone.bluish.slab.brick.name=Laje de Tijolos de Calcário Azulado
+tile.artifice.limestone.greenish.slab.brick.name=Laje de Tijolos de Calcário Esverdeado
+
+tile.artifice.limestone.gray.slab.cobble.name=Laje de Pedregulho de Calcário Cinzento
+tile.artifice.limestone.lightgray.slab.cobble.name=Laje de Pedregulho de Calcário Cinza Claro
+tile.artifice.limestone.brown.slab.cobble.name=Laje de Pedregulho de Calcário Castanho
+tile.artifice.limestone.tan.slab.cobble.name=Laje de Pedregulho de Calcário Canela
+tile.artifice.limestone.reddish.slab.cobble.name=Laje de Pedregulho de Calcário Encarnado
+tile.artifice.limestone.bluish.slab.cobble.name=Laje de Pedregulho de Calcário Azulado
+tile.artifice.limestone.greenish.slab.cobble.name=Laje de Pedregulho de Calcário Esverdeado
+
+tile.artifice.limestone.gray.slab.paver.name=Laje de Calçamento de Calcário Cinzento
+tile.artifice.limestone.lightgray.slab.paver.name=Laje de Calçamento de Calcário Cinza Claro
+tile.artifice.limestone.brown.slab.paver.name=Laje de Calçamento de Calcário Castanho
+tile.artifice.limestone.tan.slab.paver.name=Laje de Calçamento de Calcário Canela
+tile.artifice.limestone.reddish.slab.paver.name=Laje de Calçamento de Calcário Encarnado
+tile.artifice.limestone.bluish.slab.paver.name=Laje de Calçamento de Calcário Azulado
+tile.artifice.limestone.greenish.slab.paver.name=Laje de Calçamento de Calcário Esverdeado
+
+tile.artifice.limestone.gray.slab.antipaver.name=Laje de Contrapiso de Calcário Cinzento
+tile.artifice.limestone.lightgray.slab.antipaver.name=Laje de Contrapiso de Calcário Cinza Claro
+tile.artifice.limestone.brown.slab.antipaver.name=Laje de Contrapiso de Calcário Castanho
+tile.artifice.limestone.tan.slab.antipaver.name=Laje de Contrapiso de Calcário Canela
+tile.artifice.limestone.reddish.slab.antipaver.name=Laje de Contrapiso de Calcário Encarnado
+tile.artifice.limestone.bluish.slab.antipaver.name=Laje de Contrapiso de Calcário Azulado
+tile.artifice.limestone.greenish.slab.antipaver.name=Laje de Contrapiso de Calcário Esverdeado
+
+tile.artifice.limestone.gray.stairs.brick.name=Escada de Tijolos de Calcário Cinzento
+tile.artifice.limestone.lightgray.stairs.brick.name=Escada de Tijolos de Calcário Cinza Claro
+tile.artifice.limestone.brown.stairs.brick.name=Escada de Tijolos de Calcário Castanho
+tile.artifice.limestone.tan.stairs.brick.name=Escada de Tijolos de Calcário Canela
+tile.artifice.limestone.reddish.stairs.brick.name=Escada de Tijolos de Calcário Encarnado
+tile.artifice.limestone.bluish.stairs.brick.name=Escada de Tijolos de Calcário Azulado
+tile.artifice.limestone.greenish.stairs.brick.name=Escada de Tijolos de Calcário Esverdeado
+
+tile.artifice.limestone.gray.stairs.cobblestone.name=Escadas de Pedregulho de Calcário Cinzento
+tile.artifice.limestone.lightgray.stairs.cobblestone.name=Escadas de Pedregulho de Calcário Cinza Claro
+tile.artifice.limestone.brown.stairs.cobblestone.name=Escadas de Pedregulho de Calcário Castanho
+tile.artifice.limestone.tan.stairs.cobblestone.name=Escadas de Pedregulho de Calcário Canela
+tile.artifice.limestone.reddish.stairs.cobblestone.name=Escadas de Pedregulho de Calcário Encarnado
+tile.artifice.limestone.bluish.stairs.cobblestone.name=Escadas de Pedregulho de Calcário Azulado
+tile.artifice.limestone.greenish.stairs.cobblestone.name=Escadas de Pedregulho de Calcário Esverdeado
+
+tile.artifice.orecoal.basalt.name=Minério de Carvão
+tile.artifice.orecoal.marble.name=Minério de Carvão
+tile.artifice.orecoal.limestone.gray.name=Minério de Carvão
+tile.artifice.orecoal.limestone.lightgray.name=Minério de Carvão
+tile.artifice.orecoal.limestone.brown.name=Minério de Carvão
+tile.artifice.orecoal.limestone.tan.name=Minério de Carvão
+tile.artifice.orecoal.limestone.reddish.name=Minério de Carvão
+tile.artifice.orecoal.limestone.bluish.name=Minério de Carvão
+tile.artifice.orecoal.limestone.greenish.name=Minério de Carvão
+
+tile.artifice.oreiron.basalt.name=Minério de Ferro
+tile.artifice.oreiron.marble.name=Minério de Ferro
+tile.artifice.oreiron.limestone.gray.name=Minério de Ferro
+tile.artifice.oreiron.limestone.lightgray.name=Minério de Ferro
+tile.artifice.oreiron.limestone.brown.name=Minério de Ferro
+tile.artifice.oreiron.limestone.tan.name=Minério de Ferro
+tile.artifice.oreiron.limestone.reddish.name=Minério de Ferro
+tile.artifice.oreiron.limestone.bluish.name=Minério de Ferro
+tile.artifice.oreiron.limestone.greenish.name=Minério de Ferro
+
+tile.artifice.orelapis.basalt.name=Minério de Lápis-Lazuli
+tile.artifice.orelapis.marble.name=Minério de Lápis-Lazuli
+tile.artifice.orelapis.limestone.gray.name=Minério de Lápis-Lazuli
+tile.artifice.orelapis.limestone.lightgray.name=Minério de Lápis-Lazuli
+tile.artifice.orelapis.limestone.brown.name=Minério de Lápis-Lazuli
+tile.artifice.orelapis.limestone.tan.name=Minério de Lápis-Lazuli
+tile.artifice.orelapis.limestone.reddish.name=Minério de Lápis-Lazuli
+tile.artifice.orelapis.limestone.bluish.name=Minério de Lápis-Lazuli
+tile.artifice.orelapis.limestone.greenish.name=Minério de Lápis-Lazuli
+
+tile.artifice.oregold.basalt.name=Minério de Ouro
+tile.artifice.oregold.marble.name=Minério de Ouro
+tile.artifice.oregold.limestone.gray.name=Minério de Ouro
+tile.artifice.oregold.limestone.lightgray.name=Minério de Ouro
+tile.artifice.oregold.limestone.brown.name=Minério de Ouro
+tile.artifice.oregold.limestone.tan.name=Minério de Ouro
+tile.artifice.oregold.limestone.reddish.name=Minério de Ouro
+tile.artifice.oregold.limestone.bluish.name=Minério de Ouro
+tile.artifice.oregold.limestone.greenish.name=Minério de Ouro
+
+tile.artifice.orediamond.basalt.name=Minério de Diamante
+tile.artifice.orediamond.marble.name=Minério de Diamante
+tile.artifice.orediamond.limestone.gray.name=Minério de Diamante
+tile.artifice.orediamond.limestone.lightgray.name=Minério de Diamante
+tile.artifice.orediamond.limestone.brown.name=Minério de Diamante
+tile.artifice.orediamond.limestone.tan.name=Minério de Diamante
+tile.artifice.orediamond.limestone.reddish.name=Minério de Diamante
+tile.artifice.orediamond.limestone.bluish.name=Minério de Diamante
+tile.artifice.orediamond.limestone.greenish.name=Minério de Diamante
+
+tile.artifice.oreredstone.basalt.name=Minério de Redstone
+tile.artifice.oreredstone.marble.name=Minério de Redstone
+tile.artifice.oreredstone.limestone.gray.name=Minério de Redstone
+tile.artifice.oreredstone.limestone.lightgray.name=Minério de Redstone
+tile.artifice.oreredstone.limestone.brown.name=Minério de Redstone
+tile.artifice.oreredstone.limestone.tan.name=Minério de Redstone
+tile.artifice.oreredstone.limestone.reddish.name=Minério de Redstone
+tile.artifice.oreredstone.limestone.bluish.name=Minério de Redstone
+tile.artifice.oreredstone.limestone.greenish.name=Minério de Redstone
+
+tile.artifice.oreemerald.basalt.name=Minério de Esmeralda
+tile.artifice.oreemerald.marble.name=Minério de Esmeralda
+tile.artifice.oreemerald.limestone.gray.name=Minério de Esmeralda
+tile.artifice.oreemerald.limestone.lightgray.name=Minério de Esmeralda
+tile.artifice.oreemerald.limestone.brown.name=Minério de Esmeralda
+tile.artifice.oreemerald.limestone.tan.name=Minério de Esmeralda
+tile.artifice.oreemerald.limestone.reddish.name=Minério de Esmeralda
+tile.artifice.oreemerald.limestone.bluish.name=Minério de Esmeralda
+tile.artifice.oreemerald.limestone.greenish.name=Minério de Esmeralda
+
+tile.artifice.orecopper.basalt.name=Minério de Cobre
+tile.artifice.orecopper.marble.name=Minério de Cobre
+tile.artifice.orecopper.limestone.gray.name=Minério de Cobre
+tile.artifice.orecopper.limestone.lightgray.name=Minério de Cobre
+tile.artifice.orecopper.limestone.brown.name=Minério de Cobre
+tile.artifice.orecopper.limestone.tan.name=Minério de Cobre
+tile.artifice.orecopper.limestone.reddish.name=Minério de Cobre
+tile.artifice.orecopper.limestone.bluish.name=Minério de Cobre
+tile.artifice.orecopper.limestone.greenish.name=Minério de Cobre
+
+tile.artifice.oretin.basalt.name=Minério de Estanho
+tile.artifice.oretin.marble.name=Minério de Estanho
+tile.artifice.oretin.limestone.gray.name=Minério de Estanho
+tile.artifice.oretin.limestone.lightgray.name=Minério de Estanho
+tile.artifice.oretin.limestone.brown.name=Minério de Estanho
+tile.artifice.oretin.limestone.tan.name=Minério de Estanho
+tile.artifice.oretin.limestone.reddish.name=Minério de Estanho
+tile.artifice.oretin.limestone.bluish.name=Minério de Estanho
+tile.artifice.oretin.limestone.greenish.name=Minério de Estanho
+
+tile.artifice.oresilver.basalt.name=Minério de Prata
+tile.artifice.oresilver.marble.name=Minério de Prata
+tile.artifice.oresilver.limestone.gray.name=Minério de Prata
+tile.artifice.oresilver.limestone.lightgray.name=Minério de Prata
+tile.artifice.oresilver.limestone.brown.name=Minério de Prata
+tile.artifice.oresilver.limestone.tan.name=Minério de Prata
+tile.artifice.oresilver.limestone.reddish.name=Minério de Prata
+tile.artifice.oresilver.limestone.bluish.name=Minério de Prata
+tile.artifice.oresilver.limestone.greenish.name=Minério de Prata
+
+tile.artifice.orelead.basalt.name=Minério de Chumbo
+tile.artifice.orelead.marble.name=Minério de Chumbo
+tile.artifice.orelead.limestone.gray.name=Minério de Chumbo
+tile.artifice.orelead.limestone.lightgray.name=Minério de Chumbo
+tile.artifice.orelead.limestone.brown.name=Minério de Chumbo
+tile.artifice.orelead.limestone.tan.name=Minério de Chumbo
+tile.artifice.orelead.limestone.reddish.name=Minério de Chumbo
+tile.artifice.orelead.limestone.bluish.name=Minério de Chumbo
+tile.artifice.orelead.limestone.greenish.name=Minério de Chumbo
+
+tile.artifice.orenickel.basalt.name=Minério de Níquel
+tile.artifice.orenickel.marble.name=Minério de Níquel
+tile.artifice.orenickel.limestone.gray.name=Minério de Níquel
+tile.artifice.orenickel.limestone.lightgray.name=Minério de Níquel
+tile.artifice.orenickel.limestone.brown.name=Minério de Níquel
+tile.artifice.orenickel.limestone.tan.name=Minério de Níquel
+tile.artifice.orenickel.limestone.reddish.name=Minério de Níquel
+tile.artifice.orenickel.limestone.bluish.name=Minério de Níquel
+tile.artifice.orenickel.limestone.greenish.name=Minério de Níquel
+
+tile.artifice.oresulfur.basalt.name=Minério de Enxôfre
+tile.artifice.oresulfur.marble.name=Minério de Enxôfre
+tile.artifice.oresulfur.limestone.gray.name=Minério de Enxôfre
+tile.artifice.oresulfur.limestone.lightgray.name=Minério de Enxôfre
+tile.artifice.oresulfur.limestone.brown.name=Minério de Enxôfre
+tile.artifice.oresulfur.limestone.tan.name=Minério de Enxôfre
+tile.artifice.oresulfur.limestone.reddish.name=Minério de Enxôfre
+tile.artifice.oresulfur.limestone.bluish.name=Minério de Enxôfre
+tile.artifice.oresulfur.limestone.greenish.name=Minério de Enxôfre
+
+tile.artifice.sulfur.ore.name=Minério de Enxôfre
+tile.artifice.sulfur.block.name=Bloco de Enxôfre
+
+tile.artifice.niter.ore.name=Areia de Salitre
+tile.artifice.niter.block.name=Bloco de Salitre
+
+tile.artifice.fluid.oil.name=Óleo
+tile.artifice.fluid.bitumen.name=Betume
+tile.artifice.fluid.fuel.name=Combustível
+tile.artifice.fluid.creosote.name=Creosoto
+
+tile.artifice.glowsand.name=Areia Brilhante
+
+# Nome dos Itens
+item.artifice.sledge.wood.name=Martelo de Forja de Madeira
+item.artifice.sledge.stone.name=Martelo de Forja de Pedra
+item.artifice.sledge.iron.name=Martelo de Forja de Ferro
+item.artifice.sledge.gold.name=Martelo de Forja de Ouro
+item.artifice.sledge.emerald.name=Martelo de Forja de Diamante
+
+item.artifice.sickle.wood.name=Foice de Madeira
+item.artifice.sickle.stone.name=Foice de Pedra
+item.artifice.sickle.iron.name=Foice de Ferro
+item.artifice.sickle.gold.name=Foice de Ouro
+item.artifice.sickle.emerald.name=Foice de Diamante
+
+item.artifice.steel.ingot.name=Lingote de Aço
+item.artifice.steel.dust.name=Pó de Aço
+
+item.artifice.resource.sulfur.name=Enxôfre
+item.artifice.resource.niter.name=Salitre
+
+item.artifice.box.name=Caixa
+
+item.artifice.dye.blue.name=Azul Marinho
+item.artifice.dye.black.name=Preto Profundo
+item.artifice.dye.brown.name=Marrom Madeira
+item.artifice.dye.white.name=Branco Fantasma
+
+item.artifice.nugget.copper.name=Pepita de Cobre
+item.artifice.nugget.silver.name=Pepita de Prata
+item.artifice.nugget.platinum.name=Pepita de Platina
+
+item.artifice.coin.copper.name=Cruzeiro
+item.artifice.coin.silver.name=Tostão
+item.artifice.coin.gold.name=Pataca
+item.artifice.coin.platinum.name=Réis
+
+item.artifice.upgrade.sharpeningkit.name=Kit para Amolar
+item.artifice.upgrade.reinforcement.name=Reforço
+item.artifice.upgrade.reinforcedlimbs.name=Membros Reforçados
+item.artifice.upgrade.plaitedstring.name=Corda Trançada
+item.artifice.upgrade.counterweight.name=Contrapeso
+item.artifice.upgrade.armorspikes.name=Armadura de Espinhos
+item.artifice.upgrade.laminatedpadding.name=Enchimento Laminado
+item.artifice.upgrade.quiltedcover.name=Capa Acolchoada
+item.artifice.upgrade.elasticsoles.name=Sola Elástica
+item.artifice.upgrade.firedamp.name=Grisu
+item.artifice.upgrade.elasticlayering.name=Camada Elástica
+item.artifice.upgrade.scubatank.name=Tanque de Mergulho
+item.artifice.upgrade.divekit.name=Kit de Mergulho
+
+item.artifice.bucket.bucketOil.name=Balde de Óleo
+item.artifice.bucket.bucketFuel.name=Balde de Combustível
+item.artifice.bucket.bucketCreosote.name=Balde de Creosoto
+item.artifice.bucket.bucketBitumen.name=Balde de Betume
+
+# Dicas
+tooltip.artifice.sulfur=Carrega um forte odor
+tooltip.artifice.niter=Também conhecido como Nitrato de Sódio
+tooltip.artifice.dye.blue=Corante Azul
+tooltip.artifice.dye.blue.flavor=Bem, alguns verdes mares
+tooltip.artifice.dye.black=Corante Amrrom
+tooltip.artifice.dye.black.flavor=Mais escura que fuligem
+tooltip.artifice.dye.brown=Corante Brown
+tooltip.artifice.dye.brown.flavor=Quase avermelhado
+tooltip.artifice.dye.white=Corante Branco
+tooltip.artifice.dye.white.flavor=Austero como ossos branqueados
+tooltip.artifice.sledge=Esmagará os blocos em partes
+tooltip.artifice.sledge.loss=Chance de Perda:
+tooltip.artifice.sledge.flavor=Quando tudo que tens é um martelo...
+tooltip.artifice.sickle=Colheita de plantas e folhas
+tooltip.artifice.sickle.radius=Raio:
+tooltip.artifice.sickle.wood.flavor=Ramos de corte com madeira...
+tooltip.artifice.sickle.stone.flavor=Razoavelmente eficaz
+tooltip.artifice.sickle.iron.flavor=Durável e perfeito para horticultura
+tooltip.artifice.sickle.gold.flavor=Tão frágil que você está quase quebrando...
+tooltip.artifice.sickle.diamond.flavor=A última palavra em armamento anti-planta
+tooltip.artifice.steel.ingot=Uma liga de ferro forte
+tooltip.artifice.steel.ingot.flavor=O aço é progresso
+tooltip.artifice.steel.dust=Um monte de pedaços de ferro e pó de carvão
+tooltip.artifice.steel.dust.flavor=Fuligem
+tooltip.artifice.box=Armazena itens
+tooltip.artifice.box.flavor=Cuidado com as lascas
+tooltip.artifice.box.contains=Contém:
+tooltip.artifice.box.amount=Quantidade:
+tooltip.artifice.upgrade.type.toolweapon=Atualização de ferramenta ou arma
+tooltip.artifice.upgrade.type.universal=Atualização Universal
+tooltip.artifice.upgrade.type.bow=Atualização de Arco
+tooltip.artifice.upgrade.type.weapon=Atualização de Arma
+tooltip.artifice.upgrade.type.armor=Atualização de Armadura
+tooltip.artifice.upgrade.type.boot=Atualização de Botas
+tooltip.artifice.upgrade.type.helmet=Atualização de Elmo
+tooltip.artifice.upgrade.sharpener.flavor=Um kit simples para afiar as lâminas
+tooltip.artifice.upgrade.reinforcement.flavor=O material perfeito para reforçar pontos fracos
+tooltip.artifice.upgrade.reinforcedlimbs.flavor=Permite uma tração mais forte
+tooltip.artifice.upgrade.plaited.flavor=Melhora a precisão e a estabilidade
+tooltip.artifice.upgrade.counterweight.flavor=Melhora o equilíbrio da arma
+tooltip.artifice.upgrade.spikes.flavor=Pontas afiadas detém ataques
+tooltip.artifice.upgrade.lamination.flavor=Melhorar a proteção de materiais em camadas
+tooltip.artifice.upgrade.cover.flavor=Pano grosso ajuda a bloquear flechas
+tooltip.artifice.upgrade.soles.flavor=Slimes faem o amortecedor perfeito
+tooltip.artifice.upgrade.firedamp.flavor=A pasta espessa que ajuda a reduzir a inflamabilidade
+tooltip.artifice.upgrade.layering.flavor=Ajudam a reduzir impactos
+tooltip.artifice.upgrade.tank.flavor=Bruto, mas o tanque de ar é eficaz
+tooltip.artifice.upgrade.divekit.flavor=Permite uma visão subaquática mais clara 
+tooltip.artifice.lotus.close=Fecha-se em condições de pouca luz
+tooltip.artifice.lotus=Alabastro branco
+tooltip.artifice.lotus.flavor=Que flor encantadora
+tooltip.artifice.bluebell=Um bonito tom de azul
+tooltip.artifice.bluebell.flavor=Tem um aroma agradável
+tooltip.artifice.orchid=Luxuosamente escuro
+tooltip.artifice.orchid.flavor=Suave e aveludada
+tooltip.artifice.iris=Terrose e tênue
+tooltip.artifice.iris.flavor=Uma flor resistente
+tooltip.artifice.lily.flavor=Reminiscência de velas na água
+tooltip.artifice.connected=Textura conectada
+tooltip.artifice.connected.snug.flavor=O truque é uma superfície perfeita
+tooltip.artifice.connected.carving.flavor=O segredo é entalhar com cuidado
+tooltip.artifice.volcanic=Pedra Ígnea
+tooltip.artifice.metamorphic=Pedra Metamórfica
+tooltip.artifice.sedimentary=Pedra Sedimentar
+tooltip.artifice.detector=Pulsos sobre atualizações do bloco adjacente
+tooltip.artifice.detector.flavor=Uma engenhoca bastante delicada
+tooltip.artifice.frame.basic=Estrutura de madeira resistente
+tooltip.artifice.frame.basic.flavor=Basta colocar um pouco aqui...
+tooltip.artifice.frame.reinforced=Estrutura resistente reforçada com ferro
+tooltip.artifice.frame.reinforced.flavor=Com um pouco de criatividade se vai longe
+tooltip.artifice.frame.industrial=Forte estrutura de ferro
+tooltip.artifice.frame.industrial.flavor=Com uma base sólida...
+tooltip.artifice.frame.advanced=Estrutura muito forte de aço
+tooltip.artifice.frame.advanced.flavor=...tudo é possível
+tooltip.artifice.resistance=Resistência:
+tooltip.artifice.overhang=Saliência Máxima:
+tooltip.artifice.glasswall.basic=Vidro Reforçado
+tooltip.artifice.glasswall.basic.flavor=Reforçar de vidro é complicado
+tooltip.artifice.glasswall.reinforced=Vidro Cerâmico
+tooltip.artifice.glasswall.reinforced.flavor=Cerâmica fazer o mundo girar
+tooltip.artifice.glasswall.industrial=Pedra Vítrea
+tooltip.artifice.glasswall.industrial.flavor=Vidro vulcânico é naturalmente forte
+tooltip.artifice.glasswall.advanced=Vidro Laminado
+tooltip.artifice.glasswall.advanced.flavor=Preenchido com finos fios de aço
+tooltip.artifice.blastwall.basic=Tijolos de Pedra Reforçados
+tooltip.artifice.blastwall.basic.flavor=Uma boa primeira tentativa
+tooltip.artifice.blastwall.reinforced=Tijolos Reforçados
+tooltip.artifice.blastwall.reinforced.flavor=Tijolinho duro, hein?
+tooltip.artifice.blastwall.industrial=Tijolos de Obsidiana
+tooltip.artifice.blastwall.industrial.flavor=Sempre há progressos...
+tooltip.artifice.blastwall.advanced=Chapeamento de aço
+tooltip.artifice.blastwall.advanced.flavor=...e o progresso sempre proporciona
+tooltip.artifice.scaffold.basic=Andaime simples
+tooltip.artifice.scaffold.basic.flavor=Útil para ter
+tooltip.artifice.scaffold.reinforced=Andaime composto
+tooltip.artifice.scaffold.reinforced.flavor=Um pouco menos frágil
+tooltip.artifice.scaffold.industrial=Andaime de construção
+tooltip.artifice.scaffold.industrial.flavor=100% seguro
+tooltip.artifice.scaffold.advanced=Andaime robusto
+tooltip.artifice.scaffold.advanced.flavor=Precisamente usinados
+tooltip.artifice.nugget.copper.flavor=Ligeiramente manchada
+tooltip.artifice.nugget.silver.flavor=Como uma gota de mercúrio
+tooltip.artifice.nugget.platinum.flavor=Surpreendentemente pesado
+tooltip.artifice.coin.copper=Moeda de Cobre
+tooltip.artifice.coin.copper.flavor=Confiável
+tooltip.artifice.coin.silver=Moeda de Prata
+tooltip.artifice.coin.silver.flavor=Tem um acabamento espelhado
+tooltip.artifice.coin.gold=Moeda de Ouro
+tooltip.artifice.coin.gold.flavor=Moeda da Peça da Coroação
+tooltip.artifice.coin.platinum=Moeda de platina
+tooltip.artifice.coin.platinum.flavor=Uma merreca que salvou...
+tooltip.artifice.lamp=Luz Colorida
+tooltip.artifice.lamp.flavor=Fluorescência simples
+tooltip.artifice.flammable=Inflamável
+tooltip.artifice.explosive=Explosivo
+tooltip.artifice.bucket.oil.flavor=Ouro negro
+tooltip.artifice.bucket.fuel.flavor=Leve, mas volátil
+tooltip.artifice.bucket.creosote.flavor=Série
+tooltip.artifice.bucket.bitumen.flavor=Extremamente grosso
+tooltip.artifice.glowsand.flavor=Um pouco estranho

@@ -41,6 +41,7 @@ public class CTMRenderer implements ISimpleBlockRenderingHandler
         {
             rendererCTM.blockAccess = world;
             rendererCTM.rendererOld = rendererOld;
+            rendererCTM.setRenderBoundsFromBlock(block);
             return rendererCTM.renderStandardBlock(block, x, y, z);
         }
         else
@@ -65,6 +66,7 @@ public class CTMRenderer implements ISimpleBlockRenderingHandler
                 rendererOld.uvRotateWest = degree;
             }
 
+            rendererOld.setRenderBoundsFromBlock(block);
             boolean res = rendererOld.renderStandardBlock(block, x, y, z);
 
             if (block instanceof BlockRock && world.getBlockMetadata(x, y, z) == 0)

@@ -12,14 +12,33 @@ public class ArtificeFluids
 
     public static void initFluids()
     {
-        fluidOil = new Fluid("oil").setDensity(850).setViscosity(2000);
-        fluidFuel = new Fluid("fuel").setDensity(750);
-        fluidCreosote = new Fluid("creosote").setDensity(1100).setViscosity(1100);
-        fluidBitumen = new Fluid("bitumen").setDensity(1100).setViscosity(10000);
-
-        FluidRegistry.registerFluid(fluidOil);
-        FluidRegistry.registerFluid(fluidFuel);
-        FluidRegistry.registerFluid(fluidCreosote);
-        FluidRegistry.registerFluid(fluidBitumen);
+        if (!FluidRegistry.isFluidRegistered("oil"))
+        {
+            fluidOil = new Fluid("oil").setDensity(850).setViscosity(2000);
+            FluidRegistry.registerFluid(fluidOil);
+        }
+        else
+            fluidOil = FluidRegistry.getFluid("oil");
+        if (!FluidRegistry.isFluidRegistered("fuel"))
+        {
+            fluidFuel = new Fluid("fuel").setDensity(750);
+            FluidRegistry.registerFluid(fluidFuel);
+        }
+        else
+            fluidFuel = FluidRegistry.getFluid("fuel");
+        if (!FluidRegistry.isFluidRegistered("creosote"))
+        {
+            fluidCreosote = new Fluid("creosote").setDensity(1100).setViscosity(1100);
+            FluidRegistry.registerFluid(fluidCreosote);
+        }
+        else
+            fluidCreosote = FluidRegistry.getFluid("creosote");
+        if (!FluidRegistry.isFluidRegistered("bitumen"))
+        {
+            fluidBitumen = new Fluid("bitumen").setDensity(1100).setViscosity(10000);
+            FluidRegistry.registerFluid(fluidBitumen);
+        }
+        else
+            fluidBitumen = FluidRegistry.getFluid("bitumen");
     }
 }

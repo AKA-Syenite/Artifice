@@ -6,13 +6,17 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.client.particle.EntityFX;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
+import net.minecraft.world.World;
 import shukaro.artifice.ArtificeBlocks;
 import shukaro.artifice.ArtificeConfig;
 import shukaro.artifice.ArtificeCore;
@@ -29,15 +33,27 @@ public class BlockOre extends BlockArtifice
 {
     private IIcon icon;
     private String name;
+    private Integer color;
+    private boolean glowing;
+    private int index;
 
-    public BlockOre(String name)
+    public BlockOre(String name, int index) { this(name, false, null, index); }
+
+    public BlockOre(String name, boolean glowing, Integer color, int index)
     {
         super(Material.rock);
         setHardness(3.0F);
         setResistance(5.0F);
-        setBlockName("artifice." + name.toLowerCase(Locale.ENGLISH));
+        if (glowing)
+            setBlockName("artifice." + name.toLowerCase(Locale.ENGLISH) + ".glowing");
+        else
+            setBlockName("artifice." + name.toLowerCase(Locale.ENGLISH));
         setCreativeTab(ArtificeCore.worldTab);
         this.name = name;
+        this.index = index;
+        this.glowing = glowing;
+        if (color != null)
+            this.color = color;
 
         setHarvestLevel("pickaxe", 2);
         if (name.equals("oreCoal") || name.equals("oreSulfur"))
@@ -46,7 +62,102 @@ public class BlockOre extends BlockArtifice
             setHarvestLevel("pickaxe", 1);
         else if (name.equals("oreGold") || name.equals("oreDiamond") || name.equals("oreRedstone") || name.equals("oreEmerald"))
             setHarvestLevel("pickaxe", 2);
+
+        if (this.glowing)
+        {
+            this.setLightLevel(0.625F);
+            this.setTickRandomly(true);
+        }
     }
+
+    @Override
+    public int tickRate(World p_149738_1_)
+    {
+        return 30;
+    }
+
+    private void activate(World world, int x, int y, int z)
+    {
+        if (this.color == null)
+            return;
+        this.sparkle(world, x, y, z);
+        if (!this.glowing)
+            world.setBlock(x, y, z, ArtificeBlocks.blockOresGlowing[index], world.getBlockMetadata(x, y, z), 3);
+    }
+
+    @Override
+    public void updateTick(World world, int x, int y, int z, Random rand)
+    {
+        if (this.glowing)
+            world.setBlock(x, y, z, ArtificeBlocks.blockOres[index], world.getBlockMetadata(x, y, z), 3);
+    }
+
+    private void sparkle(World world, int x, int y, int z)
+    {
+        // redstone
+        if (index == 5)
+        {
+            Random random = world.rand;
+            double d0 = 0.0625D;
+            for (int l = 0; l < 6; ++l)
+            {
+                double d1 = (double)((float)x + random.nextFloat());
+                double d2 = (double)((float)y + random.nextFloat());
+                double d3 = (double)((float)z + random.nextFloat());
+
+                if (l == 0 && !world.getBlock(x, y + 1, z).isOpaqueCube())
+                    d2 = (double)(y + 1) + d0;
+
+                if (l == 1 && !world.getBlock(x, y - 1, z).isOpaqueCube())
+                    d2 = (double)(y + 0) - d0;
+
+                if (l == 2 && !world.getBlock(x, y, z + 1).isOpaqueCube())
+                    d3 = (double)(z + 1) + d0;
+
+                if (l == 3 && !world.getBlock(x, y, z - 1).isOpaqueCube())
+                    d3 = (double)(z + 0) - d0;
+
+                if (l == 4 && !world.getBlock(x + 1, y, z).isOpaqueCube())
+                    d1 = (double)(x + 1) + d0;
+
+                if (l == 5 && !world.getBlock(x - 1, y, z).isOpaqueCube())
+                    d1 = (double)(x + 0) - d0;
+
+                if (d1 < (double)x || d1 > (double)(x + 1) || d2 < 0.0D || d2 > (double)(y + 1) || d3 < (double)z || d3 > (double)(z + 1))
+                    world.spawnParticle("reddust", d1, d2, d3, 0.0D, 0.0D, 0.0D);
+            }
+        }
+    }
+
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void randomDisplayTick(World world, int x, int y, int z, Random rand)
+    {
+        if (this.glowing)
+            this.sparkle(world, x, y, z);
+    }
+
+    @Override
+    public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int side, float hitX, float hitY, float hitZ)
+    {
+        this.activate(world, x, y, z);
+        return super.onBlockActivated(world, x, y, z, player, side, hitX, hitY, hitZ);
+    }
+
+    @Override
+    public void onEntityWalking(World world, int x, int y, int z, Entity entity)
+    {
+        this.activate(world, x, y, z);
+        super.onEntityWalking(world, x, y, z, entity);
+    }
+
+    @Override
+    public void onBlockClicked(World world, int x, int y, int z, EntityPlayer player)
+    {
+        this.activate(world, x, y, z);
+        super.onBlockClicked(world, x, y, z, player);
+    }
+
 
     @Override
     public int quantityDropped(int meta, int fortune, Random rand)
@@ -122,8 +233,11 @@ public class BlockOre extends BlockArtifice
     @Override
     public void getSubBlocks(Item item, CreativeTabs tabs, List list)
     {
-        for (int i=0; i<ArtificeBlocks.rockBlocks.length; i++)
-            list.add(new ItemStack(item, 1, i));
+        if (!this.glowing)
+        {
+            for (int i = 0; i < ArtificeBlocks.rockBlocks.length; i++)
+                list.add(new ItemStack(item, 1, i));
+        }
     }
 
     @Override

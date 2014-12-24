@@ -157,7 +157,10 @@ public class ArtificeCore
             if (OreDictionaryArbiter.getOres(s) != null)
             {
                 for (ItemStack stack : OreDictionaryArbiter.getOres(s))
-                    ArtificeBlocks.oreSet.add(new NameMetaPair(stack.getItem(), stack.getItemDamage()));
+                {
+                    if (stack != null)
+                        ArtificeBlocks.oreSet.add(new NameMetaPair(stack.getItem(), stack.getItemDamage()));
+                }
             }
         }
 
@@ -181,5 +184,14 @@ public class ArtificeCore
     public void processIMCRequests(FMLInterModComms.IMCEvent event)
     {
         IMC.processIMC(event);
+    }
+
+    @EventHandler
+    public void missingMappings(FMLMissingMappingsEvent event)
+    {
+        for (FMLMissingMappingsEvent.MissingMapping m : event.getAll())
+        {
+
+        }
     }
 }

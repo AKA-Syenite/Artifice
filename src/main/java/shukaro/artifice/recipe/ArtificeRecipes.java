@@ -90,6 +90,14 @@ public class ArtificeRecipes
         }
         if (ArtificeConfig.lampRecipes.getBoolean(true))
             registerLampRecipes();
+        if (ArtificeConfig.enderOreRecipe.getBoolean(true))
+        {
+            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Items.ender_pearl, 1, 0), new Object[] {
+                    "XX",
+                    "XX",
+                    'X', new ItemStack(ArtificeItems.itemResource, 1, 2)
+            }));
+        }
     }
 
     private static void registerConvenienceRecipes()

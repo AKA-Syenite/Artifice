@@ -106,6 +106,8 @@ public class ArtificeCore
             WorldHandler.addFeature(new WorldGenSulfur(ArtificeBlocks.blockSulfur, 0, ArtificeConfig.sulfurSize.getInt(), ArtificeConfig.sulfurFrequency.getInt()));
         if (ArtificeConfig.niterGen.getBoolean())
             WorldHandler.addFeature(new WorldGenDesert(ArtificeBlocks.blockNiter, 0, ArtificeConfig.niterSize.getInt(), ArtificeConfig.niterFrequency.getInt()));
+        if (ArtificeConfig.enderOreGen.getBoolean())
+            WorldHandler.addFeature(new WorldGenCluster(ArtificeBlocks.blockEnderOre, 0, ArtificeConfig.enderOreMinHeight.getInt(), ArtificeConfig.enderOreMaxHeight.getInt(), ArtificeConfig.enderOreSize.getInt(), ArtificeConfig.enderOreFrequency.getInt()));
         for (int i=0; i<ArtificeConfig.rockNames.length; i++)
         {
             if (ArtificeConfig.rockLayersGen[i].getBoolean())

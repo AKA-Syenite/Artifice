@@ -324,6 +324,17 @@ tile.artifice.oresulfur.limestone.reddish.name=Sulfur Ore
 tile.artifice.oresulfur.limestone.bluish.name=Sulfur Ore
 tile.artifice.oresulfur.limestone.greenish.name=Sulfur Ore
 
+tile.artifice.enderore.name=Ender Ore
+tile.artifice.oreender.basalt.name=Ender Ore
+tile.artifice.oreender.marble.name=Ender Ore
+tile.artifice.oreender.limestone.gray.name=Ender Ore
+tile.artifice.oreender.limestone.lightgray.name=Ender Ore
+tile.artifice.oreender.limestone.brown.name=Ender Ore
+tile.artifice.oreender.limestone.tan.name=Ender Ore
+tile.artifice.oreender.limestone.reddish.name=Ender Ore
+tile.artifice.oreender.limestone.bluish.name=Ender Ore
+tile.artifice.oreender.limestone.greenish.name=Ender Ore
+
 tile.artifice.sulfur.ore.name=Sulfur Ore
 tile.artifice.sulfur.block.name=Sulfur Block
 
@@ -355,6 +366,7 @@ item.artifice.steel.dust.name=Steel Dust
 
 item.artifice.resource.sulfur.name=Sulfur
 item.artifice.resource.niter.name=Niter
+item.artifice.resource.enderdust.name=Ender Dust
 
 item.artifice.box.name=Box
 
@@ -394,6 +406,7 @@ item.artifice.bucket.bucketBitumen.name=Bitumen Bucket
 # Tooltips
 tooltip.artifice.sulfur=Carries a strong odor
 tooltip.artifice.niter=Also known as saltpeter
+tooltip.artifice.enderdust.flavor=Strangely fine...
 tooltip.artifice.dye.blue=Blue Dye
 tooltip.artifice.dye.blue.flavor=Well, some seas
 tooltip.artifice.dye.black=Black Dye

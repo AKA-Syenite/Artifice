@@ -95,6 +95,14 @@ public class ArtificeConfig
     public static Property flavorText;
     public static Property tooltips;
 
+    public static Property spawnEndermen;
+    public static Property enderOreRecipe;
+    public static Property enderOreGen;
+    public static Property enderOreFrequency;
+    public static Property enderOreSize;
+    public static Property enderOreMinHeight;
+    public static Property enderOreMaxHeight;
+
     private static Property dimensionBlacklist;
 
     public static void initCommon(FMLPreInitializationEvent evt)
@@ -103,6 +111,14 @@ public class ArtificeConfig
         try
         {
             c.load();
+
+            enderOreGen = c.get("Resource Generation", "Generate Ender Ore", true);
+            enderOreFrequency = c.get("Resource Generation", "Percentage Ender Ore Frequency", 150);
+            enderOreSize = c.get("Resource Generation", "Ender Ore Deposit Size", 10);
+            enderOreMinHeight = c.get("Resource Generation", "Ender Ore Minimum Height", 0);
+            enderOreMaxHeight = c.get("Resource Generation", "Ender Ore Maximum Height", 40);
+            spawnEndermen = c.get("General", "Spawn Endermen from Ender Ore", true);
+            enderOreRecipe = c.get("Recipes", "Allow crafting of ender pearls from dust", true);
 
             floraWorldGen = c.get("Plant Generation", "Generate Flowers", true);
             floraFrequency = c.get("Plant Generation", "Percentage Flower Frequency", 100);
@@ -118,7 +134,7 @@ public class ArtificeConfig
             niterFrequency = c.get("Resource Generation", "Percentage Niter Frequency", 100);
             niterSize = c.get("Resource Generation", "Niter Deposit Size", 64);
 
-            oilLakeGen = c.get("Resource Generation", "Generation Oil Lakes", true);
+            oilLakeGen = c.get("Resource Generation", "Generate Oil Lakes", true);
             oilLakeFrequency = c.get("Resource Generation", "Percentage Oil lake Frequency", 100);
 
             for (int i=0; i< rockNames.length; i++)

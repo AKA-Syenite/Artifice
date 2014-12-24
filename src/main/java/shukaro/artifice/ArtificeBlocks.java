@@ -4,6 +4,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import gnu.trove.map.TMap;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.oredict.OreDictionary;
 import shukaro.artifice.block.ItemBlockArtifice;
 import shukaro.artifice.block.decorative.*;
@@ -53,10 +54,10 @@ public class ArtificeBlocks
     public static BlockEnderOre blockEnderOre;
     public static BlockEnderOre blockEnderOreGlowing;
     public static BlockNiter blockNiter;
-    public static BlockFluidOil blockOil;
-    public static BlockFluidFuel blockFuel;
-    public static BlockFluidBitumen blockBitumen;
-    public static BlockFluidCreosote blockCreosote;
+    public static Block blockOil;
+    public static Block blockFuel;
+    public static Block blockBitumen;
+    public static Block blockCreosote;
     public static BlockGlowSand blockGlowSand;
 
     public static String[] rockColorNames = { "gray",   "lightgray", "brown",  "tan",    "reddish", "bluish", "greenish" };
@@ -107,10 +108,34 @@ public class ArtificeBlocks
         blockEnderOre = new BlockEnderOre(false);
         blockEnderOreGlowing = new BlockEnderOre(true);
         blockNiter = new BlockNiter();
-        blockOil = new BlockFluidOil();
-        blockFuel = new BlockFluidFuel();
-        blockBitumen = new BlockFluidBitumen();
-        blockCreosote = new BlockFluidCreosote();
+        if (FluidRegistry.getFluid("oil").getBlock() == null)
+        {
+            blockOil = new BlockFluidOil();
+            GameRegistry.registerBlock(blockOil, ItemBlockArtifice.class, blockOil.getUnlocalizedName());
+        }
+        else
+            blockOil = FluidRegistry.getFluid("oil").getBlock();
+        if (FluidRegistry.getFluid("fuel").getBlock() == null)
+        {
+            blockFuel = new BlockFluidFuel();
+            GameRegistry.registerBlock(blockFuel, ItemBlockArtifice.class, blockFuel.getUnlocalizedName());
+        }
+        else
+            blockFuel = FluidRegistry.getFluid("fuel").getBlock();
+        if (FluidRegistry.getFluid("bitumen").getBlock() == null)
+        {
+            blockBitumen = new BlockFluidBitumen();
+            GameRegistry.registerBlock(blockBitumen, ItemBlockArtifice.class, blockBitumen.getUnlocalizedName());
+        }
+        else
+            blockBitumen = FluidRegistry.getFluid("bitumen").getBlock();
+        if (FluidRegistry.getFluid("creosote").getBlock() == null)
+        {
+            blockCreosote = new BlockFluidCreosote();
+            GameRegistry.registerBlock(blockCreosote, ItemBlockArtifice.class, blockCreosote.getUnlocalizedName());
+        }
+        else
+            blockCreosote = FluidRegistry.getFluid("creosote").getBlock();
         blockGlowSand = new BlockGlowSand();
 
         GameRegistry.registerBlock(blockBasaltSlab, ItemBlockSlabArtifice.class, blockBasalt.getUnlocalizedName() + ".slab");
@@ -143,10 +168,6 @@ public class ArtificeBlocks
         GameRegistry.registerBlock(blockEnderOre, ItemBlockArtifice.class, blockEnderOre.getUnlocalizedName());
         GameRegistry.registerBlock(blockEnderOreGlowing, ItemBlockArtifice.class, blockEnderOreGlowing.getUnlocalizedName());
         GameRegistry.registerBlock(blockNiter, ItemBlockNiter.class, blockNiter.getUnlocalizedName());
-        GameRegistry.registerBlock(blockOil, ItemBlockArtifice.class, blockOil.getUnlocalizedName());
-        GameRegistry.registerBlock(blockFuel, ItemBlockArtifice.class, blockFuel.getUnlocalizedName());
-        GameRegistry.registerBlock(blockBitumen, ItemBlockArtifice.class, blockBitumen.getUnlocalizedName());
-        GameRegistry.registerBlock(blockCreosote, ItemBlockArtifice.class, blockCreosote.getUnlocalizedName());
         GameRegistry.registerBlock(blockGlowSand, ItemBlockArtifice.class, blockGlowSand.getUnlocalizedName());
 
         ArtificeRegistry.registerBasaltType(ArtificeBlocks.blockBasalt, 0);

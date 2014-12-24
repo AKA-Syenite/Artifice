@@ -48,6 +48,7 @@ public class ArtificeBlocks
     public static BlockStairsArtifice[] blockLimestoneCobbleStairs = new BlockStairsArtifice[7];
     public static String[] oreNames = { "oreCoal", "oreIron", "oreLapis", "oreGold", "oreDiamond", "oreRedstone", "oreEmerald", "oreCopper", "oreTin", "oreSilver", "oreLead", "oreNickel", "oreSulfur" };
     public static BlockOre[] blockOres = new BlockOre[oreNames.length];
+    public static BlockOre[] blockOresGlowing = new BlockOre[oreNames.length];
     public static BlockSulfur blockSulfur;
     public static BlockNiter blockNiter;
     public static BlockFluidOil blockOil;
@@ -90,7 +91,15 @@ public class ArtificeBlocks
             blockLimestoneCobbleStairs[i] = new BlockStairsArtifice(blockLimestones[i], 1, rockColors[i]);
         }
         for (int i=0; i<oreNames.length; i++)
-            blockOres[i] = new BlockOre(oreNames[i]);
+        {
+            if (oreNames[i].equals("oreRedstone"))
+            {
+                blockOres[i] = new BlockOre(oreNames[i], false, 0, i);
+                blockOresGlowing[i] = new BlockOre(oreNames[i], true, 0, i);
+            }
+            else
+                blockOres[i] = new BlockOre(oreNames[i], i);
+        }
         blockDummy = new BlockOre.BlockOreDummy();
         blockSulfur = new BlockSulfur();
         blockNiter = new BlockNiter();
@@ -121,7 +130,11 @@ public class ArtificeBlocks
             GameRegistry.registerBlock(blockLimestoneCobbleStairs[i], ItemBlockArtifice.class, blockLimestoneCobbleStairs[i].getUnlocalizedName());
         }
         for (int i=0; i<oreNames.length; i++)
+        {
             GameRegistry.registerBlock(blockOres[i], ItemBlockOre.class, blockOres[i].getUnlocalizedName());
+            if (blockOresGlowing[i] != null)
+                GameRegistry.registerBlock(blockOresGlowing[i], ItemBlockOre.class, blockOresGlowing[i].getUnlocalizedName());
+        }
         GameRegistry.registerBlock(blockSulfur, ItemBlockSulfur.class, blockSulfur.getUnlocalizedName());
         GameRegistry.registerBlock(blockNiter, ItemBlockNiter.class, blockNiter.getUnlocalizedName());
         GameRegistry.registerBlock(blockOil, ItemBlockArtifice.class, blockOil.getUnlocalizedName());

@@ -9,7 +9,9 @@ import net.minecraft.block.material.Material;
 import net.minecraft.client.particle.EntityFX;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.monster.EntityEnderman;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
@@ -71,6 +73,48 @@ public class BlockOre extends BlockArtifice
     }
 
     @Override
+    public void harvestBlock(World world, EntityPlayer entityplayer, int x, int y, int z, int fortune)
+    {
+        super.harvestBlock(world, entityplayer, x, y, z, fortune);
+        if (!name.equals("oreEnder"))
+            return;
+        if (!world.isRemote && world.rand.nextInt(100) < 20 && ArtificeConfig.spawnEndermen.getBoolean(true) && !EnchantmentHelper.getSilkTouchModifier(entityplayer))
+        {
+            int tries = world.rand.nextInt(20);
+            for (int i=0; i<tries; i++)
+            {
+                int spawnX = x + world.rand.nextInt(3) - world.rand.nextInt(3);
+                int spawnY = y + world.rand.nextInt(3) - world.rand.nextInt(3);
+                int spawnZ = z + world.rand.nextInt(3) - world.rand.nextInt(3);
+                if (canSpawnEnder(world, spawnX, spawnY, spawnZ))
+                {
+                    EntityEnderman ender = new EntityEnderman(world);
+                    ender.setLocationAndAngles((double)spawnX + world.rand.nextDouble(), (double)spawnY + world.rand.nextDouble(), (double)spawnZ + world.rand.nextDouble(), world.rand.nextFloat(), world.rand.nextFloat());
+                    world.spawnEntityInWorld(ender);
+                    ender.spawnExplosionParticle();
+                    ender.playSound("mob.endermen.portal", 1.0F, 1.0F);
+                    break;
+                }
+            }
+        }
+    }
+
+    private boolean canSpawnEnder(World world, int x, int y, int z)
+    {
+        if (world.getBlock(x, y, z) == null || world.isAirBlock(x, y, z))
+        {
+            if (world.getBlock(x, y+1, z) == null || world.isAirBlock(x, y+1, z))
+            {
+                if (world.getBlock(x, y+2, z) == null || world.isAirBlock(x, y+2, z))
+                {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    @Override
     public int tickRate(World p_149738_1_)
     {
         return 30;
@@ -127,6 +171,17 @@ public class BlockOre extends BlockArtifice
                     world.spawnParticle("reddust", d1, d2, d3, 0.0D, 0.0D, 0.0D);
             }
         }
+        // ender ore
+        if (index == 13)
+        {
+            for (int i=0; i<4; i++)
+            {
+                double dx = (double)x + 0.5D + world.rand.nextDouble() - world.rand.nextDouble();
+                double dy = (double)y + 0.5D + world.rand.nextDouble() - world.rand.nextDouble();
+                double dz = (double)z + 0.5D + world.rand.nextDouble() - world.rand.nextDouble();
+                world.spawnParticle("portal", dx, dy, dz, world.rand.nextDouble() - world.rand.nextDouble(), world.rand.nextDouble() - world.rand.nextDouble(), world.rand.nextDouble() - world.rand.nextDouble());
+            }
+        }
     }
 
     @Override
@@ -158,7 +213,6 @@ public class BlockOre extends BlockArtifice
         super.onBlockClicked(world, x, y, z, player);
     }
 
-
     @Override
     public int quantityDropped(int meta, int fortune, Random rand)
     {
@@ -174,6 +228,8 @@ public class BlockOre extends BlockArtifice
             return Blocks.emerald_ore.quantityDropped(0, fortune, rand);
         else if (name.equals("oreSulfur"))
             return ArtificeBlocks.blockSulfur.quantityDropped(0, fortune, rand);
+        else if (name.equals("oreEnder"))
+            return ArtificeBlocks.blockEnderOre.quantityDropped(0, fortune, rand);
         else
             return 1;
     }
@@ -197,6 +253,8 @@ public class BlockOre extends BlockArtifice
             return Blocks.emerald_ore.getItemDropped(0, rand, fortune);
         else if (name.equals("oreSulfur"))
             return ArtificeBlocks.blockSulfur.getItemDropped(0, rand, fortune);
+        else if (name.equals("oreEnder"))
+            return ArtificeBlocks.blockEnderOre.getItemDropped(0, rand, fortune);
         else
             return ItemHelper.getOre(name).getItem();
     }
@@ -208,6 +266,8 @@ public class BlockOre extends BlockArtifice
             return Blocks.lapis_ore.damageDropped(meta);
         else if (name.equals("oreCoal") || name.equals("oreIron") || name.equals("oreGold") || name.equals("oreDiamond") || name.equals("oreRedstone") || name.equals("oreEmerald") || name.equals("oreSulfur"))
             return 0;
+        else if (name.equals("oreEnder"))
+            return ArtificeBlocks.blockEnderOre.damageDropped(meta);
         else
             return ItemHelper.getOre(name).getItemDamage();
     }

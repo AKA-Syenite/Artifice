@@ -13,7 +13,7 @@ import java.util.Locale;
 
 public class ItemResource extends ItemArtifice
 {
-    private String[] names = { "sulfur", "niter" };
+    private String[] names = { "sulfur", "niter", "enderdust" };
     private IIcon[] icons = new IIcon[names.length];
 
     public ItemResource()

@@ -26,6 +26,7 @@ public class ArtificeTooltips
     {
         ArtificeRegistry.registerTooltip(new ItemStack(ArtificeItems.itemResource, 1, 0), localizeTooltip("sulfur", false));
         ArtificeRegistry.registerTooltip(new ItemStack(ArtificeItems.itemResource, 1, 1), localizeTooltip("niter", false));
+        ArtificeRegistry.registerTooltip(new ItemStack(ArtificeItems.itemResource, 1, 2), localizeTooltip("enderdust", true));
 
         ArtificeRegistry.registerTooltip(new ItemStack(ArtificeItems.itemDye, 1, 0), localizeTooltip("dye.blue", false));
         ArtificeRegistry.registerTooltip(new ItemStack(ArtificeItems.itemDye, 1, 0), localizeTooltip("dye.blue", true));

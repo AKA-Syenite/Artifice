@@ -46,10 +46,12 @@ public class ArtificeBlocks
     public static BlockRockSlab[] blockLimestoneDoubleSlabs = new BlockRockSlab[7];
     public static BlockStairsArtifice[] blockLimestoneBrickStairs = new BlockStairsArtifice[7];
     public static BlockStairsArtifice[] blockLimestoneCobbleStairs = new BlockStairsArtifice[7];
-    public static String[] oreNames = { "oreCoal", "oreIron", "oreLapis", "oreGold", "oreDiamond", "oreRedstone", "oreEmerald", "oreCopper", "oreTin", "oreSilver", "oreLead", "oreNickel", "oreSulfur" };
+    public static String[] oreNames = { "oreCoal", "oreIron", "oreLapis", "oreGold", "oreDiamond", "oreRedstone", "oreEmerald", "oreCopper", "oreTin", "oreSilver", "oreLead", "oreNickel", "oreSulfur", "oreEnder" };
     public static BlockOre[] blockOres = new BlockOre[oreNames.length];
     public static BlockOre[] blockOresGlowing = new BlockOre[oreNames.length];
     public static BlockSulfur blockSulfur;
+    public static BlockEnderOre blockEnderOre;
+    public static BlockEnderOre blockEnderOreGlowing;
     public static BlockNiter blockNiter;
     public static BlockFluidOil blockOil;
     public static BlockFluidFuel blockFuel;
@@ -92,7 +94,7 @@ public class ArtificeBlocks
         }
         for (int i=0; i<oreNames.length; i++)
         {
-            if (oreNames[i].equals("oreRedstone"))
+            if (oreNames[i].equals("oreRedstone") || oreNames[i].equals("oreEnder"))
             {
                 blockOres[i] = new BlockOre(oreNames[i], false, 0, i);
                 blockOresGlowing[i] = new BlockOre(oreNames[i], true, 0, i);
@@ -102,6 +104,8 @@ public class ArtificeBlocks
         }
         blockDummy = new BlockOre.BlockOreDummy();
         blockSulfur = new BlockSulfur();
+        blockEnderOre = new BlockEnderOre(false);
+        blockEnderOreGlowing = new BlockEnderOre(true);
         blockNiter = new BlockNiter();
         blockOil = new BlockFluidOil();
         blockFuel = new BlockFluidFuel();
@@ -136,6 +140,8 @@ public class ArtificeBlocks
                 GameRegistry.registerBlock(blockOresGlowing[i], ItemBlockOre.class, blockOresGlowing[i].getUnlocalizedName());
         }
         GameRegistry.registerBlock(blockSulfur, ItemBlockSulfur.class, blockSulfur.getUnlocalizedName());
+        GameRegistry.registerBlock(blockEnderOre, ItemBlockArtifice.class, blockEnderOre.getUnlocalizedName());
+        GameRegistry.registerBlock(blockEnderOreGlowing, ItemBlockArtifice.class, blockEnderOreGlowing.getUnlocalizedName());
         GameRegistry.registerBlock(blockNiter, ItemBlockNiter.class, blockNiter.getUnlocalizedName());
         GameRegistry.registerBlock(blockOil, ItemBlockArtifice.class, blockOil.getUnlocalizedName());
         GameRegistry.registerBlock(blockFuel, ItemBlockArtifice.class, blockFuel.getUnlocalizedName());
@@ -152,6 +158,7 @@ public class ArtificeBlocks
             OreDictionary.registerOre("blockLimestone", new ItemStack(blockLimestones[i]));
         OreDictionary.registerOre("oreSulfur", new ItemStack(blockSulfur, 1, 0));
         OreDictionary.registerOre("oreSaltpeter", new ItemStack(blockNiter, 1, 1));
+        OreDictionary.registerOre("oreEnder", new ItemStack(blockEnderOre, 1, 0));
 
         blockFrame = new BlockFrameBase();
         blockDetector = new BlockFrameDetector();

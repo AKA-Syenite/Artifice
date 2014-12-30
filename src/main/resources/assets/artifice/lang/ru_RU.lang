@@ -324,6 +324,17 @@ tile.artifice.oresulfur.limestone.reddish.name=Серная руда
 tile.artifice.oresulfur.limestone.bluish.name=Серная руда
 tile.artifice.oresulfur.limestone.greenish.name=Серная руда
 
+tile.artifice.enderore.name=Руда Края
+tile.artifice.oreender.basalt.name=Руда Края
+tile.artifice.oreender.marble.name=Руда Края
+tile.artifice.oreender.limestone.gray.name=Руда Края
+tile.artifice.oreender.limestone.lightgray.name=Руда Края
+tile.artifice.oreender.limestone.brown.name=Руда Края
+tile.artifice.oreender.limestone.tan.name=Руда Края
+tile.artifice.oreender.limestone.reddish.name=Руда Края
+tile.artifice.oreender.limestone.bluish.name=Руда Края
+tile.artifice.oreender.limestone.greenish.name=Руда Края
+
 tile.artifice.sulfur.ore.name=Серная руда
 tile.artifice.sulfur.block.name=Серный блок
 
@@ -355,6 +366,7 @@ item.artifice.steel.dust.name=Стальная пыль
 
 item.artifice.resource.sulfur.name=Сера
 item.artifice.resource.niter.name=Селитра
+item.artifice.resource.enderdust.name=Пыль Края
 
 item.artifice.box.name=Коробка
 
@@ -394,6 +406,7 @@ item.artifice.bucket.bucketBitumen.name=Ведро битума
 # Tooltips
 tooltip.artifice.sulfur=Имеет сильный запах
 tooltip.artifice.niter=Также известна как "saltpeter"
+tooltip.artifice.enderdust.flavor=Необыкновенно прекрасна...
 tooltip.artifice.dye.blue=Синий краситель
 tooltip.artifice.dye.blue.flavor=Ну, некоторые моря
 tooltip.artifice.dye.black=Чёрный краситель

@@ -50,10 +50,10 @@ tile.artifice.glasswall.reinforced.name=Parede de Vidro Reforçada
 tile.artifice.glasswall.industrial.name=Parede de Vidro Industrial
 tile.artifice.glasswall.advanced.name=Parede de Vidro Avançada
 
-tile.artifice.glasswalldark.basic.name=Parede de Vidro Escuro Básica
-tile.artifice.glasswalldark.reinforced.name=Parede de Vidro Escuro Reforçada
-tile.artifice.glasswalldark.industrial.name=Parede de Vidro Escuro Industrial
-tile.artifice.glasswalldark.advanced.name=Parede de Vidro Escuro Avançada
+tile.artifice.glasswalldark.basic.name=Parede de Vidro Fumê Básica
+tile.artifice.glasswalldark.reinforced.name=Parede de Vidro Fumê Reforçada
+tile.artifice.glasswalldark.industrial.name=Parede de Vidro Fumê Industrial
+tile.artifice.glasswalldark.advanced.name=Parede de Vidro Fumê Avançada
 
 tile.artifice.scaffold.basic.name=Andaime Básico
 tile.artifice.scaffold.reinforced.name=Andaime Reforçado
@@ -324,6 +324,17 @@ tile.artifice.oresulfur.limestone.reddish.name=Minério de Enxôfre
 tile.artifice.oresulfur.limestone.bluish.name=Minério de Enxôfre
 tile.artifice.oresulfur.limestone.greenish.name=Minério de Enxôfre
 
+tile.artifice.enderore.name=Minério do Fim
+tile.artifice.oreender.basalt.name=Minério do Fim
+tile.artifice.oreender.marble.name=Minério do Fim
+tile.artifice.oreender.limestone.gray.name=Minério do Fim
+tile.artifice.oreender.limestone.lightgray.name=Minério do Fim
+tile.artifice.oreender.limestone.brown.name=Minério do Fim
+tile.artifice.oreender.limestone.tan.name=Minério do Fim
+tile.artifice.oreender.limestone.reddish.name=Minério do Fim
+tile.artifice.oreender.limestone.bluish.name=Minério do Fim
+tile.artifice.oreender.limestone.greenish.name=Minério do Fim
+
 tile.artifice.sulfur.ore.name=Minério de Enxôfre
 tile.artifice.sulfur.block.name=Bloco de Enxôfre
 
@@ -355,6 +366,7 @@ item.artifice.steel.dust.name=Pó de Aço
 
 item.artifice.resource.sulfur.name=Enxôfre
 item.artifice.resource.niter.name=Salitre
+item.artifice.resource.enderdust.name=Pó do Fim
 
 item.artifice.box.name=Caixa
 
@@ -367,7 +379,7 @@ item.artifice.nugget.copper.name=Pepita de Cobre
 item.artifice.nugget.silver.name=Pepita de Prata
 item.artifice.nugget.platinum.name=Pepita de Platina
 
-item.artifice.coin.copper.name=Cruzeiro
+item.artifice.coin.copper.name=Vintem
 item.artifice.coin.silver.name=Tostão
 item.artifice.coin.gold.name=Pataca
 item.artifice.coin.platinum.name=Réis
@@ -394,11 +406,12 @@ item.artifice.bucket.bucketBitumen.name=Balde de Betume
 # Dicas
 tooltip.artifice.sulfur=Carrega um forte odor
 tooltip.artifice.niter=Também conhecido como Nitrato de Sódio
+tooltip.artifice.enderdust.flavor=Curiosamente bem...
 tooltip.artifice.dye.blue=Corante Azul
 tooltip.artifice.dye.blue.flavor=Bem, alguns verdes mares
-tooltip.artifice.dye.black=Corante Amrrom
+tooltip.artifice.dye.black=Corante Preto
 tooltip.artifice.dye.black.flavor=Mais escura que fuligem
-tooltip.artifice.dye.brown=Corante Brown
+tooltip.artifice.dye.brown=Corante Marrom
 tooltip.artifice.dye.brown.flavor=Quase avermelhado
 tooltip.artifice.dye.white=Corante Branco
 tooltip.artifice.dye.white.flavor=Austero como ossos branqueados
@@ -471,7 +484,7 @@ tooltip.artifice.overhang=Saliência Máxima:
 tooltip.artifice.glasswall.basic=Vidro Reforçado
 tooltip.artifice.glasswall.basic.flavor=Reforçar de vidro é complicado
 tooltip.artifice.glasswall.reinforced=Vidro Cerâmico
-tooltip.artifice.glasswall.reinforced.flavor=Cerâmica fazer o mundo girar
+tooltip.artifice.glasswall.reinforced.flavor=Cerâmica faz o mundo girar
 tooltip.artifice.glasswall.industrial=Pedra Vítrea
 tooltip.artifice.glasswall.industrial.flavor=Vidro vulcânico é naturalmente forte
 tooltip.artifice.glasswall.advanced=Vidro Laminado

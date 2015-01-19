@@ -324,6 +324,17 @@ tile.artifice.oresulfur.limestone.reddish.name=Minério de Enxôfre
 tile.artifice.oresulfur.limestone.bluish.name=Minério de Enxôfre
 tile.artifice.oresulfur.limestone.greenish.name=Minério de Enxôfre
 
+tile.artifice.enderore.name=Minério do Fim
+tile.artifice.oreender.basalt.name=Minério do Fim
+tile.artifice.oreender.marble.name=Minério do Fim
+tile.artifice.oreender.limestone.gray.name=Minério do Fim
+tile.artifice.oreender.limestone.lightgray.name=Minério do Fim
+tile.artifice.oreender.limestone.brown.name=Minério do Fim
+tile.artifice.oreender.limestone.tan.name=Minério do Fim
+tile.artifice.oreender.limestone.reddish.name=Minério do Fim
+tile.artifice.oreender.limestone.bluish.name=Minério do Fim
+tile.artifice.oreender.limestone.greenish.name=Minério do Fim
+
 tile.artifice.sulfur.ore.name=Minério de Enxôfre
 tile.artifice.sulfur.block.name=Bloco de Enxôfre
 
@@ -355,6 +366,7 @@ item.artifice.steel.dust.name=Pó de Aço
 
 item.artifice.resource.sulfur.name=Enxôfre
 item.artifice.resource.niter.name=Salitre
+item.artifice.resource.enderdust.name=Pó do Fim
 
 item.artifice.box.name=Caixa
 
@@ -394,6 +406,7 @@ item.artifice.bucket.bucketBitumen.name=Balde de Betume
 # Dicas
 tooltip.artifice.sulfur=Carrega um forte odor
 tooltip.artifice.niter=Também conhecido como Nitrato de Sódio
+tooltip.artifice.enderdust.flavor=Estranhamente bem... 
 tooltip.artifice.dye.blue=Corante Azul
 tooltip.artifice.dye.blue.flavor=Bem, alguns verdes mares
 tooltip.artifice.dye.black=Corante Amrrom

@@ -7,6 +7,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
+import shukaro.artifice.ArtificeBlocks;
 import shukaro.artifice.ArtificeCore;
 import shukaro.artifice.ArtificeItems;
 import shukaro.artifice.block.BlockArtifice;
@@ -18,6 +19,7 @@ import java.util.Random;
 public class BlockSulfur extends BlockArtifice
 {
     private IIcon[] icons = new IIcon[2];
+    private Random rand = new Random();
 
     public BlockSulfur()
     {
@@ -39,6 +41,20 @@ public class BlockSulfur extends BlockArtifice
     public Item getItemDropped(int meta, Random rand, int fortune)
     {
         return meta == 0 ? ArtificeItems.itemResource : Item.getItemFromBlock(this);
+    }
+
+    @Override
+    public int getExpDrop(IBlockAccess world, int meta, int fortune)
+    {
+        if (meta == 0 && this.getItemDropped(meta, rand, fortune) != Item.getItemFromBlock(this))
+            return 1 + rand.nextInt(5);
+        return 0;
+    }
+
+    @Override
+    public ItemStack createStackedBlock(int p_149644_1_)
+    {
+        return new ItemStack(ArtificeBlocks.blockSulfur);
     }
 
     @Override

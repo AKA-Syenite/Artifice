@@ -1,12 +1,11 @@
 package shukaro.artifice.block.world;
 
-import cofh.lib.util.helpers.ItemHelper;
 import cofh.core.util.oredict.OreDictionaryArbiter;
+import cofh.lib.util.helpers.ItemHelper;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.particle.EntityFX;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.enchantment.EnchantmentHelper;
@@ -22,8 +21,8 @@ import net.minecraft.world.World;
 import shukaro.artifice.ArtificeBlocks;
 import shukaro.artifice.ArtificeConfig;
 import shukaro.artifice.ArtificeCore;
-import shukaro.artifice.net.ClientProxy;
 import shukaro.artifice.block.BlockArtifice;
+import shukaro.artifice.net.ClientProxy;
 import shukaro.artifice.render.TextureHandler;
 import shukaro.artifice.util.NameMetaPair;
 
@@ -270,6 +269,41 @@ public class BlockOre extends BlockArtifice
             return ArtificeBlocks.blockEnderOre.damageDropped(meta);
         else
             return ItemHelper.getOre(name).getItemDamage();
+    }
+
+    @Override
+    public int getExpDrop(IBlockAccess world, int meta, int fortune)
+    {
+        if (name.equals("oreCoal"))
+            return Blocks.coal_ore.getExpDrop(world, meta, fortune);
+        else if (name.equals("oreIron"))
+            return Blocks.iron_ore.getExpDrop(world, meta, fortune);
+        else if (name.equals("oreLapis"))
+            return Blocks.lapis_ore.getExpDrop(world, meta, fortune);
+        else if (name.equals("oreGold"))
+            return Blocks.gold_ore.getExpDrop(world, meta, fortune);
+        else if (name.equals("oreDiamond"))
+            return Blocks.diamond_ore.getExpDrop(world, meta, fortune);
+        else if (name.equals("oreRedstone"))
+            return Blocks.redstone_ore.getExpDrop(world, meta, fortune);
+        else if (name.equals("oreEmerald"))
+            return Blocks.emerald_ore.getExpDrop(world, meta, fortune);
+        else if (name.equals("oreSulfur"))
+            return ArtificeBlocks.blockSulfur.getExpDrop(world, meta, fortune);
+        else if (name.equals("oreEnder"))
+            return ArtificeBlocks.blockEnderOre.getExpDrop(world, meta, fortune);
+        else
+            return Block.getBlockFromItem(ItemHelper.getOre(name).getItem()).getExpDrop(world, meta, fortune);
+    }
+
+    @Override
+    public ItemStack createStackedBlock(int p_149644_1_)
+    {
+        if (name.equals("oreRedstone"))
+            return new ItemStack(Blocks.redstone_ore);
+        else if (name.equals("oreEnder"))
+            return new ItemStack(ArtificeBlocks.blockEnderOre);
+        return super.createStackedBlock(p_149644_1_);
     }
 
     @Override

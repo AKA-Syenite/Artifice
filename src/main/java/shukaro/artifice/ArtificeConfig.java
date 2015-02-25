@@ -143,13 +143,13 @@ public class ArtificeConfig
 
                 if (i == 0)
                 {
-                    rockLayersGen[i] = c.get("Layer Generation", "Generate " + name + "Layer", true);
+                    rockLayersGen[i] = c.get("Layer Generation", "Generate " + name + " Layer", true);
                     rockLayersMinHeight[i] = c.get("Layer Generation", "Minimum " + name + " Layer Height", 0);
                     rockLayersMaxHeight[i] = c.get("Layer Generation", "Maximum " + name + " Layer Height", 10);
                 }
                 else
                 {
-                    rockLayersGen[i] = c.get("Layer Generation", "Generate " + name + "Layer", false);
+                    rockLayersGen[i] = c.get("Layer Generation", "Generate " + name + " Layer", false);
                     rockLayersMinHeight[i] = c.get("Layer Generation", "Minimum " + name + " Layer Height", 60);
                     rockLayersMaxHeight[i] = c.get("Layer Generation", "Maximum " + name + " Layer Height", 70);
                 }

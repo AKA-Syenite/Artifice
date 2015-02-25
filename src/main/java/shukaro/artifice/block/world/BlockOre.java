@@ -299,11 +299,26 @@ public class BlockOre extends BlockArtifice
     @Override
     public ItemStack createStackedBlock(int p_149644_1_)
     {
-        if (name.equals("oreRedstone"))
+        if (name.equals("oreCoal"))
+            return new ItemStack(Blocks.coal_ore);
+        else if (name.equals("oreIron"))
+            return new ItemStack(Blocks.iron_ore);
+        else if (name.equals("oreLapis"))
+            return new ItemStack(Blocks.lapis_ore);
+        else if (name.equals("oreGold"))
+            return new ItemStack(Blocks.gold_ore);
+        else if (name.equals("oreDiamond"))
+            return new ItemStack(Blocks.diamond_ore);
+        else if (name.equals("oreRedstone"))
             return new ItemStack(Blocks.redstone_ore);
+        else if (name.equals("oreEmerald"))
+            return new ItemStack(Blocks.emerald_ore);
+        else if (name.equals("oreSulfur"))
+            return new ItemStack(ArtificeBlocks.blockSulfur);
         else if (name.equals("oreEnder"))
             return new ItemStack(ArtificeBlocks.blockEnderOre);
-        return super.createStackedBlock(p_149644_1_);
+        else
+            return new ItemStack(Block.getBlockFromItem(ItemHelper.getOre(name).getItem()));
     }
 
     @Override

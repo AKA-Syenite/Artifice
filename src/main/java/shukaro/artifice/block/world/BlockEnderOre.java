@@ -28,6 +28,7 @@ public class BlockEnderOre extends Block
 {
     public IIcon icon;
     public boolean glowing;
+    private Random rand = new Random();
 
     public BlockEnderOre(boolean glowing)
     {
@@ -168,6 +169,20 @@ public class BlockEnderOre extends Block
     public int damageDropped(int meta)
     {
         return 2;
+    }
+
+    @Override
+    public int getExpDrop(IBlockAccess world, int meta, int fortune)
+    {
+        if (this.getItemDropped(meta, rand, fortune) != Item.getItemFromBlock(this))
+            return 1 + rand.nextInt(5);
+        return 0;
+    }
+
+    @Override
+    public ItemStack createStackedBlock(int p_149644_1_)
+    {
+        return new ItemStack(ArtificeBlocks.blockEnderOre);
     }
 
     @Override

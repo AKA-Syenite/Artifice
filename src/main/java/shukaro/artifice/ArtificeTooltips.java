@@ -317,5 +317,6 @@ public class ArtificeTooltips
         }
 
         ArtificeRegistry.registerTooltip(new ItemStack(ArtificeBlocks.blockGlowSand, 1, 0), localizeTooltip("glowsand", true));
+        ArtificeRegistry.registerTooltip(new ItemStack(ArtificeBlocks.blockGlowSand, 1, 1), localizeTooltip("glowsand", true));
     }
 }

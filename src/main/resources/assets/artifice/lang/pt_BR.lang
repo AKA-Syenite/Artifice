@@ -1,4 +1,4 @@
-# Nome dos Blocos
+# Block Names
 tile.artifice.basalt.name=Basalto
 tile.artifice.basalt.cobblestone.name=Pedregulho de Basalto
 tile.artifice.basalt.brick.name=Tijolos de Basalto
@@ -40,20 +40,20 @@ tile.artifice.frame.reinforced.name=Estrutura Reforçada
 tile.artifice.frame.industrial.name=Estrutura Industrial
 tile.artifice.frame.advanced.name=Estrutura Avançada
 
-tile.artifice.reinforced.basic.name=Parede de Explosão Básica
-tile.artifice.reinforced.reinforced.name=Parede de Explosão Reforçada
-tile.artifice.reinforced.industrial.name=Parede de Explosão Industrial
-tile.artifice.reinforced.advanced.name=Parede de Explosão Avançada
+tile.artifice.reinforced.basic.name=Parede Básica Contra Explosão
+tile.artifice.reinforced.reinforced.name=Parede Reforçada Contra Explosão
+tile.artifice.reinforced.industrial.name=Parede Industrial Contra Explosão
+tile.artifice.reinforced.advanced.name=Parede Avançada Contra Explosão
 
 tile.artifice.glasswall.basic.name=Parede de Vidro Básica
 tile.artifice.glasswall.reinforced.name=Parede de Vidro Reforçada
 tile.artifice.glasswall.industrial.name=Parede de Vidro Industrial
 tile.artifice.glasswall.advanced.name=Parede de Vidro Avançada
 
-tile.artifice.glasswalldark.basic.name=Parede de Vidro Escuro Básica
-tile.artifice.glasswalldark.reinforced.name=Parede de Vidro Escuro Reforçada
-tile.artifice.glasswalldark.industrial.name=Parede de Vidro Escuro Industrial
-tile.artifice.glasswalldark.advanced.name=Parede de Vidro Escuro Avançada
+tile.artifice.glasswalldark.basic.name=Parede de Vidro Fumê Básica
+tile.artifice.glasswalldark.reinforced.name=Parede de Vidro Fumê Reforçada
+tile.artifice.glasswalldark.industrial.name=Parede de Vidro Fumê Industrial
+tile.artifice.glasswalldark.advanced.name=Parede de Vidro Fumê Avançada
 
 tile.artifice.scaffold.basic.name=Andaime Básico
 tile.artifice.scaffold.reinforced.name=Andaime Reforçado
@@ -324,6 +324,17 @@ tile.artifice.oresulfur.limestone.reddish.name=Minério de Enxôfre
 tile.artifice.oresulfur.limestone.bluish.name=Minério de Enxôfre
 tile.artifice.oresulfur.limestone.greenish.name=Minério de Enxôfre
 
+tile.artifice.enderore.name=Minério do Ender
+tile.artifice.oreender.basalt.name=Minério do Ender
+tile.artifice.oreender.marble.name=Minério do Ender
+tile.artifice.oreender.limestone.gray.name=Minério do Ender
+tile.artifice.oreender.limestone.lightgray.name=Minério do Ender
+tile.artifice.oreender.limestone.brown.name=Minério do Ender
+tile.artifice.oreender.limestone.tan.name=Minério do Ender
+tile.artifice.oreender.limestone.reddish.name=Minério do Ender
+tile.artifice.oreender.limestone.bluish.name=Minério do Ender
+tile.artifice.oreender.limestone.greenish.name=Minério do Ender
+
 tile.artifice.sulfur.ore.name=Minério de Enxôfre
 tile.artifice.sulfur.block.name=Bloco de Enxôfre
 
@@ -337,7 +348,7 @@ tile.artifice.fluid.creosote.name=Creosoto
 
 tile.artifice.glowsand.name=Areia Brilhante
 
-# Nome dos Itens
+# Item Names
 item.artifice.sledge.wood.name=Martelo de Forja de Madeira
 item.artifice.sledge.stone.name=Martelo de Forja de Pedra
 item.artifice.sledge.iron.name=Martelo de Forja de Ferro
@@ -355,6 +366,7 @@ item.artifice.steel.dust.name=Pó de Aço
 
 item.artifice.resource.sulfur.name=Enxôfre
 item.artifice.resource.niter.name=Salitre
+item.artifice.resource.enderdust.name=Pó do Ender
 
 item.artifice.box.name=Caixa
 
@@ -391,9 +403,10 @@ item.artifice.bucket.bucketFuel.name=Balde de Combustível
 item.artifice.bucket.bucketCreosote.name=Balde de Creosoto
 item.artifice.bucket.bucketBitumen.name=Balde de Betume
 
-# Dicas
+# Tooltips
 tooltip.artifice.sulfur=Carrega um forte odor
 tooltip.artifice.niter=Também conhecido como Nitrato de Sódio
+tooltip.artifice.enderdust.flavor=Estranhamente bem... 
 tooltip.artifice.dye.blue=Corante Azul
 tooltip.artifice.dye.blue.flavor=Bem, alguns verdes mares
 tooltip.artifice.dye.black=Corante Amrrom
@@ -512,3 +525,6 @@ tooltip.artifice.bucket.fuel.flavor=Leve, mas volátil
 tooltip.artifice.bucket.creosote.flavor=Série
 tooltip.artifice.bucket.bitumen.flavor=Extremamente grosso
 tooltip.artifice.glowsand.flavor=Um pouco estranho
+
+
+# Localization File: Português Brasileiro (pt_BR) – por: Al-Myr /  Last Update: 20/2/2015 – por: Al-Myr

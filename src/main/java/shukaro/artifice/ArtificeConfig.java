@@ -103,6 +103,8 @@ public class ArtificeConfig
     public static Property enderOreMinHeight;
     public static Property enderOreMaxHeight;
 
+    public static Property glowSandRecipe;
+
     private static Property dimensionBlacklist;
 
     public static void initCommon(FMLPreInitializationEvent evt)
@@ -119,6 +121,8 @@ public class ArtificeConfig
             enderOreMaxHeight = c.get("Resource Generation", "Ender Ore Maximum Height", 40);
             spawnEndermen = c.get("General", "Spawn Endermen from Ender Ore", true);
             enderOreRecipe = c.get("Recipes", "Allow crafting of ender pearls from dust", true);
+
+            glowSandRecipe = c.get("Recipes", "Allow crafting of glowsand", true);
 
             floraWorldGen = c.get("Plant Generation", "Generate Flowers", true);
             floraFrequency = c.get("Plant Generation", "Percentage Flower Frequency", 100);

@@ -15,7 +15,7 @@ public class ItemBlockOre extends ItemBlockArtifice
     @Override
     public String getUnlocalizedName(ItemStack stack)
     {
-        if (stack.getItemDamage() >= ArtificeBlocks.rockBlockNames.length)
+        if (stack.getItemDamage() > ArtificeBlocks.rockBlockNames.length)
             return Block.getBlockFromItem(stack.getItem()).getUnlocalizedName();
         return Block.getBlockFromItem(stack.getItem()).getUnlocalizedName() + "." + ArtificeBlocks.rockBlockNames[stack.getItemDamage()];
     }

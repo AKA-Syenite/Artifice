@@ -9,6 +9,7 @@ import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import shukaro.artifice.ArtificeBlocks;
 import shukaro.artifice.ArtificeCore;
@@ -22,6 +23,7 @@ import java.util.Random;
 public class BlockNiter extends BlockFalling
 {
     private IIcon[] icons = new IIcon[2];
+    private Random rand = new Random();
 
     public BlockNiter()
     {
@@ -79,6 +81,14 @@ public class BlockNiter extends BlockFalling
     public Item getItemDropped(int meta, Random rand, int fortune)
     {
         return meta == 0 ? ArtificeItems.itemResource : Item.getItemFromBlock(this);
+    }
+
+    @Override
+    public int getExpDrop(IBlockAccess world, int meta, int fortune)
+    {
+        if (meta == 0 && this.getItemDropped(meta, rand, fortune) != Item.getItemFromBlock(this))
+            return 1 + rand.nextInt(2);
+        return 0;
     }
 
     @Override

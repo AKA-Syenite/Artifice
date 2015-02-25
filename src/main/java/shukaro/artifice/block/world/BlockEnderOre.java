@@ -206,6 +206,7 @@ public class BlockEnderOre extends Block
     @Override
     public void getSubBlocks(Item i, CreativeTabs tabs, List list)
     {
-        list.add(new ItemStack(i, 1, 0));
+        if (!glowing)
+            list.add(new ItemStack(i, 1, 0));
     }
 }

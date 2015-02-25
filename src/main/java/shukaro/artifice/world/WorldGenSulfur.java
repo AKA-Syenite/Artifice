@@ -5,14 +5,9 @@ import gnu.trove.map.TMap;
 import gnu.trove.map.hash.THashMap;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
-import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
-import net.minecraft.world.biome.BiomeGenBase;
-import net.minecraftforge.common.BiomeDictionary;
-import shukaro.artifice.ArtificeBlocks;
 import shukaro.artifice.ArtificeCore;
 import shukaro.artifice.ArtificeRegistry;
-import shukaro.artifice.block.world.BlockOre;
 import shukaro.artifice.event.ArtificeTickHandler;
 import shukaro.artifice.util.BlockCoord;
 import shukaro.artifice.util.ChunkCoord;
@@ -60,13 +55,12 @@ public class WorldGenSulfur implements IFeatureGenerator
             total = (rand.nextInt(100) < Math.abs(frequency % (int) Math.pow(10, (int) Math.log10(frequency)))) ? (frequency / 100) + 1 : (frequency / 100);
         else
             total = rand.nextInt(100) < frequency ? 0 : 1;
-        total += rand.nextInt(4);
         for (int j=0; j<total; j++)
         {
             boolean doGen = false;
             BlockCoord b = new BlockCoord();
 
-            int tries = rand.nextInt(16) + 10;
+            int tries = rand.nextInt(16);
             for (int i = 0; i < tries; i++)
             {
                 int x = (chunkX << 4) + rand.nextInt(16);
@@ -98,7 +92,7 @@ public class WorldGenSulfur implements IFeatureGenerator
         NameMetaPair pair = new NameMetaPair(b.getBlock(world), b.getMeta(world));
         if (!b.isAir(world) && replaced.contains(pair))
         {
-            for (BlockCoord n : b.getNearby())
+            for (BlockCoord n : b.getAdjacent())
             {
                 if (n.getBlock(world).equals(Blocks.lava) || n.getBlock(world).equals(Blocks.flowing_lava) || n.getBlock(world).equals(block))
                     return true;

@@ -98,6 +98,23 @@ public class ArtificeRecipes
                     'X', new ItemStack(ArtificeItems.itemResource, 1, 2)
             }));
         }
+        if (ArtificeConfig.glowSandRecipe.getBoolean(true))
+        {
+            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeBlocks.blockGlowSand, 8, 0), new Object[]{
+                    "XXX",
+                    "XYX",
+                    "XXX",
+                    'X', new ItemStack(Blocks.sand, 1, 0),
+                    'Y', Items.glowstone_dust
+            }));
+            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeBlocks.blockGlowSand, 8, 1), new Object[]{
+                    "XXX",
+                    "XYX",
+                    "XXX",
+                    'X', new ItemStack(Blocks.sand, 1, 1),
+                    'Y', Items.glowstone_dust
+            }));
+        }
     }
 
     private static void registerConvenienceRecipes()

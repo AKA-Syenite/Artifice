@@ -13,11 +13,8 @@ import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import shukaro.artifice.ArtificeBlocks;
-import shukaro.artifice.ArtificeConfig;
 import shukaro.artifice.ArtificeCore;
-import shukaro.artifice.net.PacketDispatcher;
 import shukaro.artifice.render.TextureHandler;
-import shukaro.artifice.util.BlockCoord;
 
 import java.util.List;
 import java.util.Random;
@@ -54,7 +51,30 @@ public class BlockRockSlab extends BlockSlab
     @Override
     public Item getItemDropped(int meta, Random rand, int fortune)
     {
+        if (isDouble)
+        {
+            if (this == ArtificeBlocks.blockBasaltDoubleSlab)
+                return Item.getItemFromBlock(ArtificeBlocks.blockBasaltSlab);
+            else if (this == ArtificeBlocks.blockMarbleDoubleSlab)
+                return Item.getItemFromBlock(ArtificeBlocks.blockMarbleSlab);
+            else
+            {
+                int i = 0;
+                for (Block b : ArtificeBlocks.blockLimestoneDoubleSlabs)
+                {
+                    if (this == b)
+                        return Item.getItemFromBlock(ArtificeBlocks.blockLimestoneSlabs[i]);
+                    i++;
+                }
+            }
+        }
         return Item.getItemFromBlock(this);
+    }
+
+    @SideOnly(Side.CLIENT)
+    public Item getItem(World world, int x, int y, int z)
+    {
+        return this.getItemDropped(world.getBlockMetadata(x, y, z), world.rand, 0);
     }
 
     @Override

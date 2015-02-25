@@ -127,7 +127,7 @@ public class BlockRock extends BlockArtifice
     @Override
     public boolean renderAsNormalBlock()
     {
-        return false;
+        return true;
     }
 
     @Override

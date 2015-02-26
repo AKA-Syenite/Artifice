@@ -324,6 +324,17 @@ tile.artifice.oresulfur.limestone.reddish.name=硫磺矿石
 tile.artifice.oresulfur.limestone.bluish.name=硫磺矿石
 tile.artifice.oresulfur.limestone.greenish.name=硫磺矿石
 
+tile.artifice.enderore.name=末影矿石
+tile.artifice.oreender.basalt.name=末影矿石
+tile.artifice.oreender.marble.name=末影矿石
+tile.artifice.oreender.limestone.gray.name=末影矿石
+tile.artifice.oreender.limestone.lightgray.name=末影矿石
+tile.artifice.oreender.limestone.brown.name=末影矿石
+tile.artifice.oreender.limestone.tan.name=末影矿石
+tile.artifice.oreender.limestone.reddish.name=末影矿石
+tile.artifice.oreender.limestone.bluish.name=末影矿石
+tile.artifice.oreender.limestone.greenish.name=末影矿石
+
 tile.artifice.sulfur.ore.name=硫磺
 tile.artifice.sulfur.block.name=硫磺块
 
@@ -355,6 +366,7 @@ item.artifice.steel.dust.name=钢粉
 
 item.artifice.resource.sulfur.name=硫磺
 item.artifice.resource.niter.name=硝石
+item.artifice.resource.enderdust.name=末影粉尘
 
 item.artifice.box.name=盒子
 

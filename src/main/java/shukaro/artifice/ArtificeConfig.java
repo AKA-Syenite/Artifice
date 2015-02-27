@@ -104,6 +104,7 @@ public class ArtificeConfig
     public static Property enderOreMaxHeight;
 
     public static Property glowSandRecipe;
+    public static Property coloredTorchRecipes;
 
     private static Property dimensionBlacklist;
 
@@ -123,6 +124,7 @@ public class ArtificeConfig
             enderOreRecipe = c.get("Recipes", "Allow crafting of ender pearls from dust", true);
 
             glowSandRecipe = c.get("Recipes", "Allow crafting of glowsand", true);
+            coloredTorchRecipes = c.get("Recipes", "Allow crafting of colored torches", true);
 
             floraWorldGen = c.get("Plant Generation", "Generate Flowers", true);
             floraFrequency = c.get("Plant Generation", "Percentage Flower Frequency", 100);

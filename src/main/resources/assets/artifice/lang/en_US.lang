@@ -348,6 +348,23 @@ tile.artifice.fluid.creosote.name=Creosote
 
 tile.artifice.glowsand.name=Glowing Sand
 
+tile.artifice.coloredtorch0.name=White Torch
+tile.artifice.coloredtorch1.name=Orange Torch
+tile.artifice.coloredtorch2.name=Magenta Torch
+tile.artifice.coloredtorch3.name=Light Blue Torch
+tile.artifice.coloredtorch4.name=Yellow Torch
+tile.artifice.coloredtorch5.name=Lime Torch
+tile.artifice.coloredtorch6.name=Pink Torch
+tile.artifice.coloredtorch7.name=Gray Torch
+tile.artifice.coloredtorch8.name=Light Gray Torch
+tile.artifice.coloredtorch9.name=Cyan Torch
+tile.artifice.coloredtorch10.name=Purple Torch
+tile.artifice.coloredtorch11.name=Blue Torch
+tile.artifice.coloredtorch12.name=Brown Torch
+tile.artifice.coloredtorch13.name=Green Torch
+tile.artifice.coloredtorch14.name=Red Torch
+tile.artifice.coloredtorch15.name=Black Torch
+
 # Item Names
 item.artifice.sledge.wood.name=Wooden Sledge
 item.artifice.sledge.stone.name=Stone Sledge
@@ -525,3 +542,4 @@ tooltip.artifice.bucket.fuel.flavor=Light, but volatile
 tooltip.artifice.bucket.creosote.flavor=Reeks
 tooltip.artifice.bucket.bitumen.flavor=Extremely thick
 tooltip.artifice.glowsand.flavor=A bit eerie
+tooltip.artifice.coloredtorch.flavor=Somewhat more exciting

@@ -16,6 +16,8 @@ import shukaro.artifice.ArtificeBlocks;
 import shukaro.artifice.ArtificeConfig;
 import shukaro.artifice.ArtificeItems;
 
+import java.util.Collections;
+
 public class ArtificeRecipes
 {
     public static void registerRecipes()
@@ -114,6 +116,39 @@ public class ArtificeRecipes
                     'X', new ItemStack(Blocks.sand, 1, 1),
                     'Y', Items.glowstone_dust
             }));
+        }
+        if (ArtificeConfig.coloredTorchRecipes.getBoolean(true))
+        {
+            String[] dyes =
+                    {
+                            "Black",
+                            "Red",
+                            "Green",
+                            "Brown",
+                            "Blue",
+                            "Purple",
+                            "Cyan",
+                            "LightGray",
+                            "Gray",
+                            "Pink",
+                            "Lime",
+                            "Yellow",
+                            "LightBlue",
+                            "Magenta",
+                            "Orange",
+                            "White"
+                    };
+            for (int i=0; i<16; i++)
+            {
+                GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeBlocks.blockColoredTorches[i], 8, 0), new Object[]{
+                        "XXX",
+                        "XYX",
+                        "XXX",
+                        'X', Blocks.torch,
+                        'Y', "dye" + dyes[15-i]
+                }));
+                GameRegistry.addRecipe(new ShapelessOreRecipe(Blocks.torch, new ItemStack(ArtificeBlocks.blockColoredTorches[i], 1, 0)));
+            }
         }
     }
 

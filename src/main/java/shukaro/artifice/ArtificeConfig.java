@@ -242,9 +242,9 @@ public class ArtificeConfig
             floraBoneMeal = c.get("Compatibility", "Bonemeal Flowers", true);
             floraBoneMeal.comment = "Allow flower growth from bonemeal";
             marbleList = c.get("Compatibility", "Marble List", "");
-            marbleList.comment = "Comma-seperated list of ID:Meta pairs to add to a cycling chain of 1:1 marble exchange recipes. No spaces or quotes, meta is required.";
+            marbleList.comment = "Comma-seperated list of Name:Meta pairs to add to a cycling chain of 1:1 marble exchange recipes. No spaces or quotes, meta is required.";
             basaltList = c.get("Compatibility", "Basalt List", "");
-            basaltList.comment = "Comma-seperated list of ID:Meta pairs to add to a cycling chain of 1:1 basalt exchange recipes. No spaces or quotes, meta is required.";
+            basaltList.comment = "Comma-seperated list of Name:Meta pairs to add to a cycling chain of 1:1 basalt exchange recipes. No spaces or quotes, meta is required.";
 
             limitUpgrades = c.get("Upgrades", "Limit Upgrades", true);
             limitUpgrades.comment = "If true, caps the maximum enchant level that can be applied through upgrades to the configured levels, if not set they will cap at the natural level cap";
@@ -276,6 +276,7 @@ public class ArtificeConfig
 
         setStoneList(true);
         setStoneList(false);
+        setDimBlacklist();
     }
 
     public static void initClient(FMLPreInitializationEvent evt)
@@ -297,6 +298,27 @@ public class ArtificeConfig
         finally
         {
             c.save();
+        }
+    }
+
+    private static void setDimBlacklist()
+    {
+        ArtificeCore.logger.info("Reading the dimension blacklist");
+        if (dimensionBlacklist != null)
+        {
+            String blacklist = dimensionBlacklist.getString().trim();
+            for (String dim : blacklist.split(","))
+            {
+                try
+                {
+                    int dimID = Integer.parseInt(dim);
+                    ArtificeRegistry.registerDimensionBlacklist(dimID);
+                }
+                catch (Exception e)
+                {
+                    ArtificeCore.logger.warn("Could not read the dimension blacklist");
+                }
+            }
         }
     }
 

@@ -1,35 +1,36 @@
-package shukaro.artifice.item;
+package shukaro.artifice.enchant;
 
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnumEnchantmentType;
+import net.minecraft.util.StatCollector;
 import shukaro.artifice.ArtificeCore;
 
 import java.util.Locale;
 
-public class EnchantmentSoulstealing extends Enchantment
+public class EnchantmentInvisible extends Enchantment
 {
-    public EnchantmentSoulstealing(int eid, int weight)
+    public EnchantmentInvisible(int eid, int weight)
     {
-        super(eid, weight, EnumEnchantmentType.weapon);
-        this.setName(ArtificeCore.modID.toLowerCase(Locale.ENGLISH) + ".soulstealing");
+        super(eid, weight, EnumEnchantmentType.armor);
+        this.setName(ArtificeCore.modID.toLowerCase(Locale.ENGLISH) + ".invisible");
         Enchantment.addToBookList(this);
     }
 
     @Override
     public int getMaxLevel()
     {
-        return 3;
+        return 1;
     }
 
     @Override
     public int getMinEnchantability(int level)
     {
-        return 15 + (level - 1) * 9;
+        return 10;
     }
 
     @Override
     public int getMaxEnchantability(int level)
     {
-        return this.getMinEnchantability(level) + 50;
+        return this.getMinEnchantability(level) + 60;
     }
 }

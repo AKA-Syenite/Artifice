@@ -543,3 +543,6 @@ tooltip.artifice.bucket.creosote.flavor=Reeks
 tooltip.artifice.bucket.bitumen.flavor=Extremely thick
 tooltip.artifice.glowsand.flavor=A bit eerie
 tooltip.artifice.coloredtorch.flavor=Somewhat more exciting
+
+#Enchantments
+enchantment.artifice.invisible=Invisible

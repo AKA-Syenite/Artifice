@@ -6,8 +6,12 @@ import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.enchantment.EnchantmentHelper;
+import net.minecraft.init.Items;
+import net.minecraftforge.client.event.RenderPlayerEvent;
 import net.minecraftforge.client.event.TextureStitchEvent;
 import net.minecraftforge.fluids.Fluid;
+import shukaro.artifice.ArtificeCore;
 import shukaro.artifice.ArtificeFluids;
 
 public class ArtificeClientEventHandler
@@ -49,5 +53,13 @@ public class ArtificeClientEventHandler
 
         String name = StringHelper.titleCase(fluid.getName());
         fluid.setIcons(IconRegistry.getIcon("Fluid" + name), IconRegistry.getIcon("Fluid" + name, 1));
+    }
+
+    @SideOnly(Side.CLIENT)
+    @SubscribeEvent
+    public void renderInvisibleArmor(RenderPlayerEvent.SetArmorModel event)
+    {
+        if (event.stack != null && EnchantmentHelper.getEnchantmentLevel(ArtificeCore.enchantmentInvisible.effectId, event.stack) > 0)
+            event.result = 0;
     }
 }

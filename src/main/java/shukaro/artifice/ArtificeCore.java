@@ -23,6 +23,7 @@ import shukaro.artifice.compat.*;
 import shukaro.artifice.event.ArtificeEventHandler;
 import shukaro.artifice.event.ArtificeTickHandler;
 import shukaro.artifice.gui.ArtificeCreativeTab;
+import shukaro.artifice.item.EnchantmentInvisible;
 import shukaro.artifice.net.CommonProxy;
 import shukaro.artifice.recipe.ArtificeRecipes;
 import shukaro.artifice.util.NameMetaPair;
@@ -52,6 +53,8 @@ public class ArtificeCore
 
     public static final ArtificeCreativeTab mainTab = new ArtificeCreativeTab("Artifice");
     public static final ArtificeCreativeTab worldTab = new ArtificeCreativeTab("Artifice Worldgen");
+
+    public static EnchantmentInvisible enchantmentInvisible;
 
     @Instance(modID)
     public static ArtificeCore instance;
@@ -142,6 +145,8 @@ public class ArtificeCore
                 c.load();
             }
         }
+
+        enchantmentInvisible = new EnchantmentInvisible(ArtificeConfig.enchantmentInvisibleID.getInt(), ArtificeConfig.enchantmentInvisibleWeight.getInt());
     }
 
     @EventHandler

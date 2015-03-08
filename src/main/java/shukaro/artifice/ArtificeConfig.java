@@ -108,6 +108,9 @@ public class ArtificeConfig
 
     private static Property dimensionBlacklist;
 
+    public static Property enchantmentInvisibleID;
+    public static Property enchantmentInvisibleWeight;
+
     public static void initCommon(FMLPreInitializationEvent evt)
     {
         Configuration c = new Configuration(evt.getSuggestedConfigurationFile());
@@ -263,6 +266,10 @@ public class ArtificeConfig
             maxRespiration = c.get("Upgrades", "Max Respiration Level", 3);
             maxAquaAffinity = c.get("Upgrades", "Max Aqua Affinity Level", 1);
             c.addCustomCategoryComment("Upgrades", "Maximum level of enchantment allowed for each enchantment via upgrades");
+
+            enchantmentInvisibleID = c.get("Enchantments", "Invisible Enchant ID", 72);
+            enchantmentInvisibleWeight = c.get("Enchantments", "Invisible Enchant Weight", 4);
+            c.addCustomCategoryComment("Enchantments", "Higher weight values equate to higher occurrence");
         }
         catch (Exception e)
         {

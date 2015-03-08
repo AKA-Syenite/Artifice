@@ -110,6 +110,10 @@ public class ArtificeConfig
 
     public static Property enchantmentInvisibleID;
     public static Property enchantmentInvisibleWeight;
+    public static Property enchantmentInvisibleEnable;
+    public static Property enchantmentSoulstealingID;
+    public static Property enchantmentSoulstealingWeight;
+    public static Property enchantmentSoulstealingEnable;
 
     public static void initCommon(FMLPreInitializationEvent evt)
     {
@@ -269,6 +273,10 @@ public class ArtificeConfig
 
             enchantmentInvisibleID = c.get("Enchantments", "Invisible Enchant ID", 72);
             enchantmentInvisibleWeight = c.get("Enchantments", "Invisible Enchant Weight", 4);
+            enchantmentInvisibleEnable = c.get("Enchantments", "Enable invisible enchant", true);
+            enchantmentSoulstealingID = c.get("Enchantments", "Soul Stealing Enchant ID", 73);
+            enchantmentSoulstealingWeight = c.get("Enchantments", "Soul Stealing Enchant Weight", 2);
+            enchantmentSoulstealingEnable = c.get("Enchantments", "Enable soul stealing enchant", true);
             c.addCustomCategoryComment("Enchantments", "Higher weight values equate to higher occurrence");
         }
         catch (Exception e)

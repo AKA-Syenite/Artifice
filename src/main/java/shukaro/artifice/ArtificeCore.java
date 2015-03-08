@@ -24,6 +24,7 @@ import shukaro.artifice.event.ArtificeEventHandler;
 import shukaro.artifice.event.ArtificeTickHandler;
 import shukaro.artifice.gui.ArtificeCreativeTab;
 import shukaro.artifice.item.EnchantmentInvisible;
+import shukaro.artifice.item.EnchantmentSoulstealing;
 import shukaro.artifice.net.CommonProxy;
 import shukaro.artifice.recipe.ArtificeRecipes;
 import shukaro.artifice.util.NameMetaPair;
@@ -55,6 +56,7 @@ public class ArtificeCore
     public static final ArtificeCreativeTab worldTab = new ArtificeCreativeTab("Artifice Worldgen");
 
     public static EnchantmentInvisible enchantmentInvisible;
+    public static EnchantmentSoulstealing enchantmentSoulstealing;
 
     @Instance(modID)
     public static ArtificeCore instance;
@@ -146,7 +148,10 @@ public class ArtificeCore
             }
         }
 
-        enchantmentInvisible = new EnchantmentInvisible(ArtificeConfig.enchantmentInvisibleID.getInt(), ArtificeConfig.enchantmentInvisibleWeight.getInt());
+        if (ArtificeConfig.enchantmentInvisibleEnable.getBoolean())
+            enchantmentInvisible = new EnchantmentInvisible(ArtificeConfig.enchantmentInvisibleID.getInt(), ArtificeConfig.enchantmentInvisibleWeight.getInt());
+        if (ArtificeConfig.enchantmentSoulstealingEnable.getBoolean())
+            enchantmentSoulstealing = new EnchantmentSoulstealing(ArtificeConfig.enchantmentSoulstealingID.getInt(), ArtificeConfig.enchantmentSoulstealingWeight.getInt());
     }
 
     @EventHandler

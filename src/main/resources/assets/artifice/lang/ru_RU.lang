@@ -348,6 +348,23 @@ tile.artifice.fluid.creosote.name=Креозот
 
 tile.artifice.glowsand.name=Светящийся песок
 
+tile.artifice.coloredtorch0.name=Белый факел
+tile.artifice.coloredtorch1.name=Оранжевый факел
+tile.artifice.coloredtorch2.name=Сиреневый факел
+tile.artifice.coloredtorch3.name=Светло-синий факел
+tile.artifice.coloredtorch4.name=Жёлтый факел
+tile.artifice.coloredtorch5.name=Лаймовый факел
+tile.artifice.coloredtorch6.name=Розовый факел
+tile.artifice.coloredtorch7.name=Серый факел
+tile.artifice.coloredtorch8.name=Светло-серый факел
+tile.artifice.coloredtorch9.name=Бирюзовый факел
+tile.artifice.coloredtorch10.name=Фиолетовый факел
+tile.artifice.coloredtorch11.name=Синий факел
+tile.artifice.coloredtorch12.name=Коричневый факел
+tile.artifice.coloredtorch13.name=Зелёный факел
+tile.artifice.coloredtorch14.name=Красный факел
+tile.artifice.coloredtorch15.name=Чёрный факел
+
 # Item Names
 item.artifice.sledge.wood.name=Деревянная кувалда
 item.artifice.sledge.stone.name=Каменная кувалда
@@ -525,3 +542,4 @@ tooltip.artifice.bucket.fuel.flavor=Светлое, но летучее
 tooltip.artifice.bucket.creosote.flavor=Воняет
 tooltip.artifice.bucket.bitumen.flavor=Очень густой
 tooltip.artifice.glowsand.flavor=Немного жуткий
+tooltip.artifice.coloredtorch.flavor=Несколько удивительный

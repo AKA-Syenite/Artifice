@@ -29,7 +29,7 @@ public class Vanilla implements ICompat
 
     private void loadSledges()
     {
-        if (ArtificeConfig.convenienceRecipes.getBoolean(true))
+        if (ArtificeConfig.convenienceRecipes)
         {
             ArrayList<ItemStack> stoneBricks = new ArrayList<ItemStack>();
             stoneBricks.add(new ItemStack(Blocks.stonebrick, 1, 2));

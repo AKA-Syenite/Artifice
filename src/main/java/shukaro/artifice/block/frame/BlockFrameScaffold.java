@@ -14,8 +14,6 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
 import shukaro.artifice.ArtificeConfig;
-import shukaro.artifice.ArtificeCore;
-import shukaro.artifice.net.PacketDispatcher;
 import shukaro.artifice.net.PlayerTracking;
 import shukaro.artifice.render.TextureHandler;
 import shukaro.artifice.util.BlockCoord;
@@ -26,8 +24,8 @@ public class BlockFrameScaffold extends BlockFrame
 {
     private static final ForgeDirection[] sides = new ForgeDirection[]{ForgeDirection.NORTH, ForgeDirection.SOUTH, ForgeDirection.EAST, ForgeDirection.WEST, ForgeDirection.DOWN};
 
-    private IIcon[] icons = new IIcon[ArtificeCore.tiers.length];
-    private IIcon[] sideIcons = new IIcon[ArtificeCore.tiers.length];
+    private IIcon[] icons = new IIcon[ArtificeConfig.tiers.length];
+    private IIcon[] sideIcons = new IIcon[ArtificeConfig.tiers.length];
 
     public BlockFrameScaffold()
     {
@@ -206,15 +204,15 @@ public class BlockFrameScaffold extends BlockFrame
         TextureHandler.registerConnectedTexture(reg, this, 3, 0, "advanced", "scaffold");
         TextureHandler.registerConnectedTexture(reg, this, 3, 1, "advanced", "scaffold");
         icons[3] = TextureHandler.getConnectedTexture(this, 3, 1).icon;
-        for (int i = 0; i < ArtificeCore.tiers.length; i++)
-            sideIcons[i] = TextureHandler.registerIcon(reg, ArtificeCore.tiers[i].toLowerCase(Locale.ENGLISH), "scaffold/sides");
+        for (int i = 0; i < ArtificeConfig.tiers.length; i++)
+            sideIcons[i] = TextureHandler.registerIcon(reg, ArtificeConfig.tiers[i].toLowerCase(Locale.ENGLISH), "scaffold/sides");
     }
 
     @Override
     @SideOnly(Side.CLIENT)
     public IIcon getIcon(int side, int meta)
     {
-        if (meta >= ArtificeCore.tiers.length)
+        if (meta >= ArtificeConfig.tiers.length)
             meta = 0;
         if (side == 0 || side == 1)
         {
@@ -228,7 +226,7 @@ public class BlockFrameScaffold extends BlockFrame
     public IIcon getIcon(IBlockAccess access, int x, int y, int z, int side)
     {
         int meta = access.getBlockMetadata(x, y, z);
-        if (meta > ArtificeCore.tiers.length)
+        if (meta > ArtificeConfig.tiers.length)
             meta = 0;
         if (side == 0 || side == 1)
         {

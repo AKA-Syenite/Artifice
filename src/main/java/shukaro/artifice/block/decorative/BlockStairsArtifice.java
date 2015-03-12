@@ -5,6 +5,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockStairs;
 import net.minecraft.world.IBlockAccess;
+import shukaro.artifice.ArtificeConfig;
 import shukaro.artifice.ArtificeCore;
 
 import java.util.Locale;
@@ -18,7 +19,7 @@ public class BlockStairsArtifice extends BlockStairs
         super(block, meta);
         setLightOpacity(0);
         setCreativeTab(ArtificeCore.worldTab);
-        String name = block.getUnlocalizedName() + ".stairs." + ArtificeCore.rocks[meta].toLowerCase(Locale.ENGLISH);
+        String name = block.getUnlocalizedName() + ".stairs." + ArtificeConfig.rocks[meta].toLowerCase(Locale.ENGLISH);
         name = name.replace("tile.", "");
         setBlockName(name);
     }

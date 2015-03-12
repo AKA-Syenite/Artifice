@@ -8,7 +8,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-import shukaro.artifice.ArtificeCore;
+import shukaro.artifice.ArtificeConfig;
 import shukaro.artifice.block.BlockArtifice;
 
 import java.util.ArrayList;
@@ -21,10 +21,10 @@ public abstract class BlockFrame extends BlockArtifice
     public BlockFrame()
     {
         super(Material.rock);
-        this.validTiers.add(ArtificeCore.tiers[0]);
-        this.validTiers.add(ArtificeCore.tiers[1]);
-        this.validTiers.add(ArtificeCore.tiers[2]);
-        this.validTiers.add(ArtificeCore.tiers[3]);
+        this.validTiers.add(ArtificeConfig.tiers[0]);
+        this.validTiers.add(ArtificeConfig.tiers[1]);
+        this.validTiers.add(ArtificeConfig.tiers[2]);
+        this.validTiers.add(ArtificeConfig.tiers[3]);
     }
 
     @Override
@@ -37,9 +37,9 @@ public abstract class BlockFrame extends BlockArtifice
     @SideOnly(Side.CLIENT)
     public void getSubBlocks(Item i, CreativeTabs tabs, List list)
     {
-        for (int j = 0; j < ArtificeCore.tiers.length; j++)
+        for (int j = 0; j < ArtificeConfig.tiers.length; j++)
         {
-            if (this.validTiers.contains(ArtificeCore.tiers[j]))
+            if (this.validTiers.contains(ArtificeConfig.tiers[j]))
                 list.add(new ItemStack(i, 1, j));
         }
     }

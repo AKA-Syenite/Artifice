@@ -9,6 +9,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
+import shukaro.artifice.ArtificeConfig;
 import shukaro.artifice.ArtificeCore;
 import shukaro.artifice.render.TextureHandler;
 
@@ -18,7 +19,7 @@ import java.util.Random;
 
 public class BlockFlora extends BlockFlower
 {
-    public static IIcon[] icons = new IIcon[ArtificeCore.flora.length];
+    public static IIcon[] icons = new IIcon[ArtificeConfig.flora.length];
 
     public BlockFlora()
     {
@@ -33,7 +34,7 @@ public class BlockFlora extends BlockFlower
     @SideOnly(Side.CLIENT)
     public IIcon getIcon(int side, int meta)
     {
-        if (meta > ArtificeCore.flora.length)
+        if (meta > ArtificeConfig.flora.length)
             return icons[0];
         return icons[meta];
     }
@@ -42,8 +43,8 @@ public class BlockFlora extends BlockFlower
     @SideOnly(Side.CLIENT)
     public void registerBlockIcons(IIconRegister reg)
     {
-        for (int i = 0; i < ArtificeCore.flora.length; i++)
-            icons[i] = TextureHandler.registerIcon(reg, ArtificeCore.flora[i].toLowerCase(Locale.ENGLISH), "flora");
+        for (int i = 0; i < ArtificeConfig.flora.length; i++)
+            icons[i] = TextureHandler.registerIcon(reg, ArtificeConfig.flora[i].toLowerCase(Locale.ENGLISH), "flora");
     }
 
     @Override
@@ -61,7 +62,7 @@ public class BlockFlora extends BlockFlower
     @SideOnly(Side.CLIENT)
     public void getSubBlocks(Item i, CreativeTabs tabs, List list)
     {
-        for (int j = 0; j < ArtificeCore.flora.length - 1; j++)
+        for (int j = 0; j < ArtificeConfig.flora.length - 1; j++)
         {
             list.add(new ItemStack(i, 1, j));
         }

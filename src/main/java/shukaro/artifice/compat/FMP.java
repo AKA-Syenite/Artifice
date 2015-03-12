@@ -3,6 +3,7 @@ package shukaro.artifice.compat;
 import cpw.mods.fml.common.event.FMLInterModComms;
 import net.minecraft.item.ItemStack;
 import shukaro.artifice.ArtificeBlocks;
+import shukaro.artifice.ArtificeConfig;
 import shukaro.artifice.ArtificeCore;
 
 public class FMP implements ICompat
@@ -16,12 +17,12 @@ public class FMP implements ICompat
     {
         try
         {
-            for (int i = 0; i < ArtificeCore.tiers.length; i++)
+            for (int i = 0; i < ArtificeConfig.tiers.length; i++)
             {
                 FMLInterModComms.sendMessage("ForgeMicroblock", "microMaterial", new ItemStack(ArtificeBlocks.blockReinforced, 1, i));
                 FMLInterModComms.sendMessage("ForgeMicroblock", "microMaterial", new ItemStack(ArtificeBlocks.blockGlassWall, 1, i));
             }
-            for (int i = 0; i < ArtificeCore.rocks.length; i++)
+            for (int i = 0; i < ArtificeConfig.rocks.length; i++)
             {
                 FMLInterModComms.sendMessage("ForgeMicroblock", "microMaterial", new ItemStack(ArtificeBlocks.blockBasalt, 1, i));
                 FMLInterModComms.sendMessage("ForgeMicroblock", "microMaterial", new ItemStack(ArtificeBlocks.blockMarble, 1, i));

@@ -20,6 +20,7 @@ public abstract class ArtificeRegistry
     private static final List<ItemStack> marbleTypes = new ArrayList<ItemStack>();
     private static final List<ItemStack> basaltTypes = new ArrayList<ItemStack>();
 
+    @SuppressWarnings("unchecked")
     public static void registerMarbleType(Block block, int meta)
     {
         ArtificeCore.logger.info("Registering marble type " + new NameMetaPair(block, meta).toString());
@@ -29,7 +30,7 @@ public abstract class ArtificeRegistry
         else if (!marbleTypes.contains(stack))
         {
             marbleTypes.add(stack);
-            if (!ArtificeConfig.stoneCycleRecipes.getBoolean(true))
+            if (!ArtificeConfig.stoneCycleRecipes)
                 return;
             if (marbleTypes.size() < 3)
             {
@@ -67,6 +68,7 @@ public abstract class ArtificeRegistry
         return marbleTypes;
     }
 
+    @SuppressWarnings("unchecked")
     public static void registerBasaltType(Block block, int meta)
     {
         ArtificeCore.logger.info("Registering basalt type " + new NameMetaPair(block, meta).toString());
@@ -76,7 +78,7 @@ public abstract class ArtificeRegistry
         else if (!basaltTypes.contains(stack))
         {
             basaltTypes.add(stack);
-            if (!ArtificeConfig.stoneCycleRecipes.getBoolean(true))
+            if (!ArtificeConfig.stoneCycleRecipes)
                 return;
             if (basaltTypes.size() < 3)
             {

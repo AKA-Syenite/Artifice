@@ -1,7 +1,5 @@
 package shukaro.artifice;
 
-import cofh.core.util.oredict.OreDictionaryArbiter;
-import cofh.core.world.WorldHandler;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.Mod;
@@ -9,26 +7,17 @@ import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
 import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.*;
-import gnu.trove.map.hash.THashMap;
-import gnu.trove.set.hash.THashSet;
-import net.minecraft.block.Block;
-import net.minecraft.item.ItemStack;
 import net.minecraft.launchwrapper.Launch;
 import net.minecraft.network.NetHandlerPlayServer;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.oredict.OreDictionary;
 import org.apache.logging.log4j.Logger;
 import shukaro.artifice.compat.*;
 import shukaro.artifice.event.ArtificeEventHandler;
 import shukaro.artifice.event.ArtificeTickHandler;
 import shukaro.artifice.gui.ArtificeCreativeTab;
-import shukaro.artifice.enchant.EnchantmentInvisible;
-import shukaro.artifice.enchant.EnchantmentSoulstealing;
 import shukaro.artifice.net.CommonProxy;
 import shukaro.artifice.recipe.ArtificeRecipes;
-import shukaro.artifice.util.NameMetaPair;
-import shukaro.artifice.world.*;
 
 import java.util.ArrayList;
 
@@ -48,40 +37,21 @@ public class ArtificeCore
     public static ArtificeEventHandler eventHandler;
     public static ArtificeTickHandler tickHandler;
 
-    public static final String[] tiers = {"Basic", "Reinforced", "Industrial", "Advanced"};
-    public static final String[] flora = {"Bluebell", "Orchid", "Iris", "Lotus", "LotusClosed"};
-    public static final String[] rocks = {"", "Cobblestone", "Brick", "Paver", "Antipaver", "Chiseled"};
-
     public static final ArtificeCreativeTab mainTab = new ArtificeCreativeTab("Artifice");
     public static final ArtificeCreativeTab worldTab = new ArtificeCreativeTab("Artifice Worldgen");
-
-    public static EnchantmentInvisible enchantmentInvisible;
-    public static EnchantmentSoulstealing enchantmentSoulstealing;
 
     @Instance(modID)
     public static ArtificeCore instance;
 
     @EventHandler
-    public void serverStarting(FMLServerStartingEvent evt)
-    {
-    }
+    public void serverStarting(FMLServerStartingEvent evt) {}
 
     private ArrayList<ICompat> compats = new ArrayList<ICompat>();
 
     @EventHandler
     public void preInit(FMLPreInitializationEvent evt)
     {
-        try
-        {
-            if ((Boolean)Launch.blackboard.get("fml.deobfuscatedEnvironment"))
-                NetHandlerPlayServer.class.getDeclaredField("floatingTickCount").setAccessible(true);
-            else
-                NetHandlerPlayServer.class.getDeclaredField("field_147365_f").setAccessible(true);
-        }
-        catch (Exception e)
-        {
-            e.printStackTrace();
-        }
+        scaffoldReflect();
 
         compats.add(new Buildcraft());
         compats.add(new EE3());
@@ -104,31 +74,23 @@ public class ArtificeCore
         ArtificeFluids.initFluids();
         ArtificeBlocks.initBlocks();
         ArtificeItems.initItems();
+        ArtificeEnchants.initEnchants();
+        ArtificeWorld.initWorldGen();
+    }
 
-        if (ArtificeConfig.oilLakeGen.getBoolean())
-            WorldHandler.addFeature(new WorldGenLake(ArtificeBlocks.blockOil, ArtificeConfig.oilLakeFrequency.getInt()));
-        if (ArtificeConfig.sulfurGen.getBoolean())
-            WorldHandler.addFeature(new WorldGenSulfur(ArtificeBlocks.blockSulfur, 0, ArtificeConfig.sulfurSize.getInt(), ArtificeConfig.sulfurFrequency.getInt()));
-        if (ArtificeConfig.niterGen.getBoolean())
-            WorldHandler.addFeature(new WorldGenDesert(ArtificeBlocks.blockNiter, 0, ArtificeConfig.niterSize.getInt(), ArtificeConfig.niterFrequency.getInt()));
-        if (ArtificeConfig.enderOreGen.getBoolean())
-            WorldHandler.addFeature(new WorldGenCluster(ArtificeBlocks.blockEnderOre, 0, ArtificeConfig.enderOreMinHeight.getInt(), ArtificeConfig.enderOreMaxHeight.getInt(), ArtificeConfig.enderOreSize.getInt(), ArtificeConfig.enderOreFrequency.getInt()));
-        for (int i=0; i<ArtificeConfig.rockNames.length; i++)
+    private static void scaffoldReflect()
+    {
+        try
         {
-            if (ArtificeConfig.rockLayersGen[i].getBoolean())
-                WorldHandler.addFeature(new WorldGenLayer(ArtificeBlocks.rockBlocks[i], 0, ArtificeConfig.rockLayersMinHeight[i].getInt(), ArtificeConfig.rockLayersMaxHeight[i].getInt()));
+            if ((Boolean)Launch.blackboard.get("fml.deobfuscatedEnvironment"))
+                NetHandlerPlayServer.class.getDeclaredField("floatingTickCount").setAccessible(true);
+            else
+                NetHandlerPlayServer.class.getDeclaredField("field_147365_f").setAccessible(true);
         }
-        for (int i=0; i<3; i++)
+        catch (Exception e)
         {
-            if (ArtificeConfig.rockClustersGen[i].getBoolean())
-                WorldHandler.addFeature(new WorldGenCluster(ArtificeBlocks.rockBlocks[i], 0, ArtificeConfig.rockClustersMinHeight[i].getInt(), ArtificeConfig.rockClustersMaxHeight[i].getInt(), ArtificeConfig.rockClustersSize[i].getInt(), ArtificeConfig.rockClustersFrequency[i].getInt()));
-            if (ArtificeConfig.rockCavesGen[i].getBoolean())
-                WorldHandler.addFeature(new WorldGenCave(ArtificeBlocks.rockBlocks[i], 0, ArtificeConfig.rockCavesMinHeight[i].getInt(), ArtificeConfig.rockCavesMaxHeight[i].getInt(), ArtificeConfig.rockCavesSize[i].getInt(), ArtificeConfig.rockCavesFrequency[i].getInt()));
+            e.printStackTrace();
         }
-        if (ArtificeConfig.floraWorldGen.getBoolean())
-            WorldHandler.addFeature(new WorldGenFlowers());
-        if (ArtificeConfig.lotusWorldGen.getBoolean())
-            WorldHandler.addFeature(new WorldGenLily());
     }
 
     @EventHandler
@@ -147,40 +109,16 @@ public class ArtificeCore
                 c.load();
             }
         }
-
-        if (ArtificeConfig.enchantmentInvisibleEnable.getBoolean())
-            enchantmentInvisible = new EnchantmentInvisible(ArtificeConfig.enchantmentInvisibleID.getInt(), ArtificeConfig.enchantmentInvisibleWeight.getInt());
-        if (ArtificeConfig.enchantmentSoulstealingEnable.getBoolean())
-            enchantmentSoulstealing = new EnchantmentSoulstealing(ArtificeConfig.enchantmentSoulstealingID.getInt(), ArtificeConfig.enchantmentSoulstealingWeight.getInt());
     }
 
     @EventHandler
     public void postInit(FMLPostInitializationEvent evt)
     {
-        ArtificeBlocks.oreMappings = new THashMap<String, Block>();
-        for (int j = 0; j < ArtificeBlocks.oreNames.length; j++)
-            ArtificeBlocks.oreMappings.put(ArtificeBlocks.oreNames[j], ArtificeBlocks.blockOres[j]);
+        ArtificeBlocks.initOreMappings();
+        ArtificeBlocks.initOreSet();
+        ArtificeBlocks.registerOreVariants();
 
-        ArtificeBlocks.oreSet = new THashSet<NameMetaPair>();
-        for (String s : ArtificeBlocks.oreNames)
-        {
-            if (OreDictionaryArbiter.getOres(s) != null)
-            {
-                for (ItemStack stack : OreDictionaryArbiter.getOres(s))
-                {
-                    if (stack != null)
-                        ArtificeBlocks.oreSet.add(new NameMetaPair(stack.getItem(), stack.getItemDamage()));
-                }
-            }
-        }
-
-        for (int i = 0; i < ArtificeBlocks.oreNames.length; i++)
-        {
-            for (int j = 0; j < ArtificeBlocks.rockBlocks.length; j++)
-                OreDictionary.registerOre(ArtificeBlocks.oreNames[i], new ItemStack(ArtificeBlocks.blockOres[i], 1, j));
-        }
-
-        if (ArtificeConfig.floraBoneMeal.getBoolean(true))
+        if (ArtificeConfig.floraBoneMeal)
         {
             for (BiomeGenBase biome : BiomeGenBase.getBiomeGenArray())
             {
@@ -197,11 +135,5 @@ public class ArtificeCore
     }
 
     @EventHandler
-    public void missingMappings(FMLMissingMappingsEvent event)
-    {
-        for (FMLMissingMappingsEvent.MissingMapping m : event.getAll())
-        {
-
-        }
-    }
+    public void missingMappings(FMLMissingMappingsEvent event) {}
 }

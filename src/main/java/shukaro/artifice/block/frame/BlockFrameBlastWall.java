@@ -2,18 +2,13 @@ package shukaro.artifice.block.frame;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import net.minecraft.block.Block;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import shukaro.artifice.ArtificeConfig;
-import shukaro.artifice.ArtificeCore;
-import shukaro.artifice.net.PacketDispatcher;
 import shukaro.artifice.render.TextureHandler;
-import shukaro.artifice.util.BlockCoord;
-import shukaro.artifice.util.ChunkCoord;
 
 public class BlockFrameBlastWall extends BlockFrame
 {
@@ -79,7 +74,7 @@ public class BlockFrameBlastWall extends BlockFrame
     @SideOnly(Side.CLIENT)
     public IIcon getIcon(int side, int meta)
     {
-        if (meta >= ArtificeCore.tiers.length)
+        if (meta >= ArtificeConfig.tiers.length)
             meta = 0;
         return icons[meta];
     }
@@ -89,7 +84,7 @@ public class BlockFrameBlastWall extends BlockFrame
     public IIcon getIcon(IBlockAccess access, int x, int y, int z, int side)
     {
         int meta = access.getBlockMetadata(x, y, z);
-        if (meta > ArtificeCore.tiers.length)
+        if (meta > ArtificeConfig.tiers.length)
             meta = 0;
         return this.getIcon(side, meta);
     }

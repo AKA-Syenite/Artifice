@@ -4,6 +4,7 @@ import cpw.mods.fml.common.event.FMLInterModComms;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.fluids.FluidStack;
 import shukaro.artifice.ArtificeBlocks;
+import shukaro.artifice.ArtificeConfig;
 import shukaro.artifice.ArtificeCore;
 import shukaro.artifice.ArtificeFluids;
 
@@ -18,16 +19,16 @@ public class Buildcraft implements ICompat
     {
         try
         {
-            for (int i = 0; i < ArtificeCore.tiers.length; i++)
+            for (int i = 0; i < ArtificeConfig.tiers.length; i++)
                 FMLInterModComms.sendMessage(getModID(), "add-facade", ArtificeBlocks.blockReinforced + "@" + i);
-            for (int i = 0; i < ArtificeCore.rocks.length; i++)
+            for (int i = 0; i < ArtificeConfig.rocks.length; i++)
             {
                 FMLInterModComms.sendMessage(getModID(), "add-facade", ArtificeBlocks.blockBasalt + "@" + i);
                 FMLInterModComms.sendMessage(getModID(), "add-facade", ArtificeBlocks.blockMarble + "@" + i);
             }
             for (int i = 0; i < ArtificeBlocks.blockLimestones.length; i++)
             {
-                for (int j = 0; j < ArtificeCore.rocks.length; j++)
+                for (int j = 0; j < ArtificeConfig.rocks.length; j++)
                     FMLInterModComms.sendMessage(getModID(), "add-facade", ArtificeBlocks.blockLimestones[i] + "@" + j);
             }
             for (int i = 0; i < ArtificeBlocks.blockLamps.length; i++)

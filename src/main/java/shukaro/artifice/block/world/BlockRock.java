@@ -22,7 +22,7 @@ import java.util.List;
 
 public class BlockRock extends BlockArtifice
 {
-    private IIcon[] icons = new IIcon[ArtificeCore.rocks.length];
+    private IIcon[] icons = new IIcon[ArtificeConfig.rocks.length];
     private String name;
     private int color = 16777215;
 
@@ -78,7 +78,7 @@ public class BlockRock extends BlockArtifice
     @SideOnly(Side.CLIENT)
     public IIcon getIcon(int side, int meta)
     {
-        if (meta >= ArtificeCore.rocks.length)
+        if (meta >= ArtificeConfig.rocks.length)
             meta = 0;
         return icons[meta];
     }
@@ -101,7 +101,7 @@ public class BlockRock extends BlockArtifice
     @SideOnly(Side.CLIENT)
     public void getSubBlocks(Item i, CreativeTabs tabs, List list)
     {
-        for (int j = 0; j < ArtificeCore.rocks.length; j++)
+        for (int j = 0; j < ArtificeConfig.rocks.length; j++)
         {
             list.add(new ItemStack(i, 1, j));
         }

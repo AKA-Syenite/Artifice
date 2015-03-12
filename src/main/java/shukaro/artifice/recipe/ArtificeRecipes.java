@@ -16,29 +16,27 @@ import shukaro.artifice.ArtificeBlocks;
 import shukaro.artifice.ArtificeConfig;
 import shukaro.artifice.ArtificeItems;
 
-import java.util.Collections;
-
 public class ArtificeRecipes
 {
     public static void registerRecipes()
     {
-        if (ArtificeConfig.basaltRecipes.getBoolean(true))
+        if (ArtificeConfig.basaltRecipes)
             registerBasaltRecipes();
-        if (ArtificeConfig.marbleRecipes.getBoolean(true))
+        if (ArtificeConfig.marbleRecipes)
             registerMarbleRecipes();
-        if (ArtificeConfig.limestoneRecipes.getBoolean(true))
+        if (ArtificeConfig.limestoneRecipes)
             registerLimestoneRecipes();
-        if (ArtificeConfig.oreRecipes.getBoolean(true))
+        if (ArtificeConfig.oreRecipes)
             registerOreRecipes();
-        if (ArtificeConfig.resourceRecipes.getBoolean(true))
+        if (ArtificeConfig.resourceRecipes)
             registerResourceRecipes();
-        if (ArtificeConfig.floraRecipes.getBoolean(true))
+        if (ArtificeConfig.floraRecipes)
             registerDyeRecipes();
-        if (ArtificeConfig.sledgeRecipes.getBoolean(true))
+        if (ArtificeConfig.sledgeRecipes)
             registerSledgeRecipes();
-        if (ArtificeConfig.frameRecipes.getBoolean(true))
+        if (ArtificeConfig.frameRecipes)
             registerFrameRecipes();
-        if (ArtificeConfig.detectorRecipe.getBoolean(true))
+        if (ArtificeConfig.detectorRecipe)
         {
             GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeBlocks.blockDetector, 1, 0), " Q ",
                     "YXY",
@@ -47,15 +45,15 @@ public class ArtificeRecipes
                     'X', new ItemStack(ArtificeBlocks.blockFrame, 1, 0),
                     'Q', new ItemStack(Items.redstone, 1, 0)));
         }
-        if (ArtificeConfig.steelSmelting.getBoolean(true))
+        if (ArtificeConfig.steelSmelting)
             registerSteelRecipes();
-        if (ArtificeConfig.blastWallRecipes.getBoolean(true))
+        if (ArtificeConfig.blastWallRecipes)
             registerBlastWallRecipes();
-        if (ArtificeConfig.glassWallRecipes.getBoolean(true))
+        if (ArtificeConfig.glassWallRecipes)
             registerGlassWallRecipes();
-        if (ArtificeConfig.scaffoldRecipes.getBoolean(true))
+        if (ArtificeConfig.scaffoldRecipes)
             registerScaffoldRecipes();
-        if (ArtificeConfig.boxRecipes.getBoolean(true))
+        if (ArtificeConfig.boxRecipes)
         {
             GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeItems.itemBox, 16, 0), " Y ",
                     "YXY",
@@ -68,56 +66,50 @@ public class ArtificeRecipes
 
             MinecraftForge.EVENT_BUS.register(new BoxCraftingHandler());
         }
-        if (ArtificeConfig.sickleRecipes.getBoolean(true))
+        if (ArtificeConfig.sickleRecipes)
             registerSickleRecipes();
-        if (ArtificeConfig.coinMinting.getBoolean(true))
+        if (ArtificeConfig.coinMinting)
             registerCoinMinting();
-        if (ArtificeConfig.coinChanging.getBoolean(true))
+        if (ArtificeConfig.coinChanging)
             registerCoinChanging();
-        if (ArtificeConfig.coinSmelting.getBoolean(false))
+        if (ArtificeConfig.coinSmelting)
             registerCoinSmelting();
-        if (ArtificeConfig.upgradeRecipes.getBoolean(true))
+        if (ArtificeConfig.upgradeRecipes)
         {
             registerUpgrades();
             GameRegistry.addRecipe(new RecipeUpgrade());
             RecipeSorter.register("artifice:upgrades", RecipeUpgrade.class, Category.SHAPELESS, "after:minecraft:shapeless");
         }
-        if (ArtificeConfig.alternateSteel.getBoolean(false))
+        if (ArtificeConfig.alternateSteel)
         {
             registerAlternateSteelRecipes();
         }
-        if (ArtificeConfig.convenienceRecipes.getBoolean(true))
+        if (ArtificeConfig.convenienceRecipes)
         {
             registerConvenienceRecipes();
         }
-        if (ArtificeConfig.lampRecipes.getBoolean(true))
+        if (ArtificeConfig.lampRecipes)
             registerLampRecipes();
-        if (ArtificeConfig.enderOreRecipe.getBoolean(true))
+        if (ArtificeConfig.enderOreRecipe)
         {
-            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Items.ender_pearl, 1, 0), new Object[] {
+            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Items.ender_pearl, 1, 0), "XX",
                     "XX",
-                    "XX",
-                    'X', new ItemStack(ArtificeItems.itemResource, 1, 2)
-            }));
+                    'X', new ItemStack(ArtificeItems.itemResource, 1, 2)));
         }
-        if (ArtificeConfig.glowSandRecipe.getBoolean(true))
+        if (ArtificeConfig.glowSandRecipe)
         {
-            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeBlocks.blockGlowSand, 8, 0), new Object[]{
-                    "XXX",
+            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeBlocks.blockGlowSand, 8, 0), "XXX",
                     "XYX",
                     "XXX",
                     'X', new ItemStack(Blocks.sand, 1, 0),
-                    'Y', Items.glowstone_dust
-            }));
-            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeBlocks.blockGlowSand, 8, 1), new Object[]{
-                    "XXX",
+                    'Y', Items.glowstone_dust));
+            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeBlocks.blockGlowSand, 8, 1), "XXX",
                     "XYX",
                     "XXX",
                     'X', new ItemStack(Blocks.sand, 1, 1),
-                    'Y', Items.glowstone_dust
-            }));
+                    'Y', Items.glowstone_dust));
         }
-        if (ArtificeConfig.coloredTorchRecipes.getBoolean(true))
+        if (ArtificeConfig.coloredTorchRecipes)
         {
             String[] dyes =
                     {
@@ -140,13 +132,11 @@ public class ArtificeRecipes
                     };
             for (int i=0; i<16; i++)
             {
-                GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeBlocks.blockColoredTorches[i], 8, 0), new Object[]{
-                        "XXX",
+                GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeBlocks.blockColoredTorches[i], 8, 0), "XXX",
                         "XYX",
                         "XXX",
                         'X', Blocks.torch,
-                        'Y', "dye" + dyes[15-i]
-                }));
+                        'Y', "dye" + dyes[15-i]));
                 GameRegistry.addRecipe(new ShapelessOreRecipe(Blocks.torch, new ItemStack(ArtificeBlocks.blockColoredTorches[i], 1, 0)));
             }
         }
@@ -175,7 +165,7 @@ public class ArtificeRecipes
 
     private static void registerAlternateSteelRecipes()
     {
-        int cost = ArtificeConfig.alternateSteelRequirement.getInt();
+        int cost = ArtificeConfig.alternateSteelRequirement;
         if (cost < 1)
             cost = 1;
         if (cost > 8)

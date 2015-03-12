@@ -54,7 +54,7 @@ public class BlockEnderOre extends Block
     public void harvestBlock(World world, EntityPlayer entityplayer, int x, int y, int z, int fortune)
     {
         super.harvestBlock(world, entityplayer, x, y, z, fortune);
-        if (!world.isRemote && world.rand.nextInt(100) < 20 && ArtificeConfig.spawnEndermen.getBoolean(true) && !EnchantmentHelper.getSilkTouchModifier(entityplayer))
+        if (!world.isRemote && world.rand.nextInt(100) < 20 && ArtificeConfig.spawnEndermen && !EnchantmentHelper.getSilkTouchModifier(entityplayer))
         {
             int tries = world.rand.nextInt(20);
             for (int i=0; i<tries; i++)

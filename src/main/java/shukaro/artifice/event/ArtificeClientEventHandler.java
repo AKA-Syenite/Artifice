@@ -7,12 +7,11 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.enchantment.EnchantmentHelper;
-import net.minecraft.init.Items;
 import net.minecraftforge.client.event.RenderPlayerEvent;
 import net.minecraftforge.client.event.TextureStitchEvent;
 import net.minecraftforge.fluids.Fluid;
 import shukaro.artifice.ArtificeConfig;
-import shukaro.artifice.ArtificeCore;
+import shukaro.artifice.ArtificeEnchants;
 import shukaro.artifice.ArtificeFluids;
 
 public class ArtificeClientEventHandler
@@ -60,7 +59,7 @@ public class ArtificeClientEventHandler
     @SubscribeEvent
     public void renderInvisibleArmor(RenderPlayerEvent.SetArmorModel event)
     {
-        if (ArtificeConfig.enchantmentInvisibleEnable.getBoolean() && event.stack != null && EnchantmentHelper.getEnchantmentLevel(ArtificeCore.enchantmentInvisible.effectId, event.stack) > 0)
+        if (ArtificeConfig.enchantmentInvisibleEnable && event.stack != null && EnchantmentHelper.getEnchantmentLevel(ArtificeEnchants.enchantmentInvisible.effectId, event.stack) > 0)
             event.result = 0;
     }
 }

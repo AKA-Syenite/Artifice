@@ -7,7 +7,7 @@ import net.minecraft.item.Item;
 import shukaro.artifice.ArtificeBlocks;
 import shukaro.artifice.ArtificeConfig;
 import shukaro.artifice.ArtificeCore;
-import shukaro.artifice.ArtificeItems;
+import shukaro.artifice.ArtificeEnchants;
 
 import java.util.List;
 
@@ -40,12 +40,12 @@ public class ArtificeCreativeTab extends CreativeTabs
         super.displayAllReleventItems(itemList);
         if (this.getTabLabel().equals(ArtificeCore.mainTab.getTabLabel()))
         {
-            if (ArtificeConfig.enchantmentInvisibleEnable.getBoolean())
-                itemList.add(Items.enchanted_book.getEnchantedItemStack(new EnchantmentData(ArtificeCore.enchantmentInvisible.effectId, ArtificeCore.enchantmentInvisible.getMaxLevel())));
-            if (ArtificeConfig.enchantmentSoulstealingEnable.getBoolean())
+            if (ArtificeConfig.enchantmentInvisibleEnable)
+                itemList.add(Items.enchanted_book.getEnchantedItemStack(new EnchantmentData(ArtificeEnchants.enchantmentInvisible.effectId, ArtificeEnchants.enchantmentInvisible.getMaxLevel())));
+            if (ArtificeConfig.enchantmentSoulstealingEnable)
             {
-                for (int i=1; i<ArtificeCore.enchantmentSoulstealing.getMaxLevel()+1; i++)
-                    itemList.add(Items.enchanted_book.getEnchantedItemStack(new EnchantmentData(ArtificeCore.enchantmentSoulstealing.effectId, i)));
+                for (int i=1; i<ArtificeEnchants.enchantmentSoulstealing.getMaxLevel()+1; i++)
+                    itemList.add(Items.enchanted_book.getEnchantedItemStack(new EnchantmentData(ArtificeEnchants.enchantmentSoulstealing.effectId, i)));
             }
         }
     }

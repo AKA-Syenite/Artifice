@@ -28,7 +28,7 @@ public class ArtificeClientTickHandler
         }
         else if (!Keyboard.isKeyDown(mc.gameSettings.keyBindSneak.getKeyCode()) && PlayerTracking.sneaks.contains(playerID))
         {
-            PlayerTracking.sneaks.remove(Integer.valueOf(playerID));
+            PlayerTracking.sneaks.remove(playerID);
             PacketDispatcher.sendSneakEvent(playerID);
         }
     }

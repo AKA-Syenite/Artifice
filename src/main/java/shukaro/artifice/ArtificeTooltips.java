@@ -107,56 +107,56 @@ public class ArtificeTooltips
         ArtificeRegistry.registerTooltip(new ItemStack(ArtificeItems.itemBox, 1, 0), localizeTooltip("box", true));
 
         ArtificeRegistry.registerTooltip(new ItemStack(ArtificeItems.itemUpgrade, 1, 0), localizeTooltip("upgrade.type.toolweapon", false));
-        ArtificeRegistry.registerTooltip(new ItemStack(ArtificeItems.itemUpgrade, 1, 0), FormatCodes.Yellow.code + StatCollector.translateToLocal(Enchantment.efficiency.getName()) + " (" + (ArtificeConfig.limitUpgrades.getBoolean(true) ? RomanUtil.convertToRoman(EnumUpgrades.SharpeningKitS.maxLevel) : RomanUtil.convertToRoman(Enchantment.sharpness.getMaxLevel())) + ")");
-        ArtificeRegistry.registerTooltip(new ItemStack(ArtificeItems.itemUpgrade, 1, 0), FormatCodes.Yellow.code + StatCollector.translateToLocal(Enchantment.sharpness.getName()) + " (" + (ArtificeConfig.limitUpgrades.getBoolean(true) ? RomanUtil.convertToRoman(EnumUpgrades.SharpeningKitE.maxLevel) : RomanUtil.convertToRoman(Enchantment.efficiency.getMaxLevel())) + ")");
+        ArtificeRegistry.registerTooltip(new ItemStack(ArtificeItems.itemUpgrade, 1, 0), FormatCodes.Yellow.code + StatCollector.translateToLocal(Enchantment.efficiency.getName()) + " (" + (ArtificeConfig.limitUpgrades ? RomanUtil.convertToRoman(EnumUpgrades.SharpeningKitS.maxLevel) : RomanUtil.convertToRoman(Enchantment.sharpness.getMaxLevel())) + ")");
+        ArtificeRegistry.registerTooltip(new ItemStack(ArtificeItems.itemUpgrade, 1, 0), FormatCodes.Yellow.code + StatCollector.translateToLocal(Enchantment.sharpness.getName()) + " (" + (ArtificeConfig.limitUpgrades ? RomanUtil.convertToRoman(EnumUpgrades.SharpeningKitE.maxLevel) : RomanUtil.convertToRoman(Enchantment.efficiency.getMaxLevel())) + ")");
         ArtificeRegistry.registerTooltip(new ItemStack(ArtificeItems.itemUpgrade, 1, 0), localizeTooltip("upgrade.sharpener", true));
 
         ArtificeRegistry.registerTooltip(new ItemStack(ArtificeItems.itemUpgrade, 1, 1), localizeTooltip("upgrade.type.universal", false));
-        ArtificeRegistry.registerTooltip(new ItemStack(ArtificeItems.itemUpgrade, 1, 1), FormatCodes.Yellow.code + StatCollector.translateToLocal(Enchantment.unbreaking.getName()) + " (" + (ArtificeConfig.limitUpgrades.getBoolean(true) ? RomanUtil.convertToRoman(EnumUpgrades.Reinforcement.maxLevel) : RomanUtil.convertToRoman(Enchantment.unbreaking.getMaxLevel())) + ")");
+        ArtificeRegistry.registerTooltip(new ItemStack(ArtificeItems.itemUpgrade, 1, 1), FormatCodes.Yellow.code + StatCollector.translateToLocal(Enchantment.unbreaking.getName()) + " (" + (ArtificeConfig.limitUpgrades ? RomanUtil.convertToRoman(EnumUpgrades.Reinforcement.maxLevel) : RomanUtil.convertToRoman(Enchantment.unbreaking.getMaxLevel())) + ")");
         ArtificeRegistry.registerTooltip(new ItemStack(ArtificeItems.itemUpgrade, 1, 1), localizeTooltip("upgrade.reinforcement", true));
 
         ArtificeRegistry.registerTooltip(new ItemStack(ArtificeItems.itemUpgrade, 1, 2), localizeTooltip("upgrade.type.bow", false));
-        ArtificeRegistry.registerTooltip(new ItemStack(ArtificeItems.itemUpgrade, 1, 2), FormatCodes.Yellow.code + StatCollector.translateToLocal(Enchantment.punch.getName()) + " (" + (ArtificeConfig.limitUpgrades.getBoolean(true) ? RomanUtil.convertToRoman(EnumUpgrades.ReinforcedLimbs.maxLevel) : RomanUtil.convertToRoman(Enchantment.punch.getMaxLevel())) + ")");
+        ArtificeRegistry.registerTooltip(new ItemStack(ArtificeItems.itemUpgrade, 1, 2), FormatCodes.Yellow.code + StatCollector.translateToLocal(Enchantment.punch.getName()) + " (" + (ArtificeConfig.limitUpgrades ? RomanUtil.convertToRoman(EnumUpgrades.ReinforcedLimbs.maxLevel) : RomanUtil.convertToRoman(Enchantment.punch.getMaxLevel())) + ")");
         ArtificeRegistry.registerTooltip(new ItemStack(ArtificeItems.itemUpgrade, 1, 2), localizeTooltip("upgrade.reinforcedlimbs", true));
 
         ArtificeRegistry.registerTooltip(new ItemStack(ArtificeItems.itemUpgrade, 1, 3), localizeTooltip("upgrade.type.bow", false));
-        ArtificeRegistry.registerTooltip(new ItemStack(ArtificeItems.itemUpgrade, 1, 3), FormatCodes.Yellow.code + StatCollector.translateToLocal(Enchantment.power.getName()) + " (" + (ArtificeConfig.limitUpgrades.getBoolean(true) ? RomanUtil.convertToRoman(EnumUpgrades.PlaitedString.maxLevel) : RomanUtil.convertToRoman(Enchantment.power.getMaxLevel())) + ")");
+        ArtificeRegistry.registerTooltip(new ItemStack(ArtificeItems.itemUpgrade, 1, 3), FormatCodes.Yellow.code + StatCollector.translateToLocal(Enchantment.power.getName()) + " (" + (ArtificeConfig.limitUpgrades ? RomanUtil.convertToRoman(EnumUpgrades.PlaitedString.maxLevel) : RomanUtil.convertToRoman(Enchantment.power.getMaxLevel())) + ")");
         ArtificeRegistry.registerTooltip(new ItemStack(ArtificeItems.itemUpgrade, 1, 3), localizeTooltip("upgrade.plaited", true));
 
         ArtificeRegistry.registerTooltip(new ItemStack(ArtificeItems.itemUpgrade, 1, 4), localizeTooltip("upgrade.type.weapon", false));
-        ArtificeRegistry.registerTooltip(new ItemStack(ArtificeItems.itemUpgrade, 1, 4), FormatCodes.Yellow.code + StatCollector.translateToLocal(Enchantment.knockback.getName()) + " (" + (ArtificeConfig.limitUpgrades.getBoolean(true) ? RomanUtil.convertToRoman(EnumUpgrades.Counterweight.maxLevel) : RomanUtil.convertToRoman(Enchantment.knockback.getMaxLevel())) + ")");
+        ArtificeRegistry.registerTooltip(new ItemStack(ArtificeItems.itemUpgrade, 1, 4), FormatCodes.Yellow.code + StatCollector.translateToLocal(Enchantment.knockback.getName()) + " (" + (ArtificeConfig.limitUpgrades ? RomanUtil.convertToRoman(EnumUpgrades.Counterweight.maxLevel) : RomanUtil.convertToRoman(Enchantment.knockback.getMaxLevel())) + ")");
         ArtificeRegistry.registerTooltip(new ItemStack(ArtificeItems.itemUpgrade, 1, 4), localizeTooltip("upgrade.counterweight", true));
 
         ArtificeRegistry.registerTooltip(new ItemStack(ArtificeItems.itemUpgrade, 1, 5), localizeTooltip("upgrade.type.armor", false));
-        ArtificeRegistry.registerTooltip(new ItemStack(ArtificeItems.itemUpgrade, 1, 5), FormatCodes.Yellow.code + StatCollector.translateToLocal(Enchantment.thorns.getName()) + " (" + (ArtificeConfig.limitUpgrades.getBoolean(true) ? RomanUtil.convertToRoman(EnumUpgrades.ArmorSpikes.maxLevel) : RomanUtil.convertToRoman(Enchantment.thorns.getMaxLevel())) + ")");
+        ArtificeRegistry.registerTooltip(new ItemStack(ArtificeItems.itemUpgrade, 1, 5), FormatCodes.Yellow.code + StatCollector.translateToLocal(Enchantment.thorns.getName()) + " (" + (ArtificeConfig.limitUpgrades ? RomanUtil.convertToRoman(EnumUpgrades.ArmorSpikes.maxLevel) : RomanUtil.convertToRoman(Enchantment.thorns.getMaxLevel())) + ")");
         ArtificeRegistry.registerTooltip(new ItemStack(ArtificeItems.itemUpgrade, 1, 5), localizeTooltip("upgrade.spikes", true));
 
         ArtificeRegistry.registerTooltip(new ItemStack(ArtificeItems.itemUpgrade, 1, 6), localizeTooltip("upgrade.type.armor", false));
-        ArtificeRegistry.registerTooltip(new ItemStack(ArtificeItems.itemUpgrade, 1, 6), FormatCodes.Yellow.code + StatCollector.translateToLocal(Enchantment.protection.getName()) + " (" + (ArtificeConfig.limitUpgrades.getBoolean(true) ? RomanUtil.convertToRoman(EnumUpgrades.LaminatedPadding.maxLevel) : RomanUtil.convertToRoman(Enchantment.protection.getMaxLevel())) + ")");
+        ArtificeRegistry.registerTooltip(new ItemStack(ArtificeItems.itemUpgrade, 1, 6), FormatCodes.Yellow.code + StatCollector.translateToLocal(Enchantment.protection.getName()) + " (" + (ArtificeConfig.limitUpgrades ? RomanUtil.convertToRoman(EnumUpgrades.LaminatedPadding.maxLevel) : RomanUtil.convertToRoman(Enchantment.protection.getMaxLevel())) + ")");
         ArtificeRegistry.registerTooltip(new ItemStack(ArtificeItems.itemUpgrade, 1, 6), localizeTooltip("upgrade.lamination", true));
 
         ArtificeRegistry.registerTooltip(new ItemStack(ArtificeItems.itemUpgrade, 1, 7), localizeTooltip("upgrade.type.armor", false));
-        ArtificeRegistry.registerTooltip(new ItemStack(ArtificeItems.itemUpgrade, 1, 7), FormatCodes.Yellow.code + StatCollector.translateToLocal(Enchantment.projectileProtection.getName()) + " (" + (ArtificeConfig.limitUpgrades.getBoolean(true) ? RomanUtil.convertToRoman(EnumUpgrades.QuiltedCover.maxLevel) : RomanUtil.convertToRoman(Enchantment.projectileProtection.getMaxLevel())) + ")");
+        ArtificeRegistry.registerTooltip(new ItemStack(ArtificeItems.itemUpgrade, 1, 7), FormatCodes.Yellow.code + StatCollector.translateToLocal(Enchantment.projectileProtection.getName()) + " (" + (ArtificeConfig.limitUpgrades ? RomanUtil.convertToRoman(EnumUpgrades.QuiltedCover.maxLevel) : RomanUtil.convertToRoman(Enchantment.projectileProtection.getMaxLevel())) + ")");
         ArtificeRegistry.registerTooltip(new ItemStack(ArtificeItems.itemUpgrade, 1, 7), localizeTooltip("upgrade.cover", true));
 
         ArtificeRegistry.registerTooltip(new ItemStack(ArtificeItems.itemUpgrade, 1, 8), localizeTooltip("upgrade.type.boot", false));
-        ArtificeRegistry.registerTooltip(new ItemStack(ArtificeItems.itemUpgrade, 1, 8), FormatCodes.Yellow.code + StatCollector.translateToLocal(Enchantment.featherFalling.getName()) + " (" + (ArtificeConfig.limitUpgrades.getBoolean(true) ? RomanUtil.convertToRoman(EnumUpgrades.ElasticSoles.maxLevel) : RomanUtil.convertToRoman(Enchantment.featherFalling.getMaxLevel())) + ")");
+        ArtificeRegistry.registerTooltip(new ItemStack(ArtificeItems.itemUpgrade, 1, 8), FormatCodes.Yellow.code + StatCollector.translateToLocal(Enchantment.featherFalling.getName()) + " (" + (ArtificeConfig.limitUpgrades ? RomanUtil.convertToRoman(EnumUpgrades.ElasticSoles.maxLevel) : RomanUtil.convertToRoman(Enchantment.featherFalling.getMaxLevel())) + ")");
         ArtificeRegistry.registerTooltip(new ItemStack(ArtificeItems.itemUpgrade, 1, 8), localizeTooltip("upgrade.soles", true));
 
         ArtificeRegistry.registerTooltip(new ItemStack(ArtificeItems.itemUpgrade, 1, 9), localizeTooltip("upgrade.type.armor", false));
-        ArtificeRegistry.registerTooltip(new ItemStack(ArtificeItems.itemUpgrade, 1, 9), FormatCodes.Yellow.code + StatCollector.translateToLocal(Enchantment.fireProtection.getName()) + " (" + (ArtificeConfig.limitUpgrades.getBoolean(true) ? RomanUtil.convertToRoman(EnumUpgrades.Firedamp.maxLevel) : RomanUtil.convertToRoman(Enchantment.fireProtection.getMaxLevel())) + ")");
+        ArtificeRegistry.registerTooltip(new ItemStack(ArtificeItems.itemUpgrade, 1, 9), FormatCodes.Yellow.code + StatCollector.translateToLocal(Enchantment.fireProtection.getName()) + " (" + (ArtificeConfig.limitUpgrades ? RomanUtil.convertToRoman(EnumUpgrades.Firedamp.maxLevel) : RomanUtil.convertToRoman(Enchantment.fireProtection.getMaxLevel())) + ")");
         ArtificeRegistry.registerTooltip(new ItemStack(ArtificeItems.itemUpgrade, 1, 9), localizeTooltip("upgrade.firedamp", true));
 
         ArtificeRegistry.registerTooltip(new ItemStack(ArtificeItems.itemUpgrade, 1, 10), localizeTooltip("upgrade.type.armor", false));
-        ArtificeRegistry.registerTooltip(new ItemStack(ArtificeItems.itemUpgrade, 1, 10), FormatCodes.Yellow.code + StatCollector.translateToLocal(Enchantment.blastProtection.getName()) + " (" + (ArtificeConfig.limitUpgrades.getBoolean(true) ? RomanUtil.convertToRoman(EnumUpgrades.ElasticLayering.maxLevel) : RomanUtil.convertToRoman(Enchantment.blastProtection.getMaxLevel())) + ")");
+        ArtificeRegistry.registerTooltip(new ItemStack(ArtificeItems.itemUpgrade, 1, 10), FormatCodes.Yellow.code + StatCollector.translateToLocal(Enchantment.blastProtection.getName()) + " (" + (ArtificeConfig.limitUpgrades ? RomanUtil.convertToRoman(EnumUpgrades.ElasticLayering.maxLevel) : RomanUtil.convertToRoman(Enchantment.blastProtection.getMaxLevel())) + ")");
         ArtificeRegistry.registerTooltip(new ItemStack(ArtificeItems.itemUpgrade, 1, 10), localizeTooltip("upgrade.layering", true));
 
         ArtificeRegistry.registerTooltip(new ItemStack(ArtificeItems.itemUpgrade, 1, 11), localizeTooltip("upgrade.type.helmet", false));
-        ArtificeRegistry.registerTooltip(new ItemStack(ArtificeItems.itemUpgrade, 1, 11), FormatCodes.Yellow.code + StatCollector.translateToLocal(Enchantment.respiration.getName()) + " (" + (ArtificeConfig.limitUpgrades.getBoolean(true) ? RomanUtil.convertToRoman(EnumUpgrades.ScubaTank.maxLevel) : RomanUtil.convertToRoman(Enchantment.respiration.getMaxLevel())) + ")");
+        ArtificeRegistry.registerTooltip(new ItemStack(ArtificeItems.itemUpgrade, 1, 11), FormatCodes.Yellow.code + StatCollector.translateToLocal(Enchantment.respiration.getName()) + " (" + (ArtificeConfig.limitUpgrades ? RomanUtil.convertToRoman(EnumUpgrades.ScubaTank.maxLevel) : RomanUtil.convertToRoman(Enchantment.respiration.getMaxLevel())) + ")");
         ArtificeRegistry.registerTooltip(new ItemStack(ArtificeItems.itemUpgrade, 1, 11), localizeTooltip("upgrade.tank", true));
 
         ArtificeRegistry.registerTooltip(new ItemStack(ArtificeItems.itemUpgrade, 1, 12), localizeTooltip("upgrade.type.helmet", false));
-        ArtificeRegistry.registerTooltip(new ItemStack(ArtificeItems.itemUpgrade, 1, 12), FormatCodes.Yellow.code + StatCollector.translateToLocal(Enchantment.aquaAffinity.getName()) + " (" + (ArtificeConfig.limitUpgrades.getBoolean(true) ? RomanUtil.convertToRoman(EnumUpgrades.DiveKit.maxLevel) : RomanUtil.convertToRoman(Enchantment.aquaAffinity.getMaxLevel())) + ")");
+        ArtificeRegistry.registerTooltip(new ItemStack(ArtificeItems.itemUpgrade, 1, 12), FormatCodes.Yellow.code + StatCollector.translateToLocal(Enchantment.aquaAffinity.getName()) + " (" + (ArtificeConfig.limitUpgrades ? RomanUtil.convertToRoman(EnumUpgrades.DiveKit.maxLevel) : RomanUtil.convertToRoman(Enchantment.aquaAffinity.getMaxLevel())) + ")");
         ArtificeRegistry.registerTooltip(new ItemStack(ArtificeItems.itemUpgrade, 1, 12), localizeTooltip("upgrade.divekit", true));
 
         ArtificeRegistry.registerTooltip(new ItemStack(ArtificeItems.itemBucket, 1, 0), localizeTooltip("flammable", false));

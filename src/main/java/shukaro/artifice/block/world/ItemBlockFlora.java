@@ -5,9 +5,8 @@ import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
-import shukaro.artifice.ArtificeCore;
+import shukaro.artifice.ArtificeConfig;
 import shukaro.artifice.block.ItemBlockArtifice;
-import shukaro.artifice.block.world.BlockFlora;
 
 import java.util.Locale;
 
@@ -21,7 +20,7 @@ public class ItemBlockFlora extends ItemBlockArtifice
     @Override
     public int getMetadata(int meta)
     {
-        if (meta > ArtificeCore.flora.length)
+        if (meta > ArtificeConfig.flora.length)
             return 0;
         return meta;
     }
@@ -30,7 +29,7 @@ public class ItemBlockFlora extends ItemBlockArtifice
     @SideOnly(Side.CLIENT)
     public IIcon getIconFromDamage(int meta)
     {
-        if (meta > ArtificeCore.flora.length)
+        if (meta > ArtificeConfig.flora.length)
             return BlockFlora.icons[0];
         return BlockFlora.icons[meta];
     }
@@ -38,8 +37,8 @@ public class ItemBlockFlora extends ItemBlockArtifice
     @Override
     public String getUnlocalizedName(ItemStack stack)
     {
-        if (stack.getItemDamage() > ArtificeCore.flora.length)
-            return Block.getBlockFromItem(stack.getItem()).getUnlocalizedName() + "." + ArtificeCore.flora[0].toLowerCase(Locale.ENGLISH);
-        return Block.getBlockFromItem(stack.getItem()).getUnlocalizedName() + "." + ArtificeCore.flora[stack.getItemDamage()].toLowerCase(Locale.ENGLISH);
+        if (stack.getItemDamage() > ArtificeConfig.flora.length)
+            return Block.getBlockFromItem(stack.getItem()).getUnlocalizedName() + "." + ArtificeConfig.flora[0].toLowerCase(Locale.ENGLISH);
+        return Block.getBlockFromItem(stack.getItem()).getUnlocalizedName() + "." + ArtificeConfig.flora[stack.getItemDamage()].toLowerCase(Locale.ENGLISH);
     }
 }

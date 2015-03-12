@@ -77,7 +77,7 @@ public class BlockOre extends BlockArtifice
         super.harvestBlock(world, entityplayer, x, y, z, fortune);
         if (!name.equals("oreEnder"))
             return;
-        if (!world.isRemote && world.rand.nextInt(100) < 20 && ArtificeConfig.spawnEndermen.getBoolean(true) && !EnchantmentHelper.getSilkTouchModifier(entityplayer))
+        if (!world.isRemote && world.rand.nextInt(100) < 20 && ArtificeConfig.spawnEndermen && !EnchantmentHelper.getSilkTouchModifier(entityplayer))
         {
             int tries = world.rand.nextInt(20);
             for (int i=0; i<tries; i++)

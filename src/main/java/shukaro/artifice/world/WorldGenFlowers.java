@@ -20,7 +20,7 @@ public class WorldGenFlowers implements IFeatureGenerator
 
     public WorldGenFlowers()
     {
-        this.frequency = ArtificeConfig.floraFrequency.getInt();
+        this.frequency = ArtificeConfig.floraFrequency;
     }
 
     @Override
@@ -45,7 +45,7 @@ public class WorldGenFlowers implements IFeatureGenerator
             total = rand.nextInt(100) < frequency ? 0 : 1;
         for (int j=0; j<total; j++)
         {
-            int type = rand.nextInt(ArtificeCore.flora.length - 1);
+            int type = rand.nextInt(ArtificeConfig.flora.length - 1);
             int xMin = chunkX << 4;
             int zMin = chunkZ << 4;
 

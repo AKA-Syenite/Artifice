@@ -19,7 +19,7 @@ public class WorldGenLily implements IFeatureGenerator
 
     public WorldGenLily()
     {
-        this.frequency = ArtificeConfig.lotusFrequency.getInt();
+        this.frequency = ArtificeConfig.lotusFrequency;
     }
 
     @Override

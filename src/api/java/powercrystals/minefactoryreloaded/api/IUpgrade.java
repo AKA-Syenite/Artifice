@@ -15,7 +15,7 @@ public interface IUpgrade
         SPEED,
         EFFICIENCY,
         STRENGTH,
-        ENERGY;
+        ENERGY
     }
 
     /**

@@ -48,7 +48,7 @@ public class ItemSteel extends ItemArtifice
     public void getSubItems(Item id, CreativeTabs tab, List list)
     {
         list.add(new ItemStack(id, 1, 0));
-        if (ArtificeConfig.alternateSteel.getBoolean(false))
+        if (ArtificeConfig.alternateSteel)
             list.add(new ItemStack(id, 1, 1));
     }
 

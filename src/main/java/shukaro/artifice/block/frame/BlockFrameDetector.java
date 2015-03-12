@@ -9,13 +9,12 @@ import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
-import shukaro.artifice.ArtificeCore;
+import powercrystals.minefactoryreloaded.api.rednet.connectivity.IRedNetConnection;
+import powercrystals.minefactoryreloaded.api.rednet.connectivity.RedNetConnectionType;
+import shukaro.artifice.ArtificeConfig;
 import shukaro.artifice.render.TextureHandler;
 
 import java.util.Random;
-
-import powercrystals.minefactoryreloaded.api.rednet.connectivity.IRedNetConnection;
-import powercrystals.minefactoryreloaded.api.rednet.connectivity.RedNetConnectionType;
 
 @Optional.Interface(iface = "powercrystals.minefactoryreloaded.api.rednet.connectivity.IRedNetConnection", modid = "MineFactoryReloaded")
 public class BlockFrameDetector extends BlockFrame implements IRedNetConnection
@@ -27,7 +26,7 @@ public class BlockFrameDetector extends BlockFrame implements IRedNetConnection
         super();
         setBlockName("artifice.detector");
         for (int i = 1; i <= 3; i++)
-            this.validTiers.remove(ArtificeCore.tiers[i]);
+            this.validTiers.remove(ArtificeConfig.tiers[i]);
     }
 
     @Override

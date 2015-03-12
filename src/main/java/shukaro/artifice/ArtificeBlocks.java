@@ -1,7 +1,10 @@
 package shukaro.artifice;
 
+import cofh.core.util.oredict.OreDictionaryArbiter;
 import cpw.mods.fml.common.registry.GameRegistry;
 import gnu.trove.map.TMap;
+import gnu.trove.map.hash.THashMap;
+import gnu.trove.set.hash.THashSet;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidRegistry;
@@ -172,16 +175,16 @@ public class ArtificeBlocks
         GameRegistry.registerBlock(blockEnderOreGlowing, ItemBlockArtifice.class, blockEnderOreGlowing.getUnlocalizedName());
         GameRegistry.registerBlock(blockNiter, ItemBlockNiter.class, blockNiter.getUnlocalizedName());
         GameRegistry.registerBlock(blockGlowSand, ItemBlockArtifice.class, blockGlowSand.getUnlocalizedName());
-        for (int i=0; i<blockColoredTorches.length; i++)
-            GameRegistry.registerBlock(blockColoredTorches[i], ItemBlockArtifice.class, blockColoredTorches[i].getUnlocalizedName());
+        for (BlockColoredTorch t : blockColoredTorches)
+            GameRegistry.registerBlock(t, ItemBlockArtifice.class, t.getUnlocalizedName());
 
         ArtificeRegistry.registerBasaltType(ArtificeBlocks.blockBasalt, 0);
         ArtificeRegistry.registerMarbleType(ArtificeBlocks.blockMarble, 0);
 
         OreDictionary.registerOre("blockMarble", new ItemStack(blockMarble));
         OreDictionary.registerOre("blockBasalt", new ItemStack(blockBasalt));
-        for (int i=0; i<blockLimestones.length; i++)
-            OreDictionary.registerOre("blockLimestone", new ItemStack(blockLimestones[i]));
+        for (BlockRock limeStone : blockLimestones)
+            OreDictionary.registerOre("blockLimestone", new ItemStack(limeStone));
         OreDictionary.registerOre("oreSulfur", new ItemStack(blockSulfur, 1, 0));
         OreDictionary.registerOre("oreSaltpeter", new ItemStack(blockNiter, 1, 1));
         OreDictionary.registerOre("oreEnder", new ItemStack(blockEnderOre, 1, 0));
@@ -200,7 +203,7 @@ public class ArtificeBlocks
         GameRegistry.registerBlock(blockGlassWallDark, ItemBlockFrame.class, blockGlassWallDark.getUnlocalizedName());
         GameRegistry.registerBlock(blockScaffold, ItemBlockFrame.class, blockScaffold.getUnlocalizedName());
 
-        for (int i=0; i<ArtificeCore.tiers.length; i++)
+        for (int i=0; i<ArtificeConfig.tiers.length; i++)
         {
             OreDictionary.registerOre("blockGlass", new ItemStack(blockGlassWall, 1, i));
             OreDictionary.registerOre("blockGlass", new ItemStack(blockGlassWallDark, 1, i));
@@ -219,6 +222,38 @@ public class ArtificeBlocks
 
             GameRegistry.registerBlock(blockLamps[i], ItemBlockArtifice.class, blockLamps[i].getUnlocalizedName());
             GameRegistry.registerBlock(blockLampsInverted[i], ItemBlockArtifice.class, blockLampsInverted[i].getUnlocalizedName());
+        }
+    }
+
+    public static void initOreMappings()
+    {
+        oreMappings = new THashMap<String, Block>();
+        for (int j = 0; j < oreNames.length; j++)
+            oreMappings.put(oreNames[j], blockOres[j]);
+    }
+
+    public static void initOreSet()
+    {
+        oreSet = new THashSet<NameMetaPair>();
+        for (String s : oreNames)
+        {
+            if (OreDictionaryArbiter.getOres(s) != null)
+            {
+                for (ItemStack stack : OreDictionaryArbiter.getOres(s))
+                {
+                    if (stack != null)
+                        oreSet.add(new NameMetaPair(stack.getItem(), stack.getItemDamage()));
+                }
+            }
+        }
+    }
+
+    public static void registerOreVariants()
+    {
+        for (int i = 0; i < ArtificeBlocks.oreNames.length; i++)
+        {
+            for (int j = 0; j < ArtificeBlocks.rockBlocks.length; j++)
+                OreDictionary.registerOre(ArtificeBlocks.oreNames[i], new ItemStack(ArtificeBlocks.blockOres[i], 1, j));
         }
     }
 }

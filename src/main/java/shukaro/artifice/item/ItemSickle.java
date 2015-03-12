@@ -59,14 +59,14 @@ public class ItemSickle extends ItemTool
     @SideOnly(Side.CLIENT)
     public void addInformation(ItemStack stack, EntityPlayer player, List infoList, boolean advancedTooltips)
     {
-        if (!ArtificeConfig.tooltips.getBoolean(true))
+        if (!ArtificeConfig.tooltips)
             return;
         NameMetaPair pair = new NameMetaPair(stack.getItem(), 0);
         if (ArtificeRegistry.getTooltipMap().get(pair) != null)
         {
             for (String s : ArtificeRegistry.getTooltipMap().get(pair))
             {
-                if (!ArtificeConfig.flavorText.getBoolean(true) && s.startsWith(ArtificeTooltips.commentCode))
+                if (!ArtificeConfig.flavorText && s.startsWith(ArtificeTooltips.commentCode))
                     continue;
                 infoList.add(s);
             }

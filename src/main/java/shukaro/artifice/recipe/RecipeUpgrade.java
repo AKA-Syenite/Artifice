@@ -83,7 +83,7 @@ public class RecipeUpgrade implements IRecipe
                     else
                         return false;
 
-                    if (ArtificeConfig.limitUpgrades.getBoolean(true))
+                    if (ArtificeConfig.limitUpgrades)
                     {
                         if (enchant == Enchantment.sharpness)
                             maxLevel = EnumUpgrades.SharpeningKitS.maxLevel;
@@ -101,7 +101,7 @@ public class RecipeUpgrade implements IRecipe
                 else
                 {
                     enchant = EnumUpgrades.values()[stack.getItemDamage() + 1].enchant;
-                    if (ArtificeConfig.limitUpgrades.getBoolean(true))
+                    if (ArtificeConfig.limitUpgrades)
                         maxLevel = EnumUpgrades.values()[stack.getItemDamage() + 1].maxLevel;
                     else
                         maxLevel = EnumUpgrades.values()[stack.getItemDamage() + 1].enchant.getMaxLevel();

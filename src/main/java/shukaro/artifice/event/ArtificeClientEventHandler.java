@@ -11,6 +11,7 @@ import net.minecraft.init.Items;
 import net.minecraftforge.client.event.RenderPlayerEvent;
 import net.minecraftforge.client.event.TextureStitchEvent;
 import net.minecraftforge.fluids.Fluid;
+import shukaro.artifice.ArtificeConfig;
 import shukaro.artifice.ArtificeCore;
 import shukaro.artifice.ArtificeFluids;
 
@@ -59,7 +60,7 @@ public class ArtificeClientEventHandler
     @SubscribeEvent
     public void renderInvisibleArmor(RenderPlayerEvent.SetArmorModel event)
     {
-        if (event.stack != null && EnchantmentHelper.getEnchantmentLevel(ArtificeCore.enchantmentInvisible.effectId, event.stack) > 0)
+        if (ArtificeConfig.enchantmentInvisibleEnable.getBoolean() && event.stack != null && EnchantmentHelper.getEnchantmentLevel(ArtificeCore.enchantmentInvisible.effectId, event.stack) > 0)
             event.result = 0;
     }
 }

@@ -7,6 +7,7 @@ import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
+import shukaro.artifice.ArtificeConfig;
 import shukaro.artifice.ArtificeCore;
 
 public class ArtificeEventHandler
@@ -14,7 +15,7 @@ public class ArtificeEventHandler
     @SubscribeEvent
     public void onDeath(LivingDeathEvent event)
     {
-        if (event.source.getEntity() instanceof EntityPlayer)
+        if (event.source.getEntity() instanceof EntityPlayer && ArtificeConfig.enchantmentSoulstealingEnable.getBoolean())
         {
             EntityPlayer player = (EntityPlayer) event.source.getEntity();
             ItemStack equipped = player.getCurrentEquippedItem();

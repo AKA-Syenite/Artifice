@@ -40,9 +40,13 @@ public class ArtificeCreativeTab extends CreativeTabs
         super.displayAllReleventItems(itemList);
         if (this.getTabLabel().equals(ArtificeCore.mainTab.getTabLabel()))
         {
-            itemList.add(Items.enchanted_book.getEnchantedItemStack(new EnchantmentData(ArtificeCore.enchantmentInvisible.effectId, ArtificeCore.enchantmentInvisible.getMaxLevel())));
-            for (int i=1; i<ArtificeCore.enchantmentSoulstealing.getMaxLevel()+1; i++)
-                itemList.add(Items.enchanted_book.getEnchantedItemStack(new EnchantmentData(ArtificeCore.enchantmentSoulstealing.effectId, i)));
+            if (ArtificeConfig.enchantmentInvisibleEnable.getBoolean())
+                itemList.add(Items.enchanted_book.getEnchantedItemStack(new EnchantmentData(ArtificeCore.enchantmentInvisible.effectId, ArtificeCore.enchantmentInvisible.getMaxLevel())));
+            if (ArtificeConfig.enchantmentSoulstealingEnable.getBoolean())
+            {
+                for (int i=1; i<ArtificeCore.enchantmentSoulstealing.getMaxLevel()+1; i++)
+                    itemList.add(Items.enchanted_book.getEnchantedItemStack(new EnchantmentData(ArtificeCore.enchantmentSoulstealing.effectId, i)));
+            }
         }
     }
 }

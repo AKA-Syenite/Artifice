@@ -11,8 +11,42 @@ public class ArtificeEnchants
     public static void initEnchants()
     {
         if (ArtificeConfig.enchantmentInvisibleEnable)
-            enchantmentInvisible = new EnchantmentInvisible(ArtificeConfig.enchantmentInvisibleID, ArtificeConfig.enchantmentInvisibleWeight);
+        {
+            int id = 70;
+            while (id < 256)
+            {
+                try
+                {
+                    enchantmentInvisible = new EnchantmentInvisible(id, ArtificeConfig.enchantmentInvisibleWeight);
+                    ArtificeCore.logger.info("Registered invisible enchant to ID " + id);
+                    break;
+                }
+                catch (IllegalArgumentException e)
+                {
+                    id++;
+                }
+            }
+            if (enchantmentInvisible == null)
+                ArtificeCore.logger.warn("No available enchantment IDs for invisible enchant!");
+        }
         if (ArtificeConfig.enchantmentSoulstealingEnable)
-            enchantmentSoulstealing = new EnchantmentSoulstealing(ArtificeConfig.enchantmentSoulstealingID, ArtificeConfig.enchantmentSoulstealingWeight);
+        {
+            int id = 70;
+            while (id < 256)
+            {
+                try
+                {
+                    enchantmentSoulstealing = new EnchantmentSoulstealing(id, ArtificeConfig.enchantmentSoulstealingWeight);
+                    ArtificeCore.logger.info("Registered soulstealing enchant to ID " + id);
+                    break;
+                }
+                catch (IllegalArgumentException e)
+                {
+                    id++;
+                }
+            }
+            if (enchantmentSoulstealing == null)
+                ArtificeCore.logger.warn("No available enchantment IDs for soulstealing enchant!");
+        }
     }
 }

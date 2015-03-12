@@ -106,10 +106,8 @@ public class ArtificeConfig
     public static boolean glowSandRecipe;
     public static boolean coloredTorchRecipes;
 
-    public static int enchantmentInvisibleID;
     public static int enchantmentInvisibleWeight;
     public static boolean enchantmentInvisibleEnable;
-    public static int enchantmentSoulstealingID;
     public static int enchantmentSoulstealingWeight;
     public static boolean enchantmentSoulstealingEnable;
 
@@ -273,10 +271,8 @@ public class ArtificeConfig
             maxAquaAffinity = c.get("Upgrades", "Max Aqua Affinity Level", 1).getInt();
             c.addCustomCategoryComment("Upgrades", "Maximum level of enchantment allowed for each enchantment via upgrades");
 
-            enchantmentInvisibleID = c.get("Enchantments", "Invisible Enchant ID", 72).getInt();
             enchantmentInvisibleWeight = c.get("Enchantments", "Invisible Enchant Weight", 4).getInt();
             enchantmentInvisibleEnable = c.get("Enchantments", "Enable invisible enchant", true).getBoolean();
-            enchantmentSoulstealingID = c.get("Enchantments", "Soul Stealing Enchant ID", 73).getInt();
             enchantmentSoulstealingWeight = c.get("Enchantments", "Soul Stealing Enchant Weight", 2).getInt();
             enchantmentSoulstealingEnable = c.get("Enchantments", "Enable soul stealing enchant", true).getBoolean();
             c.addCustomCategoryComment("Enchantments", "Higher weight values equate to higher occurrence");

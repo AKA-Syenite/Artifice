@@ -14,8 +14,6 @@ public abstract class ArtificeRegistry
     private static final List<Integer> dimensionBlacklist = new ArrayList<Integer>();
     private static final Set<NameMetaPair> stoneTypes = new HashSet<NameMetaPair>();
     private static final List<String> worldTypeBlacklist = new ArrayList<String>();
-    private static final Map<NameMetaPair, ArrayList<ItemStack>> sledgeBlocks = new HashMap<NameMetaPair, ArrayList<ItemStack>>();
-    private static final Map<Block, ArrayList<ItemStack>> wildSledgeBlocks = new HashMap<Block, ArrayList<ItemStack>>();
     private static final Map<NameMetaPair, List<String>> tooltipMap = new HashMap<NameMetaPair, List<String>>();
     private static final List<ItemStack> marbleTypes = new ArrayList<ItemStack>();
     private static final List<ItemStack> basaltTypes = new ArrayList<ItemStack>();
@@ -134,47 +132,6 @@ public abstract class ArtificeRegistry
     public static Map<NameMetaPair, List<String>> getTooltipMap()
     {
         return tooltipMap;
-    }
-
-    public static void registerSledgeBlock(Block block, int meta, ArrayList<ItemStack> drops)
-    {
-        if (block == null)
-        {
-            ArtificeCore.logger.warn("Tried to register null block in the sledge blocks list!");
-            return;
-        }
-        NameMetaPair pair = new NameMetaPair(block, meta);
-        if (!pair.isValidBlock())
-            ArtificeCore.logger.warn("Tried to register non-block id-meta pair in the sledgeBlock map: " + pair.toString());
-        else if (sledgeBlocks.get(pair) == null)
-        {
-            ArtificeCore.logger.info("Registering sledgeable block " + pair.toString());
-            sledgeBlocks.put(pair, drops);
-        }
-    }
-
-    public static void registerWildSledgeBlock(Block block, ArrayList<ItemStack> drops)
-    {
-        if (block == null)
-        {
-            ArtificeCore.logger.warn("Tried to register null block in the non-meta'd sledge blocks list!");
-            return;
-        }
-        if (wildSledgeBlocks.get(block) == null)
-        {
-            ArtificeCore.logger.info("Registering non-meta'd sledgeable block with name " + block.getUnlocalizedName());
-            wildSledgeBlocks.put(block, drops);
-        }
-    }
-
-    public static Map<Block, ArrayList<ItemStack>> getWildSledgeBlocks()
-    {
-        return wildSledgeBlocks;
-    }
-
-    public static Map<NameMetaPair, ArrayList<ItemStack>> getSledgeBlocks()
-    {
-        return sledgeBlocks;
     }
 
     public static void registerDimensionBlacklist(int dimID)

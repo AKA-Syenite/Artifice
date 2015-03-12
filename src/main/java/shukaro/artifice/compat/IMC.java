@@ -8,14 +8,8 @@ import cpw.mods.fml.common.event.FMLInterModComms.IMCEvent;
 import cpw.mods.fml.common.event.FMLInterModComms.IMCMessage;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.nbt.NBTTagList;
-import net.minecraftforge.common.util.Constants;
 import shukaro.artifice.ArtificeCore;
 import shukaro.artifice.ArtificeRegistry;
-import shukaro.artifice.util.NameMetaPair;
-
-import java.util.ArrayList;
 
 public class IMC
 {
@@ -27,8 +21,6 @@ public class IMC
                 processMarbleIMC(event, m);
             else if (m.key.equals("register-basalt"))
                 processBasaltIMC(event, m);
-            else if (m.key.equals("register-sledge"))
-                processSledgeIMC(event, m);
             else if (m.key.equals("register-dim-blacklist"))
                 processDimBlacklistIMC(event, m);
             else if (m.key.equals("register-stone"))
@@ -106,51 +98,6 @@ public class IMC
                     ArtificeCore.logger.info(String.format("Received an invalid basalt registration request %s from mod %s", m.getItemStackValue(), m.getSender()));
                 else
                     ArtificeRegistry.registerBasaltType(block, m.getItemStackValue().getItemDamage());
-            }
-        }
-        catch (Exception ex) {}
-    }
-
-    private static void processSledgeIMC(IMCEvent event, IMCMessage m)
-    {
-        try
-        {
-            if (m.isNBTMessage())
-            {
-                NBTTagCompound tag = m.getNBTValue();
-                if (tag.getBoolean("wild"))
-                {
-                    Block block = Block.getBlockFromName(tag.getString("block"));
-                    NBTTagList list = tag.getTagList("drops", Constants.NBT.TAG_COMPOUND);
-                    ArrayList<ItemStack> drops = new ArrayList<ItemStack>();
-                    for (int i=0; i<list.tagCount(); i++)
-                    {
-                        NBTTagCompound drop = list.getCompoundTagAt(i);
-                        NameMetaPair pair = new NameMetaPair(drop.getString("name"), drop.getInteger("meta"));
-                        if (pair.isValidItem())
-                            drops.add(new ItemStack(pair.getItem(), drop.getInteger("amount"), pair.getMetadata()));
-                        else if (pair.isValidBlock())
-                            drops.add(new ItemStack(pair.getBlock(), drop.getInteger("amount"), pair.getMetadata()));
-                    }
-                    ArtificeRegistry.registerWildSledgeBlock(block, drops);
-                }
-                else
-                {
-                    Block block = Block.getBlockFromName(tag.getString("block"));
-                    int meta = tag.getInteger("meta");
-                    NBTTagList list = tag.getTagList("drops", Constants.NBT.TAG_COMPOUND);
-                    ArrayList<ItemStack> drops = new ArrayList<ItemStack>();
-                    for (int i=0; i<list.tagCount(); i++)
-                    {
-                        NBTTagCompound drop = list.getCompoundTagAt(i);
-                        NameMetaPair pair = new NameMetaPair(drop.getString("name"), drop.getInteger("meta"));
-                        if (pair.isValidItem())
-                            drops.add(new ItemStack(pair.getItem(), drop.getInteger("amount"), pair.getMetadata()));
-                        else if (pair.isValidBlock())
-                            drops.add(new ItemStack(pair.getBlock(), drop.getInteger("amount"), pair.getMetadata()));
-                    }
-                    ArtificeRegistry.registerSledgeBlock(block, meta, drops);
-                }
             }
         }
         catch (Exception ex) {}

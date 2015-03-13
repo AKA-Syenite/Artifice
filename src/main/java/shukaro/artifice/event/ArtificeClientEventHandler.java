@@ -33,7 +33,6 @@ public class ArtificeClientEventHandler
     @SubscribeEvent
     public void initializeIcons(TextureStitchEvent.Post event)
     {
-
         setFluidIcons(ArtificeFluids.fluidBitumen);
         setFluidIcons(ArtificeFluids.fluidCreosote);
         setFluidIcons(ArtificeFluids.fluidFuel);
@@ -42,7 +41,6 @@ public class ArtificeClientEventHandler
 
     private static void registerFluidIcons(Fluid fluid, IIconRegister ir)
     {
-
         String name = StringHelper.titleCase(fluid.getName());
         IconRegistry.addIcon("Fluid" + name, "artifice:fluid/Fluid_" + name + "_Still", ir);
         IconRegistry.addIcon("Fluid" + name + 1, "artifice:fluid/Fluid_" + name + "_Flow", ir);
@@ -50,7 +48,6 @@ public class ArtificeClientEventHandler
 
     private static void setFluidIcons(Fluid fluid)
     {
-
         String name = StringHelper.titleCase(fluid.getName());
         fluid.setIcons(IconRegistry.getIcon("Fluid" + name), IconRegistry.getIcon("Fluid" + name, 1));
     }

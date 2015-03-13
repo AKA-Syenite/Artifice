@@ -292,8 +292,10 @@ public class BlockOre extends BlockArtifice
             return ArtificeBlocks.blockSulfur.getExpDrop(world, meta, fortune);
         else if (name.equals("oreEnder"))
             return ArtificeBlocks.blockEnderOre.getExpDrop(world, meta, fortune);
-        else
+        else if (Block.getBlockFromItem(ItemHelper.getOre(name).getItem()) != this)
             return Block.getBlockFromItem(ItemHelper.getOre(name).getItem()).getExpDrop(world, meta, fortune);
+        else
+            return 0;
     }
 
     @Override

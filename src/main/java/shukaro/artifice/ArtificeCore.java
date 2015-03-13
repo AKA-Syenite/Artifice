@@ -12,6 +12,7 @@ import net.minecraft.network.NetHandlerPlayServer;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraftforge.common.MinecraftForge;
 import org.apache.logging.log4j.Logger;
+import shukaro.artifice.command.CommandCalc;
 import shukaro.artifice.compat.*;
 import shukaro.artifice.event.ArtificeEventHandler;
 import shukaro.artifice.event.ArtificeTickHandler;
@@ -44,7 +45,10 @@ public class ArtificeCore
     public static ArtificeCore instance;
 
     @EventHandler
-    public void serverStarting(FMLServerStartingEvent evt) {}
+    public void serverStarting(FMLServerStartingEvent evt)
+    {
+        evt.registerServerCommand(new CommandCalc());
+    }
 
     private ArrayList<ICompat> compats = new ArrayList<ICompat>();
 

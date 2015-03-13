@@ -546,4 +546,5 @@ tooltip.artifice.coloredtorch.flavor=Somewhat more exciting
 
 #Enchantments
 enchantment.artifice.invisible=Invisible
-enchantment.artifice.soulstealing=Soul Stealing
+enchantment.artifice.soulstealing=Soulstealing
+enchantment.artifice.resistance=Resistance

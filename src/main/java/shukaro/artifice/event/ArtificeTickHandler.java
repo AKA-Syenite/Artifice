@@ -16,9 +16,9 @@ public class ArtificeTickHandler
     public static TMap<Integer, ArrayDeque<ISuspendableGen>> toGen = new THashMap<Integer, ArrayDeque<ISuspendableGen>>();
 
     @SubscribeEvent
-    public void tickEnd(TickEvent.WorldTickEvent event)
+    public void worldTickEnd(TickEvent.WorldTickEvent event)
     {
-        if (event.phase != TickEvent.Phase.END | event.side != Side.SERVER)
+        if (event.phase != TickEvent.Phase.END || event.side != Side.SERVER)
             return;
 
         World world = event.world;

@@ -1,12 +1,14 @@
 package shukaro.artifice;
 
 import shukaro.artifice.enchant.EnchantmentInvisible;
+import shukaro.artifice.enchant.EnchantmentResistance;
 import shukaro.artifice.enchant.EnchantmentSoulstealing;
 
 public class ArtificeEnchants
 {
     public static EnchantmentInvisible enchantmentInvisible;
     public static EnchantmentSoulstealing enchantmentSoulstealing;
+    public static EnchantmentResistance enchantmentResistance;
 
     public static void initEnchants()
     {
@@ -47,6 +49,25 @@ public class ArtificeEnchants
             }
             if (enchantmentSoulstealing == null)
                 ArtificeCore.logger.warn("No available enchantment IDs for soulstealing enchant!");
+        }
+        if (ArtificeConfig.enchantmentResistanceEnable)
+        {
+            int id = 70;
+            while (id < 256)
+            {
+                try
+                {
+                    enchantmentResistance = new EnchantmentResistance(id, ArtificeConfig.enchantmentResistanceWeight);
+                    ArtificeCore.logger.info("Registered resistance enchant to ID " + id);
+                    break;
+                }
+                catch (IllegalArgumentException e)
+                {
+                    id++;
+                }
+            }
+            if (enchantmentResistance == null)
+                ArtificeCore.logger.warn("No available enchantment IDs for resistance enchant!");
         }
     }
 }

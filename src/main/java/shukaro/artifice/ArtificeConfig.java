@@ -109,7 +109,10 @@ public class ArtificeConfig
     public static int enchantmentInvisibleWeight;
     public static boolean enchantmentInvisibleEnable;
     public static int enchantmentSoulstealingWeight;
+    public static int enchantmentSoulstealingBonus;
     public static boolean enchantmentSoulstealingEnable;
+    public static int enchantmentResistanceWeight;
+    public static boolean enchantmentResistanceEnable;
 
     private static String marbleList;
     private static String basaltList;
@@ -274,7 +277,10 @@ public class ArtificeConfig
             enchantmentInvisibleWeight = c.get("Enchantments", "Invisible Enchant Weight", 4).getInt();
             enchantmentInvisibleEnable = c.get("Enchantments", "Enable invisible enchant", true).getBoolean();
             enchantmentSoulstealingWeight = c.get("Enchantments", "Soul Stealing Enchant Weight", 2).getInt();
+            enchantmentSoulstealingBonus = c.get("Enchantments", "Bonus XP per level of Soul Stealing", 5).getInt();
             enchantmentSoulstealingEnable = c.get("Enchantments", "Enable soul stealing enchant", true).getBoolean();
+            enchantmentResistanceWeight = c.get("Enchantments", "Resistance Enchant weight", 1).getInt();
+            enchantmentResistanceEnable = c.get("Enchantments", "Enable resistance enchant", true).getBoolean();
             c.addCustomCategoryComment("Enchantments", "Higher weight values equate to higher occurrence");
         }
         catch (Exception e)

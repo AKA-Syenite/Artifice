@@ -365,6 +365,8 @@ tile.artifice.coloredtorch13.name=Green Torch
 tile.artifice.coloredtorch14.name=Red Torch
 tile.artifice.coloredtorch15.name=Black Torch
 
+tile.artifice.charredlog.name=Charred Log
+
 # Item Names
 item.artifice.sledge.wood.name=Wooden Sledge
 item.artifice.sledge.stone.name=Stone Sledge
@@ -543,6 +545,7 @@ tooltip.artifice.bucket.creosote.flavor=Reeks
 tooltip.artifice.bucket.bitumen.flavor=Extremely thick
 tooltip.artifice.glowsand.flavor=A bit eerie
 tooltip.artifice.coloredtorch.flavor=Somewhat more exciting
+tooltip.artifice.charredlog.flavor=Still somewhat intact
 
 #Enchantments
 enchantment.artifice.invisible=Invisible

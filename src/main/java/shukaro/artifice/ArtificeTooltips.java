@@ -321,5 +321,7 @@ public class ArtificeTooltips
 
         for (int i=0; i<16; i++)
             ArtificeRegistry.registerTooltip(new ItemStack(ArtificeBlocks.blockColoredTorches[i], 1, 0), localizeTooltip("coloredtorch", true));
+
+        ArtificeRegistry.registerTooltip(new ItemStack(ArtificeBlocks.blockCharredLog, 1, 0), localizeTooltip("charredlog", true));
     }
 }

@@ -47,6 +47,11 @@ public class ArtificeCreativeTab extends CreativeTabs
                 for (int i=1; i<ArtificeEnchants.enchantmentSoulstealing.getMaxLevel()+1; i++)
                     itemList.add(Items.enchanted_book.getEnchantedItemStack(new EnchantmentData(ArtificeEnchants.enchantmentSoulstealing.effectId, i)));
             }
+            if (ArtificeConfig.enchantmentResistanceEnable)
+            {
+                for (int i=1; i<ArtificeEnchants.enchantmentResistance.getMaxLevel()+1; i++)
+                    itemList.add(Items.enchanted_book.getEnchantedItemStack(new EnchantmentData(ArtificeEnchants.enchantmentResistance.effectId, i)));
+            }
         }
     }
 }

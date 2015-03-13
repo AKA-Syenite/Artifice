@@ -39,13 +39,30 @@ public class ArtificeEventHandler
             int reslvl = 0;
             for (int i=1; i<=4; i++)
                 reslvl += EnchantmentHelper.getEnchantmentLevel(ArtificeEnchants.enchantmentResistance.effectId, event.entityLiving.getEquipmentInSlot(i));
-            double reduction = reslvl * 7;
-            reduction /= 100;
-            if (event.entityLiving.getRNG().nextDouble() < reduction)
+            if (reslvl == 0)
+                return;
+            double maxResistance = (reslvl * 7) / (float)100;
+            double minResistance = maxResistance / (float)2;
+            double finalResistance = minResistance + (event.entityLiving.getRNG().nextDouble() * (maxResistance - minResistance));
+            double reduction = 1.0F - finalResistance;
+            event.ammount *= reduction;
+            if (event.ammount % 1 != 0)
             {
-                int toDamage = event.entityLiving.worldObj.rand.nextInt(4)+1;
-                event.entityLiving.getEquipmentInSlot(toDamage).damageItem(1, event.entityLiving);
-                event.setCanceled(true);
+                double floor = Math.floor(event.ammount);
+                double remainder = event.ammount - floor;
+                if (event.entityLiving.getRNG().nextDouble() > remainder)
+                    event.ammount = (float)floor;
+                else
+                    event.ammount = (float)floor+1;
+            }
+            while (true)
+            {
+                int toDamage = event.entityLiving.worldObj.rand.nextInt(4) + 1;
+                if (event.entityLiving.getEquipmentInSlot(toDamage) != null)
+                {
+                    event.entityLiving.getEquipmentInSlot(toDamage).damageItem(1, event.entityLiving);
+                    return;
+                }
             }
         }
     }

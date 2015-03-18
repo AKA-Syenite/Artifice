@@ -14,7 +14,7 @@ public class ArtificeEnchants
     {
         if (ArtificeConfig.enchantmentInvisibleEnable)
         {
-            int id = 70;
+            int id = ArtificeConfig.enchantmentStartID;
             while (id < 256)
             {
                 try
@@ -33,7 +33,7 @@ public class ArtificeEnchants
         }
         if (ArtificeConfig.enchantmentSoulstealingEnable)
         {
-            int id = 70;
+            int id = ArtificeConfig.enchantmentStartID;
             while (id < 256)
             {
                 try
@@ -52,7 +52,7 @@ public class ArtificeEnchants
         }
         if (ArtificeConfig.enchantmentResistanceEnable)
         {
-            int id = 70;
+            int id = ArtificeConfig.enchantmentStartID;
             while (id < 256)
             {
                 try

@@ -84,6 +84,9 @@ public class ArtificeConfig
     public static int[] rockCavesMaxHeight = new int[3];
     public static int[] rockCavesFrequency = new int[3];
 
+    public static boolean volcanoGen;
+    public static int volcanoFrequency;
+
     public static boolean floraRecipes;
     public static boolean basaltRecipes;
     public static boolean marbleRecipes;
@@ -106,6 +109,7 @@ public class ArtificeConfig
     public static boolean glowSandRecipe;
     public static boolean coloredTorchRecipes;
 
+    public static int enchantmentStartID;
     public static int enchantmentInvisibleWeight;
     public static boolean enchantmentInvisibleEnable;
     public static int enchantmentSoulstealingWeight;
@@ -152,6 +156,9 @@ public class ArtificeConfig
 
             oilLakeGen = c.get("Resource Generation", "Generate Oil Lakes", true).getBoolean();
             oilLakeFrequency = c.get("Resource Generation", "Percentage Oil lake Frequency", 100).getInt();
+
+            volcanoGen = c.get("Volcano Generation", "Generate Volcanoes", true).getBoolean();
+            volcanoFrequency = c.get("Volcano Generation", "Percentage Volcano Frequency", 100).getInt();
 
             for (int i=0; i< rockNames.length; i++)
             {
@@ -274,6 +281,7 @@ public class ArtificeConfig
             maxAquaAffinity = c.get("Upgrades", "Max Aqua Affinity Level", 1).getInt();
             c.addCustomCategoryComment("Upgrades", "Maximum level of enchantment allowed for each enchantment via upgrades");
 
+            enchantmentStartID = c.get("Enchantments", "Starting ID for EID range", 70).getInt();
             enchantmentInvisibleWeight = c.get("Enchantments", "Invisible Enchant Weight", 4).getInt();
             enchantmentInvisibleEnable = c.get("Enchantments", "Enable invisible enchant", true).getBoolean();
             enchantmentSoulstealingWeight = c.get("Enchantments", "Soul Stealing Enchant Weight", 2).getInt();

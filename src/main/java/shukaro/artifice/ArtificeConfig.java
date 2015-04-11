@@ -1,9 +1,11 @@
 package shukaro.artifice;
 
+import cofh.lib.util.helpers.MathHelper;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.config.Configuration;
+import net.minecraftforge.common.config.Property;
 
 public class ArtificeConfig
 {
@@ -282,7 +284,9 @@ public class ArtificeConfig
             maxAquaAffinity = c.get("Upgrades", "Max Aqua Affinity Level", 1).getInt();
             c.addCustomCategoryComment("Upgrades", "Maximum level of enchantment allowed for each enchantment via upgrades");
 
-            enchantmentStartID = c.get("Enchantments", "Starting ID for EID range", 70).getInt();
+            Property eid = c.get("Enchantments", "Starting ID for EID range", 70);
+            eid.set(MathHelper.clampI(eid.getInt(), 0, 255));
+            enchantmentStartID = eid.getInt();
             enchantmentInvisibleWeight = c.get("Enchantments", "Invisible Enchant Weight", 4).getInt();
             enchantmentInvisibleEnable = c.get("Enchantments", "Enable invisible enchant", true).getBoolean();
             enchantmentSoulstealingWeight = c.get("Enchantments", "Soul Stealing Enchant Weight", 2).getInt();

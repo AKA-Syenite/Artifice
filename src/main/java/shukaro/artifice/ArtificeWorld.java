@@ -31,5 +31,7 @@ public class ArtificeWorld
             WorldHandler.addFeature(new WorldGenFlowers());
         if (ArtificeConfig.lotusWorldGen)
             WorldHandler.addFeature(new WorldGenLily());
+        //if (ArtificeConfig.volcanoGen)
+        //    WorldHandler.addFeature(new WorldGenVolcano());
     }
 }

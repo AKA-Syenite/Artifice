@@ -13,7 +13,6 @@ import shukaro.artifice.util.BlockCoord;
 import shukaro.artifice.util.ChunkCoord;
 import shukaro.artifice.util.NameMetaPair;
 
-import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Set;
@@ -79,10 +78,7 @@ public class WorldGenSulfur implements IFeatureGenerator
             int num = rand.nextInt((int) (size * 1.5) - (int) (size * 0.5) + 1) + (int) (size * 0.5);
             SulfurGen sulfur = new SulfurGen(world, rand, b, num);
             sulfur.doGeneration(chunkX, chunkZ);
-            if (!ArtificeTickHandler.toGen.containsKey(Integer.valueOf(dim)))
-                ArtificeTickHandler.toGen.put(dim, new ArrayDeque<ISuspendableGen>());
-            if (sulfur.getChunksToGen().size() > 0)
-                ArtificeTickHandler.toGen.get(Integer.valueOf(dim)).add(sulfur);
+            ArtificeTickHandler.queueGeneration(dim, sulfur);
         }
         return true;
     }

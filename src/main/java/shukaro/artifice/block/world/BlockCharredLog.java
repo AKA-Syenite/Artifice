@@ -61,6 +61,12 @@ public class BlockCharredLog extends BlockLog
     }
 
     @Override
+    public boolean isWood(IBlockAccess world, int x, int y, int z)
+    {
+        return false;
+    }
+
+    @Override
     public int damageDropped(int meta)
     {
         return 1;

@@ -1,5 +1,6 @@
 package shukaro.artifice.item;
 
+import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -32,6 +33,7 @@ public class ItemBox extends ItemArtifice
     {
         super();
         this.setUnlocalizedName("artifice.box");
+        GameRegistry.registerItem(this, this.getUnlocalizedName());
     }
 
     @Override

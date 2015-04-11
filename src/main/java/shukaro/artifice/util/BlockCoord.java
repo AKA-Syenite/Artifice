@@ -1,10 +1,11 @@
 package shukaro.artifice.util;
 
 import net.minecraft.block.Block;
-import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraft.world.chunk.Chunk;
+import net.minecraft.world.chunk.storage.ExtendedBlockStorage;
 import net.minecraftforge.common.util.ForgeDirection;
 
 import java.util.ArrayList;
@@ -174,14 +175,14 @@ public class BlockCoord implements Comparable
         return this;
     }
 
-    public BlockCoord inset(int side)
+    public BlockCoord offset(ForgeDirection dir, int amount)
     {
-        return inset(side, 1);
+        return offset(dir.ordinal(), amount);
     }
 
-    public BlockCoord inset(int side, int amount)
+    public BlockCoord offset(ForgeDirection dir)
     {
-        return offset(side, -amount);
+        return offset(dir.ordinal());
     }
 
     public BlockCoord[] getAdjacent()
@@ -268,7 +269,7 @@ public class BlockCoord implements Comparable
 
     public List<BlockCoord> getRadiusBlocks(int radius)
     {
-        List<BlockCoord> matches = new ArrayList<BlockCoord>();
+        List<BlockCoord> matches = new ArrayList<BlockCoord>((int)Math.pow(2*radius, 3));
         BlockCoord c = this.copy();
 
         int minX = c.x - radius;
@@ -350,14 +351,19 @@ public class BlockCoord implements Comparable
         return this.getDistance(c.x, c.y, c.z);
     }
 
+    public float get2dDistance(int x, int z)
+    {
+        return (float) Math.sqrt(Math.pow(this.x - x, 2) + Math.pow(this.z - z, 2));
+    }
+
+    public float get2dDistance(BlockCoord c)
+    {
+        return this.get2dDistance(c.x, c.z);
+    }
+
     public float getDistance(int x, int y, int z)
     {
         return (float) Math.sqrt(Math.pow(this.x - x, 2) + Math.pow(this.y - y, 2) + Math.pow(this.z - z, 2));
-    }
-
-    public int getMeta(World world)
-    {
-        return world.getBlockMetadata(this.x, this.y, this.z);
     }
 
     public int getMeta(IBlockAccess access)
@@ -365,18 +371,51 @@ public class BlockCoord implements Comparable
         return access.getBlockMetadata(this.x, this.y, this.z);
     }
 
-    public Block getBlock(World world) { return world.getBlock(this.x, this.y, this.z); }
-
     public Block getBlock(IBlockAccess access) { return access.getBlock(this.x, this.y, this.z); }
 
-    public TileEntity getTileEntity(World world)
+    public TileEntity getTileEntity(IBlockAccess world)
     {
         return world.getTileEntity(this.x, this.y, this.z);
     }
 
     public boolean isAir(IBlockAccess access) { return access.isAirBlock(this.x, this.y, this.z); }
 
-    public ItemStack getStack(IBlockAccess access) { return new ItemStack(access.getBlock(this.x, this.y, this.z), 1, access.getBlockMetadata(this.x, this.y, this.z)); }
+    public void boundHeight()
+    {
+        if (this.y < 0)
+            this.y = 0;
+        else if (this.y > 255)
+            this.y = 255;
+    }
+
+    public void setBlock(World world, Block block, int meta, boolean update)
+    {
+        if ((this.y < 0) || (this.y > 255))
+            return;
+        int xT = this.x;
+        int yT = this.y;
+        int zT = this.z;
+
+        Chunk c = world.getChunkFromBlockCoords(this.x, this.z);
+        ExtendedBlockStorage[] storage = c.getBlockStorageArray();
+        ExtendedBlockStorage subChunk = storage[this.y >> 4];
+        if (subChunk == null)
+            storage[this.y >> 4] = subChunk = new ExtendedBlockStorage(this.y & ~15, !world.provider.hasNoSky);
+        xT &= 15;
+        zT &= 15;
+        if (subChunk.getBlockByExtId(xT, yT & 15, zT).hasTileEntity(subChunk.getExtBlockMetadata(xT, yT & 15, zT)))
+            c.removeTileEntity(xT & 15, yT, zT & 15);
+        yT &= 15;
+
+        subChunk.func_150818_a(xT, yT, zT, block);
+        subChunk.setExtBlockMetadata(xT, yT, zT, meta);
+        world.markBlockForUpdate(this.x, this.y, this.z);
+        if (update)
+        {
+            world.notifyBlockChange(this.x, this.y, this.z, block);
+            world.func_147453_f(this.x, this.y, this.z, null);
+        }
+    }
 
     @Override
     public String toString()

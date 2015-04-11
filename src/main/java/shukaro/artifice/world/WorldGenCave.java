@@ -4,9 +4,7 @@ import cofh.api.world.IFeatureGenerator;
 import gnu.trove.map.TMap;
 import gnu.trove.map.hash.THashMap;
 import net.minecraft.block.Block;
-import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
-import net.minecraft.world.WorldType;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraftforge.common.BiomeDictionary;
 import shukaro.artifice.ArtificeBlocks;
@@ -18,7 +16,9 @@ import shukaro.artifice.util.BlockCoord;
 import shukaro.artifice.util.ChunkCoord;
 import shukaro.artifice.util.NameMetaPair;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Random;
+import java.util.Set;
 
 public class WorldGenCave implements IFeatureGenerator
 {
@@ -123,10 +123,7 @@ public class WorldGenCave implements IFeatureGenerator
             int num = rand.nextInt((int) (size * 1.5) - (int) (size * 0.5) + 1) + (int) (size * 0.5);
             CaveGen cave = new CaveGen(world, rand, b, num);
             cave.doGeneration(chunkX, chunkZ);
-            if (!ArtificeTickHandler.toGen.containsKey(Integer.valueOf(dim)))
-                ArtificeTickHandler.toGen.put(dim, new ArrayDeque<ISuspendableGen>());
-            if (cave.getChunksToGen().size() > 0)
-                ArtificeTickHandler.toGen.get(Integer.valueOf(dim)).add(cave);
+            ArtificeTickHandler.queueGeneration(dim, cave);
         }
         return true;
     }

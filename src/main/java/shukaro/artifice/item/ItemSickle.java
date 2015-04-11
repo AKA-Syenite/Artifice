@@ -1,5 +1,6 @@
 package shukaro.artifice.item;
 
+import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
@@ -34,6 +35,7 @@ public class ItemSickle extends ItemTool
         this.setMaxDamage(mat.getMaxUses() / 2);
         this.setUnlocalizedName("artifice.sickle." + this.toolMaterial.toString().toLowerCase(Locale.ENGLISH));
         this.radius = getRadius(mat);
+        GameRegistry.registerItem(this, this.getUnlocalizedName());
     }
 
     public int getRadius(Item.ToolMaterial mat)

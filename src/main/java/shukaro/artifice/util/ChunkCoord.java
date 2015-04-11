@@ -1,6 +1,7 @@
 package shukaro.artifice.util;
 
 import net.minecraft.world.ChunkCoordIntPair;
+import net.minecraft.world.World;
 
 public class ChunkCoord implements Comparable
 {
@@ -40,6 +41,11 @@ public class ChunkCoord implements Comparable
         int hash = chunkX;
         hash *= 31 + this.chunkZ;
         return hash;
+    }
+
+    public boolean isLoaded(World world)
+    {
+        return world.blockExists(this.chunkX << 4, 0, this.chunkZ << 4);
     }
 
     public boolean contains(BlockCoord c)

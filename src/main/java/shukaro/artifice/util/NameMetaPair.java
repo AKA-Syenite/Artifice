@@ -25,6 +25,21 @@ public class NameMetaPair
         this.meta = meta;
     }
 
+    public NameMetaPair(Item item)
+    {
+        this(item, -1);
+    }
+
+    public NameMetaPair(Block block)
+    {
+        this(block, -1);
+    }
+
+    public NameMetaPair(String name)
+    {
+        this(name, -1);
+    }
+
     public String getName() { return this.name; }
 
     public void setName(String name) { this.name = name; }
@@ -72,12 +87,12 @@ public class NameMetaPair
     {
         if (o == null || !(o instanceof NameMetaPair)) return false;
         NameMetaPair imp = (NameMetaPair)o;
-        return this.name.equals(imp.name) && this.meta == imp.meta;
+        return this.name.equals(imp.name) && (this.meta == imp.meta || (this.meta == -1 || imp.meta == -1));
     }
 
     public boolean equals(NameMetaPair o)
     {
-        return this.name.equals(o.name) && this.meta == o.meta;
+        return this.name.equals(o.name) && (this.meta == o.meta || (this.meta == -1 || o.meta == -1));
     }
 
     public String toString()

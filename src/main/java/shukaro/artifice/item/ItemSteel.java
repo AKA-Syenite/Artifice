@@ -1,5 +1,6 @@
 package shukaro.artifice.item;
 
+import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -7,7 +8,6 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
-import shukaro.artifice.ArtificeConfig;
 import shukaro.artifice.render.TextureHandler;
 
 import java.util.List;
@@ -23,6 +23,7 @@ public class ItemSteel extends ItemArtifice
     {
         super();
         this.setUnlocalizedName("artifice.steel");
+        GameRegistry.registerItem(this, this.getUnlocalizedName());
     }
 
     @Override
@@ -48,8 +49,7 @@ public class ItemSteel extends ItemArtifice
     public void getSubItems(Item id, CreativeTabs tab, List list)
     {
         list.add(new ItemStack(id, 1, 0));
-        if (ArtificeConfig.alternateSteel)
-            list.add(new ItemStack(id, 1, 1));
+        list.add(new ItemStack(id, 1, 1));
     }
 
     @Override

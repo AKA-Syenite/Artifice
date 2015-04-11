@@ -367,6 +367,9 @@ tile.artifice.coloredtorch15.name=Black Torch
 
 tile.artifice.charredlog.name=Charred Log
 
+tile.artifice.tephra.sand.name=Black Sand
+tile.artifice.tephra.gravel.name=Tephra
+
 # Item Names
 item.artifice.sledge.wood.name=Wooden Sledge
 item.artifice.sledge.stone.name=Stone Sledge

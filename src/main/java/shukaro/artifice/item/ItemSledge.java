@@ -1,6 +1,7 @@
 package shukaro.artifice.item;
 
 import cpw.mods.fml.common.ObfuscationReflectionHelper;
+import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
@@ -46,6 +47,7 @@ public class ItemSledge extends ItemTool
             this.setMaxDamage(mat.getMaxUses() / 16);
         this.setUnlocalizedName("artifice.sledge." + this.toolMaterial.toString().toLowerCase(Locale.ENGLISH));
         this.lossChance = getLossChance(mat);
+        GameRegistry.registerItem(this, this.getUnlocalizedName());
     }
 
     public int getLossChance(Item.ToolMaterial mat)

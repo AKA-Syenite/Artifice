@@ -1,6 +1,7 @@
 package shukaro.artifice.block.decorative;
 
 import cpw.mods.fml.common.Optional;
+import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
@@ -19,6 +20,7 @@ import powercrystals.minefactoryreloaded.api.rednet.connectivity.RedNetConnectio
 import shukaro.artifice.ArtificeBlocks;
 import shukaro.artifice.ArtificeConfig;
 import shukaro.artifice.block.BlockArtifice;
+import shukaro.artifice.block.ItemBlockArtifice;
 import shukaro.artifice.render.TextureHandler;
 import shukaro.artifice.util.MinecraftColors;
 
@@ -44,6 +46,7 @@ public class BlockLamp extends BlockArtifice implements IRedNetConnection
             setBlockName("artifice.lampinverted." + color.name().toLowerCase(Locale.ENGLISH));
         else
             setBlockName("artifice.lamp." + color.name().toLowerCase(Locale.ENGLISH));
+        GameRegistry.registerBlock(this, ItemBlockArtifice.class, this.getUnlocalizedName());
     }
 
     @Override

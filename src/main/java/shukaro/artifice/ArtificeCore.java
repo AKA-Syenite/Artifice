@@ -7,6 +7,9 @@ import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
 import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.*;
+import cpw.mods.fml.common.registry.GameRegistry;
+import net.minecraft.block.Block;
+import net.minecraft.item.Item;
 import net.minecraft.launchwrapper.Launch;
 import net.minecraft.network.NetHandlerPlayServer;
 import net.minecraft.world.biome.BiomeGenBase;
@@ -21,6 +24,7 @@ import shukaro.artifice.net.CommonProxy;
 import shukaro.artifice.recipe.ArtificeRecipes;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @Mod(modid = ArtificeCore.modID, name = ArtificeCore.modName, version = ArtificeCore.modVersion,
         dependencies = "required-after:CoFHCore;after:BuildCraft|Core;after:EE3;after:Forestry;after:MineFactoryReloaded;after:Thaumcraft;after:Railcraft")
@@ -63,7 +67,7 @@ public class ArtificeCore
         compats.add(new Forestry());
         compats.add(new MFR());
         //compats.add(new Thaumcraft());
-        compats.add(new Chisel());
+        //compats.add(new Chisel());
         compats.add(new CarpentersBlocks());
         compats.add(new Vanilla());
 
@@ -121,6 +125,7 @@ public class ArtificeCore
         ArtificeBlocks.initOreMappings();
         ArtificeBlocks.initOreSet();
         ArtificeBlocks.registerOreVariants();
+        ArtificeBlocks.registerBasaltsAndMarbles();
 
         if (ArtificeConfig.floraBoneMeal)
         {
@@ -139,5 +144,18 @@ public class ArtificeCore
     }
 
     @EventHandler
-    public void missingMappings(FMLMissingMappingsEvent event) {}
+    public void missingMappings(FMLMissingMappingsEvent event)
+    {
+        List<FMLMissingMappingsEvent.MissingMapping> missing = event.get();
+        for (FMLMissingMappingsEvent.MissingMapping m : missing)
+        {
+            if (m.name.contains("dobule"))
+            {
+                if (m.type == GameRegistry.Type.BLOCK)
+                    m.remap((Block)Block.blockRegistry.getObject(m.name.replace("dobule", "double")));
+                else if (m.type == GameRegistry.Type.ITEM)
+                    m.remap((Item)Item.itemRegistry.getObject(m.name.replace("dobule", "double")));
+            }
+        }
+    }
 }

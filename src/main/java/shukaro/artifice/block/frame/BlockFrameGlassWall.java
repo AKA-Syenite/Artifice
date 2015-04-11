@@ -1,5 +1,6 @@
 package shukaro.artifice.block.frame;
 
+import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
@@ -27,6 +28,7 @@ public class BlockFrameGlassWall extends BlockFrame
         }
         else
             setBlockName("artifice.glasswall");
+        GameRegistry.registerBlock(this, ItemBlockFrame.class, this.getUnlocalizedName());
     }
 
     @Override

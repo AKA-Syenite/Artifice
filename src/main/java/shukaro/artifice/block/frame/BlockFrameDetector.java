@@ -1,6 +1,7 @@
 package shukaro.artifice.block.frame;
 
 import cpw.mods.fml.common.Optional;
+import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
@@ -12,6 +13,7 @@ import net.minecraftforge.common.util.ForgeDirection;
 import powercrystals.minefactoryreloaded.api.rednet.connectivity.IRedNetConnection;
 import powercrystals.minefactoryreloaded.api.rednet.connectivity.RedNetConnectionType;
 import shukaro.artifice.ArtificeConfig;
+import shukaro.artifice.block.ItemBlockArtifice;
 import shukaro.artifice.render.TextureHandler;
 
 import java.util.Random;
@@ -27,6 +29,7 @@ public class BlockFrameDetector extends BlockFrame implements IRedNetConnection
         setBlockName("artifice.detector");
         for (int i = 1; i <= 3; i++)
             this.validTiers.remove(ArtificeConfig.tiers[i]);
+        GameRegistry.registerBlock(this, ItemBlockArtifice.class, this.getUnlocalizedName());
     }
 
     @Override

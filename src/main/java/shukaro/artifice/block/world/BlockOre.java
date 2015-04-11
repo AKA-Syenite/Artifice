@@ -2,6 +2,7 @@ package shukaro.artifice.block.world;
 
 import cofh.core.util.oredict.OreDictionaryArbiter;
 import cofh.lib.util.helpers.ItemHelper;
+import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
@@ -69,6 +70,8 @@ public class BlockOre extends BlockArtifice
             this.setLightLevel(0.625F);
             this.setTickRandomly(true);
         }
+
+        GameRegistry.registerBlock(this, ItemBlockOre.class, this.getUnlocalizedName());
     }
 
     @Override

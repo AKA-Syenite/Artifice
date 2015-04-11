@@ -9,7 +9,6 @@ import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.oredict.OreDictionary;
-import shukaro.artifice.block.ItemBlockArtifice;
 import shukaro.artifice.block.decorative.*;
 import shukaro.artifice.block.fluid.BlockFluidBitumen;
 import shukaro.artifice.block.fluid.BlockFluidCreosote;
@@ -115,31 +114,19 @@ public class ArtificeBlocks
         blockEnderOreGlowing = new BlockEnderOre(true);
         blockNiter = new BlockNiter();
         if (FluidRegistry.getFluid("oil").getBlock() == null)
-        {
             blockOil = new BlockFluidOil();
-            GameRegistry.registerBlock(blockOil, ItemBlockArtifice.class, blockOil.getUnlocalizedName());
-        }
         else
             blockOil = FluidRegistry.getFluid("oil").getBlock();
         if (FluidRegistry.getFluid("fuel").getBlock() == null)
-        {
             blockFuel = new BlockFluidFuel();
-            GameRegistry.registerBlock(blockFuel, ItemBlockArtifice.class, blockFuel.getUnlocalizedName());
-        }
         else
             blockFuel = FluidRegistry.getFluid("fuel").getBlock();
         if (FluidRegistry.getFluid("bitumen").getBlock() == null)
-        {
             blockBitumen = new BlockFluidBitumen();
-            GameRegistry.registerBlock(blockBitumen, ItemBlockArtifice.class, blockBitumen.getUnlocalizedName());
-        }
         else
             blockBitumen = FluidRegistry.getFluid("bitumen").getBlock();
         if (FluidRegistry.getFluid("creosote").getBlock() == null)
-        {
             blockCreosote = new BlockFluidCreosote();
-            GameRegistry.registerBlock(blockCreosote, ItemBlockArtifice.class, blockCreosote.getUnlocalizedName());
-        }
         else
             blockCreosote = FluidRegistry.getFluid("creosote").getBlock();
         blockGlowSand = new BlockGlowSand();
@@ -151,41 +138,12 @@ public class ArtificeBlocks
         GameRegistry.registerBlock(blockBasaltSlab, ItemBlockSlabArtifice.class, blockBasalt.getUnlocalizedName() + ".slab");
         GameRegistry.registerBlock(blockBasaltDoubleSlab, ItemBlockSlabArtifice.class, blockBasalt.getUnlocalizedName() + ".doubleslab");
         GameRegistry.registerBlock(blockMarbleSlab, ItemBlockSlabArtifice.class, blockMarble.getUnlocalizedName() + ".slab");
-        GameRegistry.registerBlock(blockMarbleDoubleSlab, ItemBlockSlabArtifice.class, blockMarble.getUnlocalizedName() + ".dobuleslab");
-        GameRegistry.registerBlock(blockFlora, ItemBlockFlora.class, blockFlora.getUnlocalizedName());
-        GameRegistry.registerBlock(blockLotus, ItemBlockLotus.class, blockLotus.getUnlocalizedName());
-        GameRegistry.registerBlock(blockBasalt, ItemBlockRock.class, blockBasalt.getUnlocalizedName());
-        GameRegistry.registerBlock(blockMarble, ItemBlockRock.class, blockMarble.getUnlocalizedName());
-        GameRegistry.registerBlock(blockBasaltBrickStairs, ItemBlockArtifice.class, blockBasaltBrickStairs.getUnlocalizedName());
-        GameRegistry.registerBlock(blockMarbleBrickStairs, ItemBlockArtifice.class, blockMarbleBrickStairs.getUnlocalizedName());
-        GameRegistry.registerBlock(blockBasaltCobbleStairs, ItemBlockArtifice.class, blockBasaltCobbleStairs.getUnlocalizedName());
-        GameRegistry.registerBlock(blockMarbleCobbleStairs, ItemBlockArtifice.class, blockMarbleCobbleStairs.getUnlocalizedName());
+        GameRegistry.registerBlock(blockMarbleDoubleSlab, ItemBlockSlabArtifice.class, blockMarble.getUnlocalizedName() + ".doubleslab");
         for (int i=0; i<blockLimestones.length; i++)
         {
-            GameRegistry.registerBlock(blockLimestones[i], ItemBlockRock.class, blockLimestones[i].getUnlocalizedName());
             GameRegistry.registerBlock(blockLimestoneSlabs[i], ItemBlockSlabArtifice.class, blockLimestones[i].getUnlocalizedName() + ".slab");
             GameRegistry.registerBlock(blockLimestoneDoubleSlabs[i], ItemBlockSlabArtifice.class, blockLimestones[i].getUnlocalizedName() + ".doubleslab");
-            GameRegistry.registerBlock(blockLimestoneBrickStairs[i], ItemBlockArtifice.class, blockLimestoneBrickStairs[i].getUnlocalizedName());
-            GameRegistry.registerBlock(blockLimestoneCobbleStairs[i], ItemBlockArtifice.class, blockLimestoneCobbleStairs[i].getUnlocalizedName());
         }
-        for (int i=0; i<oreNames.length; i++)
-        {
-            GameRegistry.registerBlock(blockOres[i], ItemBlockOre.class, blockOres[i].getUnlocalizedName());
-            if (blockOresGlowing[i] != null)
-                GameRegistry.registerBlock(blockOresGlowing[i], ItemBlockOre.class, blockOresGlowing[i].getUnlocalizedName());
-        }
-        GameRegistry.registerBlock(blockSulfur, ItemBlockSulfur.class, blockSulfur.getUnlocalizedName());
-        GameRegistry.registerBlock(blockEnderOre, ItemBlockArtifice.class, blockEnderOre.getUnlocalizedName());
-        GameRegistry.registerBlock(blockEnderOreGlowing, ItemBlockArtifice.class, blockEnderOreGlowing.getUnlocalizedName());
-        GameRegistry.registerBlock(blockNiter, ItemBlockNiter.class, blockNiter.getUnlocalizedName());
-        GameRegistry.registerBlock(blockGlowSand, ItemBlockArtifice.class, blockGlowSand.getUnlocalizedName());
-        for (BlockColoredTorch t : blockColoredTorches)
-            GameRegistry.registerBlock(t, ItemBlockArtifice.class, t.getUnlocalizedName());
-        GameRegistry.registerBlock(blockCharredLog, ItemBlockArtifice.class, blockCharredLog.getUnlocalizedName());
-        GameRegistry.registerBlock(blockTephra, ItemBlockTephra.class, blockTephra.getUnlocalizedName());
-
-        ArtificeRegistry.registerBasaltType(ArtificeBlocks.blockBasalt, 0);
-        ArtificeRegistry.registerMarbleType(ArtificeBlocks.blockMarble, 0);
 
         OreDictionary.registerOre("blockMarble", new ItemStack(blockMarble));
         OreDictionary.registerOre("blockBasalt", new ItemStack(blockBasalt));
@@ -202,13 +160,6 @@ public class ArtificeBlocks
         blockGlassWallDark = new BlockFrameGlassWall(true);
         blockScaffold = new BlockFrameScaffold();
 
-        GameRegistry.registerBlock(blockFrame, ItemBlockFrame.class, blockFrame.getUnlocalizedName());
-        GameRegistry.registerBlock(blockDetector, ItemBlockArtifice.class, blockDetector.getUnlocalizedName());
-        GameRegistry.registerBlock(blockReinforced, ItemBlockFrame.class, blockReinforced.getUnlocalizedName());
-        GameRegistry.registerBlock(blockGlassWall, ItemBlockFrame.class, blockGlassWall.getUnlocalizedName());
-        GameRegistry.registerBlock(blockGlassWallDark, ItemBlockFrame.class, blockGlassWallDark.getUnlocalizedName());
-        GameRegistry.registerBlock(blockScaffold, ItemBlockFrame.class, blockScaffold.getUnlocalizedName());
-
         for (int i=0; i<ArtificeConfig.tiers.length; i++)
         {
             OreDictionary.registerOre("blockGlass", new ItemStack(blockGlassWall, 1, i));
@@ -217,17 +168,12 @@ public class ArtificeBlocks
 
         blockSteel = new BlockSteel();
 
-        GameRegistry.registerBlock(blockSteel, ItemBlockArtifice.class, blockSteel.getUnlocalizedName());
-
         OreDictionary.registerOre("blockSteel", new ItemStack(blockSteel));
 
         for (int i=0; i<16; i++)
         {
             blockLamps[i] = new BlockLamp(MinecraftColors.values()[i], false);
             blockLampsInverted[i] = new BlockLamp(MinecraftColors.values()[i], true);
-
-            GameRegistry.registerBlock(blockLamps[i], ItemBlockArtifice.class, blockLamps[i].getUnlocalizedName());
-            GameRegistry.registerBlock(blockLampsInverted[i], ItemBlockArtifice.class, blockLampsInverted[i].getUnlocalizedName());
         }
     }
 
@@ -261,5 +207,13 @@ public class ArtificeBlocks
             for (int j = 0; j < ArtificeBlocks.rockBlocks.length; j++)
                 OreDictionary.registerOre(ArtificeBlocks.oreNames[i], new ItemStack(ArtificeBlocks.blockOres[i], 1, j));
         }
+    }
+
+    public static void registerBasaltsAndMarbles()
+    {
+        for (ItemStack ore : OreDictionary.getOres("blockMarble"))
+            ArtificeRegistry.registerMarbleType(ore);
+        for (ItemStack ore : OreDictionary.getOres("blockBasalt"))
+            ArtificeRegistry.registerBasaltType(ore);
     }
 }

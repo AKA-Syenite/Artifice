@@ -1,5 +1,6 @@
 package shukaro.artifice.block.world;
 
+import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
@@ -29,6 +30,7 @@ public class BlockSulfur extends BlockArtifice
         setCreativeTab(ArtificeCore.worldTab);
         setBlockName("artifice.sulfur");
         setHarvestLevel("pickaxe", 0, 0);
+        GameRegistry.registerBlock(this, ItemBlockSulfur.class, this.getUnlocalizedName());
     }
 
     @Override

@@ -1,5 +1,6 @@
 package shukaro.artifice.block.world;
 
+import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.BlockFlower;
@@ -28,6 +29,7 @@ public class BlockFlora extends BlockFlower
         setCreativeTab(ArtificeCore.worldTab);
         setHardness(0.0F);
         setBlockName("artifice.flora");
+        GameRegistry.registerBlock(this, ItemBlockFlora.class, this.getUnlocalizedName());
     }
 
     @Override

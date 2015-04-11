@@ -1,5 +1,6 @@
 package shukaro.artifice.block.world;
 
+import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.BlockLilyPad;
@@ -24,6 +25,7 @@ public class BlockLotus extends BlockLilyPad
         setCreativeTab(ArtificeCore.worldTab);
         setBlockName("artifice.flora.lily");
         setStepSound(soundTypeGrass);
+        GameRegistry.registerBlock(this, ItemBlockLotus.class, this.getUnlocalizedName());
     }
 
     @Override

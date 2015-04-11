@@ -1,5 +1,6 @@
 package shukaro.artifice.block.world;
 
+import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
@@ -34,13 +35,19 @@ public class BlockRock extends BlockArtifice
         setBlockName("artifice." + name);
         setCreativeTab(ArtificeCore.worldTab);
         this.name = name;
+        GameRegistry.registerBlock(this, ItemBlockRock.class, this.getUnlocalizedName());
     }
 
     public BlockRock(String name, int color)
     {
-        this(name);
+        super(Material.rock);
+        setHardness(1.5F);
+        setResistance(10.0F);
+        setBlockName("artifice." + name);
+        setCreativeTab(ArtificeCore.worldTab);
         this.name = name.split("[.]")[0];
         this.color = color;
+        GameRegistry.registerBlock(this, ItemBlockRock.class, this.getUnlocalizedName());
     }
 
     @Override

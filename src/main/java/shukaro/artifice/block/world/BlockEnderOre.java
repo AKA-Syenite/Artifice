@@ -1,5 +1,6 @@
 package shukaro.artifice.block.world;
 
+import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
@@ -19,6 +20,7 @@ import shukaro.artifice.ArtificeBlocks;
 import shukaro.artifice.ArtificeConfig;
 import shukaro.artifice.ArtificeCore;
 import shukaro.artifice.ArtificeItems;
+import shukaro.artifice.block.ItemBlockArtifice;
 import shukaro.artifice.render.TextureHandler;
 
 import java.util.List;
@@ -48,6 +50,8 @@ public class BlockEnderOre extends Block
             this.setLightLevel(0.625F);
             this.setTickRandomly(true);
         }
+
+        GameRegistry.registerBlock(this, ItemBlockArtifice.class, this.getUnlocalizedName());
     }
 
     @Override

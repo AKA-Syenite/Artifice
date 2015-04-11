@@ -2,21 +2,20 @@ package shukaro.artifice.block.fluid;
 
 import cofh.core.fluid.BlockFluidCoFHBase;
 import cofh.lib.util.helpers.ServerHelper;
+import cpw.mods.fml.common.registry.GameRegistry;
 import gnu.trove.set.hash.THashSet;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.MapColor;
 import net.minecraft.block.material.Material;
-import net.minecraft.block.material.MaterialLiquid;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.monster.EntityBlaze;
 import net.minecraft.init.Blocks;
-import net.minecraft.potion.Potion;
-import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.World;
 import shukaro.artifice.ArtificeBlocks;
 import shukaro.artifice.ArtificeCore;
 import shukaro.artifice.ArtificeFluids;
+import shukaro.artifice.block.ItemBlockArtifice;
 import shukaro.artifice.util.BlockCoord;
 
 import java.util.Locale;
@@ -40,6 +39,8 @@ public class BlockFluidFuel extends BlockFluidCoFHBase
         ignitionSources.add(Blocks.flowing_lava);
         ignitionSources.add(Blocks.torch);
         ignitionSources.add(Blocks.lit_furnace);
+
+        GameRegistry.registerBlock(this, ItemBlockArtifice.class, this.getUnlocalizedName());
     }
 
     public MapColor getMapColor(int meta) { return MapColor.yellowColor; }

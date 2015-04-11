@@ -46,13 +46,11 @@ public class IMC
                 {
                     String name = array[0];
                     Integer meta = Ints.tryParse(array[1]);
-                    if (Strings.isNullOrEmpty(name) || meta == null)
+                    Block block = (Block) Block.blockRegistry.getObject(name);
+                    if (Strings.isNullOrEmpty(name) || meta == null || block == null)
                         ArtificeCore.logger.info(String.format("Received an invalid marble registration request %s from mod %s", m.getStringValue(), m.getSender()));
                     else
-                    {
-                        Block block = (Block) Block.blockRegistry.getObject(name);
-                        ArtificeRegistry.registerMarbleType(block, meta);
-                    }
+                        ArtificeRegistry.registerMarbleType(new ItemStack(block, 1, meta));
                 }
             }
             else if (m.isItemStackMessage())
@@ -62,7 +60,7 @@ public class IMC
                 if (block == null)
                     ArtificeCore.logger.info(String.format("Received an invalid marble registration request %s from mod %s", m.getItemStackValue(), m.getSender()));
                 else
-                    ArtificeRegistry.registerMarbleType(block, stack.getItemDamage());
+                    ArtificeRegistry.registerMarbleType(stack);
             }
         }
         catch (Exception ex) {}
@@ -82,22 +80,21 @@ public class IMC
                 {
                     String name = array[0];
                     Integer meta = Ints.tryParse(array[1]);
-                    if (Strings.isNullOrEmpty(name) || meta == null)
+                    Block block = (Block) Block.blockRegistry.getObject(name);
+                    if (Strings.isNullOrEmpty(name) || meta == null || block == null)
                         ArtificeCore.logger.info(String.format("Received an invalid basalt registration request %s from mod %s", m.getStringValue(), m.getSender()));
                     else
-                    {
-                        Block block = (Block) Block.blockRegistry.getObject(name);
-                        ArtificeRegistry.registerBasaltType(block, meta);
-                    }
+                        ArtificeRegistry.registerBasaltType(new ItemStack(block, 1, meta));
                 }
             }
             else if (m.isItemStackMessage())
             {
-                Block block = Block.getBlockFromItem(m.getItemStackValue().getItem());
+                ItemStack stack = m.getItemStackValue();
+                Block block = Block.getBlockFromItem(stack.getItem());
                 if (block == null)
                     ArtificeCore.logger.info(String.format("Received an invalid basalt registration request %s from mod %s", m.getItemStackValue(), m.getSender()));
                 else
-                    ArtificeRegistry.registerBasaltType(block, m.getItemStackValue().getItemDamage());
+                    ArtificeRegistry.registerBasaltType(stack);
             }
         }
         catch (Exception ex) {}

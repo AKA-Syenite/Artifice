@@ -1,5 +1,6 @@
 package shukaro.artifice.block.frame;
 
+import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
@@ -32,6 +33,7 @@ public class BlockFrameScaffold extends BlockFrame
         super();
         setBlockName("artifice.scaffold");
         setBlockBounds(0.01F, 0.01F, 0.01F, 0.99F, 0.99F, 0.99F);
+        GameRegistry.registerBlock(this, ItemBlockFrame.class, this.getUnlocalizedName());
     }
 
     @Override

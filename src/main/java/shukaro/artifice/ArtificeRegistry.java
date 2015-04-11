@@ -19,10 +19,9 @@ public abstract class ArtificeRegistry
     private static final List<ItemStack> basaltTypes = new ArrayList<ItemStack>();
 
     @SuppressWarnings("unchecked")
-    public static void registerMarbleType(Block block, int meta)
+    public static void registerMarbleType(ItemStack stack)
     {
-        ArtificeCore.logger.info("Registering marble type " + new NameMetaPair(block, meta).toString());
-        ItemStack stack = new ItemStack(block, 1, meta);
+        ArtificeCore.logger.info("Registering marble type " + stack.toString());
         if (marbleTypes.isEmpty())
             marbleTypes.add(stack);
         else if (!marbleTypes.contains(stack))
@@ -67,10 +66,9 @@ public abstract class ArtificeRegistry
     }
 
     @SuppressWarnings("unchecked")
-    public static void registerBasaltType(Block block, int meta)
+    public static void registerBasaltType(ItemStack stack)
     {
-        ArtificeCore.logger.info("Registering basalt type " + new NameMetaPair(block, meta).toString());
-        ItemStack stack = new ItemStack(block, 1, meta);
+        ArtificeCore.logger.info("Registering basalt type " + stack.toString());
         if (basaltTypes.isEmpty())
             basaltTypes.add(stack);
         else if (!basaltTypes.contains(stack))

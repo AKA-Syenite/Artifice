@@ -1,14 +1,15 @@
 package shukaro.artifice.block.decorative;
 
 import cpw.mods.fml.client.FMLClientHandler;
+import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.BlockTorch;
-import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 import shukaro.artifice.ArtificeCore;
+import shukaro.artifice.block.ItemBlockArtifice;
 import shukaro.artifice.render.EntityColoredFlameFX;
 import shukaro.artifice.render.TextureHandler;
 
@@ -26,6 +27,7 @@ public class BlockColoredTorch extends BlockTorch
         this.setCreativeTab(ArtificeCore.mainTab);
         this.setLightLevel(1.0F);
         this.setBlockName("artifice.coloredtorch" + color);
+        GameRegistry.registerBlock(this, ItemBlockArtifice.class, this.getUnlocalizedName());
     }
 
     @Override

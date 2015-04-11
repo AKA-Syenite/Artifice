@@ -2,6 +2,7 @@ package shukaro.artifice;
 
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import net.minecraft.block.Block;
+import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.config.Configuration;
 
 public class ArtificeConfig
@@ -372,9 +373,9 @@ public class ArtificeConfig
                 String itemName = pair.split(";")[0];
                 Integer meta = Integer.parseInt(pair.split(";")[1]);
                 if (isMarble)
-                    ArtificeRegistry.registerMarbleType((Block) Block.blockRegistry.getObject(itemName), meta);
+                    ArtificeRegistry.registerMarbleType(new ItemStack((Block) Block.blockRegistry.getObject(itemName), 1, meta));
                 else
-                    ArtificeRegistry.registerBasaltType((Block) Block.blockRegistry.getObject(itemName), meta);
+                    ArtificeRegistry.registerBasaltType(new ItemStack((Block) Block.blockRegistry.getObject(itemName), 1, meta));
             }
             catch (Exception e)
             {

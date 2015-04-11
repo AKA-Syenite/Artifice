@@ -1,5 +1,6 @@
 package shukaro.artifice.block.world;
 
+import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.BlockLog;
@@ -10,6 +11,7 @@ import net.minecraft.item.Item;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
 import shukaro.artifice.ArtificeCore;
+import shukaro.artifice.block.ItemBlockArtifice;
 import shukaro.artifice.render.TextureHandler;
 
 import java.util.Random;
@@ -24,6 +26,7 @@ public class BlockCharredLog extends BlockLog
         super();
         this.setBlockName("artifice.charredlog");
         this.setCreativeTab(ArtificeCore.worldTab);
+        GameRegistry.registerBlock(this, ItemBlockArtifice.class, this.getUnlocalizedName());
     }
 
     @Override

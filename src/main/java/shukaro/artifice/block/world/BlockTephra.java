@@ -1,5 +1,6 @@
 package shukaro.artifice.block.world;
 
+import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
@@ -26,6 +27,7 @@ public class BlockTephra extends BlockFalling
         this.setCreativeTab(ArtificeCore.worldTab);
         this.setStepSound(Block.soundTypeGravel);
         this.setHardness(0.5f);
+        GameRegistry.registerBlock(this, ItemBlockTephra.class, this.getUnlocalizedName());
     }
 
     @Override

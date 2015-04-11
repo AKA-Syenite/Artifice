@@ -1,5 +1,6 @@
 package shukaro.artifice.block.world;
 
+import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockFalling;
 import net.minecraft.block.material.Material;
@@ -32,6 +33,7 @@ public class BlockNiter extends BlockFalling
         setBlockName("artifice.niter");
         setCreativeTab(ArtificeCore.worldTab);
         setHardness(0.5f);
+        GameRegistry.registerBlock(this, ItemBlockNiter.class, this.getUnlocalizedName());
     }
 
     @Override

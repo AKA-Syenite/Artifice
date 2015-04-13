@@ -16,6 +16,7 @@ import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraftforge.common.util.ForgeDirection;
 import shukaro.artifice.ArtificeCore;
 import shukaro.artifice.event.Tracking;
 import shukaro.artifice.render.TextureHandler;
@@ -86,7 +87,6 @@ public class BlockAttunedRedstone extends Block implements ITileEntityProvider
         return false;
     }
 
-
     @Override
     public ItemStack getPickBlock(MovingObjectPosition target, World world, int x, int y, int z)
     {
@@ -100,6 +100,9 @@ public class BlockAttunedRedstone extends Block implements ITileEntityProvider
         }
         return stack;
     }
+
+    @Override
+    public boolean isSideSolid(IBlockAccess world, int x, int y, int z, ForgeDirection side) { return true; }
 
     @Override
     public int isProvidingWeakPower(IBlockAccess blockAccess, int x, int y, int z, int side)

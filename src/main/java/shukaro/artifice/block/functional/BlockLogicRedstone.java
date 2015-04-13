@@ -126,6 +126,9 @@ public class BlockLogicRedstone extends Block implements ITileEntityProvider
     }
 
     @Override
+    public boolean isSideSolid(IBlockAccess world, int x, int y, int z, ForgeDirection side) { return true; }
+
+    @Override
     public void onNeighborBlockChange(World world, int x, int y, int z, Block neighbor)
     {
         TileEntity te = world.getTileEntity(x, y, z);

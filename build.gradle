@@ -28,24 +28,24 @@ repositories {
 apply plugin: 'forge'
 apply plugin: 'org.10ne.rest'
 
-mc_version = "1.7.10"
-mod_version = "1.1.5R"
-build_number = System.getenv("BUILD_NUMBER")
-if (!build_number) {
-    build_number = System.getenv("TRAVIS_BUILD_NUMBER")
+ext.mc_version = "1.7.10"
+ext.mod_version = "1.1.5R"
+ext.build_number = System.getenv("BUILD_NUMBER")
+if (!ext.build_number) {
+    ext.build_number = System.getenv("TRAVIS_BUILD_NUMBER")
 }
-if (build_number) {
+if (ext.build_number) {
     // add the build # of the last jenkins build for consistency
-    version = mc_version + "-" + mod_version + "-" + (349 + System.getenv("TRAVIS_BUILD_NUMBER"))
+    ext.version = ext.mc_version + "-" + ext.mod_version + "-" + (349 + System.getenv("TRAVIS_BUILD_NUMBER"))
 } else {
-    version = mc_version + "-" + mod_version + "-" + "DEV"
+    ext.version = ext.mc_version + "-" + ext.mod_version + "-" + "DEV"
 }
 
-curseType = 'release'
-if(mod_version.endsWith("A")) {
-    curseType = 'alpha'
-} else if(mod_version.endsWith("B")) {
-    curseType = 'beta'
+ext.curseType = 'release'
+if(ext.mod_version.endsWith("A")) {
+    ext.curseType = 'alpha'
+} else if(ext.mod_version.endsWith("B")) {
+    ext.curseType = 'beta'
 }
 
 group = "com.shukaro.artifice"

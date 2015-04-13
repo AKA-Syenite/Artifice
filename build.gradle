@@ -124,8 +124,7 @@ task curse(type: org._10ne.gradle.rest.RestTask) {
     contentType = groovyx.net.http.ContentType.JSON
     // 4449 = 1.7.10
     requestBody = ['metadata': ['changelog': getGitChangelog(),'gameVersions': [4449], 'releaseType': curseType], 'file': file('./build/libs/' + archivesBaseName + '-' + version + '.jar')]
-    curseKey = System.getenv("CURSE_API_KEY")
-    requestHeaders = ['X-API-Token': curseKey]
+    requestHeaders = ['X-API-Token': System.getenv("CURSE_API_KEY")]
 }
 
 task modsio(type: org._10ne.gradle.rest.RestTask) {

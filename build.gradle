@@ -36,11 +36,12 @@ if (ext.build_number) {
     ext.version = ext.mc_version + "-" + ext.mod_version + "-" + "DEV"
 }
 
-ext.curseType = 'release'
 if(ext.mod_version.endsWith("A")) {
-    ext.curseType = 'alpha'
+    project.ext.set("curseType", "alpha")
 } else if(ext.mod_version.endsWith("B")) {
-    ext.curseType = 'beta'
+    project.ext.set("curseType", "beta")
+} else {
+    project.ext.set("curseType", "release")
 }
 
 group = "com.shukaro.artifice"
@@ -116,7 +117,7 @@ def getGitChangelog = { ->
 task curseUpload(type: Exec) {
     executable "sh"
     // 4449 = 1.7.10
-    args "curl -F \"metadata={\\\"releaseType\\\":\\\"" + ext.curseType + "\\\",\\\"changelog\\\":\\\"" + getGitChangelog() + "\\\",\\\"gameVersions\\\":[4449]}\" -F \"file=@\$(find ./build/libs -name *.jar)\" -H \"X-API-Token: \"" + System.getenv("CURSE_API_KEY") + "\" \"https://minecraft.curseforge.com/api/projects/223174/upload-file\""
+    args "curl -F \"metadata={\\\"releaseType\\\":\\\"" + project.curseType + "\\\",\\\"changelog\\\":\\\"" + getGitChangelog() + "\\\",\\\"gameVersions\\\":[4449]}\" -F \"file=@\$(find ./build/libs -name *.jar)\" -H \"X-API-Token: \"" + System.getenv("CURSE_API_KEY") + "\" \"https://minecraft.curseforge.com/api/projects/223174/upload-file\""
 }
 
 task modsioUpload(type: Exec) {

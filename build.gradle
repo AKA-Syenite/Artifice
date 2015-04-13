@@ -15,7 +15,7 @@ buildscript {
     }
     dependencies {
         classpath 'net.minecraftforge.gradle:ForgeGradle:1.2-SNAPSHOT'
-        classpath 'org._10ne.gradle:rest-gradle-plugin:$LATEST_VERSION'
+        classpath 'org._10ne.gradle:rest-gradle-plugin:0.3.2'
     }
 }
 repositories {

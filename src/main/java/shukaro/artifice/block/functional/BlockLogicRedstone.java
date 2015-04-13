@@ -13,6 +13,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IIcon;
+import net.minecraft.util.StatCollector;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
@@ -20,8 +21,11 @@ import shukaro.artifice.ArtificeCore;
 import shukaro.artifice.block.ItemBlockArtifice;
 import shukaro.artifice.render.TextureHandler;
 import shukaro.artifice.tile.TileEntityLogic;
+import shukaro.artifice.util.FormatCodes;
+import shukaro.artifice.util.MiscUtils;
 
 import java.util.List;
+import java.util.Locale;
 
 public class BlockLogicRedstone extends Block implements ITileEntityProvider
 {
@@ -92,8 +96,10 @@ public class BlockLogicRedstone extends Block implements ITileEntityProvider
     @Override
     public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int side, float hitX, float hitY, float hitZ)
     {
-        if (player.isSneaking() && player.getHeldItem() == null)
+        if (player.getHeldItem() == null)
         {
+            if (player.isSneaking())
+                side = ForgeDirection.OPPOSITES[side];
             TileEntity te = world.getTileEntity(x, y, z);
             if (te instanceof TileEntityLogic)
             {
@@ -102,6 +108,15 @@ public class BlockLogicRedstone extends Block implements ITileEntityProvider
                 if (i > 3)
                     i = 0;
                 tel.sides[side] = TileEntityLogic.SideState.values()[i];
+                if (!world.isRemote)
+                {
+                    int meta = world.getBlockMetadata(x, y, z);
+                    MiscUtils.addChatMessage(player, FormatCodes.Italic.code +
+                            (meta == 0 ? StatCollector.translateToLocal("chat.artifice.digital") : StatCollector.translateToLocal("chat.artifice.analog")) + " " +
+                            FormatCodes.Yellow.code + StatCollector.translateToLocal("chat.artifice.side." + side) + " " +
+                            FormatCodes.Reset.code + StatCollector.translateToLocal("chat.artifice.set") + " " +
+                            FormatCodes.Aqua.code + StatCollector.translateToLocal("chat.artifice.set." + tel.sides[side].name().toLowerCase(Locale.ENGLISH)));
+                }
                 tel.updateEntity();
                 world.markBlockForUpdate(x, y, z);
                 return true;

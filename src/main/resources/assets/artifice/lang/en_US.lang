@@ -575,3 +575,16 @@ commands.artifice.calc.error=Could not evaluate expression
 #Chat
 chat.artifice.frequency=Attunement:
 chat.artifice.nofrequency=Not Attuned
+chat.artifice.digital=Digital:
+chat.artifice.analog=Analog:
+chat.artifice.side.0=Bottom
+chat.artifice.side.1=Top
+chat.artifice.side.2=North
+chat.artifice.side.3=South
+chat.artifice.side.4=West
+chat.artifice.side.5=East
+chat.artifice.set=set to
+chat.artifice.set.disabled=Disabled
+chat.artifice.set.output=Output
+chat.artifice.set.positive=Positive
+chat.artifice.set.negative=Negative

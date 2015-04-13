@@ -9,13 +9,9 @@ buildscript {
             name = "sonatype"
             url = "https://oss.sonatype.org/content/repositories/snapshots/"
         }
-        maven {
-            url "https://plugins.gradle.org/m2/"
-        }
     }
     dependencies {
         classpath 'net.minecraftforge.gradle:ForgeGradle:1.2-SNAPSHOT'
-        classpath "org._10ne.gradle:rest-gradle-plugin:0.3.2"
     }
 }
 repositories {
@@ -26,7 +22,6 @@ repositories {
 }
 
 apply plugin: 'forge'
-apply plugin: 'org.10ne.rest'
 
 ext.mc_version = "1.7.10"
 ext.mod_version = "1.1.5R"
@@ -118,14 +113,11 @@ def getGitChangelog = { ->
     }
 }
 
-task curse(type: org._10ne.gradle.rest.RestTask) {
-    httpMethod = 'post'
-    uri = 'https://minecraft.curseforge.com/api/projects/223174/upload-file'
-    contentType = groovyx.net.http.ContentType.JSON
+task curseUpload(type: Exec) {
+    executable "sh"
     // 4449 = 1.7.10
-    requestBody = ['metadata': ['changelog': getGitChangelog(),'gameVersions': [4449], 'releaseType': curseType], 'file': file('./build/libs/' + archivesBaseName + '-' + version + '.jar')]
-    requestHeaders = ['X-API-Token': System.getenv("CURSE_API_KEY")]
+    args "curl -F \"metadata={\\\"releaseType\\\":\\\"" + ext.curseType + "\\\",\\\"changelog\\\":\\\"" + getGitChangelog() + "\\\",\\\"gameVersions\\\":[4449]}\" -F \"file=@\$(find ./build/libs -name *.jar)\" -H \"X-API-Token: \"" + System.getenv("CURSE_API_KEY") + "\" \"https://minecraft.curseforge.com/api/projects/223174/upload-file\""
 }
 
-task modsio(type: org._10ne.gradle.rest.RestTask) {
+task modsioUpload(type: Exec) {
 }

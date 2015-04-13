@@ -71,7 +71,7 @@ public class BlockAttunedRedstone extends Block implements ITileEntityProvider
     @Override
     public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int side, float hitX, float hitY, float hitZ)
     {
-        if (!world.isRemote && player.isSneaking() && player.getHeldItem() == null)
+        if (!world.isRemote && player.getHeldItem() == null)
         {
             TileEntity te = world.getTileEntity(x, y, z);
             if (te instanceof TileEntityAttuned)

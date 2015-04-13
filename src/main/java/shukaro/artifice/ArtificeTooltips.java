@@ -326,5 +326,11 @@ public class ArtificeTooltips
 
         ArtificeRegistry.registerTooltip(new ItemStack(ArtificeBlocks.blockAttunedRedstoneTransmitter, 1, 0), localizeTooltip("attunedredstone", true));
         ArtificeRegistry.registerTooltip(new ItemStack(ArtificeBlocks.blockAttunedRedstoneReceiver, 1, 0), localizeTooltip("attunedredstone", true));
+
+        ArtificeRegistry.registerTooltip(new ItemStack(ArtificeBlocks.blockLogicRedstone, 1, 0), localizeTooltip("digital", false));
+        ArtificeRegistry.registerTooltip(new ItemStack(ArtificeBlocks.blockLogicRedstone, 1, 1), localizeTooltip("analog", false));
+        ArtificeRegistry.registerTooltip(new ItemStack(ArtificeBlocks.blockLogicRedstone, 1, 0), localizeTooltip("logicredstone", true));
+        ArtificeRegistry.registerTooltip(new ItemStack(ArtificeBlocks.blockLogicRedstone, 1, 1), localizeTooltip("logicredstone", true));
+
     }
 }

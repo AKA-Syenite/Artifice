@@ -112,6 +112,7 @@ public class ArtificeConfig
     public static boolean glowSandRecipe;
     public static boolean coloredTorchRecipes;
     public static boolean attunedRecipes;
+    public static boolean logicRecipes;
 
     public static int enchantmentStartID;
     public static int enchantmentInvisibleWeight;
@@ -144,6 +145,7 @@ public class ArtificeConfig
             glowSandRecipe = c.get("Recipes", "Allow crafting of glowsand", true).getBoolean();
             coloredTorchRecipes = c.get("Recipes", "Allow crafting of colored torches", true).getBoolean();
             attunedRecipes = c.get("Recipes", "Allow crafting of attuned redstone blocks", true).getBoolean();
+            logicRecipes = c.get("Recipes", "Allow crafting of logical redstone blocks", true).getBoolean();
 
             floraWorldGen = c.get("Plant Generation", "Generate Flowers", true).getBoolean();
             floraFrequency = c.get("Plant Generation", "Percentage Flower Frequency", 100).getInt();

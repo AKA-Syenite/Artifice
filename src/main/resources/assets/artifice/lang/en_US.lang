@@ -373,6 +373,8 @@ tile.artifice.tephra.gravel.name=Tephra
 tile.artifice.attunedredstone.receiver.name=Unattuned Redstone Receiver
 tile.artifice.attunedredstone.transmitter.name=Unattuned Redstone Transmitter
 
+tile.artifice.logicredstone.name=Logical Redstone Block
+
 # Item Names
 item.artifice.sledge.wood.name=Wooden Sledge
 item.artifice.sledge.stone.name=Stone Sledge
@@ -556,6 +558,9 @@ tooltip.artifice.attuned=Attuned
 tooltip.artifice.attunedreceiver=receiver
 tooltip.artifice.attunedtransmitter=Transmitter
 tooltip.artifice.attunedredstone.flavor=Humming softly...
+tooltip.artifice.digital=Digital
+tooltip.artifice.analog=Analog
+tooltip.artifice.logicredstone.flavor=Quite versatile
 
 #Enchantments
 enchantment.artifice.invisible=Invisible

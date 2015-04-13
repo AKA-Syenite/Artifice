@@ -16,6 +16,7 @@ import shukaro.artifice.block.fluid.BlockFluidFuel;
 import shukaro.artifice.block.fluid.BlockFluidOil;
 import shukaro.artifice.block.frame.*;
 import shukaro.artifice.block.functional.BlockAttunedRedstone;
+import shukaro.artifice.block.functional.BlockLogicRedstone;
 import shukaro.artifice.block.world.*;
 import shukaro.artifice.util.MinecraftColors;
 import shukaro.artifice.util.NameMetaPair;
@@ -67,6 +68,7 @@ public class ArtificeBlocks
     public static BlockTephra blockTephra;
     public static BlockAttunedRedstone blockAttunedRedstoneTransmitter;
     public static BlockAttunedRedstone blockAttunedRedstoneReceiver;
+    public static BlockLogicRedstone blockLogicRedstone;
 
     public static String[] rockColorNames = { "gray",   "lightgray", "brown",  "tan",    "reddish", "bluish", "greenish" };
     public static int[] rockColors =        { 11579568, 16777215,    12362119, 15853509, 11706528,  10526898, 10531488 };
@@ -139,6 +141,7 @@ public class ArtificeBlocks
         blockTephra = new BlockTephra();
         blockAttunedRedstoneTransmitter = new BlockAttunedRedstone(true);
         blockAttunedRedstoneReceiver = new BlockAttunedRedstone(false);
+        blockLogicRedstone = new BlockLogicRedstone();
 
         GameRegistry.registerBlock(blockBasaltSlab, ItemBlockSlabArtifice.class, blockBasalt.getUnlocalizedName() + ".slab");
         GameRegistry.registerBlock(blockBasaltDoubleSlab, ItemBlockSlabArtifice.class, blockBasalt.getUnlocalizedName() + ".doubleslab");

@@ -155,6 +155,17 @@ public class ArtificeRecipes
                     'Y', Items.redstone,
                     'X', Items.ender_pearl));
         }
+        if (ArtificeConfig.logicRecipes)
+        {
+            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeBlocks.blockLogicRedstone, 1, 0),
+                    " Y ",
+                    "YXY",
+                    " Y ",
+                    'Y', Items.quartz,
+                    'X', Blocks.redstone_block));
+            GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ArtificeBlocks.blockLogicRedstone, 1, 0), new ItemStack(ArtificeBlocks.blockLogicRedstone, 1, 1)));
+            GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ArtificeBlocks.blockLogicRedstone, 1, 1), new ItemStack(ArtificeBlocks.blockLogicRedstone, 1, 0)));
+        }
     }
 
     private static void registerConvenienceRecipes()

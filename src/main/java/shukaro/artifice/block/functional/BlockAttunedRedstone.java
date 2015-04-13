@@ -111,10 +111,7 @@ public class BlockAttunedRedstone extends Block implements ITileEntityProvider
         {
             TileEntityAttuned tea = (TileEntityAttuned)te;
             if (tea.frequency.length() > 0)
-            {
-
                 Tracking.updateFrequency(tea.frequency);
-            }
         }
     }
 

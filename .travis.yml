@@ -3,7 +3,7 @@ language: java
 install: ./gradlew setupCIWorkspace -S
 script: ./gradlew build -S
 
-after_success: ./gradlew curse modsio
+after_success: ./gradlew curse modsio -S
 
 env:
   global:

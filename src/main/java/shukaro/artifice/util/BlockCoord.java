@@ -124,6 +124,11 @@ public class BlockCoord implements Comparable
     public int getChunkX() { return x >> 4; }
     public int getChunkZ() { return z >> 4; }
 
+    public boolean isLoaded(World world)
+    {
+        return world.blockExists(this.x, this.y, this.z);
+    }
+
     public boolean isZero()
     {
         return (this.x == 0) && (this.y == 0) && (this.z == 0);

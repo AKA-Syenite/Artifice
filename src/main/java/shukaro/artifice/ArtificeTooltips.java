@@ -323,5 +323,8 @@ public class ArtificeTooltips
             ArtificeRegistry.registerTooltip(new ItemStack(ArtificeBlocks.blockColoredTorches[i], 1, 0), localizeTooltip("coloredtorch", true));
 
         ArtificeRegistry.registerTooltip(new ItemStack(ArtificeBlocks.blockCharredLog, 1, 0), localizeTooltip("charredlog", true));
+
+        ArtificeRegistry.registerTooltip(new ItemStack(ArtificeBlocks.blockAttunedRedstoneTransmitter, 1, 0), localizeTooltip("attunedredstone", true));
+        ArtificeRegistry.registerTooltip(new ItemStack(ArtificeBlocks.blockAttunedRedstoneReceiver, 1, 0), localizeTooltip("attunedredstone", true));
     }
 }

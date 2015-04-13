@@ -5,6 +5,7 @@ import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.item.EntityXPOrb;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.event.AnvilUpdateEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import shukaro.artifice.ArtificeConfig;
@@ -65,5 +66,12 @@ public class ArtificeEventHandler
                 }
             }
         }
+    }
+
+    @SubscribeEvent
+    public void onAnvil(AnvilUpdateEvent event)
+    {
+        if (event.output.getItem().getUnlocalizedName().contains("tile.artifice.attunedredstone") && event.output.hasTagCompound())
+            event.output.getTagCompound().removeTag("RepairCost");
     }
 }

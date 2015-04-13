@@ -15,7 +15,7 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
 import shukaro.artifice.ArtificeConfig;
-import shukaro.artifice.net.PlayerTracking;
+import shukaro.artifice.event.Tracking;
 import shukaro.artifice.render.TextureHandler;
 import shukaro.artifice.util.BlockCoord;
 
@@ -55,7 +55,7 @@ public class BlockFrameScaffold extends BlockFrame
         {
             entity.motionY = 0.2D;
         }
-        else if (PlayerTracking.sneaks.contains(entity.getEntityId()))
+        else if (Tracking.sneaks.contains(entity.getEntityId()))
         {
             double diff = entity.prevPosY - entity.posY;
             entity.boundingBox.minY += diff;

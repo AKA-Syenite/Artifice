@@ -20,7 +20,7 @@ public class ItemBlockFlora extends ItemBlockArtifice
     @Override
     public int getMetadata(int meta)
     {
-        if (meta > ArtificeConfig.flora.length)
+        if (meta >= ArtificeConfig.flora.length)
             return 0;
         return meta;
     }
@@ -29,7 +29,7 @@ public class ItemBlockFlora extends ItemBlockArtifice
     @SideOnly(Side.CLIENT)
     public IIcon getIconFromDamage(int meta)
     {
-        if (meta > ArtificeConfig.flora.length)
+        if (meta >= ArtificeConfig.flora.length)
             return BlockFlora.icons[0];
         return BlockFlora.icons[meta];
     }
@@ -37,7 +37,7 @@ public class ItemBlockFlora extends ItemBlockArtifice
     @Override
     public String getUnlocalizedName(ItemStack stack)
     {
-        if (stack.getItemDamage() > ArtificeConfig.flora.length)
+        if (stack.getItemDamage() >= ArtificeConfig.flora.length)
             return Block.getBlockFromItem(stack.getItem()).getUnlocalizedName() + "." + ArtificeConfig.flora[0].toLowerCase(Locale.ENGLISH);
         return Block.getBlockFromItem(stack.getItem()).getUnlocalizedName() + "." + ArtificeConfig.flora[stack.getItemDamage()].toLowerCase(Locale.ENGLISH);
     }

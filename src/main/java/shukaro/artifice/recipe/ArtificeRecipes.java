@@ -140,6 +140,21 @@ public class ArtificeRecipes
                 GameRegistry.addRecipe(new ShapelessOreRecipe(Blocks.torch, new ItemStack(ArtificeBlocks.blockColoredTorches[i], 1, 0)));
             }
         }
+        if (ArtificeConfig.attunedRecipes)
+        {
+            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeBlocks.blockAttunedRedstoneReceiver),
+                    " Y ",
+                    "YXY",
+                    " Y ",
+                    'Y', Items.ender_pearl,
+                    'X', Blocks.redstone_block));
+            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeBlocks.blockAttunedRedstoneTransmitter),
+                    "YYY",
+                    "YXY",
+                    "YYY",
+                    'Y', Items.redstone,
+                    'X', Items.ender_pearl));
+        }
     }
 
     private static void registerConvenienceRecipes()

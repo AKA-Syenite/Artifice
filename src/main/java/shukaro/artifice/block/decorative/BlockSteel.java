@@ -20,6 +20,7 @@ public class BlockSteel extends Block
         super(Material.iron);
         this.setCreativeTab(ArtificeCore.mainTab);
         this.setHardness(3.0F);
+        this.setResistance(10.0F);
         this.setBlockName("artifice.steel");
         GameRegistry.registerBlock(this, ItemBlockArtifice.class, this.getUnlocalizedName());
     }

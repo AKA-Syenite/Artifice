@@ -6,7 +6,7 @@ import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 import net.minecraft.network.INetHandler;
 import net.minecraft.network.NetHandlerPlayServer;
-import shukaro.artifice.net.PlayerTracking;
+import shukaro.artifice.event.Tracking;
 import shukaro.artifice.net.packets.ArtificePacketSneak;
 
 @ChannelHandler.Sharable
@@ -19,10 +19,10 @@ public class SneakMessageHandler extends SimpleChannelInboundHandler<ArtificePac
 
         if (handler instanceof NetHandlerPlayServer)
         {
-            if (PlayerTracking.sneaks.contains(msg.playerID))
-                PlayerTracking.sneaks.remove(Integer.valueOf(msg.playerID));
+            if (Tracking.sneaks.contains(msg.playerID))
+                Tracking.sneaks.remove(Integer.valueOf(msg.playerID));
             else
-                PlayerTracking.sneaks.add(msg.playerID);
+                Tracking.sneaks.add(msg.playerID);
         }
     }
 }

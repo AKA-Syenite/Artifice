@@ -8,7 +8,6 @@ import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.Minecraft;
 import org.lwjgl.input.Keyboard;
 import shukaro.artifice.net.PacketDispatcher;
-import shukaro.artifice.net.PlayerTracking;
 
 public class ArtificeClientTickHandler
 {
@@ -21,14 +20,14 @@ public class ArtificeClientTickHandler
         if (mc.thePlayer == null)
             return;
         Integer playerID = mc.thePlayer.getEntityId();
-        if (Keyboard.isKeyDown(mc.gameSettings.keyBindSneak.getKeyCode()) && !PlayerTracking.sneaks.contains(playerID))
+        if (Keyboard.isKeyDown(mc.gameSettings.keyBindSneak.getKeyCode()) && !Tracking.sneaks.contains(playerID))
         {
-            PlayerTracking.sneaks.add(playerID);
+            Tracking.sneaks.add(playerID);
             PacketDispatcher.sendSneakEvent(playerID);
         }
-        else if (!Keyboard.isKeyDown(mc.gameSettings.keyBindSneak.getKeyCode()) && PlayerTracking.sneaks.contains(playerID))
+        else if (!Keyboard.isKeyDown(mc.gameSettings.keyBindSneak.getKeyCode()) && Tracking.sneaks.contains(playerID))
         {
-            PlayerTracking.sneaks.remove(playerID);
+            Tracking.sneaks.remove(playerID);
             PacketDispatcher.sendSneakEvent(playerID);
         }
     }

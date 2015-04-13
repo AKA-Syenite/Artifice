@@ -81,6 +81,7 @@ public class ArtificeCore
 
         ArtificeFluids.initFluids();
         ArtificeBlocks.initBlocks();
+        ArtificeTiles.initTiles();
         ArtificeItems.initItems();
         ArtificeEnchants.initEnchants();
         ArtificeWorld.initWorldGen();

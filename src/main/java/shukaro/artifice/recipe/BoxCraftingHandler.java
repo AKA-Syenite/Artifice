@@ -9,7 +9,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import shukaro.artifice.ArtificeItems;
-import shukaro.artifice.net.PlayerTracking;
+import shukaro.artifice.event.Tracking;
 
 public class BoxCraftingHandler
 {
@@ -28,7 +28,7 @@ public class BoxCraftingHandler
             {
                 // Did the player shift-click the output? (This makes me a little bit uncomfortable, but eh)
                 boolean shift = false;
-                if (PlayerTracking.sneaks.contains(player.getEntityId()))
+                if (Tracking.sneaks.contains(player.getEntityId()))
                     shift = true;
 
                 // Number of boxes to unbox

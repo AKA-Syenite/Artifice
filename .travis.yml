@@ -1,0 +1,12 @@
+language: java
+
+install: ./gradlew setupCIWorkspace -S
+script: ./gradlew build -S
+
+after_success: ./gradlew curse modsio
+
+env:
+  global:
+    TERM=dumb
+
+sudo: false

@@ -13,12 +13,14 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IIcon;
 import net.minecraft.util.MovingObjectPosition;
+import net.minecraft.util.StatCollector;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import shukaro.artifice.ArtificeCore;
 import shukaro.artifice.event.Tracking;
 import shukaro.artifice.render.TextureHandler;
 import shukaro.artifice.tile.TileEntityAttuned;
+import shukaro.artifice.util.FormatCodes;
 import shukaro.artifice.util.MiscUtils;
 
 import java.util.Random;
@@ -64,6 +66,26 @@ public class BlockAttunedRedstone extends Block implements ITileEntityProvider
             return ((TileEntityAttuned)te).power > 0 ? this.powered : this.unpowered;
         return this.unpowered;
     }
+
+    @Override
+    public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int side, float hitX, float hitY, float hitZ)
+    {
+        if (!world.isRemote && player.isSneaking() && player.getHeldItem() == null)
+        {
+            TileEntity te = world.getTileEntity(x, y, z);
+            if (te instanceof TileEntityAttuned)
+            {
+                TileEntityAttuned tea = (TileEntityAttuned)te;
+                if (tea.frequency.length() > 0)
+                    MiscUtils.addChatMessage(player, FormatCodes.Italic.code + StatCollector.translateToLocal("chat.artifice.frequency") + " " + FormatCodes.Aqua.code + tea.frequency);
+                else
+                    MiscUtils.addChatMessage(player, FormatCodes.Italic.code + StatCollector.translateToLocal("chat.artifice.nofrequency"));
+                return true;
+            }
+        }
+        return false;
+    }
+
 
     @Override
     public ItemStack getPickBlock(MovingObjectPosition target, World world, int x, int y, int z)

@@ -571,3 +571,7 @@ enchantment.artifice.resistance=Resistance
 commands.artifice.calc=/calc [mathematical expression]
 commands.artifice.calc.syntax=Insufficient arguments, use /calc [mathematical expression]
 commands.artifice.calc.error=Could not evaluate expression
+
+#Chat
+chat.artifice.frequency=Attunement:
+chat.artifice.nofrequency=Not Attuned

@@ -1,7 +1,9 @@
 package shukaro.artifice.util;
 
 import net.minecraft.entity.item.EntityItem;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.ChatComponentText;
 import net.minecraft.world.World;
 
 import java.util.Random;
@@ -54,5 +56,10 @@ public class MiscUtils
 
             world.spawnEntityInWorld(entityitem);
         } while(true);
+    }
+
+    public static void addChatMessage(EntityPlayer player, String message)
+    {
+        player.addChatMessage(new ChatComponentText(message));
     }
 }

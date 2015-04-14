@@ -40,6 +40,8 @@ if (ext.build_number) {
 group = "com.shukaro.artifice"
 archivesBaseName = "Artifice"
 
+project.ext.set('fullVersion', version)
+
 if(ext.mod_version.endsWith("A")) {
     project.ext.set('curseType', 'alpha')
 } else if(ext.mod_version.endsWith("B")) {
@@ -123,15 +125,15 @@ task curseUpload(type: Exec) {
     executable 'curl'
     // 4449 = 1.7.10
     args = ['-F', 'metadata={\"releaseType\":\"' + project.curseType + '\",\"changelog\":\"' + getGitChangelog() + '\",\"gameVersions\":[4449]}',
-            '-F', 'file=@./build/libs/' + archivesBaseName + '-' + project.version + '.jar',
+            '-F', 'file=@./build/libs/' + archivesBaseName + '-' + project.fullVersion + '.jar',
             '-H', 'X-API-Token: ' + System.getenv('CURSE_API_KEY'),
                   'https://minecraft.curseforge.com/api/projects/' + project.curseProjectID + '/upload-file']
 }
 
 task modsioUpload(type: Exec) {
     executable 'curl'
-    args = ['-F', 'body={\"version\":{\"name\":\"' + project.version + '\",\"minecraft\":\"' + project.minecraft.version + '\",\"changelog\":\"' + getGitChangelog() + '\"},\"filename\":\"' + 'Artifice-' + project.version + '.jar' + '\"}',
-            '-F', 'file=@./build/libs/' + archivesBaseName + '-' + project.version + '.jar',
+    args = ['-F', 'body={\"version\":{\"name\":\"' + project.fullVersion + '\",\"minecraft\":\"' + project.minecraft.version + '\",\"changelog\":\"' + getGitChangelog() + '\"},\"filename\":\"' + 'Artifice-' + project.fullVersion + '.jar' + '\"}',
+            '-F', 'file=@./build/libs/' + archivesBaseName + '-' + project.fullVersion + '.jar',
             '-H', 'X-API-Key: ' + System.getenv('MODSIO_API_KEY'),
                   'https://mods.io/mods/' + project.modsioProjectID + '/versions/create.json']
 }

@@ -119,14 +119,14 @@ def getGitChangelog = { ->
     }
 }
 
-task publish(dependsOn: ['build','curseUpload','modsioUpload'])
+task publish(dependsOn: ['build','curseUpload'])
 
 task curseUpload(type: Exec) {
     executable 'curl'
     // 4449 = 1.7.10
     args = ['-F', 'metadata={\"releaseType\":\"' + project.curseType + '\",\"changelog\":\"' + getGitChangelog() + '\",\"gameVersions\":[4449]}',
             '-F', 'file=@./build/libs/' + archivesBaseName + '-' + project.fullVersion + '.jar',
-            '-H', 'X-API-Token: ' + System.getenv("CURSE_API_KEY"),
+            '-H', 'X-API-Token: ' + System.getenv('CURSE_API_KEY'),
             '-v', 'https://minecraft.curseforge.com/api/projects/' + project.curseProjectID + '/upload-file']
 }
 

@@ -1,9 +1,7 @@
 language: java
 
 install: ./gradlew setupCIWorkspace -S
-script: ./gradlew build -S
-
-after_success: ./gradlew curseUpload modsioUpload -S
+script: ./gradlew build curseUpload -S
 
 env:
   global:

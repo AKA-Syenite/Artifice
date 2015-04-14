@@ -1,3 +1,5 @@
+import org.apache.commons.io.output.ByteArrayOutputStream
+
 buildscript {
     repositories {
         mavenCentral()
@@ -115,11 +117,10 @@ def getGitChangelog = { ->
     }
 }
 
-task curseUpload(type: Exec) {
-    executable 'sh'
+task curseUpload(type:Exec) {
     // 4449 = 1.7.10
     args 'curl -F "metadata={\"releaseType\":\"' + project.curseType + '\",\"changelog\":\"' + getGitChangelog() + '\",\"gameVersions\":[4449]}" -F "file=@$(find ./build/libs -name *.jar)" -H "X-API-Token: ' + System.getenv("CURSE_API_KEY") + '" "https://minecraft.curseforge.com/api/projects/' + project.curseProjectID + '/upload-file"'
 }
 
-task modsioUpload(type: Exec) {
+task modsioUpload(type:Exec) {
 }

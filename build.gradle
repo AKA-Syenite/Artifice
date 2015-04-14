@@ -48,6 +48,7 @@ if(ext.mod_version.endsWith("A")) {
     project.ext.set('curseType', 'release')
 }
 project.ext.set('curseProjectID', '223174')
+project.ext.set('modsioProjectID', '1139')
 
 group = "com.shukaro.artifice"
 archivesBaseName = "Artifice"
@@ -119,7 +120,7 @@ def getGitChangelog = { ->
     }
 }
 
-task publish(dependsOn: ['build','curseUpload'])
+task publish(dependsOn: ['build','curseUpload', 'modsioUpload'])
 
 task curseUpload(type: Exec) {
     executable 'curl'
@@ -127,8 +128,13 @@ task curseUpload(type: Exec) {
     args = ['-F', 'metadata={\"releaseType\":\"' + project.curseType + '\",\"changelog\":\"' + getGitChangelog() + '\",\"gameVersions\":[4449]}',
             '-F', 'file=@./build/libs/' + archivesBaseName + '-' + project.fullVersion + '.jar',
             '-H', 'X-API-Token: ' + System.getenv('CURSE_API_KEY'),
-            '-v', 'https://minecraft.curseforge.com/api/projects/' + project.curseProjectID + '/upload-file']
+                  'https://minecraft.curseforge.com/api/projects/' + project.curseProjectID + '/upload-file']
 }
 
 task modsioUpload(type: Exec) {
+    executable 'curl'
+    args = ['-F', 'body={\"version\":{\"name\":\"' + project.fullVersion + '\",\"minecraft\":\"' + project.minecraft.version + '\",\"changelog\":\"' + getGitChangelog() + '\"},\"filename\":\"' + 'Artifice-' + project.fullVersion + '.jar' + '\"}',
+            '-F', 'file=@./build/libs/' + archivesBaseName + '-' + project.fullVersion + '.jar',
+            '-H', 'X-API-Key: ' + System.getenv('MODSIO_API_KEY'),
+                  'https://mods.io/mods/' + project.modsioProjectID + '/versions/create.json']
 }

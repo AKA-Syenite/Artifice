@@ -33,9 +33,11 @@ if (!ext.build_number) {
 }
 if (ext.build_number) {
     // add the build # of the last jenkins build for consistency
-    project.ext.set('fullVersion', ext.mc_version + "-" + ext.mod_version + "-" + (349 + System.getenv("TRAVIS_BUILD_NUMBER")))
+    version = ext.mc_version + "-" + ext.mod_version + "-" + (349 + System.getenv("TRAVIS_BUILD_NUMBER").toInteger())
+    project.ext.set('fullVersion', version)
 } else {
-    project.ext.set('fullVersion', ext.mc_version + "-" + ext.mod_version + "-" + "DEV")
+    version = xt.mc_version + "-" + ext.mod_version + "-" + "DEV"
+    project.ext.set('fullVersion', version)
 }
 
 if(ext.mod_version.endsWith("A")) {

@@ -39,13 +39,13 @@ if (ext.build_number) {
 }
 
 if(ext.mod_version.endsWith("A")) {
-    project.ext.set("curseType", "alpha")
+    ext.curseType = 'alpha'
 } else if(ext.mod_version.endsWith("B")) {
-    project.ext.set("curseType", "beta")
+    ext.curseType = 'beta'
 } else {
-    project.ext.set("curseType", "release")
+    ext.curseType = 'release'
 }
-project.ext.set("curseProjectID", "223174")
+ext.curseProjectID = '223174'
 
 group = "com.shukaro.artifice"
 archivesBaseName = "Artifice"
@@ -122,10 +122,10 @@ task publish(dependsOn: ['build','curseUpload','modsioUpload'])
 task curseUpload(type: Exec) {
     executable 'curl'
     // 4449 = 1.7.10
-    args = ['-F', 'metadata={\"releaseType\":\"' + project.curseType + '\",\"changelog\":\"' + getGitChangelog() + '\",\"gameVersions\":[4449]}',
-            '-F', 'file=@$(find ./build/libs -name *.jar)',
+    args = ['-F', 'metadata={\"releaseType\":\"' + ext.curseType + '\",\"changelog\":\"' + getGitChangelog() + '\",\"gameVersions\":[4449]}',
+            '-F', './build/libs/' + archivesBaseName + '-' + ext.mc_version + '-' + ext.mod_version + '-' + ext.build_number + '.jar',
             '-H', 'X-API-Token: ' + System.getenv("CURSE_API_KEY"),
-            '-v', 'https://minecraft.curseforge.com/api/projects/' + project.curseProjectID + '/upload-file']
+            '-v', 'https://minecraft.curseforge.com/api/projects/' + ext.curseProjectID + '/upload-file']
 }
 
 task modsioUpload(type: Exec) {

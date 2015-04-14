@@ -19,7 +19,7 @@ buildscript {
 repositories {
     ivy {
         name "CoFHCore"
-        artifactPattern 'http://addons-origin.cursecdn.com/files/2229/536/[module]-[revision].[ext]'
+        artifactPattern 'http://addons-origin.cursecdn.com/files/2234/199/[module]-[revision].[ext]'
     }
 }
 
@@ -69,7 +69,7 @@ dependencies {
     // for more info...
     // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
     // http://www.gradle.org/docs/current/userguide/dependency_management.html
-    compile group: 'cofh', name: 'CoFHCore', version: '[1.7.10]3.0.0RC5-207-dev', ext: 'jar'
+    compile group: 'cofh', name: 'CoFHCore', version: '[1.7.10]3.0.2-262-dev', ext: 'jar'
 }
 
 processResources {

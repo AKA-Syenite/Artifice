@@ -186,8 +186,8 @@ public class ItemSledge extends ItemTool
                         recipe.getRecipeOutput().getUnlocalizedName().equals(input.getUnlocalizedName()) &&
                         ((!recipe.getRecipeOutput().getHasSubtypes()) || (recipe.getRecipeOutput().getItemDamage() == input.getItemDamage())))
                 {
-                    if (recipe.getRecipeOutput().stackSize > 1 && rand.nextInt(recipe.getRecipeOutput().stackSize) == 0)
-                        return getIngredientsForRecipe(recipe);
+                    if (recipe.getRecipeOutput().stackSize > 1)
+                        return null;
                     return getIngredientsForRecipe(recipe);
                 }
             }

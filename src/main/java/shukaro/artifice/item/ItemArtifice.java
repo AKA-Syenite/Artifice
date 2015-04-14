@@ -26,13 +26,6 @@ public abstract class ItemArtifice extends Item
     }
 
     @Override
-    public abstract String getUnlocalizedName(ItemStack stack);
-
-    @Override
-    @SideOnly(Side.CLIENT)
-    public abstract void getSubItems(Item id, CreativeTabs tab, List list);
-
-    @Override
     @SideOnly(Side.CLIENT)
     public abstract IIcon getIconFromDamage(int meta);
 

@@ -166,6 +166,10 @@ public class ArtificeRecipes
             GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ArtificeBlocks.blockLogicRedstone, 1, 0), new ItemStack(ArtificeBlocks.blockLogicRedstone, 1, 1)));
             GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ArtificeBlocks.blockLogicRedstone, 1, 1), new ItemStack(ArtificeBlocks.blockLogicRedstone, 1, 0)));
         }
+        if (ArtificeConfig.craftKitRecipe)
+        {
+            GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ArtificeItems.itemCraftKit, 1, 0), "stickWood", "plankWood", "plankWood", "plankWood"));
+        }
     }
 
     private static void registerConvenienceRecipes()

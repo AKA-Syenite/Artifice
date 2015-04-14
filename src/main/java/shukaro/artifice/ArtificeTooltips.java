@@ -170,6 +170,9 @@ public class ArtificeTooltips
 
         ArtificeRegistry.registerTooltip(new ItemStack(ArtificeItems.itemBucket, 1, 3), localizeTooltip("flammable", false));
         ArtificeRegistry.registerTooltip(new ItemStack(ArtificeItems.itemBucket, 1, 3), localizeTooltip("bucket.bitumen", true));
+
+        ArtificeRegistry.registerTooltip(new ItemStack(ArtificeItems.itemCraftKit, 1, 0), localizeTooltip("craftkit", false));
+        ArtificeRegistry.registerTooltip(new ItemStack(ArtificeItems.itemCraftKit, 1, 0), localizeTooltip("craftkit", true));
     }
 
     private static void initBlockTooltips()

@@ -430,6 +430,8 @@ item.artifice.bucket.bucketFuel.name=Fuel Bucket
 item.artifice.bucket.bucketCreosote.name=Creosote Bucket
 item.artifice.bucket.bucketBitumen.name=Bitumen Bucket
 
+item.artifice.craftkit.name=Crafting Kit
+
 # Tooltips
 tooltip.artifice.sulfur=Carries a strong odor
 tooltip.artifice.niter=Also known as saltpeter
@@ -561,6 +563,8 @@ tooltip.artifice.attunedredstone.flavor=Humming softly...
 tooltip.artifice.digital=Digital
 tooltip.artifice.analog=Analog
 tooltip.artifice.logicredstone.flavor=Quite versatile
+tooltip.artifice.craftkit=Portable Crafting
+tooltip.artifice.craftkit.flavor=Handy
 
 #Enchantments
 enchantment.artifice.invisible=Invisible
@@ -588,3 +592,6 @@ chat.artifice.set.disabled=Disabled
 chat.artifice.set.output=Output
 chat.artifice.set.positive=Positive
 chat.artifice.set.negative=Negative
+
+#Gui
+gui.artifice.craftkit=Crafting Kit

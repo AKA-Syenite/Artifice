@@ -33,6 +33,7 @@ public class ArtificeItems
     public static ItemStack bucketFuel;
     public static ItemStack bucketCreosote;
     public static ItemStack bucketBitumen;
+    public static ItemCraftKit itemCraftKit;
 
     public static void initItems()
     {
@@ -106,5 +107,7 @@ public class ArtificeItems
         FluidContainerRegistry.registerFluidContainer(ArtificeFluids.fluidFuel, bucketFuel, FluidContainerRegistry.EMPTY_BUCKET);
         FluidContainerRegistry.registerFluidContainer(ArtificeFluids.fluidCreosote, bucketCreosote, FluidContainerRegistry.EMPTY_BUCKET);
         FluidContainerRegistry.registerFluidContainer(ArtificeFluids.fluidBitumen, bucketBitumen, FluidContainerRegistry.EMPTY_BUCKET);
+
+        itemCraftKit = new ItemCraftKit();
     }
 }

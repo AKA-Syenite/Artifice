@@ -12,7 +12,7 @@ public class ArtificeConfig
     public static final String[] tiers = {"Basic", "Reinforced", "Industrial", "Advanced"};
     public static final String[] flora = {"Bluebell", "Orchid", "Iris", "Lotus", "LotusClosed"};
     public static final String[] rocks = {"", "Cobblestone", "Brick", "Paver", "Antipaver", "Chiseled"};
-    public final static String[] rockNames = { "Basalt", "Marble", "Gray Limestone", "Light Gray Limestone", "Brown Limestone", "Tan Limestone", "Red Limestone", "Blue Limestone", "Green Limestone" };
+    public static final String[] rockNames = { "Basalt", "Marble", "Gray Limestone", "Light Gray Limestone", "Brown Limestone", "Tan Limestone", "Red Limestone", "Blue Limestone", "Green Limestone" };
 
     public static int frameRenderID;
     public static int lotusRenderID;
@@ -37,6 +37,7 @@ public class ArtificeConfig
     public static boolean upgradeRecipes;
     public static boolean convenienceRecipes;
     public static boolean lampRecipes;
+    public static boolean craftKitRecipe;
 
     public static boolean limitUpgrades;
     public static int maxSharpness;
@@ -259,6 +260,7 @@ public class ArtificeConfig
             convenienceRecipes = c.get("Recipes", "Convenience Recipes", true).getBoolean();
             c.get("Recipes", "Convenience Recipes", true).comment = "Smelt stone bricks to cracked variant, craft mossy brick/cobble variants with water bucket, craft 2 chiseled brick from 2 normal.";
             lampRecipes = c.get("Recipes", "Lamp Recipes", true).getBoolean();
+            craftKitRecipe = c.get("Recipes", "Crafting Kit Recipe", true).getBoolean();
             c.addCustomCategoryComment("Recipes", "Controls whether or not recipes are available for use");
 
             dimensionBlacklist = c.get("Compatibility", "Dimension Blacklist", "").getString();

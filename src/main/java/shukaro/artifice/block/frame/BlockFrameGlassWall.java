@@ -32,36 +32,6 @@ public class BlockFrameGlassWall extends BlockFrame
     }
 
     @Override
-    public float getExplosionResistance(Entity par1Entity, World world, int x, int y, int z, double explosionX, double explosionY, double explosionZ)
-    {
-        int meta = world.getBlockMetadata(x, y, z);
-        return this.getResistance(meta);
-    }
-
-    public float getResistance(int meta)
-    {
-        switch (meta)
-        {
-            case 0:
-                return 15.0F;
-            case 1:
-                return 25.0F;
-            case 2:
-                return 45.0F;
-            case 3:
-                return 75.0F;
-            default:
-                return 10.0F;
-        }
-    }
-
-    @Override
-    public boolean isOpaqueCube()
-    {
-        return false;
-    }
-
-    @Override
     @SideOnly(Side.CLIENT)
     public void registerBlockIcons(IIconRegister reg)
     {
@@ -95,12 +65,6 @@ public class BlockFrameGlassWall extends BlockFrame
     }
 
     @Override
-    public boolean isBlockSolid(IBlockAccess world, int x, int y, int z, int side)
-    {
-        return false;
-    }
-
-    @Override
     @SideOnly(Side.CLIENT)
     public int getRenderBlockPass()
     {
@@ -117,4 +81,31 @@ public class BlockFrameGlassWall extends BlockFrame
 
     @Override
     public int getRenderType() { return ArtificeConfig.ctmRenderID; }
+
+    @Override
+    public boolean isOpaqueCube() { return false; }
+
+    @Override
+    public float getExplosionResistance(Entity par1Entity, World world, int x, int y, int z, double explosionX, double explosionY, double explosionZ)
+    {
+        int meta = world.getBlockMetadata(x, y, z);
+        return this.getResistance(meta);
+    }
+
+    public float getResistance(int meta)
+    {
+        switch (meta)
+        {
+            case 0:
+                return 15.0F;
+            case 1:
+                return 25.0F;
+            case 2:
+                return 45.0F;
+            case 3:
+                return 75.0F;
+            default:
+                return 10.0F;
+        }
+    }
 }

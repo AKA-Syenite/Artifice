@@ -23,42 +23,6 @@ public class BlockFrameBlastWall extends BlockFrame
     }
 
     @Override
-    public float getExplosionResistance(Entity par1Entity, World world, int x, int y, int z, double explosionX, double explosionY, double explosionZ)
-    {
-        int meta = world.getBlockMetadata(x, y, z);
-        return this.getResistance(meta);
-    }
-
-    public float getResistance(int meta)
-    {
-        switch (meta)
-        {
-            case 0:
-                return 20.0F;
-            case 1:
-                return 30.0F;
-            case 2:
-                return 50.0F;
-            case 3:
-                return 80.0F;
-            default:
-                return 10.0F;
-        }
-    }
-
-    @Override
-    public float getBlockHardness(World world, int x, int y, int z)
-    {
-        return super.getBlockHardness(world, x, y, z) + 5;
-    }
-
-    @Override
-    public boolean isOpaqueCube()
-    {
-        return true;
-    }
-
-    @Override
     @SideOnly(Side.CLIENT)
     public void registerBlockIcons(IIconRegister reg)
     {
@@ -92,11 +56,35 @@ public class BlockFrameBlastWall extends BlockFrame
     }
 
     @Override
-    public boolean isBlockSolid(IBlockAccess world, int x, int y, int z, int side)
+    public int getRenderType() { return ArtificeConfig.ctmRenderID; }
+
+    @Override
+    public float getExplosionResistance(Entity par1Entity, World world, int x, int y, int z, double explosionX, double explosionY, double explosionZ)
     {
-        return true;
+        int meta = world.getBlockMetadata(x, y, z);
+        return this.getResistance(meta);
+    }
+
+    public float getResistance(int meta)
+    {
+        switch (meta)
+        {
+            case 0:
+                return 20.0F;
+            case 1:
+                return 30.0F;
+            case 2:
+                return 50.0F;
+            case 3:
+                return 80.0F;
+            default:
+                return 10.0F;
+        }
     }
 
     @Override
-    public int getRenderType() { return ArtificeConfig.ctmRenderID; }
+    public float getBlockHardness(World world, int x, int y, int z)
+    {
+        return super.getBlockHardness(world, x, y, z) + 5;
+    }
 }

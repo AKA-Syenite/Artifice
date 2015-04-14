@@ -59,8 +59,6 @@ public class ArtificeCore
     @EventHandler
     public void preInit(FMLPreInitializationEvent evt)
     {
-        scaffoldReflect();
-
         compats.add(new Buildcraft());
         compats.add(new EE3());
         compats.add(new FMP());
@@ -85,21 +83,6 @@ public class ArtificeCore
         ArtificeItems.initItems();
         ArtificeEnchants.initEnchants();
         ArtificeWorld.initWorldGen();
-    }
-
-    private static void scaffoldReflect()
-    {
-        try
-        {
-            if ((Boolean)Launch.blackboard.get("fml.deobfuscatedEnvironment"))
-                NetHandlerPlayServer.class.getDeclaredField("floatingTickCount").setAccessible(true);
-            else
-                NetHandlerPlayServer.class.getDeclaredField("field_147365_f").setAccessible(true);
-        }
-        catch (Exception e)
-        {
-            e.printStackTrace();
-        }
     }
 
     @EventHandler

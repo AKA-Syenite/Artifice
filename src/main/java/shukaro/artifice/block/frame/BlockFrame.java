@@ -8,6 +8,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraftforge.common.util.ForgeDirection;
 import shukaro.artifice.ArtificeConfig;
 import shukaro.artifice.block.BlockArtifice;
 
@@ -28,10 +29,7 @@ public abstract class BlockFrame extends BlockArtifice
     }
 
     @Override
-    public abstract boolean isOpaqueCube();
-
-    @Override
-    public abstract boolean isBlockSolid(IBlockAccess world, int x, int y, int z, int side);
+    public boolean isOpaqueCube() { return true; }
 
     @Override
     @SideOnly(Side.CLIENT)

@@ -6,6 +6,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
+import net.minecraftforge.common.util.ForgeDirection;
 import shukaro.artifice.ArtificeConfig;
 import shukaro.artifice.render.TextureHandler;
 
@@ -21,12 +22,6 @@ public class BlockFrameBase extends BlockFrame
         setBlockName("artifice.frame");
         setBlockBounds(0.01F, 0.01F, 0.01F, 0.99F, 0.99F, 0.99F);
         GameRegistry.registerBlock(this, ItemBlockFrame.class, this.getUnlocalizedName());
-    }
-
-    @Override
-    public boolean isOpaqueCube()
-    {
-        return false;
     }
 
     @Override
@@ -52,14 +47,14 @@ public class BlockFrameBase extends BlockFrame
     }
 
     @Override
-    public boolean isBlockSolid(IBlockAccess world, int x, int y, int z, int side)
-    {
-        return false;
-    }
-
-    @Override
     public int getRenderType()
     {
         return ArtificeConfig.frameRenderID;
     }
+
+    @Override
+    public boolean isOpaqueCube() { return false; }
+
+    @Override
+    public boolean isSideSolid(IBlockAccess world, int x, int y, int z, ForgeDirection side) { return false; }
 }

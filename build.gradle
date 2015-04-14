@@ -34,11 +34,11 @@ if (!ext.build_number) {
 if (ext.build_number) {
     // add the build # of the last jenkins build for consistency
     version = ext.mc_version + "-" + ext.mod_version + "-" + (349 + System.getenv("TRAVIS_BUILD_NUMBER").toInteger())
-    project.ext.set('fullVersion', version)
 } else {
-    version = xt.mc_version + "-" + ext.mod_version + "-" + "DEV"
-    project.ext.set('fullVersion', version)
+    version = ext.mc_version + "-" + ext.mod_version + "-" + "DEV"
 }
+group = "com.shukaro.artifice"
+archivesBaseName = "Artifice"
 
 if(ext.mod_version.endsWith("A")) {
     project.ext.set('curseType', 'alpha')
@@ -50,12 +50,9 @@ if(ext.mod_version.endsWith("A")) {
 project.ext.set('curseProjectID', '223174')
 project.ext.set('modsioProjectID', '1139')
 
-group = "com.shukaro.artifice"
-archivesBaseName = "Artifice"
-
 minecraft {
     // forge version
-    version = "1.7.10-10.13.2.1230"
+    version = "1.7.10-10.13.2.1291"
     runDir = "minecraft"
 }
 
@@ -126,15 +123,15 @@ task curseUpload(type: Exec) {
     executable 'curl'
     // 4449 = 1.7.10
     args = ['-F', 'metadata={\"releaseType\":\"' + project.curseType + '\",\"changelog\":\"' + getGitChangelog() + '\",\"gameVersions\":[4449]}',
-            '-F', 'file=@./build/libs/' + archivesBaseName + '-' + project.fullVersion + '.jar',
+            '-F', 'file=@./build/libs/' + archivesBaseName + '-' + project.version + '.jar',
             '-H', 'X-API-Token: ' + System.getenv('CURSE_API_KEY'),
                   'https://minecraft.curseforge.com/api/projects/' + project.curseProjectID + '/upload-file']
 }
 
 task modsioUpload(type: Exec) {
     executable 'curl'
-    args = ['-F', 'body={\"version\":{\"name\":\"' + project.fullVersion + '\",\"minecraft\":\"' + project.minecraft.version + '\",\"changelog\":\"' + getGitChangelog() + '\"},\"filename\":\"' + 'Artifice-' + project.fullVersion + '.jar' + '\"}',
-            '-F', 'file=@./build/libs/' + archivesBaseName + '-' + project.fullVersion + '.jar',
+    args = ['-F', 'body={\"version\":{\"name\":\"' + project.version + '\",\"minecraft\":\"' + project.minecraft.version + '\",\"changelog\":\"' + getGitChangelog() + '\"},\"filename\":\"' + 'Artifice-' + project.version + '.jar' + '\"}',
+            '-F', 'file=@./build/libs/' + archivesBaseName + '-' + project.version + '.jar',
             '-H', 'X-API-Key: ' + System.getenv('MODSIO_API_KEY'),
                   'https://mods.io/mods/' + project.modsioProjectID + '/versions/create.json']
 }

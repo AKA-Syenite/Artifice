@@ -77,15 +77,4 @@ public class ArtificeEventHandler
         if (event.output.getItem().getUnlocalizedName().contains("tile.artifice.attunedredstone") && event.output.hasTagCompound())
             event.output.getTagCompound().removeTag("RepairCost");
     }
-
-    @SubscribeEvent
-    public void onCrafting(PlayerEvent.ItemCraftedEvent event)
-    {
-        if (event.crafting.getUnlocalizedName().equals(ArtificeBlocks.blockNuclearBattery.getUnlocalizedName()))
-        {
-            if (!event.crafting.hasTagCompound())
-                event.crafting.setTagCompound(new NBTTagCompound());
-            event.crafting.getTagCompound().setInteger("charge", ArtificeConfig.nuclearBatteryCapacity);
-        }
-    }
 }

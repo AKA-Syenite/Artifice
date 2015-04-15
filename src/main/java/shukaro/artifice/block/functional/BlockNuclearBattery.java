@@ -14,7 +14,9 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.tileentity.TileEntityFurnace;
 import net.minecraft.util.IIcon;
+import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
 import shukaro.artifice.ArtificeConfig;
@@ -25,11 +27,11 @@ import shukaro.artifice.tile.TileEntityNuclearBattery;
 import shukaro.artifice.util.MiscUtils;
 
 import java.util.List;
+import java.util.Random;
 
 public class BlockNuclearBattery extends Block implements ITileEntityProvider
 {
     private IIcon[] icons = new IIcon[4];
-    private IIcon cap;
 
     public BlockNuclearBattery()
     {
@@ -45,7 +47,6 @@ public class BlockNuclearBattery extends Block implements ITileEntityProvider
     @SideOnly(Side.CLIENT)
     public void registerBlockIcons(IIconRegister reg)
     {
-        this.cap = TextureHandler.registerIcon(reg, "cap", "nuclearbattery");
         this.icons[0] = TextureHandler.registerIcon(reg, "full", "nuclearbattery");
         this.icons[1] = TextureHandler.registerIcon(reg, "partial", "nuclearbattery");
         this.icons[2] = TextureHandler.registerIcon(reg, "low", "nuclearbattery");
@@ -56,9 +57,7 @@ public class BlockNuclearBattery extends Block implements ITileEntityProvider
     @SideOnly(Side.CLIENT)
     public IIcon getIcon(int side, int meta)
     {
-        if (side < 2)
-            return this.cap;
-        return meta < 4 ? this.icons[meta] : this.icons[0];
+        return meta < this.icons.length ? this.icons[meta] : this.icons[0];
     }
 
     @Override
@@ -69,6 +68,12 @@ public class BlockNuclearBattery extends Block implements ITileEntityProvider
         tag.setInteger("charge", ArtificeConfig.nuclearBatteryCapacity);
         stack.setTagCompound(tag);
         list.add(stack);
+    }
+
+    @Override
+    public int damageDropped(int meta)
+    {
+        return meta;
     }
 
     @Override
@@ -96,7 +101,7 @@ public class BlockNuclearBattery extends Block implements ITileEntityProvider
             TileEntity te = world.getTileEntity(x, y, z);
             if (te instanceof TileEntityNuclearBattery)
             {
-                ItemStack stack = new ItemStack(world.getBlock(x, y, z), 1, world.getBlockMetadata(x, y, z));
+                ItemStack stack = new ItemStack(world.getBlock(x, y, z), 1, 0);
                 TileEntityNuclearBattery teb = (TileEntityNuclearBattery)te;
                 NBTTagCompound tag = new NBTTagCompound();
                 tag.setInteger("charge", teb.getEnergyStored(ForgeDirection.DOWN));
@@ -106,6 +111,12 @@ public class BlockNuclearBattery extends Block implements ITileEntityProvider
             }
         }
         return world.setBlockToAir(x, y, z);
+    }
+
+    @Override
+    public int quantityDropped(Random rand)
+    {
+        return 0;
     }
 
     @Override

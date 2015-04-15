@@ -12,8 +12,8 @@ import shukaro.artifice.ArtificeConfig;
 
 public class TileEntityNuclearBattery extends TileEntity implements IEnergyProvider
 {
-    private EnergyStorage charge = new EnergyStorage(ArtificeConfig.nuclearBatteryCapacity, 0, ArtificeConfig.nuclearBatteryRate);
-    private int genned = 0;
+    private EnergyStorage charge = new EnergyStorage(ArtificeConfig.nuclearBatteryCapacity);
+    private int tickGen = 0;
 
     @Override
     public boolean canUpdate()
@@ -24,7 +24,7 @@ public class TileEntityNuclearBattery extends TileEntity implements IEnergyProvi
     @Override
     public void updateEntity()
     {
-        this.genned = 0;
+        this.tickGen = 0;
         int meta = worldObj.getBlockMetadata(xCoord, yCoord, zCoord);
         int power = charge.getEnergyStored();
         if (power == 0 && meta != 3)
@@ -70,14 +70,20 @@ public class TileEntityNuclearBattery extends TileEntity implements IEnergyProvi
         this.charge.setEnergyStored(amount);
     }
 
+    public int getMaxRate()
+    {
+        float ratio = charge.getEnergyStored() / (float)charge.getMaxEnergyStored();
+        return (int)Math.ceil(ArtificeConfig.nuclearBatteryRate * ratio);
+    }
+
     @Override
     public int extractEnergy(ForgeDirection dir, int amount, boolean simulate)
     {
-        if (genned >= charge.getMaxExtract())
+        if (tickGen >= getMaxRate())
             return 0;
         int x = charge.extractEnergy(amount, simulate);
         if (!simulate)
-            genned += x;
+            tickGen += x;
         return x;
     }
 

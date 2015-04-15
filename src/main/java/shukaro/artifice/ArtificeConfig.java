@@ -321,8 +321,8 @@ public class ArtificeConfig
             c.addCustomCategoryComment("Enchantments", "Higher weight values equate to higher occurrence");
 
             nuclearBatteryRecipe = c.get("Recipes", "Allow crafting of nuclear batteries", true).getBoolean();
-            nuclearBatteryCapacity = c.get("Machines", "Maximum RF capacity of nuclear batteries", 30000000).getInt();
-            nuclearBatteryRate = c.get("Machines", "Maximum rate at which RF is produced by nuclear batteries", 15).getInt();
+            nuclearBatteryCapacity = c.get("Machines", "Maximum RF capacity of nuclear batteries", 1000000000).getInt();
+            nuclearBatteryRate = c.get("Machines", "Maximum rate at which RF is produced by nuclear batteries", 20).getInt();
         }
         catch (Exception e)
         {

@@ -10,16 +10,13 @@ import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
-import powercrystals.minefactoryreloaded.api.rednet.connectivity.IRedNetConnection;
-import powercrystals.minefactoryreloaded.api.rednet.connectivity.RedNetConnectionType;
 import shukaro.artifice.ArtificeConfig;
 import shukaro.artifice.block.ItemBlockArtifice;
 import shukaro.artifice.render.TextureHandler;
 
 import java.util.Random;
 
-@Optional.Interface(iface = "powercrystals.minefactoryreloaded.api.rednet.connectivity.IRedNetConnection", modid = "MineFactoryReloaded")
-public class BlockFrameDetector extends BlockFrame implements IRedNetConnection
+public class BlockFrameDetector extends BlockFrame
 {
     private static final int tickRate = 2;
 
@@ -100,12 +97,5 @@ public class BlockFrameDetector extends BlockFrame implements IRedNetConnection
             world.setBlockMetadataWithNotify(x, y, z, 0, 3);
 
         world.notifyBlocksOfNeighborChange(x, y, z, this);
-    }
-
-    @Override
-    @Optional.Method(modid = "MineFactoryReloaded")
-    public RedNetConnectionType getConnectionType(World world, int x, int y, int z, ForgeDirection side)
-    {
-        return RedNetConnectionType.CableSingle;
     }
 }

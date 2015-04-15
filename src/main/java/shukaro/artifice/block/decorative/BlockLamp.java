@@ -1,6 +1,5 @@
 package shukaro.artifice.block.decorative;
 
-import cpw.mods.fml.common.Optional;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -14,9 +13,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-import net.minecraftforge.common.util.ForgeDirection;
-import powercrystals.minefactoryreloaded.api.rednet.connectivity.IRedNetConnection;
-import powercrystals.minefactoryreloaded.api.rednet.connectivity.RedNetConnectionType;
 import shukaro.artifice.ArtificeBlocks;
 import shukaro.artifice.ArtificeConfig;
 import shukaro.artifice.block.BlockArtifice;
@@ -28,8 +24,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Random;
 
-@Optional.Interface(iface = "powercrystals.minefactoryreloaded.api.rednet.connectivity.IRedNetConnection", modid = "MineFactoryReloaded")
-public class BlockLamp extends BlockArtifice implements IRedNetConnection
+public class BlockLamp extends BlockArtifice
 {
     MinecraftColors color;
     private boolean inverted;
@@ -144,13 +139,6 @@ public class BlockLamp extends BlockArtifice implements IRedNetConnection
     public int getDamageValue(World world, int x, int y, int z)
     {
         return 0;
-    }
-
-    @Override
-    @Optional.Method(modid = "MineFactoryReloaded")
-    public RedNetConnectionType getConnectionType(World world, int x, int y, int z, ForgeDirection side)
-    {
-        return RedNetConnectionType.CableSingle;
     }
 
     @Override

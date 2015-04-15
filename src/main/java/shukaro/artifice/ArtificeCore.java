@@ -10,8 +10,6 @@ import cpw.mods.fml.common.event.*;
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
-import net.minecraft.launchwrapper.Launch;
-import net.minecraft.network.NetHandlerPlayServer;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraftforge.common.MinecraftForge;
 import org.apache.logging.log4j.Logger;
@@ -63,7 +61,6 @@ public class ArtificeCore
         compats.add(new EE3());
         compats.add(new FMP());
         compats.add(new Forestry());
-        compats.add(new MFR());
         //compats.add(new Thaumcraft());
         //compats.add(new Chisel());
         compats.add(new CarpentersBlocks());

@@ -6,6 +6,7 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipes;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.RecipeSorter;
@@ -169,6 +170,21 @@ public class ArtificeRecipes
         if (ArtificeConfig.craftKitRecipe)
         {
             GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ArtificeItems.itemCraftKit, 1, 0), "stickWood", "plankWood", "plankWood", "plankWood"));
+        }
+        if (ArtificeConfig.nuclearBatteryRecipe)
+        {
+            ItemStack stack = new ItemStack(ArtificeBlocks.blockNuclearBattery, 1, 0);
+            stack.setTagCompound(new NBTTagCompound());
+            stack.getTagCompound().setInteger("charge", ArtificeConfig.nuclearBatteryCapacity);
+            GameRegistry.addRecipe(new ShapedOreRecipe(stack,
+                    "CRC",
+                    "PUP",
+                    "CWC",
+                    'C', "cobblestone",
+                    'R', Blocks.redstone_block,
+                    'P', Blocks.piston,
+                    'U', "blockUranium",
+                    'W', Items.water_bucket));
         }
     }
 

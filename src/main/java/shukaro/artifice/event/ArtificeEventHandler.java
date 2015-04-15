@@ -1,13 +1,16 @@
 package shukaro.artifice.event;
 
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+import cpw.mods.fml.common.gameevent.PlayerEvent;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.item.EntityXPOrb;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.event.AnvilUpdateEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
+import shukaro.artifice.ArtificeBlocks;
 import shukaro.artifice.ArtificeConfig;
 import shukaro.artifice.ArtificeEnchants;
 
@@ -73,5 +76,16 @@ public class ArtificeEventHandler
     {
         if (event.output.getItem().getUnlocalizedName().contains("tile.artifice.attunedredstone") && event.output.hasTagCompound())
             event.output.getTagCompound().removeTag("RepairCost");
+    }
+
+    @SubscribeEvent
+    public void onCrafting(PlayerEvent.ItemCraftedEvent event)
+    {
+        if (event.crafting.getUnlocalizedName().equals(ArtificeBlocks.blockNuclearBattery.getUnlocalizedName()))
+        {
+            if (!event.crafting.hasTagCompound())
+                event.crafting.setTagCompound(new NBTTagCompound());
+            event.crafting.getTagCompound().setInteger("charge", ArtificeConfig.nuclearBatteryCapacity);
+        }
     }
 }

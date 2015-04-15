@@ -340,5 +340,13 @@ public class ArtificeTooltips
         ArtificeRegistry.registerTooltip(new ItemStack(ArtificeBlocks.blockUranium, 1, 0), localizeTooltip("radioactive", false));
         ArtificeRegistry.registerTooltip(new ItemStack(ArtificeBlocks.blockUranium, 1, 1), localizeTooltip("radioactive", false));
 
+        ArtificeRegistry.registerTooltip(new ItemStack(ArtificeBlocks.blockNuclearBattery, 1, 0), localizeTooltip("battery.full", false));
+        ArtificeRegistry.registerTooltip(new ItemStack(ArtificeBlocks.blockNuclearBattery, 1, 1), localizeTooltip("battery.partial", false));
+        ArtificeRegistry.registerTooltip(new ItemStack(ArtificeBlocks.blockNuclearBattery, 1, 2), localizeTooltip("battery.drained", false));
+        ArtificeRegistry.registerTooltip(new ItemStack(ArtificeBlocks.blockNuclearBattery, 1, 3), localizeTooltip("battery.empty", false));
+        ArtificeRegistry.registerTooltip(new ItemStack(ArtificeBlocks.blockNuclearBattery, 1, 0), localizeTooltip("battery", true));
+        ArtificeRegistry.registerTooltip(new ItemStack(ArtificeBlocks.blockNuclearBattery, 1, 1), localizeTooltip("battery", true));
+        ArtificeRegistry.registerTooltip(new ItemStack(ArtificeBlocks.blockNuclearBattery, 1, 2), localizeTooltip("battery", true));
+        ArtificeRegistry.registerTooltip(new ItemStack(ArtificeBlocks.blockNuclearBattery, 1, 3), localizeTooltip("battery", true));
     }
 }

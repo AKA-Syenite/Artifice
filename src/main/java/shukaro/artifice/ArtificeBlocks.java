@@ -17,6 +17,7 @@ import shukaro.artifice.block.fluid.BlockFluidOil;
 import shukaro.artifice.block.frame.*;
 import shukaro.artifice.block.functional.BlockAttunedRedstone;
 import shukaro.artifice.block.functional.BlockLogicRedstone;
+import shukaro.artifice.block.functional.BlockNuclearBattery;
 import shukaro.artifice.block.world.*;
 import shukaro.artifice.util.MinecraftColors;
 import shukaro.artifice.util.NameMetaPair;
@@ -70,6 +71,7 @@ public class ArtificeBlocks
     public static BlockAttunedRedstone blockAttunedRedstoneReceiver;
     public static BlockLogicRedstone blockLogicRedstone;
     public static BlockBasicOre blockUranium;
+    public static BlockNuclearBattery blockNuclearBattery;
 
     public static String[] rockColorNames = { "gray",   "lightgray", "brown",  "tan",    "reddish", "bluish", "greenish" };
     public static int[] rockColors =        { 11579568, 16777215,    12362119, 15853509, 11706528,  10526898, 10531488 };
@@ -189,6 +191,8 @@ public class ArtificeBlocks
 
         OreDictionary.registerOre("oreUranium", new ItemStack(blockUranium, 1, 0));
         OreDictionary.registerOre("blockUranium", new ItemStack(blockUranium, 1, 1));
+
+        blockNuclearBattery = new BlockNuclearBattery();
     }
 
     public static void initOreMappings()

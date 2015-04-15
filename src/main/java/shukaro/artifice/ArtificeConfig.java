@@ -131,6 +131,10 @@ public class ArtificeConfig
     public static int enchantmentResistanceWeight;
     public static boolean enchantmentResistanceEnable;
 
+    public static boolean nuclearBatteryRecipe;
+    public static int nuclearBatteryCapacity;
+    public static int nuclearBatteryRate;
+
     private static String marbleList;
     private static String basaltList;
     private static String dimensionBlacklist;
@@ -315,6 +319,10 @@ public class ArtificeConfig
             enchantmentResistanceWeight = c.get("Enchantments", "Resistance Enchant weight", 1).getInt();
             enchantmentResistanceEnable = c.get("Enchantments", "Enable resistance enchant", true).getBoolean();
             c.addCustomCategoryComment("Enchantments", "Higher weight values equate to higher occurrence");
+
+            nuclearBatteryRecipe = c.get("Recipes", "Allow crafting of nuclear batteries", true).getBoolean();
+            nuclearBatteryCapacity = c.get("Machines", "Maximum RF capacity of nuclear batteries", 30000000).getInt();
+            nuclearBatteryRate = c.get("Machines", "Maximum rate at which RF is produced by nuclear batteries", 15).getInt();
         }
         catch (Exception e)
         {

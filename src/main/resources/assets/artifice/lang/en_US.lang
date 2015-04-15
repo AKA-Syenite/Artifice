@@ -389,6 +389,8 @@ tile.artifice.logicredstone.name=Logical Redstone Block
 tile.artifice.uranium.ore.name=Uranium Ore
 tile.artifice.uranium.block.name=Block of Uranium
 
+tile.artifice.nuclearbattery.name=Nuclear Stirling Battery
+
 # Item Names
 item.artifice.sledge.wood.name=Wooden Sledge
 item.artifice.sledge.stone.name=Stone Sledge
@@ -582,6 +584,11 @@ tooltip.artifice.logicredstone.flavor=Quite versatile
 tooltip.artifice.craftkit=Portable Crafting
 tooltip.artifice.craftkit.flavor=Handy
 tooltip.artifice.radioactive=Radioactive
+tooltip.artifice.battery.full=Full Charge
+tooltip.artifice.battery.partial=Partial Charge
+tooltip.artifice.battery.drained=Low Charge
+tooltip.artifice.battery.empty=No Charge
+tooltip.artifice.battery.flavor=Durable
 
 #Enchantments
 enchantment.artifice.invisible=Invisible

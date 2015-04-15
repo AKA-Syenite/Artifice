@@ -4,6 +4,7 @@ import cpw.mods.fml.client.FMLClientHandler;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockTorch;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.util.IIcon;
@@ -27,6 +28,7 @@ public class BlockColoredTorch extends BlockTorch
         this.setCreativeTab(ArtificeCore.mainTab);
         this.setLightLevel(1.0F);
         this.setBlockName("artifice.coloredtorch" + color);
+        this.setStepSound(Block.soundTypeWood);
         GameRegistry.registerBlock(this, ItemBlockArtifice.class, this.getUnlocalizedName());
     }
 

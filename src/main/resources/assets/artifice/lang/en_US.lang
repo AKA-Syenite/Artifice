@@ -375,6 +375,9 @@ tile.artifice.attunedredstone.transmitter.name=Unattuned Redstone Transmitter
 
 tile.artifice.logicredstone.name=Logical Redstone Block
 
+tile.artifice.uranium.ore.name=Uranium Ore
+tile.artifice.uranium.block.name=Block of Uranium
+
 # Item Names
 item.artifice.sledge.wood.name=Wooden Sledge
 item.artifice.sledge.stone.name=Stone Sledge
@@ -431,6 +434,8 @@ item.artifice.bucket.bucketCreosote.name=Creosote Bucket
 item.artifice.bucket.bucketBitumen.name=Bitumen Bucket
 
 item.artifice.craftkit.name=Crafting Kit
+
+item.artifice.resource.uranium.name=Uranium Ingot
 
 # Tooltips
 tooltip.artifice.sulfur=Carries a strong odor
@@ -565,6 +570,7 @@ tooltip.artifice.analog=Analog
 tooltip.artifice.logicredstone.flavor=Quite versatile
 tooltip.artifice.craftkit=Portable Crafting
 tooltip.artifice.craftkit.flavor=Handy
+tooltip.artifice.radioactive=Radioactive
 
 #Enchantments
 enchantment.artifice.invisible=Invisible

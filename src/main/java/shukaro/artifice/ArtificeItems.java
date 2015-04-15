@@ -70,6 +70,7 @@ public class ArtificeItems
         OreDictionary.registerOre("dustSulfur", new ItemStack(itemResource, 1, 0));
         OreDictionary.registerOre("dustSaltpeter", new ItemStack(itemResource, 1, 1));
         OreDictionary.registerOre("dustEnder", new ItemStack(itemResource, 1, 2));
+        OreDictionary.registerOre("ingotUranium", new ItemStack(itemResource, 1, 3));
 
         itemSickleWood = new ItemSickle(Item.ToolMaterial.WOOD);
         itemSickleStone = new ItemSickle(Item.ToolMaterial.STONE);

@@ -173,6 +173,8 @@ public class ArtificeTooltips
 
         ArtificeRegistry.registerTooltip(new ItemStack(ArtificeItems.itemCraftKit, 1, 0), localizeTooltip("craftkit", false));
         ArtificeRegistry.registerTooltip(new ItemStack(ArtificeItems.itemCraftKit, 1, 0), localizeTooltip("craftkit", true));
+
+        ArtificeRegistry.registerTooltip(new ItemStack(ArtificeItems.itemResource, 1, 3), localizeTooltip("radioactive", false));
     }
 
     private static void initBlockTooltips()
@@ -334,6 +336,9 @@ public class ArtificeTooltips
         ArtificeRegistry.registerTooltip(new ItemStack(ArtificeBlocks.blockLogicRedstone, 1, 1), localizeTooltip("analog", false));
         ArtificeRegistry.registerTooltip(new ItemStack(ArtificeBlocks.blockLogicRedstone, 1, 0), localizeTooltip("logicredstone", true));
         ArtificeRegistry.registerTooltip(new ItemStack(ArtificeBlocks.blockLogicRedstone, 1, 1), localizeTooltip("logicredstone", true));
+
+        ArtificeRegistry.registerTooltip(new ItemStack(ArtificeBlocks.blockUranium, 1, 0), localizeTooltip("radioactive", false));
+        ArtificeRegistry.registerTooltip(new ItemStack(ArtificeBlocks.blockUranium, 1, 1), localizeTooltip("radioactive", false));
 
     }
 }

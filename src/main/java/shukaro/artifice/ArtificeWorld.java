@@ -1,7 +1,10 @@
 package shukaro.artifice;
 
+import cofh.core.util.CoreUtils;
 import cofh.core.world.WorldHandler;
 import shukaro.artifice.world.*;
+
+import java.io.File;
 
 public class ArtificeWorld
 {
@@ -13,6 +16,8 @@ public class ArtificeWorld
             WorldHandler.addFeature(new WorldGenSulfur(ArtificeBlocks.blockSulfur, 0, ArtificeConfig.sulfurSize, ArtificeConfig.sulfurFrequency));
         if (ArtificeConfig.niterGen)
             WorldHandler.addFeature(new WorldGenDesert(ArtificeBlocks.blockNiter, 0, ArtificeConfig.niterSize, ArtificeConfig.niterFrequency));
+        if (ArtificeConfig.uraniumOreGen)
+            WorldHandler.addFeature(new WorldGenCluster(ArtificeBlocks.blockUranium, 0, ArtificeConfig.uraniumOreMinHeight, ArtificeConfig.uraniumOreMaxHeight, ArtificeConfig.uraniumOreSize, ArtificeConfig.uraniumOreFrequency));
         if (ArtificeConfig.enderOreGen)
             WorldHandler.addFeature(new WorldGenCluster(ArtificeBlocks.blockEnderOre, 0, ArtificeConfig.enderOreMinHeight, ArtificeConfig.enderOreMaxHeight, ArtificeConfig.enderOreSize, ArtificeConfig.enderOreFrequency));
         for (int i=0; i<ArtificeConfig.rockNames.length; i++)

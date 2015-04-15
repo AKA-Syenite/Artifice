@@ -51,7 +51,7 @@ public class ArtificeBlocks
     public static BlockRockSlab[] blockLimestoneDoubleSlabs = new BlockRockSlab[7];
     public static BlockStairsArtifice[] blockLimestoneBrickStairs = new BlockStairsArtifice[7];
     public static BlockStairsArtifice[] blockLimestoneCobbleStairs = new BlockStairsArtifice[7];
-    public static String[] oreNames = { "oreCoal", "oreIron", "oreLapis", "oreGold", "oreDiamond", "oreRedstone", "oreEmerald", "oreCopper", "oreTin", "oreSilver", "oreLead", "oreNickel", "oreSulfur", "oreEnder" };
+    public static String[] oreNames = { "oreCoal", "oreIron", "oreLapis", "oreGold", "oreDiamond", "oreRedstone", "oreEmerald", "oreCopper", "oreTin", "oreSilver", "oreLead", "oreNickel", "oreSulfur", "oreEnder", "oreUranium" };
     public static BlockOre[] blockOres = new BlockOre[oreNames.length];
     public static BlockOre[] blockOresGlowing = new BlockOre[oreNames.length];
     public static BlockSulfur blockSulfur;

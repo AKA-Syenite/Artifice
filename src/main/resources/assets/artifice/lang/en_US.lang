@@ -335,6 +335,17 @@ tile.artifice.oreender.limestone.reddish.name=Ender Ore
 tile.artifice.oreender.limestone.bluish.name=Ender Ore
 tile.artifice.oreender.limestone.greenish.name=Ender Ore
 
+tile.artifice.oreuranium.basalt.name=Uranium Ore
+tile.artifice.oreuranium.marble.name=Uranium Ore
+tile.artifice.oreuranium.limestone.gray.name=Uranium Ore
+tile.artifice.oreuranium.limestone.lightgray.name=Uranium Ore
+tile.artifice.oreuranium.limestone.brown.name=Uranium Ore
+tile.artifice.oreuranium.limestone.tan.name=Uranium Ore
+tile.artifice.oreuranium.limestone.reddish.name=Uranium Ore
+tile.artifice.oreuranium.limestone.bluish.name=Uranium Ore
+tile.artifice.oreuranium.limestone.greenish.name=Uranium Ore
+
+
 tile.artifice.sulfur.ore.name=Sulfur Ore
 tile.artifice.sulfur.block.name=Sulfur Block
 

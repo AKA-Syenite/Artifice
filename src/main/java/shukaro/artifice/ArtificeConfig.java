@@ -110,6 +110,13 @@ public class ArtificeConfig
     public static int enderOreMinHeight;
     public static int enderOreMaxHeight;
 
+    public static boolean uraniumBlockRecipe;
+    public static boolean uraniumOreGen;
+    public static int uraniumOreFrequency;
+    public static int uraniumOreSize;
+    public static int uraniumOreMinHeight;
+    public static int uraniumOreMaxHeight;
+
     public static boolean glowSandRecipe;
     public static boolean coloredTorchRecipes;
     public static boolean attunedRecipes;
@@ -142,6 +149,13 @@ public class ArtificeConfig
             enderOreMaxHeight = c.get("Resource Generation", "Ender Ore Maximum Height", 40).getInt();
             spawnEndermen = c.get("General", "Spawn Endermen from Ender Ore", true).getBoolean();
             enderOreRecipe = c.get("Recipes", "Allow crafting of ender pearls from dust", true).getBoolean();
+
+            uraniumBlockRecipe = c.get("Recipes", "Allow crafting of uranium blocks", true).getBoolean();
+            uraniumOreGen = c.get("Resource Generation", "Generate uranium ore", true).getBoolean();
+            uraniumOreSize = c.get("Resource Generation", "Uranium deposit size", 7).getInt();
+            uraniumOreFrequency = c.get("Resource Generation", "Percentage uranium frequency", 100).getInt();
+            uraniumOreMinHeight = c.get("Resource Generation", "Minimum uranium height", 0).getInt();
+            uraniumOreMaxHeight = c.get("Resource Generation", "Maximum uranium height", 20).getInt();
 
             glowSandRecipe = c.get("Recipes", "Allow crafting of glowsand", true).getBoolean();
             coloredTorchRecipes = c.get("Recipes", "Allow crafting of colored torches", true).getBoolean();

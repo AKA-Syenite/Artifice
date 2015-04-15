@@ -21,6 +21,7 @@ import shukaro.artifice.gui.ArtificeCreativeTab;
 import shukaro.artifice.net.CommonProxy;
 import shukaro.artifice.recipe.ArtificeRecipes;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 

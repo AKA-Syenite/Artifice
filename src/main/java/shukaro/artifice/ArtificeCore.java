@@ -64,6 +64,7 @@ public class ArtificeCore
         compats.add(new Forestry());
         compats.add(new CarpentersBlocks());
         compats.add(new MFR());
+        compats.add(new AE2());
         compats.add(new Vanilla());
 
         logger = evt.getModLog();

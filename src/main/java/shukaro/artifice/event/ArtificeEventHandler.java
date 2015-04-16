@@ -74,7 +74,9 @@ public class ArtificeEventHandler
     @SubscribeEvent
     public void onAnvil(AnvilUpdateEvent event)
     {
-        if (event.output.getItem().getUnlocalizedName().contains("tile.artifice.attunedredstone") && event.output.hasTagCompound())
+        if (event.output == null || event.output.getItem() == null || event.output.getItem().getUnlocalizedName() == null)
+            return;
+        else if (event.output.getItem().getUnlocalizedName().contains("tile.artifice.attunedredstone") && event.output.hasTagCompound())
             event.output.getTagCompound().removeTag("RepairCost");
     }
 }

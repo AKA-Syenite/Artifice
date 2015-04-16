@@ -140,6 +140,11 @@ public class ArtificeConfig
     public static int RFperFurnaceHeat;
     public static int coilLoss;
 
+    public static boolean uraniumMFRLaser;
+    public static boolean enderOreMFRLaser;
+    public static boolean sulfurMFRLaser;
+    public static boolean niterMFRLaser;
+
     private static String marbleList;
     private static String basaltList;
     private static String dimensionBlacklist;
@@ -333,6 +338,11 @@ public class ArtificeConfig
             heatingCoilRate = c.get("Machines", "Rate at which heating coils can transfer heat, in RF/t", 80).getInt();
             RFperFurnaceHeat = c.get("Machines", "Amount of RF each unit of furnace burn time costs", 8).getInt();
             coilLoss = c.get("Machines", "Rate at which heating coils bleed energy, in RF/t", 8).getInt();
+
+            uraniumMFRLaser = c.get("Compat", "Register uranium to the MFR laser", true).getBoolean();
+            enderOreMFRLaser = c.get("Compat", "Register ender ore to the MFR laser", true).getBoolean();
+            sulfurMFRLaser = c.get("Compat", "Register sulfur to the MFR laser", true).getBoolean();
+            niterMFRLaser = c.get("Compat", "Register niter to the MFR laser", true).getBoolean();
         }
         catch (Exception e)
         {

@@ -62,9 +62,8 @@ public class ArtificeCore
         compats.add(new EE3());
         compats.add(new FMP());
         compats.add(new Forestry());
-        //compats.add(new Thaumcraft());
-        //compats.add(new Chisel());
         compats.add(new CarpentersBlocks());
+        compats.add(new MFR());
         compats.add(new Vanilla());
 
         logger = evt.getModLog();

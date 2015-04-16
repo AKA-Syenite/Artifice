@@ -235,7 +235,11 @@ public class ArtificeBlocks
     {
         for (ItemStack ore : OreDictionary.getOres("blockMarble"))
             ArtificeRegistry.registerMarbleType(ore);
+        for (ItemStack ore : OreDictionary.getOres("marble"))
+            ArtificeRegistry.registerMarbleType(ore);
         for (ItemStack ore : OreDictionary.getOres("blockBasalt"))
+            ArtificeRegistry.registerBasaltType(ore);
+        for (ItemStack ore : OreDictionary.getOres("basalt"))
             ArtificeRegistry.registerBasaltType(ore);
     }
 }

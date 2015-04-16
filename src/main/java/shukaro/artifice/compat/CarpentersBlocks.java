@@ -41,6 +41,7 @@ public class CarpentersBlocks implements ICompat
                 coverExceptions.add(new ItemStack(ArtificeBlocks.blockLampsInverted[i], 1, 0).getDisplayName());
             }
             coverExceptions.add(new ItemStack(ArtificeBlocks.blockSteel, 1, 0).getDisplayName());
+            coverExceptions.add(new ItemStack(ArtificeBlocks.blockUranium, 1, 1).getDisplayName());
 
             ArtificeCore.logger.info("Carpenter's Blocks compat initialized");
         }

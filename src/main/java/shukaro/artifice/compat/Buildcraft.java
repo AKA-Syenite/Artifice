@@ -1,6 +1,7 @@
 package shukaro.artifice.compat;
 
 import cpw.mods.fml.common.event.FMLInterModComms;
+import net.minecraft.block.Block;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.fluids.FluidStack;
 import shukaro.artifice.ArtificeBlocks;
@@ -20,23 +21,24 @@ public class Buildcraft implements ICompat
         try
         {
             for (int i = 0; i < ArtificeConfig.tiers.length; i++)
-                FMLInterModComms.sendMessage(getModID(), "add-facade", ArtificeBlocks.blockReinforced + "@" + i);
+                FMLInterModComms.sendMessage(getModID(), "add-facade", Block.blockRegistry.getNameForObject(ArtificeBlocks.blockReinforced) + "@" + i);
             for (int i = 0; i < ArtificeConfig.rocks.length; i++)
             {
-                FMLInterModComms.sendMessage(getModID(), "add-facade", ArtificeBlocks.blockBasalt + "@" + i);
-                FMLInterModComms.sendMessage(getModID(), "add-facade", ArtificeBlocks.blockMarble + "@" + i);
+                FMLInterModComms.sendMessage(getModID(), "add-facade", Block.blockRegistry.getNameForObject(ArtificeBlocks.blockBasalt) + "@" + i);
+                FMLInterModComms.sendMessage(getModID(), "add-facade", Block.blockRegistry.getNameForObject(ArtificeBlocks.blockMarble) + "@" + i);
             }
             for (int i = 0; i < ArtificeBlocks.blockLimestones.length; i++)
             {
                 for (int j = 0; j < ArtificeConfig.rocks.length; j++)
-                    FMLInterModComms.sendMessage(getModID(), "add-facade", ArtificeBlocks.blockLimestones[i] + "@" + j);
+                    FMLInterModComms.sendMessage(getModID(), "add-facade", Block.blockRegistry.getNameForObject(ArtificeBlocks.blockLimestones[i]) + "@" + j);
             }
             for (int i = 0; i < ArtificeBlocks.blockLamps.length; i++)
             {
-                FMLInterModComms.sendMessage(getModID(), "add-facade", ArtificeBlocks.blockLamps[i] + "@" + 0);
-                FMLInterModComms.sendMessage(getModID(), "add-facade", ArtificeBlocks.blockLampsInverted[i] + "@" + 0);
+                FMLInterModComms.sendMessage(getModID(), "add-facade", Block.blockRegistry.getNameForObject(ArtificeBlocks.blockLamps[i]) + "@" + 0);
+                FMLInterModComms.sendMessage(getModID(), "add-facade", Block.blockRegistry.getNameForObject(ArtificeBlocks.blockLampsInverted[i]) + "@" + 0);
             }
-            FMLInterModComms.sendMessage(getModID(), "add-facade", ArtificeBlocks.blockSteel + "@0");
+            FMLInterModComms.sendMessage(getModID(), "add-facade", Block.blockRegistry.getNameForObject(ArtificeBlocks.blockSteel) + "@0");
+            FMLInterModComms.sendMessage(getModID(), "add-facade", Block.blockRegistry.getNameForObject(ArtificeBlocks.blockUranium) + "@1");
 
             FluidStack oil = new FluidStack(ArtificeFluids.fluidOil, 1);
             FluidStack fuel = new FluidStack(ArtificeFluids.fluidFuel, 1);

@@ -10,6 +10,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.event.AnvilUpdateEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
+import net.minecraftforge.event.entity.player.AnvilRepairEvent;
 import shukaro.artifice.ArtificeBlocks;
 import shukaro.artifice.ArtificeConfig;
 import shukaro.artifice.ArtificeEnchants;
@@ -72,7 +73,7 @@ public class ArtificeEventHandler
     }
 
     @SubscribeEvent
-    public void onAnvil(AnvilUpdateEvent event)
+    public void onAnvil(AnvilRepairEvent event)
     {
         if (event.output == null || event.output.getItem() == null || event.output.getItem().getUnlocalizedName() == null)
             return;

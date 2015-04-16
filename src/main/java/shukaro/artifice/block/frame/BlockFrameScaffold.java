@@ -107,8 +107,7 @@ public class BlockFrameScaffold extends BlockFrame
     public void onEntityCollidedWithBlock(World world, int x, int y, int z, Entity entity)
     {
         float shrinkAmount = 1f / 45f;
-        if (entity.boundingBox.minY >= y + (1f - shrinkAmount) ||
-                entity.boundingBox.maxY <= y + shrinkAmount)
+        if (entity.boundingBox.minY >= y + (1f - shrinkAmount) || entity.boundingBox.maxY <= y + shrinkAmount)
             return;
         entity.fallDistance = 0;
         if (entity.isCollidedHorizontally)

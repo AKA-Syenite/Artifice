@@ -9,6 +9,7 @@ import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.util.ForgeDirection;
 import shukaro.artifice.ArtificeConfig;
+import shukaro.artifice.util.MiscUtils;
 
 public class TileEntityNuclearBattery extends TileEntity implements IEnergyProvider
 {
@@ -35,6 +36,7 @@ public class TileEntityNuclearBattery extends TileEntity implements IEnergyProvi
             worldObj.setBlockMetadataWithNotify(xCoord, yCoord, zCoord, 1, 3);
         else if (power > (ArtificeConfig.nuclearBatteryCapacity * 0.7) && meta != 0)
             worldObj.setBlockMetadataWithNotify(xCoord, yCoord, zCoord, 0, 3);
+        charge.receiveEnergy(MiscUtils.provideEnergyToNeighbors(charge.extractEnergy(ArtificeConfig.nuclearBatteryRate, false), worldObj, xCoord, yCoord, zCoord), false);
     }
 
     @Override
@@ -79,8 +81,11 @@ public class TileEntityNuclearBattery extends TileEntity implements IEnergyProvi
     @Override
     public int extractEnergy(ForgeDirection dir, int amount, boolean simulate)
     {
-        if (tickGen >= getMaxRate())
+        int maxRate = this.getMaxRate();
+        if (tickGen >= maxRate)
             return 0;
+        if (amount > maxRate)
+            amount = maxRate;
         int x = charge.extractEnergy(amount, simulate);
         if (!simulate)
             tickGen += x;

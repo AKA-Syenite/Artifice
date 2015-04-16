@@ -348,5 +348,8 @@ public class ArtificeTooltips
         ArtificeRegistry.registerTooltip(new ItemStack(ArtificeBlocks.blockNuclearBattery, 1, 1), localizeTooltip("battery", true));
         ArtificeRegistry.registerTooltip(new ItemStack(ArtificeBlocks.blockNuclearBattery, 1, 2), localizeTooltip("battery", true));
         ArtificeRegistry.registerTooltip(new ItemStack(ArtificeBlocks.blockNuclearBattery, 1, 3), localizeTooltip("battery", true));
+
+        ArtificeRegistry.registerTooltip(new ItemStack(ArtificeBlocks.blockHeatingCoil, 1, 0), localizeTooltip("heatingcoil", false));
+        ArtificeRegistry.registerTooltip(new ItemStack(ArtificeBlocks.blockHeatingCoil, 1, 0), localizeTooltip("heatingcoil", true));
     }
 }

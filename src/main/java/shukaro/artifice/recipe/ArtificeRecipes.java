@@ -171,6 +171,15 @@ public class ArtificeRecipes
         {
             GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ArtificeItems.itemCraftKit, 1, 0), "stickWood", "plankWood", "plankWood", "plankWood"));
         }
+        if (ArtificeConfig.uraniumBlockRecipe)
+        {
+            GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ArtificeItems.itemResource, 9, 3), "blockUranium"));
+            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeBlocks.blockUranium, 1, 1),
+                    "XXX",
+                    "XXX",
+                    "XXX",
+                    'X', "ingotUranium"));
+        }
         if (ArtificeConfig.nuclearBatteryRecipe)
         {
             ItemStack stack = new ItemStack(ArtificeBlocks.blockNuclearBattery, 1, 0);
@@ -185,6 +194,16 @@ public class ArtificeRecipes
                     'P', Blocks.piston,
                     'U', "blockUranium",
                     'W', Items.water_bucket));
+        }
+        if (ArtificeConfig.heatingCoilRecipe)
+        {
+            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ArtificeBlocks.blockHeatingCoil, 1, 0),
+                    "RIR",
+                    "INI",
+                    "RIR",
+                    'N', Blocks.nether_brick,
+                    'I', Items.iron_ingot,
+                    'R', Items.redstone));
         }
     }
 

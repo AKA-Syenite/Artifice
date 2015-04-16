@@ -135,6 +135,11 @@ public class ArtificeConfig
     public static int nuclearBatteryCapacity;
     public static int nuclearBatteryRate;
 
+    public static boolean heatingCoilRecipe;
+    public static int heatingCoilRate;
+    public static int RFperFurnaceHeat;
+    public static int coilLoss;
+
     private static String marbleList;
     private static String basaltList;
     private static String dimensionBlacklist;
@@ -323,6 +328,11 @@ public class ArtificeConfig
             nuclearBatteryRecipe = c.get("Recipes", "Allow crafting of nuclear batteries", true).getBoolean();
             nuclearBatteryCapacity = c.get("Machines", "Maximum RF capacity of nuclear batteries", 1000000000).getInt();
             nuclearBatteryRate = c.get("Machines", "Maximum rate at which RF is produced by nuclear batteries", 20).getInt();
+
+            heatingCoilRecipe = c.get("Recipes", "Allow crafting of heating coils", true).getBoolean();
+            heatingCoilRate = c.get("Machines", "Rate at which heating coils can transfer heat, in RF/t", 80).getInt();
+            RFperFurnaceHeat = c.get("Machines", "Amount of RF each unit of furnace burn time costs", 8).getInt();
+            coilLoss = c.get("Machines", "Rate at which heating coils bleed energy, in RF/t", 8).getInt();
         }
         catch (Exception e)
         {

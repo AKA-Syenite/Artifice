@@ -98,7 +98,7 @@ public class BlockLamp extends BlockArtifice
     public IIcon getIcon(IBlockAccess block, int x, int y, int z, int side)
     {
         int meta = block.getBlockMetadata(x, y, z);
-        if (meta >= 16)
+        if (meta > 15)
             meta = 0;
         return this.getIcon(side, meta);
     }

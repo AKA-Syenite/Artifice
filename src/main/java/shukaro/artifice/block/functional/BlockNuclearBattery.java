@@ -14,9 +14,9 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.tileentity.TileEntityFurnace;
 import net.minecraft.util.IIcon;
-import net.minecraft.util.MathHelper;
+import net.minecraft.util.StatCollector;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
 import shukaro.artifice.ArtificeConfig;
@@ -24,6 +24,7 @@ import shukaro.artifice.ArtificeCore;
 import shukaro.artifice.block.ItemBlockArtifice;
 import shukaro.artifice.render.TextureHandler;
 import shukaro.artifice.tile.TileEntityNuclearBattery;
+import shukaro.artifice.util.FormatCodes;
 import shukaro.artifice.util.MiscUtils;
 
 import java.util.List;
@@ -68,6 +69,30 @@ public class BlockNuclearBattery extends Block implements ITileEntityProvider
         tag.setInteger("charge", ArtificeConfig.nuclearBatteryCapacity);
         stack.setTagCompound(tag);
         list.add(stack);
+    }
+
+    @Override
+    public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int side, float hitX, float hitY, float hitZ)
+    {
+        if (!world.isRemote && player.getHeldItem() == null)
+        {
+            TileEntity te = world.getTileEntity(x, y, z);
+            if (te instanceof TileEntityNuclearBattery)
+            {
+                TileEntityNuclearBattery teb = (TileEntityNuclearBattery)te;
+                MiscUtils.addChatMessage(player, FormatCodes.Yellow.code + teb.getEnergyStored(ForgeDirection.DOWN) + FormatCodes.Reset.code + " " + StatCollector.translateToLocal("chat.artifice.rf")
+                        + " @ " + FormatCodes.Aqua.code + teb.getMaxRate() + FormatCodes.Reset.code + " " + StatCollector.translateToLocal("chat.artifice.rft"));
+                return true;
+            }
+        }
+        return false;
+    }
+
+    @Override
+    public int getLightValue(IBlockAccess world, int x, int y, int z)
+    {
+        int meta = world.getBlockMetadata(x, y, z);
+        return (3-meta) * 2;
     }
 
     @Override

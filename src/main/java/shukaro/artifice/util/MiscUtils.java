@@ -1,11 +1,20 @@
 package shukaro.artifice.util;
 
+import cofh.api.energy.IEnergyReceiver;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
+import net.minecraft.network.Packet;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraft.tileentity.TileEntityFurnace;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.world.World;
+import net.minecraftforge.common.util.ForgeDirection;
+import shukaro.artifice.tile.IHeatReceiver;
+import shukaro.artifice.tile.TileFurnaceWrapper;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class MiscUtils
@@ -61,5 +70,71 @@ public class MiscUtils
     public static void addChatMessage(EntityPlayer player, String message)
     {
         player.addChatMessage(new ChatComponentText(message));
+    }
+
+    public static IHeatReceiver getHeatReceiverNeighbor(World world, int x, int y, int z)
+    {
+        Integer[] sides = { 0, 1, 2, 3, 4, 5 };
+        shuffleArray(sides);
+        for (int i : sides)
+        {
+            ForgeDirection dir = ForgeDirection.VALID_DIRECTIONS[sides[i]];
+            TileEntity te = world.getTileEntity(x+dir.offsetX, y+dir.offsetY, z+dir.offsetZ);
+            if (te instanceof TileEntityFurnace)
+                return new TileFurnaceWrapper((TileEntityFurnace)te);
+            if (te instanceof IHeatReceiver)
+                return (IHeatReceiver)te;
+        }
+        return null;
+    }
+
+    public static int provideEnergyToNeighbors(int amount, World world, int x, int y, int z)
+    {
+        Integer[] sides = { 0, 1, 2, 3, 4, 5 };
+        shuffleArray(sides);
+        for (int i : sides)
+        {
+            ForgeDirection dir = ForgeDirection.VALID_DIRECTIONS[sides[i]];
+            TileEntity te = world.getTileEntity(x+dir.offsetX, y+dir.offsetY, z+dir.offsetZ);
+            if (te instanceof IEnergyReceiver)
+            {
+                IEnergyReceiver rec = (IEnergyReceiver)te;
+                if (rec.canConnectEnergy(dir.getOpposite()))
+                    amount -= rec.receiveEnergy(dir.getOpposite(), amount, false);
+            }
+        }
+        return amount;
+    }
+
+    public static <T extends TileEntity> List<T> getAdjoinedTileEntities(Class<T> teClass, World world, int x, int y, int z)
+    {
+        TileEntity te = world.getTileEntity(x, y, z);
+        if (te != null)
+        {
+            List<TileEntity> teList = new ArrayList<TileEntity>();
+            List<BlockCoord> done = new ArrayList<BlockCoord>();
+            List<T> adjoined = new ArrayList<T>();
+            teList.add(te);
+            while (!teList.isEmpty())
+            {
+                te = teList.remove(0);
+                done.add(new BlockCoord(te.xCoord, te.yCoord, te.zCoord));
+                if (teClass.isInstance(te))
+                {
+                    adjoined.add((T)te);
+                    for (int i=0; i<6; i++)
+                    {
+                        ForgeDirection dir = ForgeDirection.VALID_DIRECTIONS[i];
+                        if (!world.blockExists(x+dir.offsetX, y+dir.offsetY, z+dir.offsetZ))
+                            continue;
+                        te = world.getTileEntity(x+dir.offsetX, y+dir.offsetY, z+dir.offsetZ);
+                        if (te != null && !done.contains(new BlockCoord(te.xCoord, te.yCoord, te.zCoord)))
+                            teList.add(te);
+                    }
+                }
+            }
+            return adjoined;
+        }
+        return null;
     }
 }

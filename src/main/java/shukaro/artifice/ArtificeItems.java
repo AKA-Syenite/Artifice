@@ -51,8 +51,11 @@ public class ArtificeItems
 
         itemSteelIngot = new ItemSteel();
 
-        OreDictionary.registerOre("ingotSteel", new ItemStack(itemSteelIngot, 1, 0));
-        OreDictionary.registerOre("dustSteel", new ItemStack(itemSteelIngot, 1, 1));
+        if (ArtificeConfig.steelOreDict)
+        {
+            OreDictionary.registerOre("ingotSteel", new ItemStack(itemSteelIngot, 1, 0));
+            OreDictionary.registerOre("dustSteel", new ItemStack(itemSteelIngot, 1, 1));
+        }
 
         itemBox = new ItemBox();
 

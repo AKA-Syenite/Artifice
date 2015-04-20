@@ -145,6 +145,8 @@ public class ArtificeConfig
     public static boolean sulfurMFRLaser;
     public static boolean niterMFRLaser;
 
+    public static boolean steelOreDict;
+
     private static String marbleList;
     private static String basaltList;
     private static String dimensionBlacklist;
@@ -343,6 +345,8 @@ public class ArtificeConfig
             enderOreMFRLaser = c.get("Compat", "Register ender ore to the MFR laser", true).getBoolean();
             sulfurMFRLaser = c.get("Compat", "Register sulfur to the MFR laser", true).getBoolean();
             niterMFRLaser = c.get("Compat", "Register niter to the MFR laser", true).getBoolean();
+
+            steelOreDict = c.get("Recipes", "Register steel entries to the ore dictionary", true).getBoolean();
         }
         catch (Exception e)
         {

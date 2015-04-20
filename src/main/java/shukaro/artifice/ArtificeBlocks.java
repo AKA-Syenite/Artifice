@@ -181,7 +181,8 @@ public class ArtificeBlocks
 
         blockSteel = new BlockSteel();
 
-        OreDictionary.registerOre("blockSteel", new ItemStack(blockSteel));
+        if (ArtificeConfig.steelOreDict)
+            OreDictionary.registerOre("blockSteel", new ItemStack(blockSteel));
 
         for (int i=0; i<16; i++)
         {

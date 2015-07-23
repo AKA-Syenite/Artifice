@@ -15,8 +15,12 @@ public class Tracking
     public static int getHighestFrequencyPower(String frequency)
     {
         int i = 0;
+        if (MinecraftServer.getServer() == null || MinecraftServer.getServer().worldServers == null)
+            return i;
         for (World world : MinecraftServer.getServer().worldServers)
         {
+            if (world == null)
+                continue;
             for (Object o : world.loadedTileEntityList)
             {
                 if (o instanceof TileEntityAttuned)
@@ -32,7 +36,7 @@ public class Tracking
 
     public static void updateFrequency(String frequency)
     {
-        if (MinecraftServer.getServer().worldServers == null)
+        if (MinecraftServer.getServer() == null || MinecraftServer.getServer().worldServers == null)
             return;
         for (World world : MinecraftServer.getServer().worldServers)
         {

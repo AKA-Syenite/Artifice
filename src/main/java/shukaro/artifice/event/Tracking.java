@@ -2,6 +2,7 @@ package shukaro.artifice.event;
 
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.world.World;
+import net.minecraftforge.common.DimensionManager;
 import shukaro.artifice.ArtificeBlocks;
 import shukaro.artifice.tile.TileEntityAttuned;
 
@@ -15,9 +16,9 @@ public class Tracking
     public static int getHighestFrequencyPower(String frequency)
     {
         int i = 0;
-        if (MinecraftServer.getServer() == null || MinecraftServer.getServer().worldServers == null)
+        if (DimensionManager.getWorlds() == null)
             return i;
-        for (World world : MinecraftServer.getServer().worldServers)
+        for (World world : DimensionManager.getWorlds())
         {
             if (world == null)
                 continue;
@@ -36,9 +37,9 @@ public class Tracking
 
     public static void updateFrequency(String frequency)
     {
-        if (MinecraftServer.getServer() == null || MinecraftServer.getServer().worldServers == null)
+        if (DimensionManager.getWorlds() == null)
             return;
-        for (World world : MinecraftServer.getServer().worldServers)
+        for (World world : DimensionManager.getWorlds())
         {
             if (world == null)
                 continue;

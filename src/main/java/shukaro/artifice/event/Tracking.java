@@ -32,8 +32,12 @@ public class Tracking
 
     public static void updateFrequency(String frequency)
     {
+        if (MinecraftServer.getServer().worldServers == null)
+            return;
         for (World world : MinecraftServer.getServer().worldServers)
         {
+            if (world == null)
+                continue;
             for (Object o : world.loadedTileEntityList)
             {
                 if (o instanceof TileEntityAttuned)

@@ -1,7 +1,7 @@
 # Artifice
 ##Under Construction
 
-This is a **fork** of Shurako's 1.7.10 mod Artifice and will likely be rebuilt from the ground up for 1.10.2
+This is a **fork** of Shurako's 1.7.10 mod Artifice and will likely be rebuilt from the ground up for 1.10.2  
 ~~Artifice adds a variety of things. Really whatever seems interesting to me.~~
 
 

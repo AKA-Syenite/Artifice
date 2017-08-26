@@ -43,6 +43,10 @@ compileJava {
     sourceCompatibility = targetCompatibility = "1.8"
 }
 
+tasks.withType(ScalaCompile) {
+    targetCompatibility = "1.7"
+}
+
 minecraft {
     version = "1.10.2-12.18.3.2185"
     runDir = "run"
@@ -145,3 +149,4 @@ task modsioUpload(type: Exec) {
             '-F', 'file=@./build/libs/' + archivesBaseName + '-' + project.fullVersion + '.jar',
             '-H', 'X-API-Key: ' + System.getenv('MODSIO_API_KEY'),
             'https://mods.io/mods/' + project.modsioProjectID + '/versions/create.json']
+}

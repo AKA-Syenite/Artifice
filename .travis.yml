@@ -1,4 +1,4 @@
-language: java
+language: scala
 
 install: ./gradlew setupCIWorkspace -S
 script: ./gradlew publish -S

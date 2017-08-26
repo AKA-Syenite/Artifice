@@ -2,7 +2,7 @@
 {
   "modid": "Artifice",
   "name": "Artifice",
-  "description": "Practical solutions",
+  "description": "Practical Solutions",
   "version": "${version}",
   "mcversion": "${mcversion}",
   "url": "http://www.minecraftforum.net/topic/1860869-",
@@ -16,7 +16,7 @@
   ],
   "parent": "",
   "dependencies": [
-    "MinecraftForge","CoFHCore"
+    "MinecraftForge"
   ]
 }
 ]

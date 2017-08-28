@@ -20,23 +20,3 @@ build
 # other
 eclipse
 run
-
-# Ignore Gradle cache files & directories
-bin/
-build/
-libs/
-eclipse/
-minecraft/
-gradle/
-.classpath
-.gradle/
-.project
-.settings/
-gradle.properties
-
-# Ignore OS cache files & directories
-*.DS_Store
-_MACOSX
-Thumbs.db
-/eclipse/
-/gradle/

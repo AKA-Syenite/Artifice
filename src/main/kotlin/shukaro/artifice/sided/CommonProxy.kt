@@ -1,5 +1,5 @@
 package shukaro.artifice.sided
 
-class CommonProxy {
+open class CommonProxy {
 
 }
